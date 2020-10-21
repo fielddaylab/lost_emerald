@@ -1,5 +1,41 @@
 {
   "dependencies": {
+    "com.beauprime.beaudata": {
+      "version": "file:../Submodules/BeauData/Assets/BeauData",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
+    },
+    "com.beauprime.beaupools": {
+      "version": "file:../Submodules/BeauPools/Assets/BeauPools",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
+    },
+    "com.beauprime.beauroutine": {
+      "version": "file:../Submodules/BeauRoutine/Assets/BeauRoutine",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
+    },
+    "com.beauprime.beauroutine-extensions": {
+      "version": "file:../Submodules/BeauRoutine/Assets/BeauRoutine-Extensions",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
+    },
+    "com.beauprime.beauroutine-spline": {
+      "version": "file:../Submodules/BeauRoutine/Assets/BeauRoutine-Spline",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
+    },
+    "com.beauprime.beauutil": {
+      "version": "file:../Submodules/BeauUtil/Assets/BeauUtil",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
+    },
     "com.unity.collab-proxy": {
       "version": "1.2.16",
       "depth": 0,

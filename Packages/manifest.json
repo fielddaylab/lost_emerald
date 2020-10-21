@@ -37,6 +37,12 @@
     "com.unity.modules.video": "1.0.0",
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
-    "com.unity.modules.xr": "1.0.0"
+    "com.unity.modules.xr": "1.0.0",
+    "com.beauprime.beaudata": "file:../Submodules/BeauData/Assets/BeauData",
+    "com.beauprime.beaupools": "file:../Submodules/BeauPools/Assets/BeauPools",
+    "com.beauprime.beauroutine": "file:../Submodules/BeauRoutine/Assets/BeauRoutine",
+    "com.beauprime.beauroutine-extensions": "file:../Submodules/BeauRoutine/Assets/BeauRoutine-Extensions",
+    "com.beauprime.beauroutine-spline": "file:../Submodules/BeauRoutine/Assets/BeauRoutine-Spline",
+    "com.beauprime.beauutil": "file:../Submodules/BeauUtil/Assets/BeauUtil"
   }
 }

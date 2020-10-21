@@ -310,8 +310,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 2052071451}
-  topOffset: {x: 0, y: 30, z: 0}
-  sideOffset: {x: 0, y: 0, z: -15}
+  topOffset: {x: 0, y: 20, z: 0}
+  sideOffset: {x: 0, y: 5, z: -15}
 --- !u!1 &2052071451
 GameObject:
   m_ObjectHideFlags: 0
