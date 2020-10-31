@@ -75,7 +75,7 @@ jobs:
     - name: Upload build as artifact
       uses: actions/upload-artifact@v1
       with:
-        name: aqualab-webgl_${{ env.VERSION }}
+        name: webgl_${{ env.VERSION }}
         path: build/WebGL/WebGL
     
     - name: Upload to web server via rsync
