@@ -22,7 +22,7 @@ The WebGL build will be placed in DEPLOY_HOST:DEPLOY_DIR/BRANCH
 
 ## Unity Activation `unity-activation.yml`
 
-[Should be disabled after first use]
+[Manually Activated]
 
 This workflow shows how to grab the unity license for the GitHub action workflow.  The 
 documentation for what to do with the license artifact that is produced from this workflow 
