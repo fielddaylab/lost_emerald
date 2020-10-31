@@ -10973,8 +10973,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 568607373}
-  topOffset: {x: 0, y: 8, z: 0}
-  sideOffset: {x: 0, y: 2, z: -10}
+  topOffset: {x: 0, y: 2, z: -2}
+  sideOffset: {x: 0, y: 0, z: -2}
 --- !u!1001 &1438805147
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21059,6 +21059,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1889050137}
+  - component: {fileID: 1889050138}
   m_Layer: 0
   m_Name: CameraContainer
   m_TagString: Untagged
@@ -21081,6 +21082,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1889050138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1889050136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da7dab4bd33e44909614a90c71bf44a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2040384633 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 7108b0bd86e204b0dbf6ec7b56f72944,
