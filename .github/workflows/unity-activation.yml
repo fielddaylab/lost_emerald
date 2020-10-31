@@ -1,6 +1,7 @@
 name: Acquire activation file
-on: workflow_dispatch:
-  inputs:
+on: 
+  workflow_dispatch:
+    inputs:
       versionInput:
         description: 'Unity Version'     
         required: true
