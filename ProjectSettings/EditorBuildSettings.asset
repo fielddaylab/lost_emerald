@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/LaSalleTestScene_RealtimeLighting.unity
+    guid: a0cd22f0a54794e7590234e65cb93caf
   m_configObjects: {}
