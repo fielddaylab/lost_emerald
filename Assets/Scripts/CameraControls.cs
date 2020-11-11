@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using BeauRoutine;
+using UnityEngine.UI;
+using ProtoCP;
+using TMPro;
 
 public class CameraControls : MonoBehaviour
 {
@@ -11,6 +14,10 @@ public class CameraControls : MonoBehaviour
     public Vector3 topUpVector;
     public Vector3 sideUpVector;
     public float shipLength;
+    public Button perspectiveButton;
+    public PointerListener leftButton;
+    public PointerListener rightButton;
+    public TMP_Text modeLabel;
 
     enum CameraState
     {
@@ -35,6 +42,8 @@ public class CameraControls : MonoBehaviour
         cameraState = CameraState.CAMERA_TOP;
         sideAngle = shipLength / 2.0f; // so we start in the middle of the side
         MoveCamera(1.0f);
+
+        perspectiveButton.onClick.AddListener(SwitchPerspective);
     }
 
     void MoveCamera(float percentTop)
@@ -97,30 +106,36 @@ public class CameraControls : MonoBehaviour
         cameraState = endState;
     }
 
+    public void SwitchPerspective()
+    {
+        if (cameraState == CameraState.CAMERA_TOP || cameraState == CameraState.CAMERA_SIDE)
+        {
+            if (cameraState == CameraState.CAMERA_TOP)
+            {
+                Routine.Start(this, AnimateCamera(CameraState.CAMERA_TOP_TO_SIDE, 1.0f, 0.0f, CameraState.CAMERA_SIDE));
+                modeLabel.SetText("Side View");
+            }
+            else
+            {
+                Routine.Start(this, AnimateCamera(CameraState.CAMERA_SIDE_TO_TOP, 0.0f, 1.0f, CameraState.CAMERA_TOP));
+                modeLabel.SetText("Overhead View");
+            }
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
         if (cameraState == CameraState.CAMERA_TOP || cameraState == CameraState.CAMERA_SIDE)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (cameraState == CameraState.CAMERA_SIDE && leftButton.IsPressed())
             {
-                if (cameraState == CameraState.CAMERA_TOP)
-                {
-                    Routine.Start(this, AnimateCamera(CameraState.CAMERA_TOP_TO_SIDE, 1.0f, 0.0f, CameraState.CAMERA_SIDE));
-                }
-                else
-                {
-                    Routine.Start(this, AnimateCamera(CameraState.CAMERA_SIDE_TO_TOP, 0.0f, 1.0f, CameraState.CAMERA_TOP));
-                }
-            }
-            else if (cameraState == CameraState.CAMERA_SIDE && Input.GetKey(KeyCode.LeftArrow))
-            {
-                sideAngle -= 0.15f; // TODO do this based on actual time, not frames
+                sideAngle -= 15f * Time.deltaTime;
                 MoveCamera(0.0f);
             }
-            else if (cameraState == CameraState.CAMERA_SIDE && Input.GetKey(KeyCode.RightArrow))
+            else if (cameraState == CameraState.CAMERA_SIDE && rightButton.IsPressed())
             {
-                sideAngle += 0.15f; // TODO do this based on actual time, not frames
+                sideAngle += 15f * Time.deltaTime;
                 MoveCamera(0.0f);
             }
             else
