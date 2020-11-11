@@ -1,10 +1,11 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using BeauRoutine;
 using UnityEngine.UI;
 using ProtoCP;
 using TMPro;
+using UnityEngine.EventSystems;
+using System;
 
 public class CameraControls : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class CameraControls : MonoBehaviour
     public PointerListener leftButton;
     public PointerListener rightButton;
     public TMP_Text modeLabel;
+    public PointerListener panTarget;
 
     enum CameraState
     {
@@ -35,6 +37,9 @@ public class CameraControls : MonoBehaviour
     // sideAngle from (shipLength + semicircle) to (2 * shipLength + semicircle): second side of ship length
     // sideAngle from (2 * shipLength + semicircle) to (2 * shipLength + 2 * semicircle): left semicircle
     // otherwise, normalize to between 0 and (2 * shipLength + 2 * semicircle)
+    bool isPanning = false;
+    float panPointerStartX = 0.0f;
+    float panPointerStartY = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +49,20 @@ public class CameraControls : MonoBehaviour
         MoveCamera(1.0f);
 
         perspectiveButton.onClick.AddListener(SwitchPerspective);
+        panTarget.onPointerDown.AddListener(StartPan);
+        panTarget.onPointerUp.AddListener(StopPan);
+    }
+
+    private void StartPan(PointerEventData arg0)
+    {
+        isPanning = true;
+        panPointerStartX = arg0.position.x;
+        panPointerStartY = arg0.position.y;
+    }
+
+    private void StopPan(PointerEventData arg0)
+    {
+        isPanning = false;
     }
 
     void MoveCamera(float percentTop)
@@ -97,6 +116,14 @@ public class CameraControls : MonoBehaviour
 
         transform.position = animPosition;
         transform.LookAt(animLookAt, animUp);
+
+        if (isPanning)
+        {
+            float diffX = Input.mousePosition.x - panPointerStartX;
+            float diffY = Input.mousePosition.y - panPointerStartY;
+            transform.Rotate(transform.up, (diffX / Screen.width) * -70f, Space.World);
+            transform.Rotate(transform.right, (diffY / Screen.height) * 70f, Space.World);
+        }
     }
 
     IEnumerator AnimateCamera(CameraState animState, float startValue, float endValue, CameraState endState)
