@@ -18,8 +18,9 @@ public class CameraControls : MonoBehaviour
     public Button perspectiveButton;
     public PointerListener leftButton;
     public PointerListener rightButton;
-    public TMP_Text modeLabel;
     public PointerListener panTarget;
+    public Slider zoomSlider;
+    public Button cameraButton;
 
     enum CameraState
     {
@@ -40,6 +41,7 @@ public class CameraControls : MonoBehaviour
     bool isPanning = false;
     float panPointerStartX = 0.0f;
     float panPointerStartY = 0.0f;
+    bool photoMode = false;
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +53,9 @@ public class CameraControls : MonoBehaviour
         perspectiveButton.onClick.AddListener(SwitchPerspective);
         panTarget.onPointerDown.AddListener(StartPan);
         panTarget.onPointerUp.AddListener(StopPan);
+
+        SetPhotoMode(false);
+        cameraButton.onClick.AddListener(SwitchPhotoMode);
     }
 
     private void StartPan(PointerEventData arg0)
@@ -117,12 +122,17 @@ public class CameraControls : MonoBehaviour
         transform.position = animPosition;
         transform.LookAt(animLookAt, animUp);
 
-        if (isPanning)
+        if (isPanning && photoMode)
         {
             float diffX = Input.mousePosition.x - panPointerStartX;
             float diffY = Input.mousePosition.y - panPointerStartY;
             transform.Rotate(transform.up, (diffX / Screen.width) * -70f, Space.World);
             transform.Rotate(transform.right, (diffY / Screen.height) * 70f, Space.World);
+        }
+
+        if (photoMode)
+        {
+            transform.Translate(new Vector3(0f, 0f, zoomSlider.value * 4f), Space.Self);
         }
     }
 
@@ -140,14 +150,36 @@ public class CameraControls : MonoBehaviour
             if (cameraState == CameraState.CAMERA_TOP)
             {
                 Routine.Start(this, AnimateCamera(CameraState.CAMERA_TOP_TO_SIDE, 1.0f, 0.0f, CameraState.CAMERA_SIDE));
-                modeLabel.SetText("Side View");
             }
             else
             {
                 Routine.Start(this, AnimateCamera(CameraState.CAMERA_SIDE_TO_TOP, 0.0f, 1.0f, CameraState.CAMERA_TOP));
-                modeLabel.SetText("Overhead View");
             }
         }
+    }
+
+    void SetPhotoMode(bool newPhotoMode)
+    {
+        photoMode = newPhotoMode;
+        if (photoMode)
+        {
+            leftButton.gameObject.SetActive(false);
+            rightButton.gameObject.SetActive(false);
+            perspectiveButton.gameObject.SetActive(false);
+            zoomSlider.gameObject.SetActive(true);
+        }
+        else
+        {
+            leftButton.gameObject.SetActive(true);
+            rightButton.gameObject.SetActive(true);
+            perspectiveButton.gameObject.SetActive(true);
+            zoomSlider.gameObject.SetActive(false);
+        }
+    }
+
+    public void SwitchPhotoMode()
+    {
+        SetPhotoMode(!photoMode);
     }
 
     // Update is called once per frame
