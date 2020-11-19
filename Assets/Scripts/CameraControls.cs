@@ -21,6 +21,8 @@ public class CameraControls : MonoBehaviour
     public PointerListener panTarget;
     public Slider zoomSlider;
     public Button cameraButton;
+    public Image cameraFrame;
+    public Button photoButton;
 
     enum CameraState
     {
@@ -41,6 +43,8 @@ public class CameraControls : MonoBehaviour
     bool isPanning = false;
     float panPointerStartX = 0.0f;
     float panPointerStartY = 0.0f;
+    float panPointerSaveX = 0.0f;
+    float panPointerSaveY = 0.0f;
     bool photoMode = false;
 
     // Start is called before the first frame update
@@ -60,14 +64,22 @@ public class CameraControls : MonoBehaviour
 
     private void StartPan(PointerEventData arg0)
     {
-        isPanning = true;
-        panPointerStartX = arg0.position.x;
-        panPointerStartY = arg0.position.y;
+        if (photoMode)
+        {
+            isPanning = true;
+            panPointerStartX = arg0.position.x;
+            panPointerStartY = arg0.position.y;
+        }
     }
 
     private void StopPan(PointerEventData arg0)
     {
-        isPanning = false;
+        if (photoMode)
+        {
+            isPanning = false;
+            panPointerSaveX += arg0.position.x - panPointerStartX;
+            panPointerSaveY += arg0.position.y - panPointerStartY;
+        }
     }
 
     void MoveCamera(float percentTop)
@@ -122,16 +134,18 @@ public class CameraControls : MonoBehaviour
         transform.position = animPosition;
         transform.LookAt(animLookAt, animUp);
 
-        if (isPanning && photoMode)
-        {
-            float diffX = Input.mousePosition.x - panPointerStartX;
-            float diffY = Input.mousePosition.y - panPointerStartY;
-            transform.Rotate(transform.up, (diffX / Screen.width) * -70f, Space.World);
-            transform.Rotate(transform.right, (diffY / Screen.height) * 70f, Space.World);
-        }
-
         if (photoMode)
         {
+            float diffX = panPointerSaveX;
+            float diffY = panPointerSaveY;
+            if (isPanning)
+            {
+                diffX += Input.mousePosition.x - panPointerStartX;
+                diffY += Input.mousePosition.y - panPointerStartY;
+            }
+            transform.Rotate(transform.up, (diffX / Screen.width) * -70f, Space.World);
+            transform.Rotate(transform.right, (diffY / Screen.height) * 70f, Space.World);
+
             transform.Translate(new Vector3(0f, 0f, zoomSlider.value * 4f), Space.Self);
         }
     }
@@ -167,6 +181,8 @@ public class CameraControls : MonoBehaviour
             rightButton.gameObject.SetActive(false);
             perspectiveButton.gameObject.SetActive(false);
             zoomSlider.gameObject.SetActive(true);
+            cameraFrame.gameObject.SetActive(true);
+            photoButton.gameObject.SetActive(true);
         }
         else
         {
@@ -174,6 +190,14 @@ public class CameraControls : MonoBehaviour
             rightButton.gameObject.SetActive(true);
             perspectiveButton.gameObject.SetActive(true);
             zoomSlider.gameObject.SetActive(false);
+            cameraFrame.gameObject.SetActive(false);
+            photoButton.gameObject.SetActive(false);
+            isPanning = false;
+            panPointerStartX = 0f;
+            panPointerStartY = 0f;
+            panPointerSaveX = 0f;
+            panPointerSaveY = 0f;
+            zoomSlider.value = 0f;
         }
     }
 
