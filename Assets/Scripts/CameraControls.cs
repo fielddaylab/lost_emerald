@@ -23,6 +23,8 @@ public class CameraControls : MonoBehaviour
     public Button cameraButton;
     public Image cameraFrame;
     public Button photoButton;
+    public GameObject photoResult;
+    public Button savePhotoButton;
 
     enum CameraState
     {
@@ -60,6 +62,8 @@ public class CameraControls : MonoBehaviour
 
         SetPhotoMode(false);
         cameraButton.onClick.AddListener(SwitchPhotoMode);
+        photoButton.onClick.AddListener(TakePhoto);
+        savePhotoButton.onClick.AddListener(SavePhoto);
     }
 
     private void StartPan(PointerEventData arg0)
@@ -199,11 +203,30 @@ public class CameraControls : MonoBehaviour
             panPointerSaveY = 0f;
             zoomSlider.value = 0f;
         }
+        photoResult.SetActive(false);
     }
 
     public void SwitchPhotoMode()
     {
         SetPhotoMode(!photoMode);
+    }
+
+    void TakePhoto()
+    {
+        photoResult.SetActive(true);
+        savePhotoButton.gameObject.SetActive(true);
+        cameraButton.gameObject.SetActive(false);
+        zoomSlider.gameObject.SetActive(false);
+        photoButton.gameObject.SetActive(false);
+    }
+
+    void SavePhoto()
+    {
+        photoResult.SetActive(false);
+        savePhotoButton.gameObject.SetActive(false);
+        cameraButton.gameObject.SetActive(true);
+        zoomSlider.gameObject.SetActive(true);
+        photoButton.gameObject.SetActive(true);
     }
 
     // Update is called once per frame
