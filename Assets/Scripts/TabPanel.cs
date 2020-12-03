@@ -12,17 +12,29 @@ public class TabPanel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SelectTab(0);
         for (int i = 0; i < tabs.Length; i++)
         {
             int j = i;
-            content[j].SetActive(j == 0);
             tabs[j].onClick.AddListener((pdata) =>
             {
-                for (int k = 0; k < tabs.Length; k++)
-                {
-                    content[k].SetActive(j == k);
-                }
+                SelectTab(j);
             });
+        }
+    }
+
+    private void SelectTab(int i)
+    {
+        for (int j = 0; j < tabs.Length; j++)
+        {
+            content[j].SetActive(false);
+        }
+        for (int j = 0; j < tabs.Length; j++)
+        {
+            if (i == j)
+            {
+                content[j].SetActive(true);
+            }
         }
     }
 
