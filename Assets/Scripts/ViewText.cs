@@ -9,7 +9,8 @@ public class ViewText : MonoBehaviour
     public Sprite phoneScreen2;
     public Sprite phoneScreen3;
     public Sprite phoneScreen4;
-    public int imgNumberCount;
+
+    private int imgNumberCount;
 
     private void Start()
     {
@@ -17,7 +18,7 @@ public class ViewText : MonoBehaviour
         imgNumberCount++;
     }
 
-    public void changeImages()
+    public void ChangeImages()
     {
         switch (imgNumberCount)
         {
@@ -34,6 +35,7 @@ public class ViewText : MonoBehaviour
                 imgNumberCount++;
                 break;
             default:
+                GetComponent<SceneSwitch>().GotoDocuments();
                 break;
         }
     }

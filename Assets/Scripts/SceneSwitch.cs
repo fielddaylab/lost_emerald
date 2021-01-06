@@ -9,4 +9,9 @@ public class SceneSwitch : MonoBehaviour
     {
         SceneManager.LoadScene("DocumentScene");
     }
+
+    public void GotoConversation1()
+    {
+        SceneManager.LoadScene("ConversationInterface");
+    }
 }
