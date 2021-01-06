@@ -8,54 +8,94 @@ using UnityEngine.EventSystems;
 
 public class InfoDragger : MonoBehaviour
 {
-    public TextMeshProUGUI[] infoPieces;
+    public GameObject[] documents;
+    public string[] documentNames;
     public TextMeshProUGUI[] targets;
+    public TextMeshProUGUI[] sourceLabels;
+    public GameObject infoChunkTemplate;
 
-    private TextMeshProUGUI draggingObject;
+    private GameObject draggingObject;
     private ScrollRect draggedFromScroll;
     private Vector3 dragStartMouse;
     private Vector3 dragStartInfo;
+    private TMP_LinkInfo linkInfo;
+    private string documentName;
 
     // Start is called before the first frame update
     void Start()
     {
-        foreach (var infoPiece in infoPieces)
+        int documentIndex = 0;
+        foreach (var document in documents)
         {
-            PointerListener pointer = infoPiece.GetComponent<PointerListener>();
-            if (pointer)
+            int thisDocumentIndex = documentIndex;
+            foreach (var infoPiece in document.GetComponentsInChildren<TextMeshProUGUI>())
             {
-                pointer.onPointerDown.AddListener((pdata) =>
+                PointerListener pointer = infoPiece.GetComponent<PointerListener>();
+                if (pointer)
                 {
-                    draggingObject = Instantiate(infoPiece, transform, true);
-                    draggingObject.color = Color.red;
-                    draggedFromScroll = infoPiece.GetComponentInParent<ScrollRect>();
-                    if (draggedFromScroll)
+                    pointer.onPointerDown.AddListener((pdata) =>
                     {
-                        draggedFromScroll.enabled = false;
-                    }
-                    dragStartMouse = Input.mousePosition;
-                    dragStartInfo = draggingObject.rectTransform.position;
-                });
-                pointer.onPointerUp.AddListener(ReleaseDrag);
+                        int linkIndex = TMP_TextUtilities.FindIntersectingLink(infoPiece, pdata.position, null);
+                        if (linkIndex != -1)
+                        {
+                            linkInfo = infoPiece.textInfo.linkInfo[linkIndex];
+
+                            draggingObject = Instantiate(infoChunkTemplate, transform, true);
+                            RectTransform draggingRect = draggingObject.GetComponent<RectTransform>();
+                            draggingRect.anchorMin = new Vector2(0f, 1f);
+                            draggingRect.anchorMax = new Vector2(0f, 1f);
+                            draggingRect.pivot = new Vector2(0f, 0f);
+                            draggingRect.position = Input.mousePosition;
+                            TextMeshProUGUI draggingText = draggingObject.GetComponentInChildren<TextMeshProUGUI>();
+                            draggingText.color = Color.black;
+                            draggingText.text = linkInfo.GetLinkText();
+                            draggedFromScroll = infoPiece.GetComponentInParent<ScrollRect>();
+                            if (draggedFromScroll)
+                            {
+                                draggedFromScroll.enabled = false;
+                            }
+                            dragStartMouse = Input.mousePosition;
+                            dragStartInfo = draggingRect.position;
+                            draggingObject.SetActive(true);
+                            documentName = documentNames[thisDocumentIndex];
+                        }
+                    });
+                    pointer.onPointerUp.AddListener(ReleaseDrag);
+                }
             }
+            documentIndex++;
+        }
+
+        foreach (var sourceLabel in sourceLabels)
+        {
+            sourceLabel.text = "";
         }
     }
 
     void ReleaseDrag(PointerEventData pdata)
     {
-        draggedFromScroll.enabled = true;
+        if (draggedFromScroll)
+        {
+            draggedFromScroll.enabled = true;
+        }
 
+        int targetIndex = 0;
         foreach (var target in targets)
         {
             Vector2 localMouse = target.rectTransform.InverseTransformPoint(Input.mousePosition);
             if (target.rectTransform.rect.Contains(localMouse))
             {
-                target.text = draggingObject.text;
+                target.text = draggingObject.GetComponentInChildren<TextMeshProUGUI>().text;
+                sourceLabels[targetIndex].text = "From: " + documentName;
                 break;
             }
+            targetIndex++;
         }
 
-        Destroy(draggingObject.gameObject);
+        if (draggingObject)
+        {
+            Destroy(draggingObject.gameObject);
+        }
         draggingObject = null;
         draggedFromScroll = null;
     }
@@ -65,7 +105,7 @@ public class InfoDragger : MonoBehaviour
     {
         if (draggingObject)
         {
-            draggingObject.rectTransform.position = dragStartInfo + (Input.mousePosition - dragStartMouse);
+            draggingObject.GetComponentInChildren<RectTransform>().position = dragStartInfo + (Input.mousePosition - dragStartMouse);
         }
         foreach (var target in targets)
         {
