@@ -7,6 +7,7 @@ public class Ship : MonoBehaviour
     private Vector3 dragOrigin;
     private float step;
     public static int count = 0;
+    private int speed;
 
     // Start is called before the first frame update
     void Start()
@@ -26,17 +27,38 @@ public class Ship : MonoBehaviour
         if (!Input.GetMouseButton(0)) return;
 
         Vector3 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition - dragOrigin);
-        Vector3 move = new Vector3(pos.x * 30, pos.y * 30, 0);
+        if ((Input.mousePosition - transform.position).magnitude > 100)
+        {
+            speed = 30;
+        }
+
+        else
+        {
+            speed = 2;
+        }
+        Debug.Log(speed);
+
+        Vector3 move = new Vector3(pos.x * speed, pos.y * speed, 0);
+
         transform.Translate(move, Space.World);
         transform.rotation = Quaternion.LookRotation(transform.forward, pos);
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "MaskingBlock")
+        if (speed == 2 && other.tag == "MaskingBlock")
         {
             Destroy(other.gameObject);
             count++;
+        }
+        else
+        {
+            int genRand = Random.Range(0, 3);
+            if (genRand == 0)
+            {
+                Destroy(other.gameObject);
+                count++;
+            }
         }
     }
 }

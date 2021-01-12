@@ -17,7 +17,7 @@ public class Dive : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Ship.count > 85)
+        if (Ship.count > 80)
         {
             background.enabled = true;
             dive.enabled = true;

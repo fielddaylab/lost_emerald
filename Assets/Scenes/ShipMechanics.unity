@@ -1506,9 +1506,9 @@ RectTransform:
   m_Father: {fileID: 1252760857}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -23, y: 15}
   m_SizeDelta: {x: 46.055374, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &273946352
@@ -6765,7 +6765,6 @@ GameObject:
   - component: {fileID: 1242170763}
   - component: {fileID: 1242170766}
   - component: {fileID: 1242170765}
-  - component: {fileID: 1242170764}
   m_Layer: 5
   m_Name: Shipwreck
   m_TagString: Untagged
@@ -6792,19 +6791,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 6.4}
   m_SizeDelta: {x: 105.17764, y: 257.91174}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1242170764
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1242170762}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab62e1ea5c8ae48999854fe815bb24a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  distanceMouseToShip: 0
 --- !u!114 &1242170765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9180,9 +9166,9 @@ RectTransform:
   m_Father: {fileID: 487366472}
   m_RootOrder: 100
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 106, y: 53.7}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 83, y: 2}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1611403201
