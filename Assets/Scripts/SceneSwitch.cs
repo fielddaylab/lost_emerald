@@ -14,4 +14,14 @@ public class SceneSwitch : MonoBehaviour
     {
         SceneManager.LoadScene("ConversationInterface");
     }
+
+    public void GotoSonar()
+    {
+        SceneManager.LoadScene("ShipMechanics");
+    }
+
+    public void GotoDive()
+    {
+        SceneManager.LoadScene("LaSalleTestScene_RealtimeLighting");
+    }
 }

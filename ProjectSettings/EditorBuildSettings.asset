@@ -6,12 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/LaSalleTestScene_RealtimeLighting.unity
-    guid: a0cd22f0a54794e7590234e65cb93caf
-  - enabled: 1
     path: Assets/Scenes/DocumentScene.unity
     guid: 025b9341e554b4069bbb7fa6d77c5e37
   - enabled: 1
+    path: Assets/Scenes/LaSalleTestScene_RealtimeLighting.unity
+    guid: a0cd22f0a54794e7590234e65cb93caf
+  - enabled: 1
     path: Assets/Scenes/ConversationInterface.unity
     guid: 6deeaba597c804d4c82f1f33a0815fc6
+  - enabled: 1
+    path: Assets/Scenes/ShipMechanics.unity
+    guid: 931b1c9361ba1412b8c0b34ddfc8d789
   m_configObjects: {}
