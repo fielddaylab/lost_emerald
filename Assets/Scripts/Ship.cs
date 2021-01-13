@@ -27,7 +27,7 @@ public class Ship : MonoBehaviour
         if (!Input.GetMouseButton(0)) return;
 
         Vector3 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition - dragOrigin);
-        if ((Input.mousePosition - transform.position).magnitude > 100)
+        if ((Input.mousePosition - transform.position).magnitude > 175)
         {
             speed = 30;
         }
@@ -36,7 +36,6 @@ public class Ship : MonoBehaviour
         {
             speed = 2;
         }
-        Debug.Log(speed);
 
         Vector3 move = new Vector3(pos.x * speed, pos.y * speed, 0);
 
@@ -48,15 +47,15 @@ public class Ship : MonoBehaviour
     {
         if (speed == 2 && other.tag == "MaskingBlock")
         {
-            Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
             count++;
         }
         else
         {
-            int genRand = Random.Range(0, 3);
+            int genRand = Random.Range(0, 4);
             if (genRand == 0)
             {
-                Destroy(other.gameObject);
+                other.gameObject.SetActive(false);
                 count++;
             }
         }
