@@ -12339,6 +12339,9 @@ MonoBehaviour:
   photoButton: {fileID: 897470383}
   photoResult: {fileID: 1274398072}
   savePhotoButton: {fileID: 1796845436}
+  hiddenObject: {fileID: 1836590334}
+  successMessage: Whoa, the Iron Knees!
+  requiredDistance: 9
 --- !u!1 &1274398072
 GameObject:
   m_ObjectHideFlags: 0
@@ -12716,6 +12719,26 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1361783101 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6098013031344818342, guid: abfaf1fa9edac4111aa041e95ba4e03e,
+    type: 3}
+  m_PrefabInstance: {fileID: 556474713}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1361783105
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1361783101}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3451212947960843030, guid: abfaf1fa9edac4111aa041e95ba4e03e, type: 3}
 --- !u!1001 &1438805147
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18357,6 +18380,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 44862072}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1836590334 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -4500506431003684725, guid: abfaf1fa9edac4111aa041e95ba4e03e,
+    type: 3}
+  m_PrefabInstance: {fileID: 556474713}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1836590338
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836590334}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.05, y: 0.007, z: 0.014}
+  m_Center: {x: -0.022851119, y: 0.0017438626, z: -0.022779232}
 --- !u!4 &1849181167 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 7108b0bd86e204b0dbf6ec7b56f72944,
