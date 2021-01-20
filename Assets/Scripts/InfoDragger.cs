@@ -10,8 +10,7 @@ public class InfoDragger : MonoBehaviour
 {
     public GameObject[] documents;
     public string[] documentNames;
-    public TextMeshProUGUI[] targets;
-    public TextMeshProUGUI[] sourceLabels;
+    public InfoDropTarget[] targets;
     public GameObject infoChunkTemplate;
 
     private GameObject draggingObject;
@@ -65,11 +64,6 @@ public class InfoDragger : MonoBehaviour
             }
             documentIndex++;
         }
-
-        foreach (var sourceLabel in sourceLabels)
-        {
-            sourceLabel.text = "";
-        }
     }
 
     void ReleaseDrag(PointerEventData pdata)
@@ -79,17 +73,20 @@ public class InfoDragger : MonoBehaviour
             draggedFromScroll.enabled = true;
         }
 
-        int targetIndex = 0;
         foreach (var target in targets)
         {
-            Vector2 localMouse = target.rectTransform.InverseTransformPoint(Input.mousePosition);
-            if (target.rectTransform.rect.Contains(localMouse))
+            Vector2 localMouse = target.GetComponent<RectTransform>().InverseTransformPoint(Input.mousePosition);
+            if (target.GetComponent<RectTransform>().rect.Contains(localMouse))
             {
-                target.text = draggingObject.GetComponentInChildren<TextMeshProUGUI>().text;
-                sourceLabels[targetIndex].text = "From: " + documentName;
+                var entry = new PlayerProgress.InfoEntry
+                {
+                    infoKey = "TODO fill in info key from link",
+                    infoDisplay = draggingObject.GetComponentInChildren<TextMeshProUGUI>().text,
+                    sourceDisplay = documentName
+                };
+                PlayerProgress.instance?.DropInfo(target, entry);
                 break;
             }
-            targetIndex++;
         }
 
         if (draggingObject)
@@ -114,8 +111,8 @@ public class InfoDragger : MonoBehaviour
             {
                 if (draggingObject)
                 {
-                    Vector2 localMouse = target.rectTransform.InverseTransformPoint(Input.mousePosition);
-                    targetBG.color = target.rectTransform.rect.Contains(localMouse) ? Color.gray : Color.white;
+                    Vector2 localMouse = target.GetComponent<RectTransform>().InverseTransformPoint(Input.mousePosition);
+                    targetBG.color = target.GetComponent<RectTransform>().rect.Contains(localMouse) ? Color.gray : Color.white;
                 }
                 else
                 {
