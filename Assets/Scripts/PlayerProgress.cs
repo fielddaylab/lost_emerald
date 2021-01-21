@@ -15,6 +15,7 @@ public class PlayerProgress : MonoBehaviour
     }
 
     private Dictionary<string, InfoEntry> shipLog = new Dictionary<string, InfoEntry>();
+    private string dialogToLoad;
 
     void Awake()
     {
@@ -59,5 +60,17 @@ public class PlayerProgress : MonoBehaviour
     {
         shipLog.Add(target.targetKey, info);
         FillInfo(target);
+    }
+
+    public void SetDialogKey(string key)
+    {
+        dialogToLoad = key;
+    }
+
+    public string GetDialogKey()
+    {
+        string key = dialogToLoad;
+        dialogToLoad = null;
+        return key;
     }
 }

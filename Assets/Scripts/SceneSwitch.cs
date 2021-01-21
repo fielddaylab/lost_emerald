@@ -10,8 +10,9 @@ public class SceneSwitch : MonoBehaviour
         SceneManager.LoadScene("DocumentScene");
     }
 
-    public void GotoConversation1()
+    public void GotoConversation(string dialogKey)
     {
+        PlayerProgress.instance.SetDialogKey(dialogKey);
         SceneManager.LoadScene("ConversationInterface");
     }
 
