@@ -28,6 +28,7 @@ public class CameraControls : MonoBehaviour
     public GameObject hiddenObject;
     public string successMessage;
     public float requiredDistance;
+    public string unlockKey;
 
     enum CameraState
     {
@@ -223,8 +224,59 @@ public class CameraControls : MonoBehaviour
         photoButton.gameObject.SetActive(false);
     }
 
+    bool CheckHiddenObject(out string message)
+    {
+        // first, check if the center of the hidden object is in the camera frame
+        Vector3[] cameraBounds = new Vector3[4];
+        cameraFrame.rectTransform.GetWorldCorners(cameraBounds);
+        Vector3 cameraBottomLeft = cameraBounds[0];
+        Vector3 cameraTopRight = cameraBounds[2];
+
+        Vector3 eggPosition3D = hiddenObject.transform.TransformPoint(hiddenObject.GetComponent<BoxCollider>().center);
+        Vector3 eggPosition = GetComponentInChildren<Camera>().WorldToScreenPoint(eggPosition3D);
+        bool eggInView = cameraBottomLeft.x < eggPosition.x && eggPosition.x < cameraTopRight.x
+            && cameraBottomLeft.y < eggPosition.y && eggPosition.y < cameraTopRight.y;
+
+        // second, check that it is not obstructed
+        bool eggVisible = false;
+        // could also use Linecast
+        if (Physics.Raycast(new Ray(transform.position, eggPosition3D - transform.position), out RaycastHit hit))
+        {
+            if (hit.collider.gameObject == hiddenObject)
+            {
+                eggVisible = true;
+            }
+        }
+
+        // finally, check that we are within some distance of the hidden object
+        float distanceToEgg = (eggPosition3D - transform.position).magnitude;
+
+        bool ret = false;
+        string photoMessage = "Nothing to see here.";
+        if (eggInView && eggVisible)
+        {
+            if (distanceToEgg < requiredDistance)
+            {
+                photoMessage = successMessage;
+                ret = true;
+            }
+            else
+            {
+                photoMessage = "Try getting closer!";
+            }
+        }
+
+        message = photoMessage;
+        return ret;
+    }
+
     void SavePhoto()
     {
+        if (CheckHiddenObject(out _))
+        {
+            PlayerProgress.instance?.Unlock(unlockKey);
+        }
+
         photoResult.SetActive(false);
         savePhotoButton.gameObject.SetActive(false);
         cameraButton.gameObject.SetActive(true);
@@ -253,43 +305,7 @@ public class CameraControls : MonoBehaviour
             }
         }
 
-        // first, check if the center of the hidden object is in the camera frame
-        Vector3[] cameraBounds = new Vector3[4];
-        cameraFrame.rectTransform.GetWorldCorners(cameraBounds);
-        Vector3 cameraBottomLeft = cameraBounds[0];
-        Vector3 cameraTopRight = cameraBounds[2];
-
-        Vector3 eggPosition3D = hiddenObject.transform.TransformPoint(hiddenObject.GetComponent<BoxCollider>().center);
-        Vector3 eggPosition = GetComponentInChildren<Camera>().WorldToScreenPoint(eggPosition3D);
-        bool eggInView = cameraBottomLeft.x < eggPosition.x && eggPosition.x < cameraTopRight.x
-            && cameraBottomLeft.y < eggPosition.y && eggPosition.y < cameraTopRight.y;
-
-        // second, check that it is not obstructed
-        bool eggVisible = false;
-        // could also use Linecast
-        if (Physics.Raycast(new Ray(transform.position, eggPosition3D - transform.position), out RaycastHit hit))
-        {
-            if (hit.collider.gameObject == hiddenObject)
-            {
-                eggVisible = true;
-            }
-        }
-
-        // finally, check that we are within some distance of the hidden object
-        float distanceToEgg = (eggPosition3D - transform.position).magnitude;
-
-        string photoMessage = "Nothing to see here.";
-        if (eggInView && eggVisible)
-        {
-            if (distanceToEgg < requiredDistance)
-            {
-                photoMessage = successMessage;
-            }
-            else
-            {
-                photoMessage = "Try getting closer!";
-            }
-        }
+        CheckHiddenObject(out string photoMessage);
         photoResult.GetComponentInChildren<TextMeshProUGUI>().text = photoMessage;
     }
 }

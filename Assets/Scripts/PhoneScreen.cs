@@ -45,7 +45,7 @@ public class PhoneScreen : MonoBehaviour
         StartCoroutine(ContinueConversation(0));
     }
 
-    private void ReflowScroll(RectTransform content)
+    private void ReflowScroll()
     {
         const float spacing = 15;
 
@@ -79,7 +79,7 @@ public class PhoneScreen : MonoBehaviour
         float newLineHeight = lineText.preferredHeight + 10;
         lineRect.sizeDelta = new Vector2(lineRect.sizeDelta.x, newLineHeight);
         lineRect.localPosition = new Vector2(scrollArea.content.rect.width, 0);
-        ReflowScroll(scrollArea.content);
+        ReflowScroll();
         scrollArea.verticalNormalizedPosition = 0f;
         newLine.SetActive(true);
         yield return new WaitForSeconds(1f);
@@ -117,7 +117,7 @@ public class PhoneScreen : MonoBehaviour
             float newLineHeight = lineText.preferredHeight + 10;
             lineRect.sizeDelta = new Vector2(lineRect.sizeDelta.x, newLineHeight);
             lineRect.localPosition = new Vector2(0, 0);
-            ReflowScroll(scrollArea.content);
+            ReflowScroll();
             scrollArea.verticalNormalizedPosition = 0f;
             newLine.SetActive(true);
             yield return new WaitForSeconds(1f);
@@ -144,7 +144,7 @@ public class PhoneScreen : MonoBehaviour
             img.sprite = sprite;
             RectTransform imgRect = newImage.GetComponentInChildren<RectTransform>();
             imgRect.localPosition = new Vector2(0, 0);
-            ReflowScroll(scrollArea.content);
+            ReflowScroll();
             scrollArea.verticalNormalizedPosition = 0f;
             newImage.SetActive(true);
             yield return new WaitForSeconds(1f);
@@ -162,7 +162,7 @@ public class PhoneScreen : MonoBehaviour
             RectTransform lineRect = newLine.GetComponentInChildren<RectTransform>();
             lineText.text = contents;
             lineRect.localPosition = new Vector2(0, 0);
-            ReflowScroll(scrollArea.content);
+            ReflowScroll();
             scrollArea.verticalNormalizedPosition = 0f;
             newLine.GetComponent<Button>().onClick.AddListener(() =>
             {

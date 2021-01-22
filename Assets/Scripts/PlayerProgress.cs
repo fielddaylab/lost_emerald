@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class PlayerProgress : MonoBehaviour
@@ -16,6 +17,7 @@ public class PlayerProgress : MonoBehaviour
 
     private Dictionary<string, InfoEntry> shipLog = new Dictionary<string, InfoEntry>();
     private string dialogToLoad;
+    private HashSet<string> playerUnlocks = new HashSet<string>();
 
     void Awake()
     {
@@ -56,6 +58,19 @@ public class PlayerProgress : MonoBehaviour
         }
     }
 
+    public void SetPhotoPresence(PhotoSlot target)
+    {
+        if (playerUnlocks.Contains(target.targetKey))
+        {
+            // do nothing
+        }
+        else
+        {
+            target.GetComponent<Image>().color = Color.gray;
+            target.GetComponent<Image>().sprite = null;
+        }
+    }
+
     public void DropInfo(InfoDropTarget target, InfoEntry info)
     {
         shipLog.Add(target.targetKey, info);
@@ -72,5 +87,10 @@ public class PlayerProgress : MonoBehaviour
         string key = dialogToLoad;
         dialogToLoad = null;
         return key;
+    }
+
+    public void Unlock(string key)
+    {
+        playerUnlocks.Add(key);
     }
 }
