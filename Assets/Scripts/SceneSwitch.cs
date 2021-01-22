@@ -18,7 +18,15 @@ public class SceneSwitch : MonoBehaviour
 
     public void GotoSonar()
     {
-        SceneManager.LoadScene("ShipMechanics");
+        if (Ship.count > 80)
+        {
+            GotoDive();
+        }
+        else
+        {
+            SceneManager.LoadScene("ShipMechanics");
+        }
+        
     }
 
     public void GotoDive()
