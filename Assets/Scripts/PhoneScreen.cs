@@ -106,6 +106,9 @@ public class PhoneScreen : MonoBehaviour
             {
                 headerLabel.text = "Conversation with Amy the Archivist:";
             }
+
+            Sprite sprite = Resources.Load<Sprite>("Characters/" + contents);
+            characterImage.sprite = sprite;
         }
         else if (line == "them:")
         {
