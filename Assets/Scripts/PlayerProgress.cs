@@ -71,9 +71,22 @@ public class PlayerProgress : MonoBehaviour
         }
     }
 
+    public void SetDocumentPresence(DocumentButton target)
+    {
+        if (playerUnlocks.Contains(target.targetKey))
+        {
+            // do nothing
+        }
+        else
+        {
+            target.GetComponent<Button>().interactable = false;
+            target.GetComponentInChildren<TextMeshProUGUI>().text = "?";
+        }
+    }
+
     public void DropInfo(InfoDropTarget target, InfoEntry info)
     {
-        shipLog.Add(target.targetKey, info);
+        shipLog[target.targetKey] = info;
         FillInfo(target);
     }
 
@@ -92,5 +105,33 @@ public class PlayerProgress : MonoBehaviour
     public void Unlock(string key)
     {
         playerUnlocks.Add(key);
+    }
+
+    public string PickConversation(string charName)
+    {
+        if (charName == "lou")
+        {
+            return "intro";
+        }
+        else if (charName == "amy")
+        {
+            if (!playerUnlocks.Contains("wreck-table"))
+            {
+                return "amy";
+            }
+            else if (!playerUnlocks.Contains("dark-day"))
+            {
+                return "amy-canallers";
+            }
+            else
+            {
+                return "amy-newspaper";
+            }
+        }
+        else if (charName == "rusty")
+        {
+            return "shipbuilder";
+        }
+        return null;
     }
 }

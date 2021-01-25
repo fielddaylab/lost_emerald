@@ -16,9 +16,13 @@ public class TabPanel : MonoBehaviour
         for (int i = 0; i < tabs.Length; i++)
         {
             int j = i;
-            tabs[j].onClick.AddListener((pdata) =>
+            PointerListener tab = tabs[j];
+            tab.onClick.AddListener((pdata) =>
             {
-                SelectTab(j);
+                if (tab.GetComponent<Button>().interactable)
+                {
+                    SelectTab(j);
+                }
             });
         }
     }

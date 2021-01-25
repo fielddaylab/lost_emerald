@@ -106,6 +106,10 @@ public class PhoneScreen : MonoBehaviour
             {
                 headerLabel.text = "Conversation with Amy the Archivist:";
             }
+            else if (contents == "rusty")
+            {
+                headerLabel.text = "Conversation with Rusty the Shipbuilder:";
+            }
 
             Sprite sprite = Resources.Load<Sprite>("Characters/" + contents);
             characterImage.sprite = sprite;
@@ -154,8 +158,8 @@ public class PhoneScreen : MonoBehaviour
         }
         else if (line == "unlock:")
         {
-            // tell PlayerProgress to unlock something
-            Debug.Log("Unlock: " + contents);
+            // unlock something in the documents scene
+            PlayerProgress.instance?.Unlock(contents);
         }
         else if (line == "exit:")
         {

@@ -16,6 +16,11 @@ public class SceneSwitch : MonoBehaviour
         SceneManager.LoadScene("ConversationInterface");
     }
 
+    public void CallCharacter(string charName)
+    {
+        GotoConversation(PlayerProgress.instance.PickConversation(charName));
+    }
+
     public void GotoSonar()
     {
         if (Ship.count > 80)
