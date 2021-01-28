@@ -18,6 +18,7 @@ public class PlayerProgress : MonoBehaviour
     private Dictionary<string, InfoEntry> shipLog = new Dictionary<string, InfoEntry>();
     private string dialogToLoad;
     private HashSet<string> playerUnlocks = new HashSet<string>();
+    private ThoughtBubble bubble;
 
     void Awake()
     {
@@ -84,10 +85,21 @@ public class PlayerProgress : MonoBehaviour
         }
     }
 
+    public void ShipOutButton(ShipOutButton button)
+    {
+        button.GetComponent<Button>().interactable = CanShipOut();
+    }
+
+    public bool CanShipOut()
+    {
+        return playerUnlocks.Contains("wreck-table");
+    }
+
     public void DropInfo(InfoDropTarget target, InfoEntry info)
     {
         shipLog[target.targetKey] = info;
         FillInfo(target);
+        UpdateBubble();
     }
 
     public void SetDialogKey(string key)
@@ -105,6 +117,7 @@ public class PlayerProgress : MonoBehaviour
     public void Unlock(string key)
     {
         playerUnlocks.Add(key);
+        UpdateBubble();
     }
 
     public string PickConversation(string charName)
@@ -133,5 +146,65 @@ public class PlayerProgress : MonoBehaviour
             return "shipbuilder";
         }
         return null;
+    }
+
+    private string CurrentThought()
+    {
+        if (!playerUnlocks.Contains("intro-transcript"))
+        {
+            if (bubble != null && bubble.gameObject.scene.name != "OfficeDesk")
+            {
+                // fall through for testing purposes
+            }
+            else
+            {
+                return "Oh, a notification!";
+            }
+        }
+        if (!(shipLog.TryGetValue("LocationBox", out InfoEntry val) && val.infoKey == "coords"))
+        {
+            return "Let's see. Where's that GPS location?";
+        }
+        if (!playerUnlocks.Contains("wreck-table"))
+        {
+            return "That's right off Rawley Point!\nThere are a bunch of ships that went down around there.\nBetter call the archivist and get a list.";
+        }
+        if (!playerUnlocks.Contains("been-to-sonar"))
+        {
+            return "Perfect!\nThe wreck didn’t look too deep. I’ll be able to use my normal sonar and dive suit.\nTime to ship out!";
+        }
+        return null;
+    }
+
+    public void SetThoughtBubble(ThoughtBubble newBubble)
+    {
+        bubble = newBubble;
+        UpdateBubble();
+    }
+
+    public void ClearThoughtBubble(ThoughtBubble oldBubble)
+    {
+        if (bubble == oldBubble)
+        {
+            bubble = null;
+        }
+    }
+
+    private void UpdateBubble()
+    {
+        if (bubble == null)
+        {
+            return;
+        }
+        string thought = CurrentThought();
+        if (thought == null)
+        {
+            bubble.gameObject.SetActive(false);
+        }
+        else
+        {
+            bubble.GetComponentInChildren<TextMeshProUGUI>().text = thought;
+            bubble.gameObject.SetActive(true);
+        }
     }
 }

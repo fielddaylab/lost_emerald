@@ -23,6 +23,7 @@ public class SceneSwitch : MonoBehaviour
 
     public void GotoSonar()
     {
+        PlayerProgress.instance?.Unlock("been-to-sonar");
         if (Ship.count > 80)
         {
             GotoDive();

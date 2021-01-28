@@ -80,7 +80,7 @@ public class InfoDragger : MonoBehaviour
             {
                 var entry = new PlayerProgress.InfoEntry
                 {
-                    infoKey = "TODO fill in info key from link",
+                    infoKey = linkInfo.GetLinkID(),
                     infoDisplay = draggingObject.GetComponentInChildren<TextMeshProUGUI>().text,
                     sourceDisplay = documentName
                 };

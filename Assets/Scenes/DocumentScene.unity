@@ -2347,7 +2347,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 947600663}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.9999898
+  m_Size: 0.99997026
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5862,11 +5862,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Dear Father,\n\nIt\u2019s a dark day for our business. The <mark=#00ffff33><link
-    id=\"Loretta\">Loretta</link></mark> was lost today. Oh how I\u2019ll miss her!
-    She was the only canaller I\u2019ve ever seen with <mark=#00ffff33><link id=\"ironknees\">iron
-    knees</link></mark>, which made her strong enough to carry more <mark=#00ffff33><link
-    id=\"grain\">grain</link></mark> than any other ship at the wharf\n"
+  m_text: "Dear Father,\n\nIt\u2019s a dark day for our business. The <mark=#00ffff33><link=\"Loretta\">Loretta</link></mark>
+    was lost today. Oh how I\u2019ll miss her! She was the only canaller I\u2019ve
+    ever seen with <mark=#00ffff33><link=\"ironknees\">iron knees</link></mark>,
+    which made her strong enough to carry more <mark=#00ffff33><link=\"grain\">grain</link></mark>
+    than any other ship at the wharf\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0f77dbfab1ccf400fa3ef18be7fb6cbf, type: 2}
   m_sharedMaterial: {fileID: 7474320185394801009, guid: 0f77dbfab1ccf400fa3ef18be7fb6cbf,
@@ -9560,10 +9560,10 @@ MonoBehaviour:
     water. What do you think? \n\nYOU: Yes, that\u2019s a shipwreck! Nice find, Lou.\n\nLOU:
     Yes!!\n\nLOU: I\u2019ve flown out there a million times. Never saw it before.
     \n\nYOU: The storm last night must\u2019ve uncovered it!\n\nYOU: Did you get
-    the location on your GPS?\n\nLOU: Yep, one sec...\n\nLOU: <mark=#00ffff33><link
-    id=\"coords\">Latitude: N 44\xB0 11.524\u2019, Longitude: W 087\xB0 30.591' </link></mark>\n\nLOU:
-    BTW, some shipwreck hunter guy keeps calling me. \n\nLOU: Says he found a clue
-    about some mysterious shipwreck full of treasure. The Gibbon or something.\n\nYOU:
+    the location on your GPS?\n\nLOU: Yep, one sec...\n\nLOU: <mark=#00ffff33><link=\"coords\">Latitude:
+    N 44\xB0 11.524\u2019, Longitude: W 087\xB0 30.591' </link></mark>\n\nLOU: BTW,
+    some shipwreck hunter guy keeps calling me. \n\nLOU: Says he found a clue about
+    some mysterious shipwreck full of treasure. The Gibbon or something.\n\nYOU:
     The Griffin?\n\nLOU: Yeah, that\u2019s it! \n\nLOU: Yikes\u2026. he just emailed
     me again.\n\nYOU: Sorry, Lou. I\u2019ll talk to him.\n\nYOU: Thanks for your
     help!\n\nLOU: NP!\n"
@@ -10863,6 +10863,139 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 947600662}
   m_CullTransparentMesh: 0
+--- !u!1 &952025042
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 952025043}
+  - component: {fileID: 952025045}
+  - component: {fileID: 952025044}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &952025043
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 952025042}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1432979251}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &952025044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 952025042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: "Thinking\u2026"
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 30.77
+  m_fontSizeBase: 29.5
+  m_fontWeight: 400
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 9.2
+  m_fontSizeMax: 30.77
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 1
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &952025045
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 952025042}
+  m_CullTransparentMesh: 0
 --- !u!1 &954209742
 GameObject:
   m_ObjectHideFlags: 0
@@ -11437,7 +11570,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <mark=#00ffff33><link id="corn">Canaller</link></mark>
+  m_text: <mark=#00ffff33><link="canaller">Canaller</link></mark>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -15993,6 +16126,7 @@ GameObject:
   - component: {fileID: 1391316299}
   - component: {fileID: 1391316298}
   - component: {fileID: 1391316297}
+  - component: {fileID: 1391316301}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -16123,6 +16257,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1391316295}
   m_CullTransparentMesh: 0
+--- !u!114 &1391316301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1391316295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8b4ed5efd334bf6a91f8f968477ace, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1392419782
 GameObject:
   m_ObjectHideFlags: 0
@@ -16682,6 +16828,94 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1426086332}
   m_CullTransparentMesh: 0
+--- !u!1 &1432979250
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1432979251}
+  - component: {fileID: 1432979254}
+  - component: {fileID: 1432979253}
+  - component: {fileID: 1432979252}
+  m_Layer: 5
+  m_Name: ThoughtBubble
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1432979251
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432979250}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 952025043}
+  m_Father: {fileID: 1867869899}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 44.6}
+  m_SizeDelta: {x: 528.2943, y: 58.01039}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1432979252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432979250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f5ff1efc0bb64dc2b7f5b1bfe929d9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1432979253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432979250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1432979254
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432979250}
+  m_CullTransparentMesh: 0
 --- !u!1 &1455849449
 GameObject:
   m_ObjectHideFlags: 0
@@ -17141,7 +17375,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 971638286}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.9999915
+  m_Size: 0.9999753
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -18587,12 +18821,12 @@ MonoBehaviour:
       m_Calls: []
   m_text: "<align=flush><size=40>SHIPWRECK NEAR</size></align>\n<align=flush><size=55>TWO
     RIVERS</size></align>\nThe fires spreading across Wisconsin have caused a shipwreck!
-    <mark=#00ffff33><link id=\"sandbar\">Smoke and strong winds caused the captain
-    of the Loretta to run aground onto a sandbar.</link></mark> The canaller, which
-    was carrying <mark=#00ffff33><link id=\"corn\">corn</link></mark>, filled up
-    with water and the sailors had to climb up into the rigging. This morning, they
-    were rescued by a fishing boat, captained by Harlan Smith\u2026 (continued on
-    page 4b)"
+    <mark=#00ffff33><link=\"sandbar\">Smoke and strong winds caused the captain of
+    the Loretta to run aground onto a sandbar.</link></mark> The canaller, which
+    was carrying <mark=#00ffff33><link=\"corn\">corn</link></mark>, filled up with
+    water and the sailors had to climb up into the rigging. This morning, they were
+    rescued by a fishing boat, captained by Harlan Smith\u2026 (continued on page
+    4b)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0f77dbfab1ccf400fa3ef18be7fb6cbf, type: 2}
   m_sharedMaterial: {fileID: 7474320185394801009, guid: 0f77dbfab1ccf400fa3ef18be7fb6cbf,
@@ -19206,7 +19440,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000030517578, y: 0}
+  m_AnchoredPosition: {x: -0.000030517578, y: -0.000030517578}
   m_SizeDelta: {x: 472.1845, y: 602.6764}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1663144910
@@ -22452,6 +22686,7 @@ RectTransform:
   - {fileID: 1143065387}
   - {fileID: 346722418}
   - {fileID: 1789362536}
+  - {fileID: 1432979251}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -24480,10 +24715,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: "ICE CREAM \"SUNDAES\", BRAND NEW DESSERT, TAKING TWO RIVERS BY STORM!\n\nYesterday,
     Ed Berner's Ice Cream Parlor hosted a party in honor of their strange new treat,
-    the \"sundae\"! <mark=#00ffff33><link id=\"raffle\">Raffle winner Harlan Smith
-    took home a novelty sign</link></mark>, donated by a new local factory. Harlan
-    says he plants to display the sign on his fishing boat\u2026 (continued on page
-    3c)"
+    the \"sundae\"! <mark=#00ffff33><link=\"raffle\">Raffle winner Harlan Smith took
+    home a novelty sign</link></mark>, donated by a new local factory. Harlan says
+    he plants to display the sign on his fishing boat\u2026 (continued on page 3c)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0f77dbfab1ccf400fa3ef18be7fb6cbf, type: 2}
   m_sharedMaterial: {fileID: 7474320185394801009, guid: 0f77dbfab1ccf400fa3ef18be7fb6cbf,
