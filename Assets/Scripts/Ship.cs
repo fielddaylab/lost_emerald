@@ -26,7 +26,7 @@ public class Ship : MonoBehaviour
 
         if (!Input.GetMouseButton(0)) return;
 
-        Vector3 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition - dragOrigin);
+        Vector3 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition - transform.position);
         if ((Input.mousePosition - transform.position).magnitude > 175)
         {
             speed = 30;
