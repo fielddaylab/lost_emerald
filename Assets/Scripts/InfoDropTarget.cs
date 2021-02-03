@@ -8,6 +8,7 @@ public class InfoDropTarget : MonoBehaviour
     public string targetKey;
     public TextMeshProUGUI infoLabel;
     public TextMeshProUGUI sourceLabel;
+    public string correctInfoKey;
 
     // Start is called before the first frame update
     void Start()

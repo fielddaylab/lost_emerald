@@ -688,6 +688,7 @@ MonoBehaviour:
   targetKey: TypeBox
   infoLabel: {fileID: 1773753797}
   sourceLabel: {fileID: 1295628293}
+  correctInfoKey: canaller
 --- !u!1 &63997232
 GameObject:
   m_ObjectHideFlags: 0
@@ -2347,7 +2348,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 947600663}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.99997026
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5293,6 +5294,7 @@ MonoBehaviour:
   targetKey: FeatureBox
   infoLabel: {fileID: 2060768540}
   sourceLabel: {fileID: 1583473702}
+  correctInfoKey: ironknees
 --- !u!1 &436177967
 GameObject:
   m_ObjectHideFlags: 0
@@ -8160,6 +8162,7 @@ MonoBehaviour:
   targetKey: CauseBox
   infoLabel: {fileID: 1586675586}
   sourceLabel: {fileID: 220536101}
+  correctInfoKey: sandbar
 --- !u!114 &727552366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11942,6 +11945,7 @@ MonoBehaviour:
   targetKey: LocationBox
   infoLabel: {fileID: 1316378028}
   sourceLabel: {fileID: 725827410}
+  correctInfoKey: coords
 --- !u!1 &1041770670
 GameObject:
   m_ObjectHideFlags: 0
@@ -17375,7 +17379,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 971638286}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.9999753
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -19440,7 +19444,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000030517578, y: -0.000030517578}
+  m_AnchoredPosition: {x: -0.000030517578, y: 0}
   m_SizeDelta: {x: 472.1845, y: 602.6764}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1663144910
@@ -21067,6 +21071,7 @@ MonoBehaviour:
   targetKey: NameBox
   infoLabel: {fileID: 887138555}
   sourceLabel: {fileID: 433753576}
+  correctInfoKey: Loretta
 --- !u!1 &1765220045
 GameObject:
   m_ObjectHideFlags: 0
@@ -23320,6 +23325,7 @@ MonoBehaviour:
   targetKey: SecretBox
   infoLabel: {fileID: 1057901714}
   sourceLabel: {fileID: 915291111}
+  correctInfoKey: raffle
 --- !u!114 &1982702901
 MonoBehaviour:
   m_ObjectHideFlags: 0

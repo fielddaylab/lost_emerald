@@ -78,13 +78,18 @@ public class InfoDragger : MonoBehaviour
             Vector2 localMouse = target.GetComponent<RectTransform>().InverseTransformPoint(Input.mousePosition);
             if (target.GetComponent<RectTransform>().rect.Contains(localMouse))
             {
-                var entry = new PlayerProgress.InfoEntry
+                string infoKey = linkInfo.GetLinkID();
+                if (infoKey == target.correctInfoKey)
                 {
-                    infoKey = linkInfo.GetLinkID(),
-                    infoDisplay = draggingObject.GetComponentInChildren<TextMeshProUGUI>().text,
-                    sourceDisplay = documentName
-                };
-                PlayerProgress.instance?.DropInfo(target, entry);
+                    var entry = new PlayerProgress.InfoEntry
+                    {
+                        infoKey = infoKey,
+                        infoDisplay = draggingObject.GetComponentInChildren<TextMeshProUGUI>().text,
+                        sourceDisplay = documentName
+                    };
+                    PlayerProgress.instance?.DropInfo(target, entry);
+                }
+                // TODO show a temporary thought bubble if it's an incorrect drag
                 break;
             }
         }
