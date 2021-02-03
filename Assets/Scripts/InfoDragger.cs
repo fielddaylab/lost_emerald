@@ -89,7 +89,10 @@ public class InfoDragger : MonoBehaviour
                     };
                     PlayerProgress.instance?.DropInfo(target, entry);
                 }
-                // TODO show a temporary thought bubble if it's an incorrect drag
+                else
+                {
+                    PlayerProgress.instance?.TemporaryBubble("Hmm… how do I know that's correct?");
+                }
                 break;
             }
         }

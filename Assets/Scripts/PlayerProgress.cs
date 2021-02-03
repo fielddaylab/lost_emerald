@@ -19,6 +19,7 @@ public class PlayerProgress : MonoBehaviour
     private string dialogToLoad;
     private HashSet<string> playerUnlocks = new HashSet<string>();
     private ThoughtBubble bubble;
+    private string temporaryThought;
 
     void Awake()
     {
@@ -197,6 +198,10 @@ public class PlayerProgress : MonoBehaviour
             return;
         }
         string thought = CurrentThought();
+        if (temporaryThought != null)
+        {
+            thought = temporaryThought;
+        }
         if (thought == null)
         {
             bubble.gameObject.SetActive(false);
@@ -205,6 +210,23 @@ public class PlayerProgress : MonoBehaviour
         {
             bubble.GetComponentInChildren<TextMeshProUGUI>().text = thought;
             bubble.gameObject.SetActive(true);
+        }
+    }
+
+    public void TemporaryBubble(string thought)
+    {
+        temporaryThought = thought;
+        UpdateBubble();
+        StartCoroutine(ResetTemporaryThought(thought));
+    }
+
+    IEnumerator ResetTemporaryThought(string thought)
+    {
+        yield return new WaitForSeconds(3);
+        if (temporaryThought == thought)
+        {
+            temporaryThought = null;
+            UpdateBubble();
         }
     }
 }
