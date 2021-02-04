@@ -81,7 +81,11 @@ public class PlayerProgress : MonoBehaviour
         }
         else
         {
-            target.GetComponent<Button>().interactable = false;
+            Button button = target.GetComponent<Button>();
+            if (button)
+            {
+                button.interactable = false;
+            }
             target.GetComponentInChildren<TextMeshProUGUI>().text = "?";
         }
     }

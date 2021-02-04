@@ -224,8 +224,16 @@ public class CameraControls : MonoBehaviour
         photoButton.gameObject.SetActive(false);
     }
 
-    bool CheckHiddenObject(out string message)
+    void CheckHiddenObject(out string message, out string unlockedKey)
     {
+        // if we're above the ship, unlock the bird's-eye view
+        if (cameraState == CameraState.CAMERA_TOP)
+        {
+            message = "Great, we got a bird's eye view of the ship!";
+            unlockedKey = "birds-eye";
+            return;
+        }
+
         // first, check if the center of the hidden object is in the camera frame
         Vector3[] cameraBounds = new Vector3[4];
         cameraFrame.rectTransform.GetWorldCorners(cameraBounds);
@@ -251,30 +259,30 @@ public class CameraControls : MonoBehaviour
         // finally, check that we are within some distance of the hidden object
         float distanceToEgg = (eggPosition3D - transform.position).magnitude;
 
-        bool ret = false;
-        string photoMessage = "Nothing to see here.";
+        unlockedKey = null;
+        message = "Nothing to see here.";
         if (eggInView && eggVisible)
         {
             if (distanceToEgg < requiredDistance)
             {
-                photoMessage = successMessage;
-                ret = true;
+                message = successMessage;
+                unlockedKey = unlockKey;
             }
             else
             {
-                photoMessage = "Try getting closer!";
+                message = "Try getting closer!";
             }
         }
 
-        message = photoMessage;
-        return ret;
+        return;
     }
 
     void SavePhoto()
     {
-        if (CheckHiddenObject(out _))
+        CheckHiddenObject(out _, out string unlockedKey);
+        if (unlockedKey != null)
         {
-            PlayerProgress.instance?.Unlock(unlockKey);
+            PlayerProgress.instance?.Unlock(unlockedKey);
         }
 
         photoResult.SetActive(false);
@@ -305,7 +313,7 @@ public class CameraControls : MonoBehaviour
             }
         }
 
-        CheckHiddenObject(out string photoMessage);
+        CheckHiddenObject(out string photoMessage, out _);
         photoResult.GetComponentInChildren<TextMeshProUGUI>().text = photoMessage;
     }
 }

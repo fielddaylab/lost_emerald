@@ -11,10 +11,25 @@ us:
 Ha. Funny.
 
 us:
-I need a diagram of deck knees from old canal schooners.
+I'm trying to ID a wreck I just photographed. I narrowed it down to two possible canallers. The Loretta and the Timberland. Do you have any records that might help?
+
+them:
+Take a look at these two ship diagrams.
 
 image-them:
-knees-diagram
+knees-timberland
+
+image-them:
+knees-loretta
+
+them:
+Notice the iron knees or brackets they used to hold the ships together?
+
+us:
+Sure, those curved things.
+
+them:
+Yup. The Loretta had more angled brackets made of iron and the Timberland had more curved ones made of wood.
 
 us:
 Awesome, thanks!!
@@ -23,7 +38,10 @@ unlock:
 rusty-transcript
 
 unlock:
-knees-diagram
+knees-loretta
+
+unlock:
+knees-timberland
 
 exit:
 End Conversation
