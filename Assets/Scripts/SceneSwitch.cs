@@ -7,11 +7,13 @@ public class SceneSwitch : MonoBehaviour
 {
     public void GotoDocuments()
     {
+        PlayerProgress.instance.ClearDocumentButtons();
         SceneManager.LoadScene("DocumentScene");
     }
 
     public void GotoConversation(string dialogKey)
     {
+        PlayerProgress.instance.ClearDocumentButtons();
         PlayerProgress.instance.SetDialogKey(dialogKey);
         SceneManager.LoadScene("ConversationInterface");
     }
@@ -30,6 +32,7 @@ public class SceneSwitch : MonoBehaviour
         }
         else
         {
+            PlayerProgress.instance.ClearDocumentButtons();
             SceneManager.LoadScene("ShipMechanics");
         }
         
@@ -37,6 +40,7 @@ public class SceneSwitch : MonoBehaviour
 
     public void GotoDive()
     {
+        PlayerProgress.instance.ClearDocumentButtons();
         SceneManager.LoadScene("LaSalleTestScene_RealtimeLighting");
     }
 }

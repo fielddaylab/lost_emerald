@@ -20,6 +20,7 @@ public class PlayerProgress : MonoBehaviour
     private HashSet<string> playerUnlocks = new HashSet<string>();
     private ThoughtBubble bubble;
     private string temporaryThought;
+    private List<DocumentButton> documentButtons = new List<DocumentButton>();
 
     void Awake()
     {
@@ -75,9 +76,20 @@ public class PlayerProgress : MonoBehaviour
 
     public void SetDocumentPresence(DocumentButton target)
     {
+        documentButtons.Add(target);
+        UpdateDocumentPresence(target);
+    }
+
+    private void UpdateDocumentPresence(DocumentButton target)
+    {
         if (playerUnlocks.Contains(target.targetKey))
         {
-            // do nothing
+            Button button = target.GetComponent<Button>();
+            if (button)
+            {
+                button.interactable = true;
+            }
+            target.GetComponentInChildren<TextMeshProUGUI>().text = target.originalText;
         }
         else
         {
@@ -88,6 +100,7 @@ public class PlayerProgress : MonoBehaviour
             }
             target.GetComponentInChildren<TextMeshProUGUI>().text = "?";
         }
+
     }
 
     public void ShipOutButton(ShipOutButton button)
@@ -123,6 +136,15 @@ public class PlayerProgress : MonoBehaviour
     {
         playerUnlocks.Add(key);
         UpdateBubble();
+        foreach (DocumentButton button in documentButtons)
+        {
+            UpdateDocumentPresence(button);
+        }
+    }
+
+    public void ClearDocumentButtons()
+    {
+        documentButtons.Clear();
     }
 
     public string PickConversation(string charName)
