@@ -26,6 +26,7 @@ public class CameraControls : MonoBehaviour
     public GameObject photoResult;
     public Button savePhotoButton;
     public GameObject hiddenObject;
+    public ThoughtBubble thoughtBubble;
     public string successMessage;
     public float requiredDistance;
     public string unlockKey;
@@ -188,6 +189,7 @@ public class CameraControls : MonoBehaviour
             leftButton.gameObject.SetActive(false);
             rightButton.gameObject.SetActive(false);
             perspectiveButton.gameObject.SetActive(false);
+            thoughtBubble.gameObject.SetActive(false);
             zoomSlider.gameObject.SetActive(true);
             cameraFrame.gameObject.SetActive(true);
             photoButton.gameObject.SetActive(true);
@@ -197,6 +199,7 @@ public class CameraControls : MonoBehaviour
             leftButton.gameObject.SetActive(true);
             rightButton.gameObject.SetActive(true);
             perspectiveButton.gameObject.SetActive(true);
+            thoughtBubble.gameObject.SetActive(true);
             zoomSlider.gameObject.SetActive(false);
             cameraFrame.gameObject.SetActive(false);
             photoButton.gameObject.SetActive(false);

@@ -17,6 +17,7 @@ public class Dive : MonoBehaviour
         if (Ship.count > 80)
         {
             GetComponent<Button>().interactable = true;
+            PlayerProgress.instance.Unlock("sonar-complete");
         }
     }
 }

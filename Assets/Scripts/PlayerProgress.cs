@@ -177,6 +177,33 @@ public class PlayerProgress : MonoBehaviour
 
     private string CurrentThought()
     {
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "ShipMechanics")
+        {
+            if (!playerUnlocks.Contains("sonar-complete"))
+            {
+                return "Use your sonar to find the ship!";
+            }
+            else
+            {
+                return "Yes! There it is!";
+            }
+        }
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "LaSalleTestScene_RealtimeLighting")
+        {
+            if (!playerUnlocks.Contains("birds-eye"))
+            {
+                return "Better get some pictures of the ship.\nI'll start with a picture of the ship from above.";
+            }
+            else if (!playerUnlocks.Contains("ironknees"))
+            {
+                return "Great! Now, I need to see if the ship has any special feature that can help identify it.";
+            }
+            else
+            {
+                return "Got everything I need. Time to head back!";
+            }
+        }
+
         if (!playerUnlocks.Contains("intro-transcript"))
         {
             if (bubble != null && bubble.gameObject.scene.name != "OfficeDesk")
