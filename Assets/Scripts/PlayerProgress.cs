@@ -132,6 +132,11 @@ public class PlayerProgress : MonoBehaviour
         return key;
     }
 
+    public bool IsUnlocked(string key)
+    {
+        return playerUnlocks.Contains(key);
+    }
+
     public void Unlock(string key)
     {
         playerUnlocks.Add(key);
