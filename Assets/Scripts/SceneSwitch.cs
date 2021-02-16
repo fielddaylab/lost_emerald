@@ -20,7 +20,11 @@ public class SceneSwitch : MonoBehaviour
 
     public void CallCharacter(string charName)
     {
-        GotoConversation(PlayerProgress.instance.PickConversation(charName));
+        string conversation = PlayerProgress.instance.PickConversation(charName);
+        if (conversation != null)
+        {
+            GotoConversation(conversation);
+        }
     }
 
     public void GotoSonar()

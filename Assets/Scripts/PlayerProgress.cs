@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using ProtoCP;
 
 public class PlayerProgress : MonoBehaviour
 {
@@ -65,7 +66,14 @@ public class PlayerProgress : MonoBehaviour
     {
         if (playerUnlocks.Contains(target.targetKey))
         {
-            // do nothing
+            PointerListener pointer = target.gameObject.GetComponent<PointerListener>();
+            if (pointer != null && target.debugUnlock != null)
+            {
+                pointer.onClick.AddListener((pointerEvent) =>
+                {
+                    Unlock(target.debugUnlock);
+                });
+            }
         }
         else
         {
@@ -156,32 +164,69 @@ public class PlayerProgress : MonoBehaviour
     {
         if (charName == "lou")
         {
-            return "intro";
-        }
-        else if (charName == "amy")
-        {
-            if (!playerUnlocks.Contains("wreck-table"))
+            if (!IsUnlocked("intro-transcript"))
             {
-                return "amy";
+                return "intro";
             }
-            else if (!playerUnlocks.Contains("dark-day"))
+            else if (!ChapterComplete())
             {
-                return "amy-canallers";
+                TemporaryBubble("Nothing I need from Lou right now.");
+                return null;
             }
             else
             {
+                return "ending";
+            }
+        }
+        else if (charName == "amy")
+        {
+            if (!shipLog.ContainsKey("LocationBox"))
+            {
+                TemporaryBubble("I need to figure out where the wreck is before I call Amy.");
+                return null;
+            }
+            else if (!IsUnlocked("wreck-table"))
+            {
+                return "amy";
+            }
+            else if (!shipLog.ContainsKey("NameBox"))
+            {
+                TemporaryBubble("Nothing I need from Amy right now.");
+                return null;
+            }
+            else if (!IsUnlocked("dark-day"))
+            {
                 return "amy-newspaper";
+            }
+            else
+            {
+                TemporaryBubble("Nothing I need from Amy right now.");
+                return null;
             }
         }
         else if (charName == "rusty")
         {
-            return "shipbuilder";
+            if (!IsUnlocked("birds-eye"))
+            {
+                TemporaryBubble("Nothing I need from Rusty right now.");
+                return null;
+            }
+            else if (!IsUnlocked("rusty-transcript"))
+            {
+                return "shipbuilder";
+            }
+            else
+            {
+                TemporaryBubble("Nothing I need from Rusty right now.");
+                return null;
+            }
         }
         return null;
     }
 
     private string CurrentThought()
     {
+        // stuff on non-document scenes
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "ShipMechanics")
         {
             if (!playerUnlocks.Contains("sonar-complete"))
@@ -209,6 +254,7 @@ public class PlayerProgress : MonoBehaviour
             }
         }
 
+        // intro sequence, before going off to the sonar
         if (!playerUnlocks.Contains("intro-transcript"))
         {
             if (bubble != null && bubble.gameObject.scene.name != "OfficeDesk")
@@ -232,7 +278,60 @@ public class PlayerProgress : MonoBehaviour
         {
             return "Perfect!\nThe wreck didn’t look too deep. I’ll be able to use my normal sonar and dive suit.\nTime to ship out!";
         }
+
+        // coming back from the dive
+        if (!playerUnlocks.Contains("birds-eye"))
+        {
+            return "I need to go get some photos of the ship!";
+        }
+        if (!playerUnlocks.Contains("verified-canaller"))
+        {
+            return "I have a photo of the shape of the ship.\nCan I figure out what type of ship it is?";
+        }
+        if (!shipLog.ContainsKey("TypeBox"))
+        {
+            return "Now I can fill in what type of ship it is!";
+        }
+        if (!playerUnlocks.Contains("rusty-transcript"))
+        {
+            return "Hmm. The list had two canallers. Which one is it?\nI wonder if the ship expert I know has any clues that might help.";
+        }
+
+        // after dialog with Rusty
+        if (!playerUnlocks.Contains("ironknees"))
+        {
+            return "I need to go get a photo of the ship's knees!";
+        }
+        if (!playerUnlocks.Contains("verified-loretta"))
+        {
+            return "I took a photo of the ship's knees.\nWhich of the pictures Rusty sent matches the photo?";
+        }
+        if (!shipLog.ContainsKey("NameBox"))
+        {
+            return "Now I can fill in the name of the ship!";
+        }
+        if (!playerUnlocks.Contains("newspaper"))
+        {
+            return "Now that I know it's the Loretta, I should call the Archivist\nand see if she knows anything else about it!";
+        }
+
+        if (ChapterComplete())
+        {
+            return "I've filled in everything!\nI should call Lou and let her know!";
+        }
+
         return null;
+    }
+
+    private bool ChapterComplete()
+    {
+        return shipLog.ContainsKey("LocationBox")
+            && shipLog.ContainsKey("TypeBox")
+            && shipLog.ContainsKey("NameBox")
+            && shipLog.ContainsKey("FeatureBox")
+            && shipLog.ContainsKey("CauseBox")
+            && shipLog.ContainsKey("CargoBox")
+            && shipLog.ContainsKey("SecretBox");
     }
 
     public void SetThoughtBubble(ThoughtBubble newBubble)
