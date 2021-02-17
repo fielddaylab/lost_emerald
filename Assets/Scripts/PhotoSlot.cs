@@ -6,6 +6,7 @@ public class PhotoSlot : MonoBehaviour
 {
     public string targetKey;
     public string debugUnlock;
+    public string debugRequirement;
 
     // Start is called before the first frame update
     void Start()

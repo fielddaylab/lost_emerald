@@ -26,6 +26,13 @@ public class Ship : MonoBehaviour
 
         if (!Input.GetMouseButton(0)) return;
 
+        if (Input.mousePosition.x < 0 || Input.mousePosition.x > Screen.width
+            || Input.mousePosition.y < 0 || Input.mousePosition.y > Screen.height)
+        {
+            // prevent the ship from going off screen
+            return;
+        }
+
         Vector3 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition - transform.position);
         if ((Input.mousePosition - transform.position).magnitude > 175)
         {

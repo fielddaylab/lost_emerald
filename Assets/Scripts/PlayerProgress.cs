@@ -71,7 +71,10 @@ public class PlayerProgress : MonoBehaviour
             {
                 pointer.onClick.AddListener((pointerEvent) =>
                 {
-                    Unlock(target.debugUnlock);
+                    if (target.debugRequirement == null || IsUnlocked(target.debugRequirement))
+                    {
+                        Unlock(target.debugUnlock);
+                    }
                 });
             }
         }
