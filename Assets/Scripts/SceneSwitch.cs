@@ -39,12 +39,18 @@ public class SceneSwitch : MonoBehaviour
             PlayerProgress.instance.ClearDocumentButtons();
             SceneManager.LoadScene("ShipMechanics");
         }
-        
+
     }
 
     public void GotoDive()
     {
         PlayerProgress.instance.ClearDocumentButtons();
         SceneManager.LoadScene("LaSalleTestScene_RealtimeLighting");
+    }
+
+    public void GotoDesk()
+    {
+        PlayerProgress.instance.ClearDocumentButtons();
+        SceneManager.LoadScene("OfficeDesk");
     }
 }

@@ -12,6 +12,8 @@ public class InfoDragger : MonoBehaviour
     public string[] documentNames;
     public InfoDropTarget[] targets;
     public GameObject infoChunkTemplate;
+    public Image evidenceTop;
+    public Image evidenceBottom;
 
     private GameObject draggingObject;
     private ScrollRect draggedFromScroll;
@@ -75,8 +77,7 @@ public class InfoDragger : MonoBehaviour
 
         foreach (var target in targets)
         {
-            Vector2 localMouse = target.GetComponent<RectTransform>().InverseTransformPoint(Input.mousePosition);
-            if (target.GetComponent<RectTransform>().rect.Contains(localMouse))
+            if (DroppingInto(target.gameObject))
             {
                 string infoKey = linkInfo.GetLinkID();
                 if (infoKey == target.correctInfoKey)
@@ -105,6 +106,22 @@ public class InfoDragger : MonoBehaviour
         draggedFromScroll = null;
     }
 
+    private bool DroppingInto(GameObject target)
+    {
+        if (!draggingObject)
+        {
+            return false;
+        }
+        RectTransform targetRect = target.GetComponent<RectTransform>();
+        Vector2 localMouse = targetRect.InverseTransformPoint(Input.mousePosition);
+        return targetRect.rect.Contains(localMouse) && target.activeInHierarchy;
+    }
+
+    private void UpdateTarget(Image targetBG)
+    {
+        targetBG.color = DroppingInto(targetBG.gameObject) ? Color.gray : Color.white;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -117,16 +134,10 @@ public class InfoDragger : MonoBehaviour
             Image targetBG = target.GetComponentInParent<Image>();
             if (targetBG)
             {
-                if (draggingObject)
-                {
-                    Vector2 localMouse = target.GetComponent<RectTransform>().InverseTransformPoint(Input.mousePosition);
-                    targetBG.color = target.GetComponent<RectTransform>().rect.Contains(localMouse) ? Color.gray : Color.white;
-                }
-                else
-                {
-                    targetBG.color = Color.white;
-                }
+                UpdateTarget(targetBG);
             }
         }
+        UpdateTarget(evidenceTop);
+        UpdateTarget(evidenceBottom);
     }
 }

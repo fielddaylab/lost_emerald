@@ -31,13 +31,22 @@ public class TabPanel : MonoBehaviour
     {
         for (int j = 0; j < tabs.Length; j++)
         {
-            content[j].SetActive(false);
-        }
-        for (int j = 0; j < tabs.Length; j++)
-        {
-            if (i == j)
+            Image tabImage = tabs[j].GetComponent<Image>();
+            if (content[j] == content[i])
             {
                 content[j].SetActive(true);
+                if (tabImage)
+                {
+                    tabImage.color = new Color(0.0f, 1.0f, 1.0f);
+                }
+            }
+            else
+            {
+                content[j].SetActive(false);
+                if (tabImage)
+                {
+                    tabImage.color = new Color(1.0f, 1.0f, 1.0f);
+                }
             }
         }
     }
