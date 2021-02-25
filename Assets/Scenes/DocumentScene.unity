@@ -23187,8 +23187,7 @@ MonoBehaviour:
   - {fileID: 1361292842}
   - {fileID: 1982702900}
   infoChunkTemplate: {fileID: 384969263}
-  evidenceTop: {fileID: 1470745612}
-  evidenceBottom: {fileID: 1160004810}
+  evidenceBuilder: {fileID: 1892614548}
   photos:
   - {fileID: 1025181485}
   - {fileID: 1301390525}
@@ -24326,6 +24325,7 @@ GameObject:
   - component: {fileID: 1892614545}
   - component: {fileID: 1892614547}
   - component: {fileID: 1892614546}
+  - component: {fileID: 1892614548}
   m_Layer: 5
   m_Name: EvidenceBuilder
   m_TagString: Untagged
@@ -24394,6 +24394,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1892614544}
   m_CullTransparentMesh: 0
+--- !u!114 &1892614548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1892614544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac84e760559bb4c5399acbadfc2ef995, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotTop: {fileID: 1470745612}
+  slotBottom: {fileID: 1160004810}
+  tabPanel: {fileID: 1143065388}
 --- !u!1 &1909483541
 GameObject:
   m_ObjectHideFlags: 0

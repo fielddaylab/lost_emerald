@@ -27,7 +27,7 @@ public class TabPanel : MonoBehaviour
         }
     }
 
-    private void SelectTab(int i)
+    public void SelectTab(int i)
     {
         for (int j = 0; j < tabs.Length; j++)
         {

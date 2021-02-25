@@ -199,7 +199,7 @@ public class PlayerProgress : MonoBehaviour
         }
         else if (charName == "rusty")
         {
-            if (!IsUnlocked("birds-eye"))
+            if (!IsUnlocked("photo-birds-eye"))
             {
                 TemporaryBubble("Nothing I need from Rusty right now.");
                 return null;
@@ -233,11 +233,11 @@ public class PlayerProgress : MonoBehaviour
         }
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "LaSalleTestScene_RealtimeLighting")
         {
-            if (!playerUnlocks.Contains("birds-eye"))
+            if (!playerUnlocks.Contains("photo-birds-eye"))
             {
                 return "Better get some pictures of the ship.\nI'll start with a picture of the ship from above.";
             }
-            else if (!playerUnlocks.Contains("ironknees"))
+            else if (!playerUnlocks.Contains("photo-iron-knees"))
             {
                 return "Great! Now, I need to see if the ship has any special feature that can help identify it.";
             }
@@ -273,7 +273,7 @@ public class PlayerProgress : MonoBehaviour
         }
 
         // coming back from the dive
-        if (!playerUnlocks.Contains("birds-eye"))
+        if (!playerUnlocks.Contains("photo-birds-eye"))
         {
             return "I need to go get some photos of the ship!";
         }
@@ -291,7 +291,7 @@ public class PlayerProgress : MonoBehaviour
         }
 
         // after dialog with Rusty
-        if (!playerUnlocks.Contains("ironknees"))
+        if (!playerUnlocks.Contains("photo-iron-knees"))
         {
             return "I need to go get a photo of the ship's knees!";
         }

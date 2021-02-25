@@ -12,8 +12,7 @@ public class InfoDragger : MonoBehaviour
     public string[] documentNames;
     public InfoDropTarget[] targets;
     public GameObject infoChunkTemplate;
-    public Image evidenceTop;
-    public Image evidenceBottom;
+    public EvidenceBuilder evidenceBuilder;
     public PhotoSlot[] photos;
 
     private GameObject draggingObject;
@@ -22,8 +21,6 @@ public class InfoDragger : MonoBehaviour
     private Vector3 dragStartInfo;
     private string infoKey;
     private string documentName;
-    private string evidenceTopKey;
-    private string evidenceBottomKey;
 
     // Start is called before the first frame update
     void Start()
@@ -143,17 +140,13 @@ public class InfoDragger : MonoBehaviour
             Image draggingImage = draggingObject.GetComponent<Image>();
             if (draggingImage && draggingImage.sprite)
             {
-                if (DroppingInto(evidenceTop.gameObject))
+                if (DroppingInto(evidenceBuilder.slotTop.gameObject))
                 {
-                    evidenceTop.sprite = draggingImage.sprite;
-                    evidenceTopKey = infoKey;
-                    UpdateEvidenceBuilder();
+                    evidenceBuilder.SetSlot(EvidenceBuilder.Slot.SLOT_TOP, draggingImage.sprite, infoKey);
                 }
-                else if (DroppingInto(evidenceBottom.gameObject))
+                else if (DroppingInto(evidenceBuilder.slotBottom.gameObject))
                 {
-                    evidenceBottom.sprite = draggingImage.sprite;
-                    evidenceBottomKey = infoKey;
-                    UpdateEvidenceBuilder();
+                    evidenceBuilder.SetSlot(EvidenceBuilder.Slot.SLOT_BOTTOM, draggingImage.sprite, infoKey);
                 }
             }
         }
@@ -164,27 +157,6 @@ public class InfoDragger : MonoBehaviour
         }
         draggingObject = null;
         draggedFromScroll = null;
-    }
-
-    private void UpdateEvidenceBuilder()
-    {
-        string unlockKey = null;
-        if (evidenceTopKey == "photo-birds-eye" && evidenceBottomKey == "type-canaller" ||
-            evidenceBottomKey == "photo-birds-eye" && evidenceTopKey == "type-canaller")
-        {
-            unlockKey = "verified-canaller";
-            PlayerProgress.instance.TemporaryBubble("Aha! It's a canaller!");
-        }
-        else if (evidenceTopKey == "photo-iron-knees" && evidenceBottomKey == "diagram-iron-knees" ||
-            evidenceBottomKey == "photo-iron-knees" && evidenceTopKey == "diagram-iron-knees")
-        {
-            unlockKey = "verified-loretta";
-            PlayerProgress.instance.TemporaryBubble("Aha! It's the Loretta!");
-        }
-        if (unlockKey != null)
-        {
-            PlayerProgress.instance.Unlock(unlockKey);
-        }
     }
 
     private bool DroppingInto(GameObject target)
@@ -218,7 +190,7 @@ public class InfoDragger : MonoBehaviour
                 UpdateTarget(targetBG);
             }
         }
-        UpdateTarget(evidenceTop);
-        UpdateTarget(evidenceBottom);
+        UpdateTarget(evidenceBuilder.slotTop);
+        UpdateTarget(evidenceBuilder.slotBottom);
     }
 }
