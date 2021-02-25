@@ -233,7 +233,7 @@ public class CameraControls : MonoBehaviour
         if (cameraState == CameraState.CAMERA_TOP)
         {
             message = "Great, we got a bird's eye view of the ship!";
-            unlockedKey = "birds-eye";
+            unlockedKey = "photo-birds-eye";
             return;
         }
 

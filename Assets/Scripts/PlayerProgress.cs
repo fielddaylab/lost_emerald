@@ -64,19 +64,9 @@ public class PlayerProgress : MonoBehaviour
 
     public void SetPhotoPresence(PhotoSlot target)
     {
-        if (playerUnlocks.Contains(target.targetKey))
+        if (IsUnlocked(target.unlockKey))
         {
-            PointerListener pointer = target.gameObject.GetComponent<PointerListener>();
-            if (pointer != null && target.debugUnlock != null)
-            {
-                pointer.onClick.AddListener((pointerEvent) =>
-                {
-                    if (target.debugRequirement == null || IsUnlocked(target.debugRequirement))
-                    {
-                        Unlock(target.debugUnlock);
-                    }
-                });
-            }
+            // do nothing
         }
         else
         {
@@ -145,7 +135,7 @@ public class PlayerProgress : MonoBehaviour
 
     public bool IsUnlocked(string key)
     {
-        return playerUnlocks.Contains(key);
+        return key == null || key == "" || playerUnlocks.Contains(key);
     }
 
     public void Unlock(string key)

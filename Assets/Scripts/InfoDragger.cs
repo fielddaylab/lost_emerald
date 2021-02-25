@@ -14,13 +14,16 @@ public class InfoDragger : MonoBehaviour
     public GameObject infoChunkTemplate;
     public Image evidenceTop;
     public Image evidenceBottom;
+    public PhotoSlot[] photos;
 
     private GameObject draggingObject;
     private ScrollRect draggedFromScroll;
     private Vector3 dragStartMouse;
     private Vector3 dragStartInfo;
-    private TMP_LinkInfo linkInfo;
+    private string infoKey;
     private string documentName;
+    private string evidenceTopKey;
+    private string evidenceBottomKey;
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +42,8 @@ public class InfoDragger : MonoBehaviour
                         int linkIndex = TMP_TextUtilities.FindIntersectingLink(infoPiece, pdata.position, null);
                         if (linkIndex != -1)
                         {
-                            linkInfo = infoPiece.textInfo.linkInfo[linkIndex];
+                            TMP_LinkInfo linkInfo = infoPiece.textInfo.linkInfo[linkIndex];
+                            infoKey = linkInfo.GetLinkID();
 
                             draggingObject = Instantiate(infoChunkTemplate, transform, true);
                             RectTransform draggingRect = draggingObject.GetComponent<RectTransform>();
@@ -66,6 +70,43 @@ public class InfoDragger : MonoBehaviour
             }
             documentIndex++;
         }
+
+        foreach (var photo in photos)
+        {
+            PointerListener pointer = photo.GetComponent<PointerListener>();
+            if (pointer)
+            {
+                pointer.onPointerDown.AddListener((pdata) =>
+                {
+                    if (!PlayerProgress.instance.IsUnlocked(photo.unlockKey))
+                    {
+                        return;
+                    }
+                    infoKey = photo.infoKey;
+
+                    draggingObject = Instantiate(photo.gameObject, transform, true);
+                    RectTransform draggingRect = draggingObject.GetComponent<RectTransform>();
+                    draggingRect.anchorMin = new Vector2(0f, 1f);
+                    draggingRect.anchorMax = new Vector2(0f, 1f);
+                    draggingRect.pivot = new Vector2(0f, 0f);
+                    draggingRect.position = Input.mousePosition;
+                    Image originalImage = photo.gameObject.GetComponent<Image>();
+                    float imageWidth = 200f;
+                    float imageHeight = imageWidth / originalImage.sprite.rect.width * originalImage.sprite.rect.height;
+                    draggingRect.sizeDelta = new Vector2(imageWidth, imageHeight);
+                    draggedFromScroll = photo.GetComponentInParent<ScrollRect>();
+                    if (draggedFromScroll)
+                    {
+                        draggedFromScroll.enabled = false;
+                    }
+                    dragStartMouse = Input.mousePosition;
+                    dragStartInfo = draggingRect.position;
+                    draggingObject.SetActive(true);
+                    documentName = "Photo";
+                });
+                pointer.onPointerUp.AddListener(ReleaseDrag);
+            }
+        }
     }
 
     void ReleaseDrag(PointerEventData pdata)
@@ -79,7 +120,6 @@ public class InfoDragger : MonoBehaviour
         {
             if (DroppingInto(target.gameObject))
             {
-                string infoKey = linkInfo.GetLinkID();
                 if (infoKey == target.correctInfoKey)
                 {
                     var entry = new PlayerProgress.InfoEntry
@@ -100,10 +140,51 @@ public class InfoDragger : MonoBehaviour
 
         if (draggingObject)
         {
+            Image draggingImage = draggingObject.GetComponent<Image>();
+            if (draggingImage && draggingImage.sprite)
+            {
+                if (DroppingInto(evidenceTop.gameObject))
+                {
+                    evidenceTop.sprite = draggingImage.sprite;
+                    evidenceTopKey = infoKey;
+                    UpdateEvidenceBuilder();
+                }
+                else if (DroppingInto(evidenceBottom.gameObject))
+                {
+                    evidenceBottom.sprite = draggingImage.sprite;
+                    evidenceBottomKey = infoKey;
+                    UpdateEvidenceBuilder();
+                }
+            }
+        }
+
+        if (draggingObject)
+        {
             Destroy(draggingObject.gameObject);
         }
         draggingObject = null;
         draggedFromScroll = null;
+    }
+
+    private void UpdateEvidenceBuilder()
+    {
+        string unlockKey = null;
+        if (evidenceTopKey == "photo-birds-eye" && evidenceBottomKey == "type-canaller" ||
+            evidenceBottomKey == "photo-birds-eye" && evidenceTopKey == "type-canaller")
+        {
+            unlockKey = "verified-canaller";
+            PlayerProgress.instance.TemporaryBubble("Aha! It's a canaller!");
+        }
+        else if (evidenceTopKey == "photo-iron-knees" && evidenceBottomKey == "diagram-iron-knees" ||
+            evidenceBottomKey == "photo-iron-knees" && evidenceTopKey == "diagram-iron-knees")
+        {
+            unlockKey = "verified-loretta";
+            PlayerProgress.instance.TemporaryBubble("Aha! It's the Loretta!");
+        }
+        if (unlockKey != null)
+        {
+            PlayerProgress.instance.Unlock(unlockKey);
+        }
     }
 
     private bool DroppingInto(GameObject target)

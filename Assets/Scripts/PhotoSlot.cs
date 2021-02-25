@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class PhotoSlot : MonoBehaviour
 {
-    public string targetKey;
-    public string debugUnlock;
-    public string debugRequirement;
+    public string unlockKey;
+    public string infoKey;
 
     // Start is called before the first frame update
     void Start()
