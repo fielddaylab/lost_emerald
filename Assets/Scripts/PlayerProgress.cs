@@ -22,6 +22,7 @@ public class PlayerProgress : MonoBehaviour
     private ThoughtBubble bubble;
     private string temporaryThought;
     private List<DocumentButton> documentButtons = new List<DocumentButton>();
+    private List<NotificationSymbol> notificationSymbols = new List<NotificationSymbol>();
 
     void Awake()
     {
@@ -75,6 +76,34 @@ public class PlayerProgress : MonoBehaviour
         }
     }
 
+    public void RegisterNotification(NotificationSymbol symbol)
+    {
+        notificationSymbols.Add(symbol);
+        UpdateNotification(symbol);
+    }
+
+    private void UpdateNotification(NotificationSymbol symbol)
+    {
+        bool showNotification = false;
+        if (symbol.notificationKey == "any-contact")
+        {
+            showNotification = HasConversation("lou") || HasConversation("amy") || HasConversation("rusty");
+        }
+        else if (symbol.notificationKey == "lou")
+        {
+            showNotification = HasConversation("lou");
+        }
+        else if (symbol.notificationKey == "amy")
+        {
+            showNotification = HasConversation("amy");
+        }
+        else if (symbol.notificationKey == "rusty")
+        {
+            showNotification = HasConversation("rusty");
+        }
+        symbol.gameObject.SetActive(showNotification);
+    }
+
     public void SetDocumentPresence(DocumentButton target)
     {
         documentButtons.Add(target);
@@ -119,6 +148,14 @@ public class PlayerProgress : MonoBehaviour
         shipLog[target.targetKey] = info;
         FillInfo(target);
         UpdateBubble();
+        foreach (var button in documentButtons)
+        {
+            UpdateDocumentPresence(button);
+        }
+        foreach (var symbol in notificationSymbols)
+        {
+            UpdateNotification(symbol);
+        }
     }
 
     public void SetDialogKey(string key)
@@ -142,19 +179,30 @@ public class PlayerProgress : MonoBehaviour
     {
         playerUnlocks.Add(key);
         UpdateBubble();
-        foreach (DocumentButton button in documentButtons)
+        foreach (var button in documentButtons)
         {
             UpdateDocumentPresence(button);
         }
+        foreach (var symbol in notificationSymbols)
+        {
+            UpdateNotification(symbol);
+        }
     }
 
-    public void ClearDocumentButtons()
+    public void ClearRegistrations()
     {
         documentButtons.Clear();
+        notificationSymbols.Clear();
     }
 
-    public string PickConversation(string charName)
+    private bool HasConversation(string charName)
     {
+        return PickConversation(charName, out string _) != null;
+    }
+
+    public string PickConversation(string charName, out string bubble)
+    {
+        bubble = null;
         if (charName == "lou")
         {
             if (!IsUnlocked("intro-transcript"))
@@ -163,7 +211,7 @@ public class PlayerProgress : MonoBehaviour
             }
             else if (!ChapterComplete())
             {
-                TemporaryBubble("Nothing I need from Lou right now.");
+                bubble = "Nothing I need from Lou right now.";
                 return null;
             }
             else
@@ -175,7 +223,7 @@ public class PlayerProgress : MonoBehaviour
         {
             if (!shipLog.ContainsKey("LocationBox"))
             {
-                TemporaryBubble("I need to figure out where the wreck is before I call Amy.");
+                bubble = "I need to figure out where the wreck is before I call Amy.";
                 return null;
             }
             else if (!IsUnlocked("wreck-table"))
@@ -184,7 +232,7 @@ public class PlayerProgress : MonoBehaviour
             }
             else if (!shipLog.ContainsKey("NameBox"))
             {
-                TemporaryBubble("Nothing I need from Amy right now.");
+                bubble = "Nothing I need from Amy right now.";
                 return null;
             }
             else if (!IsUnlocked("dark-day"))
@@ -193,15 +241,15 @@ public class PlayerProgress : MonoBehaviour
             }
             else
             {
-                TemporaryBubble("Nothing I need from Amy right now.");
+                bubble = "Nothing I need from Amy right now.";
                 return null;
             }
         }
         else if (charName == "rusty")
         {
-            if (!IsUnlocked("photo-birds-eye"))
+            if (!shipLog.ContainsKey("TypeBox"))
             {
-                TemporaryBubble("Nothing I need from Rusty right now.");
+                bubble = "Nothing I need from Rusty right now.";
                 return null;
             }
             else if (!IsUnlocked("rusty-transcript"))
@@ -210,7 +258,7 @@ public class PlayerProgress : MonoBehaviour
             }
             else
             {
-                TemporaryBubble("Nothing I need from Rusty right now.");
+                bubble = "Nothing I need from Rusty right now.";
                 return null;
             }
         }

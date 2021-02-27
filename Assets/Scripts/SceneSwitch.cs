@@ -7,20 +7,24 @@ public class SceneSwitch : MonoBehaviour
 {
     public void GotoDocuments()
     {
-        PlayerProgress.instance.ClearDocumentButtons();
+        PlayerProgress.instance.ClearRegistrations();
         SceneManager.LoadScene("DocumentScene");
     }
 
     public void GotoConversation(string dialogKey)
     {
-        PlayerProgress.instance.ClearDocumentButtons();
+        PlayerProgress.instance.ClearRegistrations();
         PlayerProgress.instance.SetDialogKey(dialogKey);
         SceneManager.LoadScene("ConversationInterface");
     }
 
     public void CallCharacter(string charName)
     {
-        string conversation = PlayerProgress.instance.PickConversation(charName);
+        string conversation = PlayerProgress.instance.PickConversation(charName, out string bubble);
+        if (bubble != null)
+        {
+            PlayerProgress.instance.TemporaryBubble(bubble);
+        }
         if (conversation != null)
         {
             GotoConversation(conversation);
@@ -36,7 +40,7 @@ public class SceneSwitch : MonoBehaviour
         }
         else
         {
-            PlayerProgress.instance.ClearDocumentButtons();
+            PlayerProgress.instance.ClearRegistrations();
             SceneManager.LoadScene("ShipMechanics");
         }
 
@@ -44,13 +48,13 @@ public class SceneSwitch : MonoBehaviour
 
     public void GotoDive()
     {
-        PlayerProgress.instance.ClearDocumentButtons();
+        PlayerProgress.instance.ClearRegistrations();
         SceneManager.LoadScene("LaSalleTestScene_RealtimeLighting");
     }
 
     public void GotoDesk()
     {
-        PlayerProgress.instance.ClearDocumentButtons();
+        PlayerProgress.instance.ClearRegistrations();
         SceneManager.LoadScene("OfficeDesk");
     }
 }
