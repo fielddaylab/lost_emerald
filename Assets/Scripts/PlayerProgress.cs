@@ -23,6 +23,7 @@ public class PlayerProgress : MonoBehaviour
     private string temporaryThought;
     private List<DocumentButton> documentButtons = new List<DocumentButton>();
     private List<NotificationSymbol> notificationSymbols = new List<NotificationSymbol>();
+    private List<PhotoSlot> photoSlots = new List<PhotoSlot>();
 
     void Awake()
     {
@@ -65,14 +66,19 @@ public class PlayerProgress : MonoBehaviour
 
     public void SetPhotoPresence(PhotoSlot target)
     {
+        photoSlots.Add(target);
+        UpdatePhoto(target);
+    }
+
+    private void UpdatePhoto(PhotoSlot target)
+    {
         if (IsUnlocked(target.unlockKey))
         {
-            // do nothing
+            target.SetUnlocked();
         }
         else
         {
-            target.GetComponent<Image>().color = Color.gray;
-            target.GetComponent<Image>().sprite = null;
+            target.SetLocked();
         }
     }
 
@@ -148,6 +154,11 @@ public class PlayerProgress : MonoBehaviour
         shipLog[target.targetKey] = info;
         FillInfo(target);
         UpdateBubble();
+        UpdateLockedObjects();
+    }
+
+    private void UpdateLockedObjects()
+    {
         foreach (var button in documentButtons)
         {
             UpdateDocumentPresence(button);
@@ -155,6 +166,10 @@ public class PlayerProgress : MonoBehaviour
         foreach (var symbol in notificationSymbols)
         {
             UpdateNotification(symbol);
+        }
+        foreach (var photo in photoSlots)
+        {
+            UpdatePhoto(photo);
         }
     }
 
@@ -179,20 +194,14 @@ public class PlayerProgress : MonoBehaviour
     {
         playerUnlocks.Add(key);
         UpdateBubble();
-        foreach (var button in documentButtons)
-        {
-            UpdateDocumentPresence(button);
-        }
-        foreach (var symbol in notificationSymbols)
-        {
-            UpdateNotification(symbol);
-        }
+        UpdateLockedObjects();
     }
 
     public void ClearRegistrations()
     {
         documentButtons.Clear();
         notificationSymbols.Clear();
+        photoSlots.Clear();
     }
 
     private bool HasConversation(string charName)

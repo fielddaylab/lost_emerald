@@ -8,6 +8,8 @@ public class EvidenceBuilder : MonoBehaviour
     public Image slotTop;
     public Image slotBottom;
     public TabPanel tabPanel;
+    public GameObject evidencePopupContainer;
+    public Image evidencePopupImage;
 
     private string keyTop;
     private string keyBottom;
@@ -40,11 +42,15 @@ public class EvidenceBuilder : MonoBehaviour
         {
             unlockKey = "verified-canaller";
             PlayerProgress.instance.TemporaryBubble("Aha! It's a canaller!");
+            evidencePopupImage.sprite = Resources.Load<Sprite>("evidence-canaller");
+            evidencePopupContainer.SetActive(true);
         }
         else if (keyTop == "photo-iron-knees" && keyBottom == "diagram-iron-knees" || keyBottom == "photo-iron-knees" && keyTop == "diagram-iron-knees")
         {
             unlockKey = "verified-loretta";
             PlayerProgress.instance.TemporaryBubble("Aha! It's the Loretta!");
+            evidencePopupImage.sprite = Resources.Load<Sprite>("evidence-loretta");
+            evidencePopupContainer.SetActive(true);
         }
 
         if (unlockKey == null)
@@ -52,6 +58,10 @@ public class EvidenceBuilder : MonoBehaviour
             if (keyTop != null && keyBottom != null)
             {
                 GetComponent<Image>().color = new Color(255f / 255f, 133f / 255f, 132f / 255f);
+            }
+            else
+            {
+                GetComponent<Image>().color = new Color(0f / 255f, 244f / 255f, 255f / 255f);
             }
         }
         else
@@ -68,6 +78,7 @@ public class EvidenceBuilder : MonoBehaviour
         slotBottom.sprite = null;
         keyTop = null;
         keyBottom = null;
+        ComputeMatch();
     }
 
     // Start is called before the first frame update

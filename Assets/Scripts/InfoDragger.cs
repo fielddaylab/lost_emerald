@@ -21,6 +21,7 @@ public class InfoDragger : MonoBehaviour
     private Vector3 dragStartInfo;
     private string infoKey;
     private string documentName;
+    private string infoDisplay;
 
     // Start is called before the first frame update
     void Start()
@@ -60,6 +61,7 @@ public class InfoDragger : MonoBehaviour
                             dragStartInfo = draggingRect.position;
                             draggingObject.SetActive(true);
                             documentName = documentNames[thisDocumentIndex];
+                            infoDisplay = draggingObject.GetComponentInChildren<TextMeshProUGUI>().text;
                         }
                     });
                     pointer.onPointerUp.AddListener(ReleaseDrag);
@@ -82,6 +84,7 @@ public class InfoDragger : MonoBehaviour
                     infoKey = photo.infoKey;
 
                     draggingObject = Instantiate(photo.gameObject, transform, true);
+                    draggingObject.GetComponent<PhotoSlot>().enabled = false;
                     RectTransform draggingRect = draggingObject.GetComponent<RectTransform>();
                     draggingRect.anchorMin = new Vector2(0f, 1f);
                     draggingRect.anchorMax = new Vector2(0f, 1f);
@@ -100,6 +103,7 @@ public class InfoDragger : MonoBehaviour
                     dragStartInfo = draggingRect.position;
                     draggingObject.SetActive(true);
                     documentName = "Photo";
+                    infoDisplay = photo.infoDisplay;
                 });
                 pointer.onPointerUp.AddListener(ReleaseDrag);
             }
@@ -122,7 +126,7 @@ public class InfoDragger : MonoBehaviour
                     var entry = new PlayerProgress.InfoEntry
                     {
                         infoKey = infoKey,
-                        infoDisplay = draggingObject.GetComponentInChildren<TextMeshProUGUI>().text,
+                        infoDisplay = infoDisplay,
                         sourceDisplay = documentName
                     };
                     PlayerProgress.instance?.DropInfo(target, entry);
