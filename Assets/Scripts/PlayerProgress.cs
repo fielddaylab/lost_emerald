@@ -373,7 +373,7 @@ public class PlayerProgress : MonoBehaviour
         return null;
     }
 
-    private bool ChapterComplete()
+    public bool ChapterComplete()
     {
         return shipLog.ContainsKey("LocationBox")
             && shipLog.ContainsKey("TypeBox")

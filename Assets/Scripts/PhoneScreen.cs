@@ -173,7 +173,15 @@ public class PhoneScreen : MonoBehaviour
             scrollArea.verticalNormalizedPosition = 0f;
             newLine.GetComponent<Button>().onClick.AddListener(() =>
             {
-                GetComponent<SceneSwitch>().GotoDocuments();
+                if ((bool)PlayerProgress.instance?.ChapterComplete())
+                {
+                    GetComponent<SceneSwitch>().GotoLevelEnding();
+                }
+                else
+                {
+                    GetComponent<SceneSwitch>().GotoDocuments();
+
+                }
             });
             newLine.SetActive(true);
             yield break;

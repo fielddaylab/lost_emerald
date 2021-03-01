@@ -57,4 +57,10 @@ public class SceneSwitch : MonoBehaviour
         PlayerProgress.instance.ClearRegistrations();
         SceneManager.LoadScene("OfficeDesk");
     }
+
+    public void GotoLevelEnding()
+    {
+        PlayerProgress.instance.ClearRegistrations();
+        SceneManager.LoadScene("LevelEnding");
+    }
 }
