@@ -24,6 +24,7 @@ public class PlayerProgress : MonoBehaviour
     private List<DocumentButton> documentButtons = new List<DocumentButton>();
     private List<NotificationSymbol> notificationSymbols = new List<NotificationSymbol>();
     private List<PhotoSlot> photoSlots = new List<PhotoSlot>();
+    private ShipOutButton shipOutButton;
 
     void Awake()
     {
@@ -118,7 +119,7 @@ public class PlayerProgress : MonoBehaviour
 
     private void UpdateDocumentPresence(DocumentButton target)
     {
-        if (playerUnlocks.Contains(target.targetKey))
+        if (IsUnlocked(target.targetKey))
         {
             Button button = target.GetComponent<Button>();
             if (button)
@@ -141,12 +142,21 @@ public class PlayerProgress : MonoBehaviour
 
     public void ShipOutButton(ShipOutButton button)
     {
-        button.GetComponent<Button>().interactable = CanShipOut();
+        shipOutButton = button;
+        UpdateShipOutButton();
+    }
+
+    private void UpdateShipOutButton()
+    {
+        if (shipOutButton)
+        {
+            shipOutButton.GetComponent<Button>().interactable = CanShipOut();
+        }
     }
 
     public bool CanShipOut()
     {
-        return playerUnlocks.Contains("wreck-table");
+        return IsUnlocked("viewed-wreck-table");
     }
 
     public void DropInfo(InfoDropTarget target, InfoEntry info)
@@ -195,6 +205,7 @@ public class PlayerProgress : MonoBehaviour
         playerUnlocks.Add(key);
         UpdateBubble();
         UpdateLockedObjects();
+        UpdateShipOutButton();
     }
 
     public void ClearRegistrations()
@@ -202,6 +213,7 @@ public class PlayerProgress : MonoBehaviour
         documentButtons.Clear();
         notificationSymbols.Clear();
         photoSlots.Clear();
+        shipOutButton = null;
     }
 
     private bool HasConversation(string charName)
@@ -279,7 +291,7 @@ public class PlayerProgress : MonoBehaviour
         // stuff on non-document scenes
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "ShipMechanics")
         {
-            if (!playerUnlocks.Contains("sonar-complete"))
+            if (!IsUnlocked("sonar-complete"))
             {
                 return "Use your sonar to find the ship!";
             }
@@ -290,11 +302,11 @@ public class PlayerProgress : MonoBehaviour
         }
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "LaSalleTestScene_RealtimeLighting")
         {
-            if (!playerUnlocks.Contains("photo-birds-eye"))
+            if (!IsUnlocked("photo-birds-eye"))
             {
                 return "Better get some pictures of the ship.\nI'll start with a picture of the ship from above.";
             }
-            else if (!playerUnlocks.Contains("photo-iron-knees"))
+            else if (!IsUnlocked("photo-iron-knees"))
             {
                 return "Great! Now, I need to see if the ship has any special feature that can help identify it.";
             }
@@ -305,7 +317,7 @@ public class PlayerProgress : MonoBehaviour
         }
 
         // intro sequence, before going off to the sonar
-        if (!playerUnlocks.Contains("intro-transcript"))
+        if (!IsUnlocked("intro-transcript"))
         {
             if (bubble != null && bubble.gameObject.scene.name != "OfficeDesk")
             {
@@ -318,23 +330,37 @@ public class PlayerProgress : MonoBehaviour
         }
         if (!(shipLog.TryGetValue("LocationBox", out InfoEntry val) && val.infoKey == "coords"))
         {
-            return "Let's see. Where's that GPS location?";
+            if (!IsUnlocked("viewed-intro-transcript"))
+            {
+                return "Let's see. Where's that GPS location?";
+            }
+            else
+            {
+                return "Now I can drag the coordinates over to the Location field.";
+            }
         }
-        if (!playerUnlocks.Contains("wreck-table"))
+        if (!IsUnlocked("wreck-table"))
         {
             return "That's right off Rawley Point! There are a bunch of ships\nthat went down around there. Better call the archivist and get a list.";
         }
-        if (!playerUnlocks.Contains("been-to-sonar"))
+        if (!IsUnlocked("been-to-sonar"))
         {
-            return "Perfect! The wreck didn’t look too deep. I’ll be able\nto use my normal sonar and dive suit. Time to ship out!";
+            if (!IsUnlocked("viewed-wreck-table"))
+            {
+                return "The List of Wrecks should help me narrow things down.";
+            }
+            else
+            {
+                return "It has to be one of these 5 ships.\nTime to Ship Out!";
+            }
         }
 
         // coming back from the dive
-        if (!playerUnlocks.Contains("photo-birds-eye"))
+        if (!IsUnlocked("photo-birds-eye"))
         {
             return "I need to go get some photos of the ship!";
         }
-        if (!playerUnlocks.Contains("verified-canaller"))
+        if (!IsUnlocked("verified-canaller"))
         {
             return "I have a photo of the shape of the ship.\nCan I figure out what type of ship it is?";
         }
@@ -342,17 +368,17 @@ public class PlayerProgress : MonoBehaviour
         {
             return "Now I can fill in what type of ship it is!";
         }
-        if (!playerUnlocks.Contains("rusty-transcript"))
+        if (!IsUnlocked("rusty-transcript"))
         {
             return "Hmm. The list had two canallers. Which one is it?\nI wonder if the ship expert I know has any clues that might help.";
         }
 
         // after dialog with Rusty
-        if (!playerUnlocks.Contains("photo-iron-knees"))
+        if (!IsUnlocked("photo-iron-knees"))
         {
             return "I need to go get a photo of the ship's knees!";
         }
-        if (!playerUnlocks.Contains("verified-loretta"))
+        if (!IsUnlocked("verified-loretta"))
         {
             return "I took a photo of the ship's knees.\nWhich of the pictures Rusty sent matches the photo?";
         }
@@ -360,7 +386,7 @@ public class PlayerProgress : MonoBehaviour
         {
             return "Now I can fill in the name of the ship!";
         }
-        if (!playerUnlocks.Contains("newspaper"))
+        if (!IsUnlocked("newspaper"))
         {
             return "Now that I know it's the Loretta, I should call the Archivist\nand see if she knows anything else about it!";
         }

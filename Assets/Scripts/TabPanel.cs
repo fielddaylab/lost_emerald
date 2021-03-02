@@ -35,6 +35,7 @@ public class TabPanel : MonoBehaviour
             if (content[j] == content[i])
             {
                 content[j].SetActive(true);
+                content[j].GetComponent<LogWhenViewed>()?.LogView();
                 if (tabImage)
                 {
                     tabImage.color = new Color(0.0f, 1.0f, 1.0f);
