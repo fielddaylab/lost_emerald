@@ -312,7 +312,7 @@ public class PlayerProgress : MonoBehaviour
             }
             else
             {
-                return "Got everything I need. Time to head back!";
+                return "I have all the pictures I need. Time to head back to the office!";
             }
         }
 

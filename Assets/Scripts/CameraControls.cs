@@ -293,6 +293,12 @@ public class CameraControls : MonoBehaviour
         cameraButton.gameObject.SetActive(true);
         zoomSlider.gameObject.SetActive(true);
         photoButton.gameObject.SetActive(true);
+
+        if (unlockedKey != null)
+        {
+            // close camera after we took a correct photo
+            SetPhotoMode(false);
+        }
     }
 
     // Update is called once per frame
