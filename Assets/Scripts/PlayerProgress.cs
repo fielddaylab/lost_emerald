@@ -322,11 +322,11 @@ public class PlayerProgress : MonoBehaviour
         }
         if (!playerUnlocks.Contains("wreck-table"))
         {
-            return "That's right off Rawley Point!\nThere are a bunch of ships that went down around there.\nBetter call the archivist and get a list.";
+            return "That's right off Rawley Point! There are a bunch of ships\nthat went down around there. Better call the archivist and get a list.";
         }
         if (!playerUnlocks.Contains("been-to-sonar"))
         {
-            return "Perfect!\nThe wreck didn’t look too deep. I’ll be able to use my normal sonar and dive suit.\nTime to ship out!";
+            return "Perfect! The wreck didn’t look too deep. I’ll be able\nto use my normal sonar and dive suit. Time to ship out!";
         }
 
         // coming back from the dive
