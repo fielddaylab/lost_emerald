@@ -44,10 +44,14 @@ public class Ship : MonoBehaviour
             speed = 2;
         }
 
-        Vector3 move = new Vector3(pos.x * speed, pos.y * speed, 0);
+        if (count<=80)
+        {
+            Vector3 move = new Vector3(pos.x * speed, pos.y * speed, 0);
+            transform.Translate(move, Space.World);
+            transform.rotation = Quaternion.LookRotation(transform.forward, pos);
+        }
+        
 
-        transform.Translate(move, Space.World);
-        transform.rotation = Quaternion.LookRotation(transform.forward, pos);
     }
 
     void OnTriggerEnter2D(Collider2D other)
