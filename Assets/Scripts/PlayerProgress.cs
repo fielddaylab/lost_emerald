@@ -108,6 +108,48 @@ public class PlayerProgress : MonoBehaviour
         {
             showNotification = HasConversation("rusty");
         }
+        else if (symbol.notificationKey == "wrecks" && !IsUnlocked("viewed-wreck-table"))
+        {
+            showNotification = IsUnlocked("wreck-table");
+        }
+        else if (symbol.notificationKey == "ship-out" && !IsUnlocked("photo-birds-eye"))
+        {
+            showNotification = IsUnlocked("viewed-wreck-table");
+        }
+        else if (symbol.notificationKey == "evidence-builder" && IsUnlocked("photo-birds-eye"))
+        {
+            if (IsUnlocked("rusty-transcript"))
+            {
+                showNotification = !IsUnlocked("verified-loretta");
+            }
+            else
+            {
+                showNotification = !IsUnlocked("verified-canaller");
+            }
+        }
+        else if (symbol.notificationKey == "image" && IsUnlocked("photo-birds-eye"))
+        {
+            if (IsUnlocked("rusty-transcript"))
+            {
+                showNotification = !IsUnlocked("verified-loretta");
+            }
+            else
+            {
+                showNotification = !IsUnlocked("verified-canaller");
+            }
+        }
+        else if (symbol.notificationKey == "evidence")
+        {
+            showNotification = (IsUnlocked("verified-canaller") && !shipLog.ContainsKey("TypeBox")) || (IsUnlocked("verified-loretta") && !shipLog.ContainsKey("NameBox"));
+        }
+        else if (symbol.notificationKey == "perspective")
+        {
+            showNotification = !IsUnlocked("photo-iron-knees") && IsUnlocked("photo-birds-eye");
+        }
+        else if (symbol.notificationKey == "bird-view-thought")
+        {
+            showNotification = !IsUnlocked("photo-birds-eye");
+        }
         symbol.gameObject.SetActive(showNotification);
     }
 
