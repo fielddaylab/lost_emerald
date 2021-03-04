@@ -324,5 +324,14 @@ public class CameraControls : MonoBehaviour
 
         CheckHiddenObject(out string photoMessage, out _);
         photoResult.GetComponentInChildren<TextMeshProUGUI>().text = photoMessage;
+
+        if(photoMessage == "Try getting closer!" && savePhotoButton.isActiveAndEnabled)
+        {
+            savePhotoButton.GetComponentInChildren<TextMeshProUGUI>().text = "Retry";
+        }
+        else
+        {
+            savePhotoButton.GetComponentInChildren<TextMeshProUGUI>().text = "Save";
+        }
     }
 }
