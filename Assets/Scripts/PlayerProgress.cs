@@ -25,6 +25,7 @@ public class PlayerProgress : MonoBehaviour
     private List<NotificationSymbol> notificationSymbols = new List<NotificationSymbol>();
     private List<PhotoSlot> photoSlots = new List<PhotoSlot>();
     private ShipOutButton shipOutButton;
+    private string divePerspective;
 
     void Awake()
     {
@@ -108,6 +109,17 @@ public class PlayerProgress : MonoBehaviour
         {
             showNotification = HasConversation("rusty");
         }
+        else if (symbol.notificationKey == "any-document" && !(IsUnlocked("verified-loretta") && IsUnlocked("verified-canaller")))
+        {
+            if (IsUnlocked("verified-canaller"))
+            {
+                showNotification = IsUnlocked("photo-iron-knees-dragged");
+            }
+            else
+            {
+                showNotification = IsUnlocked("photo-birds-eye-dragged");
+            }
+        }
         else if (symbol.notificationKey == "wrecks" && !IsUnlocked("viewed-wreck-table"))
         {
             showNotification = IsUnlocked("wreck-table");
@@ -116,7 +128,7 @@ public class PlayerProgress : MonoBehaviour
         {
             showNotification = IsUnlocked("viewed-wreck-table");
         }
-        else if (symbol.notificationKey == "evidence-builder" && IsUnlocked("photo-birds-eye"))
+        else if (symbol.notificationKey == "evidence-builder" && IsUnlocked("photo-birds-eye") && !IsUnlocked("EvidenceBuilder"))
         {
             if (IsUnlocked("rusty-transcript"))
             {
@@ -129,13 +141,13 @@ public class PlayerProgress : MonoBehaviour
         }
         else if (symbol.notificationKey == "image" && IsUnlocked("photo-birds-eye"))
         {
-            if (IsUnlocked("rusty-transcript"))
+            if (IsUnlocked("rusty-transcript") && !IsUnlocked("photo-iron-knees-dragged"))
             {
                 showNotification = !IsUnlocked("verified-loretta");
             }
             else
             {
-                showNotification = !IsUnlocked("verified-canaller");
+                showNotification = !IsUnlocked("verified-canaller") && !IsUnlocked("photo-birds-eye-dragged");
             }
         }
         else if (symbol.notificationKey == "evidence")
@@ -144,7 +156,7 @@ public class PlayerProgress : MonoBehaviour
         }
         else if (symbol.notificationKey == "perspective")
         {
-            showNotification = !IsUnlocked("photo-iron-knees") && IsUnlocked("photo-birds-eye");
+            showNotification = !IsUnlocked("photo-iron-knees") && IsUnlocked("photo-birds-eye") && !IsUnlocked("CAMERA_SIDE");
         }
         else if (symbol.notificationKey == "bird-view-thought")
         {
@@ -493,6 +505,25 @@ public class PlayerProgress : MonoBehaviour
         temporaryThought = thought;
         UpdateBubble();
         StartCoroutine(ResetTemporaryThought(thought));
+    }
+
+    public void UnlockTabEvidenceBuilder(string tabPanel)
+    {
+        if (tabPanel == "EvidenceBuilder")
+        {
+            Unlock(tabPanel);
+        }
+        else if (tabPanel == "ScrollOverview")
+        {
+            playerUnlocks.Remove("EvidenceBuilder");
+        }
+    }
+
+    public void SetDivePerspective(string cameraState)
+    {
+        playerUnlocks.Remove(divePerspective);
+        divePerspective = cameraState;
+        Unlock(cameraState);
     }
 
     IEnumerator ResetTemporaryThought(string thought)

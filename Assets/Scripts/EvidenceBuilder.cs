@@ -32,6 +32,14 @@ public class EvidenceBuilder : MonoBehaviour
             slotBottom.sprite = sprite;
             keyBottom = key;
         }
+        if(keyBottom == "photo-birds-eye" || keyTop == "photo-birds-eye")
+        {
+            PlayerProgress.instance.Unlock("photo-birds-eye-dragged");
+        }
+        else if (keyBottom == "photo-iron-knees" || keyTop == "photo-iron-knees")
+        {
+            PlayerProgress.instance.Unlock("photo-iron-knees-dragged");
+        }
         ComputeMatch();
     }
 

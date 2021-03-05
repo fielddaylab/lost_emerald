@@ -35,6 +35,7 @@ public class TabPanel : MonoBehaviour
             if (content[j] == content[i])
             {
                 content[j].SetActive(true);
+                PlayerProgress.instance.UnlockTabEvidenceBuilder(content[j].name);
                 content[j].GetComponent<LogWhenViewed>()?.LogView();
                 if (tabImage)
                 {

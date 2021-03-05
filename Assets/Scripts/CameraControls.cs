@@ -164,6 +164,7 @@ public class CameraControls : MonoBehaviour
         cameraState = animState;
         yield return Tween.Float(startValue, endValue, (f) => { MoveCamera(f); }, 1.0f).Ease(Curve.CubeInOut);
         cameraState = endState;
+        PlayerProgress.instance.SetDivePerspective(cameraState.ToString());
     }
 
     public void SwitchPerspective()
@@ -325,7 +326,7 @@ public class CameraControls : MonoBehaviour
         CheckHiddenObject(out string photoMessage, out _);
         photoResult.GetComponentInChildren<TextMeshProUGUI>().text = photoMessage;
 
-        if(photoMessage == "Try getting closer!" && savePhotoButton.isActiveAndEnabled)
+        if((photoMessage == "Try getting closer!" || photoMessage == "Nothing to see here.") && savePhotoButton.isActiveAndEnabled)
         {
             savePhotoButton.GetComponentInChildren<TextMeshProUGUI>().text = "Retry";
         }
