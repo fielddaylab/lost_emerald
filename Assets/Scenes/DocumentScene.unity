@@ -2786,8 +2786,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 947600664}
   m_HandleRect: {fileID: 947600663}
   m_Direction: 2
-  m_Value: 1.0000007
-  m_Size: 0.8700781
+  m_Value: 0.99999934
+  m_Size: 0.8700935
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6309,7 +6309,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1f97a3c4e6e6c4441b0cae99fec714b3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ab5b3c307990f48cc9b29102602da7cb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9763,7 +9763,7 @@ RectTransform:
   m_Father: {fileID: 1568352342}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.0000008940697, y: 0}
+  m_AnchorMin: {x: 0.000000834465, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
@@ -11576,7 +11576,7 @@ GameObject:
   - component: {fileID: 909898070}
   - component: {fileID: 909898069}
   m_Layer: 5
-  m_Name: NewspaperContents
+  m_Name: ListOFWrecks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19768,7 +19768,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 971638286}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.99998546
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -22077,7 +22077,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000030517578, y: -45.62271}
+  m_AnchoredPosition: {x: -0.000091552734, y: -45.62268}
   m_SizeDelta: {x: 472.1845, y: 702.3926}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1663144910
@@ -25073,7 +25073,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0.78662986}
+  m_AnchorMax: {x: 1, y: 0.9190737}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}

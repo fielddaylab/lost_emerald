@@ -345,7 +345,11 @@ public class PlayerProgress : MonoBehaviour
         // stuff on non-document scenes
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "ShipMechanics")
         {
-            if (!IsUnlocked("sonar-complete"))
+            if (!IsUnlocked("location-marker-found"))
+            {
+                return "The red dot shows the GPS location of the ship";
+            }
+            else if (!IsUnlocked("sonar-complete"))
             {
                 return "Use your sonar to find the ship!";
             }
