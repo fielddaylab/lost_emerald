@@ -501,6 +501,12 @@ public class PlayerProgress : MonoBehaviour
         {
             bubble.GetComponentInChildren<TextMeshProUGUI>().text = thought;
             bubble.gameObject.SetActive(true);
+            if (thought == "Let's see. Where's that GPS location?" ||
+                thought == "The List of Wrecks should help me narrow things down." ||
+                thought == "I have a photo of the shape of the ship.\nCan I figure out what type of ship it is?")
+            {
+                bubble.animate = true;
+            }
         }
     }
 
