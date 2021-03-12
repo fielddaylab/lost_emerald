@@ -13,6 +13,7 @@ public class Ship : MonoBehaviour
     void Start()
     {
         step = Time.deltaTime / Mathf.PI;
+        PlayerProgress.instance.Unlock("ship-on-lake");
     }
 
     // Update is called once per frame

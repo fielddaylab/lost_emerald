@@ -73,22 +73,16 @@ public class CameraControls : MonoBehaviour
 
     private void StartPan(PointerEventData arg0)
     {
-        if (photoMode)
-        {
-            isPanning = true;
-            panPointerStartX = arg0.position.x;
-            panPointerStartY = arg0.position.y;
-        }
+        isPanning = true;
+        panPointerStartX = arg0.position.x;
+        panPointerStartY = arg0.position.y;
     }
 
     private void StopPan(PointerEventData arg0)
     {
-        if (photoMode)
-        {
-            isPanning = false;
-            panPointerSaveX += arg0.position.x - panPointerStartX;
-            panPointerSaveY += arg0.position.y - panPointerStartY;
-        }
+        isPanning = false;
+        panPointerSaveX += arg0.position.x - panPointerStartX;
+        panPointerSaveY += arg0.position.y - panPointerStartY;
     }
 
     void MoveCamera(float percentTop)
@@ -156,6 +150,19 @@ public class CameraControls : MonoBehaviour
             transform.Rotate(transform.right, (diffY / Screen.height) * 70f, Space.World);
 
             transform.Translate(new Vector3(0f, 0f, zoomSlider.value * 4f), Space.Self);
+        }
+        else
+        {
+            float diffX = panPointerSaveX;
+            float diffY = panPointerSaveY;
+            if (isPanning)
+            {
+                diffX += Input.mousePosition.x - panPointerStartX;
+                diffY += Input.mousePosition.y - panPointerStartY;
+                transform.Rotate(transform.up, (diffX / Screen.width) * -70f, Space.World);
+                transform.Rotate(transform.right, (diffY / Screen.height) * 70f, Space.World);
+            }
+            
         }
     }
 
