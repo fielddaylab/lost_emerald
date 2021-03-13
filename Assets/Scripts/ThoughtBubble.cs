@@ -13,7 +13,7 @@ public class ThoughtBubble : MonoBehaviour
         if (animate)
         {
             initalPosition = this.gameObject.transform.position;
-            this.gameObject.transform.position = new Vector3 (initalPosition.x, initalPosition.y - 50f, 0);
+            this.gameObject.transform.position = new Vector3 (initalPosition.x, initalPosition.y - 100f, 0);
         }
         
 

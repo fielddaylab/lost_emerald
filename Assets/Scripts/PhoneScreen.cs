@@ -175,6 +175,7 @@ public class PhoneScreen : MonoBehaviour
             {
                 if ((bool)PlayerProgress.instance?.ChapterComplete())
                 {
+                    PlayerProgress.instance.Unlock("informed-lou");
                     GetComponent<SceneSwitch>().GotoLevelEnding();
                 }
                 else

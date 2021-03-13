@@ -109,6 +109,10 @@ public class PlayerProgress : MonoBehaviour
         {
             showNotification = HasConversation("rusty");
         }
+        else if (symbol.notificationKey == "lou-coords-transcript")
+        {
+            showNotification = !IsUnlocked("viewed-intro-transcript");
+        }
         else if (symbol.notificationKey == "any-document" && !(IsUnlocked("verified-loretta") && IsUnlocked("verified-canaller")))
         {
             if (IsUnlocked("verified-canaller"))
@@ -139,6 +143,10 @@ public class PlayerProgress : MonoBehaviour
                 showNotification = !IsUnlocked("verified-canaller");
             }
         }
+        else if (symbol.notificationKey == "rusty-convo-doc")
+        {
+            showNotification = IsUnlocked("photo-iron-knees-dragged") && !IsUnlocked("verified-loretta");
+        }
         else if (symbol.notificationKey == "image" && IsUnlocked("photo-birds-eye"))
         {
             if (IsUnlocked("rusty-transcript") && !IsUnlocked("photo-iron-knees-dragged"))
@@ -161,6 +169,10 @@ public class PlayerProgress : MonoBehaviour
         else if (symbol.notificationKey == "bird-view-thought")
         {
             showNotification = !IsUnlocked("photo-birds-eye");
+        }
+        else if (symbol.notificationKey == "dive-ready")
+        {
+            showNotification = IsUnlocked("sonar-complete");
         }
         symbol.gameObject.SetActive(showNotification);
     }
@@ -289,7 +301,7 @@ public class PlayerProgress : MonoBehaviour
                 bubble = "Nothing I need from Lou right now.";
                 return null;
             }
-            else
+            else if (!IsUnlocked("informed-lou"))
             {
                 return "ending";
             }
@@ -449,7 +461,7 @@ public class PlayerProgress : MonoBehaviour
             return "Now that I know it's the Loretta, I should call the Archivist\nand see if she knows anything else about it!";
         }
 
-        if (ChapterComplete())
+        if (ChapterComplete() && !IsUnlocked("informed-lou"))
         {
             return "I've filled in everything!\nI should call Lou and let her know!";
         }
