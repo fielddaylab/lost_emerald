@@ -93,6 +93,10 @@ public class PlayerProgress : MonoBehaviour
     private void UpdateNotification(NotificationSymbol symbol)
     {
         bool showNotification = false;
+        if (symbol.notificationKey == "lou-intro")
+        {
+            showNotification = !IsUnlocked("intro-transcript");
+        }
         if (symbol.notificationKey == "any-contact")
         {
             showNotification = HasConversation("lou") || HasConversation("amy") || HasConversation("rusty");
