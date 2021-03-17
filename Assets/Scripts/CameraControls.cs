@@ -281,7 +281,14 @@ public class CameraControls : MonoBehaviour
             }
             else
             {
-                message = "Try getting closer!";
+                if(transform.position.z > 0)
+                {
+                    message = "Try swimming closer";
+                }
+                else
+                {
+                    message = "Try zooming in!";
+                }
             }
         }
 
@@ -290,22 +297,31 @@ public class CameraControls : MonoBehaviour
 
     void SavePhoto()
     {
-        CheckHiddenObject(out _, out string unlockedKey);
-        if (unlockedKey != null)
+        if (savePhotoButton.GetComponentInChildren<TextMeshProUGUI>().text == "Swim")
         {
-            PlayerProgress.instance?.Unlock(unlockedKey);
-        }
-
-        photoResult.SetActive(false);
-        savePhotoButton.gameObject.SetActive(false);
-        cameraButton.gameObject.SetActive(true);
-        zoomSlider.gameObject.SetActive(true);
-        photoButton.gameObject.SetActive(true);
-
-        if (unlockedKey != null)
-        {
-            // close camera after we took a correct photo
+            savePhotoButton.gameObject.SetActive(false);
+            cameraButton.gameObject.SetActive(true);
             SetPhotoMode(false);
+        }
+        else
+        {
+            CheckHiddenObject(out _, out string unlockedKey);
+            if (unlockedKey != null)
+            {
+                PlayerProgress.instance?.Unlock(unlockedKey);
+            }
+
+            photoResult.SetActive(false);
+            savePhotoButton.gameObject.SetActive(false);
+            cameraButton.gameObject.SetActive(true);
+            zoomSlider.gameObject.SetActive(true);
+            photoButton.gameObject.SetActive(true);
+
+            if (unlockedKey != null)
+            {
+                // close camera after we took a correct photo
+                SetPhotoMode(false);
+            }
         }
     }
 
@@ -333,9 +349,13 @@ public class CameraControls : MonoBehaviour
         CheckHiddenObject(out string photoMessage, out _);
         photoResult.GetComponentInChildren<TextMeshProUGUI>().text = photoMessage;
 
-        if((photoMessage == "Try getting closer!" || photoMessage == "Nothing to see here.") && savePhotoButton.isActiveAndEnabled)
+        if((photoMessage == "Try zooming in!" || photoMessage == "Nothing to see here.") && savePhotoButton.isActiveAndEnabled)
         {
             savePhotoButton.GetComponentInChildren<TextMeshProUGUI>().text = "Retry";
+        }
+        else if (photoMessage == "Try swimming closer")
+        {
+            savePhotoButton.GetComponentInChildren<TextMeshProUGUI>().text = "Swim";
         }
         else
         {
