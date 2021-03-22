@@ -30,6 +30,9 @@ public class CameraControls : MonoBehaviour
     public string successMessage;
     public float requiredDistance;
     public string unlockKey;
+    public GameObject surfaceButton;
+    public Button journalIcon;
+    public GameObject journalBook;
 
     enum CameraState
     {
@@ -61,7 +64,6 @@ public class CameraControls : MonoBehaviour
         sideAngle = shipLength / 2.0f; // so we start in the middle of the side
         MoveCamera(1.0f);
 
-        perspectiveButton.onClick.AddListener(SwitchPerspective);
         panTarget.onPointerDown.AddListener(StartPan);
         panTarget.onPointerUp.AddListener(StopPan);
 
@@ -69,6 +71,9 @@ public class CameraControls : MonoBehaviour
         cameraButton.onClick.AddListener(SwitchPhotoMode);
         photoButton.onClick.AddListener(TakePhoto);
         savePhotoButton.onClick.AddListener(SavePhoto);
+        journalIcon.onClick.AddListener(OpenJournal);
+        journalBook.GetComponentInChildren<Button>().onClick.AddListener(CloseJournal);
+
     }
 
     private void StartPan(PointerEventData arg0)
@@ -180,13 +185,27 @@ public class CameraControls : MonoBehaviour
         {
             if (cameraState == CameraState.CAMERA_TOP)
             {
+                surfaceButton.GetComponentInChildren<Text>().text = "Ascend ^";
                 Routine.Start(this, AnimateCamera(CameraState.CAMERA_TOP_TO_SIDE, 1.0f, 0.0f, CameraState.CAMERA_SIDE));
             }
             else
             {
+                surfaceButton.GetComponentInChildren<Text>().text = "Surface ^";
                 Routine.Start(this, AnimateCamera(CameraState.CAMERA_SIDE_TO_TOP, 0.0f, 1.0f, CameraState.CAMERA_TOP));
             }
         }
+    }
+
+    void OpenJournal()
+    {
+        journalIcon.gameObject.SetActive(false);
+        journalBook.SetActive(true);
+    }
+
+    void CloseJournal()
+    {
+        journalIcon.gameObject.SetActive(true);
+        journalBook.SetActive(false);
     }
 
     void SetPhotoMode(bool newPhotoMode)
@@ -206,7 +225,10 @@ public class CameraControls : MonoBehaviour
         {
             leftButton.gameObject.SetActive(true);
             rightButton.gameObject.SetActive(true);
-            perspectiveButton.gameObject.SetActive(true);
+            if (PlayerProgress.instance.IsUnlocked("photo-birds-eye"))
+            {
+                perspectiveButton.gameObject.SetActive(true);
+            }
             thoughtBubble.gameObject.SetActive(true);
             zoomSlider.gameObject.SetActive(false);
             cameraFrame.gameObject.SetActive(false);
@@ -240,7 +262,7 @@ public class CameraControls : MonoBehaviour
         // if we're above the ship, unlock the bird's-eye view
         if (cameraState == CameraState.CAMERA_TOP)
         {
-            message = "Great, we got a bird's eye view of the ship!";
+            message = "That’s a great birds-eye..er.. fish-eye view of the ship!";
             unlockedKey = "photo-birds-eye";
             return;
         }
@@ -321,6 +343,14 @@ public class CameraControls : MonoBehaviour
             {
                 // close camera after we took a correct photo
                 SetPhotoMode(false);
+                OpenJournal();
+            }
+
+            if (unlockedKey == "photo-birds-eye")
+            {
+                perspectiveButton.gameObject.SetActive(true);
+                perspectiveButton.onClick.AddListener(SwitchPerspective);
+
             }
         }
     }

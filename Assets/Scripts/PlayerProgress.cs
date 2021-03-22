@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using ProtoCP;
+using System;
 
 public class PlayerProgress : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class PlayerProgress : MonoBehaviour
     private string temporaryThought;
     private List<DocumentButton> documentButtons = new List<DocumentButton>();
     private List<NotificationSymbol> notificationSymbols = new List<NotificationSymbol>();
+    private List<CheckboxSymbol> checkboxSymbols = new List<CheckboxSymbol>();
     private List<PhotoSlot> photoSlots = new List<PhotoSlot>();
     private ShipOutButton shipOutButton;
     private string divePerspective;
@@ -88,6 +90,25 @@ public class PlayerProgress : MonoBehaviour
     {
         notificationSymbols.Add(symbol);
         UpdateNotification(symbol);
+    }
+
+    public void RegisterCheckbox(CheckboxSymbol symbol)
+    {
+        checkboxSymbols.Add(symbol);
+        UpdateCheckbox(symbol);
+    }
+
+    private void UpdateCheckbox(CheckboxSymbol symbol)
+    {
+        if (symbol.checkboxKey == "dive-photo" && IsUnlocked("photo-birds-eye"))
+        {
+            symbol.GetComponent<Image>().color = Color.black;
+        }
+
+        if (symbol.checkboxKey == "defining-feature" && IsUnlocked("photo-iron-knees"))
+        {
+            symbol.GetComponent<Image>().color = Color.black;
+        }
     }
 
     private void UpdateNotification(NotificationSymbol symbol)
@@ -251,6 +272,10 @@ public class PlayerProgress : MonoBehaviour
         {
             UpdatePhoto(photo);
         }
+        foreach (var symbol in checkboxSymbols)
+        {
+            UpdateCheckbox(symbol);
+        }
     }
 
     public void SetDialogKey(string key)
@@ -378,11 +403,11 @@ public class PlayerProgress : MonoBehaviour
         {
             if (!IsUnlocked("photo-birds-eye"))
             {
-                return "Better get some pictures of the ship.\nI'll start with a picture of the ship from above.";
+                return "Better get a picture of the whole wreck while I’m here.\nI'll start with a picture of the ship from above.";
             }
             else if (!IsUnlocked("photo-iron-knees"))
             {
-                return "Great! Now, I need to see if the ship has any special feature that can help identify it.";
+                return "Welp, better dive down further";
             }
             else
             {
