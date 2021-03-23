@@ -18,7 +18,7 @@ public class Ship : MonoBehaviour
         }
         if (PlayerProgress.instance.IsUnlocked("been-to-dive"))
         {
-            transform.position = new Vector3(transform.position.x + 400, transform.position.y, transform.position.z);
+            transform.position = new Vector3(transform.position.x + 650, transform.position.y, transform.position.z);
         }
     }
 

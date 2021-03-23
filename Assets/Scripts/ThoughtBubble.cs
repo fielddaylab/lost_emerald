@@ -25,7 +25,7 @@ public class ThoughtBubble : MonoBehaviour
     {
         if (animate && this.gameObject.transform.position.y < initalPosition.y)
         {
-            this.gameObject.transform.position += (transform.up * Time.deltaTime * 20f);
+            this.gameObject.transform.position += (transform.up * Time.deltaTime * 40f);
         }
     }
 

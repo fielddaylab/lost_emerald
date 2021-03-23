@@ -102,12 +102,12 @@ public class PlayerProgress : MonoBehaviour
     {
         if (symbol.checkboxKey == "dive-photo" && IsUnlocked("photo-birds-eye"))
         {
-            symbol.GetComponent<Image>().color = Color.black;
+            symbol.GetComponent<Image>().sprite = Resources.Load<Sprite>("icon-check");
         }
 
         if (symbol.checkboxKey == "defining-feature" && IsUnlocked("photo-iron-knees"))
         {
-            symbol.GetComponent<Image>().color = Color.black;
+            symbol.GetComponent<Image>().sprite = Resources.Load<Sprite>("icon-check");
         }
     }
 
@@ -405,13 +405,13 @@ public class PlayerProgress : MonoBehaviour
             {
                 return "Better get a picture of the whole wreck while I’m here.\nI'll start with a picture of the ship from above.";
             }
-            else if (!IsUnlocked("photo-iron-knees") && !IsUnlocked("CAMERA_SIDE"))
+            else if (!IsUnlocked("photo-iron-knees"))
             {
                 return "Welp, better dive down further";
             }
             else
             {
-                return null;
+                return "I have all the pictures I need. Time to head back to the office!";
             }
         }
 
