@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,9 +24,21 @@ public class Dive : MonoBehaviour
         mouseOnDive = false;
     }
 
-    public void BeenToDive()
+    public void SonarComplete()
     {
-        PlayerProgress.instance.Unlock("been-to-dive");
+        if (!PlayerProgress.instance.IsUnlocked("sonar-complete"))
+        {
+            PlayerProgress.instance.Unlock("sonar-complete");
+        }
+    }
+
+    private void BeenToDive()
+    {
+        OffDive();
+        if (!PlayerProgress.instance.IsUnlocked("been-to-dive"))
+        {
+            PlayerProgress.instance.Unlock("been-to-dive");
+        }
     }
 
     // Update is called once per frame
@@ -33,9 +46,10 @@ public class Dive : MonoBehaviour
     {
         if (Ship.count > 80)
         {
+            SonarComplete();
             GetComponent<Button>().interactable = true;
+            GetComponent<Button>().onClick.AddListener(BeenToDive);
             buoy.SetActive(true);
-            PlayerProgress.instance.Unlock("sonar-complete");
         }
     }
 }

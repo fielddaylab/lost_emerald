@@ -12,10 +12,13 @@ public class Ship : MonoBehaviour
     void Start()
     {
         step = Time.deltaTime / Mathf.PI;
-        PlayerProgress.instance.Unlock("ship-on-lake");
+        if (!PlayerProgress.instance.IsUnlocked("ship-on-lake"))
+        {
+            PlayerProgress.instance.Unlock("ship-on-lake");
+        }
         if (PlayerProgress.instance.IsUnlocked("been-to-dive"))
         {
-            transform.position = new Vector3(transform.position.x + 450, transform.position.y, transform.position.z);
+            transform.position = new Vector3(transform.position.x + 400, transform.position.y, transform.position.z);
         }
     }
 
@@ -51,18 +54,21 @@ public class Ship : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if ((Input.mousePosition - transform.position).magnitude > 175 && other.tag == "MaskingBlock")
+        if (!PlayerProgress.instance.IsUnlocked("been-to-dive"))
         {
-            other.gameObject.SetActive(false);
-            count++;
-        }
-        else
-        {
-            int genRand = Random.Range(0, 4);
-            if (genRand == 0)
+            if ((Input.mousePosition - transform.position).magnitude > 175 && other.tag == "MaskingBlock")
             {
                 other.gameObject.SetActive(false);
                 count++;
+            }
+            else
+            {
+                int genRand = Random.Range(0, 4);
+                if (genRand == 0)
+                {
+                    other.gameObject.SetActive(false);
+                    count++;
+                }
             }
         }
     }
