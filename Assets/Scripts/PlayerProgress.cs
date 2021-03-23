@@ -100,14 +100,17 @@ public class PlayerProgress : MonoBehaviour
 
     private void UpdateCheckbox(CheckboxSymbol symbol)
     {
-        if (symbol.checkboxKey == "dive-photo" && IsUnlocked("photo-birds-eye"))
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "LaSalleTestScene_RealtimeLighting")
         {
-            symbol.GetComponent<Image>().sprite = Resources.Load<Sprite>("icon-check");
-        }
+            if (symbol.checkboxKey == "dive-photo" && IsUnlocked("photo-birds-eye"))
+            {
+                symbol.GetComponent<Image>().sprite = Resources.Load<Sprite>("icon-check");
+            }
 
-        if (symbol.checkboxKey == "defining-feature" && IsUnlocked("photo-iron-knees"))
-        {
-            symbol.GetComponent<Image>().sprite = Resources.Load<Sprite>("icon-check");
+            if (symbol.checkboxKey == "defining-feature" && IsUnlocked("photo-iron-knees"))
+            {
+                symbol.GetComponent<Image>().sprite = Resources.Load<Sprite>("icon-check");
+            }
         }
     }
 
@@ -394,7 +397,7 @@ public class PlayerProgress : MonoBehaviour
             {
                 return "Use your sonar to find the ship!";
             }
-            else if (IsUnlocked("sonar-complete") )
+            else if (IsUnlocked("sonar-complete") && !IsUnlocked("been-to-dive"))
             {
                 return "Yes! There it is!";
             }
@@ -442,7 +445,7 @@ public class PlayerProgress : MonoBehaviour
         {
             return "That's right off Rawley Point! There are a bunch of ships\nthat went down around there. Better call the archivist and get a list.";
         }
-        if (!IsUnlocked("been-to-sonar"))
+        if (!IsUnlocked("sonar-complete"))
         {
             if (!IsUnlocked("viewed-wreck-table"))
             {
@@ -459,7 +462,13 @@ public class PlayerProgress : MonoBehaviour
         {
             return "I need to go get some photos of the ship!";
         }
-        if (!IsUnlocked("verified-canaller"))
+
+        if (!IsUnlocked("verified-canaller") && UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != "DocumentScene")
+        {
+            return null;
+        }
+
+        if (!IsUnlocked("verified-canaller") && UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "DocumentScene")
         {
             return "I have a photo of the shape of the ship.\nCan I figure out what type of ship it is?";
         }
