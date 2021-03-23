@@ -13,6 +13,10 @@ public class Ship : MonoBehaviour
     {
         step = Time.deltaTime / Mathf.PI;
         PlayerProgress.instance.Unlock("ship-on-lake");
+        if (PlayerProgress.instance.IsUnlocked("been-to-dive"))
+        {
+            transform.position = new Vector3(transform.position.x + 450, transform.position.y, transform.position.z);
+        }
     }
 
     // Update is called once per frame

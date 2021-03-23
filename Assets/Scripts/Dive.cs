@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Dive : MonoBehaviour
 {
     public static bool mouseOnDive;
+    public GameObject buoy;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,12 +23,18 @@ public class Dive : MonoBehaviour
         mouseOnDive = false;
     }
 
+    public void BeenToDive()
+    {
+        PlayerProgress.instance.Unlock("been-to-dive");
+    }
+
     // Update is called once per frame
     void Update()
     {
         if (Ship.count > 80)
         {
             GetComponent<Button>().interactable = true;
+            buoy.SetActive(true);
             PlayerProgress.instance.Unlock("sonar-complete");
         }
     }

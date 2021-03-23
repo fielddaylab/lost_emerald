@@ -31,8 +31,10 @@ public class CameraControls : MonoBehaviour
     public float requiredDistance;
     public string unlockKey;
     public GameObject surfaceButton;
+    public GameObject ascendButton;
     public Button journalIcon;
     public GameObject journalBook;
+    public Image CameraButtonImage;
 
     enum CameraState
     {
@@ -185,13 +187,22 @@ public class CameraControls : MonoBehaviour
         {
             if (cameraState == CameraState.CAMERA_TOP)
             {
-                surfaceButton.GetComponentInChildren<Text>().text = "Ascend ^";
+                surfaceButton.SetActive(false);
+                ascendButton.SetActive(true);
+                ascendButton.GetComponentInChildren<Button>().onClick.AddListener(SwitchPerspective);
                 Routine.Start(this, AnimateCamera(CameraState.CAMERA_TOP_TO_SIDE, 1.0f, 0.0f, CameraState.CAMERA_SIDE));
+                leftButton.gameObject.SetActive(true);
+                rightButton.gameObject.SetActive(true);
+                perspectiveButton.gameObject.SetActive(false);
             }
             else
             {
-                surfaceButton.GetComponentInChildren<Text>().text = "Surface ^";
+                surfaceButton.SetActive(true);
+                ascendButton.SetActive(false);
                 Routine.Start(this, AnimateCamera(CameraState.CAMERA_SIDE_TO_TOP, 0.0f, 1.0f, CameraState.CAMERA_TOP));
+                leftButton.gameObject.SetActive(false);
+                rightButton.gameObject.SetActive(false);
+                perspectiveButton.gameObject.SetActive(true);
             }
         }
     }
@@ -220,12 +231,16 @@ public class CameraControls : MonoBehaviour
             zoomSlider.gameObject.SetActive(true);
             cameraFrame.gameObject.SetActive(true);
             photoButton.gameObject.SetActive(true);
+            CameraButtonImage.sprite = Resources.Load<Sprite>("Camera/camera-button-close");
         }
         else
         {
-            leftButton.gameObject.SetActive(true);
-            rightButton.gameObject.SetActive(true);
-            if (PlayerProgress.instance.IsUnlocked("photo-birds-eye"))
+            if (cameraState == CameraState.CAMERA_SIDE)
+            {
+                leftButton.gameObject.SetActive(true);
+                rightButton.gameObject.SetActive(true);
+            }
+            if (PlayerProgress.instance.IsUnlocked("photo-birds-eye") && cameraState == CameraState.CAMERA_TOP)
             {
                 perspectiveButton.gameObject.SetActive(true);
             }
@@ -239,6 +254,7 @@ public class CameraControls : MonoBehaviour
             panPointerSaveX = 0f;
             panPointerSaveY = 0f;
             zoomSlider.value = 0f;
+            CameraButtonImage.sprite = Resources.Load<Sprite>("Camera/icon-from-camera");
         }
         photoResult.SetActive(false);
     }

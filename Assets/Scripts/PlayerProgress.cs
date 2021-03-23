@@ -405,13 +405,13 @@ public class PlayerProgress : MonoBehaviour
             {
                 return "Better get a picture of the whole wreck while I’m here.\nI'll start with a picture of the ship from above.";
             }
-            else if (!IsUnlocked("photo-iron-knees"))
+            else if (!IsUnlocked("photo-iron-knees") && !IsUnlocked("CAMERA_SIDE"))
             {
                 return "Welp, better dive down further";
             }
             else
             {
-                return "I have all the pictures I need. Time to head back to the office!";
+                return null;
             }
         }
 
