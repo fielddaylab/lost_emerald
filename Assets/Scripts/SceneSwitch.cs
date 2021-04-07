@@ -7,12 +7,14 @@ public class SceneSwitch : MonoBehaviour
 {
     public void GotoDocuments()
     {
+        PlayerProgress.instance.SetPrevSceneName(SceneManager.GetActiveScene().name);
         PlayerProgress.instance.ClearRegistrations();
         SceneManager.LoadScene("DocumentScene");
     }
 
     public void GotoConversation(string dialogKey)
     {
+        PlayerProgress.instance.SetPrevSceneName(SceneManager.GetActiveScene().name);
         PlayerProgress.instance.ClearRegistrations();
         PlayerProgress.instance.SetDialogKey(dialogKey);
         SceneManager.LoadScene("ConversationInterface");
@@ -20,6 +22,7 @@ public class SceneSwitch : MonoBehaviour
 
     public void CallCharacter(string charName)
     {
+        PlayerProgress.instance.SetPrevSceneName(SceneManager.GetActiveScene().name);
         string conversation = PlayerProgress.instance.PickConversation(charName, out string bubble);
         if (bubble != null)
         {
@@ -33,24 +36,28 @@ public class SceneSwitch : MonoBehaviour
 
     public void GotoSonar()
     {
-            PlayerProgress.instance.ClearRegistrations();
-            SceneManager.LoadScene("ShipMechanics");
+        PlayerProgress.instance.SetPrevSceneName(SceneManager.GetActiveScene().name);
+        PlayerProgress.instance.ClearRegistrations();
+        SceneManager.LoadScene("ShipMechanics");
     }
 
     public void GotoDive()
     {
+        PlayerProgress.instance.SetPrevSceneName(SceneManager.GetActiveScene().name);
         PlayerProgress.instance.ClearRegistrations();
         SceneManager.LoadScene("LaSalleTestScene_RealtimeLighting");
     }
 
     public void GotoDesk()
     {
+        PlayerProgress.instance.SetPrevSceneName(SceneManager.GetActiveScene().name);
         PlayerProgress.instance.ClearRegistrations();
         SceneManager.LoadScene("OfficeDesk");
     }
 
     public void GotoLevelEnding()
     {
+        PlayerProgress.instance.SetPrevSceneName(SceneManager.GetActiveScene().name);
         PlayerProgress.instance.ClearRegistrations();
         SceneManager.LoadScene("LevelEnding");
     }
