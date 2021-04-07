@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b4d6a54bc4a82f64995a750a9ca27fb3, type: 3}
-  m_Name: ui.click
+  m_Name: Test Audio Event
   m_EditorClassIdentifier: 
   m_Clips:
-  - {fileID: 8300000, guid: 547a671f192b91747a29d0b726edd164, type: 3}
+  - {fileID: 0}
   m_Volume:
     Base: 1
     ModifierMin: 0
     ModifierMax: 0
   m_Pitch:
     Base: 1
-    ModifierMin: -0.05
-    ModifierMax: 0.05
+    ModifierMin: 0
+    ModifierMax: 0
   m_Delay:
     Base: 0
     ModifierMin: 0
     ModifierMax: 0
   m_Loop: 0
-  m_RandomizeStartingPosition: 1
+  m_RandomizeStartingPosition: 0
