@@ -1,9 +1,37 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using FieldDay;
 using UnityEngine;
 
 public class Logging : MonoBehaviour
 {
+    #region Firebase JS Functions
+
+    [DllImport("__Internal")]
+    public static extern void FBMissionStart(string missionId);
+    [DllImport("__Internal")]
+    public static extern void FBViewTab(string missionId, string tabName);
+    [DllImport("__Internal")]
+    public static extern void FBViewDesk(string missionId);
+    [DllImport("__Internal")]
+    public static extern void FBViewChat(string missionId, string chatName);
+    [DllImport("__Internal")]
+    public static extern void FBOpenMap(string missionId);
+    [DllImport("__Internal")]
+    public static extern void FBScanStart(string missionId);
+    [DllImport("__Internal")]
+    public static extern void FBScanComplete(string missionId);
+    [DllImport("__Internal")]
+    public static extern void FBDiveStart(string missionId);
+    [DllImport("__Internal")]
+    public static extern void FBPlayerUnlock(string missionId, string unlockKey);
+    [DllImport("__Internal")]
+    public static extern void FBUpdateShipOverview(string missionId, string targetKey, string infoKey, string infoDisplay, string sourceDisplay);
+    [DllImport("__Internal")]
+    public static extern void FBMissionComplete(string missionId);
+
+    #endregion // Firebase JS Functions
+
     public static Logging instance;
 
     private SimpleLog logger;
@@ -48,6 +76,7 @@ public class Logging : MonoBehaviour
         };
 
         logger.Log(new LogEvent(data, eventCategories.mission_start));
+        FBMissionStart(missionId);
     }
 
     public void LogViewTab(string missionId, string tabName)
@@ -59,6 +88,7 @@ public class Logging : MonoBehaviour
         };
 
         logger.Log(new LogEvent(data, eventCategories.view_tab));
+        FBViewTab(missionId, tabName);
     }
 
     public void LogViewDesk(string missionId)
@@ -69,6 +99,7 @@ public class Logging : MonoBehaviour
         };
 
         logger.Log(new LogEvent(data, eventCategories.view_desk));
+        FBViewDesk(missionId);
     }
 
     public void LogViewChat(string missionId, string chatName)
@@ -80,6 +111,7 @@ public class Logging : MonoBehaviour
         };
 
         logger.Log(new LogEvent(data, eventCategories.mission_start));
+        FBViewChat(missionId, chatName);
     }
 
     public void LogOpenMap(string missionId)
@@ -90,6 +122,7 @@ public class Logging : MonoBehaviour
         };
 
         logger.Log(new LogEvent(data, eventCategories.open_map));
+        FBOpenMap(missionId);
     }
 
     public void LogScanStart(string missionId)
@@ -100,6 +133,7 @@ public class Logging : MonoBehaviour
         };
 
         logger.Log(new LogEvent(data, eventCategories.scan_start));
+        FBScanStart(missionId);
     }
 
     public void LogScanComplete(string missionId)
@@ -110,6 +144,7 @@ public class Logging : MonoBehaviour
         };
 
         logger.Log(new LogEvent(data, eventCategories.scan_complete));
+        FBScanComplete(missionId);
     }
 
     public void LogDiveStart(string missionId)
@@ -120,23 +155,26 @@ public class Logging : MonoBehaviour
         };
 
         logger.Log(new LogEvent(data, eventCategories.dive_start));
+        FBDiveStart(missionId);
     }
 
-    public void LogPlayerUnlock(string mission_id, string unlock_key)
+    public void LogPlayerUnlock(string missionId, string unlockKey)
     {
         Dictionary<string, string> data = new Dictionary<string, string>()
         {
-            { "mission_id", mission_id },
-            { "unlock_key", unlock_key }
+            { "mission_id", missionId },
+            { "unlock_key", unlockKey }
         };
 
         logger.Log(new LogEvent(data, eventCategories.player_unlock));
+        FBPlayerUnlock(missionId, unlockKey);
     }
 
-    public void LogUpdateShipOverview(string targetKey, string infoKey, string infoDisplay, string sourceDisplay)
+    public void LogUpdateShipOverview(string missionId, string targetKey, string infoKey, string infoDisplay, string sourceDisplay)
     {
         Dictionary<string, string> data = new Dictionary<string, string>()
         {
+            { "mission_id", missionId },
             { "targetKey", targetKey },
             { "infoKey", infoKey },
             { "infoDisplay", infoDisplay },
@@ -144,6 +182,7 @@ public class Logging : MonoBehaviour
         };
 
         logger.Log(new LogEvent(data, eventCategories.update_ship_overview));
+        FBUpdateShipOverview(missionId, targetKey, infoKey, infoDisplay, sourceDisplay);
     }
 
     public void LogMissionComplete(string missionId)
@@ -154,5 +193,6 @@ public class Logging : MonoBehaviour
         };
 
         logger.Log(new LogEvent(data, eventCategories.mission_complete));
+        FBMissionComplete(missionId);
     }
 }
