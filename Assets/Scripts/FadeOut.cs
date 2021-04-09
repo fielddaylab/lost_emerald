@@ -1,24 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using ShipAudio;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class FadeOut : MonoBehaviour
 {
-    AudioSource audioSource;
+    [SerializeField] string audioName;
     [SerializeField] GameObject toShow;
     [SerializeField] GameObject toHide;
     [SerializeField] bool sonar;
+    
+    AudioHandle audioPlayback;
     // Start is called before the first frame update
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        audioPlayback = AudioMgr.Instance.PostEvent(audioName);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!audioSource.isPlaying)
+        if (!audioPlayback.IsPlaying())
         {
             if (sonar)
             {

@@ -213,7 +213,7 @@ public class CameraControls : MonoBehaviour
         journalBook.SetActive(true);
     }
 
-    void CloseJournal()
+    public void CloseJournal()
     {
         journalIcon.gameObject.SetActive(true);
         journalBook.SetActive(false);

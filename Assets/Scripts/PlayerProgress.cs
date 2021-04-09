@@ -28,6 +28,7 @@ public class PlayerProgress : MonoBehaviour
     private List<PhotoSlot> photoSlots = new List<PhotoSlot>();
     private ShipOutButton shipOutButton;
     private string divePerspective;
+    private string prevSceneName;
 
     void Awake()
     {
@@ -200,7 +201,7 @@ public class PlayerProgress : MonoBehaviour
         }
         else if (symbol.notificationKey == "dive-ready")
         {
-            showNotification = IsUnlocked("sonar-complete");
+            showNotification = IsUnlocked("sonar-complete") && prevSceneName != "LaSalleTestScene_RealtimeLighting";
         }
         symbol.gameObject.SetActive(showNotification);
     }
@@ -555,12 +556,6 @@ public class PlayerProgress : MonoBehaviour
         {
             bubble.GetComponentInChildren<TextMeshProUGUI>().text = thought;
             bubble.gameObject.SetActive(true);
-            if (thought == "Let's see. Where's that GPS location?" ||
-                thought == "The List of Wrecks should help me narrow things down." ||
-                thought == "I have a photo of the shape of the ship.\nCan I figure out what type of ship it is?")
-            {
-                bubble.animate = true;
-            }
         }
     }
 
@@ -588,6 +583,11 @@ public class PlayerProgress : MonoBehaviour
         playerUnlocks.Remove(divePerspective);
         divePerspective = cameraState;
         Unlock(cameraState);
+    }
+
+    public void SetPrevSceneName(string prevScene)
+    {
+        prevSceneName = prevScene;
     }
 
     IEnumerator ResetTemporaryThought(string thought)

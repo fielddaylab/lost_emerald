@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
+  companyName: Field Day Lab
   productName: shipwrecks
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -591,12 +591,13 @@ PlayerSettings:
   il2cppCompilerConfiguration: {}
   managedStrippingLevel: {}
   incrementalIl2cppBuild: {}
-  allowUnsafeCode: 0
+  allowUnsafeCode: 1
   additionalIl2CppArgs: 
   scriptingRuntimeVersion: 1
   gcIncremental: 0
   gcWBarrierValidation: 0
-  apiCompatibilityLevelPerPlatform: {}
+  apiCompatibilityLevelPerPlatform:
+    WebGL: 3
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
   metroPackageName: Template_3D
