@@ -31,7 +31,7 @@ mergeInto(LibraryManager.library, {
         var chatName = Pointer_stringify(chatName);
 
         analytics.logEvent("view_chat", {
-            mission_id: missionid,
+            mission_id: missionId,
             chat_name: chatName
         });
     },
@@ -55,7 +55,7 @@ mergeInto(LibraryManager.library, {
     FBScanComplete: function(missionId) {
         var missionId = Pointer_stringify(missionId);
 
-        analytics.LogEvent("scan_complete", {
+        analytics.logEvent("scan_complete", {
             mission_id: missionId
         });
     },
@@ -63,7 +63,7 @@ mergeInto(LibraryManager.library, {
     FBDiveStart: function(missionId) {
         var missionId = Pointer_stringify(missionId);
 
-        analytics.LogEvent("dive_start", {
+        analytics.logEvent("dive_start", {
             mission_id: missionId
         });
     },
@@ -72,7 +72,7 @@ mergeInto(LibraryManager.library, {
         var missionId = Pointer_stringify(missionId);
         var unlockKey = Pointer_stringify(unlockKey);
 
-        analytics.LogEvent("player_unlock", {
+        analytics.logEvent("player_unlock", {
             mission_id: missionId,
             unlock_key: unlockKey
         });
@@ -85,7 +85,7 @@ mergeInto(LibraryManager.library, {
         var infoDisplay = Pointer_stringify(infoDisplay);
         var sourceDisplay = Pointer_stringify(sourceDisplay);
 
-        analytics.LogEvent("update_ship_overview", {
+        analytics.logEvent("update_ship_overview", {
             mission_id: missionId,
             target_key: targetKey,
             info_key: infoKey,
@@ -97,7 +97,7 @@ mergeInto(LibraryManager.library, {
     FBMissionComplete: function(missionId) {
         var missionId = Pointer_stringify(missionId);
 
-        analytics.LogEvent("mission_complete", {
+        analytics.logEvent("mission_complete", {
             mission_id: missionId
         });
     }

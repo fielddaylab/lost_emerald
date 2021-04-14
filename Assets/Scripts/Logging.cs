@@ -60,7 +60,7 @@ public class Logging : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(this);
-            logger = new SimpleLog(appId, appVersion, null);
+            //logger = new SimpleLog(appId, appVersion, null);
         }
         else
         {
@@ -75,7 +75,7 @@ public class Logging : MonoBehaviour
             { "mission_id", missionId }
         };
 
-        logger.Log(new LogEvent(data, eventCategories.mission_start));
+        //logger.Log(new LogEvent(data, eventCategories.mission_start));
         FBMissionStart(missionId);
     }
 
@@ -87,7 +87,7 @@ public class Logging : MonoBehaviour
             { "tab_name", tabName}
         };
 
-        logger.Log(new LogEvent(data, eventCategories.view_tab));
+        //logger.Log(new LogEvent(data, eventCategories.view_tab));
         FBViewTab(missionId, tabName);
     }
 
@@ -98,7 +98,7 @@ public class Logging : MonoBehaviour
             { "mission_id", missionId }
         };
 
-        logger.Log(new LogEvent(data, eventCategories.view_desk));
+        //logger.Log(new LogEvent(data, eventCategories.view_desk));
         FBViewDesk(missionId);
     }
 
@@ -110,7 +110,7 @@ public class Logging : MonoBehaviour
             { "chat_name", chatName }
         };
 
-        logger.Log(new LogEvent(data, eventCategories.mission_start));
+        //logger.Log(new LogEvent(data, eventCategories.mission_start));
         FBViewChat(missionId, chatName);
     }
 
@@ -121,7 +121,7 @@ public class Logging : MonoBehaviour
             { "mission_id", missionId }
         };
 
-        logger.Log(new LogEvent(data, eventCategories.open_map));
+        //logger.Log(new LogEvent(data, eventCategories.open_map));
         FBOpenMap(missionId);
     }
 
@@ -132,7 +132,7 @@ public class Logging : MonoBehaviour
             { "mission_id", missionId }
         };
 
-        logger.Log(new LogEvent(data, eventCategories.scan_start));
+        //logger.Log(new LogEvent(data, eventCategories.scan_start));
         FBScanStart(missionId);
     }
 
@@ -143,7 +143,7 @@ public class Logging : MonoBehaviour
             { "mission_id", missionId }
         };
 
-        logger.Log(new LogEvent(data, eventCategories.scan_complete));
+        //logger.Log(new LogEvent(data, eventCategories.scan_complete));
         FBScanComplete(missionId);
     }
 
@@ -154,7 +154,7 @@ public class Logging : MonoBehaviour
             { "mission_id", missionId }
         };
 
-        logger.Log(new LogEvent(data, eventCategories.dive_start));
+        //logger.Log(new LogEvent(data, eventCategories.dive_start));
         FBDiveStart(missionId);
     }
 
@@ -166,7 +166,7 @@ public class Logging : MonoBehaviour
             { "unlock_key", unlockKey }
         };
 
-        logger.Log(new LogEvent(data, eventCategories.player_unlock));
+        //logger.Log(new LogEvent(data, eventCategories.player_unlock));
         FBPlayerUnlock(missionId, unlockKey);
     }
 
@@ -181,7 +181,7 @@ public class Logging : MonoBehaviour
             { "sourceDisplay", sourceDisplay }
         };
 
-        logger.Log(new LogEvent(data, eventCategories.update_ship_overview));
+        //logger.Log(new LogEvent(data, eventCategories.update_ship_overview));
         FBUpdateShipOverview(missionId, targetKey, infoKey, infoDisplay, sourceDisplay);
     }
 
@@ -192,7 +192,7 @@ public class Logging : MonoBehaviour
             { "mission_id", missionId }
         };
 
-        logger.Log(new LogEvent(data, eventCategories.mission_complete));
+        //logger.Log(new LogEvent(data, eventCategories.mission_complete));
         FBMissionComplete(missionId);
     }
 }
