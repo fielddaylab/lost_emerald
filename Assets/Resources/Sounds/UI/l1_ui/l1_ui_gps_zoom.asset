@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4d6a54bc4a82f64995a750a9ca27fb3, type: 3}
+  m_Name: l1_ui_gps_zoom
+  m_EditorClassIdentifier: 
+  m_Clips:
+  - {fileID: 8300000, guid: 1b124b0dd58d241bb871875f82993924, type: 3}
+  - {fileID: 8300000, guid: 05744ba88c7ef45b7bbff365ad4e5c82, type: 3}
+  - {fileID: 8300000, guid: 2730c59faf6df4edd8ff77ec04a644f8, type: 3}
+  m_Volume:
+    Base: 1
+    ModifierMin: 0.08
+    ModifierMax: 0.15
+  m_Pitch:
+    Base: 0.94
+    ModifierMin: -0.08
+    ModifierMax: 0.2
+  m_Delay:
+    Base: 0
+    ModifierMin: 0
+    ModifierMax: 0
+  m_Loop: 0
+  m_RandomizeStartingPosition: 0

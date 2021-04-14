@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4d6a54bc4a82f64995a750a9ca27fb3, type: 3}
+  m_Name: l1_ui_EvidenceWrong
+  m_EditorClassIdentifier: 
+  m_Clips:
+  - {fileID: 8300000, guid: e6a767c273f5d4c46845904e97873bdc, type: 3}
+  - {fileID: 8300000, guid: 9e5c2a0d19c27442e89ee8d3a2730b15, type: 3}
+  - {fileID: 8300000, guid: 6cd135b7d6bf347b4a8e095d3f9635b9, type: 3}
+  m_Volume:
+    Base: 0.4
+    ModifierMin: 0
+    ModifierMax: 0
+  m_Pitch:
+    Base: 1
+    ModifierMin: 0
+    ModifierMax: 0
+  m_Delay:
+    Base: 0
+    ModifierMin: 0
+    ModifierMax: 0
+  m_Loop: 0
+  m_RandomizeStartingPosition: 0

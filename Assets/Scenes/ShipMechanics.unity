@@ -2534,6 +2534,7 @@ GameObject:
   - component: {fileID: 462920279}
   - component: {fileID: 462920283}
   - component: {fileID: 462920282}
+  - component: {fileID: 462920280}
   m_Layer: 5
   m_Name: LakeMichiganMapZoomed
   m_TagString: Untagged
@@ -2563,6 +2564,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0.0602417, y: 0.000030517578}
   m_SizeDelta: {x: 1066.1538, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &462920280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462920278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be62ca4a25ba91d49bbec771849d3d48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EventId: l1_amb_gps_map
+  m_Crossfade: 0
 --- !u!114 &462920282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5098,6 +5113,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &802840551
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 802840554}
+  - component: {fileID: 802840553}
+  m_Layer: 0
+  m_Name: Ship Mechanics Audio Package Loader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &802840553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802840551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3393718cd12265f44b0564113e400f90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Packages:
+  - {fileID: 11400000, guid: 9ac3befdbd3ca47b7ace4c51a1a98ea7, type: 2}
+  - {fileID: 11400000, guid: 825b8bfca4c8d4af8bf59bc9f3e32736, type: 2}
+  - {fileID: 11400000, guid: a2c7d203238a24d02b6c699e1a8ad451, type: 2}
+--- !u!4 &802840554
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802840551}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &816984686
 GameObject:
@@ -9026,7 +9088,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 517475bf6797f40d0bfc6780c1618daa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioName: diveAudio
+  audioName: l1_transition_dive 1
   toShow: {fileID: 2041306474}
   toHide: {fileID: 243264032}
   sonar: 0
@@ -9634,6 +9696,7 @@ GameObject:
   - component: {fileID: 1332357658}
   - component: {fileID: 1332357657}
   - component: {fileID: 1332357656}
+  - component: {fileID: 1332357660}
   - component: {fileID: 1332357659}
   m_Layer: 5
   m_Name: Button
@@ -9765,6 +9828,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82a735f610e7c458180baa479d8f4aeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1332357660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1332357654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4a96162d08b16f47a1ebdafcabc97be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Selectable: {fileID: 1332357656}
+  m_EnterEvent: 
+  m_ExitEvent: 
+  m_DownEvent: 
+  m_UpEvent: 
+  m_ClickEvent: l1_ui_GenericButtonClick 1
 --- !u!1 &1354910119
 GameObject:
   m_ObjectHideFlags: 0
@@ -11265,6 +11346,7 @@ GameObject:
   - component: {fileID: 1567377890}
   - component: {fileID: 1567377889}
   - component: {fileID: 1567377888}
+  - component: {fileID: 1567377892}
   m_Layer: 5
   m_Name: Marker
   m_TagString: Untagged
@@ -11409,6 +11491,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1567377886}
   m_CullTransparentMesh: 0
+--- !u!114 &1567377892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567377886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4a96162d08b16f47a1ebdafcabc97be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Selectable: {fileID: 0}
+  m_EnterEvent: l1_ui_gps_hover
+  m_ExitEvent: 
+  m_DownEvent: 
+  m_UpEvent: 
+  m_ClickEvent: l1_ui_gps_zoom
 --- !u!1 &1602223228
 GameObject:
   m_ObjectHideFlags: 0
@@ -12945,6 +13045,7 @@ GameObject:
   - component: {fileID: 1779016364}
   - component: {fileID: 1779016366}
   - component: {fileID: 1779016365}
+  - component: {fileID: 1779016367}
   m_Layer: 5
   m_Name: Buoy
   m_TagString: Untagged
@@ -13008,6 +13109,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1779016363}
   m_CullTransparentMesh: 0
+--- !u!114 &1779016367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1779016363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1600d3bbc2d6b1d4fb225a2e1738c92e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EventId: l1_ui_BouyAlert
 --- !u!1 &1781895569
 GameObject:
   m_ObjectHideFlags: 0
@@ -14111,6 +14225,7 @@ GameObject:
   - component: {fileID: 1973188004}
   - component: {fileID: 1973188003}
   - component: {fileID: 1973188002}
+  - component: {fileID: 1973188006}
   m_Layer: 5
   m_Name: ZoomOut
   m_TagString: Untagged
@@ -14252,6 +14367,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1973188000}
   m_CullTransparentMesh: 0
+--- !u!114 &1973188006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973188000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4a96162d08b16f47a1ebdafcabc97be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Selectable: {fileID: 1267146544}
+  m_EnterEvent: 
+  m_ExitEvent: 
+  m_DownEvent: 
+  m_UpEvent: 
+  m_ClickEvent: l1_ui_gps_zoom
 --- !u!1 &1976057445
 GameObject:
   m_ObjectHideFlags: 0
@@ -14611,6 +14744,7 @@ GameObject:
   - component: {fileID: 1999597811}
   - component: {fileID: 1999597813}
   - component: {fileID: 1999597812}
+  - component: {fileID: 1999597814}
   m_Layer: 5
   m_Name: LakeMichiganMap
   m_TagString: Untagged
@@ -14678,6 +14812,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1999597810}
   m_CullTransparentMesh: 0
+--- !u!114 &1999597814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999597810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1600d3bbc2d6b1d4fb225a2e1738c92e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EventId: l1_amb_gps_map
 --- !u!1 &2015098153
 GameObject:
   m_ObjectHideFlags: 0
@@ -14890,6 +15037,8 @@ GameObject:
   - component: {fileID: 2041306475}
   - component: {fileID: 2041306477}
   - component: {fileID: 2041306476}
+  - component: {fileID: 2041306478}
+  - component: {fileID: 2041306479}
   m_Layer: 5
   m_Name: ShipOut
   m_TagString: Untagged
@@ -15057,6 +15206,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2041306474}
   m_CullTransparentMesh: 0
+--- !u!114 &2041306478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2041306474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1600d3bbc2d6b1d4fb225a2e1738c92e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EventId: l1_ui_sonar2
+--- !u!114 &2041306479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2041306474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be62ca4a25ba91d49bbec771849d3d48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EventId: l1_amb_boat_surface
+  m_Crossfade: 0
 --- !u!1 &2041987733
 GameObject:
   m_ObjectHideFlags: 0
@@ -15100,7 +15276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 517475bf6797f40d0bfc6780c1618daa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioName: shipOutAudio
+  audioName: l1_transition_shipout2
   toShow: {fileID: 2041306474}
   toHide: {fileID: 1824717694}
   sonar: 1
@@ -15117,6 +15293,7 @@ GameObject:
   - component: {fileID: 2051424788}
   - component: {fileID: 2051424787}
   - component: {fileID: 2051424786}
+  - component: {fileID: 2051424790}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -15247,6 +15424,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2051424784}
   m_CullTransparentMesh: 0
+--- !u!114 &2051424790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2051424784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4a96162d08b16f47a1ebdafcabc97be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Selectable: {fileID: 2051424787}
+  m_EnterEvent: 
+  m_ExitEvent: 
+  m_DownEvent: 
+  m_UpEvent: 
+  m_ClickEvent: l1_ui_GenericButtonClick 1
 --- !u!1 &2056084977
 GameObject:
   m_ObjectHideFlags: 0

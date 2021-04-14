@@ -613,6 +613,7 @@ GameObject:
   - component: {fileID: 401623252}
   - component: {fileID: 401623251}
   - component: {fileID: 401623250}
+  - component: {fileID: 401623254}
   m_Layer: 5
   m_Name: Send Button
   m_TagString: Untagged
@@ -732,6 +733,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 401623248}
   m_CullTransparentMesh: 0
+--- !u!114 &401623254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401623248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4a96162d08b16f47a1ebdafcabc97be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Selectable: {fileID: 401623251}
+  m_EnterEvent: 
+  m_ExitEvent: 
+  m_DownEvent: 
+  m_UpEvent: 
+  m_ClickEvent: l1_ui_TextSend 1
 --- !u!1 &402369645
 GameObject:
   m_ObjectHideFlags: 0
@@ -810,6 +829,66 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 402369645}
   m_CullTransparentMesh: 0
+--- !u!1 &426065794
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 426065798}
+  - component: {fileID: 426065797}
+  - component: {fileID: 426065796}
+  m_Layer: 0
+  m_Name: Lous Conversation Audio Package Loader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &426065796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 426065794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3393718cd12265f44b0564113e400f90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Packages:
+  - {fileID: 11400000, guid: 825b8bfca4c8d4af8bf59bc9f3e32736, type: 2}
+  - {fileID: 11400000, guid: 9ac3befdbd3ca47b7ace4c51a1a98ea7, type: 2}
+--- !u!114 &426065797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 426065794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3393718cd12265f44b0564113e400f90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Packages: []
+--- !u!4 &426065798
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 426065794}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &546167310
 GameObject:
   m_ObjectHideFlags: 0
@@ -1768,6 +1847,7 @@ GameObject:
   - component: {fileID: 1809075826}
   - component: {fileID: 1809075825}
   - component: {fileID: 1809075827}
+  - component: {fileID: 1809075828}
   m_Layer: 5
   m_Name: TemplateExit
   m_TagString: Untagged
@@ -1877,6 +1957,24 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1809075828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1809075823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4a96162d08b16f47a1ebdafcabc97be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Selectable: {fileID: 1809075827}
+  m_EnterEvent: 
+  m_ExitEvent: 
+  m_DownEvent: 
+  m_UpEvent: 
+  m_ClickEvent: l1_ui_ButtonClick 2A
 --- !u!1 &1834679498
 GameObject:
   m_ObjectHideFlags: 0

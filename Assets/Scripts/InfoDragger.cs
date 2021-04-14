@@ -130,10 +130,12 @@ public class InfoDragger : MonoBehaviour
                         sourceDisplay = documentName
                     };
                     PlayerProgress.instance?.DropInfo(target, entry);
+                    ShipAudio.AudioMgr.Instance.PostEvent("l1_ui_EvidenceRight");
                 }
                 else
                 {
                     PlayerProgress.instance?.TemporaryBubble("Hmm… how do I know that's correct?");
+                    ShipAudio.AudioMgr.Instance.PostEvent("l1_ui_EvidenceWrong");
                 }
                 break;
             }
