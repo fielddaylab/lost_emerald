@@ -550,7 +550,12 @@ public class PlayerProgress : MonoBehaviour
         }
         else
         {
-            bubble.GetComponentInChildren<TextMeshProUGUI>().text = thought;
+            TextMeshProUGUI textMesh = bubble.GetComponentInChildren<TextMeshProUGUI>();
+            textMesh.text = thought;
+            Vector2 size = textMesh.GetPreferredValues(600, 50);
+            RectTransform rect = bubble.GetComponent<RectTransform>();
+            rect.sizeDelta = new Vector2(size.x + 40, size.y + 20);
+
             bubble.gameObject.SetActive(true);
         }
     }
