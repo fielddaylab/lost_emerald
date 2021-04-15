@@ -29,6 +29,8 @@ public class PlayerProgress : MonoBehaviour
     private ShipOutButton shipOutButton;
     private string divePerspective;
     private string prevSceneName;
+    private string currentLevelID = "loretta";
+    private LevelBase currentLevel = new LevelLoretta();
 
     void Awake()
     {
@@ -43,17 +45,26 @@ public class PlayerProgress : MonoBehaviour
         }
     }
 
-    //// Start is called before the first frame update
-    //void Start()
-    //{
-        
-    //}
+    public string GetCurrentLevel()
+    {
+        return currentLevelID;
+    }
 
-    //// Update is called once per frame
-    //void Update()
-    //{
-        
-    //}
+    public void LoadLevel(string levelID)
+    {
+        currentLevelID = levelID;
+        if (currentLevelID == "loretta")
+        {
+            currentLevel = new LevelLoretta();
+        }
+        else if (currentLevelID == "level2")
+        {
+            currentLevel = new Level2();
+        }
+
+        shipLog.Clear();
+        playerUnlocks.Clear();
+    }
 
     public void FillInfo(InfoDropTarget target)
     {
@@ -101,108 +112,16 @@ public class PlayerProgress : MonoBehaviour
 
     private void UpdateCheckbox(CheckboxSymbol symbol)
     {
-        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "LaSalleTestScene_RealtimeLighting")
+        bool check = currentLevel.CheckboxStatus(this, symbol.checkboxKey);
+        if (check)
         {
-            if (symbol.checkboxKey == "dive-photo" && IsUnlocked("photo-birds-eye"))
-            {
-                symbol.GetComponent<Image>().sprite = Resources.Load<Sprite>("icon-check");
-            }
-
-            if (symbol.checkboxKey == "defining-feature" && IsUnlocked("photo-iron-knees"))
-            {
-                symbol.GetComponent<Image>().sprite = Resources.Load<Sprite>("icon-check");
-            }
+            symbol.GetComponent<Image>().sprite = Resources.Load<Sprite>("icon-check");
         }
     }
 
     private void UpdateNotification(NotificationSymbol symbol)
     {
-        bool showNotification = false;
-        if (symbol.notificationKey == "lou-intro")
-        {
-            showNotification = !IsUnlocked("intro-transcript");
-        }
-        if (symbol.notificationKey == "any-contact")
-        {
-            showNotification = HasConversation("lou") || HasConversation("amy") || HasConversation("rusty");
-        }
-        else if (symbol.notificationKey == "lou")
-        {
-            showNotification = HasConversation("lou");
-        }
-        else if (symbol.notificationKey == "amy")
-        {
-            showNotification = HasConversation("amy");
-        }
-        else if (symbol.notificationKey == "rusty")
-        {
-            showNotification = HasConversation("rusty");
-        }
-        else if (symbol.notificationKey == "lou-coords-transcript")
-        {
-            showNotification = !IsUnlocked("viewed-intro-transcript");
-        }
-        else if (symbol.notificationKey == "any-document" && !(IsUnlocked("verified-loretta") && IsUnlocked("verified-canaller")))
-        {
-            if (IsUnlocked("verified-canaller"))
-            {
-                showNotification = IsUnlocked("photo-iron-knees-dragged");
-            }
-            else
-            {
-                showNotification = IsUnlocked("photo-birds-eye-dragged");
-            }
-        }
-        else if (symbol.notificationKey == "wrecks" && !IsUnlocked("viewed-wreck-table"))
-        {
-            showNotification = IsUnlocked("wreck-table");
-        }
-        else if (symbol.notificationKey == "ship-out" && !IsUnlocked("photo-birds-eye"))
-        {
-            showNotification = IsUnlocked("viewed-wreck-table");
-        }
-        else if (symbol.notificationKey == "evidence-builder" && IsUnlocked("photo-birds-eye") && !IsUnlocked("EvidenceBuilder"))
-        {
-            if (IsUnlocked("rusty-transcript"))
-            {
-                showNotification = !IsUnlocked("verified-loretta");
-            }
-            else
-            {
-                showNotification = !IsUnlocked("verified-canaller");
-            }
-        }
-        else if (symbol.notificationKey == "rusty-convo-doc")
-        {
-            showNotification = IsUnlocked("photo-iron-knees-dragged") && !IsUnlocked("verified-loretta");
-        }
-        else if (symbol.notificationKey == "image" && IsUnlocked("photo-birds-eye"))
-        {
-            if (IsUnlocked("rusty-transcript") && !IsUnlocked("photo-iron-knees-dragged"))
-            {
-                showNotification = !IsUnlocked("verified-loretta");
-            }
-            else
-            {
-                showNotification = !IsUnlocked("verified-canaller") && !IsUnlocked("photo-birds-eye-dragged");
-            }
-        }
-        else if (symbol.notificationKey == "evidence")
-        {
-            showNotification = (IsUnlocked("verified-canaller") && !shipLog.ContainsKey("TypeBox")) || (IsUnlocked("verified-loretta") && !shipLog.ContainsKey("NameBox"));
-        }
-        else if (symbol.notificationKey == "perspective")
-        {
-            showNotification = !IsUnlocked("photo-iron-knees") && IsUnlocked("photo-birds-eye") && !IsUnlocked("CAMERA_SIDE");
-        }
-        else if (symbol.notificationKey == "bird-view-thought")
-        {
-            showNotification = !IsUnlocked("photo-birds-eye");
-        }
-        else if (symbol.notificationKey == "dive-ready")
-        {
-            showNotification = IsUnlocked("sonar-complete") && prevSceneName != "LaSalleTestScene_RealtimeLighting";
-        }
+        bool showNotification = currentLevel.NotificationStatus(this, symbol.notificationKey);
         symbol.gameObject.SetActive(showNotification);
     }
 
@@ -245,13 +164,8 @@ public class PlayerProgress : MonoBehaviour
     {
         if (shipOutButton)
         {
-            shipOutButton.GetComponent<Button>().interactable = CanShipOut();
+            shipOutButton.GetComponent<Button>().interactable = currentLevel.CanShipOut(this);
         }
-    }
-
-    public bool CanShipOut()
-    {
-        return IsUnlocked("viewed-wreck-table");
     }
 
     public void DropInfo(InfoDropTarget target, InfoEntry info)
@@ -294,6 +208,11 @@ public class PlayerProgress : MonoBehaviour
         return key;
     }
 
+    public bool FilledLog(string key)
+    {
+        return shipLog.ContainsKey(key);
+    }
+
     public bool IsUnlocked(string key)
     {
         return key == null || key == "" || playerUnlocks.Contains(key);
@@ -315,214 +234,35 @@ public class PlayerProgress : MonoBehaviour
         shipOutButton = null;
     }
 
-    private bool HasConversation(string charName)
+    public bool HasConversation(string charName)
     {
         return PickConversation(charName, out string _) != null;
     }
 
     public string PickConversation(string charName, out string bubble)
     {
-        bubble = null;
-        if (charName == "lou")
-        {
-            if (!IsUnlocked("intro-transcript"))
-            {
-                return "intro";
-            }
-            else if (!ChapterComplete())
-            {
-                bubble = "Nothing I need from Lou right now.";
-                return null;
-            }
-            else if (!IsUnlocked("informed-lou"))
-            {
-                return "ending";
-            }
-        }
-        else if (charName == "amy")
-        {
-            if (!shipLog.ContainsKey("LocationBox"))
-            {
-                bubble = "I need to figure out where the wreck is before I call Amy.";
-                return null;
-            }
-            else if (!IsUnlocked("wreck-table"))
-            {
-                return "amy";
-            }
-            else if (!shipLog.ContainsKey("NameBox"))
-            {
-                bubble = "Nothing I need from Amy right now.";
-                return null;
-            }
-            else if (!IsUnlocked("dark-day"))
-            {
-                return "amy-newspaper";
-            }
-            else
-            {
-                bubble = "Nothing I need from Amy right now.";
-                return null;
-            }
-        }
-        else if (charName == "rusty")
-        {
-            if (!shipLog.ContainsKey("TypeBox"))
-            {
-                bubble = "Nothing I need from Rusty right now.";
-                return null;
-            }
-            else if (!IsUnlocked("rusty-transcript"))
-            {
-                return "shipbuilder";
-            }
-            else
-            {
-                bubble = "Nothing I need from Rusty right now.";
-                return null;
-            }
-        }
-        return null;
+        return currentLevel.PickConversation(this, charName, out bubble);
     }
 
     private string CurrentThought()
     {
-        // stuff on non-document scenes
-        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "ShipMechanics")
-        {
-            if (!IsUnlocked("ship-on-lake"))
-            {
-                return "The red dot shows the GPS location of the ship";
-            }
-            else if (!IsUnlocked("sonar-complete") && IsUnlocked("ship-on-lake"))
-            {
-                return "Use your sonar to find the ship!";
-            }
-            else if (IsUnlocked("sonar-complete") && !IsUnlocked("been-to-dive"))
-            {
-                return "Yes! There it is!";
-            }
-        }
-        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "LaSalleTestScene_RealtimeLighting")
-        {
-            if (!IsUnlocked("photo-birds-eye"))
-            {
-                return "Better get a picture of the whole wreck while I’m here.\nI'll start with a picture of the ship from above.";
-            }
-            else if (!IsUnlocked("photo-iron-knees"))
-            {
-                return "Welp, better dive down further";
-            }
-            else
-            {
-                return "I have all the pictures I need. Time to head back to the office!";
-            }
-        }
-
-        // intro sequence, before going off to the sonar
-        if (!IsUnlocked("intro-transcript"))
-        {
-            if (bubble != null && bubble.gameObject.scene.name != "OfficeDesk")
-            {
-                // fall through for testing purposes
-            }
-            else
-            {
-                return "Oh, a notification!";
-            }
-        }
-        if (!(shipLog.TryGetValue("LocationBox", out InfoEntry val) && val.infoKey == "coords"))
-        {
-            if (!IsUnlocked("viewed-intro-transcript"))
-            {
-                return "Let's see. Where's that GPS location?";
-            }
-            else
-            {
-                return "Now I can drag the coordinates over to the Location field.";
-            }
-        }
-        if (!IsUnlocked("wreck-table"))
-        {
-            return "That's right off Rawley Point! There are a bunch of ships\nthat went down around there. Better call the archivist and get a list.";
-        }
-        if (!IsUnlocked("sonar-complete"))
-        {
-            if (!IsUnlocked("viewed-wreck-table"))
-            {
-                return "The List of Wrecks should help me narrow things down.";
-            }
-            else
-            {
-                return "It has to be one of these 5 ships.\nTime to Ship Out!";
-            }
-        }
-
-        // coming back from the dive
-        if (!IsUnlocked("photo-birds-eye"))
-        {
-            return "I need to go get some photos of the ship!";
-        }
-
-        if (!IsUnlocked("verified-canaller") && UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != "DocumentScene")
-        {
-            return null;
-        }
-
-        if (!IsUnlocked("verified-canaller") && UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "DocumentScene")
-        {
-            return "I have a photo of the shape of the ship.\nCan I figure out what type of ship it is?";
-        }
-        if (!shipLog.ContainsKey("TypeBox"))
-        {
-            return "Now I can fill in what type of ship it is!";
-        }
-        if (!IsUnlocked("rusty-transcript"))
-        {
-            return "Hmm. The list had two canallers. Which one is it?\nI wonder if the ship expert I know has any clues that might help.";
-        }
-
-        // after dialog with Rusty
-        if (!IsUnlocked("photo-iron-knees"))
-        {
-            return "I need to go get a photo of the ship's knees!";
-        }
-        if (!IsUnlocked("verified-loretta"))
-        {
-            return "I took a photo of the ship's knees.\nWhich of the pictures Rusty sent matches the photo?";
-        }
-        if (!shipLog.ContainsKey("NameBox"))
-        {
-            return "Now I can fill in the name of the ship!";
-        }
-        if (!IsUnlocked("newspaper"))
-        {
-            return "Now that I know it's the Loretta, I should call the Archivist\nand see if she knows anything else about it!";
-        }
-
-        if (ChapterComplete() && !IsUnlocked("informed-lou"))
-        {
-            return "I've filled in everything!\nI should call Lou and let her know!";
-        }
-
-        return null;
+        return currentLevel.CurrentThought(this);
     }
 
     public bool ChapterComplete()
     {
-        return shipLog.ContainsKey("LocationBox")
-            && shipLog.ContainsKey("TypeBox")
-            && shipLog.ContainsKey("NameBox")
-            && shipLog.ContainsKey("FeatureBox")
-            && shipLog.ContainsKey("CauseBox")
-            && shipLog.ContainsKey("CargoBox")
-            && shipLog.ContainsKey("SecretBox");
+        return currentLevel.ChapterComplete(this);
     }
 
     public void SetThoughtBubble(ThoughtBubble newBubble)
     {
         bubble = newBubble;
         UpdateBubble();
+    }
+
+    public ThoughtBubble GetThoughtBubble()
+    {
+        return bubble;
     }
 
     public void ClearThoughtBubble(ThoughtBubble oldBubble)
@@ -589,6 +329,11 @@ public class PlayerProgress : MonoBehaviour
     public void SetPrevSceneName(string prevScene)
     {
         prevSceneName = prevScene;
+    }
+
+    public string GetPrevSceneName()
+    {
+        return prevSceneName;
     }
 
     IEnumerator ResetTemporaryThought(string thought)
