@@ -13,7 +13,7 @@ public class LevelLoretta : LevelBase
             {
                 check = true;
             }
-            if (checkboxKey == "defining-feature" && progress.IsUnlocked("photo-iron-knees"))
+            if (checkboxKey == "photo-ship-name" && progress.IsUnlocked("photo-ship-name"))
             {
                 check = true;
             }
@@ -123,7 +123,7 @@ public class LevelLoretta : LevelBase
             }
             else if (!progress.ChapterComplete())
             {
-                bubble = "Nothing I need from Lou right now.";
+                bubble = "I don't need to talk to Lou right now.";
                 return null;
             }
             else if (!progress.IsUnlocked("informed-lou"))
@@ -133,44 +133,27 @@ public class LevelLoretta : LevelBase
         }
         else if (charName == "amy")
         {
-            if (!progress.FilledLog("LocationBox"))
+            if (!progress.FilledLog("TypeBox"))
             {
-                bubble = "I need to figure out where the wreck is before I call Amy.";
+                bubble = "I don't need to talk to Amy right now.";
                 return null;
             }
             else if (!progress.IsUnlocked("wreck-table"))
             {
                 return "amy";
             }
-            else if (!progress.FilledLog("NameBox"))
+            else if (!progress.FilledLog("CargoBox"))
             {
-                bubble = "Nothing I need from Amy right now.";
+                bubble = "I don't need to talk to Amy right now.";
                 return null;
             }
-            else if (!progress.IsUnlocked("dark-day"))
+            else if (!progress.IsUnlocked("newspaper"))
             {
                 return "amy-newspaper";
             }
             else
             {
-                bubble = "Nothing I need from Amy right now.";
-                return null;
-            }
-        }
-        else if (charName == "rusty")
-        {
-            if (!progress.FilledLog("TypeBox"))
-            {
-                bubble = "Nothing I need from Rusty right now.";
-                return null;
-            }
-            else if (!progress.IsUnlocked("rusty-transcript"))
-            {
-                return "shipbuilder";
-            }
-            else
-            {
-                bubble = "Nothing I need from Rusty right now.";
+                bubble = "I don't need to talk to Amy right now.";
                 return null;
             }
         }
@@ -190,22 +173,29 @@ public class LevelLoretta : LevelBase
             }
             else if (!progress.IsUnlocked("sonar-complete") && progress.IsUnlocked("ship-on-lake"))
             {
-                return "Use your sonar to find the ship!";
+                return "Use the sonar to find the ship!";
             }
             else if (progress.IsUnlocked("sonar-complete") && !progress.IsUnlocked("been-to-dive"))
             {
-                return "Yes! There it is!";
+                return "Yes, there it is.\nI'll drop a buoy to mark the location.";
             }
         }
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "LaSalleTestScene_RealtimeLighting")
         {
             if (!progress.IsUnlocked("photo-birds-eye"))
             {
-                return "Better get a picture of the whole wreck while I’m here.\nI'll start with a picture of the ship from above.";
+                return "There it is! Better start with a photo from above.";
             }
-            else if (!progress.IsUnlocked("photo-iron-knees"))
+            else if (!progress.IsUnlocked("photo-ship-name"))
             {
-                return "Welp, better dive down further";
+                if (progress.GetDivePerspective() == "CAMERA_SIDE")
+                {
+                    return "Wow, it's so clean. No mussels!\nMust've been covered in sand til now.";
+                }
+                else
+                {
+                    return "Better dive down and take more photos.";
+                }
             }
             else
             {
@@ -229,27 +219,16 @@ public class LevelLoretta : LevelBase
         {
             if (!progress.IsUnlocked("viewed-intro-transcript"))
             {
-                return "Let's see. Where's that GPS location?";
+                return "My chat with Lou should be in my Documents folder.";
             }
             else
             {
-                return "Now I can drag the coordinates over to the Location field.";
+                return "I need to drag over the GPS location.";
             }
         }
-        if (!progress.IsUnlocked("wreck-table"))
+        if (!progress.IsUnlocked("photo-birds-eye") || !progress.IsUnlocked("photo-ship-name"))
         {
-            return "That's right off Rawley Point! There are a bunch of ships\nthat went down around there. Better call the archivist and get a list.";
-        }
-        if (!progress.IsUnlocked("sonar-complete"))
-        {
-            if (!progress.IsUnlocked("viewed-wreck-table"))
-            {
-                return "The List of Wrecks should help me narrow things down.";
-            }
-            else
-            {
-                return "It has to be one of these 5 ships.\nTime to Ship Out!";
-            }
+            return "That's the place! Right by Rawley Point.\nTime to ship out!";
         }
 
         // coming back from the dive
@@ -265,33 +244,39 @@ public class LevelLoretta : LevelBase
 
         if (!progress.IsUnlocked("verified-canaller") && UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "DocumentScene")
         {
-            return "I have a photo of the shape of the ship.\nCan I figure out what type of ship it is?";
+            return "Ok, let's see. What type of ship are you?\nBetter use my Evidence Builder!";
         }
         if (!progress.FilledLog("TypeBox"))
         {
             return "Now I can fill in what type of ship it is!";
         }
-        if (!progress.IsUnlocked("rusty-transcript"))
+        if (!progress.IsUnlocked("wreck-table"))
         {
-            return "Hmm. The list had two canallers. Which one is it?\nI wonder if the ship expert I know has any clues that might help.";
+            return "Time to text the archivist for more info.";
         }
 
-        // after dialog with Rusty
-        if (!progress.IsUnlocked("photo-iron-knees"))
-        {
-            return "I need to go get a photo of the ship's knees!";
-        }
+        // after first dialog with Amy
         if (!progress.IsUnlocked("verified-loretta"))
         {
-            return "I took a photo of the ship's knees.\nWhich of the pictures Rusty sent matches the photo?";
+            return "It must be one of these. Gotta figure out which one.\nTime to use the Evidence Builder.";
         }
         if (!progress.FilledLog("NameBox"))
         {
-            return "Now I can fill in the name of the ship!";
+            return "Yes! It’s the Loretta!\nNow I can drag over the Ship Name from my evidence folder.";
+        }
+        if (!progress.FilledLog("CargoBox"))
+        {
+            return "Ok, got the ship name!\nNow I can go back to that list and drag over the cargo.";
         }
         if (!progress.IsUnlocked("newspaper"))
         {
-            return "Now that I know it's the Loretta, I should call the Archivist\nand see if she knows anything else about it!";
+            return "Hmm. I still don’t know why the ship sank. I bet Amy can help.";
+        }
+
+        // after second dialog with Amy
+        if (!progress.FilledLog("CauseBox"))
+        {
+            return "The article should be in my Documents.\nAnything here about why the ship sank?";
         }
 
         if (progress.ChapterComplete() && !progress.IsUnlocked("informed-lou"))
@@ -304,7 +289,7 @@ public class LevelLoretta : LevelBase
 
     override public bool CanShipOut(PlayerProgress progress)
     {
-        return progress.IsUnlocked("viewed-wreck-table");
+        return progress.FilledLog("LocationBox");
     }
 
     override public bool ChapterComplete(PlayerProgress progress)
@@ -312,9 +297,9 @@ public class LevelLoretta : LevelBase
         return progress.FilledLog("LocationBox")
             && progress.FilledLog("TypeBox")
             && progress.FilledLog("NameBox")
-            && progress.FilledLog("FeatureBox")
+            //&& progress.FilledLog("FeatureBox")
             && progress.FilledLog("CauseBox")
-            && progress.FilledLog("CargoBox")
-            && progress.FilledLog("SecretBox");
+            && progress.FilledLog("CargoBox");
+            //&& progress.FilledLog("SecretBox");
     }
 }

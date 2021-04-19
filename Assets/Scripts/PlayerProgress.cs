@@ -174,6 +174,7 @@ public class PlayerProgress : MonoBehaviour
         FillInfo(target);
         UpdateBubble();
         UpdateLockedObjects();
+        UpdateShipOutButton();
     }
 
     private void UpdateLockedObjects()
@@ -324,6 +325,11 @@ public class PlayerProgress : MonoBehaviour
         playerUnlocks.Remove(divePerspective);
         divePerspective = cameraState;
         Unlock(cameraState);
+    }
+
+    public string GetDivePerspective()
+    {
+        return divePerspective;
     }
 
     public void SetPrevSceneName(string prevScene)

@@ -2,16 +2,19 @@ char:
 lou
 
 them:
-Hey! I was flying out by Rawley Point and I saw this blob in the water. What do you think?
+Hey, Jules! I was out flying and saw this.
 
 image-them:
 shadow
 
+them:
+What do you think?
+
 us:
-Yes, that's a shipwreck! Nice find, Lou.
+Looks like a shipwreck!
 
 them:
-Yes!! 🎉🎉🎉
+YES!!! 🎉🎉🎉
 
 them:
 I've flown out there a million times. Never saw it before.
@@ -20,43 +23,16 @@ us:
 The storm last night must've uncovered it!
 
 us:
-Did you get the location on your GPS?
+Do you have the location?
 
 them:
-Yep, one sec...
-
-them:
-Latitude: N 44° 11.524'
-
-them:
-Longitude: W 087° 30.591'
-
-them:
-BTW, some shipwreck hunter guy keeps calling me.
-
-them:
-Says he found a clue about some mysterious shipwreck full of treasure. The Gibbon or something.
+GPS coordinates: N 44° 11.524' W 087° 30.591'
 
 us:
-The Griffin?
-
-them:
-Yeah, that's it!
-
-them:
-Yikes… he just emailed me again. 🙈
-
-us:
-Sorry, Lou. I'll talk to him.
-
-us:
-Thanks for your help!
-
-them:
-NP! 😎
+Thanks, Lou!
 
 unlock:
 intro-transcript
 
 exit:
-Accept Shipfile
+End Chat

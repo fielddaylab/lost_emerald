@@ -1376,7 +1376,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Defining Feature
+  m_text: Ship Name
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0abf510b8f9bf442a84a7e59973c8b9b, type: 2}
   m_sharedMaterial: {fileID: 1915583441528857873, guid: 0abf510b8f9bf442a84a7e59973c8b9b,
@@ -6626,6 +6626,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[14]
       value: 
       objectReference: {fileID: 2100000, guid: a3f7ef845fcaa42aab2164e9d92f4713, type: 2}
+    - target: {fileID: -4500506431003684725, guid: abfaf1fa9edac4111aa041e95ba4e03e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: abfaf1fa9edac4111aa041e95ba4e03e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6818,7 +6823,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Stern (Rear of Ship)
+  m_text: Paddlewheel
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0abf510b8f9bf442a84a7e59973c8b9b, type: 2}
   m_sharedMaterial: {fileID: 1915583441528857873, guid: 0abf510b8f9bf442a84a7e59973c8b9b,
@@ -7026,7 +7031,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Name of Ship
+  m_text: Cargo
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0abf510b8f9bf442a84a7e59973c8b9b, type: 2}
   m_sharedMaterial: {fileID: 1915583441528857873, guid: 0abf510b8f9bf442a84a7e59973c8b9b,
@@ -8048,7 +8053,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Cargo
+  m_text: Anchor
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0abf510b8f9bf442a84a7e59973c8b9b, type: 2}
   m_sharedMaterial: {fileID: 1915583441528857873, guid: 0abf510b8f9bf442a84a7e59973c8b9b,
@@ -9329,7 +9334,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Anchor
+  m_text: Rudder
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0abf510b8f9bf442a84a7e59973c8b9b, type: 2}
   m_sharedMaterial: {fileID: 1915583441528857873, guid: 0abf510b8f9bf442a84a7e59973c8b9b,
@@ -14790,11 +14795,11 @@ MonoBehaviour:
   photoButton: {fileID: 897470383}
   photoResult: {fileID: 1274398072}
   savePhotoButton: {fileID: 1796845436}
-  hiddenObject: {fileID: 1836590334}
+  hiddenObject: {fileID: 1646726922}
   thoughtBubble: {fileID: 664939554}
-  successMessage: "Huh\u2026 those L shapes look important!"
+  successMessage: "Yes! Part of the ship\u2019s name! This will come in handy."
   requiredDistance: 9
-  unlockKey: photo-iron-knees
+  unlockKey: photo-ship-name
   surfaceButton: {fileID: 1226217371}
   ascendButton: {fileID: 301195208}
   journalIcon: {fileID: 2114243126}
@@ -15736,7 +15741,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 591bfacdbe9b1428ba2dc9d54cf2d070, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkboxKey: defining-feature
+  checkboxKey: photo-ship-name
 --- !u!1001 &1564289379
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16081,6 +16086,99 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7108b0bd86e204b0dbf6ec7b56f72944, type: 3}
+--- !u!1 &1646726922
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1646726923}
+  - component: {fileID: 1646726926}
+  - component: {fileID: 1646726925}
+  - component: {fileID: 1646726924}
+  m_Layer: 0
+  m_Name: NameArea
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1646726923
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646726922}
+  m_LocalRotation: {x: 0, y: 0.29078567, z: 0, w: 0.95678824}
+  m_LocalPosition: {x: 11.51, y: 0.2, z: 2.1}
+  m_LocalScale: {x: 2.2, y: 1, z: 0.57}
+  m_Children: []
+  m_Father: {fileID: 1855927131}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 33.81, z: 0}
+--- !u!65 &1646726924
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646726922}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1646726925
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646726922}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1646726926
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646726922}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1669033434
 GameObject:
   m_ObjectHideFlags: 0
@@ -22025,6 +22123,12 @@ Transform:
 --- !u!1 &1855927130 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: abfaf1fa9edac4111aa041e95ba4e03e,
+    type: 3}
+  m_PrefabInstance: {fileID: 556474713}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1855927131 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: abfaf1fa9edac4111aa041e95ba4e03e,
     type: 3}
   m_PrefabInstance: {fileID: 556474713}
   m_PrefabAsset: {fileID: 0}
