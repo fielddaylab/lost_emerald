@@ -84,6 +84,14 @@ public class InfoDragger : MonoBehaviour
                     infoKey = photo.infoKey;
 
                     draggingObject = Instantiate(photo.gameObject, transform, true);
+                    // for now, delete the extra components inside evidence blocks
+                    foreach (var item in draggingObject.GetComponentsInChildren<Transform>())
+                    {
+                        if (item.gameObject != draggingObject)
+                        {
+                            Destroy(item.gameObject);
+                        }
+                    }
                     draggingObject.GetComponent<PhotoSlot>().enabled = false;
                     RectTransform draggingRect = draggingObject.GetComponent<RectTransform>();
                     draggingRect.anchorMin = new Vector2(0f, 1f);

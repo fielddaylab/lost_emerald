@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Text.RegularExpressions;
+using TMPro;
 
 public class PhoneScreen : MonoBehaviour
 {
     public GameObject[] texts;
     public string defaultDialogKey;
-    public Text headerLabel;
+    public TextMeshProUGUI headerLabel;
     public Image characterImage;
     public GameObject replyArea;
     public Button sendButton;
@@ -73,10 +74,10 @@ public class PhoneScreen : MonoBehaviour
 
         string contents = dialogFile[i + 1];
         GameObject newLine = Instantiate(templateLineUs, scrollArea.content, true);
-        Text lineText = newLine.GetComponentInChildren<Text>();
+        TextMeshProUGUI lineText = newLine.GetComponentInChildren<TextMeshProUGUI>();
         RectTransform lineRect = newLine.GetComponentInChildren<RectTransform>();
         lineText.text = contents;
-        float newLineHeight = lineText.preferredHeight + 10;
+        float newLineHeight = lineText.GetPreferredValues(contents, lineRect.sizeDelta.x - 10, 0).y + 10;
         lineRect.sizeDelta = new Vector2(lineRect.sizeDelta.x, newLineHeight);
         lineRect.localPosition = new Vector2(scrollArea.content.rect.width, 0);
         ReflowScroll();
@@ -118,10 +119,10 @@ public class PhoneScreen : MonoBehaviour
         {
             // other person says a line
             GameObject newLine = Instantiate(templateLineThem, scrollArea.content, true);
-            Text lineText = newLine.GetComponentInChildren<Text>();
+            TextMeshProUGUI lineText = newLine.GetComponentInChildren<TextMeshProUGUI>();
             RectTransform lineRect = newLine.GetComponentInChildren<RectTransform>();
             lineText.text = contents;
-            float newLineHeight = lineText.preferredHeight + 10;
+            float newLineHeight = lineText.GetPreferredValues(contents, lineRect.sizeDelta.x - 10, 0).y + 10;
             lineRect.sizeDelta = new Vector2(lineRect.sizeDelta.x, newLineHeight);
             lineRect.localPosition = new Vector2(0, 0);
             ReflowScroll();
@@ -132,7 +133,7 @@ public class PhoneScreen : MonoBehaviour
         else if (line == "us:")
         {
             // put a line in the box for us to hit Send
-            replyArea.GetComponentInChildren<Text>().text = contents;
+            replyArea.GetComponentInChildren<TextMeshProUGUI>().text = contents;
             replyArea.SetActive(true);
             sendButton.gameObject.SetActive(true);
             sendButton.onClick.RemoveAllListeners();
@@ -165,7 +166,7 @@ public class PhoneScreen : MonoBehaviour
         {
             // show a button to end the dialog
             GameObject newLine = Instantiate(templateExit, scrollArea.content, true);
-            Text lineText = newLine.GetComponentInChildren<Text>();
+            TextMeshProUGUI lineText = newLine.GetComponentInChildren<TextMeshProUGUI>();
             RectTransform lineRect = newLine.GetComponentInChildren<RectTransform>();
             lineText.text = contents;
             lineRect.localPosition = new Vector2(0, 0);

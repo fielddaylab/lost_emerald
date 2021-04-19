@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class EvidenceBuilder : MonoBehaviour
 {
@@ -9,7 +10,10 @@ public class EvidenceBuilder : MonoBehaviour
     public Image slotBottom;
     public TabPanel tabPanel;
     public GameObject evidencePopupContainer;
-    public Image evidencePopupImage;
+    public Image evidencePopupImage1;
+    public Image evidencePopupImage2;
+    public TextMeshProUGUI evidencePopupName;
+    public TextMeshProUGUI evidencePopupCaption;
 
     private string keyTop;
     private string keyBottom;
@@ -50,14 +54,20 @@ public class EvidenceBuilder : MonoBehaviour
         {
             unlockKey = "verified-canaller";
             PlayerProgress.instance.TemporaryBubble("Aha! It's a canaller!");
-            evidencePopupImage.sprite = Resources.Load<Sprite>("evidence-canaller");
+            evidencePopupImage1.sprite = Resources.Load<Sprite>("birds-eye-photo-new");
+            evidencePopupImage2.sprite = Resources.Load<Sprite>("ship-type-canaller");
+            evidencePopupName.text = "Canaller";
+            evidencePopupCaption.text = "The photo of the wreck we took from above matches the shape of a Canaller.";
             evidencePopupContainer.SetActive(true);
         }
         else if (keyTop == "photo-iron-knees" && keyBottom == "diagram-iron-knees" || keyBottom == "photo-iron-knees" && keyTop == "diagram-iron-knees")
         {
             unlockKey = "verified-loretta";
             PlayerProgress.instance.TemporaryBubble("Aha! It's the Loretta!");
-            evidencePopupImage.sprite = Resources.Load<Sprite>("evidence-loretta");
+            evidencePopupImage1.sprite = Resources.Load<Sprite>("iron-knees-photo-new");
+            evidencePopupImage2.sprite = Resources.Load<Sprite>("DialogImages/knees-loretta");
+            evidencePopupName.text = "The Loretta";
+            evidencePopupCaption.text = "The iron knees on the wreck prove that the ship is the Loretta.";
             evidencePopupContainer.SetActive(true);
         }
 

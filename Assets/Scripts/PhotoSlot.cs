@@ -22,12 +22,26 @@ public class PhotoSlot : MonoBehaviour
     {
         GetComponent<Image>().color = Color.gray;
         GetComponent<Image>().sprite = null;
+        foreach (var item in GetComponentsInChildren<Transform>())
+        {
+            if (item.gameObject != this.gameObject)
+            {
+                item.gameObject.SetActive(false);
+            }
+        }
     }
 
     public void SetUnlocked()
     {
         GetComponent<Image>().color = Color.white;
         GetComponent<Image>().sprite = originalSprite;
+        foreach (var item in GetComponentsInChildren<Transform>())
+        {
+            if (item.gameObject != this.gameObject)
+            {
+                item.gameObject.SetActive(true);
+            }
+        }
     }
 
     // Update is called once per frame
