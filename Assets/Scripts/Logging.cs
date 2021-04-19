@@ -60,7 +60,7 @@ public class Logging : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(this);
-            //logger = new SimpleLog(appId, appVersion, null);
+            logger = new SimpleLog(appId, appVersion, null);
         }
         else
         {
@@ -75,8 +75,11 @@ public class Logging : MonoBehaviour
             { "mission_id", missionId }
         };
 
-        //logger.Log(new LogEvent(data, eventCategories.mission_start));
+        logger.Log(new LogEvent(data, eventCategories.mission_start));
+
+        #if !UNITY_EDITOR
         FBMissionStart(missionId);
+        #endif
     }
 
     public void LogViewTab(string missionId, string tabName)
@@ -87,8 +90,11 @@ public class Logging : MonoBehaviour
             { "tab_name", tabName}
         };
 
-        //logger.Log(new LogEvent(data, eventCategories.view_tab));
+        logger.Log(new LogEvent(data, eventCategories.view_tab));
+
+        #if !UNITY_EDITOR
         FBViewTab(missionId, tabName);
+        #endif
     }
 
     public void LogViewDesk(string missionId)
@@ -98,8 +104,11 @@ public class Logging : MonoBehaviour
             { "mission_id", missionId }
         };
 
-        //logger.Log(new LogEvent(data, eventCategories.view_desk));
+        logger.Log(new LogEvent(data, eventCategories.view_desk));
+
+        #if !UNITY_EDITOR
         FBViewDesk(missionId);
+        #endif
     }
 
     public void LogViewChat(string missionId, string chatName)
@@ -110,8 +119,11 @@ public class Logging : MonoBehaviour
             { "chat_name", chatName }
         };
 
-        //logger.Log(new LogEvent(data, eventCategories.mission_start));
+        logger.Log(new LogEvent(data, eventCategories.mission_start));
+
+        #if !UNITY_EDITOR
         FBViewChat(missionId, chatName);
+        #endif
     }
 
     public void LogOpenMap(string missionId)
@@ -121,8 +133,11 @@ public class Logging : MonoBehaviour
             { "mission_id", missionId }
         };
 
-        //logger.Log(new LogEvent(data, eventCategories.open_map));
+        logger.Log(new LogEvent(data, eventCategories.open_map));
+
+        #if !UNITY_EDITOR
         FBOpenMap(missionId);
+        #endif
     }
 
     public void LogScanStart(string missionId)
@@ -132,8 +147,11 @@ public class Logging : MonoBehaviour
             { "mission_id", missionId }
         };
 
-        //logger.Log(new LogEvent(data, eventCategories.scan_start));
+        logger.Log(new LogEvent(data, eventCategories.scan_start));
+
+        #if !UNITY_EDITOR
         FBScanStart(missionId);
+        #endif
     }
 
     public void LogScanComplete(string missionId)
@@ -143,8 +161,11 @@ public class Logging : MonoBehaviour
             { "mission_id", missionId }
         };
 
-        //logger.Log(new LogEvent(data, eventCategories.scan_complete));
+        logger.Log(new LogEvent(data, eventCategories.scan_complete));
+
+        #if !UNITY_EDITOR
         FBScanComplete(missionId);
+        #endif
     }
 
     public void LogDiveStart(string missionId)
@@ -154,8 +175,11 @@ public class Logging : MonoBehaviour
             { "mission_id", missionId }
         };
 
-        //logger.Log(new LogEvent(data, eventCategories.dive_start));
+        logger.Log(new LogEvent(data, eventCategories.dive_start));
+
+        #if !UNITY_EDITOR
         FBDiveStart(missionId);
+        #endif
     }
 
     public void LogPlayerUnlock(string missionId, string unlockKey)
@@ -166,8 +190,11 @@ public class Logging : MonoBehaviour
             { "unlock_key", unlockKey }
         };
 
-        //logger.Log(new LogEvent(data, eventCategories.player_unlock));
+        logger.Log(new LogEvent(data, eventCategories.player_unlock));
+
+        #if !UNITY_EDITOR
         FBPlayerUnlock(missionId, unlockKey);
+        #endif
     }
 
     public void LogUpdateShipOverview(string missionId, string targetKey, string infoKey, string infoDisplay, string sourceDisplay)
@@ -181,8 +208,11 @@ public class Logging : MonoBehaviour
             { "sourceDisplay", sourceDisplay }
         };
 
-        //logger.Log(new LogEvent(data, eventCategories.update_ship_overview));
+        logger.Log(new LogEvent(data, eventCategories.update_ship_overview));
+
+        #if !UNITY_EDITOR
         FBUpdateShipOverview(missionId, targetKey, infoKey, infoDisplay, sourceDisplay);
+        #endif
     }
 
     public void LogMissionComplete(string missionId)
@@ -192,7 +222,10 @@ public class Logging : MonoBehaviour
             { "mission_id", missionId }
         };
 
-        //logger.Log(new LogEvent(data, eventCategories.mission_complete));
+        logger.Log(new LogEvent(data, eventCategories.mission_complete));
+
+        #if !UNITY_EDITOR
         FBMissionComplete(missionId);
+        #endif
     }
 }
