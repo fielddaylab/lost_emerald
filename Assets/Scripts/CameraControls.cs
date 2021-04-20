@@ -203,6 +203,7 @@ public class CameraControls : MonoBehaviour
                 leftButton.gameObject.SetActive(false);
                 rightButton.gameObject.SetActive(false);
                 perspectiveButton.gameObject.SetActive(true);
+                perspectiveButton.onClick.AddListener(SwitchPerspective);
             }
         }
     }
@@ -243,6 +244,8 @@ public class CameraControls : MonoBehaviour
             if (PlayerProgress.instance.IsUnlocked("photo-birds-eye") && cameraState == CameraState.CAMERA_TOP)
             {
                 perspectiveButton.gameObject.SetActive(true);
+                perspectiveButton.onClick.AddListener(SwitchPerspective);
+
             }
             thoughtBubble.gameObject.SetActive(true);
             zoomSlider.gameObject.SetActive(false);

@@ -68,11 +68,11 @@ public class EvidenceBuilder : MonoBehaviour
         if (keyTop == "photo-birds-eye" && keyBottom == "type-canaller" || keyBottom == "photo-birds-eye" && keyTop == "type-canaller")
         {
             unlockKey = "verified-canaller";
-            PlayerProgress.instance.TemporaryBubble("Aha! It's a canaller!");
+            PlayerProgress.instance.TemporaryBubble("It's a canaller!");
             evidencePopupImage1.sprite = Resources.Load<Sprite>("birds-eye-photo-new");
             evidencePopupImage2.sprite = Resources.Load<Sprite>("ship-type-canaller");
             evidencePopupName.text = "Canaller";
-            evidencePopupCaption.text = "The photo of the wreck we took from above matches the shape of a Canaller.";
+            evidencePopupCaption.text = "The ship photo and Ship Type card match!";
             evidencePopupContainer.SetActive(true);
         }
         else if (keyTop == "photo-ship-name" && keyBottom == "wreck-loretta" || keyBottom == "photo-ship-name" && keyTop == "wreck-loretta")

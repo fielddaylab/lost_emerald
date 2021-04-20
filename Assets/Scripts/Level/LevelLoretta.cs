@@ -99,7 +99,7 @@ public class LevelLoretta : LevelBase
         }
         else if (notificationKey == "perspective")
         {
-            showNotification = !progress.IsUnlocked("photo-iron-knees") && progress.IsUnlocked("photo-birds-eye") && !progress.IsUnlocked("CAMERA_SIDE");
+            showNotification = !progress.IsUnlocked("photo-ship-name") && progress.IsUnlocked("photo-birds-eye") && !progress.IsUnlocked("CAMERA_SIDE");
         }
         else if (notificationKey == "bird-view-thought")
         {
@@ -246,13 +246,17 @@ public class LevelLoretta : LevelBase
         {
             return "Ok, let's see. What type of ship are you?\nBetter use my Evidence Builder!";
         }
+        if (progress.IsUnlocked("EvidenceBuilder") && !progress.IsUnlocked("verified-canaller"))
+        {
+            return "I need to drag over my top-down photo and match it up with the right Ship Type.";
+        }
         if (!progress.FilledLog("TypeBox"))
         {
-            return "Now I can fill in what type of ship it is!";
+            return "Now I can drag the new Evidence over to my ship file.";
         }
         if (!progress.IsUnlocked("wreck-table"))
         {
-            return "Time to text the archivist for more info.";
+            return "Got it!\nTime to text the archivist for more info.";
         }
 
         // after first dialog with Amy
