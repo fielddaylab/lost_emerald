@@ -10,7 +10,3 @@
 [submodule "Submodules/BeauUtil"]
 	path = Submodules/BeauUtil
 	url = git://github.com/BeauPrime/BeauUtil.git
-[submodule "Submodules/opengamedata-unity"]
-	path = Submodules/opengamedata-unity
-	url = https://github.com/opengamedata/opengamedata-unity.git
-	branch = main

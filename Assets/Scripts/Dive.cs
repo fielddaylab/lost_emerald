@@ -29,7 +29,6 @@ public class Dive : MonoBehaviour
         if (!PlayerProgress.instance.IsUnlocked("sonar-complete"))
         {
             PlayerProgress.instance.Unlock("sonar-complete");
-            Logging.instance.LogScanComplete("loretta");
         }
     }
 
@@ -39,15 +38,12 @@ public class Dive : MonoBehaviour
         if (!PlayerProgress.instance.IsUnlocked("been-to-dive"))
         {
             PlayerProgress.instance.Unlock("been-to-dive");
-            Logging.instance.LogDiveStart("loretta");
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        Logging.instance.LogScanPercentageChange("loretta", Ship.count);
-
         if (Ship.count > 80)
         {
             SonarComplete();

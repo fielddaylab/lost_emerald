@@ -138,7 +138,6 @@ public class InfoDragger : MonoBehaviour
                         sourceDisplay = documentName
                     };
                     PlayerProgress.instance?.DropInfo(target, entry);
-                    Logging.instance.LogUpdateShipOverview("loretta", target.targetKey, infoKey, infoDisplay, documentName);
                 }
                 else
                 {
