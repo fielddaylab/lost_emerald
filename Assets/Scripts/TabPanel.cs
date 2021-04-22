@@ -29,6 +29,7 @@ public class TabPanel : MonoBehaviour
 
     public void SelectTab(int i)
     {
+        Logging.instance.LogViewTab("loretta", content[i].name);
         for (int j = 0; j < tabs.Length; j++)
         {
             Image tabImage = tabs[j].GetComponent<Image>();
