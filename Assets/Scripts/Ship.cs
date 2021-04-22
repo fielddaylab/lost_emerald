@@ -15,6 +15,7 @@ public class Ship : MonoBehaviour
         if (!PlayerProgress.instance.IsUnlocked("ship-on-lake"))
         {
             PlayerProgress.instance.Unlock("ship-on-lake");
+            Logging.instance?.LogScanStart();
         }
         if (PlayerProgress.instance.IsUnlocked("been-to-dive"))
         {

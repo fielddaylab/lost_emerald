@@ -17,6 +17,7 @@ public class SceneSwitch : MonoBehaviour
         PlayerProgress.instance.SetPrevSceneName(SceneManager.GetActiveScene().name);
         PlayerProgress.instance.ClearRegistrations();
         PlayerProgress.instance.SetDialogKey(dialogKey);
+        Logging.instance?.LogViewChat(dialogKey);
         SceneManager.LoadScene("ConversationInterface");
     }
 
@@ -45,6 +46,7 @@ public class SceneSwitch : MonoBehaviour
     {
         PlayerProgress.instance.SetPrevSceneName(SceneManager.GetActiveScene().name);
         PlayerProgress.instance.ClearRegistrations();
+        Logging.instance?.LogDiveStart();
         SceneManager.LoadScene("LaSalleTestScene_RealtimeLighting");
     }
 
@@ -52,6 +54,7 @@ public class SceneSwitch : MonoBehaviour
     {
         PlayerProgress.instance.SetPrevSceneName(SceneManager.GetActiveScene().name);
         PlayerProgress.instance.ClearRegistrations();
+        Logging.instance?.LogViewDesk();
         SceneManager.LoadScene("OfficeDesk");
     }
 
@@ -59,6 +62,7 @@ public class SceneSwitch : MonoBehaviour
     {
         PlayerProgress.instance.SetPrevSceneName(SceneManager.GetActiveScene().name);
         PlayerProgress.instance.ClearRegistrations();
+        Logging.instance?.LogMissionComplete();
         SceneManager.LoadScene("LevelEnding");
     }
 
