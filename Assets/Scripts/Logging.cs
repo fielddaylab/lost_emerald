@@ -38,6 +38,8 @@ public class Logging : MonoBehaviour
     private string appId = "SHIPWRECKS";
     private int appVersion = 1;
 
+    private int previousPercent = 0;
+
     private enum eventCategories
     {
         mission_start,
@@ -51,7 +53,8 @@ public class Logging : MonoBehaviour
         player_unlock,
         new_evidence,
         update_ship_overview,
-        mission_complete
+        mission_complete,
+        scan_percentage_change
     }
 
     void Awake()
@@ -227,5 +230,21 @@ public class Logging : MonoBehaviour
         #if !UNITY_EDITOR
         FBMissionComplete(missionId);
         #endif
+    }
+
+    public void LogScanPercentageChange(string missionId, int scanPercent)
+    {
+        if (scanPercent != previousPercent)
+        {
+            previousPercent = scanPercent;
+
+            Dictionary<string, string> data = new Dictionary<string, string>()
+            {
+                { "mission_id", missionId },
+                { "scan_percent", scanPercent.ToString() }
+            };
+
+            logger.Log(new LogEvent(data, eventCategories.scan_percentage_change), true);
+        }
     }
 }

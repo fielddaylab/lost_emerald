@@ -46,6 +46,8 @@ public class Dive : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Logging.instance.LogScanPercentageChange("loretta", Ship.count);
+
         if (Ship.count > 80)
         {
             SonarComplete();
