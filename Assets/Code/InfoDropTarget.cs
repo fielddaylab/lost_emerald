@@ -10,10 +10,22 @@ public class InfoDropTarget : MonoBehaviour
     public TextMeshProUGUI sourceLabel;
     public string correctInfoKey;
 
+    public bool isFilled = false;
+
     // Start is called before the first frame update
     void Start()
     {
         PlayerProgress.instance?.FillInfo(this);
+    }
+
+    public void Fill(string info, string source) {
+        infoLabel.SetText(info);
+        sourceLabel.SetText(source);
+        isFilled = true;
+    }
+
+    public bool IsFilled() {
+        return isFilled;
     }
 
     // Update is called once per frame

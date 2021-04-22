@@ -66,17 +66,19 @@ public class PlayerProgress : MonoBehaviour
         playerUnlocks.Clear();
     }
 
-    public void FillInfo(InfoDropTarget target)
+    public bool FillInfo(InfoDropTarget target)
     {
         if (shipLog.TryGetValue(target.targetKey, out InfoEntry entry))
         {
-            target.infoLabel.text = entry.infoDisplay;
-            target.sourceLabel.text = "From: " + entry.sourceDisplay;
+            target.Fill(entry.infoDisplay, "From: " + entry.sourceDisplay);
+            return true;
         }
         else
         {
             target.infoLabel.text = "Unknown";
             target.sourceLabel.text = "";
+            return false;
+
         }
     }
 
