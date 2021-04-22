@@ -17,7 +17,7 @@ public class SceneSwitch : MonoBehaviour
         PlayerProgress.instance.SetPrevSceneName(SceneManager.GetActiveScene().name);
         PlayerProgress.instance.ClearRegistrations();
         PlayerProgress.instance.SetDialogKey(dialogKey);
-        Logging.instance.LogViewChat("loretta", dialogKey);
+        Logging.instance?.LogViewChat(dialogKey);
         SceneManager.LoadScene("ConversationInterface");
     }
 
@@ -37,7 +37,6 @@ public class SceneSwitch : MonoBehaviour
 
     public void GotoSonar()
     {
-        Logging.instance.LogScanStart("loretta");
         PlayerProgress.instance.SetPrevSceneName(SceneManager.GetActiveScene().name);
         PlayerProgress.instance.ClearRegistrations();
         SceneManager.LoadScene("ShipMechanics");
@@ -47,7 +46,7 @@ public class SceneSwitch : MonoBehaviour
     {
         PlayerProgress.instance.SetPrevSceneName(SceneManager.GetActiveScene().name);
         PlayerProgress.instance.ClearRegistrations();
-        Logging.instance.LogDiveStart("loretta");
+        Logging.instance?.LogDiveStart();
         SceneManager.LoadScene("LaSalleTestScene_RealtimeLighting");
     }
 
@@ -55,7 +54,7 @@ public class SceneSwitch : MonoBehaviour
     {
         PlayerProgress.instance.SetPrevSceneName(SceneManager.GetActiveScene().name);
         PlayerProgress.instance.ClearRegistrations();
-        Logging.instance.LogViewDesk("loretta");
+        Logging.instance?.LogViewDesk();
         SceneManager.LoadScene("OfficeDesk");
     }
 
@@ -63,7 +62,7 @@ public class SceneSwitch : MonoBehaviour
     {
         PlayerProgress.instance.SetPrevSceneName(SceneManager.GetActiveScene().name);
         PlayerProgress.instance.ClearRegistrations();
-        Logging.instance.LogMissionComplete("loretta");
+        Logging.instance?.LogMissionComplete();
         SceneManager.LoadScene("LevelEnding");
     }
 

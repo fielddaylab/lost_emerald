@@ -20,7 +20,7 @@ public class MapSonarScene : MonoBehaviour
             ship.SetActive(false);
         }
 
-        Logging.instance.LogOpenMap("loretta");
+        Logging.instance?.LogOpenMap();
     }
 
     // Update is called once per frame

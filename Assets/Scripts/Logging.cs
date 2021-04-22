@@ -38,6 +38,7 @@ public class Logging : MonoBehaviour
     private string appId = "SHIPWRECKS";
     private int appVersion = 1;
 
+    private string missionId = "";
     private int previousPercent = 0;
 
     private enum eventCategories
@@ -71,8 +72,10 @@ public class Logging : MonoBehaviour
         }
     }
 
-    public void LogMissionStart(string missionId)
+    public void LogMissionStart(string id)
     {
+        missionId = id;
+
         Dictionary<string, string> data = new Dictionary<string, string>()
         {
             { "mission_id", missionId }
@@ -85,7 +88,7 @@ public class Logging : MonoBehaviour
         #endif
     }
 
-    public void LogViewTab(string missionId, string tabName)
+    public void LogViewTab(string tabName)
     {
         Dictionary<string, string> data = new Dictionary<string, string>()
         {
@@ -100,7 +103,7 @@ public class Logging : MonoBehaviour
         #endif
     }
 
-    public void LogViewDesk(string missionId)
+    public void LogViewDesk()
     {
         Dictionary<string, string> data = new Dictionary<string, string>()
         {
@@ -114,7 +117,7 @@ public class Logging : MonoBehaviour
         #endif
     }
 
-    public void LogViewChat(string missionId, string chatName)
+    public void LogViewChat(string chatName)
     {
         Dictionary<string, string> data = new Dictionary<string, string>()
         {
@@ -129,7 +132,7 @@ public class Logging : MonoBehaviour
         #endif
     }
 
-    public void LogOpenMap(string missionId)
+    public void LogOpenMap()
     {
         Dictionary<string, string> data = new Dictionary<string, string>()
         {
@@ -143,7 +146,7 @@ public class Logging : MonoBehaviour
         #endif
     }
 
-    public void LogScanStart(string missionId)
+    public void LogScanStart()
     {
         Dictionary<string, string> data = new Dictionary<string, string>()
         {
@@ -157,7 +160,7 @@ public class Logging : MonoBehaviour
         #endif
     }
 
-    public void LogScanComplete(string missionId)
+    public void LogScanComplete()
     {
         Dictionary<string, string> data = new Dictionary<string, string>()
         {
@@ -171,7 +174,7 @@ public class Logging : MonoBehaviour
         #endif
     }
 
-    public void LogDiveStart(string missionId)
+    public void LogDiveStart()
     {
         Dictionary<string, string> data = new Dictionary<string, string>()
         {
@@ -185,7 +188,7 @@ public class Logging : MonoBehaviour
         #endif
     }
 
-    public void LogPlayerUnlock(string missionId, string unlockKey)
+    public void LogPlayerUnlock(string unlockKey)
     {
         Dictionary<string, string> data = new Dictionary<string, string>()
         {
@@ -200,7 +203,7 @@ public class Logging : MonoBehaviour
         #endif
     }
 
-    public void LogUpdateShipOverview(string missionId, string targetKey, string infoKey, string infoDisplay, string sourceDisplay)
+    public void LogUpdateShipOverview(string targetKey, string infoKey, string infoDisplay, string sourceDisplay)
     {
         Dictionary<string, string> data = new Dictionary<string, string>()
         {
@@ -218,7 +221,7 @@ public class Logging : MonoBehaviour
         #endif
     }
 
-    public void LogMissionComplete(string missionId)
+    public void LogMissionComplete()
     {
         Dictionary<string, string> data = new Dictionary<string, string>()
         {
@@ -230,9 +233,11 @@ public class Logging : MonoBehaviour
         #if !UNITY_EDITOR
         FBMissionComplete(missionId);
         #endif
+
+        missionId = "";
     }
 
-    public void LogScanPercentageChange(string missionId, int scanPercent)
+    public void LogScanPercentageChange(int scanPercent)
     {
         if (scanPercent != previousPercent)
         {
@@ -244,7 +249,7 @@ public class Logging : MonoBehaviour
                 { "scan_percent", scanPercent.ToString() }
             };
 
-            logger.Log(new LogEvent(data, eventCategories.scan_percentage_change), true);
+            logger.Log(new LogEvent(data, eventCategories.scan_percentage_change));
         }
     }
 }

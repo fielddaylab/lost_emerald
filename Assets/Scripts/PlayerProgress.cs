@@ -224,7 +224,7 @@ public class PlayerProgress : MonoBehaviour
         playerUnlocks.Add(key);
         if (!key.Equals("EvidenceBuilder"))
         {
-            Logging.instance.LogPlayerUnlock("loretta", key);
+            Logging.instance?.LogPlayerUnlock(key);
         }
         UpdateBubble();
         UpdateLockedObjects();
