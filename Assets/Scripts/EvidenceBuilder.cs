@@ -26,48 +26,63 @@ public class EvidenceBuilder : MonoBehaviour
 
     public void SetSlot(Slot slot, Sprite sprite, string key)
     {
+        TextMeshProUGUI slotText = null;
         if (slot == Slot.SLOT_TOP)
         {
             slotTop.sprite = sprite;
+            slotText = slotTop.GetComponentInChildren<TextMeshProUGUI>(true);
             keyTop = key;
         }
         else if (slot == Slot.SLOT_BOTTOM)
         {
             slotBottom.sprite = sprite;
+            slotText = slotBottom.GetComponentInChildren<TextMeshProUGUI>(true);
             keyBottom = key;
         }
-        if(keyBottom == "photo-birds-eye" || keyTop == "photo-birds-eye")
+
+        if (sprite)
+        {
+            slotText.gameObject.SetActive(false);
+        }
+        else
+        {
+            slotText.text = key;
+            slotText.gameObject.SetActive(true);
+        }
+
+        if (keyBottom == "photo-birds-eye" || keyTop == "photo-birds-eye")
         {
             PlayerProgress.instance.Unlock("photo-birds-eye-dragged");
         }
-        else if (keyBottom == "photo-iron-knees" || keyTop == "photo-iron-knees")
+        else if (keyBottom == "photo-ship-name" || keyTop == "photo-ship-name")
         {
-            PlayerProgress.instance.Unlock("photo-iron-knees-dragged");
+            PlayerProgress.instance.Unlock("photo-ship-name-dragged");
         }
         ComputeMatch();
     }
 
     private void ComputeMatch()
     {
+        // TODO move this logic into LevelBase and its subclasses
         string unlockKey = null;
         if (keyTop == "photo-birds-eye" && keyBottom == "type-canaller" || keyBottom == "photo-birds-eye" && keyTop == "type-canaller")
         {
             unlockKey = "verified-canaller";
-            PlayerProgress.instance.TemporaryBubble("Aha! It's a canaller!");
+            PlayerProgress.instance.TemporaryBubble("It's a canaller!");
             evidencePopupImage1.sprite = Resources.Load<Sprite>("birds-eye-photo-new");
             evidencePopupImage2.sprite = Resources.Load<Sprite>("ship-type-canaller");
             evidencePopupName.text = "Canaller";
-            evidencePopupCaption.text = "The photo of the wreck we took from above matches the shape of a Canaller.";
+            evidencePopupCaption.text = "The ship photo and Ship Type card match!";
             evidencePopupContainer.SetActive(true);
         }
-        else if (keyTop == "photo-iron-knees" && keyBottom == "diagram-iron-knees" || keyBottom == "photo-iron-knees" && keyTop == "diagram-iron-knees")
+        else if (keyTop == "photo-ship-name" && keyBottom == "wreck-loretta" || keyBottom == "photo-ship-name" && keyTop == "wreck-loretta")
         {
             unlockKey = "verified-loretta";
             PlayerProgress.instance.TemporaryBubble("Aha! It's the Loretta!");
-            evidencePopupImage1.sprite = Resources.Load<Sprite>("iron-knees-photo-new");
-            evidencePopupImage2.sprite = Resources.Load<Sprite>("DialogImages/knees-loretta");
+            evidencePopupImage1.sprite = Resources.Load<Sprite>("photo-ship-name");
+            evidencePopupImage2.sprite = Resources.Load<Sprite>("photo-ship-name");
             evidencePopupName.text = "The Loretta";
-            evidencePopupCaption.text = "The iron knees on the wreck prove that the ship is the Loretta.";
+            evidencePopupCaption.text = "Our photo of the ship's name is missing a few letters, but it says Loretta!";
             evidencePopupContainer.SetActive(true);
         }
 

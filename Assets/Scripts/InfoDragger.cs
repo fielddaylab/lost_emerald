@@ -142,7 +142,14 @@ public class InfoDragger : MonoBehaviour
                 }
                 else
                 {
-                    PlayerProgress.instance?.TemporaryBubble("Hmm… how do I know that's correct?");
+                    if (infoKey == "coords")
+                    {
+                        PlayerProgress.instance?.TemporaryBubble("Whoops, wrong spot.");
+                    }
+                    else
+                    {
+                        PlayerProgress.instance?.TemporaryBubble("Hmm… how do I know that's correct?");
+                    }
                 }
                 break;
             }
@@ -151,16 +158,14 @@ public class InfoDragger : MonoBehaviour
         if (draggingObject)
         {
             Image draggingImage = draggingObject.GetComponent<Image>();
-            if (draggingImage && draggingImage.sprite)
+            Sprite sprite = draggingImage?.sprite;
+            if (DroppingInto(evidenceBuilder.slotTop.gameObject))
             {
-                if (DroppingInto(evidenceBuilder.slotTop.gameObject))
-                {
-                    evidenceBuilder.SetSlot(EvidenceBuilder.Slot.SLOT_TOP, draggingImage.sprite, infoKey);
-                }
-                else if (DroppingInto(evidenceBuilder.slotBottom.gameObject))
-                {
-                    evidenceBuilder.SetSlot(EvidenceBuilder.Slot.SLOT_BOTTOM, draggingImage.sprite, infoKey);
-                }
+                evidenceBuilder.SetSlot(EvidenceBuilder.Slot.SLOT_TOP, sprite, infoKey);
+            }
+            else if (DroppingInto(evidenceBuilder.slotBottom.gameObject))
+            {
+                evidenceBuilder.SetSlot(EvidenceBuilder.Slot.SLOT_BOTTOM, sprite, infoKey);
             }
         }
 

@@ -66,4 +66,11 @@ public class SceneSwitch : MonoBehaviour
         Logging.instance.LogMissionComplete("loretta");
         SceneManager.LoadScene("LevelEnding");
     }
+
+    public void GotoLevelSelect()
+    {
+        PlayerProgress.instance.SetPrevSceneName(SceneManager.GetActiveScene().name);
+        PlayerProgress.instance.ClearRegistrations();
+        SceneManager.LoadScene("LevelSelect");
+    }
 }
