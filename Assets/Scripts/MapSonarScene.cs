@@ -19,6 +19,8 @@ public class MapSonarScene : MonoBehaviour
             lakeMichigan.SetActive(true);
             ship.SetActive(false);
         }
+
+        Logging.instance?.LogOpenMap();
     }
 
     // Update is called once per frame
