@@ -8,6 +8,7 @@ public class LoadLevel : SceneSwitch
     public void StartLevel()
     {
         PlayerProgress.instance.LoadLevel(LevelID);
+        Logging.instance?.LogMissionStart(LevelID);
         GotoDesk();
     }
 }
