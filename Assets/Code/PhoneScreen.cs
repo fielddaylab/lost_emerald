@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Text.RegularExpressions;
 using TMPro;
+using Shipwreck;
 
 public class PhoneScreen : MonoBehaviour
 {

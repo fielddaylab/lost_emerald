@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using ShipAudio;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Shipwreck;
 
 public class FadeOut : MonoBehaviour
 {

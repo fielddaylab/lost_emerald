@@ -6,6 +6,7 @@ using ProtoCP;
 using TMPro;
 using UnityEngine.EventSystems;
 using System;
+using Shipwreck;
 
 public class CameraControls : MonoBehaviour
 {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Shipwreck;
 
 public class SceneSwitch : MonoBehaviour
 {

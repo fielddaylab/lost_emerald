@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using Shipwreck;
 
 public class LockLevel : MonoBehaviour
 {

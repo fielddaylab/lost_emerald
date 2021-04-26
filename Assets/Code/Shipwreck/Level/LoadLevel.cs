@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Shipwreck;
 
 public class LoadLevel : SceneSwitch
 {
