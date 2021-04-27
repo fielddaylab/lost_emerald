@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Shipwreck;
-
+using Shipwreck.Scene;
 public class LoadLevel : SceneSwitch
 {
     public string LevelID;

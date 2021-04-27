@@ -52,6 +52,10 @@ namespace Shipwreck.Level
             {
                 showNotification = !progress.IsUnlocked("viewed-intro-transcript");
             }
+            else if(notificationKey == "amy-newspaper") 
+            {
+                showNotification = progress.IsUnlocked("newspaper");
+            }
             else if (notificationKey == "any-document" && !(progress.IsUnlocked("verified-loretta") && progress.IsUnlocked("verified-canaller")))
             {
                 if (progress.IsUnlocked("verified-canaller"))
@@ -67,7 +71,7 @@ namespace Shipwreck.Level
             {
                 showNotification = progress.IsUnlocked("wreck-table");
             }
-            else if (notificationKey == "ship-out" && !progress.IsUnlocked("photo-birds-eye"))
+            else if (notificationKey == "ship-out" && (!progress.IsUnlocked("photo-birds-eye")))
             {
                 showNotification = progress.IsUnlocked("viewed-wreck-table");
             }

@@ -15,6 +15,21 @@ namespace Shipwreck.Level
         private string levelName = null;
         public Dictionary<string, PlayerProgress.InfoEntry> ShipLog { get; set; }
         public HashSet<string> Unlocks { get; set; }
+        private bool Completed = false;
+
+        public LevelSaveData() {
+            ShipLog = new Dictionary<string, PlayerProgress.InfoEntry>();
+            Unlocks = new HashSet<string>();
+            Completed = false;
+        }
+
+        public void Complete() {
+            Completed = true;
+        }
+
+        public bool IsCompleted() {
+            return Completed;
+        }
 
         public bool IsLevel(string level) {
             return levelName == level;

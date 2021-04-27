@@ -63,33 +63,46 @@ namespace Shipwreck
             if (currentLevelID == "loretta")
             {
                 currentLevel = new LevelLoretta();
+                LoadSaveData();
             }
             else if (currentLevelID == "level2")
             {
                 currentLevel = new Level2();
+                LoadSaveData();
             }
             shipLog.Clear();
             playerUnlocks.Clear();
 
-            LoadSaveData();
+            
         }
 
         public bool IsGameStart() {
             return m_SaveData.Keys.Count == 0;
         }
 
+        public bool SetComplete() {
+            m_SaveData.TryGetValue(currentLevelID, out LevelSaveData save);
+            save.Complete();
+            return save.IsCompleted();
+        }
+
         public void AddSaveData(string levelName) {
-            if(!m_SaveData.TryGetValue(levelName, out LevelSaveData save)) {
-                save.ShipLog = shipLog;
-                save.Unlocks = playerUnlocks;
+            if(m_SaveData.TryGetValue(levelName, out LevelSaveData save)) {
+                if(save.ShipLog != shipLog) save.ShipLog = shipLog;
+                if(save.Unlocks != playerUnlocks) save.Unlocks = playerUnlocks;
             }
         }
 
         public void LoadSaveData() {
             if(m_SaveData.TryGetValue(currentLevelID, out LevelSaveData save)) {
-                shipLog = save.ShipLog;
-                playerUnlocks = save.Unlocks;
-                save.Clear();
+                if(save.IsCompleted()) {
+                    shipLog = save.ShipLog;
+                    playerUnlocks = save.Unlocks;
+                    save.Clear();
+                }
+            }
+            else {
+                m_SaveData.Add(currentLevelID, new LevelSaveData());
             }
         }
 

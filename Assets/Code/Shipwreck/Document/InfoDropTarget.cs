@@ -13,7 +13,7 @@ namespace Shipwreck.Document
         public TextMeshProUGUI sourceLabel;
         public string correctInfoKey;
 
-        public bool isFilled = false;
+        private bool isFilled = false;
 
         // Start is called before the first frame update
         void Start()

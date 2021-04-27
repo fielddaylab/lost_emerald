@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Shipwreck;
 
+namespace Shipwreck.Scene
+{
 public class SceneSwitch : MonoBehaviour
 {
     public void GotoDocuments()
@@ -64,7 +66,7 @@ public class SceneSwitch : MonoBehaviour
         PlayerProgress.instance.SetPrevSceneName(SceneManager.GetActiveScene().name);
         PlayerProgress.instance.ClearRegistrations();
         Logging.instance?.LogMissionComplete();
-        SceneManager.LoadScene("LevelEnding");
+        SceneManager.LoadScene("LevelEndCutscene");
     }
 
     public void GotoLevelSelect()
@@ -73,4 +75,5 @@ public class SceneSwitch : MonoBehaviour
         PlayerProgress.instance.ClearRegistrations();
         SceneManager.LoadScene("LevelSelect");
     }
+}
 }

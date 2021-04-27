@@ -14,7 +14,7 @@ namespace Shipwreck.Level
 
         private void Start() 
         {
-            if(PlayerProgress.instance.IsGameStart()) {
+            if(PlayerProgress.instance.IsGameStart() && LockedLevels.Count == 0) {
                 LockedLevels.Add("2");
                 UpdateButtons();
             }
@@ -25,15 +25,19 @@ namespace Shipwreck.Level
             foreach(Transform level in levels) {
                 var levelID = level.GetComponent<LoadLevel>().LevelID;
                 if(LockedLevels.Contains(levelID)) {
-                    level.gameObject.SetActive(false);
+                    level.GetComponent<Button>().enabled = false;
+                    level.GetComponent<Image>().color = Color.gray;
+                }
+                else {
+                    level.GetComponent<Button>().enabled = true;
+                    level.GetComponent<Image>().color = Color.white;
                 }
             }
         }
 
-        public bool UpdateLevel(string levelID) {
+        public void UpdateLevel(string levelID) {
             LockedLevels.Remove(levelID);
-            
-
+            UpdateButtons();
         }
     }
 }

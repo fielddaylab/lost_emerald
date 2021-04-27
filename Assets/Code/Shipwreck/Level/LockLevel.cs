@@ -6,14 +6,12 @@ using Shipwreck;
 
 public class LockLevel : MonoBehaviour
 {
-    public string[] LevelIDs;
+    public string levelID;
 
-    void OnEnable()
-    {
-        string currentLevel = PlayerProgress.instance.GetCurrentLevel();
-        if (Array.Exists(LevelIDs, (x) => x == currentLevel))
-        {
-            this.gameObject.SetActive(false);
-        }
+    private bool isUnlocked;
+
+    void Start() {
+        levelID = this.GetComponent<LoadLevel>().LevelID;
+
     }
 }
