@@ -19,6 +19,8 @@ namespace Shipwreck
             public string sourceDisplay;
         }
 
+        [SerializeField] private DocumentReloader m_Reloader = null;
+
         public static PlayerProgress instance;
         private Dictionary<string, InfoEntry> shipLog = new Dictionary<string, InfoEntry>();
         private Dictionary<string, LevelSaveData> m_SaveData = new Dictionary<string, LevelSaveData>();
@@ -34,6 +36,7 @@ namespace Shipwreck
         private string divePerspective;
         private string prevSceneName;
         private string currentLevelID = "loretta";
+        public string PrevLevel { get; set; }
         private LevelBase currentLevel = new LevelLoretta();
         private List<string> lockedLevels = new List<string>();
 
@@ -50,7 +53,7 @@ namespace Shipwreck
             }
         }
 
-        
+        #region SaveData
 
         public string GetCurrentLevel()
         {
@@ -63,17 +66,37 @@ namespace Shipwreck
             if (currentLevelID == "loretta")
             {
                 currentLevel = new LevelLoretta();
-                LoadSaveData();
+                SaveData();
             }
             else if (currentLevelID == "level2")
             {
                 currentLevel = new Level2();
-                LoadSaveData();
+                SaveData();
             }
             shipLog.Clear();
             playerUnlocks.Clear();
 
             
+        }
+
+        public void ReloadLevel(string levelID) {
+            if(m_SaveData.TryGetValue(levelID, out LevelSaveData save)) {
+                if(m_SaveData.TryGetValue(currentLevelID, out LevelSaveData currentSave)) {
+                    currentSave.ShipLog = shipLog;
+                    currentSave.Unlocks = playerUnlocks;
+                }
+                else {
+                    m_SaveData.Add(currentLevelID, new LevelSaveData(shipLog, playerUnlocks));
+                }
+                shipLog = save.ShipLog;
+                playerUnlocks = save.Unlocks;
+                m_Reloader?.ReloadDocument();
+                currentLevelID = levelID;
+            }
+            else {
+                Debug.Log("error on reloading!!");
+            }
+
         }
 
         public bool IsGameStart() {
@@ -82,6 +105,7 @@ namespace Shipwreck
 
         public bool SetComplete() {
             m_SaveData.TryGetValue(currentLevelID, out LevelSaveData save);
+            currentLevelID = null;
             save.Complete();
             return save.IsCompleted();
         }
@@ -90,15 +114,22 @@ namespace Shipwreck
             if(m_SaveData.TryGetValue(levelName, out LevelSaveData save)) {
                 if(save.ShipLog != shipLog) save.ShipLog = shipLog;
                 if(save.Unlocks != playerUnlocks) save.Unlocks = playerUnlocks;
+                save.Complete();
             }
         }
 
-        public void LoadSaveData() {
+        public bool IsLevelComplete(string levelID) {
+            if(m_SaveData.TryGetValue(levelID, out LevelSaveData save)) {
+                return save.IsCompleted();
+            }
+            return false;
+        }
+
+        public void SaveData() {
             if(m_SaveData.TryGetValue(currentLevelID, out LevelSaveData save)) {
                 if(save.IsCompleted()) {
                     shipLog = save.ShipLog;
                     playerUnlocks = save.Unlocks;
-                    save.Clear();
                 }
             }
             else {
@@ -106,11 +137,15 @@ namespace Shipwreck
             }
         }
 
+        #endregion //Save Data
+
+        #region Data Handling
+
         public bool FillInfo(InfoDropTarget target, bool initial=false)
         {
-            if(initial) {
-                LoadSaveData();
-            }
+            // if(initial) {
+            //     SaveData();
+            // }
             if (shipLog.TryGetValue(target.targetKey, out InfoEntry entry))
             {
                 target.Fill(entry.infoDisplay, "From: " + entry.sourceDisplay);
@@ -131,7 +166,7 @@ namespace Shipwreck
             UpdatePhoto(target);
         }
 
-        private void UpdatePhoto(PhotoSlot target)
+        public void UpdatePhoto(PhotoSlot target)
         {
             if (IsUnlocked(target.unlockKey))
             {
@@ -142,6 +177,10 @@ namespace Shipwreck
                 target.SetLocked();
             }
         }
+
+        #endregion //Data Handling
+
+        #region Level
 
         public void RegisterNotification(NotificationSymbol symbol)
         {
@@ -170,13 +209,17 @@ namespace Shipwreck
             symbol.gameObject.SetActive(showNotification);
         }
 
+        #endregion // Level
+
+        #region Documents
+
         public void SetDocumentPresence(DocumentButton target)
         {
             documentButtons.Add(target);
             UpdateDocumentPresence(target);
         }
 
-        private void UpdateDocumentPresence(DocumentButton target)
+        public void UpdateDocumentPresence(DocumentButton target)
         {
             if (IsUnlocked(target.targetKey))
             {
@@ -198,6 +241,8 @@ namespace Shipwreck
             }
 
         }
+
+        #endregion //Documents
 
         public void ShipOutButton(ShipOutButton button)
         {

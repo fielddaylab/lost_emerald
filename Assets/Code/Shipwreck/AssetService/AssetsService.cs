@@ -1,4 +1,4 @@
-using BeauData;
+using System;
 using BeauUtil;
 using UnityEngine;
 
@@ -6,14 +6,15 @@ public class AssetsService : MonoBehaviour
 {
     #region Inspector
 
-    [SerializeField, Required] private ShipDB m_Ships = null;
+    // [SerializeField, Required] private ShipDB m_Ships = null;
+    [SerializeField, Required] private LevelDB m_Levels = null;
 
     #endregion // Inspector
 
-    public ShipDB Ships { get { return m_Ships; } }
+    public LevelDB Levels { get { return m_Levels; } }
 
     protected void Initialize()
     {
-        m_Ships.Initialize();
+        m_Levels.Initialize();
     }
 }

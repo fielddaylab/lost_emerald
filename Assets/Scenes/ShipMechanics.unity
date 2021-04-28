@@ -10953,6 +10953,7 @@ GameObject:
   - component: {fileID: 1442567469}
   - component: {fileID: 1442567474}
   - component: {fileID: 1442567473}
+  - component: {fileID: 1442567475}
   m_Layer: 5
   m_Name: ReturntoShore
   m_TagString: Untagged
@@ -11035,8 +11036,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1442567469}
-        m_MethodName: GotoDocuments
+      - m_Target: {fileID: 1442567475}
+        m_MethodName: Awake
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: PlayerProgress.instance.GetCurrentLevel()
+          m_BoolArgument: 0
+        m_CallState: 0
+      - m_Target: {fileID: 1442567473}
+        m_MethodName: OffDive
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11047,7 +11059,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1442567473}
-        m_MethodName: OffDive
+        m_MethodName: OnDive
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11150,6 +11162,19 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &1442567475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1442567467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf5328c139c814e8a8f3ab18eb6dfa15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 1442567470}
 --- !u!1 &1447738153
 GameObject:
   m_ObjectHideFlags: 0

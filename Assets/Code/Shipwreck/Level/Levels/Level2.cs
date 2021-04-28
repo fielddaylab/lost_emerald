@@ -5,6 +5,8 @@ namespace Shipwreck.Level
 {
     public class Level2 : LevelBase
     {
+        public string levelID = "level2";
+
         override public bool CheckboxStatus(PlayerProgress progress, string checkboxKey)
         {
             bool check = false;

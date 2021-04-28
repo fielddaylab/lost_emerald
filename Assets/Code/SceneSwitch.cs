@@ -8,11 +8,36 @@ namespace Shipwreck.Scene
 {
 public class SceneSwitch : MonoBehaviour
 {
-    public void GotoDocuments()
+
+    #region SceneHelper
+    public static class SceneHelper
+    {
+            private static bool IsReload = false;
+
+            public static void LoadScene(string sceneName, bool IsReloaded=false)
+            {
+                IsReload = IsReloaded;
+                SceneManager.LoadScene(sceneName);
+            }
+    
+            public static bool IsReloaded() {
+                return IsReload;
+            }
+    }
+
+    #endregion //SceneHelper
+    public void GotoDocuments(string levelID, bool IsReload=false)
     {
         PlayerProgress.instance.SetPrevSceneName(SceneManager.GetActiveScene().name);
         PlayerProgress.instance.ClearRegistrations();
-        SceneManager.LoadScene("DocumentScene");
+        if (levelID == "loretta")
+        {
+            SceneHelper.LoadScene("DocumentScene", IsReload);
+        }
+        else if(levelID == "level2")
+        {
+            SceneHelper.LoadScene("Document2Scene", IsReload);
+        }
     }
 
     public void GotoConversation(string dialogKey)
@@ -59,6 +84,13 @@ public class SceneSwitch : MonoBehaviour
         PlayerProgress.instance.ClearRegistrations();
         Logging.instance?.LogViewDesk();
         SceneManager.LoadScene("OfficeDesk");
+    }
+
+    public void GoToFolders()
+    {
+        PlayerProgress.instance.SetPrevSceneName(SceneManager.GetActiveScene().name);
+        PlayerProgress.instance.ClearRegistrations();
+        SceneManager.LoadScene("LevelDocument");
     }
 
     public void GotoLevelEnding()

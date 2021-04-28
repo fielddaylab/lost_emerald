@@ -23,6 +23,12 @@ namespace Shipwreck.Level
             Completed = false;
         }
 
+        public LevelSaveData(Dictionary<string, PlayerProgress.InfoEntry> shipLog, HashSet<string> unlocks, bool complete = false) {
+            ShipLog = shipLog;
+            Unlocks = unlocks;
+            Completed = complete;
+        }
+
         public void Complete() {
             Completed = true;
         }

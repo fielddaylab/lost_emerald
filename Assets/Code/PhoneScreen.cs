@@ -183,7 +183,7 @@ public class PhoneScreen : MonoBehaviour
                 }
                 else
                 {
-                    GetComponent<SceneSwitch>().GotoDocuments();
+                    GetComponent<SceneSwitch>().GotoDocuments(PlayerProgress.instance.GetCurrentLevel());
 
                 }
             });

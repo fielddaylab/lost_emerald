@@ -117,6 +117,10 @@ namespace Shipwreck.Level
             {
                 showNotification = progress.IsUnlocked("sonar-complete") && progress.GetPrevSceneName() != "LaSalleTestScene_RealtimeLighting";
             }
+            else if(notificationKey == "ship-out")
+            {
+                showNotification = progress.FilledLog("LocationBox") && !progress.IsUnlocked("photo-ship-name") && !progress.IsUnlocked("photo-birds-eye");
+            }
             return showNotification;
         }
 
