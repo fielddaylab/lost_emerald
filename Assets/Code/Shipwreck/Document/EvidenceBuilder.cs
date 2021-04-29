@@ -105,19 +105,16 @@ public class EvidenceBuilder : MonoBehaviour
             if (keyTop != null && keyBottom != null)
             {
                 GetComponent<Image>().color = new Color(255f / 255f, 133f / 255f, 132f / 255f);
-                ShipAudio.AudioMgr.Instance.PostEvent("l1_ui_EvidenceWrong");
             }
             else
             {
                 GetComponent<Image>().color = new Color(0f / 255f, 244f / 255f, 255f / 255f);
-                ShipAudio.AudioMgr.Instance.PostEvent("l1_ui_EvidenceRight");
             }
         }
         else
         {
             GetComponent<Image>().color = new Color(134f / 255f, 235f / 255f, 155f / 255f);
             PlayerProgress.instance.Unlock(unlockKey);
-            ShipAudio.AudioMgr.Instance.PostEvent("l1_ui_EvidenceRight");
         }
     }
 

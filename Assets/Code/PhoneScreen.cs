@@ -104,17 +104,14 @@ public class PhoneScreen : MonoBehaviour
             if (contents == "lou")
             {
                 headerLabel.text = "Conversation with Lou the Pilot:";
-                ShipAudio.AudioMgr.Instance.SetMusic("l1_amb_airfield", 0.5f);
             }
             else if (contents == "amy")
             {
                 headerLabel.text = "Conversation with Amy the Archivist:";
-                ShipAudio.AudioMgr.Instance.SetMusic("l1_amb_library", 0.5f);
             }
             else if (contents == "rusty")
             {
                 headerLabel.text = "Conversation with Rusty the Shipbuilder:";
-                ShipAudio.AudioMgr.Instance.SetMusic("l1_amb_shipyard", 0.5f);
             }
 
             Sprite sprite = Resources.Load<Sprite>("Characters/" + contents);
