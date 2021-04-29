@@ -141,6 +141,7 @@ namespace Shipwreck.Document
                             sourceDisplay = documentName
                         };
                         PlayerProgress.instance?.DropInfo(target, entry);
+                        PlayerProgress.instance?.TemporaryBubble("Got it!");
                         Logging.instance?.LogUpdateShipOverview(target.targetKey, infoKey, infoDisplay, documentName);
                     }
                     else
@@ -149,9 +150,17 @@ namespace Shipwreck.Document
                         {
                             PlayerProgress.instance?.TemporaryBubble("Whoops, wrong spot.");
                         }
+                        else if(infoKey == "wreck-wheat" && !(PlayerProgress.instance.FilledLog("NameBox"))) 
+                        {
+                            PlayerProgress.instance?.TemporaryBubble("I need to fill in the name of the ship first.");
+                        }
+                        else if(infoKey == "wreck-cargo")
+                        {
+                            PlayerProgress.instance?.TemporaryBubble("Hmm.. I better read the chart again.");
+                        }
                         else
                         {
-                            PlayerProgress.instance?.TemporaryBubble("Hmm… how do I know that's correct?");
+                            PlayerProgress.instance?.TemporaryBubble("Hmm.. that's not right.");
                         }
                     }
                     break;

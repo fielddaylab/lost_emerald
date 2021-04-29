@@ -9,7 +9,6 @@ public class Bootstrap : MonoBehaviour {
     void Awake() {
         if(instance == null) {
             instance = this;
-            transform.SetParent(null);
             DontDestroyOnLoad(this);
         }
         else {

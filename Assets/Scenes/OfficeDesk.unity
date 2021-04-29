@@ -133,8 +133,8 @@ GameObject:
   - component: {fileID: 15490957}
   - component: {fileID: 15490956}
   - component: {fileID: 15490955}
-  - component: {fileID: 15490954}
   - component: {fileID: 15490958}
+  - component: {fileID: 15490954}
   m_Layer: 5
   m_Name: Documents
   m_TagString: Untagged
@@ -171,9 +171,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 15490952}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82a735f610e7c458180baa479d8f4aeb, type: 3}
+  m_Script: {fileID: 11500000, guid: 12cdc3b12b0a8416590804d1434ae5e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 15490955}
 --- !u!114 &15490955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,7 +219,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 15490954}
-        m_MethodName: GotoDocuments
+        m_MethodName: GotoFile
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

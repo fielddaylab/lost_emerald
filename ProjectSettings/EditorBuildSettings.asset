@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/LevelSelect.unity
+    path: Assets/Assets/Shipwreck/Level/LevelSelect.unity
     guid: d7a07a2e327bd4fa8a50a2b8601a48bb
   - enabled: 1
     path: Assets/Scenes/OfficeDesk.unity
@@ -24,9 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/ShipMechanics.unity
     guid: 931b1c9361ba1412b8c0b34ddfc8d789
   - enabled: 1
-    path: Assets/Scenes/LevelEndCutscene.unity
+    path: Assets/Assets/Shipwreck/Level/LevelEndCutscene.unity
     guid: 112cd3099160649dd82ca5ac81b66f90
   - enabled: 1
-    path: Assets/Scenes/LevelDocument.unity
+    path: Assets/Assets/Shipwreck/Level/LevelDocument.unity
     guid: a0d547ad2e5c04e798dda5f6968d384c
   m_configObjects: {}
