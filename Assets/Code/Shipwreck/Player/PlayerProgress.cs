@@ -254,7 +254,13 @@ namespace Shipwreck
         {
             if (shipOutButton)
             {
-                shipOutButton.GetComponent<Button>().interactable = currentLevel.CanShipOut(this);
+                bool canShipOut = currentLevel.CanShipOut(this);
+                shipOutButton.GetComponent<Button>().interactable = canShipOut;
+                if(canShipOut) {
+                    if(!IsUnlocked("loretta-ship-out")) {
+                        Unlock("loretta-ship-out");
+                    }
+                }
             }
         }
 
@@ -263,8 +269,8 @@ namespace Shipwreck
             shipLog[target.targetKey] = info;
             FillInfo(target);
             UpdateBubble();
-            UpdateLockedObjects();
             UpdateShipOutButton();
+            UpdateLockedObjects();
         }
 
         private void UpdateLockedObjects()

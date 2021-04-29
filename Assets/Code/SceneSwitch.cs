@@ -25,6 +25,13 @@ public class SceneSwitch : MonoBehaviour
             }
     }
 
+    public void GotoCurrentDocument() {
+        PlayerProgress.instance.SetPrevSceneName(SceneManager.GetActiveScene().name);
+        PlayerProgress.instance.ClearRegistrations();
+        SceneManager.LoadScene("DocumentScene");
+
+    }
+
     #endregion //SceneHelper
     public void GotoDocuments(string levelID, bool IsReload=false)
     {
@@ -42,6 +49,7 @@ public class SceneSwitch : MonoBehaviour
 
     public void GotoConversation(string dialogKey)
     {
+        if(PlayerProgress.instance.GetCurrentLevel() == "level2") dialogKey = "rya";
         PlayerProgress.instance.SetPrevSceneName(SceneManager.GetActiveScene().name);
         PlayerProgress.instance.ClearRegistrations();
         PlayerProgress.instance.SetDialogKey(dialogKey);

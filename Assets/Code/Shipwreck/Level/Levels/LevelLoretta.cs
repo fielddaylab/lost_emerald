@@ -71,10 +71,10 @@ namespace Shipwreck.Level
             {
                 showNotification = progress.IsUnlocked("wreck-table");
             }
-            else if (notificationKey == "ship-out" && (!progress.IsUnlocked("photo-birds-eye")))
-            {
-                showNotification = progress.IsUnlocked("viewed-wreck-table");
-            }
+            // else if (notificationKey == "ship-out" && (!progress.IsUnlocked("photo-birds-eye")))
+            // {
+            //     showNotification = progress.IsUnlocked("viewed-wreck-table");
+            // }
             else if (notificationKey == "evidence-builder" && progress.IsUnlocked("photo-birds-eye") && !progress.IsUnlocked("EvidenceBuilder"))
             {
                 if (progress.IsUnlocked("rusty-transcript"))
@@ -119,7 +119,7 @@ namespace Shipwreck.Level
             }
             else if(notificationKey == "ship-out")
             {
-                showNotification = progress.FilledLog("LocationBox") && !progress.IsUnlocked("photo-ship-name") && !progress.IsUnlocked("photo-birds-eye");
+                showNotification = progress.FilledLog("LocationBox") && progress.IsUnlocked("loretta-ship-out") && !progress.IsUnlocked("photo-ship-name");
             }
             return showNotification;
         }
