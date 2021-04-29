@@ -32,6 +32,13 @@ public class SceneSwitch : MonoBehaviour
 
     }
 
+    public void GotoLevel2() {
+        PlayerProgress.instance.SetPrevSceneName(SceneManager.GetActiveScene().name);
+        PlayerProgress.instance.ClearRegistrations();
+        SceneManager.LoadScene("LevelLibrary");
+
+    }
+
     #endregion //SceneHelper
     public void GotoDocuments(string levelID, bool IsReload=false)
     {

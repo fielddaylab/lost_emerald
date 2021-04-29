@@ -105,7 +105,7 @@ namespace Shipwreck
 
         public bool SetComplete() {
             m_SaveData.TryGetValue(currentLevelID, out LevelSaveData save);
-            currentLevelID = null;
+            currentLevelID = "level2";
             save.Complete();
             return save.IsCompleted();
         }

@@ -35,6 +35,9 @@ namespace Shipwreck.Level
                     button.onClick.AddListener(ReloadLevel);
                 }
             }
+            else if(PlayerProgress.instance.GetCurrentLevel() == "level2") {
+                button.onClick.AddListener(GotoLevel2);
+            }
             else {
                 m_CaseStatus.gameObject.SetActive(false);
                 button.onClick.AddListener(GotoDesk);
