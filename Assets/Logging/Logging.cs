@@ -63,7 +63,6 @@ public class Logging : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            transform.SetParent(null);
             DontDestroyOnLoad(this);
             logger = new SimpleLog(appId, appVersion, null);
         }

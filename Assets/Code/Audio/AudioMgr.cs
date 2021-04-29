@@ -53,7 +53,6 @@ namespace ShipAudio
 
             Instance = this;
             InitializeService();
-            transform.SetParent(null);
             DontDestroyOnLoad(gameObject);
         }
 
