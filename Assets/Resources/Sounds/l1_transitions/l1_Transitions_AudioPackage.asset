@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc96730c10a127e41bc3bd9459aff58a, type: 3}
+  m_Name: l1_Transitions_AudioPackage
+  m_EditorClassIdentifier: 
+  m_Events:
+  - {fileID: 11400000, guid: 6f7fbd8670d2d4b728dfb5c47b9c1986, type: 2}
+  - {fileID: 11400000, guid: d522d0a2b829e47939b498696afcc049, type: 2}

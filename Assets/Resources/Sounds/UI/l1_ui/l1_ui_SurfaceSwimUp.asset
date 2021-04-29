@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4d6a54bc4a82f64995a750a9ca27fb3, type: 3}
+  m_Name: l1_ui_SurfaceSwimUp
+  m_EditorClassIdentifier: 
+  m_Clips:
+  - {fileID: 8300000, guid: 326ee4c82a9964a1781de181ec2b37ee, type: 3}
+  m_Volume:
+    Base: 1
+    ModifierMin: -0.06
+    ModifierMax: 0.18
+  m_Pitch:
+    Base: 0.96
+    ModifierMin: -0.13
+    ModifierMax: 0.14
+  m_Delay:
+    Base: 0
+    ModifierMin: 0
+    ModifierMax: 0
+  m_Loop: 0
+  m_RandomizeStartingPosition: 0

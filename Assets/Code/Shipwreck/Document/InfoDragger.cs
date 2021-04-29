@@ -141,10 +141,12 @@ namespace Shipwreck.Document
                             sourceDisplay = documentName
                         };
                         PlayerProgress.instance?.DropInfo(target, entry);
+                        ShipAudio.AudioMgr.Instance.PostEvent("l1_ui_EvidenceRight");
                         Logging.instance?.LogUpdateShipOverview(target.targetKey, infoKey, infoDisplay, documentName);
                     }
                     else
                     {
+                        ShipAudio.AudioMgr.Instance.PostEvent("l1_ui_EvidenceWrong");
                         if (infoKey == "coords")
                         {
                             PlayerProgress.instance?.TemporaryBubble("Whoops, wrong spot.");
