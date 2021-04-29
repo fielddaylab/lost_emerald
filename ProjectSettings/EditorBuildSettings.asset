@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/OfficeDesk.unity
     guid: ab0a733126c3c48638b98fc131d987b1
   - enabled: 1
-    path: Assets/Scenes/DocumentScene.unity
+    path: Assets/Assets/Shipwreck/Document/DocumentScene.unity
     guid: 025b9341e554b4069bbb7fa6d77c5e37
   - enabled: 1
     path: Assets/Scenes/LaSalleTestScene_RealtimeLighting.unity
@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/ShipMechanics.unity
     guid: 931b1c9361ba1412b8c0b34ddfc8d789
   - enabled: 1
-    path: Assets/Scenes/LevelEnding.unity
+    path: Assets/Scenes/LevelEndCutscene.unity
     guid: 112cd3099160649dd82ca5ac81b66f90
+  - enabled: 1
+    path: Assets/Scenes/LevelDocument.unity
+    guid: a0d547ad2e5c04e798dda5f6968d384c
   m_configObjects: {}
