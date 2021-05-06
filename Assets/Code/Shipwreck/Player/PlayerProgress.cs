@@ -103,10 +103,16 @@ namespace Shipwreck
             return m_SaveData.Keys.Count == 0;
         }
 
+        public bool IsLevelStart(string levelID) {
+            return currentLevelID == levelID && playerUnlocks.Count > 0;
+        }
+
         public bool SetComplete() {
             m_SaveData.TryGetValue(currentLevelID, out LevelSaveData save);
             currentLevelID = "level2";
             save.Complete();
+            shipLog.Clear();
+            playerUnlocks.Clear();
             return save.IsCompleted();
         }
 

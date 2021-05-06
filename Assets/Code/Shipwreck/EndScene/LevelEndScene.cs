@@ -16,14 +16,14 @@ namespace Shipwreck.EndLevel
 
         void Awake() {
             PopupEnd.gameObject.SetActive(false);
+            levelID = PlayerProgress.instance?.GetCurrentLevel();
+            PlayerProgress.instance.PrevLevel = levelID;
             StartCoroutine(EndCutscene());
         }
         
         private void Popup() {
-            levelID = PlayerProgress.instance?.GetCurrentLevel();
             levelName.SetText(levelID.ToUpper());
             PlayerProgress.instance.SetComplete();
-            PlayerProgress.instance.PrevLevel = levelID;
             PopupEnd.gameObject.SetActive(true);
         }
 

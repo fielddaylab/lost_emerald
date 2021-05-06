@@ -38,6 +38,7 @@ public class Journal : MonoBehaviour
     {
         yield return new WaitForSeconds(seconds);
         obj.SetActive(false);
+        journalIcon.SetActive(true);
     }
 
     // private IEnumerator OpenCloseJournal() {

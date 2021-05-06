@@ -52,7 +52,7 @@ namespace Shipwreck.Level
             {
                 showNotification = !progress.IsUnlocked("viewed-intro-transcript");
             }
-            else if(notificationKey == "amy-newspaper") 
+            else if(notificationKey == "amy-newspaper" && !progress.IsUnlocked("amy-newspaper-clicked")) 
             {
                 showNotification = progress.IsUnlocked("newspaper");
             }

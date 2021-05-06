@@ -71,8 +71,8 @@ public class EvidenceBuilder : MonoBehaviour
             unlockKey = "verified-canaller";
             PlayerProgress.instance.TemporaryBubble("It's a canaller!");
             evidencePopupImage1.sprite = Resources.Load<Sprite>("birds-eye-photo-new");
-            evidencePopupImage2.sprite = Resources.Load<Sprite>("ship-type-canaller");
-            evidencePopupName.text = "Canaller";
+            evidencePopupImage2.sprite = Resources.Load<Sprite>("shiptype-canaller");
+            evidencePopupName.text = "Type: Canaller";
             evidencePopupCaption.text = "The ship photo and Ship Type card match!";
             evidencePopupContainer.SetActive(true);
         }
@@ -81,8 +81,8 @@ public class EvidenceBuilder : MonoBehaviour
             unlockKey = "verified-loretta";
             PlayerProgress.instance.TemporaryBubble("Aha! It's the Loretta!");
             evidencePopupImage1.sprite = Resources.Load<Sprite>("photo-ship-name");
-            evidencePopupImage2.sprite = Resources.Load<Sprite>("photo-ship-name");
-            evidencePopupName.text = "The Loretta";
+            evidencePopupImage2.sprite = Resources.Load<Sprite>("list-of-wrecks-loretta");
+            evidencePopupName.text = "Name: Loretta";
             evidencePopupCaption.text = "Our photo of the ship's name is missing a few letters, but it says Loretta!";
             evidencePopupContainer.SetActive(true);
         }

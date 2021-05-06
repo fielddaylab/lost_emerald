@@ -16,19 +16,48 @@ namespace Shipwreck.Level
         public string m_LevelID = null;
         public Transform m_CaseStatus = null;
 
+        private bool IsUnlocked = false;
         private bool IsComplete = false;
+        private string m_DisplayID = null;
 
         public void Start() {
 
             button.onClick.RemoveAllListeners();
 
+            var playerData = PlayerProgress.instance;
+
+            SetDisplay();
+
+            m_Text.SetText(m_DisplayID.ToUpper());
+
+            IsComplete = playerData.IsLevelComplete(m_LevelID);
+
+            UpdateButton();
+
+        }
+
+        private void SetDisplay() {
+
+            var playerData = PlayerProgress.instance;
+
             if(LevelHelper.CurrentScene() == "LevelEndCutscene"){
-                m_LevelID = PlayerProgress.instance.PrevLevel;
+                m_LevelID = playerData.PrevLevel;
+                m_DisplayID = m_LevelID;
             }
-            m_Text.SetText(m_LevelID);
+            else if(m_LevelID != null) {
+                if(playerData.IsLevelComplete(m_LevelID) 
+                || (playerData.GetCurrentLevel() == m_LevelID && playerData.FilledLog("NameBox")))  {
+                    //filled log refers to document 1, so level 2 will pop up. need to work on that.
+                    m_DisplayID = m_LevelID;
+                }
+                else 
+                {
+                    m_DisplayID = "?";
+                }
+            }
+        }
 
-            IsComplete = PlayerProgress.instance.IsLevelComplete(m_LevelID);
-
+        private void UpdateButton() {
             if(IsComplete) {
                 m_CaseStatus.gameObject.SetActive(true);
                 if(LevelHelper.CurrentScene() != "LevelEndCutscene") {
@@ -44,7 +73,6 @@ namespace Shipwreck.Level
             }
             
             button.interactable = (IsComplete || PlayerProgress.instance.GetCurrentLevel() == m_LevelID);
-            
         }
 
         private void ReloadLevel(){

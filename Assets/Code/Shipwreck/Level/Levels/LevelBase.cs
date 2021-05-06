@@ -22,8 +22,19 @@ namespace Shipwreck.Level
 
     public static class LevelHelper
     {
+        private static List<string> levelOrder = new List<string>{
+            "loretta",
+            "level2",
+            "level3"
+        };
+
         public static string CurrentScene() {
             return UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        }
+
+        public static bool IsNextLevel(string LevelID) {
+            int nextLevelIdx = levelOrder.IndexOf(PlayerProgress.instance.GetCurrentLevel()) + 1;
+            return levelOrder[nextLevelIdx] == LevelID;
         }
     }
 }
