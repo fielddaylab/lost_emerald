@@ -1,12 +1,3 @@
-[submodule "Submodules/BeauData"]
-	path = Submodules/BeauData
-	url = git://github.com/BeauPrime/BeauData.git
-[submodule "Submodules/BeauPools"]
-	path = Submodules/BeauPools
-	url = git://github.com/BeauPrime/BeauPools.git
-[submodule "Submodules/BeauRoutine"]
-	path = Submodules/BeauRoutine
-	url = git://github.com/BeauPrime/BeauRoutine.git
 [submodule "Submodules/BeauUtil"]
 	path = Submodules/BeauUtil
 	url = git://github.com/BeauPrime/BeauUtil.git

@@ -1,10 +1,8 @@
 {
   "dependencies": {
-    "com.beauprime.beaudata": "file:../Submodules/BeauData/Assets/BeauData",
-    "com.beauprime.beaupools": "file:../Submodules/BeauPools/Assets/BeauPools",
-    "com.beauprime.beauroutine": "file:../Submodules/BeauRoutine/Assets/BeauRoutine",
-    "com.beauprime.beauroutine-extensions": "file:../Submodules/BeauRoutine/Assets/BeauRoutine-Extensions",
-    "com.beauprime.beauroutine-spline": "file:../Submodules/BeauRoutine/Assets/BeauRoutine-Spline",
+    "com.beauprime.beaudata": "0.3.1",
+    "com.beauprime.beaupools": "0.2.1",
+    "com.beauprime.beauroutine": "0.11.1",
     "com.beauprime.beauutil": "file:../Submodules/BeauUtil/Assets/BeauUtil",
     "com.fieldday.opengamedata-unity": "file:../Submodules/opengamedata-unity/Assets/FieldDay",
     "com.unity.cinemachine": "2.6.3",
@@ -49,5 +47,15 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
-  }
+  },
+  "scopedRegistries": [
+    {
+      "name": "package.openupm.com",
+      "url": "https://package.openupm.com",
+      "scopes": [
+        "com.beauprime",
+        "com.openupm"
+      ]
+    }
+  ]
 }
