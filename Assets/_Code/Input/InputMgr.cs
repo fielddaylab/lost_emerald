@@ -15,18 +15,18 @@ namespace Shipwreck {
 		/// <summary>
 		/// Returns current position of the Mouse/Touch in Screen Space
 		/// </summary>
-		public Vector2 Position { 
-			get { return m_controls.Default.Position.ReadValue<Vector2>(); } 
+		public static Vector2 Position { 
+			get { return I.m_controls.Default.Position.ReadValue<Vector2>(); } 
 		}
 
 		private EventService m_eventService;
 		private Controls m_controls;
 
-		public void Register(StringHash32 id, Action handler) {
-			m_eventService.Register(id, handler);
+		public static void Register(StringHash32 id, Action handler) {
+			I.m_eventService.Register(id, handler);
 		}
-		public void Deregister(StringHash32 id, Action handler) {
-			m_eventService.Deregister(id, handler);
+		public static void Deregister(StringHash32 id, Action handler) {
+			I?.m_eventService?.Deregister(id, handler);
 		}
 
 
@@ -37,6 +37,7 @@ namespace Shipwreck {
 			if (m_controls == null) {
 				m_controls = new Controls();
 			}
+			m_controls.Default.Enable();
 			m_controls.Default.Interact.performed += HandleInteractPressed;
 			m_controls.Default.Interact.canceled += HandleInteractReleased;
 		}
