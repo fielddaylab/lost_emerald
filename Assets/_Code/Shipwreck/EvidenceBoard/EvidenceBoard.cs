@@ -32,8 +32,9 @@ namespace Shipwreck {
 			if (Physics.Raycast(ray,out RaycastHit hitInfo,m_raycastDistance,m_dragLayer)) {
 				Draggable draggable = hitInfo.collider.GetComponent<Draggable>();
 				if (draggable != null) {
-					//m_selectionOffset = draggable.transform.InverseTransformPoint(hitInfo.point);
 					m_selected = draggable;
+					m_selectionOffset = hitInfo.point - m_selected.transform.position;
+					m_selectionOffset.z = 0;
 					draggable.OnPickup();
 				}
 			}
@@ -56,10 +57,10 @@ namespace Shipwreck {
 			Vector3 screenPos = new Vector3(
 				InputMgr.Position.x,
 				InputMgr.Position.y,
-				Mathf.Abs(m_selected.transform.position.z - Camera.main.transform.position.z) - 3f
+				Mathf.Abs(Camera.main.transform.position.z - m_selected.transform.position.z)
 			);
 			Vector3 worldPos = Camera.main.ScreenToWorldPoint(screenPos);
-			m_selected.transform.position = worldPos;
+			m_selected.transform.position = worldPos - m_selectionOffset;
 		}
 
 	}
