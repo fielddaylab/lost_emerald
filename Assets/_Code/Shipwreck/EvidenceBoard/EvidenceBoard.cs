@@ -12,9 +12,12 @@ namespace Shipwreck {
 		private float m_raycastDistance = 50f;
 		[SerializeField]
 		private LayerMask m_dragLayer = 0;
+		[SerializeField]
+		private float m_dragCameraDistance = 20;
 
 		private Draggable m_selected;
 		private Vector3 m_selectionOffset;
+		private float m_originalZ;
 
 
 		private void OnEnable() {
@@ -29,12 +32,12 @@ namespace Shipwreck {
 
 		private void HandleInteractPressed() {
 			Ray ray = Camera.main.ScreenPointToRay(InputMgr.Position);
-			if (Physics.Raycast(ray,out RaycastHit hitInfo,m_raycastDistance,m_dragLayer)) {
+			if (Physics.Raycast(ray, out RaycastHit hitInfo, m_raycastDistance, m_dragLayer)) {
 				Draggable draggable = hitInfo.collider.GetComponent<Draggable>();
 				if (draggable != null) {
 					m_selected = draggable;
+					m_originalZ = m_selected.transform.position.z;
 					m_selectionOffset = hitInfo.point - m_selected.transform.position;
-					m_selectionOffset.z = 0;
 					draggable.OnPickup();
 				}
 			}
@@ -44,8 +47,11 @@ namespace Shipwreck {
 				return;
 			}
 			if (m_selected.IsDroppable) {
-				
+
 			} else {
+				Vector3 position = m_selected.transform.position;
+				position.z = m_originalZ;
+				m_selected.transform.position = position;
 				m_selected = null;
 				m_selectionOffset = Vector2.zero;
 			}
@@ -57,7 +63,7 @@ namespace Shipwreck {
 			Vector3 screenPos = new Vector3(
 				InputMgr.Position.x,
 				InputMgr.Position.y,
-				Mathf.Abs(Camera.main.transform.position.z - m_selected.transform.position.z)
+				m_dragCameraDistance
 			);
 			Vector3 worldPos = Camera.main.ScreenToWorldPoint(screenPos);
 			m_selected.transform.position = worldPos - m_selectionOffset;
