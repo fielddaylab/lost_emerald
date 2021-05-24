@@ -48,7 +48,8 @@
     "com.unity.modules.video": "1.0.0",
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
-    "com.unity.modules.xr": "1.0.0"
+    "com.unity.modules.xr": "1.0.0",
+    "com.potatointeractive.localization": "0.1.1"
   },
   "scopedRegistries": [
     {
@@ -56,7 +57,11 @@
       "url": "https://package.openupm.com",
       "scopes": [
         "com.beauprime",
-        "com.openupm"
+        "com.beauprime.beaudata",
+        "com.openupm",
+        "com.potatointeractive.localization",
+        "com.potatointeractive.pcg",
+        "com.potatointeractive.util"
       ]
     }
   ]

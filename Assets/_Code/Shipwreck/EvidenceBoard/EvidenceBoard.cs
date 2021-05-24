@@ -11,9 +11,7 @@ namespace Shipwreck {
 		[SerializeField]
 		private LayerMask m_dragLayer = 0;
 		[SerializeField]
-		private float m_dragCameraDistance = 20;
-		[SerializeField]
-		private float m_dropCameraDistance = 12;
+		private float m_dragIncreaseZ = 4;
 		[SerializeField]
 		private TweenSettings m_dragTweenSettings = new TweenSettings(0.2f, Curve.QuadOut);
 
@@ -58,7 +56,8 @@ namespace Shipwreck {
 					.OnComplete(OnSetDropComplete).OnStop(OnSetDropComplete);
 				// need to place object based on offset and mouse position
 				// to avoid distortion based on camera
-				Vector3 world = MouseToWorldPos(InputMgr.Position, m_dropCameraDistance) - m_selectionOffset;
+				Vector3 world = MouseToWorldPos(InputMgr.Position, -Camera.main.transform.position.z) - m_selectionOffset;
+				world.z = m_originalPosition.z;
 				m_originalPosition = world;
 			}
 		}
@@ -66,11 +65,13 @@ namespace Shipwreck {
 			if (m_selected == null || m_routine) {
 				return; // nothing to do right now
 			}
-			m_selected.transform.position = MouseToWorldPos(InputMgr.Position) - m_selectionOffset;
+			float distance = -Camera.main.transform.position.z - m_dragIncreaseZ;
+			m_selected.transform.position = MouseToWorldPos(InputMgr.Position, distance) - m_selectionOffset;
 		}
 
 		private void SetDragPosition(float value) {
-			m_selected.transform.position = Vector3.Lerp(m_originalPosition, MouseToWorldPos(InputMgr.Position) - m_selectionOffset, value);
+			float distance = -Camera.main.transform.position.z - m_dragIncreaseZ;
+			m_selected.transform.position = Vector3.Lerp(m_originalPosition, MouseToWorldPos(InputMgr.Position, distance) - m_selectionOffset, value);
 		}
 		private void OnSetDropComplete() {
 			m_selected.transform.position = m_originalPosition;
@@ -78,16 +79,11 @@ namespace Shipwreck {
 			m_selectionOffset = Vector2.zero;
 		}
 
-		private Vector3 MouseToWorldPos(Vector2 mouse) {
-			Vector3 worldPos = Camera.main.ScreenToWorldPoint(new Vector3(
-				mouse.x, mouse.y, m_dragCameraDistance
-			));
-			return worldPos;
-		}
 		private Vector3 MouseToWorldPos(Vector2 mouse, float distance) {
 			Vector3 worldPos = Camera.main.ScreenToWorldPoint(new Vector3(
 				mouse.x, mouse.y, distance
 			));
+			
 			return worldPos;
 		}
 
