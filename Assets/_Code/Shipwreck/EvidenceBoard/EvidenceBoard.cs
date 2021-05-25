@@ -23,6 +23,7 @@ namespace Shipwreck {
 
 
 		private void OnEnable() {
+			Routine.Settings.DebugMode = false;
 			InputMgr.Register(InputMgr.OnInteractPressed, HandleInteractPressed);
 			InputMgr.Register(InputMgr.OnInteractReleased, HandleInteractReleased);
 		}
