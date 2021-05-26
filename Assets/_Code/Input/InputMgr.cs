@@ -26,7 +26,9 @@ namespace Shipwreck {
 			I.m_eventService.Register(id, handler);
 		}
 		public static void Deregister(StringHash32 id, Action handler) {
-			I?.m_eventService?.Deregister(id, handler);
+			if (I != null) {
+				I.m_eventService?.Deregister(id, handler);
+			}
 		}
 
 
@@ -55,7 +57,6 @@ namespace Shipwreck {
 		private void HandleInteractReleased(InputAction.CallbackContext context) {
 			m_eventService.Dispatch(OnInteractReleased);
 		}
-
 
 	}
 
