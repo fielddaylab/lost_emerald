@@ -2428,6 +2428,11 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 3.8
       objectReference: {fileID: 0}
+    - target: {fileID: 6075142808792700213, guid: b964d8ad5000f4c458e591563bfa9f57,
+        type: 3}
+      propertyPath: m_outNode
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b964d8ad5000f4c458e591563bfa9f57, type: 3}
 --- !u!1 &1177807767
@@ -3678,6 +3683,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2255528052103415292, guid: 59dfb005aa6d40742afb8a74d4010bbb,
+        type: 3}
+      propertyPath: m_isDroppable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2520227438584415341, guid: 59dfb005aa6d40742afb8a74d4010bbb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5028,10 +5038,15 @@ MonoBehaviour:
   m_dragLayer:
     serializedVersion: 2
     m_Bits: 256
+  m_dropLayer:
+    serializedVersion: 2
+    m_Bits: 512
   m_dragIncreaseZ: 4
   m_dragTweenSettings:
     Time: 0.05
     Curve: 3
+  m_droppableNodePrefab: {fileID: 8494729130872020233, guid: d82cb6ecc9533c44ea4bdfe5278afebe,
+    type: 3}
 --- !u!1001 &406764391828905720
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5389,6 +5404,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2255528052103415292, guid: 59dfb005aa6d40742afb8a74d4010bbb,
+        type: 3}
+      propertyPath: m_isDroppable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2520227438584415341, guid: 59dfb005aa6d40742afb8a74d4010bbb,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -18,6 +18,22 @@ namespace Shipwreck {
 		private bool m_updateLabel = false;
 
 
+		public void SetChildNode(YarnNode child) {
+			m_child = child;
+			m_updateLine = false;
+			m_updateLabel = false;
+			if (m_lineRenderer != null) {
+				m_lineRenderer.enabled = false;
+			}
+			if (m_child != null && m_lineRenderer != null) {
+				m_lineRenderer.enabled = true;
+				m_updateLine = true;
+				if (m_label != null) {
+					m_updateLabel = true;
+				}
+			}
+		}
+
 		private void OnEnable() {
 			if (m_child != null && m_lineRenderer != null) {
 				m_lineRenderer.enabled = true;

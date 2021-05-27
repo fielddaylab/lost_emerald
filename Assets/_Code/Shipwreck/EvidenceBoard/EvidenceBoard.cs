@@ -1,19 +1,28 @@
 ﻿using BeauRoutine;
+using BeauUtil;
 using UnityEngine;
 
 namespace Shipwreck {
 
 
-	public class EvidenceBoard : MonoBehaviour {
+	public class EvidenceBoard : Singleton<EvidenceBoard> {
+
+		public static YarnNode DroppableNodePrefab {
+			get { return I.m_droppableNodePrefab; }
+		}
 
 		[SerializeField]
 		private float m_raycastDistance = 50f;
 		[SerializeField]
 		private LayerMask m_dragLayer = 0;
 		[SerializeField]
+		private LayerMask m_dropLayer = 0;
+		[SerializeField]
 		private float m_dragIncreaseZ = 4;
 		[SerializeField]
 		private TweenSettings m_dragTweenSettings = new TweenSettings(0.2f, Curve.QuadOut);
+		[SerializeField]
+		private YarnNode m_droppableNodePrefab = null;
 
 		private Draggable m_selected;
 		private Vector3 m_selectionOffset;
@@ -34,6 +43,9 @@ namespace Shipwreck {
 
 
 		private void HandleInteractPressed() {
+			if (m_selected != null) {
+				return;
+			}
 			Ray ray = Camera.main.ScreenPointToRay(InputMgr.Position);
 			if (Physics.Raycast(ray, out RaycastHit hitInfo, m_raycastDistance, m_dragLayer)) {
 				Draggable draggable = hitInfo.collider.GetComponent<Draggable>();
@@ -42,6 +54,14 @@ namespace Shipwreck {
 					m_originalPosition = m_selected.transform.position;
 					m_selectionOffset = hitInfo.point - m_selected.transform.position;
 					m_routine.Replace(this, Tween.ZeroToOne(SetDragPosition, m_dragTweenSettings));
+					
+					if (draggable.transform.parent != null && draggable.transform.parent.parent != null) {
+						DropZone zone = draggable.transform.parent.parent.GetComponent<DropZone>();
+						if (zone != null) {
+							zone.Remove(draggable.transform);
+						}
+					}
+					draggable.transform.SetParent(null);
 					draggable.OnPickup();
 				}
 			}
@@ -50,9 +70,22 @@ namespace Shipwreck {
 			if (m_selected == null) {
 				return;
 			}
+			
+			bool didDrop = false;
 			if (m_selected.IsDroppable) {
-
-			} else {
+				Ray ray = Camera.main.ScreenPointToRay(InputMgr.Position);
+				if (Physics.Raycast(ray, out RaycastHit hitinfo, m_raycastDistance, m_dropLayer)) {
+					DropZone drop = hitinfo.collider.GetComponent<DropZone>();
+					if (drop != null) {
+						Vector3 position = drop.Attach(m_selected.transform);
+						m_routine.Replace(this, Tween.OneToZero(SetDragPosition, m_dragTweenSettings))
+							.OnComplete(OnSetDropComplete).OnStop(OnSetDropComplete);
+						m_originalPosition = position;
+						didDrop = true;
+					}
+				}
+			}
+			if (!didDrop) {
 				m_routine.Replace(this, Tween.OneToZero(SetDragPosition, m_dragTweenSettings))
 					.OnComplete(OnSetDropComplete).OnStop(OnSetDropComplete);
 				// need to place object based on offset and mouse position
