@@ -6,30 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Assets/Shipwreck/Level/LevelSelect.unity
-    guid: d7a07a2e327bd4fa8a50a2b8601a48bb
-  - enabled: 1
-    path: Assets/Scenes/OfficeDesk.unity
-    guid: ab0a733126c3c48638b98fc131d987b1
-  - enabled: 1
-    path: Assets/Assets/Shipwreck/Document/DocumentScene.unity
-    guid: 025b9341e554b4069bbb7fa6d77c5e37
+    path: Assets/Scenes/EvidenceBoard.unity
+    guid: 894ff43b77467da4d91c6988e3649476
   - enabled: 1
     path: Assets/Scenes/LaSalleTestScene_RealtimeLighting.unity
     guid: a0cd22f0a54794e7590234e65cb93caf
-  - enabled: 1
-    path: Assets/Scenes/ConversationInterface.unity
-    guid: 6deeaba597c804d4c82f1f33a0815fc6
-  - enabled: 1
-    path: Assets/Scenes/ShipMechanics.unity
-    guid: 931b1c9361ba1412b8c0b34ddfc8d789
-  - enabled: 1
-    path: Assets/Assets/Shipwreck/Level/LevelEndCutscene.unity
-    guid: 112cd3099160649dd82ca5ac81b66f90
-  - enabled: 1
-    path: Assets/Assets/Shipwreck/Level/LevelDocument.unity
-    guid: a0d547ad2e5c04e798dda5f6968d384c
-  - enabled: 1
-    path: Assets/Assets/Shipwreck/Level/LevelLibrary.unity
-    guid: e7036c342e19142b393837582629109e
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: ef46c88e8b21a36409b972c686593d9a,
+      type: 2}
