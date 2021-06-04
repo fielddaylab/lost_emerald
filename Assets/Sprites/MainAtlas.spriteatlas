@@ -1,0 +1,153 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: New Sprite Atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 0
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 77fe6f1a481434c9fb15dbb9c9aed822, type: 3}
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: ab5b3c307990f48cc9b29102602da7cb, type: 3}
+  - {fileID: 21300000, guid: 68c55cb03adc4470c9fc54b5a1f1e235, type: 3}
+  - {fileID: 21300000, guid: a06d87c025df54935a230859046513da, type: 3}
+  - {fileID: 21300000, guid: d13a20e059c004ee4970cc643ab3bb03, type: 3}
+  - {fileID: 21300000, guid: d4f8688107d0549fca5788fad54096b1, type: 3}
+  - {fileID: 21300000, guid: 6742bc91c8f5d4e3daea592a062c8b52, type: 3}
+  - {fileID: 21300000, guid: 237fd6a124dc2498485b5043cc095ea8, type: 3}
+  - {fileID: 21300000, guid: 25a167d13e4ec455fb823ae9c3388e39, type: 3}
+  - {fileID: 21300000, guid: 5acb7c42884df40b59c8ff374fe31bcb, type: 3}
+  - {fileID: 21300000, guid: 3298558238bda48baba831b3b1346b96, type: 3}
+  - {fileID: 21300000, guid: 5c871ca2efd9445e8bc27662e0abd16f, type: 3}
+  - {fileID: 21300000, guid: f2f75fc2d8627f44086851ab9a5865d3, type: 3}
+  - {fileID: 21300000, guid: 65a7a313242c047308995d487cb2e386, type: 3}
+  - {fileID: 21300000, guid: 496a2b33c0d4f462fa87d9b752ceee37, type: 3}
+  - {fileID: 21300000, guid: 02d83d43a1c084c57a85e92a7c30bdc3, type: 3}
+  - {fileID: 21300000, guid: d7e29f63d2fd74c079090fd85d7430af, type: 3}
+  - {fileID: 21300000, guid: f2ae72a37b1b7430f99b9f76dbd7bfce, type: 3}
+  - {fileID: 21300000, guid: 79bc76940498e43718f12fad5bfc70a0, type: 3}
+  - {fileID: 21300000, guid: a418b694415c84967abd730e9eb95a7d, type: 3}
+  - {fileID: 21300000, guid: 65c26de4f69714d11b1cd5e2bb9de646, type: 3}
+  - {fileID: 21300000, guid: 56cea705088c54c179fac04edb7c1706, type: 3}
+  - {fileID: 21300000, guid: ceb65125ce4314f389861f487804e71f, type: 3}
+  - {fileID: 21300000, guid: 18ce4d25aa2b140caad634c3dd4b69e2, type: 3}
+  - {fileID: 21300000, guid: 6be63d36b12b94ca4acfbb13a855f669, type: 3}
+  - {fileID: 21300000, guid: 67168c86290185a4198db8cf6eea2dd6, type: 3}
+  - {fileID: 21300000, guid: 672f5227071fc474cb6defa1512f69fe, type: 3}
+  - {fileID: 21300000, guid: 9b578d57ebd2f48418fb4da740929c3b, type: 3}
+  - {fileID: 21300000, guid: abf66f671028a4e8f9e2d5ab5faef360, type: 3}
+  - {fileID: 21300000, guid: 2cd1aa97dedd64a7d98a8d2b4dcd26af, type: 3}
+  - {fileID: 21300000, guid: a03db20815b8f440fa7f8e764402a8ac, type: 3}
+  - {fileID: 21300000, guid: 0407a328b0568448889ab5fc18f0c240, type: 3}
+  - {fileID: 21300000, guid: 052b7e48a9cdb4c3cb3c82f094453d1f, type: 3}
+  - {fileID: 21300000, guid: a25ba168a5c129048acbeb2c6376d30f, type: 3}
+  - {fileID: 21300000, guid: 0d5a7ad870314423a9bbb4f7503c3d25, type: 3}
+  - {fileID: 21300000, guid: 0bb296f979292429cb38bc0c6e151746, type: 3}
+  - {fileID: 21300000, guid: 73c09d6a64f3d4fa797ae62a855672e7, type: 3}
+  - {fileID: 21300000, guid: 731c122b3a19c420abd944082c76bccc, type: 3}
+  - {fileID: 21300000, guid: 8d2387ebb973a4161945ee90ce5dd475, type: 3}
+  - {fileID: 21300000, guid: b17b1a5c3c94d4fd5af351838827a914, type: 3}
+  - {fileID: 21300000, guid: 993c01cc18d924a278476410f23bec53, type: 3}
+  - {fileID: 21300000, guid: b0ec3b8d44ae642358eb7e0701410eef, type: 3}
+  - {fileID: 21300000, guid: 23789fbd2fd5249f4ac73352c2d3c56c, type: 3}
+  - {fileID: 21300000, guid: 068f40cd0e35b44deb9a030ef1e1ec13, type: 3}
+  - {fileID: 21300000, guid: 811036ddaf37c49748c7d4a3fd0e152e, type: 3}
+  - {fileID: 21300000, guid: 8f725d4e1f1d847aeba98ae57a66cabd, type: 3}
+  - {fileID: 21300000, guid: 72eec86ee8bb44374aa11456898a50d6, type: 3}
+  - {fileID: 21300000, guid: 3cb1d3de80ee9461498367b28b05b097, type: 3}
+  - {fileID: 21300000, guid: 4eb6072fb20234022b1e6e6377affdb5, type: 3}
+  - {fileID: 21300000, guid: 56a3518f3cac048178bc2bdbeb9c7486, type: 3}
+  - {fileID: 21300000, guid: 8af87aaf45b9a45b1ac10e59eb8cc01e, type: 3}
+  - {fileID: 21300000, guid: c956dfeff8861461abdf841b67df1f27, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - knees-timberland
+  - evidence-loretta
+  - disclosure-arrow-right
+  - icon-eye
+  - iron-knees-photo-new
+  - ship
+  - amy
+  - shipwreck
+  - ripped-page
+  - ship-type-brig
+  - CaseBorder
+  - blank_polaroid
+  - shiptype-sidewheelsteamer
+  - rusty
+  - office-Desk
+  - birds-eye-photo-new
+  - evidence-blank
+  - evidence-canaller
+  - camera-frame
+  - journal
+  - shiptype-tugboat
+  - shiptype-freighter
+  - camera-button-close
+  - shadow
+  - circle
+  - list-of-wrecks-loretta
+  - lou
+  - shiptype-canaller
+  - arrow-up
+  - LevelFolder
+  - ship-type-canaller
+  - map-marker
+  - cork-board
+  - icon-check
+  - shiptype-schooner
+  - descend
+  - lake-overview
+  - ship-type-gas-screw
+  - disclosure-arrow-left
+  - icon-from-camera
+  - icon-jouirnal
+  - knees-loretta
+  - bouy
+  - exclamation
+  - grandpa-postcard-back
+  - grandpa-postcard-photo
+  - photo-ship-name
+  - lake-michigan-map-zoomed
+  - marshallsAirport
+  - closebutton-2
+  - lake-michigan-map
+  m_Tag: New Sprite Atlas
+  m_IsVariant: 0
