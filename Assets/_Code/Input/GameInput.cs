@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/Assets/Shipwreck/Input/GameInput.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Presets/Input/GameInput.inputactions'
 
 using System;
 using System.Collections;
