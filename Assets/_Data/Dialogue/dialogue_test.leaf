@@ -1,4 +1,43 @@
 #basePath test
 
-::intro_test
-@sometag
+::message_from_dad01
+@textMessage
+	// Open text from Dad
+
+	{@dad} Hey Jules!
+
+	{@dad} Garage sale today!!
+
+	{@dad} Hoping to make enough $$ to buy that new fish finder 🤞
+
+	{@you} Dad, I love you…
+
+	{@you} but you’re not gonna find Grandpa’s shipwreck with a fish finder.
+
+	{@dad} Ha. Why not? 
+
+	{@you} It’s for finding FISH.
+
+	{@dad} Oops sorry, gotta go, people here! 
+
+::message_from_lou01
+@textMessage
+	//Receive/open a new text from Lou
+
+	{@lou} Jules!! I was out flying by Rawley Point today and saw this: 
+
+	{@lou} (image of ship outline from above)
+
+	{@lou} GPS coordinates: N 44° 11.524' W 087° 30.591'
+
+	{@lou} What do you think?
+
+	{@you} Looks like a shipwreck!
+
+	{@lou} Yes!!! 
+
+	{@you} The storm last night must’ve uncovered it.
+
+	{@you} Thanks, Lou!
+
+	{@lou} No prob! 😎

@@ -27,12 +27,6 @@
       "source": "local",
       "dependencies": {}
     },
-    "com.beauprime.leaf": {
-      "version": "file:../Submodules/Leaf/Assets/Leaf",
-      "depth": 0,
-      "source": "local",
-      "dependencies": {}
-    },
     "com.fieldday.opengamedata-unity": {
       "version": "file:../Submodules/opengamedata-unity/Assets/FieldDay",
       "depth": 0,
@@ -40,7 +34,7 @@
       "dependencies": {}
     },
     "com.potatointeractive.localization": {
-      "version": "0.2.1",
+      "version": "0.2.2",
       "depth": 0,
       "source": "registry",
       "dependencies": {

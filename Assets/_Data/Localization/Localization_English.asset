@@ -14,5 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_languageCode:
     m_code: en
-  m_keys: []
-  m_values: []
+  m_keys:
+  - m_key: UI/General/Continue
+    m_hash:
+      m_hash: 337595764
+  m_values:
+  - Continue
