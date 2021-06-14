@@ -35,10 +35,9 @@ namespace Shipwreck {
 
 
 		private TagStringEventHandler m_tagEvents;
-		private StringUtils.ArgsList.Splitter m_argsListSplitter;
 
 
-		public void RegisterEvents() {
+		public void Awake() {
 			if (m_tagEvents != null) {
 				return;
 			}
@@ -47,11 +46,6 @@ namespace Shipwreck {
 			m_tagEvents.Register(ScriptEvents.Dialog.Conversation, HandleSetConversation);
 		}
 
-		private TempList8<StringSlice> ExtractArgs(StringSlice inString) {
-			TempList8<StringSlice> args = new TempList8<StringSlice>();
-			inString.Split(m_argsListSplitter, StringSplitOptions.None, ref args);
-			return args;
-		}
 
 		public TagStringEventHandler PrepareLine(TagString inString, TagStringEventHandler inBaseHandler) {
 			if (inString.RichText.Length > 0) {
@@ -74,27 +68,29 @@ namespace Shipwreck {
 		}
 		private void HandleSetConversation(TagEventData inEvent, object inContext) {
 			var args = ExtractArgs(inEvent.StringArgument);
-			if (args.Count != 2) {
+			if (args.Length != 2) {
 				throw new ArgumentException(string.Format("Recieved `{0}' " +
-					"arguments for conversation when expecting 2", args.Count
+					"arguments for conversation when expecting 2", args.Length
 				));
 			}
-			switch (args[1].ToString()) {
+			switch (args[0].ToString()) {
 				case "text-message": SetTextMessageMode(); break;
 				case "dialogue": SetDialogMessageMode(); break;
 			}
-			SetConversationPartner(GameDb.GetCharacterData(args[0].ToString()));
+
+
+			SetConversationPartner(GameDb.GetCharacterData(args[1]));
 		}
 
 		private void SetTextMessageMode() {
-			if (m_current != m_textMessagePanel) {
+			if (m_current != null && m_current != m_textMessagePanel) {
 				m_current.Hide();
 			}
 			m_current = m_textMessagePanel;
 			m_current.Show();
 		}
 		private void SetDialogMessageMode() {
-			if (m_current != m_dialogMessagePanel) {
+			if (m_current != null && m_current != m_dialogMessagePanel) {
 				m_current.Hide();
 			}
 			m_current = m_dialogMessagePanel;
@@ -107,7 +103,13 @@ namespace Shipwreck {
 		private void SetConversationPartner(CharacterData data) {
 			m_current.SetConversationPartner(data);
 		}
-
+		private string[] ExtractArgs(StringSlice inString) {
+			string[] split = inString.ToString().Split(',');
+			for (int ix = 0; ix < split.Length; ix++) {
+				split[ix] = split[ix].Trim();
+			}
+			return split;
+		}
 	}
 
 }

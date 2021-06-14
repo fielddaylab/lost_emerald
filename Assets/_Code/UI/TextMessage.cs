@@ -33,7 +33,7 @@ namespace Shipwreck {
 		private TextMeshProUGUI m_bodyText = null;
 
 
-		public void OnAwake() {
+		public void Awake() {
 			transform.localScale = Vector3.zero;
 			Routine.Start(this, transform.ScaleTo(1f, 0.25f).Ease(Curve.QuadInOut));
 		}

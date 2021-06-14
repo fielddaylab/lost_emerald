@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using BeauRoutine;
 
 namespace Shipwreck {
 
@@ -22,6 +23,7 @@ namespace Shipwreck {
 		private Button m_continueButton = null;
 
 		private Sprite m_textingIcon = null;
+		private string m_cachedText = null;
 
 		public void SetConversationPartner(CharacterData partner) {
 			m_conversationPartner.Key = partner.DisplayName;
@@ -41,17 +43,21 @@ namespace Shipwreck {
 		}
 
 		public void PrepareLine(string text) {
+			m_cachedText = text;
+
+			
+		}
+
+		public IEnumerator TypeLine(uint visibleCharacterCount) {
 			TextMessage prefab = m_theirPrefab;
 			if (m_textingIcon == null) {
 				prefab = m_yourPrefab;
 			}
 			TextMessage obj = Instantiate(prefab, m_content);
 			obj.Icon = m_textingIcon;
-			obj.Text = text;
-		}
-
-		public IEnumerator TypeLine(uint visibleCharacterCount) {
-			yield return null;
+			obj.Text = m_cachedText;
+			yield return m_scrollRect.verticalScrollbar.ValueTo(0f, 0.1f);
+			yield return 0.15f;
 		}
 
 		public IEnumerator CompleteLine() {

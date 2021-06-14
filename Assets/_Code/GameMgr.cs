@@ -53,7 +53,6 @@ namespace Shipwreck {
 				throw new System.Exception();
 			}
 			ShowDialogScreen(node);
-			
 		}
 
 
@@ -66,10 +65,7 @@ namespace Shipwreck {
 		}
 
 		private static void ParseTargetArgs(TagData inTag, object inContext, ref TagEventData ioEvent) {
-			ioEvent.Argument0 = inTag.Id.Substring(1).Hash32();
-			if (inTag.Data.StartsWith('#')) {
-				ioEvent.Argument1 = inTag.Data.Substring(1).Hash32();
-			}
+			ioEvent.StringArgument = inTag.Id.Substring(1);
 		}
 
 
