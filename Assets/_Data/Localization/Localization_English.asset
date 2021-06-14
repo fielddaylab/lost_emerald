@@ -16,7 +16,30 @@ MonoBehaviour:
     m_code: en
   m_keys:
   - m_key: UI/General/Continue
-    m_hash:
-      m_hash: 337595764
+    m_hash: 0
+  - m_key: Character/Dad/Name
+    m_hash: -555383108
+  - m_key: Character/Mom/Name
+    m_hash: -454723190
+  - m_key: Character/Rya/Name
+    m_hash: -634729777
+  - m_key: Character/Lou/Name
+    m_hash: -1419650613
+  - m_key: Character/Amy/Name
+    m_hash: -1441646452
+  - m_key: Character/You/Name
+    m_hash: -730218146
+  - m_key: Character/Grandpa/Name
+    m_hash: 1086134616
+  - m_key: Dialogue/Header/Conversation
+    m_hash: 2003802197
   m_values:
   - Continue
+  - Dad
+  - Mom
+  - Rya
+  - Lou
+  - Amy
+  - You
+  - Grandpa
+  - conversation with

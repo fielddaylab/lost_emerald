@@ -63,6 +63,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 02d83d43a1c084c57a85e92a7c30bdc3, type: 3}
   - {fileID: 21300000, guid: d7e29f63d2fd74c079090fd85d7430af, type: 3}
   - {fileID: 21300000, guid: f2ae72a37b1b7430f99b9f76dbd7bfce, type: 3}
+  - {fileID: 21300000, guid: fd8fa1249bf177b46b8ae8dc9dafc693, type: 3}
   - {fileID: 21300000, guid: 79bc76940498e43718f12fad5bfc70a0, type: 3}
   - {fileID: 21300000, guid: a418b694415c84967abd730e9eb95a7d, type: 3}
   - {fileID: 21300000, guid: 65c26de4f69714d11b1cd5e2bb9de646, type: 3}
@@ -70,6 +71,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: ceb65125ce4314f389861f487804e71f, type: 3}
   - {fileID: 21300000, guid: 18ce4d25aa2b140caad634c3dd4b69e2, type: 3}
   - {fileID: 21300000, guid: 6be63d36b12b94ca4acfbb13a855f669, type: 3}
+  - {fileID: 21300000, guid: b92d2866ce79293478f277897bd0ad16, type: 3}
   - {fileID: 21300000, guid: 67168c86290185a4198db8cf6eea2dd6, type: 3}
   - {fileID: 21300000, guid: 672f5227071fc474cb6defa1512f69fe, type: 3}
   - {fileID: 21300000, guid: 9b578d57ebd2f48418fb4da740929c3b, type: 3}
@@ -86,10 +88,12 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 8d2387ebb973a4161945ee90ce5dd475, type: 3}
   - {fileID: 21300000, guid: b17b1a5c3c94d4fd5af351838827a914, type: 3}
   - {fileID: 21300000, guid: 993c01cc18d924a278476410f23bec53, type: 3}
+  - {fileID: 21300000, guid: 7fd12d0d3f284fa40899dc34b325317b, type: 3}
   - {fileID: 21300000, guid: b0ec3b8d44ae642358eb7e0701410eef, type: 3}
   - {fileID: 21300000, guid: 23789fbd2fd5249f4ac73352c2d3c56c, type: 3}
   - {fileID: 21300000, guid: 068f40cd0e35b44deb9a030ef1e1ec13, type: 3}
   - {fileID: 21300000, guid: 811036ddaf37c49748c7d4a3fd0e152e, type: 3}
+  - {fileID: 21300000, guid: cb86ceede706ea24bad46cf5d26b1bae, type: 3}
   - {fileID: 21300000, guid: 8f725d4e1f1d847aeba98ae57a66cabd, type: 3}
   - {fileID: 21300000, guid: 72eec86ee8bb44374aa11456898a50d6, type: 3}
   - {fileID: 21300000, guid: 3cb1d3de80ee9461498367b28b05b097, type: 3}
@@ -115,6 +119,7 @@ SpriteAtlas:
   - office-Desk
   - birds-eye-photo-new
   - evidence-blank
+  - rusty_icon
   - evidence-canaller
   - camera-frame
   - journal
@@ -122,6 +127,7 @@ SpriteAtlas:
   - shiptype-freighter
   - camera-button-close
   - shadow
+  - triangle
   - circle
   - list-of-wrecks-loretta
   - lou
@@ -138,10 +144,12 @@ SpriteAtlas:
   - ship-type-gas-screw
   - disclosure-arrow-left
   - icon-from-camera
+  - amy_icon
   - icon-jouirnal
   - knees-loretta
   - bouy
   - exclamation
+  - lou_icon
   - grandpa-postcard-back
   - grandpa-postcard-photo
   - photo-ship-name
