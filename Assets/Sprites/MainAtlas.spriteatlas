@@ -39,7 +39,7 @@ SpriteAtlas:
       blockOffset: 1
       allowAlphaSplitting: 0
       enableRotation: 1
-      enableTightPacking: 1
+      enableTightPacking: 0
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 77fe6f1a481434c9fb15dbb9c9aed822, type: 3}
@@ -47,6 +47,7 @@ SpriteAtlas:
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: ab5b3c307990f48cc9b29102602da7cb, type: 3}
+  - {fileID: 21300000, guid: 82cbce30f03431f44bf2b7d0a42b9784, type: 3}
   - {fileID: 21300000, guid: 68c55cb03adc4470c9fc54b5a1f1e235, type: 3}
   - {fileID: 21300000, guid: a06d87c025df54935a230859046513da, type: 3}
   - {fileID: 21300000, guid: d13a20e059c004ee4970cc643ab3bb03, type: 3}
@@ -97,12 +98,14 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 8f725d4e1f1d847aeba98ae57a66cabd, type: 3}
   - {fileID: 21300000, guid: 72eec86ee8bb44374aa11456898a50d6, type: 3}
   - {fileID: 21300000, guid: 3cb1d3de80ee9461498367b28b05b097, type: 3}
+  - {fileID: 21300000, guid: 87da702f0ba413a4fa0b770094855e60, type: 3}
   - {fileID: 21300000, guid: 4eb6072fb20234022b1e6e6377affdb5, type: 3}
   - {fileID: 21300000, guid: 56a3518f3cac048178bc2bdbeb9c7486, type: 3}
   - {fileID: 21300000, guid: 8af87aaf45b9a45b1ac10e59eb8cc01e, type: 3}
   - {fileID: 21300000, guid: c956dfeff8861461abdf841b67df1f27, type: 3}
   m_PackedSpriteNamesToIndex:
   - knees-timberland
+  - office-background
   - evidence-loretta
   - disclosure-arrow-right
   - icon-eye
@@ -153,6 +156,7 @@ SpriteAtlas:
   - grandpa-postcard-back
   - grandpa-postcard-photo
   - photo-ship-name
+  - phone_icon
   - lake-michigan-map-zoomed
   - marshallsAirport
   - closebutton-2

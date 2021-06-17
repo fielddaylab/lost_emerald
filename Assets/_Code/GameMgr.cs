@@ -1,4 +1,5 @@
-﻿using BeauUtil;
+﻿using BeauRoutine;
+using BeauUtil;
 using BeauUtil.Tags;
 using BeauUtil.Variants;
 using Leaf;
@@ -35,6 +36,8 @@ namespace Shipwreck {
 
 
 		protected override void OnAssigned() {
+			Routine.Settings.DebugMode = false;
+			/*
 			m_scriptMgr = new DefaultLeafManager<LeafNode>(this, null, null);
 			m_scriptMgr.ConfigureDisplay(m_dialogScreen, null);
 
@@ -53,6 +56,7 @@ namespace Shipwreck {
 				throw new System.Exception();
 			}
 			ShowDialogScreen(node);
+			*/
 		}
 
 
