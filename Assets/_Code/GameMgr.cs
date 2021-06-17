@@ -26,7 +26,7 @@ namespace Shipwreck {
 		[SerializeField]
 		private string m_testNodeName = string.Empty;
 		[SerializeField]
-		private DialogScreen m_dialogScreen = null;
+		private UIDialogScreen m_dialogScreen = null;
 
 
 		private DefaultLeafManager<LeafNode> m_scriptMgr;

@@ -18,7 +18,7 @@ namespace Shipwreck {
 	}
 
 
-	public class DialogScreen : MonoBehaviour, ITextDisplayer {
+	public class UIDialogScreen : UIBase, ITextDisplayer {
 
 		private enum Mode {
 			TextMessage,
@@ -110,6 +110,15 @@ namespace Shipwreck {
 			}
 			return split;
 		}
+
+		protected override IEnumerator ShowRoutine() {
+			yield return null;
+		}
+
+		protected override IEnumerator HideRoutine() {
+			yield return null;
+		}
+
 	}
 
 }
