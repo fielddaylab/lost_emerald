@@ -16,7 +16,7 @@ MonoBehaviour:
     m_code: en
   m_keys:
   - m_key: UI/General/Continue
-    m_hash: 0
+    m_hash: 337595764
   - m_key: Character/Dad/Name
     m_hash: -555383108
   - m_key: Character/Mom/Name
@@ -35,6 +35,8 @@ MonoBehaviour:
     m_hash: 2003802197
   - m_key: UI/Title/NewGame
     m_hash: -2047277351
+  - m_key: UI/General/Back
+    m_hash: 1706357138
   m_values:
   - Continue
   - Dad
@@ -46,3 +48,4 @@ MonoBehaviour:
   - Grandpa
   - conversation with
   - New Game
+  - Back

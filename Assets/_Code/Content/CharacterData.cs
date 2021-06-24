@@ -1,4 +1,5 @@
-﻿using PotatoLocalization;
+﻿using BeauUtil;
+using PotatoLocalization;
 using UnityEngine;
 
 namespace Shipwreck {
@@ -6,8 +7,8 @@ namespace Shipwreck {
 	[CreateAssetMenu(fileName = "NewCharacter", menuName = "Shipwrecks/Character")]
 	public class CharacterData : ScriptableObject {
 
-		public string Tag { 
-			get { return m_tag; } 
+		public StringHash32 Hash { 
+			get { return m_tag.ToLower(); } 
 		}
 		public LocalizationKey DisplayName {
 			get { return m_displayName; }

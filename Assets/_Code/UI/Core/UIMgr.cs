@@ -35,6 +35,9 @@ namespace Shipwreck {
 		public static void Open<T>() where T : UIBase {
 			I.Open(typeof(T));
 		}
+		public static void Close(UIBase screen) {
+			I.Close(screen.GetType());
+		}
 		public static void Close<T>() where T : UIBase {
 			I.Close(typeof(T));
 		}

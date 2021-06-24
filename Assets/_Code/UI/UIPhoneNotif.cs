@@ -41,8 +41,8 @@ namespace Shipwreck {
 		}
 
 		private void HandlePressed() {
-			// hack
-			UIMgr.CloseThenOpen<UIPhoneNotif, UIDialogScreen>();
+			UIMgr.CloseThenOpen<UIPhoneNotif,UIContacts>();
+
 		}
 
 
