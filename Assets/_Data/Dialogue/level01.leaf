@@ -1,7 +1,10 @@
 #basePath level01 
 
-::message-with-dad-01
+::dad-meet
+
+@trigger OnEnterOffice
 @type text-message
+@once
 	// Open text from Dad
 	{@dad} 	Hey Jules!
 			Garage sale today!!
@@ -10,10 +13,14 @@
 			but you’re not gonna find Grandpa’s shipwreck with a fish finder.
 	{@dad} 	Ha. Why not? 
 	{@you} 	It’s for finding FISH.
-	{@dad} 	Oops sorry, gotta go, people here! 
+	{@dad} 	Oops sorry, gotta go, people here!
+	{add-contact lou}
 
-::message-from-lou-01
-@type text-message
+::lou-receive-coords
+@contact lou, in-person
+@trigger OnContactAdded
+@when 	 contacts:lou = true
+@once
 	// Receive/open a new text from Lou
 	{@lou} 	Jules!! I was out flying by Rawley Point today and saw this: 
 		   	(image of ship outline from above)
@@ -24,3 +31,10 @@
 	{@you}	The storm last night must’ve uncovered it.
 			Thanks, Lou!
 	{@lou} 	No prob! 😎
+
+::lou-help-01
+@contact lou, text-message
+@trigger Contact
+	{@you}  What am I supposed to do with those coordinates you gave me?
+	{@lou}  You can pin them to your evidence board to learn more about the wreck.
+

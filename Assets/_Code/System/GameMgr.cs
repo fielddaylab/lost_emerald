@@ -64,7 +64,7 @@ namespace Shipwreck {
 		}
 
 		public static void RunScriptNode(ScriptNode node) {
-			I.m_scriptMgr.Run(node, I.m_state.VariantTable);
+			I.m_scriptMgr.Run(node, I.m_state.VariableTable);
 		}
 
 

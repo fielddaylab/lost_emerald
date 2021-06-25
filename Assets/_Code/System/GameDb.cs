@@ -12,21 +12,20 @@ namespace Shipwreck {
 
 		private Dictionary<StringHash32, CharacterData> m_characterMap;
 		
-		public static CharacterData GetCharacterData(StringHash32 tag) {
+		public static CharacterData GetCharacterData(StringHash32 hash) {
 			// initialize the map if it does not exist
 			if (I.m_characterMap == null) {
 				I.m_characterMap = new Dictionary<StringHash32, CharacterData>();
 				foreach (CharacterData data in I.m_characters) {
 					I.m_characterMap.Add(data.Hash, data);
-					Debug.Log(data.Hash);
 				}
 			}
 			// find the tag within the map
-			if (I.m_characterMap.ContainsKey(tag)) {
-				return I.m_characterMap[tag];
+			if (I.m_characterMap.ContainsKey(hash)) {
+				return I.m_characterMap[hash];
 			} else {
 				throw new KeyNotFoundException(string.Format("No " +
-					"Character with tag `{0}' is in the database", tag
+					"Character with tag `{0}' is in the database", hash
 				));
 			}
 		}

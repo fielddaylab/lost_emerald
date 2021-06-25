@@ -17,21 +17,23 @@ namespace Shipwreck {
 			public ushort Version {
 				get { return 1; }
 			}
-			public VariantTable VariantTable { 
-				get { return m_variantTable; } 
+			public VariantTable VariableTable { 
+				get { return m_variableTable; } 
 			}
 
-			private VariantTable m_variantTable;
+			// serialized
+			private VariantTable m_variableTable;
 			private Dictionary<string, int> m_nodeVisits;
 			private HashSet<StringHash32> m_unlockedContacts;
 
+			// non-serialized
+			private CustomVariantResolver m_customResolver;
 
 			public GameState() {
-				m_variantTable = new VariantTable();
+				m_variableTable = new VariantTable();
 				m_nodeVisits = new Dictionary<string, int>();
-				m_unlockedContacts = new HashSet<StringHash32>() {
-					new StringHash32("dad")
-				};
+				m_unlockedContacts = new HashSet<StringHash32>() {"dad"};
+				m_customResolver = new CustomVariantResolver();
 			}
 
 			public IEnumerable<StringHash32> GetUnlockedContacts() {
@@ -60,7 +62,7 @@ namespace Shipwreck {
 
 
 			public void Serialize(Serializer ioSerializer) {
-				ioSerializer.Object("variantTable", ref m_variantTable);
+				ioSerializer.Object("variantTable", ref m_variableTable);
 				ioSerializer.Map("nodeVisits", ref m_nodeVisits);
 				ioSerializer.UInt32ProxySet("unlockedContacts", ref m_unlockedContacts);
 			}

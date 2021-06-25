@@ -1,5 +1,6 @@
 ﻿using BeauUtil;
 using BeauUtil.Blocks;
+using BeauUtil.Variants;
 using Leaf;
 using System;
 using UnityEngine;
@@ -24,6 +25,8 @@ namespace Shipwreck {
 
 		private NodeType m_type = NodeType.Unassigned;
 		private string m_fullName;
+		private Variant m_condition;
+		private StringHash32 m_trigger;
 
 		public ScriptNode(string fullName, ILeafModule inModule) : base(fullName, inModule) {
 			m_fullName = fullName;
@@ -37,6 +40,11 @@ namespace Shipwreck {
 			} else {
 				Debug.LogWarningFormat("Could not set node to type `{0}'. Did you mispell it?",type);
 			}
+		}
+
+		[BlockMeta("when")]
+		private void SetCondition(Variant condition) {
+			m_condition = condition;
 		}
 
 	}
