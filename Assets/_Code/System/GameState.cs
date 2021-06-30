@@ -13,7 +13,8 @@ namespace Shipwreck {
 
 	public sealed partial class GameMgr : Singleton<GameMgr> { // GameState.cs
 
-		private class GameState : IGameState, ISerializedObject, ISerializedVersion {
+		private sealed partial class GameState : IGameState, ISerializedObject, ISerializedVersion {
+
 			public ushort Version {
 				get { return 1; }
 			}
@@ -23,17 +24,25 @@ namespace Shipwreck {
 
 			// serialized
 			private VariantTable m_variableTable;
-			private Dictionary<string, int> m_nodeVisits;
+			private HashSet<StringHash32> m_visitedNodes;
 			private HashSet<StringHash32> m_unlockedContacts;
+			private LevelState m_level1;
+			private LevelState m_level2;
+			private LevelState m_level3;
+			private LevelState m_level4;
+			private LevelState m_level5;
+			private LevelState m_levelGrandpa;
 
 			// non-serialized
 			private CustomVariantResolver m_customResolver;
 
+
 			public GameState() {
 				m_variableTable = new VariantTable();
-				m_nodeVisits = new Dictionary<string, int>();
+				m_visitedNodes = new HashSet<StringHash32>();
 				m_unlockedContacts = new HashSet<StringHash32>() {"dad"};
 				m_customResolver = new CustomVariantResolver();
+				InitializeLevels();
 			}
 
 			public IEnumerable<StringHash32> GetUnlockedContacts() {
@@ -46,25 +55,26 @@ namespace Shipwreck {
 			}
 
 			public bool HasVisitedNode(ScriptNode node) {
-				if (m_nodeVisits.TryGetValue(node.FullName, out int visits)) {
-					return visits > 0;
-				} else {
-					return false;
-				}
+				return m_visitedNodes.Contains(node.Id());
 			}
 			public void RecordNodeVisit(ScriptNode node) {
-				if (m_nodeVisits.ContainsKey(node.FullName)) {
-					m_nodeVisits[node.FullName]++;
-				} else {
-					m_nodeVisits.Add(node.FullName, 1);
-				}
+				m_visitedNodes.Add(node.Id());
 			}
 
 
 			public void Serialize(Serializer ioSerializer) {
 				ioSerializer.Object("variantTable", ref m_variableTable);
-				ioSerializer.Map("nodeVisits", ref m_nodeVisits);
+				ioSerializer.UInt32ProxySet("nodeVisits", ref m_visitedNodes);
 				ioSerializer.UInt32ProxySet("unlockedContacts", ref m_unlockedContacts);
+			}
+
+			private void InitializeLevels() {
+				m_level1 = new LevelState();
+				m_level2 = new LevelState();
+				m_level3 = new LevelState();
+				m_level4 = new LevelState();
+				m_level5 = new LevelState();
+				m_level1.Unlock();
 			}
 
 		}

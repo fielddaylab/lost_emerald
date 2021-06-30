@@ -3,6 +3,7 @@ using BeauUtil;
 using BeauUtil.Tags;
 using Leaf;
 using Leaf.Compiler;
+using Leaf.Runtime;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -72,7 +73,10 @@ namespace Shipwreck {
 			ioEvent.StringArgument = inTag.Id.Substring(1);
 		}
 
-
+		[LeafMember]
+		private static void UnlockContact(StringHash32 contact) {
+			I.m_state.UnlockContact(contact);
+		}
 
 	}
 

@@ -1,10 +1,13 @@
 #basePath level01 
 
-::dad-meet
+//  Dad
+//  --------------------------------------------------------------------------------------
 
+::dad-meet
+@contact dad, text-message
+@notification // when able to be shown, increases notification count for character
 @trigger OnEnterOffice
-@type text-message
-@once
+
 	// Open text from Dad
 	{@dad} 	Hey Jules!
 			Garage sale today!!
@@ -14,7 +17,19 @@
 	{@dad} 	Ha. Why not? 
 	{@you} 	It’s for finding FISH.
 	{@dad} 	Oops sorry, gotta go, people here!
-	{add-contact lou}
+	$call UnlockContact(lou)
+
+::dad-help-01
+@contact dad, text-message
+@trigger OnContactOpened, dad
+
+	{@dad}  Sorry, I'm pretty busy right now
+	{@dad}  I'll message you back sometime soon!
+
+
+
+//  Lou
+//  --------------------------------------------------------------------------------------
 
 ::lou-receive-coords
 @contact lou, in-person

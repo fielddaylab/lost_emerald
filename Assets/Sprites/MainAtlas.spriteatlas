@@ -48,6 +48,7 @@ SpriteAtlas:
   m_PackedSprites:
   - {fileID: 21300000, guid: ab5b3c307990f48cc9b29102602da7cb, type: 3}
   - {fileID: 21300000, guid: 82cbce30f03431f44bf2b7d0a42b9784, type: 3}
+  - {fileID: 21300000, guid: 13ee57b005423384a864133f2aa056dc, type: 3}
   - {fileID: 21300000, guid: 68c55cb03adc4470c9fc54b5a1f1e235, type: 3}
   - {fileID: 21300000, guid: a06d87c025df54935a230859046513da, type: 3}
   - {fileID: 21300000, guid: d13a20e059c004ee4970cc643ab3bb03, type: 3}
@@ -78,14 +79,16 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 9b578d57ebd2f48418fb4da740929c3b, type: 3}
   - {fileID: 21300000, guid: abf66f671028a4e8f9e2d5ab5faef360, type: 3}
   - {fileID: 21300000, guid: 2cd1aa97dedd64a7d98a8d2b4dcd26af, type: 3}
+  - {fileID: 21300000, guid: 41c798e7bf044e14db7e5f8678187066, type: 3}
   - {fileID: 21300000, guid: a03db20815b8f440fa7f8e764402a8ac, type: 3}
   - {fileID: 21300000, guid: 0407a328b0568448889ab5fc18f0c240, type: 3}
   - {fileID: 21300000, guid: 052b7e48a9cdb4c3cb3c82f094453d1f, type: 3}
-  - {fileID: 21300000, guid: a25ba168a5c129048acbeb2c6376d30f, type: 3}
   - {fileID: 21300000, guid: 0d5a7ad870314423a9bbb4f7503c3d25, type: 3}
+  - {fileID: 21300000, guid: 132b0ca92ede2104d86bc6e8eb061529, type: 3}
   - {fileID: 21300000, guid: 0bb296f979292429cb38bc0c6e151746, type: 3}
   - {fileID: 21300000, guid: 73c09d6a64f3d4fa797ae62a855672e7, type: 3}
   - {fileID: 21300000, guid: 731c122b3a19c420abd944082c76bccc, type: 3}
+  - {fileID: 21300000, guid: 3acf4abb67ae7744292d804a07f1c37a, type: 3}
   - {fileID: 21300000, guid: 8d2387ebb973a4161945ee90ce5dd475, type: 3}
   - {fileID: 21300000, guid: b17b1a5c3c94d4fd5af351838827a914, type: 3}
   - {fileID: 21300000, guid: 993c01cc18d924a278476410f23bec53, type: 3}
@@ -106,6 +109,7 @@ SpriteAtlas:
   m_PackedSpriteNamesToIndex:
   - knees-timberland
   - office-background
+  - node-main
   - evidence-loretta
   - disclosure-arrow-right
   - icon-eye
@@ -136,14 +140,16 @@ SpriteAtlas:
   - lou
   - shiptype-canaller
   - arrow-up
+  - rounded-rect
   - LevelFolder
   - ship-type-canaller
   - map-marker
-  - cork-board
   - icon-check
+  - push-pin
   - shiptype-schooner
   - descend
   - lake-overview
+  - cork-board
   - ship-type-gas-screw
   - disclosure-arrow-left
   - icon-from-camera

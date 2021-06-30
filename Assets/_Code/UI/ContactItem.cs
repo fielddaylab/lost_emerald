@@ -1,4 +1,5 @@
-﻿using PotatoLocalization;
+﻿using BeauUtil;
+using PotatoLocalization;
 using System;
 using TMPro;
 using UnityEngine;
@@ -8,8 +9,7 @@ namespace Shipwreck {
 
 	public class ContactItem : MonoBehaviour {
 
-		public event Action OnClicked;
-
+		public event Action<StringHash32> OnClicked;
 
 		[SerializeField]
 		private Image m_icon = null;
@@ -21,11 +21,13 @@ namespace Shipwreck {
 		private TextMeshProUGUI m_notificationNumber = null;
 		[SerializeField]
 		private Button m_button = null;
-		
+
+		private StringHash32 m_characterHash;
 
 		public void SetCharacter(CharacterData data) {
 			m_icon.sprite = data.TextingIcon;
 			m_name.Key = data.DisplayName;
+			m_characterHash = data.Hash;
 		}
 		public void SetNotifications(uint count) {
 			if (count == 0) {
@@ -43,7 +45,7 @@ namespace Shipwreck {
 			m_button.onClick.RemoveListener(HandleClicked);
 		}
 		private void HandleClicked() {
-			OnClicked?.Invoke();
+			OnClicked?.Invoke(m_characterHash);
 		}
 
 

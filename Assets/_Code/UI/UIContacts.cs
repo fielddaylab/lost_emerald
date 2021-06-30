@@ -26,6 +26,7 @@ namespace Shipwreck {
 			foreach (StringHash32 hash in GameMgr.State.GetUnlockedContacts()) {
 				CharacterData data = GameDb.GetCharacterData(hash);
 				ContactItem item = Instantiate(m_contactPrefab, m_content);
+				item.OnClicked += HandleContactClicked;
 				item.SetCharacter(data);
 			}
 		}
@@ -41,6 +42,11 @@ namespace Shipwreck {
 		protected override IEnumerator ShowRoutine() {
 			yield return m_rectTransform.AnchorPosTo(45f, m_tweenSettings, Axis.Y);
 		}
+
+		private void HandleContactClicked(StringHash32 character) {
+			
+		}
+
 	}
 
 
