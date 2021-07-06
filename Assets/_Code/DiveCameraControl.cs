@@ -8,13 +8,18 @@ public class DiveCameraControl : MonoBehaviour
 {
     public CinemachineVirtualCamera thisVCam;
     public Collider clickTarget;
+    public GameObject clickTargetArt;
+    public Color clickTargetColor;
+    public Color clickTargetSelectedColor;
     private Camera mainCamera;
     private CinemachineVirtualCamera[] allVCams;
+    private GameObject[] allClickTargets;
 
     void Awake()
 	{
         mainCamera = Camera.main;
         allVCams = FindObjectsOfType<CinemachineVirtualCamera>();
+        allClickTargets = GameObject.FindGameObjectsWithTag("ClickTarget");
 
     }
 
@@ -48,6 +53,16 @@ public class DiveCameraControl : MonoBehaviour
             if (vCam != thisVCam)
 			{
                 vCam.Priority = 0;
+            }
+        }
+
+        clickTargetArt.GetComponent<MeshRenderer>().material.SetColor("_BaseColor", clickTargetSelectedColor);
+
+        foreach (GameObject target in allClickTargets)
+        {
+            if (target != clickTargetArt)
+            {
+                target.GetComponent<MeshRenderer>().material.SetColor("_BaseColor", clickTargetColor);
             }
         }
     }
