@@ -11,6 +11,8 @@ public class DiveCameraControl : MonoBehaviour
     public GameObject clickTargetArt;
     public Color clickTargetColor;
     public Color clickTargetSelectedColor;
+    public bool startCamera;
+    public float startingCameraDelay;
     private Camera mainCamera;
     private CinemachineVirtualCamera[] allVCams;
     private GameObject[] allClickTargets;
@@ -21,6 +23,10 @@ public class DiveCameraControl : MonoBehaviour
         allVCams = FindObjectsOfType<CinemachineVirtualCamera>();
         allClickTargets = GameObject.FindGameObjectsWithTag("ClickTarget");
 
+        if (startCamera == true)
+        {
+            StartCoroutine(setStartingCam());
+        }
     }
 
 	void Update()
@@ -45,6 +51,12 @@ public class DiveCameraControl : MonoBehaviour
 
     }
 
+    IEnumerator setStartingCam()
+	{
+        yield return new WaitForSeconds(startingCameraDelay);
+        switchToThisCam();
+    }
+
     void switchToThisCam()
 	{
         thisVCam.Priority = 10;
@@ -56,6 +68,7 @@ public class DiveCameraControl : MonoBehaviour
             }
         }
 
+        // GetCompoment probably should not be called every time the cam switches - not sure how to cash the material instance :)
         clickTargetArt.GetComponent<MeshRenderer>().material.SetColor("_BaseColor", clickTargetSelectedColor);
 
         foreach (GameObject target in allClickTargets)
