@@ -1,12 +1,11 @@
-#basePath level01 
+#basePath level_test 
 
 //  Dad
 //  --------------------------------------------------------------------------------------
 
 ::dad-meet
 @contact dad, text-message
-@notification // when able to be shown, increases notification count for character
-@trigger OnEnterOffice
+@trigger Start
 
 	// Open text from Dad
 	{@dad} 	Hey Jules!
@@ -26,14 +25,27 @@
 	{@dad}  Sorry, I'm pretty busy right now
 	{@dad}  I'll message you back sometime soon!
 
+::dad-dive-master
+@contact dad, text-message
+@trigger Special
+@notification
+@once
+
+	{@dad}  Hey, help me out with something.
+			Did you leave behind your copy of Divine Dive Master of the Seven Seas? when you moved out?
+	{@you}	That old game? I might have...
+	{@dad}	Yeah! You played that game every day after school for like a year.
+			You want it back?
+	{@you}	I'll think on it.
 
 
 //  Lou
 //  --------------------------------------------------------------------------------------
 
 ::lou-receive-coords
-@contact lou, in-person
+@contact lou, text-message
 @trigger OnContactAdded
+@notification
 @once
 	// Receive/open a new text from Lou
 	{@lou} 	Jules!! I was out flying by Rawley Point today and saw this: 
@@ -51,4 +63,3 @@
 @trigger OnContactText
 	{@you}  What am I supposed to do with those coordinates you gave me?
 	{@lou}  You can pin them to your evidence board to learn more about the wreck.
-

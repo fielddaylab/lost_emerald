@@ -1,82 +1,170 @@
-﻿using BeauRoutine;
+﻿using BeauPools;
+using BeauRoutine;
 using BeauUtil;
-using BeauUtil.Tags;
+using BeauUtil.Debugger;
+using BeauUtil.Variants;
 using Leaf;
-using Leaf.Compiler;
 using Leaf.Runtime;
-using System.Collections.Generic;
-using UnityEngine;
 
-namespace Shipwreck {
+namespace Shipwreck
+{
 
 	public sealed partial class GameMgr : Singleton<GameMgr> {
-
-		private class Parser : LeafParser<ScriptNode, LeafNodePackage<ScriptNode>> {
-			public override LeafNodePackage<ScriptNode> CreatePackage(string inFileName) {
-				return new LeafNodePackage<ScriptNode>(inFileName);
-			}
-			protected override ScriptNode CreateNode(string inFullId, StringSlice inExtraData, LeafNodePackage<ScriptNode> inPackage) {
-				return new ScriptNode(inFullId, inPackage);
-			}
-		}
 
 		public static IGameState State {
 			get { return I.m_state; }
 		}
 
-		[SerializeField]
-		private UIDialogScreen m_dialogScreen = null;
-		[SerializeField]
-		private UITextMessage m_textMessageScreen = null;
+		public static EventService Events {
+			get { return I.m_eventService; }
+		}
 
 		private ScriptMgr m_scriptMgr;
-		private Dictionary<LeafAsset,LeafNodePackage<ScriptNode>> m_packages;
-		private Parser m_parser;
 		private GameState m_state;
-
+		private EventService m_eventService;
 
 		protected override void OnAssigned() {
 			Routine.Settings.DebugMode = false;
 
 			m_state = new GameState();
-			m_packages = new Dictionary<LeafAsset, LeafNodePackage<ScriptNode>>();
 
-			m_scriptMgr = new ScriptMgr(this, null, null);
-			m_scriptMgr.AssignUIReferences(m_textMessageScreen, m_dialogScreen);
+			m_scriptMgr = new ScriptMgr(this);
+			m_scriptMgr.LoadGameState(m_state, m_state.VariableTable);
+			m_scriptMgr.ConfigureEvents();
 
-			// configure tag parser
-			CustomTagParserConfig parseConfig = new CustomTagParserConfig();
-			parseConfig.AddEvent("@*", ScriptEvents.Dialog.Target).ProcessWith(ParseTargetArgs);
-			parseConfig.AddEvent("conversation", ScriptEvents.Dialog.Conversation).WithStringData();
-
-			m_scriptMgr.ConfigureTagStringHandling(parseConfig, new TagStringEventHandler());
-			m_parser = new Parser();
+			m_eventService = new EventService();
 		}
+
+		#region Scripting
 
 		public static bool TryFindNode(LeafAsset asset, string name, out ScriptNode node) {
-			LeafNodePackage<ScriptNode> package;
-			if (I.m_packages.ContainsKey(asset)) {
-				package = I.m_packages[asset];
-			} else {
-				package = LeafAsset.Compile(asset, I.m_parser);
-				I.m_packages.Add(asset, package);
+			LeafNodePackage<ScriptNode> package = I.m_scriptMgr.RegisterPackage(asset);
+			StringHash32 fullId = new StringHash32(package.RootPath()).Concat(".").Concat(name);
+			return package.TryGetNode(fullId, out node);
+		}
+
+		public static LeafThreadHandle RunScriptNode(ScriptNode node) {
+			return I.m_scriptMgr.Run(node);
+		}
+
+		public static LeafThreadHandle RunTrigger(StringHash32 triggerId, VariantTable table = null, ILeafActor actor = null, StringHash32 target = default(StringHash32)) {
+			LeafThreadHandle responseHandle = default(LeafThreadHandle);
+
+			using(PooledList<ScriptNode> nodes = PooledList<ScriptNode>.Create()) {
+				I.m_scriptMgr.GetResponsesForTrigger(triggerId, target, actor, table, nodes);
+				foreach(var node in nodes) {
+					switch(node.Type) {
+						case ScriptNode.NodeType.Function:
+							I.m_scriptMgr.Run(node, actor, table);
+							break;
+
+						default:
+							if (node.IsNotification) {
+								QueueNotification(node);
+							} else {
+								responseHandle = I.m_scriptMgr.Run(node, actor, table);
+							}
+							break;
+					}
+				}
 			}
-			return package.TryGetNode(string.Concat(package.RootPath(),name), out node);
+
+			return responseHandle;
 		}
 
-		public static void RunScriptNode(ScriptNode node) {
-			I.m_scriptMgr.Run(node, I.m_state.VariableTable);
+		public static void LoadScript(LeafAsset asset) {
+			I.m_scriptMgr.RegisterPackage(asset);
 		}
 
+		public static void UnloadScript(LeafAsset asset) {
+			I.m_scriptMgr.DeregisterPackage(asset);
+		}
 
-		private static void ParseTargetArgs(TagData inTag, object inContext, ref TagEventData ioEvent) {
-			ioEvent.StringArgument = inTag.Id.Substring(1);
+		public static void RecordNodeVisited(ScriptNode node) {
+			I.m_state.RecordNodeVisit(node);
+
+			if (node.IsNotification) {
+				I.m_state.ClearNotification(node.ContactId);
+				SetVariable(GameVars.LastNotifiedContactId, null);
+			}
+		}
+
+		#endregion // Scripting
+
+		#region Notifications
+
+		public static void QueueNotification(ScriptNode node) {
+			if (I.m_state.QueueNotification(node.ContactId, node.Id())) {
+				SetVariable(GameVars.LastNotifiedContactId, node.ContactId);
+				Events.Dispatch(GameEvents.PhoneNotification, node.ContactId);
+			}
+		}
+
+		public static bool TryRunLastNotification(out LeafThreadHandle outHandle) {
+			StringHash32 contactId = GetVariable(GameVars.LastNotifiedContactId).AsStringHash();
+			return TryRunNotification(contactId, out outHandle);
+		}
+
+		public static bool TryRunNotification(StringHash32 contactId, out LeafThreadHandle outHandle) {
+			if (contactId.IsEmpty) {
+				outHandle = default(LeafThreadHandle);
+				return false;
+			}
+
+			StringHash32 notificationId = I.m_state.GetContactNotificationId(contactId);
+			ScriptNode node = I.m_scriptMgr.GetNotification(notificationId);
+			if (node != null) {
+				outHandle = RunScriptNode(node);
+				return true;
+			} else {
+				outHandle = default(LeafThreadHandle);
+				return false;
+			}
+		}
+
+		#endregion // Notifications
+
+		#region Variables
+
+		public static Variant GetVariable(StringHash32 id) {
+			return I.m_state.VariableTable[id];
+		}
+
+		public static void SetVariable(StringHash32 id, Variant value) {
+			I.m_state.VariableTable[id] = value;
+		}
+
+		#endregion // Variables
+
+		#region Leaf
+
+		[LeafMember]
+		public static void UnlockContact(StringHash32 contact) {
+			if (I.m_state.UnlockContact(contact)) {
+				Events.Dispatch(GameEvents.ContactUnlocked, contact);
+				using(var table = TempVarTable.Alloc()) {
+					table.Set("contactId", contact);
+					RunTrigger(GameTriggers.OnContactAdded, table, null, contact);
+				}
+			}
 		}
 
 		[LeafMember]
-		private static void UnlockContact(StringHash32 contact) {
-			I.m_state.UnlockContact(contact);
+		private static bool HasContact(StringHash32 contact) {
+			return I.m_state.IsContactUnlocked(contact);
 		}
+
+		[LeafMember]
+		private static bool Seen(StringHash32 nodeId) {
+			return I.m_state.HasVisitedNode(nodeId);
+		}
+
+		[LeafMember]
+		private static void Trace(string inText) {
+			Log.Msg(inText);
+		}
+
+		#endregion // Leaf
 
 	}
 

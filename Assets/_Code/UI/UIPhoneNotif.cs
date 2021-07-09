@@ -1,6 +1,7 @@
 ﻿using BeauRoutine;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,12 +13,19 @@ namespace Shipwreck {
 		private TweenSettings m_showHideTween = new TweenSettings(0.3f, Curve.QuadOut);
 		[SerializeField]
 		private Button m_button = null;
+		[SerializeField]
+		private GameObject m_notificationGroup = null;
+		[SerializeField]
+		private TextMeshProUGUI m_notificationCounter = null;
 
 		private void OnEnable() {
 			m_button.onClick.AddListener(HandlePressed);
+			UpdateNotificationCounter();
+			GameMgr.Events.Register(GameEvents.PhoneNotification, UpdateNotificationCounter, this);
 		}
 		private void OnDisable() {
 			m_button.onClick.RemoveListener(HandlePressed);
+			GameMgr.Events.DeregisterAll(this);
 		}
 
 
@@ -41,10 +49,23 @@ namespace Shipwreck {
 		}
 
 		private void HandlePressed() {
-			UIMgr.CloseThenOpen<UIPhoneNotif,UIContacts>();
-
+			if (!GameMgr.TryRunLastNotification(out var _)) {
+				UIMgr.CloseThenOpen<UIPhoneNotif,UIContacts>();
+			} else {
+				UIMgr.Close(this);
+				UpdateNotificationCounter();
+			}
 		}
 
+		private void UpdateNotificationCounter() {
+			uint counter = GameMgr.State.NotificationCount();
+			if (counter > 0) {
+				m_notificationGroup.SetActive(true);
+				m_notificationCounter.SetText(counter.ToString());
+			} else {
+				m_notificationGroup.SetActive(false);
+			}
+		}
 
 	}
 
