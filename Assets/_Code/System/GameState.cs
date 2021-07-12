@@ -7,11 +7,28 @@ namespace Shipwreck {
 
 	public interface IGameState {
 		IEnumerable<StringHash32> GetUnlockedContacts();
+		bool IsContactUnlocked(StringHash32 contactId);
+		StringHash32 GetContactNotificationId(StringHash32 contactId);
+		uint NotificationCount();
+
 		bool HasVisitedNode(ScriptNode node);
+		bool HasVisitedNode(StringHash32 nodeId);
 	}
 
 
 	public sealed partial class GameMgr : Singleton<GameMgr> { // GameState.cs
+
+		private struct QueuedNotification : ISerializedObject, ISerializedVersion {
+			public StringHash32 ContactId;
+			public StringHash32 NodeId;
+
+			public ushort Version { get { return 1; } }
+
+			public void Serialize(Serializer ioSerializer) {
+				ioSerializer.UInt32Proxy("contactId", ref ContactId);
+				ioSerializer.UInt32Proxy("nodeId", ref NodeId);
+			}
+		}
 
 		private sealed partial class GameState : IGameState, ISerializedObject, ISerializedVersion {
 
@@ -26,6 +43,7 @@ namespace Shipwreck {
 			private VariantTable m_variableTable;
 			private HashSet<StringHash32> m_visitedNodes;
 			private HashSet<StringHash32> m_unlockedContacts;
+			private List<QueuedNotification> m_queuedNotifications;
 			private LevelState m_level1;
 			private LevelState m_level2;
 			private LevelState m_level3;
@@ -42,6 +60,7 @@ namespace Shipwreck {
 				m_visitedNodes = new HashSet<StringHash32>();
 				m_unlockedContacts = new HashSet<StringHash32>() {"dad"};
 				m_customResolver = new CustomVariantResolver();
+				m_queuedNotifications = new List<QueuedNotification>();
 				InitializeLevels();
 			}
 
@@ -50,15 +69,65 @@ namespace Shipwreck {
 					yield return hash;
 				}
 			}
-			public void UnlockContact(StringHash32 contact) {
-				m_unlockedContacts.Add(contact);
+			public bool IsContactUnlocked(StringHash32 contactId) {
+				return m_unlockedContacts.Contains(contactId);
+			}
+			public bool UnlockContact(StringHash32 contact) {
+				return m_unlockedContacts.Add(contact);
+			}
+
+			public StringHash32 GetContactNotificationId(StringHash32 contactId) {
+				for(int i = 0, len = m_queuedNotifications.Count; i < len; i++) {
+					if (m_queuedNotifications[i].ContactId == contactId)
+						return m_queuedNotifications[i].NodeId;
+				}
+
+				return StringHash32.Null;
+			}
+			public uint NotificationCount() {
+				return (uint) m_queuedNotifications.Count;
+			}
+
+			public bool QueueNotification(StringHash32 contactId, StringHash32 nodeId) {
+				QueuedNotification notification;
+				for(int i = 0, len = m_queuedNotifications.Count; i < len; i++) {
+					notification = m_queuedNotifications[i];
+					if (notification.ContactId == contactId) {
+						if (notification.NodeId != nodeId) {
+							notification.NodeId = nodeId;
+							m_queuedNotifications[i] = notification;
+							return true;
+						}
+						return false;
+					}
+				}
+
+				notification.ContactId = contactId;
+				notification.NodeId = nodeId;
+				m_queuedNotifications.Add(notification);
+				return true;
+			}
+
+			public void ClearNotification(StringHash32 contactId) {
+				for(int i = 0, len = m_queuedNotifications.Count; i < len; i++) {
+					if (m_queuedNotifications[i].ContactId == contactId) {
+						m_queuedNotifications.FastRemoveAt(i);
+						return;
+					}
+				}
 			}
 
 			public bool HasVisitedNode(ScriptNode node) {
 				return m_visitedNodes.Contains(node.Id());
 			}
+			public bool HasVisitedNode(StringHash32 nodeId) {
+				return m_visitedNodes.Contains(nodeId);
+			}
 			public void RecordNodeVisit(ScriptNode node) {
 				m_visitedNodes.Add(node.Id());
+				if (node.IsNotification) {
+					ClearNotification(node.ContactId);
+				}
 			}
 
 
@@ -66,6 +135,7 @@ namespace Shipwreck {
 				ioSerializer.Object("variantTable", ref m_variableTable);
 				ioSerializer.UInt32ProxySet("nodeVisits", ref m_visitedNodes);
 				ioSerializer.UInt32ProxySet("unlockedContacts", ref m_unlockedContacts);
+				ioSerializer.ObjectArray("queuedNotifications", ref m_queuedNotifications);
 			}
 
 			private void InitializeLevels() {

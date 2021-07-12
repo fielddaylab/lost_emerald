@@ -32,8 +32,8 @@ namespace Shipwreck {
 		/// <summary>
 		/// Opens the given screen
 		/// </summary>
-		public static void Open<T>() where T : UIBase {
-			I.Open(typeof(T));
+		public static T Open<T>() where T : UIBase {
+			return (T) I.Open(typeof(T)).Component;
 		}
 		public static void Close(UIBase screen) {
 			I.Close(screen.GetType());
@@ -44,15 +44,16 @@ namespace Shipwreck {
 		public static void CloseThenCall<T>(Action callback, bool invokeIfAlreadyClosed = true) where T : UIBase {
 			I.CloseThenCall(typeof(T), callback, invokeIfAlreadyClosed);
 		}
-		public static void CloseThenOpen<T, U>() where T : UIBase where U : UIBase {
-			I.CloseThenOpen(typeof(T), typeof(U));
+		public static U CloseThenOpen<T, U>() where T : UIBase where U : UIBase {
+			return (U) I.CloseThenOpen(typeof(T), typeof(U)).Component;
 		}
 
-		private void Open(Type type) {
+		private IUIScreen Open(Type type) {
 			IUIScreen screen = m_mapByType[type];
 			if (m_opened.Add(screen)) {
 				screen.Show();
 			}
+			return screen;
 		}
 		private void Close(Type type) {
 			IUIScreen screen = m_mapByType[type];
@@ -74,7 +75,7 @@ namespace Shipwreck {
 				callback();
 			}
 		}
-		private void CloseThenOpen(Type toClose, Type toOpen) {
+		private IUIScreen CloseThenOpen(Type toClose, Type toOpen) {
 			IUIScreen close = m_mapByType[toClose];
 			IUIScreen open = m_mapByType[toOpen];
 			if (m_opened.Remove(close)) {
@@ -90,6 +91,8 @@ namespace Shipwreck {
 			} else if(m_opened.Add(open)) {
 				open.Show();
 			}
+
+			return open;
 		}
 
 	}

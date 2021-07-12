@@ -9,6 +9,7 @@ namespace Shipwreck {
 		event Action OnOpenComplete;
 		void Show();
 		void Hide();
+		MonoBehaviour Component { get; }
 	}
 	public abstract class UIBase : MonoBehaviour {
 
@@ -33,6 +34,10 @@ namespace Shipwreck {
 			}
 			public void Hide() {
 				m_owner.Hide();
+			}
+
+			public MonoBehaviour Component {
+				get { return m_owner; }
 			}
 		}
 
