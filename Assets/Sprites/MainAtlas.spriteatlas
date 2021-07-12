@@ -48,6 +48,7 @@ SpriteAtlas:
   m_PackedSprites:
   - {fileID: 21300000, guid: ab5b3c307990f48cc9b29102602da7cb, type: 3}
   - {fileID: 21300000, guid: 82cbce30f03431f44bf2b7d0a42b9784, type: 3}
+  - {fileID: 21300000, guid: 1ef17280142431044ba4e08b167d830a, type: 3}
   - {fileID: 21300000, guid: 13ee57b005423384a864133f2aa056dc, type: 3}
   - {fileID: 21300000, guid: 68c55cb03adc4470c9fc54b5a1f1e235, type: 3}
   - {fileID: 21300000, guid: a06d87c025df54935a230859046513da, type: 3}
@@ -88,6 +89,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 0d5a7ad870314423a9bbb4f7503c3d25, type: 3}
   - {fileID: 21300000, guid: 132b0ca92ede2104d86bc6e8eb061529, type: 3}
   - {fileID: 21300000, guid: 0bb296f979292429cb38bc0c6e151746, type: 3}
+  - {fileID: 21300000, guid: 127b3c0afee2e274ab765b67e3875292, type: 3}
   - {fileID: 21300000, guid: 73c09d6a64f3d4fa797ae62a855672e7, type: 3}
   - {fileID: 21300000, guid: 9219a3ba3979b214babe6a768fcade78, type: 3}
   - {fileID: 21300000, guid: 731c122b3a19c420abd944082c76bccc, type: 3}
@@ -103,10 +105,12 @@ SpriteAtlas:
   - {fileID: 21300000, guid: c4dd4fdd9b744414dbd607f60e3fd758, type: 3}
   - {fileID: 21300000, guid: cb86ceede706ea24bad46cf5d26b1bae, type: 3}
   - {fileID: 21300000, guid: ca052dfdd98a1c742b96af83bb3b4cc4, type: 3}
+  - {fileID: 21300000, guid: 33ac414e0a466684d9d2c58fd2b8dbab, type: 3}
   - {fileID: 21300000, guid: 8f725d4e1f1d847aeba98ae57a66cabd, type: 3}
   - {fileID: 21300000, guid: 72eec86ee8bb44374aa11456898a50d6, type: 3}
   - {fileID: 21300000, guid: 7d1d53ae8d55e994598b2b84b04588df, type: 3}
   - {fileID: 21300000, guid: 3cb1d3de80ee9461498367b28b05b097, type: 3}
+  - {fileID: 21300000, guid: 374dc90f739bee04a877d6898de07475, type: 3}
   - {fileID: 21300000, guid: 87da702f0ba413a4fa0b770094855e60, type: 3}
   - {fileID: 21300000, guid: 4eb6072fb20234022b1e6e6377affdb5, type: 3}
   - {fileID: 21300000, guid: 56a3518f3cac048178bc2bdbeb9c7486, type: 3}
@@ -115,6 +119,7 @@ SpriteAtlas:
   m_PackedSpriteNamesToIndex:
   - knees-timberland
   - office-background
+  - button-face
   - node-main
   - evidence-loretta
   - disclosure-arrow-right
@@ -155,6 +160,7 @@ SpriteAtlas:
   - icon-check
   - push-pin
   - shiptype-schooner
+  - zoom-in
   - descend
   - HiResCircle
   - lake-overview
@@ -170,10 +176,12 @@ SpriteAtlas:
   - phone-full
   - lou_icon
   - PhoneDialog
+  - zoom-out
   - grandpa-postcard-back
   - grandpa-postcard-photo
   - RoundedRect100
   - photo-ship-name
+  - back-arrow
   - phone_icon
   - lake-michigan-map-zoomed
   - marshallsAirport
