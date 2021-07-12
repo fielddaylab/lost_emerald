@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Shipwreck {
 	public interface IUIScreen {
@@ -58,6 +59,12 @@ namespace Shipwreck {
 		public IUIScreen GetScreen() {
 			return new MgrLink(this);
 		}
+		public bool IsShowing {
+			get { return m_isShown; }
+		}
+		public bool IsChangingState {
+			get { return m_showHideRoutine; }
+		}
 
 		private void Show() {
 			if (m_isShown) {
@@ -68,8 +75,8 @@ namespace Shipwreck {
 			OnShowStart();
 			m_showHideRoutine.Replace(this, ShowRoutine())
 				.ExecuteWhileDisabled()
-				.OnComplete(OnShowCompleted)
-				.OnStop(OnShowCompleted);
+				.OnComplete(HandleShowComplete)
+				.OnStop(HandleShowComplete);
 		}
 		private void Hide() {
 			if (!m_isShown) {
@@ -80,8 +87,8 @@ namespace Shipwreck {
 			OnHideStart();
 			m_showHideRoutine.Replace(this, HideRoutine())
 				.ExecuteWhileDisabled()
-				.OnComplete(OnHideCompleted)
-				.OnStop(OnHideCompleted);
+				.OnComplete(HandlehideCmplete)
+				.OnStop(HandlehideCmplete);
 		}
 
 		protected virtual void OnShowStart() {
@@ -105,11 +112,52 @@ namespace Shipwreck {
 			OnHideComplete?.Invoke();
 		}
 
+		private void HandleShowComplete() {
+			if (!m_isShown)
+				return;
+
+			OnShowCompleted();
+		}
+
+		private void HandlehideCmplete() {
+			if (m_isShown)
+				return;
+
+			OnHideCompleted();
+		}
+
 
 		protected abstract IEnumerator ShowRoutine();
 
 		protected abstract IEnumerator HideRoutine();
 
+		static public void AssignSpritePreserveAspect(Image target, Sprite sprite, Axis preserveAspect) {
+			target.sprite = sprite;
+			if (sprite != null) {
+				float aspect = sprite.rect.width / sprite.rect.height;
+				if (preserveAspect == Axis.X) {
+					target.rectTransform.SetSizeDelta(target.rectTransform.sizeDelta.x / aspect, Axis.Y);
+				} else if (preserveAspect == Axis.Y) {
+					target.rectTransform.SetSizeDelta(target.rectTransform.sizeDelta.y * aspect, Axis.X);
+				} else {
+					throw new ArgumentOutOfRangeException("Unaccepted axis value " + preserveAspect);
+				}
+			}
+		}
+
+		static public void AssignSpritePreserveAspect(Image target, LayoutElement layout, Sprite sprite, Axis preserveAspect) {
+			target.sprite = sprite;
+			if (sprite != null) {
+				float aspect = sprite.rect.width / sprite.rect.height;
+				if (preserveAspect == Axis.X) {
+					layout.preferredHeight = layout.preferredWidth / aspect;
+				} else if (preserveAspect == Axis.Y) {
+					layout.preferredWidth = layout.preferredHeight * aspect;
+				} else {
+					throw new ArgumentOutOfRangeException("Unaccepted axis value " + preserveAspect);
+				}
+			}
+		}
 	}
 
 }

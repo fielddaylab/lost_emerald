@@ -9,6 +9,8 @@ namespace Shipwreck {
 		protected override void OnShowStart() {
 			base.OnShowStart();
 			CanvasGroup.alpha = 0;
+
+			GameMgr.RunTrigger(GameTriggers.OnEnterOffice);
 		}
 
 

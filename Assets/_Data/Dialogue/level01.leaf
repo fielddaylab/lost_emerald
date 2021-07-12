@@ -7,6 +7,7 @@
 @contact dad, text-message
 @notification // when able to be shown, increases notification count for character
 @trigger OnEnterOffice
+@once
 
 	// Open text from Dad
 	{@dad} 	Hey Jules!
@@ -37,7 +38,7 @@
 @once
 	// Receive/open a new text from Lou
 	{@lou} 	Jules!! I was out flying by Rawley Point today and saw this: 
-		   	(image of ship outline from above)
+		   	{img birds-eye-photo-new}
 	 		GPS coordinates: N 44° 11.524' W 087° 30.591'
 	 		What do you think?
 	{@you} 	Looks like a shipwreck!

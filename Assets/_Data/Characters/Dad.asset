@@ -17,4 +17,9 @@ MonoBehaviour:
     m_key: Character/Dad/Name
     m_hash: -555383108
   m_textingIcon: {fileID: 21300000, guid: fd8fa1249bf177b46b8ae8dc9dafc693, type: 3}
+  m_textingColor: {r: 0.4784314, g: 0.09411766, b: 0.003921569, a: 1}
+  m_textingBackgroundColor: {r: 1, g: 0.8313726, b: 0.79215693, a: 1}
   m_portrait: {fileID: 21300000, guid: 496a2b33c0d4f462fa87d9b752ceee37, type: 3}
+  m_background: {fileID: 21300000, guid: 82cbce30f03431f44bf2b7d0a42b9784, type: 3}
+  m_dialogBackgroundColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_dialogTextColor: {r: 1, g: 1, b: 1, a: 1}
