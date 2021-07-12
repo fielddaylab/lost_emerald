@@ -116,7 +116,7 @@ namespace Shipwreck {
 			public override void OnInspectorGUI() {
 				base.OnInspectorGUI();
 				UnityEditor.EditorGUILayout.Space();
-				if (GUILayout.Button("Refresh UIBase list")) {
+				if (GUILayout.Button("Refresh Screens List")) {
 					UIMgr mgr = (UIMgr) target;
 					mgr.m_screens = mgr.GetComponentsInChildren<UIBase>(true);
 					UnityEditor.EditorUtility.SetDirty(mgr);

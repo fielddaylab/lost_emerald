@@ -68,7 +68,7 @@ namespace Shipwreck {
 		}
 
 		static public void AttemptReopen() {
-			if (!UIMgr.IsOpen<UIPhone>() && !UIMgr.IsOpen<UIDialogScreen>()) {
+			if (!UIMgr.IsOpen<UIPhone>() && !UIMgr.IsOpen<UIDialogScreen>() && !UIMgr.IsOpen<UIRadioDialog>()) {
 				UIMgr.Open<UIPhoneNotif>();
 			}
 		}

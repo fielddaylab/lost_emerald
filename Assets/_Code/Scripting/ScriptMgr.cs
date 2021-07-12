@@ -137,7 +137,8 @@ namespace Shipwreck {
 					m_uiCurrent = UIMgr.Open<UIDialogScreen>();
 					UIMgr.Close<UIPhone>();
 				} else if (inNode.Type == ScriptNode.NodeType.Radio) {
-					// TODO: Open radio
+					m_uiCurrent = UIMgr.Open<UIRadioDialog>();
+					UIMgr.Close<UIPhone>();
 				}
 				
 				ConfigureDisplay(m_uiCurrent, null);

@@ -53,10 +53,10 @@ namespace Shipwreck {
 		private Sprite m_portrait = null;
 		[SerializeField, Tooltip("Sprite used behind the portrait when the player is talking directly to this Character")]
 		private Sprite m_background = null;
-		[SerializeField, Tooltip("Color used to tint the dialog background")]
-		private Color m_dialogBackgroundColor = Color.grey;
 		[SerializeField, Tooltip("Color used to tint the dialog text")]
 		private Color m_dialogTextColor = Color.white;
+		[SerializeField, Tooltip("Color used to tint the dialog background")]
+		private Color m_dialogBackgroundColor = Color.grey;
 
 	}
 
