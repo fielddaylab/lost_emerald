@@ -52,8 +52,7 @@ MonoBehaviour:
     m_Source: Type
     m_Hash: 3512062061
   m_label: Ship Type
-  m_allowDrops: 0
-  m_startWithLine: 1
+  m_isRoot: 1
 --- !u!1 &5004115558383265628
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,8 +105,7 @@ MonoBehaviour:
     m_Source: Artifact
     m_Hash: 3463768387
   m_label: Artifact
-  m_allowDrops: 0
-  m_startWithLine: 1
+  m_isRoot: 1
 --- !u!1 &5921812260356061040
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,8 +158,7 @@ MonoBehaviour:
     m_Source: Cause
     m_Hash: 1894034624
   m_label: Cause of Wreck
-  m_allowDrops: 0
-  m_startWithLine: 1
+  m_isRoot: 1
 --- !u!1 &7037559759491323131
 GameObject:
   m_ObjectHideFlags: 0
@@ -509,7 +506,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.1760413, g: 0.8679245, b: 0.65764636, a: 1}
   m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -577,8 +574,7 @@ MonoBehaviour:
     m_Source: Name
     m_Hash: 266367750
   m_label: Name
-  m_allowDrops: 0
-  m_startWithLine: 1
+  m_isRoot: 1
 --- !u!1 &7954356948192107524
 GameObject:
   m_ObjectHideFlags: 0
@@ -631,5 +627,4 @@ MonoBehaviour:
     m_Source: Location
     m_Hash: 1539345862
   m_label: Location
-  m_allowDrops: 0
-  m_startWithLine: 1
+  m_isRoot: 1

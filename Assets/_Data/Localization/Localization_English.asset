@@ -39,6 +39,14 @@ MonoBehaviour:
     m_hash: 1706357138
   - m_key: UI/Phone/Contacts
     m_hash: -428438668
+  - m_key: UI/Office/Level1
+    m_hash: 358002156
+  - m_key: UI/Office/Level2
+    m_hash: 408335013
+  - m_key: UI/Office/Level3
+    m_hash: 391557394
+  - m_key: UI/Office/Level4
+    m_hash: 307669299
   m_values:
   - Continue
   - Dad
@@ -52,3 +60,7 @@ MonoBehaviour:
   - New Game
   - Back
   - Contacts
+  - Level 1
+  - Level 2
+  - Level 3
+  - Level 4

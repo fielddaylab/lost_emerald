@@ -45,6 +45,7 @@ namespace Shipwreck {
 			private HashSet<StringHash32> m_unlockedContacts;
 			private List<QueuedNotification> m_queuedNotifications;
 			private LevelState[] m_levelStates;
+			private int m_levelIndex;
 
 
 			public GameState() {
