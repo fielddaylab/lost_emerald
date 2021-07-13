@@ -44,20 +44,13 @@ namespace Shipwreck {
 			private HashSet<StringHash32> m_visitedNodes;
 			private HashSet<StringHash32> m_unlockedContacts;
 			private List<QueuedNotification> m_queuedNotifications;
-			private LevelState m_level1;
-			private LevelState m_level2;
-			private LevelState m_level3;
-			private LevelState m_level4;
-
-			// non-serialized
-			private CustomVariantResolver m_customResolver;
+			private LevelState[] m_levelStates;
 
 
 			public GameState() {
 				m_variableTable = new VariantTable();
 				m_visitedNodes = new HashSet<StringHash32>();
 				m_unlockedContacts = new HashSet<StringHash32>() {"dad"};
-				m_customResolver = new CustomVariantResolver();
 				m_queuedNotifications = new List<QueuedNotification>();
 				InitializeLevels();
 			}
@@ -127,21 +120,21 @@ namespace Shipwreck {
 					ClearNotification(node.ContactId);
 				}
 			}
-
-
+			
 			public void Serialize(Serializer ioSerializer) {
 				ioSerializer.Object("variantTable", ref m_variableTable);
 				ioSerializer.UInt32ProxySet("nodeVisits", ref m_visitedNodes);
 				ioSerializer.UInt32ProxySet("unlockedContacts", ref m_unlockedContacts);
 				ioSerializer.ObjectArray("queuedNotifications", ref m_queuedNotifications);
+				ioSerializer.ObjectArray("levelStates", ref m_levelStates);
 			}
 
 			private void InitializeLevels() {
-				m_level1 = new LevelState();
-				m_level2 = new LevelState();
-				m_level3 = new LevelState();
-				m_level4 = new LevelState();
-				m_level1.Unlock();
+				m_levelStates = new LevelState[4] {
+					new LevelState(), new LevelState(),
+					new LevelState(), new LevelState()
+				};
+				m_levelStates[0].Unlock();
 			}
 
 		}

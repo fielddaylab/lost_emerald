@@ -26,7 +26,7 @@ namespace Shipwreck {
 				// serialized
 				private bool m_isUnlocked = false;
 				private List<EvidenceGroupState> m_evidence;
-				private List<EvidenceChainState> m_connections;
+				private List<EvidenceChainState> m_chains;
 
 				public void Unlock() {
 					m_isUnlocked = true;
@@ -40,7 +40,7 @@ namespace Shipwreck {
 				public void Serialize(Serializer ioSerializer) {
 					ioSerializer.Serialize("isUnlocked", ref m_isUnlocked);
 					ioSerializer.ObjectArray("evidence", ref m_evidence);
-					ioSerializer.ObjectArray("connections", ref m_connections);
+					ioSerializer.ObjectArray("connections", ref m_chains);
 				}
 			}
 		}
