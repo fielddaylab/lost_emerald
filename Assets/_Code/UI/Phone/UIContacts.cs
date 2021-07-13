@@ -10,26 +10,23 @@ namespace Shipwreck {
 	public class UIContacts : UIBase {
 
 		[SerializeField]
-		private TweenSettings m_tweenSettings = new TweenSettings(0.3f, Curve.QuadInOut);
-		[SerializeField]
 		private ContactItem m_contactPrefab = null;
 		[SerializeField]
 		private RectTransform m_content = null;
 		[SerializeField]
 		private Button m_backButton = null;
 
-
-		private RectTransform m_rectTransform;
-
 		private void Awake() {
-			m_rectTransform = (RectTransform)transform;
 			m_backButton.onClick.AddListener(HandleBackClicked);
 		}
 
+		#region UIBase
+
 		protected override void OnShowStart() {
 			base.OnShowStart();
+			UIMgr.Open<UIPhone>();
+			UIMgr.Close<UITextMessage>();
 
-			m_rectTransform.anchoredPosition = new Vector2(m_rectTransform.anchoredPosition.x, -660f);
 			foreach (StringHash32 hash in GameMgr.State.GetUnlockedContacts()) {
 				CharacterData data = GameDb.GetCharacterData(hash);
 				ContactItem item = Instantiate(m_contactPrefab, m_content);
@@ -49,26 +46,28 @@ namespace Shipwreck {
 		}
 
 		protected override IEnumerator HideRoutine() {
-			yield return m_rectTransform.AnchorPosTo(-660f, m_tweenSettings, Axis.Y);
+			yield break;
 		}
 		protected override IEnumerator ShowRoutine() {
-			yield return m_rectTransform.AnchorPosTo(45f, m_tweenSettings, Axis.Y);
+			yield break;
 		}
+
+		#endregion // UIBase
+
+		#region Handlers
 
 		private void HandleContactClicked(StringHash32 character) {
 			LeafThreadHandle convo;
 			if (!GameMgr.TryRunNotification(character, out convo)) {
 				convo = GameMgr.RunTrigger(GameTriggers.OnContactText, null, null, character);
 			}
-			if (convo.IsRunning()) {
-				UIMgr.Close(this);
-			}
 		}
 
-		private void HandleBackClicked() { 
-			UIMgr.CloseThenOpen<UIContacts,UIPhoneNotif>();
+		private void HandleBackClicked() {
+			UIMgr.Close<UIPhone>();
 		}
 
+		#endregion // Handlers
 	}
 
 

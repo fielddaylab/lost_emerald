@@ -24,6 +24,13 @@ namespace Shipwreck {
 			foreach (UIBase screen in m_screens) {
 				m_mapByType.Add(screen.GetType(), screen.GetScreen());
 			}
+		}
+
+		private void Start() {
+			foreach(var screen in m_screens) {
+				screen.gameObject.SetActive(false);
+			}
+			
 			if (m_defaultScreen != null) {
 				Open(m_defaultScreen.GetType());
 			}
@@ -47,6 +54,9 @@ namespace Shipwreck {
 		public static U CloseThenOpen<T, U>() where T : UIBase where U : UIBase {
 			return (U) I.CloseThenOpen(typeof(T), typeof(U)).Component;
 		}
+		public static bool IsOpen<T>() {
+			return I.IsOpen(typeof(T));
+		}
 
 		private IUIScreen Open(Type type) {
 			IUIScreen screen = m_mapByType[type];
@@ -54,6 +64,10 @@ namespace Shipwreck {
 				screen.Show();
 			}
 			return screen;
+		}
+		private bool IsOpen(Type type) {
+			IUIScreen screen = m_mapByType[type];
+			return m_opened.Contains(screen);
 		}
 		private void Close(Type type) {
 			IUIScreen screen = m_mapByType[type];
@@ -94,6 +108,23 @@ namespace Shipwreck {
 
 			return open;
 		}
+
+		#if UNITY_EDITOR
+
+		[UnityEditor.CustomEditor(typeof(UIMgr))]
+		private class Inspector : UnityEditor.Editor {
+			public override void OnInspectorGUI() {
+				base.OnInspectorGUI();
+				UnityEditor.EditorGUILayout.Space();
+				if (GUILayout.Button("Refresh Screens List")) {
+					UIMgr mgr = (UIMgr) target;
+					mgr.m_screens = mgr.GetComponentsInChildren<UIBase>(true);
+					UnityEditor.EditorUtility.SetDirty(mgr);
+				}
+			}
+		}
+
+		#endif // UNITY_EDITOR
 
 	}
 

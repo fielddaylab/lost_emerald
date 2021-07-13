@@ -1,4 +1,5 @@
 ﻿using BeauUtil;
+using BeauUtil.Debugger;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,12 +12,15 @@ namespace Shipwreck {
 		private CharacterData[] m_characters;
 		[SerializeField]
 		private EvidenceData[] m_evidenceData;
+		[SerializeField]
+		private Sprite[] m_images;
 
 		[NonSerialized]
 		private Dictionary<StringHash32, CharacterData> m_characterMap;
 		[NonSerialized]
-		private Dictionary<StringHash32, EvidenceData> m_evidenceMap;
-
+		private Dictionary<StringHash32, EvidenceData> m_evidenceMap;		
+		[NonSerialized]
+		private Dictionary<StringHash32, Sprite> m_imageMap;
 		public static CharacterData GetCharacterData(StringHash32 hash) {
 			// initialize the map if it does not exist
 			if (I.m_characterMap == null) {
@@ -34,7 +38,22 @@ namespace Shipwreck {
 				));
 			}
 		}
-
+		public static Sprite GetImageData(StringHash32 hash) {
+			if (I.m_imageMap == null) {
+				I.m_imageMap = new Dictionary<StringHash32, Sprite>();
+				foreach(Sprite sprite in I.m_images) {
+					I.m_imageMap.Add(sprite.name, sprite);
+				}
+			}
+			// find the tag within the map
+			if (I.m_imageMap.ContainsKey(hash)) {
+				return I.m_imageMap[hash];
+			} else {
+				throw new KeyNotFoundException(Log.Format("No " +
+					"Image with id `{0}' is in the database", hash
+				));
+			}
+		}
 
 		public static EvidenceGroup GetEvidenceGroup(StringHash32 groupID) {
 			// initialize the map if it does not exist
@@ -52,6 +71,7 @@ namespace Shipwreck {
 				));
 			}
 		}
+
 
 	}
 

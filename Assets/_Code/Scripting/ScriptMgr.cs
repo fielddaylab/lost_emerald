@@ -105,7 +105,7 @@ namespace Shipwreck {
 			parseConfig.AddEvent("wait", ScriptEvents.Global.Wait).WithFloatData(0.25f);
 			
 			parseConfig.AddEvent("@*", ScriptEvents.Dialog.Target).ProcessWith(ParseTargetArgs);
-			parseConfig.AddEvent("img", ScriptEvents.Dialog.Image).WithStringData();
+			parseConfig.AddEvent("img", ScriptEvents.Dialog.Image).WithStringHashData().CloseWith(ScriptEvents.Dialog.HideImage);
 
 			TagStringEventHandler eventConfig = new TagStringEventHandler();
 			eventConfig.Register(ScriptEvents.Global.Wait, (e, o) => Routine.WaitSeconds(e.GetFloat()));
@@ -118,25 +118,31 @@ namespace Shipwreck {
 				return base.Run(inNode, inActor, inLocals, inName);
 			}
 			
-			LeafThreadHandle oldHandle = m_currentHandle;
-			m_currentHandle = base.Run(inNode, inActor, inLocals, inName);
-			oldHandle.Kill();
-			return m_currentHandle;
+			m_currentHandle.Kill();
+			return m_currentHandle = base.Run(inNode, inActor, inLocals, inName);
 		}
 
 		public override void OnNodeEnter(ScriptNode inNode, LeafThreadState<ScriptNode> inThreadState) {
 			GameMgr.RecordNodeVisited(inNode);
 
 			if (inNode.Type != ScriptNode.NodeType.Function) {
+				if (m_uiCurrent != null) {
+					UIMgr.Close(m_uiCurrent);
+				}
+
 				if (inNode.Type == ScriptNode.NodeType.TextMessage) {
 					m_uiCurrent = UIMgr.Open<UITextMessage>();
+					UIMgr.Close<UIDialogScreen>();
 				} else if (inNode.Type == ScriptNode.NodeType.InPerson) {
 					m_uiCurrent = UIMgr.Open<UIDialogScreen>();
+					UIMgr.Close<UIPhone>();
+				} else if (inNode.Type == ScriptNode.NodeType.Radio) {
+					m_uiCurrent = UIMgr.Open<UIRadioDialog>();
+					UIMgr.Close<UIPhone>();
 				}
+				
 				ConfigureDisplay(m_uiCurrent, null);
-
-				UIMgr.Close<UIPhoneNotif>();
-				UIMgr.Close<UIContacts>();
+				m_uiCurrent.PrepareNode(inNode);
 			}
 		}
 		public override void OnNodeExit(ScriptNode inNode, LeafThreadState<ScriptNode> inThreadState) {
@@ -145,6 +151,12 @@ namespace Shipwreck {
 			
 			switch(inNode.Type) {
 					case ScriptNode.NodeType.InPerson:
+						{
+							if (m_uiCurrent != null) {
+								UIMgr.Close(m_uiCurrent);
+							}
+							break;
+						}
 					case ScriptNode.NodeType.TextMessage:
 						{
 							if (m_uiCurrent != null) {
@@ -152,7 +164,7 @@ namespace Shipwreck {
 							}
 
 							if (inNode.IsNotification && GameMgr.State.NotificationCount() == 0) {
-								UIMgr.Open<UIPhoneNotif>();
+								UIMgr.Close<UIPhone>();
 							} else {
 								UIMgr.Open<UIContacts>();
 							}
@@ -302,7 +314,7 @@ namespace Shipwreck {
 		#region Parsing
 
 		private static void ParseTargetArgs(TagData inTag, object inContext, ref TagEventData ioEvent) {
-			ioEvent.StringArgument = inTag.Id.Substring(1);
+			ioEvent.SetStringHash(inTag.Id.Substring(1));
 		}
 
 		#endregion // Parsing

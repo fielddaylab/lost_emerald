@@ -11,8 +11,12 @@ namespace Shipwreck {
 
 		public event Action<StringHash32> OnClicked;
 
+		#region Inspector
+
 		[SerializeField]
 		private Image m_icon = null;
+		[SerializeField]
+		private Graphic m_iconOutline = null;
 		[SerializeField]
 		private LocalizedTextUGUI m_name = null;
 		[SerializeField]
@@ -22,13 +26,17 @@ namespace Shipwreck {
 		[SerializeField]
 		private Button m_button = null;
 
+		#endregion // Inspector
+
 		private StringHash32 m_characterHash;
 
 		public void SetCharacter(CharacterData data) {
 			m_icon.sprite = data.TextingIcon;
+			m_iconOutline.color = data.TextingColor;
 			m_name.Key = data.DisplayName;
 			m_characterHash = data.Hash;
 		}
+		
 		public void SetNotifications(uint count) {
 			if (count == 0) {
 				m_notificationGroup.SetActive(false);
@@ -44,10 +52,10 @@ namespace Shipwreck {
 		private void OnDisable() {
 			m_button.onClick.RemoveListener(HandleClicked);
 		}
+		
 		private void HandleClicked() {
 			OnClicked?.Invoke(m_characterHash);
 		}
-
 
 	}
 

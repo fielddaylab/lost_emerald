@@ -49,10 +49,10 @@ namespace Shipwreck {
 		}
 
 		private void HandlePressed() {
+			UIMgr.Close(this);
 			if (!GameMgr.TryRunLastNotification(out var _)) {
-				UIMgr.CloseThenOpen<UIPhoneNotif,UIContacts>();
+				UIMgr.Open<UIContacts>();
 			} else {
-				UIMgr.Close(this);
 				UpdateNotificationCounter();
 			}
 		}
@@ -64,6 +64,12 @@ namespace Shipwreck {
 				m_notificationCounter.SetText(counter.ToString());
 			} else {
 				m_notificationGroup.SetActive(false);
+			}
+		}
+
+		static public void AttemptReopen() {
+			if (!UIMgr.IsOpen<UIPhone>() && !UIMgr.IsOpen<UIDialogScreen>() && !UIMgr.IsOpen<UIRadioDialog>()) {
+				UIMgr.Open<UIPhoneNotif>();
 			}
 		}
 

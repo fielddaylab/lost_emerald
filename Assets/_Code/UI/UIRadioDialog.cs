@@ -3,6 +3,7 @@ using BeauUtil;
 using BeauUtil.Tags;
 using Leaf.Defaults;
 using PotatoLocalization;
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -11,7 +12,7 @@ using UnityEngine.UI;
 
 namespace Shipwreck {
 
-	public class UIDialogScreen : UIDialogueBase {
+	public class UIRadioDialog : UIDialogueBase {
 
 		#region Inspector
 
@@ -30,11 +31,9 @@ namespace Shipwreck {
 		[SerializeField]
 		private LayoutGroup m_layout = null;
 		[SerializeField]
-		private Image m_portrait = null;
+		private Image m_icon = null;
 		[SerializeField]
-		private Image m_background = null;
-		[SerializeField]
-		private Image m_image = null;
+		private Graphic m_iconOutline = null;
 		[SerializeField]
 		private Button m_continueButton = null;
 
@@ -46,11 +45,9 @@ namespace Shipwreck {
 			base.OnShowStart();
 			CanvasGroup.alpha = 0;
 			m_textBox.text = string.Empty;
-			m_image.gameObject.SetActive(false);
 
 			GameMgr.Events.Dispatch(GameEvents.DialogOpened);
 			UIMgr.Close<UIPhone>();
-			UIMgr.Close<UIPhoneNotif>();
 		}
 
 		protected override void OnHideCompleted() {
@@ -73,8 +70,8 @@ namespace Shipwreck {
 		#region Dialog
 
 		protected override void AssignPartner(CharacterData character) {
-			AssignSpritePreserveAspect(m_portrait, character.Portrait, Axis.Y);
-			AssignSpritePreserveAspect(m_background, character.Background, Axis.Y);
+			m_icon.sprite = character.TextingIcon;
+			m_iconOutline.color = character.DialogTextColor;
 		}
 
 		protected override void OnPrepareLine(TagString inString) {
@@ -144,15 +141,11 @@ namespace Shipwreck {
 		}
 
 		protected override IEnumerator OnShowImage(Sprite image) {
-			m_image.gameObject.SetActive(true);
-			m_image.SetAlpha(0);
-			AssignSpritePreserveAspect(m_image, image, Axis.Y);
-			yield return m_image.FadeTo(1, 0.1f);
+			throw new NotSupportedException();
 		}
 
 		protected override IEnumerator OnHideImage() {
-			yield return m_image.FadeTo(0, 0.1f);
-			m_image.gameObject.SetActive(false);
+			throw new NotSupportedException();
 		}
 
 		#endregion // Dialog
