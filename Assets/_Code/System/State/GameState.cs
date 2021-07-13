@@ -16,7 +16,7 @@ namespace Shipwreck {
 	}
 
 
-	public sealed partial class GameMgr : Singleton<GameMgr> { // GameState.cs
+	public sealed partial class GameMgr { // GameState.cs
 
 		private struct QueuedNotification : ISerializedObject, ISerializedVersion {
 			public StringHash32 ContactId;
@@ -48,8 +48,6 @@ namespace Shipwreck {
 			private LevelState m_level2;
 			private LevelState m_level3;
 			private LevelState m_level4;
-			private LevelState m_level5;
-			private LevelState m_levelGrandpa;
 
 			// non-serialized
 			private CustomVariantResolver m_customResolver;
@@ -143,7 +141,6 @@ namespace Shipwreck {
 				m_level2 = new LevelState();
 				m_level3 = new LevelState();
 				m_level4 = new LevelState();
-				m_level5 = new LevelState();
 				m_level1.Unlock();
 			}
 

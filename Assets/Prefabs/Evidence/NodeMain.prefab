@@ -49,9 +49,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_nodeId:
-    m_Source: ShipType
-    m_Hash: 4116609543
+    m_Source: Type
+    m_Hash: 3512062061
   m_label: Ship Type
+  m_allowDrops: 0
+  m_startWithLine: 1
 --- !u!1 &5004115558383265628
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,6 +106,8 @@ MonoBehaviour:
     m_Source: Artifact
     m_Hash: 3463768387
   m_label: Artifact
+  m_allowDrops: 0
+  m_startWithLine: 1
 --- !u!1 &5921812260356061040
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,6 +160,8 @@ MonoBehaviour:
     m_Source: Cause
     m_Hash: 1894034624
   m_label: Cause of Wreck
+  m_allowDrops: 0
+  m_startWithLine: 1
 --- !u!1 &7037559759491323131
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,7 +277,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 10, y: 217}
+  m_AnchoredPosition: {x: 0, y: 217}
   m_SizeDelta: {x: 264, y: 76}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1672303318513222810
@@ -287,11 +293,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_groupID:
-    m_Source: 
-    m_Hash: 0
+    m_Source: Main
+    m_Hash: 1366325544
   m_nodes:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 3164851611366127273}
+  - {fileID: 668787900977152745}
+  - {fileID: 446699352968313184}
+  - {fileID: 1588532500008371206}
+  - {fileID: 6953342202989528882}
 --- !u!1 &7037559760335641405
 GameObject:
   m_ObjectHideFlags: 0
@@ -568,6 +577,8 @@ MonoBehaviour:
     m_Source: Name
     m_Hash: 266367750
   m_label: Name
+  m_allowDrops: 0
+  m_startWithLine: 1
 --- !u!1 &7954356948192107524
 GameObject:
   m_ObjectHideFlags: 0
@@ -620,3 +631,5 @@ MonoBehaviour:
     m_Source: Location
     m_Hash: 1539345862
   m_label: Location
+  m_allowDrops: 0
+  m_startWithLine: 1

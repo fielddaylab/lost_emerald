@@ -1,19 +1,16 @@
 ﻿using BeauUtil;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Shipwreck {
 
-	public class EvidenceGroup : MonoBehaviour {
+	public class EvidenceGroup : MonoBehaviour, IPointerDownHandler {
 
 		public StringHash32 GroupID {
-			get {
-				return m_groupID;
-			}
+			get { return m_groupID; }
 		}
 		public EvidenceNode[] Nodes {
-			get {
-				return m_nodes;
-			}
+			get { return m_nodes; }
 		}
 
 		[SerializeField]
@@ -21,8 +18,9 @@ namespace Shipwreck {
 		[SerializeField]
 		private EvidenceNode[] m_nodes;
 
-
-
+		public void OnPointerDown(PointerEventData eventData) {
+			throw new System.NotImplementedException();
+		}
 	}
 
 }
