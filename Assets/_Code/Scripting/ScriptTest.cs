@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Shipwreck;
 using Leaf;
 using UnityEngine.UI;
@@ -14,6 +14,6 @@ public class ScriptTest : MonoBehaviour {
         GameMgr.LoadScript(Script);
         GameMgr.RunTrigger("Start");
 
-        NotifyButton.onClick.AddListener(() => GameMgr.RunTrigger("Special"));
+        //NotifyButton.onClick.AddListener(() => GameMgr.RunTrigger("Special"));
     }
 }

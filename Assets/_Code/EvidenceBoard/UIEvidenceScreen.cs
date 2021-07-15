@@ -64,6 +64,7 @@ namespace Shipwreck {
 				line = Instantiate(m_linePrefab, m_lineGroup);
 				line.transform.localPosition = Vector3.zero;
 				EvidencePin pin = Instantiate(m_pinPrefab, m_pinGroup);
+				pin.SetLayerParent(m_pinGroup);
 				pin.transform.position = m_nodes[current].PinPosition.position;
 				line.Setup(m_nodes[current].RectTransform, (RectTransform)pin.transform);
 			}
