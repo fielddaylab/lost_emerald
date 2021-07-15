@@ -1,4 +1,3 @@
-
 void MainLight_half(float3 WorldPos, out half3 Direction, out half3 Color, out half DistanceAtten, out half ShadowAtten)
 {
     #if SHADERGRAPH_PREVIEW
