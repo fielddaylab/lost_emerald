@@ -289,9 +289,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f52b4fd7292ba59499186651625ab7a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_groupID:
-    m_Source: Main
-    m_Hash: 1366325544
   m_nodes:
   - {fileID: 3164851611366127273}
   - {fileID: 668787900977152745}
@@ -446,8 +443,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_key:
-    m_key: 
-    m_hash: 0
+    m_key: UI/Level1/ShipWithLocation
+    m_hash: 2024499403
 --- !u!1 &7037559760595785655
 GameObject:
   m_ObjectHideFlags: 0

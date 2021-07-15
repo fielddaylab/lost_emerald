@@ -60,10 +60,10 @@ namespace Shipwreck {
 			if (I.m_evidenceMap == null) {
 				I.m_evidenceMap = new Dictionary<StringHash32, EvidenceData>();
 				foreach (EvidenceData data in I.m_evidenceData) {
-					I.m_evidenceMap.Add(data.NodeGroup.GroupID, data);
+					I.m_evidenceMap.Add(data.GroupID, data);
 				}
 			}
-			if (I.m_characterMap.ContainsKey(groupID)) {
+			if (I.m_evidenceMap.ContainsKey(groupID)) {
 				return I.m_evidenceMap[groupID].NodeGroup;
 			} else {
 				throw new KeyNotFoundException(string.Format("No Evidence " +

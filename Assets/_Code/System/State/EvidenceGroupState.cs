@@ -4,6 +4,13 @@ using UnityEngine;
 
 namespace Shipwreck {
 
+	public interface IEvidenceGroupState {
+		StringHash32 Identity { get; }
+		Vector2 Position { get; }
+		bool IsRevealed { get; }
+		void SetPosition(Vector2 position);
+		void MarkAsRevealed();
+	}
 
 	public sealed partial class GameMgr { // EvidenceGroupState.cs
 		private sealed partial class GameState { // EvidencesGroupState.cs
@@ -12,7 +19,7 @@ namespace Shipwreck {
 			/// Holds a set of evidence nodes that have been unlocked by the player
 			/// that are all moved together when the player clicks and drags them
 			/// </summary>
-			private class EvidenceGroupState : ISerializedObject {
+			private class EvidenceGroupState : IEvidenceGroupState, ISerializedObject {
 
 				public StringHash32 Identity {
 					get { return m_identity; }

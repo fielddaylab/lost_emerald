@@ -47,6 +47,16 @@ MonoBehaviour:
     m_hash: 391557394
   - m_key: UI/Office/Level4
     m_hash: 307669299
+  - m_key: Evidence/Ship/Canaller
+    m_hash: -1588979670
+  - m_key: Evidence/Ship/Tug
+    m_hash: -140549268
+  - m_key: Evidence/Ship/Freighter
+    m_hash: 381282200
+  - m_key: Evidence/Ship/SideWheelSteamer
+    m_hash: -419283347
+  - m_key: Evidence/Ship/Schooner
+    m_hash: -958466211
   m_values:
   - Continue
   - Dad
@@ -64,3 +74,8 @@ MonoBehaviour:
   - Level 2
   - Level 3
   - Level 4
+  - Canaller
+  - Tug
+  - Freighter
+  - Side-WheelSteamer
+  - Schooner

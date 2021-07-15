@@ -15,7 +15,7 @@ namespace Shipwreck {
 		private sealed partial class GameState { // LevelState.cs
 
 			private class LevelState : ILevelState, ISerializedObject, ISerializedVersion {
-				public ushort Version { 
+				public ushort Version {
 					get { return 1; }
 				}
 
@@ -23,17 +23,47 @@ namespace Shipwreck {
 					get { return m_isUnlocked; }
 				}
 
+				public IEnumerable<IEvidenceGroupState> Evidence {
+					get {
+						foreach (EvidenceGroupState evidence in m_evidence) {
+							yield return evidence;
+						}
+					}
+				}
+
 				// serialized
 				private bool m_isUnlocked = false;
 				private List<EvidenceGroupState> m_evidence;
 				private List<EvidenceChainState> m_chains;
 
-				public void Unlock() {
-					m_isUnlocked = true;
+				public LevelState() {
+					m_evidence = new List<EvidenceGroupState>();
+					m_chains = new List<EvidenceChainState>();
+					UnlockEvidence("Main");
+					UnlockEvidence("ShipCard");
 				}
-				public void UnlockEvidence(StringHash32 group) {
-					// todo: determine position
-					m_evidence.Add(new EvidenceGroupState(group,Vector2.zero));
+
+				public bool Unlock() {
+					if (m_isUnlocked) {
+						return false;
+					} else {
+						m_isUnlocked = true;
+						return true;
+					}
+				}
+				public bool UnlockEvidence(StringHash32 group) {
+					if (IsEvidenceUnlocked(group)) {
+						return false;
+					} else {
+						// todo: determine position
+						m_evidence.Add(new EvidenceGroupState(group, Vector2.zero));
+						return true;
+					}
+				}
+				public bool IsEvidenceUnlocked(StringHash32 group) {
+					return m_evidence.Find((item) => {
+						return item.Identity == group;
+					}) != null;
 				}
 				
 
@@ -44,7 +74,5 @@ namespace Shipwreck {
 				}
 			}
 		}
-
 	}
-
 }

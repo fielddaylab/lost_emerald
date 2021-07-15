@@ -5,6 +5,7 @@ using BeauUtil.Debugger;
 using BeauUtil.Variants;
 using Leaf;
 using Leaf.Runtime;
+using System.Collections.Generic;
 
 namespace Shipwreck
 {
@@ -22,6 +23,8 @@ namespace Shipwreck
 		private ScriptMgr m_scriptMgr;
 		private GameState m_state;
 		private EventService m_eventService;
+
+		private int m_selectedLevel = 0;
 
 		protected override void OnAssigned() {
 			Routine.Settings.DebugMode = false;
@@ -148,6 +151,30 @@ namespace Shipwreck
 				}
 			}
 		}
+
+		[LeafMember]
+		public static void UnlockLevel(int levelIndex) {
+			if (I.m_state.UnlockLevel(levelIndex - 1)) {
+				Events.Dispatch(GameEvents.LevelUnlocked, levelIndex);
+				using (var table = TempVarTable.Alloc()) {
+					table.Set("levelIndex", levelIndex);
+					RunTrigger(GameTriggers.OnLevelUnlock, table);
+				}
+			}
+		}
+
+		[LeafMember]
+		public static void UnlockEvidence(int levelIndex, StringHash32 groupId) {
+			if (I.m_state.UnlockEvidence(levelIndex - 1, groupId)) {
+				Events.Dispatch(GameEvents.EvidenceUnlocked, groupId);
+				using (var table = TempVarTable.Alloc()) {
+					table.Set("levelIndex", levelIndex);
+					table.Set("evidence", groupId);
+					RunTrigger(GameTriggers.OnEvidenceUnlock, table);
+				}
+			}
+		}
+
 
 		[LeafMember]
 		private static bool HasContact(StringHash32 contact) {

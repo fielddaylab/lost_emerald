@@ -1,12 +1,14 @@
 ﻿using BeauData;
 using BeauUtil;
 using BeauUtil.Variants;
+using System;
 using System.Collections.Generic;
 
 namespace Shipwreck {
 
 	public interface IGameState {
 		IEnumerable<StringHash32> GetUnlockedContacts();
+		IEnumerable<IEvidenceGroupState> GetEvidence(int levelIndex);
 		bool IsContactUnlocked(StringHash32 contactId);
 		StringHash32 GetContactNotificationId(StringHash32 contactId);
 		uint NotificationCount();
@@ -45,7 +47,6 @@ namespace Shipwreck {
 			private HashSet<StringHash32> m_unlockedContacts;
 			private List<QueuedNotification> m_queuedNotifications;
 			private LevelState[] m_levelStates;
-			private int m_levelIndex;
 
 
 			public GameState() {
@@ -53,7 +54,15 @@ namespace Shipwreck {
 				m_visitedNodes = new HashSet<StringHash32>();
 				m_unlockedContacts = new HashSet<StringHash32>() {"dad"};
 				m_queuedNotifications = new List<QueuedNotification>();
-				InitializeLevels();
+				m_levelStates = new LevelState[4] {
+					new LevelState(), new LevelState(),
+					new LevelState(), new LevelState()
+				};
+				m_levelStates[0].Unlock();
+			}
+
+			public IEnumerable<IEvidenceGroupState> GetEvidence(int levelIndex) {
+				return m_levelStates[levelIndex].Evidence;
 			}
 
 			public IEnumerable<StringHash32> GetUnlockedContacts() {
@@ -66,6 +75,18 @@ namespace Shipwreck {
 			}
 			public bool UnlockContact(StringHash32 contact) {
 				return m_unlockedContacts.Add(contact);
+			}
+			public bool UnlockLevel(int levelIndex) {
+				if (levelIndex < 0 || levelIndex >= m_levelStates.Length) {
+					throw new IndexOutOfRangeException();
+				}
+				return m_levelStates[levelIndex].Unlock();
+			}
+			public bool UnlockEvidence(int levelIndex, StringHash32 groupID) {
+				if (levelIndex < 0 || levelIndex >= m_levelStates.Length) {
+					throw new IndexOutOfRangeException();
+				}
+				return m_levelStates[levelIndex].UnlockEvidence(groupID);
 			}
 
 			public StringHash32 GetContactNotificationId(StringHash32 contactId) {
@@ -128,14 +149,6 @@ namespace Shipwreck {
 				ioSerializer.UInt32ProxySet("unlockedContacts", ref m_unlockedContacts);
 				ioSerializer.ObjectArray("queuedNotifications", ref m_queuedNotifications);
 				ioSerializer.ObjectArray("levelStates", ref m_levelStates);
-			}
-
-			private void InitializeLevels() {
-				m_levelStates = new LevelState[4] {
-					new LevelState(), new LevelState(),
-					new LevelState(), new LevelState()
-				};
-				m_levelStates[0].Unlock();
 			}
 
 		}
