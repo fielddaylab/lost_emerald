@@ -71,6 +71,22 @@ namespace Shipwreck {
 				));
 			}
 		}
+		public static EvidenceData GetEvidenceData(StringHash32 groupID) {
+			// initialize the map if it does not exist
+			if (I.m_evidenceMap == null) {
+				I.m_evidenceMap = new Dictionary<StringHash32, EvidenceData>();
+				foreach (EvidenceData data in I.m_evidenceData) {
+					I.m_evidenceMap.Add(data.GroupID, data);
+				}
+			}
+			if (I.m_evidenceMap.ContainsKey(groupID)) {
+				return I.m_evidenceMap[groupID];
+			} else {
+				throw new KeyNotFoundException(string.Format("No Evidence " +
+					"with groupID `{0}' is in the database", groupID
+				));
+			}
+		}
 
 
 	}

@@ -30,8 +30,8 @@ namespace Shipwreck {
 		}
 
 		public void Refresh() {
-			m_points[0] = m_a.position;
-			m_points[1] = m_b.position;
+			m_points[0] = transform.InverseTransformPoint(RectTransformUtility.WorldToScreenPoint(Camera.main, m_a.position));
+			m_points[1] = transform.InverseTransformPoint(RectTransformUtility.WorldToScreenPoint(Camera.main, m_b.position));
 			if (m_label != null) {
 				m_label.anchoredPosition = (m_points[1] - m_points[0]) * 0.5f + Vector2.up * m_labelYOffset;
 			}

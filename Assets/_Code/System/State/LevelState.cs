@@ -30,6 +30,13 @@ namespace Shipwreck {
 						}
 					}
 				}
+				public IEnumerable<IEvidenceChainState> Chains {
+					get {
+						foreach (EvidenceChainState chain in m_chains) {
+							yield return chain;
+						}
+					}
+				}
 
 				// serialized
 				private bool m_isUnlocked = false;
@@ -39,8 +46,8 @@ namespace Shipwreck {
 				public LevelState() {
 					m_evidence = new List<EvidenceGroupState>();
 					m_chains = new List<EvidenceChainState>();
-					UnlockEvidence("Main");
-					UnlockEvidence("ShipCard");
+					UnlockEvidence(GameDb.GetEvidenceData("Main"));
+					UnlockEvidence(GameDb.GetEvidenceData("ShipCard"));
 				}
 
 				public bool Unlock() {
@@ -51,12 +58,15 @@ namespace Shipwreck {
 						return true;
 					}
 				}
-				public bool UnlockEvidence(StringHash32 group) {
-					if (IsEvidenceUnlocked(group)) {
+				public bool UnlockEvidence(EvidenceData group) {
+					if (IsEvidenceUnlocked(group.GroupID)) {
 						return false;
 					} else {
 						// todo: determine position
-						m_evidence.Add(new EvidenceGroupState(group, Vector2.zero));
+						m_evidence.Add(new EvidenceGroupState(group.GroupID, Vector2.zero));
+						foreach (StringHash32 root in group.RootNodes) {
+							m_chains.Add(new EvidenceChainState(root, Vector2.zero));
+						}
 						return true;
 					}
 				}
@@ -70,7 +80,7 @@ namespace Shipwreck {
 				public void Serialize(Serializer ioSerializer) {
 					ioSerializer.Serialize("isUnlocked", ref m_isUnlocked);
 					ioSerializer.ObjectArray("evidence", ref m_evidence);
-					ioSerializer.ObjectArray("connections", ref m_chains);
+					ioSerializer.ObjectArray("chains", ref m_chains);
 				}
 			}
 		}

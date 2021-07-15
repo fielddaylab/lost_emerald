@@ -36,6 +36,7 @@ namespace Shipwreck {
 
 		public void OnPointerDown(PointerEventData eventData) {
 			m_selected = true;
+			RectTransform.SetAsLastSibling();
 			RectTransformUtility.ScreenPointToLocalPointInRectangle(
 				RectTransform, InputMgr.Position, Camera.main, out m_offset
 			);

@@ -36,6 +36,7 @@ namespace Shipwreck {
 				private Vector2 m_position;
 				private bool m_isRevealed;
 
+
 				public EvidenceGroupState() {
 					// empty constructor for deserialization
 				}

@@ -13,16 +13,26 @@ namespace Shipwreck {
 		public string Label {
 			get { return m_label; }
 		}
-		public bool IsRoot {
-			get { return m_isRoot; }
+		public RectTransform RectTransform {
+			get {
+				if (m_rectTransform == null) {
+					m_rectTransform = GetComponent<RectTransform>();
+				}
+				return m_rectTransform; 
+			}
+		}
+		public RectTransform PinPosition {
+			get { return m_pinPosition; }
 		}
 
 		[SerializeField]
 		private SerializedHash32 m_nodeId = string.Empty;
 		[SerializeField]
 		private string m_label = string.Empty;
-		[SerializeField, Tooltip("Root nodes will start with a string and pin and cannot have pins dropped on them.")]
-		private bool m_isRoot;
+		[SerializeField]
+		private RectTransform m_pinPosition = null;
+
+		private RectTransform m_rectTransform;
 
 	}
 

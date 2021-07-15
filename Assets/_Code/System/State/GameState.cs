@@ -9,6 +9,8 @@ namespace Shipwreck {
 	public interface IGameState {
 		IEnumerable<StringHash32> GetUnlockedContacts();
 		IEnumerable<IEvidenceGroupState> GetEvidence(int levelIndex);
+		IEnumerable<IEvidenceChainState> GetChains(int levelIndex);
+
 		bool IsContactUnlocked(StringHash32 contactId);
 		StringHash32 GetContactNotificationId(StringHash32 contactId);
 		uint NotificationCount();
@@ -64,6 +66,9 @@ namespace Shipwreck {
 			public IEnumerable<IEvidenceGroupState> GetEvidence(int levelIndex) {
 				return m_levelStates[levelIndex].Evidence;
 			}
+			public IEnumerable<IEvidenceChainState> GetChains(int levelIndex) {
+				return m_levelStates[levelIndex].Chains;
+			}
 
 			public IEnumerable<StringHash32> GetUnlockedContacts() {
 				foreach (StringHash32 hash in m_unlockedContacts) {
@@ -86,7 +91,7 @@ namespace Shipwreck {
 				if (levelIndex < 0 || levelIndex >= m_levelStates.Length) {
 					throw new IndexOutOfRangeException();
 				}
-				return m_levelStates[levelIndex].UnlockEvidence(groupID);
+				return m_levelStates[levelIndex].UnlockEvidence(GameDb.GetEvidenceData(groupID));
 			}
 
 			public StringHash32 GetContactNotificationId(StringHash32 contactId) {

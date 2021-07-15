@@ -19,3 +19,14 @@ MonoBehaviour:
   m_englishPrefab: {fileID: 1672303318513222810, guid: e2f11bfab6a36044e9c57ddc0d8d1c7d,
     type: 3}
   m_spanishPrefab: {fileID: 0}
+  m_rootNodes:
+  - m_Source: Location
+    m_Hash: 1539345862
+  - m_Source: Type
+    m_Hash: 3512062061
+  - m_Source: Name
+    m_Hash: 266367750
+  - m_Source: Cause
+    m_Hash: 1894034624
+  - m_Source: Artifact
+    m_Hash: 3463768387

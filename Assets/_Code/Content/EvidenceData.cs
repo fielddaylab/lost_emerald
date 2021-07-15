@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using PotatoLocalization;
 using BeauUtil;
+using System.Collections.Generic;
 
 namespace Shipwreck {
 
@@ -24,6 +25,15 @@ namespace Shipwreck {
 				}
 			}
 		}
+		public IEnumerable<StringHash32> RootNodes {
+			get {
+				foreach (SerializedHash32 node in m_rootNodes) {
+					yield return node;
+				}
+			}
+		}
+
+		
 
 		[SerializeField]
 		private SerializedHash32 m_groupID;
@@ -33,6 +43,8 @@ namespace Shipwreck {
 		private EvidenceGroup m_englishPrefab = null;
 		[SerializeField]
 		private EvidenceGroup m_spanishPrefab = null;
+		[SerializeField]
+		private SerializedHash32[] m_rootNodes = null;
 
 	}
 
