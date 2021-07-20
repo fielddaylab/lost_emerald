@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 namespace Shipwreck {
 
@@ -37,14 +35,19 @@ namespace Shipwreck {
 		}
 
 		public void OnPointerDown(PointerEventData eventData) {
-			m_selected = true;
-			RectTransform.SetAsLastSibling();
-			RectTransformUtility.ScreenPointToLocalPointInRectangle(
-				RectTransform, InputMgr.Position, Camera.main, out m_offset
-			);
+			if (m_selected) {
+				m_selected = false;
+			} else {
+				m_selected = true;
+				RectTransform.SetAsLastSibling();
+				RectTransformUtility.ScreenPointToLocalPointInRectangle(
+					RectTransform, InputMgr.Position, Camera.main, out m_offset
+				);
+			}
+			
 		}
 		public void OnPointerUp(PointerEventData eventData) {
-			if (m_selected) {
+			if (m_selected && Vector2.Distance(eventData.pressPosition,eventData.position) > 12f) {
 				m_selected = false;
 			}
 		}
