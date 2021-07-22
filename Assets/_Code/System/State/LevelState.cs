@@ -46,8 +46,14 @@ namespace Shipwreck {
 				public LevelState() {
 					m_evidence = new List<EvidenceGroupState>();
 					m_chains = new List<EvidenceChainState>();
-					UnlockEvidence(GameDb.GetEvidenceData("Main"));
-					UnlockEvidence(GameDb.GetEvidenceData("ShipCard"));
+					UnlockEvidence(GameDb.GetEvidenceData("LV1-Root"));
+					UnlockEvidence(GameDb.GetEvidenceData("LV1-Table-Wrecks"));
+					UnlockEvidence(GameDb.GetEvidenceData("LV1-Photo-Above"));
+					UnlockEvidence(GameDb.GetEvidenceData("LV1-Photo-Name"));
+					UnlockEvidence(GameDb.GetEvidenceData("LV1-Photo-Artifact"));
+					UnlockEvidence(GameDb.GetEvidenceData("LV1-Card-Types"));
+					UnlockEvidence(GameDb.GetEvidenceData("LV1-Transcript-Lou"));
+					UnlockEvidence(GameDb.GetEvidenceData("LV1-Article-Sinking"));
 				}
 
 				public bool Unlock() {
@@ -63,7 +69,7 @@ namespace Shipwreck {
 						return false;
 					} else {
 						// todo: determine position
-						m_evidence.Add(new EvidenceGroupState(group.GroupID, Vector2.zero));
+						m_evidence.Add(new EvidenceGroupState(group.GroupID, group.Position));
 						foreach (StringHash32 root in group.RootNodes) {
 							m_chains.Add(new EvidenceChainState(root, Vector2.zero));
 						}

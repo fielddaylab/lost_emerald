@@ -8,7 +8,8 @@ namespace Shipwreck {
 
 	public class EvidencePin : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
 
-		public Action<EvidencePin> OnPressed;
+		public Action<EvidencePin> OnPointerDown;
+		public Action<EvidencePin> OnPointerUp;
 
 		public RectTransform RectTransform {
 			get {
@@ -18,53 +19,23 @@ namespace Shipwreck {
 				return m_rectTransform;
 			}
 		}
+		public EvidenceNode Link {
+			get { return m_link; }
+		}
 
 		private RectTransform m_rectTransform;
-		private Vector2 m_offset;
-		private bool m_selected = false;
+		private EvidenceNode m_link;
 
-		private Transform m_layerParent;
-
-		public void SetLayerParent(Transform transform) {
-			m_layerParent = transform;
+		public void SetLink(EvidenceNode node) {
+			m_link = node;
 		}
 
-		private void Update() {
-			if (m_selected) {
-				RectTransformUtility.ScreenPointToLocalPointInRectangle(
-					(RectTransform)RectTransform.parent, InputMgr.Position, Camera.main, out Vector2 point
-				);
-				RectTransform.localPosition = point - m_offset;
-			}
-		}
+		void IPointerDownHandler.OnPointerDown(PointerEventData eventData) {
+			OnPointerDown?.Invoke(this);
 
-		public void OnPointerDown(PointerEventData eventData) {
-			m_selected = true;
-			RectTransform.SetAsLastSibling();
-			RectTransformUtility.ScreenPointToLocalPointInRectangle(
-				RectTransform, InputMgr.Position, Camera.main, out m_offset
-			);
 		}
-		public void OnPointerUp(PointerEventData eventData) {
-			if (m_selected) {
-				m_selected = false;
-			}
-			//GROOSSSSSSS
-			GraphicRaycaster caster = GetComponentInParent<GraphicRaycaster>();
-			List<RaycastResult> results = new List<RaycastResult>();
-			caster.Raycast(eventData, results);
-			bool foundNode = false;
-			foreach (RaycastResult result in results) {
-				EvidenceNode node = result.gameObject.GetComponent<EvidenceNode>();
-				if (node != null) {
-					transform.SetParent(node.transform);
-					foundNode = true;
-					break;
-				}
-			}
-			if (!foundNode) {
-				transform.SetParent(m_layerParent);
-			}
+		void IPointerUpHandler.OnPointerUp(PointerEventData eventData) {
+			OnPointerUp?.Invoke(this);
 		}
 
 	}

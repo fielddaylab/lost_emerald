@@ -11,7 +11,9 @@ namespace Shipwreck {
 		public StringHash32 GroupID {
 			get { return m_groupID; }
 		}
-
+		public Vector2 Position {
+			get { return m_position; }
+		}
 		public EvidenceGroup NodeGroup {
 			get {
 				if (m_isLocalized) {
@@ -37,6 +39,8 @@ namespace Shipwreck {
 
 		[SerializeField]
 		private SerializedHash32 m_groupID;
+		[SerializeField]
+		private Vector2 m_position = Vector2.zero;
 		[SerializeField, Tooltip("Does this use a different prefab based on language?")]
 		private bool m_isLocalized = false;
 		[SerializeField]
