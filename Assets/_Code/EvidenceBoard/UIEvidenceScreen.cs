@@ -136,6 +136,7 @@ namespace Shipwreck {
 					m_selectedPin.SetLink(node);
 					node.SetLinked();
 					m_selectedPin.RectTransform.SetParent(node.transform);
+					m_selectedPin.RectTransform.position = node.PinPosition;
 					foundNode = true;
 					break;
 				}
