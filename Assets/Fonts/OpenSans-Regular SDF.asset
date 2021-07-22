@@ -1373,6 +1373,34 @@ MonoBehaviour:
       m_Height: 0
     m_Scale: 1
     m_AtlasIndex: 0
+  - m_Index: 114
+    m_Metrics:
+      m_Width: 45.328125
+      m_Height: 45.328125
+      m_HorizontalBearingX: 9.234375
+      m_HorizontalBearingY: 107.890625
+      m_HorizontalAdvance: 63.8125
+    m_GlyphRect:
+      m_X: 963
+      m_Y: 891
+      m_Width: 46
+      m_Height: 46
+    m_Scale: 1
+    m_AtlasIndex: 0
+  - m_Index: 519
+    m_Metrics:
+      m_Width: 21.765625
+      m_Height: 36.4375
+      m_HorizontalBearingX: 1.8125
+      m_HorizontalBearingY: 106.359375
+      m_HorizontalAdvance: 25.3125
+    m_GlyphRect:
+      m_X: 596
+      m_Y: 265
+      m_Width: 23
+      m_Height: 38
+    m_Scale: 1
+    m_AtlasIndex: 0
   - m_Index: 528
     m_Metrics:
       m_Width: 94.53125
@@ -1413,34 +1441,6 @@ MonoBehaviour:
       m_Y: 314
       m_Width: 13
       m_Height: 107
-    m_Scale: 1
-    m_AtlasIndex: 0
-  - m_Index: 519
-    m_Metrics:
-      m_Width: 21.765625
-      m_Height: 36.4375
-      m_HorizontalBearingX: 1.8125
-      m_HorizontalBearingY: 106.359375
-      m_HorizontalAdvance: 25.3125
-    m_GlyphRect:
-      m_X: 596
-      m_Y: 265
-      m_Width: 23
-      m_Height: 38
-    m_Scale: 1
-    m_AtlasIndex: 0
-  - m_Index: 114
-    m_Metrics:
-      m_Width: 45.328125
-      m_Height: 45.328125
-      m_HorizontalBearingX: 9.234375
-      m_HorizontalBearingY: 107.890625
-      m_HorizontalAdvance: 63.8125
-    m_GlyphRect:
-      m_X: 963
-      m_Y: 891
-      m_Width: 46
-      m_Height: 46
     m_Scale: 1
     m_AtlasIndex: 0
   m_CharacterTable:
@@ -1829,20 +1829,20 @@ MonoBehaviour:
     m_GlyphIndex: 98
     m_Scale: 1
   - m_ElementType: 1
-    m_Unicode: 8203
-    m_GlyphIndex: 589
+    m_Unicode: 176
+    m_GlyphIndex: 114
     m_Scale: 1
   - m_ElementType: 1
-    m_Unicode: 8230
-    m_GlyphIndex: 528
+    m_Unicode: 8203
+    m_GlyphIndex: 589
     m_Scale: 1
   - m_ElementType: 1
     m_Unicode: 8217
     m_GlyphIndex: 519
     m_Scale: 1
   - m_ElementType: 1
-    m_Unicode: 176
-    m_GlyphIndex: 114
+    m_Unicode: 8230
+    m_GlyphIndex: 528
     m_Scale: 1
   m_AtlasTextures:
   - {fileID: 7364175114128224346}
@@ -2621,7 +2621,7 @@ MonoBehaviour:
     italicTypeface: {fileID: 0}
   - regularTypeface: {fileID: 0}
     italicTypeface: {fileID: 0}
-  - regularTypeface: {fileID: 0}
+  - regularTypeface: {fileID: 11400000, guid: 139414a2bfeee544ab93068e88c82be1, type: 2}
     italicTypeface: {fileID: 0}
   - regularTypeface: {fileID: 0}
     italicTypeface: {fileID: 0}

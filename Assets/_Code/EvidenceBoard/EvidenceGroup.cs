@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 namespace Shipwreck {
 
 	[RequireComponent(typeof(RectTransform))]
-	public class EvidenceGroup : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
+	public class EvidenceGroup : MonoBehaviour /*, IPointerDownHandler, IPointerUpHandler*/ {
 
 		public RectTransform RectTransform {
 			get {
@@ -34,6 +34,7 @@ namespace Shipwreck {
 			}
 		}
 
+		/*
 		public void OnPointerDown(PointerEventData eventData) {
 			if (m_selected) {
 				m_selected = false;
@@ -51,6 +52,7 @@ namespace Shipwreck {
 				m_selected = false;
 			}
 		}
+		*/
 	}
 
 }

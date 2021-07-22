@@ -19,8 +19,16 @@ namespace Shipwreck {
 				return m_rectTransform;
 			}
 		}
+		public EvidenceNode Link {
+			get { return m_link; }
+		}
 
 		private RectTransform m_rectTransform;
+		private EvidenceNode m_link;
+
+		public void SetLink(EvidenceNode node) {
+			m_link = node;
+		}
 
 		void IPointerDownHandler.OnPointerDown(PointerEventData eventData) {
 			OnPointerDown?.Invoke(this);

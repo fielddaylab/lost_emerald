@@ -58,6 +58,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 6742bc91c8f5d4e3daea592a062c8b52, type: 3}
   - {fileID: 21300000, guid: 237fd6a124dc2498485b5043cc095ea8, type: 3}
   - {fileID: 21300000, guid: 25a167d13e4ec455fb823ae9c3388e39, type: 3}
+  - {fileID: 21300000, guid: bbda042251f08164aa5b16e04960b800, type: 3}
   - {fileID: 21300000, guid: 5acb7c42884df40b59c8ff374fe31bcb, type: 3}
   - {fileID: 21300000, guid: 5c871ca2efd9445e8bc27662e0abd16f, type: 3}
   - {fileID: 21300000, guid: f2f75fc2d8627f44086851ab9a5865d3, type: 3}
@@ -73,6 +74,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 6be63d36b12b94ca4acfbb13a855f669, type: 3}
   - {fileID: 21300000, guid: b92d2866ce79293478f277897bd0ad16, type: 3}
   - {fileID: 21300000, guid: 67168c86290185a4198db8cf6eea2dd6, type: 3}
+  - {fileID: 21300000, guid: f2f043070615e5d44bf1c5cf2ff5c0b5, type: 3}
   - {fileID: 21300000, guid: 672f5227071fc474cb6defa1512f69fe, type: 3}
   - {fileID: 21300000, guid: 9b578d57ebd2f48418fb4da740929c3b, type: 3}
   - {fileID: 21300000, guid: 2cd1aa97dedd64a7d98a8d2b4dcd26af, type: 3}
@@ -106,6 +108,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 374dc90f739bee04a877d6898de07475, type: 3}
   - {fileID: 21300000, guid: 87da702f0ba413a4fa0b770094855e60, type: 3}
   - {fileID: 21300000, guid: 4eb6072fb20234022b1e6e6377affdb5, type: 3}
+  - {fileID: 21300000, guid: 188f674fd393cb944aa8e6cbaf28b4a9, type: 3}
   - {fileID: 21300000, guid: 56a3518f3cac048178bc2bdbeb9c7486, type: 3}
   - {fileID: 21300000, guid: 8af87aaf45b9a45b1ac10e59eb8cc01e, type: 3}
   - {fileID: 21300000, guid: c956dfeff8861461abdf841b67df1f27, type: 3}
@@ -122,6 +125,7 @@ SpriteAtlas:
   - ship
   - amy
   - shipwreck
+  - old-ripped-paper
   - ripped-page
   - CaseBorder
   - blank_polaroid
@@ -137,6 +141,7 @@ SpriteAtlas:
   - shadow
   - triangle
   - circle
+  - photo-knife
   - list-of-wrecks-loretta
   - lou
   - arrow-up
@@ -170,6 +175,7 @@ SpriteAtlas:
   - back-arrow
   - phone_icon
   - lake-michigan-map-zoomed
+  - eyewitness-account
   - marshallsAirport
   - closebutton-2
   - lake-michigan-map

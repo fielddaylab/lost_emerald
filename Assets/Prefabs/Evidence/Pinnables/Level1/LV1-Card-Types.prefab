@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 1745386625085858743}
   - component: {fileID: 2233084168928300969}
   m_Layer: 5
-  m_Name: ShipCard
+  m_Name: LV1-Card-Types
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -401,12 +401,12 @@ PrefabInstance:
     - target: {fileID: 4235240187040317371, guid: f0cde821bac5faf4bae393834dc3dcd0,
         type: 3}
       propertyPath: m_nodeId.m_Hash
-      value: 3154977453
+      value: 3941315287
       objectReference: {fileID: 0}
     - target: {fileID: 4235240187040317371, guid: f0cde821bac5faf4bae393834dc3dcd0,
         type: 3}
       propertyPath: m_nodeId.m_Source
-      value: type-side-steamer
+      value: card-side-steamer
       objectReference: {fileID: 0}
     - target: {fileID: 5532780435053497953, guid: f0cde821bac5faf4bae393834dc3dcd0,
         type: 3}
@@ -608,12 +608,12 @@ PrefabInstance:
     - target: {fileID: 4235240187040317371, guid: f0cde821bac5faf4bae393834dc3dcd0,
         type: 3}
       propertyPath: m_nodeId.m_Hash
-      value: 176796772
+      value: 203325258
       objectReference: {fileID: 0}
     - target: {fileID: 4235240187040317371, guid: f0cde821bac5faf4bae393834dc3dcd0,
         type: 3}
       propertyPath: m_nodeId.m_Source
-      value: type-tug
+      value: card-tug
       objectReference: {fileID: 0}
     - target: {fileID: 4955063074221321137, guid: f0cde821bac5faf4bae393834dc3dcd0,
         type: 3}
@@ -815,12 +815,12 @@ PrefabInstance:
     - target: {fileID: 4235240187040317371, guid: f0cde821bac5faf4bae393834dc3dcd0,
         type: 3}
       propertyPath: m_nodeId.m_Hash
-      value: 887707749
+      value: 2825464539
       objectReference: {fileID: 0}
     - target: {fileID: 4235240187040317371, guid: f0cde821bac5faf4bae393834dc3dcd0,
         type: 3}
       propertyPath: m_nodeId.m_Source
-      value: type-schooner
+      value: card-schooner
       objectReference: {fileID: 0}
     - target: {fileID: 5532780435053497953, guid: f0cde821bac5faf4bae393834dc3dcd0,
         type: 3}
@@ -1002,12 +1002,12 @@ PrefabInstance:
     - target: {fileID: 4235240187040317371, guid: f0cde821bac5faf4bae393834dc3dcd0,
         type: 3}
       propertyPath: m_nodeId.m_Hash
-      value: 3944891952
+      value: 1598667810
       objectReference: {fileID: 0}
     - target: {fileID: 4235240187040317371, guid: f0cde821bac5faf4bae393834dc3dcd0,
         type: 3}
       propertyPath: m_nodeId.m_Source
-      value: type-freighter
+      value: card-freighter
       objectReference: {fileID: 0}
     - target: {fileID: 5532780435053497953, guid: f0cde821bac5faf4bae393834dc3dcd0,
         type: 3}
@@ -1180,6 +1180,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235240187040317371, guid: f0cde821bac5faf4bae393834dc3dcd0,
+        type: 3}
+      propertyPath: m_nodeId.m_Hash
+      value: 2073564268
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235240187040317371, guid: f0cde821bac5faf4bae393834dc3dcd0,
+        type: 3}
+      propertyPath: m_nodeId.m_Source
+      value: card-canaller
       objectReference: {fileID: 0}
     - target: {fileID: 5532780435053497953, guid: f0cde821bac5faf4bae393834dc3dcd0,
         type: 3}

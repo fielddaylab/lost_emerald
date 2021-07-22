@@ -50,6 +50,9 @@ namespace Shipwreck {
 				obj.RectTransform.localScale = Vector3.one;
 				obj.RectTransform.anchoredPosition = state.Position;
 				foreach (EvidenceNode node in obj.Nodes) {
+					if (m_nodes.ContainsKey(node.NodeID)) {
+						throw new System.Exception(node.NodeID.ToDebugString());
+					}
 					m_nodes.Add(node.NodeID, node);
 				}
 			}
@@ -74,7 +77,7 @@ namespace Shipwreck {
 				pin.OnPointerDown += HandlePinPointerDown;
 				pin.OnPointerUp += HandlePinPointerUp;
 				//pin.SetLayerParent(m_pinGroup, raycaster);
-				pin.transform.position = m_nodes[current].PinPosition.position;
+				pin.transform.position = m_nodes[current].PinPosition;
 				line.Setup(m_nodes[current].RectTransform, (RectTransform)pin.transform);
 			}
 			
@@ -127,12 +130,21 @@ namespace Shipwreck {
 			foreach (RaycastResult result in results) {
 				EvidenceNode node = result.gameObject.GetComponent<EvidenceNode>();
 				if (node != null) {
+					if (m_selectedPin.Link != null) {
+						m_selectedPin.Link.SetDefault();
+					}
+					m_selectedPin.SetLink(node);
+					node.SetLinked();
 					m_selectedPin.RectTransform.SetParent(node.transform);
 					foundNode = true;
 					break;
 				}
 			}
 			if (!foundNode) {
+				if (m_selectedPin.Link != null) {
+					m_selectedPin.Link.SetDefault();
+				}
+				m_selectedPin.SetLink(null);
 				m_selectedPin.RectTransform.SetParent(m_pinGroup);
 			}
 
