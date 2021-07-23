@@ -70,13 +70,13 @@ namespace Shipwreck {
             }
 
             foreach(var hint in m_hintResponses) {
-                if (EvaluateNormal(hint, chain)) {
+                if (EvaluateNormal(hint, MinHintDepth, chain)) {
                     return hint;
                 }
             }
 
             foreach(var incorrect in m_incorrectResponses) {
-                if (EvaluateNormal(incorrect, chain)) {
+                if (EvaluateNormal(incorrect, MinIncorrectDepth, chain)) {
                     return incorrect;
                 }
             }
@@ -89,8 +89,8 @@ namespace Shipwreck {
             return EvaluateChain(chain, data.NodeIds);
         }
 
-        static private bool EvaluateNormal(PostItData data, ListSlice<StringHash32> chain) {
-            if (!EvaluateDepth(chain.Length, MinIncorrectDepth, data.Location)) {
+        static private bool EvaluateNormal(PostItData data, int inMinDepth, ListSlice<StringHash32> chain) {
+            if (!EvaluateDepth(chain.Length, inMinDepth, data.Location)) {
                 return false;
             }
 
@@ -159,7 +159,7 @@ namespace Shipwreck {
 
         static private bool EvaluateDepth(int depth, int minDepth, PostItData.LocationType location) {
             switch(location) {
-                case PostItData.LocationType.Anywhere:
+                case PostItData.LocationType.First:
                     return true;
 
                 default:
@@ -188,15 +188,6 @@ namespace Shipwreck {
     
         static private bool EvaluateSingle(StringHash32 id, ListSlice<StringHash32> allowed) {
             return allowed.Contains(id);
-        }
-
-        static private bool EvaluateAnywhere(ListSlice<StringHash32> chain, ListSlice<StringHash32> allowed) {
-            foreach(var id in allowed) {
-                if (chain.Contains(id))
-                    return true;
-            }
-
-            return false;
         }
     
         static private int SortBySpecificity(PostItData x, PostItData y) {
