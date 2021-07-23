@@ -1,55 +1,78 @@
 #basePath level01 
 
-//  Dad
+//  Mom
 //  --------------------------------------------------------------------------------------
 
-::dad-meet
-@contact dad, text-message
+:: mom-meet
+@contact mom, text-message
 @notification // when able to be shown, increases notification count for character
 @trigger OnEnterOffice
 @once
 
-	// Open text from Dad
-	{@dad} 	Hey Jules!
-			Garage sale today!!
-			Hoping to make enough $$ to buy that new fish finder 🤞
-	{@you} 	Dad, I love you…
-			but you’re not gonna find Grandpa’s shipwreck with a fish finder.
-	{@dad} 	Ha. Why not? 
-	{@you} 	It’s for finding FISH.
-	{@dad} 	Oops sorry, gotta go, people here!
+	{@mom}  Hey Jules, 
+	{@mom}  Just wanted to give you a heads-up. Your dad is at it again. 
+	{@mom}  [shares newspaper article]
+	$call UnlockContact(dad)
+
+//  Dad
+//  --------------------------------------------------------------------------------------
+
+::dad-meet
+@contact dad, in-person
+@trigger OnContactAdded
+@once
+
+	{@dad}  Hey Jules! It’s yard sale day! You gonna stop by? 
+	{@you}  Dad, I saw the news.
+			You’re looking for Grandpa’s ship again?
+	{@dad}  Aw, don’t sound so worried, Jules. I’ve got a plan.
+			I’m selling a bunch of old stuff so I can buy that fancy new fish finder!
+	{@you}  Dad. You’re not going to find grandpa’s SHIP with a FISH finder.
+	{@dad}  Ha. We’ll see about that.
+	{@you}  This is serious, Dad. Can’t you just leave the shipwreck hunting to the experts? 
+	{@dad}  Ooh. You mean you want to team up? 
+	{@you}  No, that’s not--
+	{@dad}  Oh, your sister’s here! She’s gonna help me look through some old stuff. Gotta go bye!
 	$call UnlockContact(lou)
 
-::dad-help-01
-@contact dad, text-message
-@trigger OnContactText
 
-	{@dad}  Sorry, I'm pretty busy right now
-	{@dad}  I'll message you back sometime soon!
+//::dad-help-01
+//@contact dad, text-message
+//@trigger OnContactText
+
+//	{@dad}  Sorry, I'm pretty busy right now
+//	{@dad}  I'll message you back sometime soon!
 
 
 
 //  Lou
 //  --------------------------------------------------------------------------------------
 
-::lou-receive-coords
+::lou-meet
 @contact lou, in-person
 @trigger OnContactAdded
 @once
 	// Receive/open a new text from Lou
-	{@lou} 	Jules!! I was out flying by Rawley Point today and saw this: 
-		   	{img birds-eye-photo-new}
-	 		GPS coordinates: N 44° 11.524' W 087° 30.591'
-	 		What do you think?
-	{@you} 	Looks like a shipwreck!
-	{@lou}	Yes!!! 
-	{@you}	The storm last night must’ve uncovered it.
+	{@lou}  Hey Jules!
+	{@you} 	Hey Lou. What’s all that noise? Where are you?
+	{@lou} 	Huh? Oh! I’m just out flying over Lake Michigan.
+	{@you} 	What??? You’re flying right now?
+	{@lou} 	Relax. I’m on my headset.
+			Check this out!
+			{img birds-eye-photo-new}
+			GPS Location: N 44° 11.524' W 087° 30.591'
+			So? What do you think?
+	{@you} 	That looks like a shipwreck!
+			Have you seen it before?
+	{@lou} 	Nope. And I fly out here all the time.
+	{@you} 	The storm last night must’ve uncovered it.
+			I better get out there before the sand covers it again!
 			Thanks, Lou!
-	{@lou} 	No prob! 😎
+	{@lou} 	No prob!
+	$call UnlockEvidence(1,LV1-Transcript-Lou)
 
-::lou-help-01
-@contact lou, text-message
-@trigger OnContactText
-	{@you}  What am I supposed to do with those coordinates you gave me?
-	{@lou}  You can pin them to your evidence board to learn more about the wreck.
-
+//::lou-help-01
+//@contact lou, text-message
+//@trigger OnContactText
+//	{@you}  What am I supposed to do with those coordinates you gave me?
+//	{@lou}  You can pin them to your evidence board to learn more about the wreck.

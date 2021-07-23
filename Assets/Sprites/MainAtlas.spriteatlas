@@ -67,6 +67,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: d7e29f63d2fd74c079090fd85d7430af, type: 3}
   - {fileID: 21300000, guid: f2ae72a37b1b7430f99b9f76dbd7bfce, type: 3}
   - {fileID: 21300000, guid: fd8fa1249bf177b46b8ae8dc9dafc693, type: 3}
+  - {fileID: 21300000, guid: a1c05d74f04dfe648862e5e950a0dec0, type: 3}
   - {fileID: 21300000, guid: 79bc76940498e43718f12fad5bfc70a0, type: 3}
   - {fileID: 21300000, guid: a418b694415c84967abd730e9eb95a7d, type: 3}
   - {fileID: 21300000, guid: 65c26de4f69714d11b1cd5e2bb9de646, type: 3}
@@ -76,6 +77,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 67168c86290185a4198db8cf6eea2dd6, type: 3}
   - {fileID: 21300000, guid: f2f043070615e5d44bf1c5cf2ff5c0b5, type: 3}
   - {fileID: 21300000, guid: 672f5227071fc474cb6defa1512f69fe, type: 3}
+  - {fileID: 21300000, guid: d9957c5766c597a41a6ec8d725b315c5, type: 3}
   - {fileID: 21300000, guid: 9b578d57ebd2f48418fb4da740929c3b, type: 3}
   - {fileID: 21300000, guid: 2cd1aa97dedd64a7d98a8d2b4dcd26af, type: 3}
   - {fileID: 21300000, guid: 41c798e7bf044e14db7e5f8678187066, type: 3}
@@ -92,6 +94,8 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 3acf4abb67ae7744292d804a07f1c37a, type: 3}
   - {fileID: 21300000, guid: b17b1a5c3c94d4fd5af351838827a914, type: 3}
   - {fileID: 21300000, guid: 993c01cc18d924a278476410f23bec53, type: 3}
+  - {fileID: 21300000, guid: 2af87afca5fb68744b9282231b479229, type: 3}
+  - {fileID: 21300000, guid: 10998c0dd0895af408d4c4c412cbcc99, type: 3}
   - {fileID: 21300000, guid: 7fd12d0d3f284fa40899dc34b325317b, type: 3}
   - {fileID: 21300000, guid: b0ec3b8d44ae642358eb7e0701410eef, type: 3}
   - {fileID: 21300000, guid: 23789fbd2fd5249f4ac73352c2d3c56c, type: 3}
@@ -134,6 +138,7 @@ SpriteAtlas:
   - birds-eye-photo-new
   - evidence-blank
   - rusty_icon
+  - mom_icon
   - evidence-canaller
   - camera-frame
   - journal
@@ -143,6 +148,7 @@ SpriteAtlas:
   - circle
   - photo-knife
   - list-of-wrecks-loretta
+  - mom
   - lou
   - arrow-up
   - rounded-rect
@@ -159,6 +165,8 @@ SpriteAtlas:
   - cork-board
   - disclosure-arrow-left
   - icon-from-camera
+  - dad_icon
+  - dad
   - amy_icon
   - icon-jouirnal
   - knees-loretta

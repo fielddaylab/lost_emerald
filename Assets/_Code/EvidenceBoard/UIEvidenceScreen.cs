@@ -17,12 +17,16 @@ namespace Shipwreck {
 		[SerializeField]
 		private Transform m_nodeFrontGroup = null;
 		[SerializeField]
+		private Transform m_labelGroup = null;
+		[SerializeField]
 		private Transform m_pinGroup = null;
 
 		[SerializeField]
 		private EvidenceLine m_linePrefab = null;
 		[SerializeField]
 		private EvidencePin m_pinPrefab = null;
+		[SerializeField]
+		private EvidenceLabel m_labelPrefab = null;
 
 
 		private Dictionary<StringHash32, EvidenceGroup> m_groups;

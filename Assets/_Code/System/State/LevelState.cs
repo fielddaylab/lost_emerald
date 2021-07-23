@@ -47,13 +47,13 @@ namespace Shipwreck {
 					m_evidence = new List<EvidenceGroupState>();
 					m_chains = new List<EvidenceChainState>();
 					UnlockEvidence(GameDb.GetEvidenceData("LV1-Root"));
-					UnlockEvidence(GameDb.GetEvidenceData("LV1-Table-Wrecks"));
-					UnlockEvidence(GameDb.GetEvidenceData("LV1-Photo-Above"));
-					UnlockEvidence(GameDb.GetEvidenceData("LV1-Photo-Name"));
-					UnlockEvidence(GameDb.GetEvidenceData("LV1-Photo-Artifact"));
-					UnlockEvidence(GameDb.GetEvidenceData("LV1-Card-Types"));
-					UnlockEvidence(GameDb.GetEvidenceData("LV1-Transcript-Lou"));
-					UnlockEvidence(GameDb.GetEvidenceData("LV1-Article-Sinking"));
+					//UnlockEvidence(GameDb.GetEvidenceData("LV1-Table-Wrecks"));
+					//UnlockEvidence(GameDb.GetEvidenceData("LV1-Photo-Above"));
+					//UnlockEvidence(GameDb.GetEvidenceData("LV1-Photo-Name"));
+					//UnlockEvidence(GameDb.GetEvidenceData("LV1-Photo-Artifact"));
+					//UnlockEvidence(GameDb.GetEvidenceData("LV1-Card-Types"));
+					//UnlockEvidence(GameDb.GetEvidenceData("LV1-Transcript-Lou"));
+					//UnlockEvidence(GameDb.GetEvidenceData("LV1-Article-Sinking"));
 				}
 
 				public bool Unlock() {

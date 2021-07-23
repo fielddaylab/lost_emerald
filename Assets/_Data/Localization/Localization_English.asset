@@ -59,6 +59,18 @@ MonoBehaviour:
     m_hash: -958466211
   - m_key: UI/Level1/ShipWithLocation
     m_hash: 2024499403
+  - m_key: Evidence/Label/Location
+    m_hash: 1628649381
+  - m_key: Evidence/Label/Name
+    m_hash: 176586317
+  - m_key: Evidence/Label/ShipType
+    m_hash: -303159572
+  - m_key: Evidence/Label/Cause
+    m_hash: -712995147
+  - m_key: Evidence/Label/Cargo
+    m_hash: -513214930
+  - m_key: Evidence/Label/Artifact
+    m_hash: 1962802444
   m_values:
   - Continue
   - Dad
@@ -81,4 +93,10 @@ MonoBehaviour:
   - Freighter
   - Side-WheelSteamer
   - Schooner
+  - Ship near Rawley's Point
+  - Location
+  - Name
+  - Ship Type
+  - Cause of Wreck
+  - Cargo
   - Ship near Rawley's Point

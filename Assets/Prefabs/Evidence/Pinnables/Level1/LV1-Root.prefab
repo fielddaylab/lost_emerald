@@ -87,8 +87,11 @@ MonoBehaviour:
   m_nodeId:
     m_Source: Cargo
     m_Hash: 774574791
-  m_label: Cargo
+  m_label:
+    m_key: Evidence/Label/Cargo
+    m_hash: -513214930
   m_pinPosition: {fileID: 4655360780981394578}
+  m_image: {fileID: 0}
 --- !u!1 &2265430651517398446
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,8 +179,11 @@ MonoBehaviour:
   m_nodeId:
     m_Source: Type
     m_Hash: 3512062061
-  m_label: Ship Type
+  m_label:
+    m_key: Evidence/Label/ShipType
+    m_hash: -303159572
   m_pinPosition: {fileID: 874256987417859188}
+  m_image: {fileID: 0}
 --- !u!1 &5004115558383265628
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,8 +236,11 @@ MonoBehaviour:
   m_nodeId:
     m_Source: Artifact
     m_Hash: 3463768387
-  m_label: Artifact
+  m_label:
+    m_key: Evidence/Label/Artifact
+    m_hash: 1962802444
   m_pinPosition: {fileID: 87691049149407672}
+  m_image: {fileID: 0}
 --- !u!1 &5382996210286444181
 GameObject:
   m_ObjectHideFlags: 0
@@ -354,8 +363,11 @@ MonoBehaviour:
   m_nodeId:
     m_Source: Cause
     m_Hash: 1894034624
-  m_label: Cause of Wreck
+  m_label:
+    m_key: Evidence/Label/Cause
+    m_hash: -712995147
   m_pinPosition: {fileID: 6952061935556006679}
+  m_image: {fileID: 0}
 --- !u!1 &6579636072713993632
 GameObject:
   m_ObjectHideFlags: 0
@@ -840,8 +852,11 @@ MonoBehaviour:
   m_nodeId:
     m_Source: Name
     m_Hash: 266367750
-  m_label: Name
+  m_label:
+    m_key: Evidence/Label/Name
+    m_hash: 176586317
   m_pinPosition: {fileID: 2673150778357316034}
+  m_image: {fileID: 0}
 --- !u!1 &7954356948192107524
 GameObject:
   m_ObjectHideFlags: 0
@@ -894,5 +909,8 @@ MonoBehaviour:
   m_nodeId:
     m_Source: Location
     m_Hash: 1539345862
-  m_label: Location
+  m_label:
+    m_key: Evidence/Label/Location
+    m_hash: 1628649381
   m_pinPosition: {fileID: 8486662403808807846}
+  m_image: {fileID: 0}

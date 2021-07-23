@@ -82,6 +82,9 @@ namespace Shipwreck {
 		}
 
 		private bool EvaluateNode(in EvaluateParams parameters, ScriptNode node) {
+			if (!GameMgr.State.IsContactUnlocked(node.ContactId)) {
+				return false;
+			}
 			if (!parameters.Target.IsEmpty && parameters.Target != node.ContactId)
 				return false;
 

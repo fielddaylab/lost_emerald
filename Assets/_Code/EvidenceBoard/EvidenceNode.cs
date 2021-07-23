@@ -1,5 +1,6 @@
 ﻿using BeauRoutine;
 using BeauUtil;
+using PotatoLocalization;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,7 +14,7 @@ namespace Shipwreck {
 		public StringHash32 NodeID { 
 			get { return m_nodeId; } 
 		}
-		public string Label {
+		public LocalizationKey Label {
 			get { return m_label; }
 		}
 		public RectTransform RectTransform {
@@ -40,7 +41,7 @@ namespace Shipwreck {
 		[SerializeField]
 		private SerializedHash32 m_nodeId = string.Empty;
 		[SerializeField]
-		private string m_label = string.Empty;
+		private LocalizationKey m_label = LocalizationKey.Empty;
 		[SerializeField]
 		private RectTransform m_pinPosition = null;
 		[SerializeField]
