@@ -1,0 +1,133 @@
+using System;
+using BeauUtil;
+using BeauUtil.Blocks;
+
+namespace Shipwreck {
+
+    public class PostItData : IDataBlock {
+
+        public enum LocationType {
+            Last,
+            First,
+            Anywhere,
+        }
+        
+        public enum ResponseType {
+            Correct,
+            Hint,
+            Incorrect
+        }
+
+        private string m_fullId;
+        private StringHash32[] m_roots;
+        private StringHash32[] m_nodeIds;
+        private StringHash32[] m_predecessors;
+        private LocationType m_location;
+        private ResponseType m_response;
+        [BlockContent] private string m_text;
+        private int m_specificity;
+
+        public PostItData(string fullId) {
+            m_fullId = fullId;
+        }
+
+        public StringHash32 Id {
+            get { return m_fullId; }
+        }
+
+        public ListSlice<StringHash32> RootIds {
+            get { return m_roots; }
+        }
+
+        public ListSlice<StringHash32> NodeIds {
+            get { return m_nodeIds; }
+        }
+
+        public ListSlice<StringHash32> Prerequisites {
+            get { return m_predecessors; }
+        }
+
+        public LocationType Location {
+            get { return m_location; }
+        }
+
+        public ResponseType Response {
+            get { return m_response; }
+        }
+
+        public string Text {
+            get { return m_text; }
+        }
+
+        public StringHash32 TextId {
+            get { return m_fullId; }
+        }
+        
+        public int Specificity {
+            get { return m_specificity; }
+        }
+
+        #region Block Meta
+
+        [BlockMeta("root")]
+        private void SetRoots(StringSlice argsList) {
+            m_roots = ArrayUtils.MapFrom<StringSlice, StringHash32>(GetArgs(argsList), (s) => s);
+        }
+
+        [BlockMeta("correct")]
+        private void SetCorrect(StringSlice argsList) {
+            m_response = ResponseType.Correct;
+            m_nodeIds = ArrayUtils.MapFrom<StringSlice, StringHash32>(GetArgs(argsList), (s) => s);
+            m_specificity += m_nodeIds.Length;
+        }
+
+        [BlockMeta("hint")]
+        private void SetHint(StringSlice argsList) {
+            m_response = ResponseType.Hint;
+            m_nodeIds = ArrayUtils.MapFrom<StringSlice, StringHash32>(GetArgs(argsList), (s) => s);
+            m_specificity += m_nodeIds.Length;
+        }
+
+        [BlockMeta("incorrect")]
+        private void SetIncorrect(StringSlice argsList) {
+            m_response = ResponseType.Incorrect;
+            m_nodeIds = ArrayUtils.MapFrom<StringSlice, StringHash32>(GetArgs(argsList), (s) => s);
+            m_specificity += m_nodeIds.Length;
+        }
+
+        [BlockMeta("precededBy")]
+        private void SetPreceded(StringSlice argsList) {
+            m_predecessors = ArrayUtils.MapFrom<StringSlice, StringHash32>(GetArgs(argsList), (s) => s);
+            m_specificity += m_predecessors.Length;
+        }
+
+        [BlockMeta("anywhere")]
+        private void SetAnywhere() {
+            m_location = LocationType.Anywhere;
+        }
+
+        [BlockMeta("last")]
+        private void SetLast() {
+            m_location = LocationType.Last;
+        }
+
+        [BlockMeta("first")]
+        private void SetFirst() {
+            m_location = LocationType.First;
+            m_predecessors = null;
+        }
+
+        #endregion // Block Meta
+
+        #region Utils
+
+        static private TempList16<StringSlice> GetArgs(StringSlice argsList) {
+            TempList16<StringSlice> args = default(TempList16<StringSlice>);
+            argsList.Split(ScriptNode.ArgsSplitter, StringSplitOptions.None, ref args);
+            return args;
+        }
+
+        #endregion // Utils
+    }
+
+}

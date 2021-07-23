@@ -1,0 +1,21 @@
+:: correct
+@root Location
+@correct A, B, C
+congrats! you got A B and C in a chain!
+
+:: hintABC
+@root Location
+@hint B
+@precededBy A
+hmm... would C make sense next?
+
+:: hintACB
+@root Location
+@hint C
+@precededBy A
+hmm... would B make sense next?
+
+:: incorrect
+@root Location
+@incorrect D, E
+this seems wrong
