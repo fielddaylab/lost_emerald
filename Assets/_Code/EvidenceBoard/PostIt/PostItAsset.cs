@@ -31,7 +31,7 @@ namespace Shipwreck {
 
 			public override bool TryCreateBlock(IBlockParserUtil inUtil, PostItAsset inPackage, TagData inId, out PostItData outBlock) {
 				string fullName = inUtil.TempBuilder.Append(inUtil.Position.FileName)
-                    .Append('.')
+                    .Append('-')
                     .Append(inId.Id)
                     .Flush();
 

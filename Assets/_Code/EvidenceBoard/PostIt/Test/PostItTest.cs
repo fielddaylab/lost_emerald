@@ -17,6 +17,8 @@ internal class PostItTest : MonoBehaviour {
 
     private PostItEvaluator m_eval;
     [NonSerialized] private List<Button> m_chain = new List<Button>();
+    [NonSerialized] private bool m_incorrect = false;
+    [NonSerialized] private bool m_correct = false;
 
     private void Start()
     {
@@ -35,7 +37,9 @@ internal class PostItTest : MonoBehaviour {
     private void OnButtonClicked(Button button) {
         int currentIdx = m_chain.IndexOf(button);
         if (currentIdx < 0) {
-            m_chain.Add(button);
+            if (!m_incorrect && !m_correct) {
+                m_chain.Add(button);
+            }
         } else if (currentIdx < m_chain.Count - 1) {
             m_chain.RemoveRange(currentIdx + 1, m_chain.Count - 1 - currentIdx);
         } else {
@@ -51,8 +55,12 @@ internal class PostItTest : MonoBehaviour {
         PostItData data = m_eval.Evaluate(Root.name, chain);
         if (data != null) {
             Hint.text = data.Text;
+            m_incorrect = data.Response == PostItData.ResponseType.Incorrect;
+            m_correct = data.Response == PostItData.ResponseType.Correct;
         } else if (chain.Length < 2) {
             Hint.text = string.Empty;
+            m_incorrect = false;
+            m_correct = false;
         }
     }
 
@@ -63,5 +71,6 @@ internal class PostItTest : MonoBehaviour {
             positions[i] = m_chain[i - 1].transform.localPosition;
         }
         Lines.Points = positions;
+        Lines.color = m_correct ? ColorBank.Aqua : (m_incorrect ? Color.red : Color.yellow);
     }
 }
