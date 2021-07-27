@@ -74,8 +74,6 @@ namespace Shipwreck {
 		protected override void OnShowStart() {
 			base.OnShowStart();
 
-			
-
 			// get all of the unlocked evidence
 			foreach (IEvidenceGroupState state in GameMgr.State.GetEvidence()) {
 				EvidenceGroup obj = Instantiate(GameDb.GetEvidenceGroup(state.Identity));
@@ -90,7 +88,6 @@ namespace Shipwreck {
 					m_nodes.Add(node.NodeID, node);
 				}
 			}
-
 			foreach (IEvidenceChainState chain in GameMgr.State.GetChains()) {
 				EvidenceNode root = m_nodes[chain.Root()];
 				EvidenceChain obj = Instantiate(m_chainPrefab);
@@ -171,18 +168,21 @@ namespace Shipwreck {
 			// determine what we do with the chain
 			EvidenceChain chain = m_chains[m_selectedRoot];
 			PostItData data = GameMgr.EvaluateChain(m_selectedRoot);
-			switch (data.Response) {
-				case PostItData.ResponseType.Correct:
-					chain.SetState(ChainStatus.Complete);
-					break;
-				case PostItData.ResponseType.Hint:
-					chain.SetState(ChainStatus.Normal);
-					break;
-				case PostItData.ResponseType.Incorrect:
-					chain.SetState(ChainStatus.Incorrect);
-					break;
+			if (data == null) {
+				chain.SetState(ChainStatus.Normal);
+			} else {
+				switch (data.Response) {
+					case PostItData.ResponseType.Correct:
+						chain.SetState(ChainStatus.Complete);
+						break;
+					case PostItData.ResponseType.Hint:
+						chain.SetState(ChainStatus.Normal);
+						break;
+					case PostItData.ResponseType.Incorrect:
+						chain.SetState(ChainStatus.Incorrect);
+						break;
+				}
 			}
-
 			m_selectedPin = -1;
 			m_dragging = false;
 		}

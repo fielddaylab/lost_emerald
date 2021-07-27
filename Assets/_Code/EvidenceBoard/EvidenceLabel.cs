@@ -1,5 +1,7 @@
-﻿using PotatoLocalization;
+﻿using BeauRoutine;
+using PotatoLocalization;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Shipwreck {
 
@@ -22,8 +24,15 @@ namespace Shipwreck {
 
 		[SerializeField]
 		private LocalizedTextUGUI m_text;
+		[SerializeField]
+		private Image m_image;
 
 		private RectTransform m_rectTransform;
+		private Routine m_routine;
+
+		public void SetColor(Color color) {
+			m_routine.Replace(this, m_image.ColorTo(color, 0.2f));
+		}
 	}
 
 }

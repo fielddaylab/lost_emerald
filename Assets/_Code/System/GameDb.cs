@@ -27,6 +27,12 @@ namespace Shipwreck {
 		private Color m_lineIncorrect = Color.black;
 		[SerializeField]
 		private Color m_lineComplete = Color.black;
+		[SerializeField]
+		private Color m_pinDefault = Color.black;
+		[SerializeField]
+		private Color m_pinIncorrect = Color.black;
+		[SerializeField]
+		private Color m_pinComplete = Color.black;
 
 		[NonSerialized]
 		private Dictionary<StringHash32, CharacterData> m_characterMap;
@@ -114,6 +120,15 @@ namespace Shipwreck {
 				case ChainStatus.Normal: return I.m_lineDefault;
 				case ChainStatus.Incorrect: return I.m_lineIncorrect;
 				case ChainStatus.Complete: return I.m_lineComplete;
+				default: throw new NotImplementedException();
+			}
+		}
+
+		public static Color GetPinColor(ChainStatus status) {
+			switch (status) {
+				case ChainStatus.Normal: return I.m_pinDefault;
+				case ChainStatus.Incorrect: return I.m_pinIncorrect;
+				case ChainStatus.Complete: return I.m_pinComplete;
 				default: throw new NotImplementedException();
 			}
 		}

@@ -78,6 +78,10 @@ namespace Shipwreck {
 
 		public void SetState(ChainStatus state) {
 			m_stickyNote.SetColor(GameDb.GetStickyColor(state));
+			m_rootLabel.SetColor(GameDb.GetLineColor(state));
+			foreach (EvidencePin pin in m_evidencePins) {
+				pin.SetColor(GameDb.GetPinColor(state));
+			}
 			m_lineColorRoutine.Replace(this, Tween.Color(m_lineRenderer.color, GameDb.GetLineColor(state), SetLineColor, 0.2f));
 		}
 

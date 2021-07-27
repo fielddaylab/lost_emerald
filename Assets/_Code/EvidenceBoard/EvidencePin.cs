@@ -1,6 +1,8 @@
-﻿using System;
+﻿using BeauRoutine;
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace Shipwreck {
 
@@ -19,12 +21,12 @@ namespace Shipwreck {
 				return m_rectTransform;
 			}
 		}
-		public EvidenceNode Link {
-			get { return m_link; }
-		}
+
+		[SerializeField]
+		private Image m_image = null;
 
 		private RectTransform m_rectTransform;
-		private EvidenceNode m_link;
+		private Routine m_routine;
 
 		public void SetPosition(Vector2 screenPos) {
 			RectTransformUtility.ScreenPointToLocalPointInRectangle(
@@ -32,6 +34,10 @@ namespace Shipwreck {
 			);
 			RectTransform.localPosition = point;
 			OnPositionSet?.Invoke(this);
+		}
+
+		public void SetColor(Color color) {
+			m_routine.Replace(this, m_image.ColorTo(color, 0.2f));
 		}
 
 		void IPointerDownHandler.OnPointerDown(PointerEventData eventData) {
