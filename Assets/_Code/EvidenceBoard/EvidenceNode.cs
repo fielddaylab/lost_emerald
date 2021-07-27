@@ -37,6 +37,18 @@ namespace Shipwreck {
 				}
 			}
 		}
+		public Vector2 SubPinPosition {
+			get {
+				if (m_subPinPosition == null) {
+					if (m_rectTransform == null) {
+						m_rectTransform = GetComponent<RectTransform>();
+					}
+					return m_rectTransform.position;
+				} else {
+					return m_subPinPosition.position;
+				}
+			}
+		}
 
 		[SerializeField]
 		private SerializedHash32 m_nodeId = string.Empty;
@@ -44,6 +56,8 @@ namespace Shipwreck {
 		private LocalizationKey m_label = LocalizationKey.Empty;
 		[SerializeField]
 		private RectTransform m_pinPosition = null;
+		[SerializeField]
+		private RectTransform m_subPinPosition = null;
 		[SerializeField]
 		private Image m_image = null;
 

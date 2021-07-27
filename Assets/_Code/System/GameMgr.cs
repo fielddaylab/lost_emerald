@@ -5,6 +5,7 @@ using BeauUtil.Debugger;
 using BeauUtil.Variants;
 using Leaf;
 using Leaf.Runtime;
+using UnityEngine;
 
 namespace Shipwreck
 {
@@ -26,17 +27,26 @@ namespace Shipwreck
 
 		private int m_selectedLevel = 0;
 
+		[SerializeField]
+		private PostItAsset m_postitLevel1;
+
 		protected override void OnAssigned() {
 			Routine.Settings.DebugMode = false;
 
 			m_state = new GameState();
 			m_stickyEval = new PostItEvaluator();
+			m_postitLevel1.Parse();
+			m_stickyEval.Load(m_postitLevel1);
 
 			m_scriptMgr = new ScriptMgr(this);
 			m_scriptMgr.LoadGameState(m_state, m_state.VariableTable);
 			m_scriptMgr.ConfigureEvents();
 
 			m_eventService = new EventService();
+		}
+
+		public static PostItData EvaluateChain(StringHash32 root) {
+			return I.m_stickyEval.Evaluate(root, I.m_state.GetChain(root).Chain());
 		}
 
 		#region Scripting

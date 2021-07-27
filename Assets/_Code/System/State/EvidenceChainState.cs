@@ -14,6 +14,8 @@ namespace Shipwreck {
 		bool ContainsSet(IEnumerable<StringHash32> node);
 		void Lift(int depth);
 		void Drop(StringHash32 node);
+
+		List<StringHash32> Chain();
 	}
 
 	public sealed partial class GameMgr { // EvidenceChainState.cs
@@ -53,6 +55,10 @@ namespace Shipwreck {
 							return m_chain[index + 1];
 						}
 					}
+				}
+
+				public List<StringHash32> Chain() {
+					return m_chain;
 				}
 
 				public void Lock() {
