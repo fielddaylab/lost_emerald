@@ -14,7 +14,7 @@ namespace Shipwreck
 
                 foreach(var data in package) {
                     foreach(var root in data.RootIds) {
-                        GetEvaluator(root, false)?.Remove(data);
+                        GetEvaluator(root, true).Add(data);
                     }
                 }
             }
@@ -24,7 +24,7 @@ namespace Shipwreck
             if (m_packages.Remove(package)) {
                 foreach(var data in package) {
                     foreach(var root in data.RootIds) {
-                        GetEvaluator(root, true).Add(data);
+                        GetEvaluator(root, false)?.Remove(data);
                     }
                 }
 

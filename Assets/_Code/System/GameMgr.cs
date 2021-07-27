@@ -34,8 +34,8 @@ namespace Shipwreck
 			Routine.Settings.DebugMode = false;
 
 			m_state = new GameState();
+
 			m_stickyEval = new PostItEvaluator();
-			m_postitLevel1.Parse();
 			m_stickyEval.Load(m_postitLevel1);
 
 			m_scriptMgr = new ScriptMgr(this);
