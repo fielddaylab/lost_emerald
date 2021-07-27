@@ -69,7 +69,10 @@
 			I better get out there before the sand covers it again!
 			Thanks, Lou!
 	{@lou} 	No prob!
+	$call UnlockLevel(1)
+	$call UnlockEvidence(1,LV1-Root)
 	$call UnlockEvidence(1,LV1-Transcript-Lou)
+
 
 //::lou-help-01
 //@contact lou, text-message

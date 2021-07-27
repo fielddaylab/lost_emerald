@@ -5,7 +5,6 @@ using BeauUtil.Debugger;
 using BeauUtil.Variants;
 using Leaf;
 using Leaf.Runtime;
-using System.Collections.Generic;
 
 namespace Shipwreck
 {
@@ -21,6 +20,7 @@ namespace Shipwreck
 		}
 
 		private ScriptMgr m_scriptMgr;
+		private PostItEvaluator m_stickyEval;
 		private GameState m_state;
 		private EventService m_eventService;
 
@@ -30,6 +30,7 @@ namespace Shipwreck
 			Routine.Settings.DebugMode = false;
 
 			m_state = new GameState();
+			m_stickyEval = new PostItEvaluator();
 
 			m_scriptMgr = new ScriptMgr(this);
 			m_scriptMgr.LoadGameState(m_state, m_state.VariableTable);

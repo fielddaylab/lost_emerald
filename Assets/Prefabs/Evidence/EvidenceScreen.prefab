@@ -97,11 +97,9 @@ MonoBehaviour:
   m_nodeFrontGroup: {fileID: 1744192855314029962}
   m_labelGroup: {fileID: 4805696623921039657}
   m_pinGroup: {fileID: 8367841195287814200}
-  m_linePrefab: {fileID: 1524437614160072430, guid: 2f33ad809a994344199368a05c212795,
-    type: 3}
-  m_pinPrefab: {fileID: 7553070730056143053, guid: 2ba96c0daa4fe4942aec0f7087a91d40,
-    type: 3}
   m_labelPrefab: {fileID: 1211351573236242663, guid: ec43668cbf7137044baa93c28b3703dc,
+    type: 3}
+  m_chainPrefab: {fileID: 4657256983859923391, guid: 02685b8d8eab52e47881107809046099,
     type: 3}
 --- !u!222 &841688314110646079
 CanvasRenderer:

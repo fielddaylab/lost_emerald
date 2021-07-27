@@ -15,6 +15,19 @@ namespace Shipwreck {
 		[SerializeField]
 		private Sprite[] m_images;
 
+		[SerializeField,Header("Colors")]
+		private Color m_stickyNoteDefault = Color.black;
+		[SerializeField]
+		private Color m_stickyNoteIncorrect = Color.black;
+		[SerializeField]
+		private Color m_stickyNoteComplete = Color.black;
+		[SerializeField]
+		private Color m_lineDefault = Color.black;
+		[SerializeField]
+		private Color m_lineIncorrect = Color.black;
+		[SerializeField]
+		private Color m_lineComplete = Color.black;
+
 		[NonSerialized]
 		private Dictionary<StringHash32, CharacterData> m_characterMap;
 		[NonSerialized]
@@ -85,6 +98,23 @@ namespace Shipwreck {
 				throw new KeyNotFoundException(string.Format("No Evidence " +
 					"with groupID `{0}' is in the database", groupID
 				));
+			}
+		}
+
+		public static Color GetStickyColor(ChainStatus status) {
+			switch (status) {
+				case ChainStatus.Normal: return I.m_stickyNoteDefault;
+				case ChainStatus.Incorrect: return I.m_stickyNoteIncorrect;
+				case ChainStatus.Complete: return I.m_stickyNoteComplete;
+				default: throw new NotImplementedException();
+			}
+		}
+		public static Color GetLineColor(ChainStatus status) {
+			switch (status) {
+				case ChainStatus.Normal: return I.m_lineDefault;
+				case ChainStatus.Incorrect: return I.m_lineIncorrect;
+				case ChainStatus.Complete: return I.m_lineComplete;
+				default: throw new NotImplementedException();
 			}
 		}
 

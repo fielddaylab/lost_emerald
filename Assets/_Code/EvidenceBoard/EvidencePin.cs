@@ -1,15 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 namespace Shipwreck {
 
 	public class EvidencePin : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
 
-		public Action<EvidencePin> OnPointerDown;
-		public Action<EvidencePin> OnPointerUp;
+		public event Action<EvidencePin> OnPointerDown;
+		public event Action<EvidencePin> OnPointerUp;
+
+		public event Action<EvidencePin> OnPositionSet;
 
 		public RectTransform RectTransform {
 			get {
@@ -26,13 +26,16 @@ namespace Shipwreck {
 		private RectTransform m_rectTransform;
 		private EvidenceNode m_link;
 
-		public void SetLink(EvidenceNode node) {
-			m_link = node;
+		public void SetPosition(Vector2 screenPos) {
+			RectTransformUtility.ScreenPointToLocalPointInRectangle(
+				(RectTransform)RectTransform.parent, screenPos, Camera.main, out Vector2 point
+			);
+			RectTransform.localPosition = point;
+			OnPositionSet?.Invoke(this);
 		}
 
 		void IPointerDownHandler.OnPointerDown(PointerEventData eventData) {
 			OnPointerDown?.Invoke(this);
-
 		}
 		void IPointerUpHandler.OnPointerUp(PointerEventData eventData) {
 			OnPointerUp?.Invoke(this);

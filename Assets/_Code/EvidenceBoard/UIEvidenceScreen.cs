@@ -1,5 +1,6 @@
 ﻿using BeauRoutine;
 using BeauUtil;
+using PotatoLocalization;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,25 @@ using UnityEngine.UI;
 
 namespace Shipwreck {
 
+	
+
 	public sealed partial class UIEvidenceScreen : UIBase {
+
+		public class Layers {
+			public Transform NodeBack { get; }
+			public Transform Line { get; }
+			public Transform NodeFront { get; }
+			public Transform Label { get; }
+			public Transform Pin { get; }
+
+			public Layers(Transform back, Transform line, Transform front, Transform label, Transform pin) {
+				NodeBack = back;
+				NodeFront = front;
+				Line = line;
+				Label = label;
+				Pin = pin;
+			}
+		}
 
 		[SerializeField]
 		private Transform m_nodeBackGroup = null;
@@ -22,32 +41,43 @@ namespace Shipwreck {
 		private Transform m_pinGroup = null;
 
 		[SerializeField]
-		private EvidenceLine m_linePrefab = null;
-		[SerializeField]
-		private EvidencePin m_pinPrefab = null;
-		[SerializeField]
 		private EvidenceLabel m_labelPrefab = null;
+		[SerializeField]
+		private EvidenceChain m_chainPrefab = null;
 
 
 		private Dictionary<StringHash32, EvidenceGroup> m_groups;
 		private Dictionary<StringHash32, EvidenceNode> m_nodes;
-		private List<EvidencePin> m_pins;
+		private Dictionary<StringHash32, EvidenceChain> m_chains;
+		private Dictionary<StringHash32, List<EvidencePin>> m_pinsByRoot;
+		private Dictionary<EvidencePin, StringHash32> m_rootsByPin;
+
 		private GraphicRaycaster m_raycaster;
+		private Layers m_layers;
+
+		private StringHash32 m_selectedRoot = StringHash32.Null;
+		private int m_selectedPin = -1;
+		private bool m_dragging;
+		private Vector2 m_pressPosition;
+		private Vector2 m_offset;
+
+		private void Awake() {
+			m_layers = new Layers(m_nodeBackGroup, m_lineGroup, m_nodeFrontGroup, m_labelGroup, m_pinGroup);
+			m_raycaster = GetComponentInParent<GraphicRaycaster>();
+			m_groups = new Dictionary<StringHash32, EvidenceGroup>();
+			m_nodes = new Dictionary<StringHash32, EvidenceNode>();
+			m_chains = new Dictionary<StringHash32, EvidenceChain>();
+			m_rootsByPin = new Dictionary<EvidencePin, StringHash32>();
+			m_pinsByRoot = new Dictionary<StringHash32, List<EvidencePin>>();
+		}
 
 		protected override void OnShowStart() {
 			base.OnShowStart();
 
-			m_raycaster = GetComponentInParent<GraphicRaycaster>();
-
-			if (m_groups == null) {
-				m_groups = new Dictionary<StringHash32, EvidenceGroup>();
-			}
-			if (m_nodes == null) {
-				m_nodes = new Dictionary<StringHash32, EvidenceNode>();
-			}
+			
 
 			// get all of the unlocked evidence
-			foreach (IEvidenceGroupState state in GameMgr.State.GetEvidence(0)) {
+			foreach (IEvidenceGroupState state in GameMgr.State.GetEvidence()) {
 				EvidenceGroup obj = Instantiate(GameDb.GetEvidenceGroup(state.Identity));
 				m_groups.Add(state.Identity, obj);
 				obj.RectTransform.SetParent(m_nodeBackGroup);
@@ -60,100 +90,86 @@ namespace Shipwreck {
 					m_nodes.Add(node.NodeID, node);
 				}
 			}
-			
-			// get the state of all chains
-			foreach (IEvidenceChainState chain in GameMgr.State.GetChains(0)) {
-				
-				StringHash32 current, next;
-				current = chain.Root();
-				next = chain.Next(chain.Root());
-				EvidenceLine line;
-				while (next != StringHash32.Null) {
-					line = Instantiate(m_linePrefab, m_lineGroup);
-					line.transform.localPosition = Vector3.zero;
-					line.Setup(m_nodes[current].RectTransform, m_nodes[next].RectTransform);
-					current = next;
-					next = chain.Next(current);
+
+			foreach (IEvidenceChainState chain in GameMgr.State.GetChains()) {
+				EvidenceNode root = m_nodes[chain.Root()];
+				EvidenceChain obj = Instantiate(m_chainPrefab);
+				obj.transform.SetParent(root.RectTransform);
+				obj.transform.position = root.RectTransform.position;
+				obj.Setup(LocalizationKey.Empty, m_layers);
+				foreach (EvidencePin pin in obj.Pins) {
+					if (!m_pinsByRoot.ContainsKey(root.NodeID)) {
+						m_pinsByRoot.Add(root.NodeID, new List<EvidencePin>());
+					}
+					m_pinsByRoot[root.NodeID].Add(pin);
+					m_rootsByPin.Add(pin, root.NodeID);
+					pin.OnPointerDown += HandlePinPressed;
+					pin.OnPointerUp += HandlePinReleased;
 				}
-				line = Instantiate(m_linePrefab, m_lineGroup);
-				line.transform.localPosition = Vector3.zero;
-				EvidencePin pin = Instantiate(m_pinPrefab, m_pinGroup);
-				pin.OnPointerDown += HandlePinPointerDown;
-				pin.OnPointerUp += HandlePinPointerUp;
-				//pin.SetLayerParent(m_pinGroup, raycaster);
-				pin.transform.position = m_nodes[current].PinPosition;
-				line.Setup(m_nodes[current].RectTransform, (RectTransform)pin.transform);
+				m_chains.Add(chain.Root(), obj);
+				obj.SetChainDepth(1); //hack?
 			}
-			
 		}
 
-		private EvidencePin m_selectedPin;
-		private bool m_dragging = false;
-		private Vector2 m_pressPosition;
-		private Vector2 m_offset;
+		private EvidencePin Selected {
+			get {
+				if (m_selectedRoot == StringHash32.Null || m_selectedPin == -1) {
+					return null;
+				} else {
+					return m_pinsByRoot[m_selectedRoot][m_selectedPin];
+				}
+			}
+		}
+
+
+		
 
 		private void Update() {
-			if (m_selectedPin != null) {
-				RectTransformUtility.ScreenPointToLocalPointInRectangle(
-					(RectTransform)m_selectedPin.RectTransform.parent, InputMgr.Position, Camera.main, out Vector2 point
-				);
-				m_selectedPin.RectTransform.localPosition = point - m_offset;
+			if (Selected != null) {
+				Selected.SetPosition(InputMgr.Position);
 				if (!m_dragging) {
 					m_dragging = Vector2.Distance(m_pressPosition, InputMgr.Position) > 4f;
 				}
 			}
 		}
-
-		private void HandlePinPointerDown(EvidencePin pin) {
-			if (m_selectedPin == pin) {
-				DropPin();
-			} else if (m_selectedPin == null) {
-				m_selectedPin = pin;
+		private void HandlePinPressed(EvidencePin pin) {
+			if (Selected == pin) {
+				Drop();
+			} else if (Selected == null) {
+				m_selectedRoot = m_rootsByPin[pin];
+				m_selectedPin = m_pinsByRoot[m_selectedRoot].IndexOf(pin);
 				m_pressPosition = InputMgr.Position;
-				m_selectedPin.RectTransform.SetAsLastSibling();
-				RectTransformUtility.ScreenPointToLocalPointInRectangle(
-					m_selectedPin.RectTransform, InputMgr.Position, Camera.main, out m_offset
-				);
-				if (!m_dragging) {
-					m_dragging = Vector2.Distance(m_pressPosition, InputMgr.Position) > 4f;
-				}
+				Selected.RectTransform.SetAsLastSibling();
+				Lift();
 			}
 		}
-		private void HandlePinPointerUp(EvidencePin pin) {
-			if (m_selectedPin == pin && m_dragging) {
-				DropPin();
+		private void HandlePinReleased(EvidencePin pin) {
+			if (Selected == pin && m_dragging) {
+				Drop();
 			}
 		}
 
-		private void DropPin() {
+		private void Lift() {
+			GameMgr.State.GetChain(m_selectedRoot).Lift(m_selectedPin);
+			m_chains[m_selectedRoot].SetChainDepth(m_selectedPin+1);
+			m_chains[m_selectedRoot].MoveToFront();
+		}
+
+		private void Drop() {
 			List<RaycastResult> results = new List<RaycastResult>();
 			PointerEventData eventData = new PointerEventData(EventSystem.current);
 			eventData.position = InputMgr.Position;
 			m_raycaster.Raycast(eventData, results);
-			bool foundNode = false;
 			foreach (RaycastResult result in results) {
 				EvidenceNode node = result.gameObject.GetComponent<EvidenceNode>();
 				if (node != null) {
-					if (m_selectedPin.Link != null) {
-						m_selectedPin.Link.SetDefault();
-					}
-					m_selectedPin.SetLink(node);
-					node.SetLinked();
-					m_selectedPin.RectTransform.SetParent(node.transform);
-					m_selectedPin.RectTransform.position = node.PinPosition;
-					foundNode = true;
+					Selected.SetPosition(RectTransformUtility.WorldToScreenPoint(Camera.main,node.PinPosition));
+					GameMgr.State.GetChain(m_selectedRoot).Drop(node.NodeID);
 					break;
 				}
 			}
-			if (!foundNode) {
-				if (m_selectedPin.Link != null) {
-					m_selectedPin.Link.SetDefault();
-				}
-				m_selectedPin.SetLink(null);
-				m_selectedPin.RectTransform.SetParent(m_pinGroup);
-			}
 
-			m_selectedPin = null;
+			m_selectedPin = -1;
 			m_dragging = false;
 		}
 

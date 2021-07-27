@@ -52,8 +52,14 @@ namespace Shipwreck {
 					//UnlockEvidence(GameDb.GetEvidenceData("LV1-Photo-Name"));
 					//UnlockEvidence(GameDb.GetEvidenceData("LV1-Photo-Artifact"));
 					//UnlockEvidence(GameDb.GetEvidenceData("LV1-Card-Types"));
-					//UnlockEvidence(GameDb.GetEvidenceData("LV1-Transcript-Lou"));
+					UnlockEvidence(GameDb.GetEvidenceData("LV1-Transcript-Lou"));
 					//UnlockEvidence(GameDb.GetEvidenceData("LV1-Article-Sinking"));
+				}
+
+				public IEvidenceChainState GetChain(StringHash32 root) {
+					return m_chains.Find((item) => {
+						return item.Root() == root;
+					});
 				}
 
 				public bool Unlock() {

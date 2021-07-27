@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.61005, y: 31.4}
+  m_AnchoredPosition: {x: 0.61014, y: 48.3}
   m_SizeDelta: {x: 180.92374, y: 91.555786}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6149002995490859954
@@ -184,7 +184,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.61011, y: -102.62001}
+  m_AnchoredPosition: {x: 0.61005, y: -85.799995}
   m_SizeDelta: {x: 180.92383, y: 17.525127}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3422701071012284333
@@ -214,7 +214,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <b>You:</b> Looks like a shipwreck!
+  m_text: "<b>You:</b> That looks like a \n          shipwreck!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 91971dd9594b62643ad90120969cfb17, type: 2}
   m_sharedMaterial: {fileID: 3265771203794016092, guid: 91971dd9594b62643ad90120969cfb17,
@@ -318,8 +318,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.61011, y: 99.46306}
-  m_SizeDelta: {x: 180.92383, y: 33.77032}
+  m_AnchoredPosition: {x: 0.61011, y: 107.64}
+  m_SizeDelta: {x: 180.92383, y: 17.420475}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1949372500833826193
 CanvasRenderer:
@@ -348,7 +348,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '<b>Lou:</b> Jules! I was out flying by Rawley Point and saw this:'
+  m_text: '<b>Lou:</b> Check this out:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 91971dd9594b62643ad90120969cfb17, type: 2}
   m_sharedMaterial: {fileID: 3265771203794016092, guid: 91971dd9594b62643ad90120969cfb17,
@@ -509,7 +509,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.61011, y: -77.1}
+  m_AnchoredPosition: {x: 0.61011, y: -61.3}
   m_SizeDelta: {x: 180.92383, y: 17.525127}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4825846369360106138
@@ -539,7 +539,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <b>Lou:</b> What do you think?
+  m_text: <b>Lou:</b> So? What do you think?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 91971dd9594b62643ad90120969cfb17, type: 2}
   m_sharedMaterial: {fileID: 3265771203794016092, guid: 91971dd9594b62643ad90120969cfb17,
@@ -791,7 +791,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.61011, y: -40.6}
+  m_AnchoredPosition: {x: 0.61017, y: -20.7}
   m_SizeDelta: {x: 180.92383, y: 33.77032}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5761852310166065272
@@ -821,7 +821,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<b>Lou:</b> GPS Coordinates\nN 44\xB0 11.524' W 87\xB0 30.591"
+  m_text: "<b>Lou:</b> GPS Location:\n   N 44\xB0 11.524' W 87\xB0 30.591"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 91971dd9594b62643ad90120969cfb17, type: 2}
   m_sharedMaterial: {fileID: 3265771203794016092, guid: 91971dd9594b62643ad90120969cfb17,
@@ -986,12 +986,12 @@ PrefabInstance:
     - target: {fileID: 5820740882212646554, guid: 8a3c1004efbc77e449d833085e2e9880,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -4.08
+      value: 4.6
       objectReference: {fileID: 0}
     - target: {fileID: 5820740882212646554, guid: 8a3c1004efbc77e449d833085e2e9880,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -54.1
+      value: -34.2
       objectReference: {fileID: 0}
     - target: {fileID: 5820740882212646554, guid: 8a3c1004efbc77e449d833085e2e9880,
         type: 3}

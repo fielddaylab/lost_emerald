@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using BeauUtil;
 
 namespace Shipwreck
@@ -14,7 +14,7 @@ namespace Shipwreck
 
                 foreach(var data in package) {
                     foreach(var root in data.RootIds) {
-                        GetEvaluator(root, true).Add(data);
+                        GetEvaluator(root, false)?.Remove(data);
                     }
                 }
             }

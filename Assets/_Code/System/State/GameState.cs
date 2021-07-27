@@ -8,8 +8,10 @@ namespace Shipwreck {
 
 	public interface IGameState {
 		IEnumerable<StringHash32> GetUnlockedContacts();
-		IEnumerable<IEvidenceGroupState> GetEvidence(int levelIndex);
-		IEnumerable<IEvidenceChainState> GetChains(int levelIndex);
+		IEnumerable<IEvidenceGroupState> GetEvidence();
+		IEnumerable<IEvidenceChainState> GetChains();
+
+		IEvidenceChainState GetChain(StringHash32 identity);
 
 		bool IsContactUnlocked(StringHash32 contactId);
 		StringHash32 GetContactNotificationId(StringHash32 contactId);
@@ -43,6 +45,8 @@ namespace Shipwreck {
 				get { return m_variableTable; } 
 			}
 
+			private int m_levelIndex = 0;
+
 			// serialized
 			private VariantTable m_variableTable;
 			private HashSet<StringHash32> m_visitedNodes;
@@ -60,14 +64,17 @@ namespace Shipwreck {
 					new LevelState(), new LevelState(),
 					new LevelState(), new LevelState()
 				};
-				m_levelStates[0].Unlock();
+				//m_levelStates[0].Unlock();
 			}
 
-			public IEnumerable<IEvidenceGroupState> GetEvidence(int levelIndex) {
-				return m_levelStates[levelIndex].Evidence;
+			public IEnumerable<IEvidenceGroupState> GetEvidence() {
+				return m_levelStates[m_levelIndex].Evidence;
 			}
-			public IEnumerable<IEvidenceChainState> GetChains(int levelIndex) {
-				return m_levelStates[levelIndex].Chains;
+			public IEnumerable<IEvidenceChainState> GetChains() {
+				return m_levelStates[m_levelIndex].Chains;
+			}
+			public IEvidenceChainState GetChain(StringHash32 chainId) {
+				return m_levelStates[m_levelIndex].GetChain(chainId);
 			}
 
 			public IEnumerable<StringHash32> GetUnlockedContacts() {

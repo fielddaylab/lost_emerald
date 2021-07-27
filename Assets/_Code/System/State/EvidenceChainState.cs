@@ -12,8 +12,8 @@ namespace Shipwreck {
 		void Lock();
 		bool Contains(StringHash32 node);
 		bool ContainsSet(IEnumerable<StringHash32> node);
-		void Lift(StringHash32 node);
-		void Drop(StringHash32 node, Vector2 position);
+		void Lift(int depth);
+		void Drop(StringHash32 node);
 	}
 
 	public sealed partial class GameMgr { // EvidenceChainState.cs
@@ -24,7 +24,6 @@ namespace Shipwreck {
 
 				private StringHash32 m_rootNode;
 				private List<StringHash32> m_chain;
-				private Vector2 m_danglePos;
 				private bool m_isLocked;
 
 				public EvidenceChainState() {
@@ -33,7 +32,6 @@ namespace Shipwreck {
 				public EvidenceChainState(StringHash32 root, Vector2 danglingPos) {
 					m_rootNode = root;
 					m_chain = new List<StringHash32>();
-					m_danglePos = danglingPos;
 					m_isLocked = false;
 				}
 
@@ -77,23 +75,15 @@ namespace Shipwreck {
 				/// Lifts the pin currently attached to the given node. If the root node is
 				/// provided, the current dangling pin will be lifted.
 				/// </summary>
-				public void Lift(StringHash32 node) {
+				public void Lift(int depth) {
 					if (m_isLocked) {
 						throw new InvalidOperationException("Cannot Lift pins when the Chain is locked!");
 					}
-					if (!m_chain.Contains(node) && node != m_rootNode) {
-						throw new InvalidOperationException(string.Format("Cannot Lift node `{0}' " +
-							"because it is not part of this chain!", node.ToDebugString()
-						));
-					}
-					while (m_chain.Count > 0 && m_chain[m_chain.Count-1] != node) {
+					while (m_chain.Count > depth) {
 						m_chain.RemoveAt(m_chain.Count - 1);
 						// intentionally removing all nodes in the chain
 						// (including the lifted one) until the desired
 						// node is found or chain is empty
-					}
-					if (m_chain.Count > 0) {
-						m_chain.RemoveAt(m_chain.Count - 1);
 					}
 				}
 
@@ -102,7 +92,7 @@ namespace Shipwreck {
 				/// the dangling pin to danglePos. If the root node is provided, 
 				/// no pin will be added. 
 				/// </summary>
-				public void Drop(StringHash32 node, Vector2 danglePos) {
+				public void Drop(StringHash32 node) {
 					if (m_isLocked) {
 						throw new InvalidOperationException("Cannot Drop pins when the Chain is locked!");
 					}
@@ -114,7 +104,6 @@ namespace Shipwreck {
 						}
 						m_chain.Add(node);
 					}
-					m_danglePos = danglePos;
 				}
 
 
@@ -122,7 +111,6 @@ namespace Shipwreck {
 
 					ioSerializer.UInt32Proxy("root", ref m_rootNode);
 					ioSerializer.UInt32ProxyArray("chain", ref m_chain);
-					ioSerializer.Serialize("danglePos", ref m_danglePos);
 					ioSerializer.Serialize("isLocked", ref m_isLocked);
 
 				}
