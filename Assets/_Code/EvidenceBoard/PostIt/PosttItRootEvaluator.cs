@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using BeauUtil;
 using BeauUtil.Blocks;
@@ -10,7 +10,7 @@ namespace Shipwreck {
 
         private const int MinCorrectDepth = 1;
         private const int MinHintDepth = 1;
-        private const int MinIncorrectDepth = 2;
+        private const int MinIncorrectDepth = 1; //hack
 
         private readonly List<PostItData> m_correctResponses = new List<PostItData>();
         private readonly List<PostItData> m_hintResponses = new List<PostItData>();

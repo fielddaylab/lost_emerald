@@ -3,3 +3,9 @@
 @root Location
 @correct location-coordinates
 	I should ship out!
+
+:: location-incorrect
+@root Name, Cause, Cargo, Artifact, Type
+@incorrect location-coordinates
+@anywhere
+	Should use Location instead

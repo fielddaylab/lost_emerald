@@ -36,9 +36,10 @@ namespace Shipwreck {
 		private Vector2 m_rootPos;
 		private Routine m_lineColorRoutine;
 		private Vector2[] m_points;
+		private float m_labelDistance;
 
 
-		public void Setup(LocalizationKey label, UIEvidenceScreen.Layers layers) {
+		public void Setup(LocalizationKey label, UIEvidenceScreen.Layers layers, float labelDistance) {
 			m_rootLabel.Key = label;
 			int num = 0;
 			foreach (EvidencePin pin in m_evidencePins) {
@@ -52,6 +53,7 @@ namespace Shipwreck {
 			m_lineRenderer.transform.SetParent(layers.Line);
 			m_rootLabel.transform.SetParent(layers.Label);
 			m_rootPos = Vector2.zero;
+			m_labelDistance = labelDistance;
 		}
 		public void MoveToFront() {
 			foreach (EvidencePin pin in m_evidencePins) {
@@ -66,6 +68,7 @@ namespace Shipwreck {
 			m_points = new Vector2[depth + 1];
 			m_points[0] = m_rootPos;
 			m_lineRenderer.Points = m_points;
+			SetLabelDistance();
 			int index = 0;
 			while (index < depth) {
 				m_evidencePins[index].gameObject.SetActive(true);
@@ -85,10 +88,17 @@ namespace Shipwreck {
 			m_lineColorRoutine.Replace(this, Tween.Color(m_lineRenderer.color, GameDb.GetLineColor(state), SetLineColor, 0.2f));
 		}
 
+		private void SetLabelDistance() {
+			Vector2 segement1 =  m_points[1] - m_rootPos;
+			Vector2 basePos = m_lineRenderer.rectTransform.position;
+			((RectTransform)m_rootLabel.transform).position =  basePos + (segement1.normalized * Mathf.Min(m_labelDistance, segement1.magnitude* 0.5f));
+		}
+
 		private void HandlePinPositionChanged(EvidencePin pin) {
 			int index = Array.IndexOf(m_evidencePins, pin);
 			m_points[index + 1] = PinToLinePoint(pin);
 			m_lineRenderer.SetAllDirty();
+			SetLabelDistance();
 		}
 
 		private void SetLineColor(Color color) {

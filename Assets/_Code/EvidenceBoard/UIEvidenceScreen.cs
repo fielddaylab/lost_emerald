@@ -88,12 +88,13 @@ namespace Shipwreck {
 					m_nodes.Add(node.NodeID, node);
 				}
 			}
+			int index = 0;
 			foreach (IEvidenceChainState chain in GameMgr.State.GetChains()) {
 				EvidenceNode root = m_nodes[chain.Root()];
 				EvidenceChain obj = Instantiate(m_chainPrefab);
 				obj.transform.SetParent(root.RectTransform);
 				obj.transform.position = root.RectTransform.position;
-				obj.Setup(LocalizationKey.Empty, m_layers);
+				obj.Setup(GameDb.GetNodeLocalizationKey(root.NodeID), m_layers, 20f + 40f * (index++ % 2 == 0 ? 0 : 1f));
 				foreach (EvidencePin pin in obj.Pins) {
 					if (!m_pinsByRoot.ContainsKey(root.NodeID)) {
 						m_pinsByRoot.Add(root.NodeID, new List<EvidencePin>());
@@ -117,10 +118,6 @@ namespace Shipwreck {
 				}
 			}
 		}
-
-
-		
-
 		private void Update() {
 			if (Selected != null) {
 				Selected.SetPosition(InputMgr.Position);

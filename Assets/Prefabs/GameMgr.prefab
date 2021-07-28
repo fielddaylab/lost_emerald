@@ -75,6 +75,43 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4dc07c89f14214f4d823960fd7acab63, type: 2}
   m_images:
   - {fileID: 21300000, guid: d7e29f63d2fd74c079090fd85d7430af, type: 3}
+  m_nodeKeyPairs:
+  - NodeID:
+      m_Source: Location
+      m_Hash: 1539345862
+    LocalizationKey:
+      m_key: Evidence/Label/Location
+      m_hash: 1628649381
+  - NodeID:
+      m_Source: Type
+      m_Hash: 3512062061
+    LocalizationKey:
+      m_key: Evidence/Label/ShipType
+      m_hash: -303159572
+  - NodeID:
+      m_Source: Cause
+      m_Hash: 1894034624
+    LocalizationKey:
+      m_key: Evidence/Label/Cause
+      m_hash: -712995147
+  - NodeID:
+      m_Source: Cargo
+      m_Hash: 774574791
+    LocalizationKey:
+      m_key: Evidence/Label/Cargo
+      m_hash: -513214930
+  - NodeID:
+      m_Source: Name
+      m_Hash: 266367750
+    LocalizationKey:
+      m_key: Evidence/Label/Name
+      m_hash: 176586317
+  - NodeID:
+      m_Source: Artifact
+      m_Hash: 3463768387
+    LocalizationKey:
+      m_key: Evidence/Label/Artifact
+      m_hash: 1962802444
   m_stickyNoteDefault: {r: 1, g: 0.9889244, b: 0.9575472, a: 1}
   m_stickyNoteIncorrect: {r: 0.9339623, g: 0.638795, b: 0.6580142, a: 1}
   m_stickyNoteComplete: {r: 0.93333334, g: 0.8670039, b: 0.6392157, a: 1}

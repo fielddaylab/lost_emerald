@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using BeauUtil;
 using BeauUtil.Blocks;
@@ -7,6 +7,8 @@ using BeauUtil.Tags;
 namespace Shipwreck {
 
     public class PostItAsset : ScriptableDataBlockPackage<PostItData> {
+
+		[NonSerialized]
         private HashSet<PostItData> m_postIts = new HashSet<PostItData>();
 
 		public override int Count {

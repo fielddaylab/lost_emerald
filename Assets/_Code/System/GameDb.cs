@@ -1,5 +1,6 @@
 ﻿using BeauUtil;
 using BeauUtil.Debugger;
+using PotatoLocalization;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,12 +9,20 @@ namespace Shipwreck {
 
 	public class GameDb : Singleton<GameDb> {
 
+		[Serializable]
+		private struct NodeKeyPair {
+			public SerializedHash32 NodeID;
+			public LocalizationKey LocalizationKey;
+		}
+
 		[SerializeField]
 		private CharacterData[] m_characters;
 		[SerializeField]
 		private EvidenceData[] m_evidenceData;
 		[SerializeField]
 		private Sprite[] m_images;
+		[SerializeField]
+		private NodeKeyPair[] m_nodeKeyPairs;
 
 		[SerializeField,Header("Colors")]
 		private Color m_stickyNoteDefault = Color.black;
@@ -40,6 +49,10 @@ namespace Shipwreck {
 		private Dictionary<StringHash32, EvidenceData> m_evidenceMap;		
 		[NonSerialized]
 		private Dictionary<StringHash32, Sprite> m_imageMap;
+		[NonSerialized]
+		private Dictionary<StringHash32, LocalizationKey> m_nodeKeyPairMap;
+
+
 		public static CharacterData GetCharacterData(StringHash32 hash) {
 			// initialize the map if it does not exist
 			if (I.m_characterMap == null) {
@@ -133,6 +146,15 @@ namespace Shipwreck {
 			}
 		}
 
+		public static LocalizationKey GetNodeLocalizationKey(StringHash32 nodeId) {
+			if (I.m_nodeKeyPairMap == null) {
+				I.m_nodeKeyPairMap = new Dictionary<StringHash32, LocalizationKey>();
+				foreach (NodeKeyPair pair in I.m_nodeKeyPairs) {
+					I.m_nodeKeyPairMap.Add(pair.NodeID, pair.LocalizationKey);
+				}
+			}
+			return I.m_nodeKeyPairMap[nodeId];
+		}
 
 	}
 
