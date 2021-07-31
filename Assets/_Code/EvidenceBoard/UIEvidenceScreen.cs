@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Shipwreck {
@@ -180,7 +181,9 @@ namespace Shipwreck {
 			UIMgr.CloseThenOpen<UIEvidenceScreen,UIOfficeScreen>();
 		}
 		private void HandleShipOutButton() {
-			
+			UIMgr.Close<UIEvidenceScreen>();
+			UIMgr.Close<UIPhoneNotif>();
+			SceneManager.LoadScene("Dive_Ship01"); // hack
 		}
 
 		private void Lift() {
