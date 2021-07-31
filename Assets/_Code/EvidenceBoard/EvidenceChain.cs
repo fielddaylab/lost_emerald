@@ -91,6 +91,15 @@ namespace Shipwreck {
 			m_lineColorRoutine.Replace(this, Tween.Color(m_lineRenderer.color, GameDb.GetLineColor(state), SetLineColor, 0.2f));
 		}
 
+		private void OnDestroy() {
+			Destroy(m_rootLabel.gameObject);
+			Destroy(m_stickyNote.gameObject);
+			Destroy(m_lineRenderer.gameObject);
+			foreach (EvidencePin pin in m_evidencePins) {
+				Destroy(pin.gameObject);
+			}
+		}
+
 		private void SetLabelDistance() {
 			Vector2 segement1 =  m_points[1] - m_rootPos;
 			Vector2 basePos = m_lineRenderer.rectTransform.position;

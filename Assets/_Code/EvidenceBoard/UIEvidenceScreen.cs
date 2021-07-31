@@ -45,6 +45,11 @@ namespace Shipwreck {
 		[SerializeField]
 		private EvidenceChain m_chainPrefab = null;
 
+		[SerializeField]
+		private Button m_buttonBack = null;
+		[SerializeField]
+		private Button m_buttonShipOut = null;
+
 
 		private Dictionary<StringHash32, EvidenceGroup> m_groups;
 		private Dictionary<StringHash32, EvidenceNode> m_nodes;
@@ -109,6 +114,35 @@ namespace Shipwreck {
 			}
 		}
 
+		protected override void OnHideCompleted() {
+			base.OnHideCompleted();
+			foreach (EvidenceGroup group in m_groups.Values) {
+				Destroy(group.gameObject);
+			}
+			foreach (EvidencePin pin in m_rootsByPin.Keys) {
+				Destroy(pin.gameObject);
+			}
+			foreach (EvidenceChain chain in m_chains.Values) {
+				Destroy(chain.gameObject);
+			}
+			m_groups.Clear();
+			m_chains.Clear();
+			m_pinsByRoot.Clear();
+			m_rootsByPin.Clear();
+			m_nodes.Clear();
+		}
+
+		protected override void OnShowCompleted() {
+			base.OnShowCompleted();
+			m_buttonBack.onClick.AddListener(HandleBackButton);
+			m_buttonShipOut.onClick.AddListener(HandleShipOutButton);
+		}
+		protected override void OnHideStart() {
+			base.OnHideStart();
+			m_buttonBack.onClick.RemoveListener(HandleBackButton);
+			m_buttonShipOut.onClick.RemoveListener(HandleShipOutButton);
+		}
+
 		private EvidencePin Selected {
 			get {
 				if (m_selectedRoot == StringHash32.Null || m_selectedPin == -1) {
@@ -141,6 +175,12 @@ namespace Shipwreck {
 			if (Selected == pin && m_dragging) {
 				Drop();
 			}
+		}
+		private void HandleBackButton() {
+			UIMgr.CloseThenOpen<UIEvidenceScreen,UIOfficeScreen>();
+		}
+		private void HandleShipOutButton() {
+			
 		}
 
 		private void Lift() {
