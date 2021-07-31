@@ -49,6 +49,7 @@ namespace Shipwreck
 			return I.m_stickyEval.Evaluate(root, I.m_state.GetChain(root).Chain());
 		}
 
+
 		#region Scripting
 
 		public static bool TryFindNode(LeafAsset asset, string name, out ScriptNode node) {

@@ -71,6 +71,10 @@ MonoBehaviour:
     m_hash: -513214930
   - m_key: Evidence/Label/Artifact
     m_hash: 1962802444
+  - m_key: UI/Evidence/Back
+    m_hash: -1055765747
+  - m_key: UI/Evidence/ShipOut
+    m_hash: -2100338616
   m_values:
   - Continue
   - Dad
@@ -100,3 +104,5 @@ MonoBehaviour:
   - Wreck Cause
   - Cargo
   - Artifact
+  - Back to Office
+  - Ship Out!

@@ -47,6 +47,7 @@ namespace Shipwreck {
 					pin.gameObject.SetActive(false); // hack
 				}	
 				pin.RectTransform.SetParent(layers.Pin);
+				pin.RectTransform.localPosition += Vector3.down * 100f;
 				pin.OnPositionSet += HandlePinPositionChanged;
 			}
 			m_stickyNote.transform.SetParent(layers.Label);
@@ -54,6 +55,7 @@ namespace Shipwreck {
 			m_rootLabel.transform.SetParent(layers.Label);
 			m_rootPos = Vector2.zero;
 			m_labelDistance = labelDistance;
+			SetChainDepth(1);
 		}
 		public void MoveToFront() {
 			foreach (EvidencePin pin in m_evidencePins) {
@@ -77,6 +79,7 @@ namespace Shipwreck {
 			while (index < m_evidencePins.Length) {
 				m_evidencePins[index++].gameObject.SetActive(false);
 			}
+			m_lineRenderer.SetAllDirty();
 		}
 
 		public void SetState(ChainStatus state) {
