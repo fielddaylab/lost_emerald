@@ -8,36 +8,42 @@ namespace Shipwreck {
 	public class UIOfficeScreen : UIBase {
 
 		[SerializeField]
-		private Button m_level1Button = null;
-		[SerializeField]
-		private Button m_level2Button = null;
-		[SerializeField]
-		private Button m_level3Button = null;
-		[SerializeField]
-		private Button m_level4Button = null;
+		private Button[] m_levelButtons = null;
 
 		protected override void OnShowStart() {
 			base.OnShowStart();
 			CanvasGroup.alpha = 0;
 
-			m_level1Button.onClick.AddListener(() => { HandleLevelButton(1); });
-			m_level2Button.onClick.AddListener(() => { HandleLevelButton(2); });
-			m_level3Button.onClick.AddListener(() => { HandleLevelButton(3); });
-			m_level4Button.onClick.AddListener(() => { HandleLevelButton(4); });
-
+			int levelIndex = 0;
+			foreach (Button button in m_levelButtons) {
+				button.interactable = GameMgr.State.IsLevelUnlocked(levelIndex);
+				if (button.interactable) {
+					button.onClick.AddListener(() => { HandleLevelButton(levelIndex); });
+				}
+				levelIndex++;
+			}
 			GameMgr.RunTrigger(GameTriggers.OnEnterOffice);
+			GameMgr.Events.Register<int>(GameEvents.LevelUnlocked, HandleLevelUnlocked);
 		}
 		protected override void OnHideStart() {
 			base.OnHideStart();
-			m_level1Button.onClick.RemoveAllListeners();
-			m_level2Button.onClick.RemoveAllListeners();
-			m_level3Button.onClick.RemoveAllListeners();
-			m_level4Button.onClick.RemoveAllListeners();
+			foreach (Button button in m_levelButtons) {
+				button.onClick.RemoveAllListeners();
+				button.interactable = false;
+			}
+			GameMgr.Events.Deregister<int>(GameEvents.LevelUnlocked, HandleLevelUnlocked);
 		}
 
 
 		private void HandleLevelButton(int level) {
 			UIMgr.CloseThenOpen<UIOfficeScreen, UIEvidenceScreen>();
+		}
+
+		private void HandleLevelUnlocked(int level) {
+			if (!m_levelButtons[level].interactable) {
+				m_levelButtons[level].interactable = true;
+				m_levelButtons[level].onClick.AddListener(() => { HandleLevelButton(level); });
+			}
 		}
 
 

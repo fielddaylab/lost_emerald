@@ -1916,10 +1916,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_canvasGroup: {fileID: 907246930}
-  m_level1Button: {fileID: 366119544}
-  m_level2Button: {fileID: 809600804}
-  m_level3Button: {fileID: 223266489}
-  m_level4Button: {fileID: 1013876174}
+  m_levelButtons:
+  - {fileID: 366119544}
+  - {fileID: 809600804}
+  - {fileID: 223266489}
+  - {fileID: 1013876174}
 --- !u!114 &939232312 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2890112031504769901, guid: 60ea5354af746704da248c6e114b0ee5,

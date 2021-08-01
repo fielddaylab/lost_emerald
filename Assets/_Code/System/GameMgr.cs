@@ -167,7 +167,7 @@ namespace Shipwreck
 		[LeafMember]
 		public static void UnlockLevel(int levelIndex) {
 			if (I.m_state.UnlockLevel(levelIndex - 1)) {
-				Events.Dispatch(GameEvents.LevelUnlocked, levelIndex);
+				Events.Dispatch(GameEvents.LevelUnlocked, levelIndex - 1);
 				using (var table = TempVarTable.Alloc()) {
 					table.Set("levelIndex", levelIndex);
 					RunTrigger(GameTriggers.OnLevelUnlock, table);

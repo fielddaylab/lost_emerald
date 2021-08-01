@@ -14,6 +14,8 @@ namespace Shipwreck {
 		IEvidenceChainState GetChain(StringHash32 identity);
 
 		bool IsContactUnlocked(StringHash32 contactId);
+		bool IsLevelUnlocked(int levelUnlocked);
+
 		StringHash32 GetContactNotificationId(StringHash32 contactId);
 		uint NotificationCount();
 
@@ -64,7 +66,6 @@ namespace Shipwreck {
 					new LevelState(), new LevelState(),
 					new LevelState(), new LevelState()
 				};
-				//m_levelStates[0].Unlock();
 			}
 
 			public IEnumerable<IEvidenceGroupState> GetEvidence() {
@@ -85,6 +86,13 @@ namespace Shipwreck {
 			public bool IsContactUnlocked(StringHash32 contactId) {
 				return m_unlockedContacts.Contains(contactId);
 			}
+			public bool IsLevelUnlocked(int levelIndex) {
+				if (levelIndex < 0 || levelIndex >= m_levelStates.Length) {
+					throw new IndexOutOfRangeException();
+				}
+				return m_levelStates[levelIndex].IsUnlocked;
+			}
+
 			public bool UnlockContact(StringHash32 contact) {
 				return m_unlockedContacts.Add(contact);
 			}
