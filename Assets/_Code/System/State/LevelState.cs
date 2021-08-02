@@ -77,7 +77,7 @@ namespace Shipwreck {
 						// todo: determine position
 						m_evidence.Add(new EvidenceGroupState(group.GroupID, group.Position));
 						foreach (StringHash32 root in group.RootNodes) {
-							m_chains.Add(new EvidenceChainState(root, Vector2.zero));
+							m_chains.Add(new EvidenceChainState(root));
 						}
 						return true;
 					}

@@ -1,10 +1,10 @@
-using System;
+﻿using System;
 using BeauUtil;
 using BeauUtil.Blocks;
 
 namespace Shipwreck {
 
-    public class PostItData : IDataBlock {
+    public class StickyInfo : IDataBlock {
 
         public enum LocationType {
             Last,
@@ -27,7 +27,7 @@ namespace Shipwreck {
         [BlockContent] private string m_text;
         private int m_specificity;
 
-        public PostItData(string fullId) {
+        public StickyInfo(string fullId) {
             m_fullId = fullId;
         }
 

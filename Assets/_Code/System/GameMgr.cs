@@ -21,32 +21,28 @@ namespace Shipwreck
 		}
 
 		private ScriptMgr m_scriptMgr;
-		private PostItEvaluator m_stickyEval;
+		private StickyEvaluator m_stickyEvaluator;
 		private GameState m_state;
 		private EventService m_eventService;
 
 		private int m_selectedLevel = 0;
 
 		[SerializeField]
-		private PostItAsset m_postitLevel1;
+		private StickyAsset m_postitLevel1;
 
 		protected override void OnAssigned() {
 			Routine.Settings.DebugMode = false;
 
 			m_state = new GameState();
 
-			m_stickyEval = new PostItEvaluator();
-			m_stickyEval.Load(m_postitLevel1);
+			m_stickyEvaluator = new StickyEvaluator();
+			m_stickyEvaluator.Load(m_postitLevel1);
 
 			m_scriptMgr = new ScriptMgr(this);
 			m_scriptMgr.LoadGameState(m_state, m_state.VariableTable);
 			m_scriptMgr.ConfigureEvents();
 
 			m_eventService = new EventService();
-		}
-
-		public static PostItData EvaluateChain(StringHash32 root) {
-			return I.m_stickyEval.Evaluate(root, I.m_state.GetChain(root).Chain());
 		}
 
 

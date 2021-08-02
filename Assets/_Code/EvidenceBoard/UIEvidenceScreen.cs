@@ -31,6 +31,9 @@ namespace Shipwreck {
 		}
 
 		[SerializeField]
+		private SerializedHash32 m_locationRoot = new SerializedHash32("Location");
+
+		[SerializeField]
 		private Transform m_nodeBackGroup = null;
 		[SerializeField]
 		private Transform m_lineGroup = null;
@@ -113,6 +116,10 @@ namespace Shipwreck {
 				m_chains.Add(chain.Root(), obj);
 				obj.SetChainDepth(1); //hack?
 			}
+
+			// ship out button is only available if the location root is solved
+			m_buttonShipOut.gameObject.SetActive(GameMgr.State.GetChain(m_locationRoot).IsCorrect);
+
 		}
 
 		protected override void OnHideCompleted() {
@@ -137,11 +144,13 @@ namespace Shipwreck {
 			base.OnShowCompleted();
 			m_buttonBack.onClick.AddListener(HandleBackButton);
 			m_buttonShipOut.onClick.AddListener(HandleShipOutButton);
+			GameMgr.Events.Register<StringHash32>(GameEvents.ChainSolved, HandleChainCorrect);
 		}
 		protected override void OnHideStart() {
 			base.OnHideStart();
 			m_buttonBack.onClick.RemoveListener(HandleBackButton);
 			m_buttonShipOut.onClick.RemoveListener(HandleShipOutButton);
+			GameMgr.Events.Deregister<StringHash32>(GameEvents.ChainSolved, HandleChainCorrect);
 		}
 
 		private EvidencePin Selected {
@@ -164,7 +173,7 @@ namespace Shipwreck {
 		private void HandlePinPressed(EvidencePin pin) {
 			if (Selected == pin) {
 				Drop();
-			} else if (Selected == null) {
+			} else if (Selected == null && !GameMgr.State.GetChain(m_rootsByPin[pin]).IsCorrect) {
 				m_selectedRoot = m_rootsByPin[pin];
 				m_selectedPin = m_pinsByRoot[m_selectedRoot].IndexOf(pin);
 				m_pressPosition = InputMgr.Position;
@@ -184,6 +193,11 @@ namespace Shipwreck {
 			UIMgr.Close<UIEvidenceScreen>();
 			UIMgr.Close<UIPhoneNotif>();
 			SceneManager.LoadScene("Dive_Ship01"); // hack
+		}
+		private void HandleChainCorrect(StringHash32 root) {
+			if (root == m_locationRoot) {
+				m_buttonShipOut.gameObject.SetActive(true);
+			}
 		}
 
 		private void Lift() {
@@ -207,18 +221,18 @@ namespace Shipwreck {
 			}
 			// determine what we do with the chain
 			EvidenceChain chain = m_chains[m_selectedRoot];
-			PostItData data = GameMgr.EvaluateChain(m_selectedRoot);
+			StickyInfo data = GameMgr.State.GetChain(m_selectedRoot).StickyInfo;
 			if (data == null) {
 				chain.SetState(ChainStatus.Normal);
 			} else {
 				switch (data.Response) {
-					case PostItData.ResponseType.Correct:
+					case StickyInfo.ResponseType.Correct:
 						chain.SetState(ChainStatus.Complete);
 						break;
-					case PostItData.ResponseType.Hint:
+					case StickyInfo.ResponseType.Hint:
 						chain.SetState(ChainStatus.Normal);
 						break;
-					case PostItData.ResponseType.Incorrect:
+					case StickyInfo.ResponseType.Incorrect:
 						chain.SetState(ChainStatus.Incorrect);
 						break;
 				}

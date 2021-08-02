@@ -6,16 +6,16 @@ using BeauUtil.Tags;
 
 namespace Shipwreck {
 
-    public class PostItAsset : ScriptableDataBlockPackage<PostItData> {
+    public class StickyAsset : ScriptableDataBlockPackage<StickyInfo> {
 
 		[NonSerialized]
-        private HashSet<PostItData> m_postIts = new HashSet<PostItData>();
+        private HashSet<StickyInfo> m_postIts = new HashSet<StickyInfo>();
 
 		public override int Count {
             get { return m_postIts.Count; }
         }
 
-		public override IEnumerator<PostItData> GetEnumerator() {
+		public override IEnumerator<StickyInfo> GetEnumerator() {
 			return m_postIts.GetEnumerator();
 		}
 
@@ -28,16 +28,16 @@ namespace Shipwreck {
             Parse(Generator.Instance);
         }
 
-		private class Generator : GeneratorBase<PostItAsset> {
+		private class Generator : GeneratorBase<StickyAsset> {
             static public readonly Generator Instance = new Generator();
 
-			public override bool TryCreateBlock(IBlockParserUtil inUtil, PostItAsset inPackage, TagData inId, out PostItData outBlock) {
+			public override bool TryCreateBlock(IBlockParserUtil inUtil, StickyAsset inPackage, TagData inId, out StickyInfo outBlock) {
 				string fullName = inUtil.TempBuilder.Append(inUtil.Position.FileName)
                     .Append('-')
                     .Append(inId.Id)
                     .Flush();
 
-                outBlock = new PostItData(fullName);
+                outBlock = new StickyInfo(fullName);
                 inPackage.m_postIts.Add(outBlock);
                 return true;
 			}
@@ -46,7 +46,7 @@ namespace Shipwreck {
         #if UNITY_EDITOR
 
 		[ScriptedExtension(1, "postit")]
-        private class Importer : ImporterBase<PostItAsset> {
+        private class Importer : ImporterBase<StickyAsset> {
         }
 
         #endif // UNITY_EDITOR

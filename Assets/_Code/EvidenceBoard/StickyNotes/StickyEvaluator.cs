@@ -4,11 +4,11 @@ using BeauUtil;
 namespace Shipwreck
 {
 
-	public class PostItEvaluator {
-        private HashSet<PostItAsset> m_packages = new HashSet<PostItAsset>();
-        private Dictionary<StringHash32, PostItRootEvaluator> m_roots = new Dictionary<StringHash32, PostItRootEvaluator>();
+	public class StickyEvaluator {
+        private HashSet<StickyAsset> m_packages = new HashSet<StickyAsset>();
+        private Dictionary<StringHash32, StickyRootEvaluator> m_roots = new Dictionary<StringHash32, StickyRootEvaluator>();
 
-        public void Load(PostItAsset package) {
+        public void Load(StickyAsset package) {
             if (m_packages.Add(package)) {
                 package.Parse();
 
@@ -20,7 +20,7 @@ namespace Shipwreck
             }
         }
         
-        public void Unload(PostItAsset package) {
+        public void Unload(StickyAsset package) {
             if (m_packages.Remove(package)) {
                 foreach(var data in package) {
                     foreach(var root in data.RootIds) {
@@ -32,18 +32,18 @@ namespace Shipwreck
             }
         }
 
-        public PostItData Evaluate(StringHash32 rootId, List<StringHash32> chain) {
+        public StickyInfo Evaluate(StringHash32 rootId, List<StringHash32> chain) {
             return GetEvaluator(rootId, false)?.Evaluate(chain);
         }
 
-        public PostItData Evaluate(StringHash32 rootId, StringHash32[] chain) {
+        public StickyInfo Evaluate(StringHash32 rootId, StringHash32[] chain) {
             return GetEvaluator(rootId, false)?.Evaluate(chain);
         }
 
-        private PostItRootEvaluator GetEvaluator(StringHash32 rootId, bool create) {
-            PostItRootEvaluator evaluator;
+        private StickyRootEvaluator GetEvaluator(StringHash32 rootId, bool create) {
+            StickyRootEvaluator evaluator;
             if (!m_roots.TryGetValue(rootId, out evaluator) && create) {
-                evaluator = m_roots[rootId] = new PostItRootEvaluator();
+                evaluator = m_roots[rootId] = new StickyRootEvaluator();
             }
             return evaluator;
         }

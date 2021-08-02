@@ -6,29 +6,29 @@ using BeauUtil.Tags;
 
 namespace Shipwreck {
 
-    public class PostItRootEvaluator {
+    public class StickyRootEvaluator {
 
         private const int MinCorrectDepth = 1;
         private const int MinHintDepth = 1;
         private const int MinIncorrectDepth = 1; //hack
 
-        private readonly List<PostItData> m_correctResponses = new List<PostItData>();
-        private readonly List<PostItData> m_hintResponses = new List<PostItData>();
-        private readonly List<PostItData> m_incorrectResponses = new List<PostItData>();
+        private readonly List<StickyInfo> m_correctResponses = new List<StickyInfo>();
+        private readonly List<StickyInfo> m_hintResponses = new List<StickyInfo>();
+        private readonly List<StickyInfo> m_incorrectResponses = new List<StickyInfo>();
 
         private bool m_dirty;
 
-        public void Add(PostItData data) {
+        public void Add(StickyInfo data) {
             switch(data.Response) {
-                case PostItData.ResponseType.Correct:
+                case StickyInfo.ResponseType.Correct:
                     m_correctResponses.Add(data);
                     break;
 
-                case PostItData.ResponseType.Hint:
+                case StickyInfo.ResponseType.Hint:
                     m_hintResponses.Add(data);
                     break;
 
-                case PostItData.ResponseType.Incorrect:
+                case StickyInfo.ResponseType.Incorrect:
                     m_incorrectResponses.Add(data);
                     break;
             }
@@ -36,23 +36,23 @@ namespace Shipwreck {
             m_dirty = true;
         }
 
-        public void Remove(PostItData data) {
+        public void Remove(StickyInfo data) {
             switch(data.Response) {
-                case PostItData.ResponseType.Correct:
+                case StickyInfo.ResponseType.Correct:
                     m_correctResponses.FastRemove(data);
                     break;
 
-                case PostItData.ResponseType.Hint:
+                case StickyInfo.ResponseType.Hint:
                     m_hintResponses.FastRemove(data);
                     break;
 
-                case PostItData.ResponseType.Incorrect:
+                case StickyInfo.ResponseType.Incorrect:
                     m_incorrectResponses.FastRemove(data);
                     break;
             }
         }
 
-        public PostItData Evaluate(ListSlice<StringHash32> chain) {
+        public StickyInfo Evaluate(ListSlice<StringHash32> chain) {
             if (chain.Length == 0)
                 return null;
 
@@ -84,12 +84,12 @@ namespace Shipwreck {
             return null;
         }
 
-        static private bool EvaluateCorrect(PostItData data, ListSlice<StringHash32> chain) {
+        static private bool EvaluateCorrect(StickyInfo data, ListSlice<StringHash32> chain) {
             // correct - no support for location or prerequisites
             return EvaluateChain(chain, data.NodeIds);
         }
 
-        static private bool EvaluateNormal(PostItData data, int inMinDepth, ListSlice<StringHash32> chain) {
+        static private bool EvaluateNormal(StickyInfo data, int inMinDepth, ListSlice<StringHash32> chain) {
             if (!EvaluateDepth(chain.Length, inMinDepth, data.Location)) {
                 return false;
             }
@@ -102,12 +102,12 @@ namespace Shipwreck {
             switch(data.Location) {
 
                 // first - has no support for prerequisites
-                case PostItData.LocationType.First: {
+                case StickyInfo.LocationType.First: {
                     return nodeIds.Contains(chain[0]);
                 }
 
                 // last - check last node in chain, validate prerequisites
-                case PostItData.LocationType.Last: {
+                case StickyInfo.LocationType.Last: {
                     var prerequisites = data.Prerequisites;
                     if (chain.Length <= prerequisites.Length) {
                         return false;
@@ -128,7 +128,7 @@ namespace Shipwreck {
                 }
 
                 // anywhere - for each possible node, find in chain, validate prerequisites
-                case PostItData.LocationType.Anywhere: {
+                case StickyInfo.LocationType.Anywhere: {
                     var prerequisites = data.Prerequisites;
                     if (chain.Length <= prerequisites.Length) {
                         return false;
@@ -157,9 +157,9 @@ namespace Shipwreck {
             return false;
         }
 
-        static private bool EvaluateDepth(int depth, int minDepth, PostItData.LocationType location) {
+        static private bool EvaluateDepth(int depth, int minDepth, StickyInfo.LocationType location) {
             switch(location) {
-                case PostItData.LocationType.First:
+                case StickyInfo.LocationType.First:
                     return true;
 
                 default:
@@ -190,7 +190,7 @@ namespace Shipwreck {
             return allowed.Contains(id);
         }
     
-        static private int SortBySpecificity(PostItData x, PostItData y) {
+        static private int SortBySpecificity(StickyInfo x, StickyInfo y) {
             return y.Specificity.CompareTo(x.Specificity);
         }
     }

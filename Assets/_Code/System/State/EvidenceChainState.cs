@@ -7,9 +7,11 @@ using UnityEngine;
 namespace Shipwreck {
 
 	public interface IEvidenceChainState {
+
+		bool IsCorrect { get; }
+		StickyInfo StickyInfo { get; }
 		StringHash32 Root();
 		StringHash32 Next(StringHash32 current);
-		void Lock();
 		bool Contains(StringHash32 node);
 		bool ContainsSet(IEnumerable<StringHash32> node);
 		void Lift(int depth);
@@ -24,17 +26,26 @@ namespace Shipwreck {
 
 			private class EvidenceChainState : IEvidenceChainState, ISerializedObject {
 
+				// serialized
 				private StringHash32 m_rootNode;
 				private List<StringHash32> m_chain;
-				private bool m_isLocked;
+
+				// non-serialized
+				private StickyInfo m_stickyData;
 
 				public EvidenceChainState() {
 					// empty constructor for deserialization
 				}
-				public EvidenceChainState(StringHash32 root, Vector2 danglingPos) {
+				public EvidenceChainState(StringHash32 root) {
 					m_rootNode = root;
 					m_chain = new List<StringHash32>();
-					m_isLocked = false;
+				}
+
+				public StickyInfo StickyInfo { 
+					get { return m_stickyData; } 
+				}
+				public bool IsCorrect {
+					get { return m_stickyData != null && m_stickyData.Response == StickyInfo.ResponseType.Correct; }
 				}
 
 				public StringHash32 Root() {
@@ -56,13 +67,20 @@ namespace Shipwreck {
 						}
 					}
 				}
-
 				public List<StringHash32> Chain() {
 					return m_chain;
 				}
 
-				public void Lock() {
-					m_isLocked = true;
+				public void ReevaluateStickyInfo() {
+					bool wasCorrect = m_stickyData != null && m_stickyData.Response == StickyInfo.ResponseType.Correct;
+					m_stickyData = I.m_stickyEvaluator.Evaluate(m_rootNode, m_chain);
+					if (!wasCorrect && m_stickyData != null && m_stickyData.Response == StickyInfo.ResponseType.Correct) {
+						Events.Dispatch(GameEvents.ChainSolved, m_rootNode);
+						using (var table = TempVarTable.Alloc()) {
+							table.Set("root", m_rootNode);
+							RunTrigger(GameTriggers.OnChainSolved, table);
+						}
+					}
 				}
 
 				public bool Contains(StringHash32 node) {
@@ -82,7 +100,7 @@ namespace Shipwreck {
 				/// provided, the current dangling pin will be lifted.
 				/// </summary>
 				public void Lift(int depth) {
-					if (m_isLocked) {
+					if (m_stickyData != null && m_stickyData.Response == StickyInfo.ResponseType.Correct) {
 						throw new InvalidOperationException("Cannot Lift pins when the Chain is locked!");
 					}
 					while (m_chain.Count > depth) {
@@ -91,6 +109,7 @@ namespace Shipwreck {
 						// (including the lifted one) until the desired
 						// node is found or chain is empty
 					}
+					ReevaluateStickyInfo();
 				}
 
 				/// <summary>
@@ -99,7 +118,7 @@ namespace Shipwreck {
 				/// no pin will be added. 
 				/// </summary>
 				public void Drop(StringHash32 node) {
-					if (m_isLocked) {
+					if (m_stickyData != null && m_stickyData.Response == StickyInfo.ResponseType.Correct) {
 						throw new InvalidOperationException("Cannot Drop pins when the Chain is locked!");
 					}
 					if (node != m_rootNode) {
@@ -110,6 +129,7 @@ namespace Shipwreck {
 						}
 						m_chain.Add(node);
 					}
+					ReevaluateStickyInfo();
 				}
 
 
@@ -117,8 +137,8 @@ namespace Shipwreck {
 
 					ioSerializer.UInt32Proxy("root", ref m_rootNode);
 					ioSerializer.UInt32ProxyArray("chain", ref m_chain);
-					ioSerializer.Serialize("isLocked", ref m_isLocked);
 
+					ReevaluateStickyInfo();
 				}
 
 			}

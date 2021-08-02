@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Shipwreck;
 using BeauPools;
 using UnityEngine.UI.Extensions;
@@ -8,21 +8,21 @@ using System;
 using TMPro;
 using BeauUtil;
 
-internal class PostItTest : MonoBehaviour {
+internal class StickyTest : MonoBehaviour {
 
-    public PostItAsset Asset;
+    public StickyAsset Asset;
     public UILineRenderer Lines;
     public RectTransform Root;
     public TMP_Text Hint;
 
-    private PostItEvaluator m_eval;
+    private StickyEvaluator m_eval;
     [NonSerialized] private List<Button> m_chain = new List<Button>();
     [NonSerialized] private bool m_incorrect = false;
     [NonSerialized] private bool m_correct = false;
 
     private void Start()
     {
-        m_eval = new PostItEvaluator();
+        m_eval = new StickyEvaluator();
         m_eval.Load(Asset);
 
         foreach(var button in GetComponentsInChildren<Button>()) {
@@ -52,11 +52,11 @@ internal class PostItTest : MonoBehaviour {
 
     private void RefreshHint() {
         StringHash32[] chain = ArrayUtils.MapFrom(m_chain, (b) => new StringHash32(b.name));
-        PostItData data = m_eval.Evaluate(Root.name, chain);
+        StickyInfo data = m_eval.Evaluate(Root.name, chain);
         if (data != null) {
             Hint.text = data.Text;
-            m_incorrect = data.Response == PostItData.ResponseType.Incorrect;
-            m_correct = data.Response == PostItData.ResponseType.Correct;
+            m_incorrect = data.Response == StickyInfo.ResponseType.Incorrect;
+            m_correct = data.Response == StickyInfo.ResponseType.Correct;
         } else if (chain.Length < 2) {
             Hint.text = string.Empty;
             m_incorrect = false;
