@@ -36,15 +36,6 @@
 	$call UnlockContact(lou)
 
 
-//::dad-help-01
-//@contact dad, text-message
-//@trigger OnContactText
-
-//	{@dad}  Sorry, I'm pretty busy right now
-//	{@dad}  I'll message you back sometime soon!
-
-
-
 //  Lou
 //  --------------------------------------------------------------------------------------
 
@@ -59,7 +50,7 @@
 	{@you} 	What??? You’re flying right now?
 	{@lou} 	Relax. I’m on my headset.
 			Check this out!
-			{img birds-eye-photo-new}
+			{img ultralight-photo}
 			GPS Location: N 44° 11.524' W 087° 30.591'
 			So? What do you think?
 	{@you} 	That looks like a shipwreck!
@@ -72,10 +63,3 @@
 	$call UnlockLevel(1)
 	$call UnlockEvidence(1,LV1-Root)
 	$call UnlockEvidence(1,LV1-Transcript-Lou)
-
-
-//::lou-help-01
-//@contact lou, text-message
-//@trigger OnContactText
-//	{@you}  What am I supposed to do with those coordinates you gave me?
-//	{@lou}  You can pin them to your evidence board to learn more about the wreck.
