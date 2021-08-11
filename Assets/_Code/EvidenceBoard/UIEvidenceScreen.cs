@@ -97,29 +97,43 @@ namespace Shipwreck {
 					m_nodes.Add(node.NodeID, node);
 				}
 			}
-			int index = 0;
-			foreach (IEvidenceChainState chain in GameMgr.State.GetChains()) {
+			for (int chainIndex = 0; chainIndex < GameMgr.State.ChainCount; chainIndex++) {
+				IEvidenceChainState chain = GameMgr.State.GetChain(chainIndex);
 				EvidenceNode root = m_nodes[chain.Root()];
 				EvidenceChain obj = Instantiate(m_chainPrefab);
 				obj.transform.SetParent(root.RectTransform);
 				obj.transform.position = root.RectTransform.position;
-				obj.Setup(GameDb.GetNodeLocalizationKey(root.NodeID), m_layers, 20f + 40f * (index++ % 2 == 0 ? 0 : 1f));
-				foreach (EvidencePin pin in obj.Pins) {
+				obj.Setup(GameDb.GetNodeLocalizationKey(root.NodeID), m_layers, 20f + 40f * (chainIndex % 2 == 0 ? 0 : 1f));
+				for (int pinIndex = 0; pinIndex < obj.PinCount; pinIndex++) {
+					EvidencePin pin = obj.GetPin(pinIndex);
 					if (!m_pinsByRoot.ContainsKey(root.NodeID)) {
 						m_pinsByRoot.Add(root.NodeID, new List<EvidencePin>());
 					}
 					m_pinsByRoot[root.NodeID].Add(pin);
 					m_rootsByPin.Add(pin, root.NodeID);
+					if (pinIndex+1 < chain.Depth && m_nodes.TryGetValue(chain.GetNodeInChain(pinIndex+1), out EvidenceNode node)) {
+						pin.SetPosition(WorldToScreenPoint(node.PinPosition));
+					}
 					pin.OnPointerDown += HandlePinPressed;
 					pin.OnPointerUp += HandlePinReleased;
 				}
 				m_chains.Add(chain.Root(), obj);
-				obj.SetChainDepth(1); //hack?
+				obj.SetChainDepth(chain.Depth); //hack?
 			}
 
 			// ship out button is only available if the location root is solved
 			m_buttonShipOut.gameObject.SetActive(GameMgr.State.GetChain(m_locationRoot).IsCorrect);
 
+		}
+
+		private void AddPin(EvidenceNode root, EvidencePin pin) {
+			if (!m_pinsByRoot.ContainsKey(root.NodeID)) {
+				m_pinsByRoot.Add(root.NodeID, new List<EvidencePin>());
+			}
+			m_pinsByRoot[root.NodeID].Add(pin);
+			m_rootsByPin.Add(pin, root.NodeID);
+			pin.OnPointerDown += HandlePinPressed;
+			pin.OnPointerUp += HandlePinReleased;
 		}
 
 		protected override void OnHideCompleted() {
@@ -128,6 +142,8 @@ namespace Shipwreck {
 				Destroy(group.gameObject);
 			}
 			foreach (EvidencePin pin in m_rootsByPin.Keys) {
+				pin.OnPointerDown -= HandlePinPressed;
+				pin.OnPointerUp -= HandlePinReleased;
 				Destroy(pin.gameObject);
 			}
 			foreach (EvidenceChain chain in m_chains.Values) {
@@ -214,7 +230,7 @@ namespace Shipwreck {
 			foreach (RaycastResult result in results) {
 				EvidenceNode node = result.gameObject.GetComponent<EvidenceNode>();
 				if (node != null) {
-					Selected.SetPosition(RectTransformUtility.WorldToScreenPoint(Camera.main,node.PinPosition));
+					Selected.SetPosition(WorldToScreenPoint(node.PinPosition));
 					GameMgr.State.GetChain(m_selectedRoot).Drop(node.NodeID);
 					break;
 				}
@@ -240,6 +256,11 @@ namespace Shipwreck {
 			m_selectedPin = -1;
 			m_dragging = false;
 		}
+
+		private static Vector2 WorldToScreenPoint(Vector3 worldPoint) {
+			return RectTransformUtility.WorldToScreenPoint(Camera.main, worldPoint);
+		}
+
 
 		protected override IEnumerator ShowRoutine() {
 			yield return CanvasGroup.FadeTo(1f, 0.3f);

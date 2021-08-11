@@ -62,22 +62,12 @@ namespace Shipwreck {
 		private Image m_image = null;
 
 		private RectTransform m_rectTransform;
-
 		private Routine m_colorRoutine;
 
-		private static readonly Color DEFAULT = new Color(0.6039216f, 0.9058824f, 0.8980393f);
-		private static readonly Color LINKED = new Color(0.8f, 1f, 1f);
-		private static readonly Color SOLVED = new Color(1f, 0.77f, 0.23f);
+		public void SetColor(Color color) {
+			m_colorRoutine.Replace(this, ColorTo(color));
+		}
 
-		public void SetDefault() {
-			m_colorRoutine.Replace(this, ColorTo(DEFAULT));
-		}
-		public void SetLinked() {
-			m_colorRoutine.Replace(this, ColorTo(LINKED));
-		}
-		public void SetSolved() {
-			m_colorRoutine.Replace(this, ColorTo(SOLVED));
-		}
 		private IEnumerator ColorTo(Color color) {
 			yield return m_image.ColorTo(color, 0.1f).Ease(Curve.QuadOut);
 		}

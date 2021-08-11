@@ -9,9 +9,11 @@ namespace Shipwreck {
 	public interface IGameState {
 		IEnumerable<StringHash32> GetUnlockedContacts();
 		IEnumerable<IEvidenceGroupState> GetEvidence();
-		IEnumerable<IEvidenceChainState> GetChains();
 
 		IEvidenceChainState GetChain(StringHash32 identity);
+
+		IEvidenceChainState GetChain(int index);
+		int ChainCount { get; }
 
 		bool IsContactUnlocked(StringHash32 contactId);
 		bool IsLevelUnlocked(int levelUnlocked);
@@ -47,6 +49,10 @@ namespace Shipwreck {
 				get { return m_variableTable; } 
 			}
 
+			public int ChainCount {
+				get { return m_levelStates[m_levelIndex].ChainCount; }
+			}
+
 			private int m_levelIndex = 0;
 
 			// serialized
@@ -66,13 +72,14 @@ namespace Shipwreck {
 					new LevelState(), new LevelState(),
 					new LevelState(), new LevelState()
 				};
+				m_levelStates[0].Unlock();
 			}
 
 			public IEnumerable<IEvidenceGroupState> GetEvidence() {
 				return m_levelStates[m_levelIndex].Evidence;
 			}
-			public IEnumerable<IEvidenceChainState> GetChains() {
-				return m_levelStates[m_levelIndex].Chains;
+			public IEvidenceChainState GetChain(int index) {
+				return m_levelStates[m_levelIndex].GetChain(index);
 			}
 			public IEvidenceChainState GetChain(StringHash32 chainId) {
 				return m_levelStates[m_levelIndex].GetChain(chainId);

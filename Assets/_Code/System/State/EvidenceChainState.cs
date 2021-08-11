@@ -10,8 +10,12 @@ namespace Shipwreck {
 
 		bool IsCorrect { get; }
 		StickyInfo StickyInfo { get; }
+		int Depth { get; }
+
 		StringHash32 Root();
-		StringHash32 Next(StringHash32 current);
+
+		StringHash32 GetNodeInChain(int index);
+
 		bool Contains(StringHash32 node);
 		bool ContainsSet(IEnumerable<StringHash32> node);
 		void Lift(int depth);
@@ -47,28 +51,22 @@ namespace Shipwreck {
 				public bool IsCorrect {
 					get { return m_stickyData != null && m_stickyData.Response == StickyInfo.ResponseType.Correct; }
 				}
+				public int Depth {
+					get { return m_chain.Count + 1; }
+				}
 
 				public StringHash32 Root() {
 					return m_rootNode;
 				}
-				public StringHash32 Next(StringHash32 current) {
-					if (current == m_rootNode) {
-						if (m_chain.Count > 0) {
-							return m_chain[0];
-						} else {
-							return StringHash32.Null;
-						}
-					} else {
-						int index = m_chain.IndexOf(current);
-						if (index == -1 || index + 1 >= m_chain.Count) {
-							return StringHash32.Null;
-						} else {
-							return m_chain[index + 1];
-						}
-					}
-				}
 				public List<StringHash32> Chain() {
 					return m_chain;
+				}
+
+				public StringHash32 GetNodeInChain(int index) {
+					if (index < 1 || index > m_chain.Count) {
+						throw new IndexOutOfRangeException();
+					}
+					return m_chain[index-1];
 				}
 
 				public void ReevaluateStickyInfo() {

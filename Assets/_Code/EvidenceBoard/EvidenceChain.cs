@@ -16,12 +16,8 @@ namespace Shipwreck {
 	}
 	public class EvidenceChain : MonoBehaviour {
 
-		public IEnumerable<EvidencePin> Pins {
-			get {
-				foreach (EvidencePin pin in m_evidencePins) {
-					yield return pin;
-				}
-			}
+		public int PinCount {
+			get { return m_evidencePins.Length; }
 		}
 
 		[SerializeField]
@@ -38,6 +34,13 @@ namespace Shipwreck {
 		private Vector2[] m_points;
 		private float m_labelDistance;
 
+
+		public EvidencePin GetPin(int index) {
+			if (index < 0 || index >= m_evidencePins.Length) {
+				throw new IndexOutOfRangeException();
+			}
+			return m_evidencePins[index];
+		}
 
 		public void Setup(LocalizationKey label, UIEvidenceScreen.Layers layers, float labelDistance) {
 			m_rootLabel.Key = label;

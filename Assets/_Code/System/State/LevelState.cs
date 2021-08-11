@@ -1,5 +1,6 @@
 ﻿using BeauData;
 using BeauUtil;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -30,12 +31,8 @@ namespace Shipwreck {
 						}
 					}
 				}
-				public IEnumerable<IEvidenceChainState> Chains {
-					get {
-						foreach (EvidenceChainState chain in m_chains) {
-							yield return chain;
-						}
-					}
+				public int ChainCount {
+					get { return m_chains.Count; }
 				}
 
 				// serialized
@@ -60,6 +57,12 @@ namespace Shipwreck {
 					return m_chains.Find((item) => {
 						return item.Root() == root;
 					});
+				}
+				public IEvidenceChainState GetChain(int index) {
+					if (index < 0 || index >= m_chains.Count) {
+						throw new IndexOutOfRangeException();
+					}
+					return m_chains[index];
 				}
 
 				public bool Unlock() {
