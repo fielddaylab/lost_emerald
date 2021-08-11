@@ -122,6 +122,9 @@ namespace Shipwreck {
 					} else if (addDangler && pinIndex > 0 && pinIndex < chain.Depth && m_nodes.TryGetValue(chain.GetNodeInChain(pinIndex), out node)) {
 						pin.SetPosition(WorldToScreenPoint(node.SubPinPosition));
 						pin.SetHomePosition(WorldToScreenPoint(node.SubPinPosition));
+					} else if (pinIndex == 0) {
+						pin.SetHomePosition(WorldToScreenPoint(pin.RectTransform.position));
+						pin.SetPosition(WorldToScreenPoint(pin.RectTransform.position));
 					}
 					pin.OnPointerDown += HandlePinPressed;
 					pin.OnPointerUp += HandlePinReleased;
