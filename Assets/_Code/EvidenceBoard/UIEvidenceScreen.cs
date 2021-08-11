@@ -68,7 +68,7 @@ namespace Shipwreck {
 		private int m_selectedPin = -1;
 		private bool m_dragging;
 		private Vector2 m_pressPosition;
-		private Vector2 m_originalPosition;
+		private Vector2 m_homePos;
 
 		private void Awake() {
 			m_layers = new Layers(m_nodeBackGroup, m_lineGroup, m_nodeFrontGroup, m_labelGroup, m_pinGroup);
@@ -105,7 +105,7 @@ namespace Shipwreck {
 				obj.transform.position = root.RectTransform.position;
 				obj.Setup(GameDb.GetNodeLocalizationKey(root.NodeID), m_layers, 20f + 40f * (chainIndex % 2 == 0 ? 0 : 1f));
 
-				bool addDangler = chain.StickyInfo == null || chain.StickyInfo.Response == StickyInfo.ResponseType.Hint;
+				bool addDangler = chain.Depth < obj.PinCount && (chain.StickyInfo == null || chain.StickyInfo.Response == StickyInfo.ResponseType.Hint);
 				obj.SetChainDepth(chain.Depth - 1 + (addDangler ? 1 : 0));
 
 				for (int pinIndex = 0; pinIndex < obj.PinCount; pinIndex++) {
@@ -118,13 +118,31 @@ namespace Shipwreck {
 					EvidenceNode node;
 					if (pinIndex + 1 < chain.Depth && m_nodes.TryGetValue(chain.GetNodeInChain(pinIndex + 1), out node)) {
 						pin.SetPosition(WorldToScreenPoint(node.PinPosition));
+						pin.SetHomePosition(WorldToScreenPoint(node.SubPinPosition));
 					} else if (addDangler && pinIndex > 0 && pinIndex < chain.Depth && m_nodes.TryGetValue(chain.GetNodeInChain(pinIndex), out node)) {
 						pin.SetPosition(WorldToScreenPoint(node.SubPinPosition));
+						pin.SetHomePosition(WorldToScreenPoint(node.SubPinPosition));
 					}
 					pin.OnPointerDown += HandlePinPressed;
 					pin.OnPointerUp += HandlePinReleased;
 				}
 				m_chains.Add(chain.Root(), obj);
+				// set the inital color of the chain
+				if (chain.StickyInfo == null) {
+					obj.SetState(ChainStatus.Normal);
+				} else {
+					switch (chain.StickyInfo.Response) {
+						case StickyInfo.ResponseType.Correct:
+							obj.SetState(ChainStatus.Complete);
+							break;
+						case StickyInfo.ResponseType.Hint:
+							obj.SetState(ChainStatus.Normal);
+							break;
+						case StickyInfo.ResponseType.Incorrect:
+							obj.SetState(ChainStatus.Incorrect);
+							break;
+					}
+				}
 				
 			}
 
@@ -199,6 +217,7 @@ namespace Shipwreck {
 			} else if (Selected == null && !GameMgr.State.GetChain(m_rootsByPin[pin]).IsCorrect) {
 				m_selectedRoot = m_rootsByPin[pin];
 				m_selectedPin = m_pinsByRoot[m_selectedRoot].IndexOf(pin);
+				m_homePos = Selected.RectTransform.position;
 				m_pressPosition = InputMgr.Position;
 				Selected.RectTransform.SetAsLastSibling();
 				Lift();
@@ -243,19 +262,22 @@ namespace Shipwreck {
 				node = result.gameObject.GetComponent<EvidenceNode>();
 				if (node != null) {
 					Selected.SetPosition(WorldToScreenPoint(node.PinPosition));
+					Selected.SetHomePosition(WorldToScreenPoint(node.SubPinPosition));
 					chainState.Drop(node.NodeID);
 					break;
 				}
 			}
+			// if we didn't find a node, we need to return the pin home
+			if (node == null) {
+				Selected.FlyHome();
+			}
+
 			// determine what we do with the chain
 			
 			StickyInfo data = GameMgr.State.GetChain(m_selectedRoot).StickyInfo;
 			if (data == null) {
 				chainObj.SetState(ChainStatus.Normal);
-				if (node != null && m_selectedPin+1 < chainObj.PinCount) {
-					chainObj.SetChainDepth(m_selectedPin + 2);
-					chainObj.GetPin(m_selectedPin + 1).SetPosition(WorldToScreenPoint(node.SubPinPosition));
-				}
+				TryExtendingChain(chainObj, node);
 			} else {
 				switch (data.Response) {
 					case StickyInfo.ResponseType.Correct:
@@ -263,11 +285,7 @@ namespace Shipwreck {
 						break;
 					case StickyInfo.ResponseType.Hint:
 						chainObj.SetState(ChainStatus.Normal);
-						if (node != null && m_selectedPin+1 < chainObj.PinCount) {
-							chainObj.SetChainDepth(m_selectedPin + 2); //adds additional pin
-							// sets position of additional pin
-							chainObj.GetPin(m_selectedPin + 1).SetPosition(WorldToScreenPoint(node.SubPinPosition));
-						}
+						TryExtendingChain(chainObj, node);
 						break;
 					case StickyInfo.ResponseType.Incorrect:
 						chainObj.SetState(ChainStatus.Incorrect);
@@ -278,10 +296,18 @@ namespace Shipwreck {
 			m_dragging = false;
 		}
 
+		private void TryExtendingChain(EvidenceChain chainObj, EvidenceNode node) {
+			if (node != null && m_selectedPin + 1 < chainObj.PinCount) {
+				chainObj.SetChainDepth(m_selectedPin + 2);
+				EvidencePin newPin = chainObj.GetPin(m_selectedPin + 1);
+				newPin.SetPosition(WorldToScreenPoint(node.SubPinPosition));
+				newPin.SetHomePosition(WorldToScreenPoint(node.SubPinPosition));
+			}
+		}
+
 		private static Vector2 WorldToScreenPoint(Vector3 worldPoint) {
 			return RectTransformUtility.WorldToScreenPoint(Camera.main, worldPoint);
 		}
-
 
 		protected override IEnumerator ShowRoutine() {
 			yield return CanvasGroup.FadeTo(1f, 0.3f);
