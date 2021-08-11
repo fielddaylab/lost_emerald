@@ -7,10 +7,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4955296819537939987, guid: d5d738cfb4531fe47bd6fb9558be2959,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -130.2
+      objectReference: {fileID: 0}
     - target: {fileID: 6686339756038793321, guid: d5d738cfb4531fe47bd6fb9558be2959,
         type: 3}
       propertyPath: m_Name
-      value: Photo-LV1-Name
+      value: LV1-Photo-Name
       objectReference: {fileID: 0}
     - target: {fileID: 6869753205252457356, guid: d5d738cfb4531fe47bd6fb9558be2959,
         type: 3}

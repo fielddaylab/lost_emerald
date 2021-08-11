@@ -68,7 +68,7 @@ namespace Shipwreck {
 		private int m_selectedPin = -1;
 		private bool m_dragging;
 		private Vector2 m_pressPosition;
-		private Vector2 m_offset;
+		private Vector2 m_originalPosition;
 
 		private void Awake() {
 			m_layers = new Layers(m_nodeBackGroup, m_lineGroup, m_nodeFrontGroup, m_labelGroup, m_pinGroup);
@@ -104,6 +104,10 @@ namespace Shipwreck {
 				obj.transform.SetParent(root.RectTransform);
 				obj.transform.position = root.RectTransform.position;
 				obj.Setup(GameDb.GetNodeLocalizationKey(root.NodeID), m_layers, 20f + 40f * (chainIndex % 2 == 0 ? 0 : 1f));
+
+				bool addDangler = chain.StickyInfo == null || chain.StickyInfo.Response == StickyInfo.ResponseType.Hint;
+				obj.SetChainDepth(chain.Depth - 1 + (addDangler ? 1 : 0));
+
 				for (int pinIndex = 0; pinIndex < obj.PinCount; pinIndex++) {
 					EvidencePin pin = obj.GetPin(pinIndex);
 					if (!m_pinsByRoot.ContainsKey(root.NodeID)) {
@@ -111,14 +115,17 @@ namespace Shipwreck {
 					}
 					m_pinsByRoot[root.NodeID].Add(pin);
 					m_rootsByPin.Add(pin, root.NodeID);
-					if (pinIndex+1 < chain.Depth && m_nodes.TryGetValue(chain.GetNodeInChain(pinIndex+1), out EvidenceNode node)) {
+					EvidenceNode node;
+					if (pinIndex + 1 < chain.Depth && m_nodes.TryGetValue(chain.GetNodeInChain(pinIndex + 1), out node)) {
 						pin.SetPosition(WorldToScreenPoint(node.PinPosition));
+					} else if (addDangler && pinIndex > 0 && pinIndex < chain.Depth && m_nodes.TryGetValue(chain.GetNodeInChain(pinIndex), out node)) {
+						pin.SetPosition(WorldToScreenPoint(node.SubPinPosition));
 					}
 					pin.OnPointerDown += HandlePinPressed;
 					pin.OnPointerUp += HandlePinReleased;
 				}
 				m_chains.Add(chain.Root(), obj);
-				obj.SetChainDepth(chain.Depth); //hack?
+				
 			}
 
 			// ship out button is only available if the location root is solved
@@ -227,29 +234,43 @@ namespace Shipwreck {
 			PointerEventData eventData = new PointerEventData(EventSystem.current);
 			eventData.position = InputMgr.Position;
 			m_raycaster.Raycast(eventData, results);
+
+			IEvidenceChainState chainState = GameMgr.State.GetChain(m_selectedRoot);
+			EvidenceChain chainObj = m_chains[m_selectedRoot];
+			EvidenceNode node = null;
+
 			foreach (RaycastResult result in results) {
-				EvidenceNode node = result.gameObject.GetComponent<EvidenceNode>();
+				node = result.gameObject.GetComponent<EvidenceNode>();
 				if (node != null) {
 					Selected.SetPosition(WorldToScreenPoint(node.PinPosition));
-					GameMgr.State.GetChain(m_selectedRoot).Drop(node.NodeID);
+					chainState.Drop(node.NodeID);
 					break;
 				}
 			}
 			// determine what we do with the chain
-			EvidenceChain chain = m_chains[m_selectedRoot];
+			
 			StickyInfo data = GameMgr.State.GetChain(m_selectedRoot).StickyInfo;
 			if (data == null) {
-				chain.SetState(ChainStatus.Normal);
+				chainObj.SetState(ChainStatus.Normal);
+				if (node != null && m_selectedPin+1 < chainObj.PinCount) {
+					chainObj.SetChainDepth(m_selectedPin + 2);
+					chainObj.GetPin(m_selectedPin + 1).SetPosition(WorldToScreenPoint(node.SubPinPosition));
+				}
 			} else {
 				switch (data.Response) {
 					case StickyInfo.ResponseType.Correct:
-						chain.SetState(ChainStatus.Complete);
+						chainObj.SetState(ChainStatus.Complete);
 						break;
 					case StickyInfo.ResponseType.Hint:
-						chain.SetState(ChainStatus.Normal);
+						chainObj.SetState(ChainStatus.Normal);
+						if (node != null && m_selectedPin+1 < chainObj.PinCount) {
+							chainObj.SetChainDepth(m_selectedPin + 2); //adds additional pin
+							// sets position of additional pin
+							chainObj.GetPin(m_selectedPin + 1).SetPosition(WorldToScreenPoint(node.SubPinPosition));
+						}
 						break;
 					case StickyInfo.ResponseType.Incorrect:
-						chain.SetState(ChainStatus.Incorrect);
+						chainObj.SetState(ChainStatus.Incorrect);
 						break;
 				}
 			}

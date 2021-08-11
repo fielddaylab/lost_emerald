@@ -9,3 +9,8 @@
 @incorrect location-coordinates
 @anywhere
 	Should use Location instead
+
+:: shiptype-correct
+@root Type
+@correct card-canaller, photo-above
+	That's does look like a canaller!
