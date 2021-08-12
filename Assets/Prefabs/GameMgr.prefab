@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8c94d703918d024abf99d9d6c6505c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_destroyGameObject: 0
+  m_destroyGameObject: 1
   m_currentLanguage:
     m_code: en
   m_maps:

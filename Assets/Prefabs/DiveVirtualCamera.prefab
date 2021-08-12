@@ -60,7 +60,7 @@ MonoBehaviour:
   m_PivotOffset: {x: 0, y: 0, z: 0}
   m_AmplitudeGain: 0.5
   m_FrequencyGain: 0.5
-  mNoiseOffsets: {x: 0, y: 0, z: 0}
+  mNoiseOffsets: {x: 456.5532, y: -898.40845, z: 461.83652}
 --- !u!1 &3782994056335260743
 GameObject:
   m_ObjectHideFlags: 0
@@ -70,7 +70,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3782994056335260744}
-  - component: {fileID: 3782994056335260745}
+  - component: {fileID: 271552673938965440}
   m_Layer: 0
   m_Name: DiveVirtualCamera
   m_TagString: Untagged
@@ -94,7 +94,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3782994056335260745
+--- !u!114 &271552673938965440
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -103,16 +103,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3782994056335260743}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff65136eb55e847f8bd2b1c4ad4aadd7, type: 3}
+  m_Script: {fileID: 11500000, guid: a5b7e74352273134f9fd732616875407, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisVCam: {fileID: 3782994057673315725}
-  clickTarget: {fileID: 3782994057710387675}
-  clickTargetArt: {fileID: 3782994057710387674}
-  clickTargetColor: {r: 0, g: 1, b: 1, a: 0.5019608}
-  clickTargetSelectedColor: {r: 0, g: 0, b: 0, a: 0}
-  startCamera: 0
-  startingCameraDelay: 1
+  m_camera: {fileID: 3782994057673315725}
+  m_collider: {fileID: 3782994057710387675}
+  m_circleRenderer: {fileID: 3782994057710387676}
+  m_colorProperty: _BaseColor
 --- !u!1 &3782994057673315724
 GameObject:
   m_ObjectHideFlags: 0

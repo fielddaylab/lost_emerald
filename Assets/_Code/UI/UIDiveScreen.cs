@@ -73,10 +73,10 @@ namespace Shipwreck {
 
 		}
 		private void HandleCameraActivate() {
-			SetCameraMode(true);
+			SetCameraActive(true);
 		}
 		private void HandleCameraDeactivate() {
-			SetCameraMode(false);
+			SetCameraActive(false);
 		}
 		private void HandleTakePhoto() {
 
@@ -85,7 +85,7 @@ namespace Shipwreck {
 
 		}
 
-		private void SetCameraMode(bool isCameraActive) {
+		private void SetCameraActive(bool isCameraActive) {
 			if (isCameraActive) {
 				m_cameraGroup.SetActive(true);
 				m_buttonCameraActivate.gameObject.SetActive(false);
