@@ -75,6 +75,10 @@ MonoBehaviour:
     m_hash: -1055765747
   - m_key: UI/Evidence/ShipOut
     m_hash: -2100338616
+  - m_key: UI/Dive/Surface
+    m_hash: -365248406
+  - m_key: UI/Dive/Ascend
+    m_hash: 1167888525
   m_values:
   - Continue
   - Dad
@@ -106,3 +110,5 @@ MonoBehaviour:
   - Artifact
   - Back to Office
   - Ship Out!
+  - Surface
+  - Ascend

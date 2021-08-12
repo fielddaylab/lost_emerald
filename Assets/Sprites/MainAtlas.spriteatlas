@@ -99,6 +99,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 10998c0dd0895af408d4c4c412cbcc99, type: 3}
   - {fileID: 21300000, guid: 7fd12d0d3f284fa40899dc34b325317b, type: 3}
   - {fileID: 21300000, guid: b0ec3b8d44ae642358eb7e0701410eef, type: 3}
+  - {fileID: 21300000, guid: 386610bd888ebbc4eb6631dfa0c55859, type: 3}
   - {fileID: 21300000, guid: 23789fbd2fd5249f4ac73352c2d3c56c, type: 3}
   - {fileID: 21300000, guid: 068f40cd0e35b44deb9a030ef1e1ec13, type: 3}
   - {fileID: 21300000, guid: 811036ddaf37c49748c7d4a3fd0e152e, type: 3}
@@ -170,7 +171,8 @@ SpriteAtlas:
   - dad_icon
   - dad
   - amy_icon
-  - icon-jouirnal
+  - icon-journal
+  - EmptyRectangle_2px
   - knees-loretta
   - bouy
   - exclamation

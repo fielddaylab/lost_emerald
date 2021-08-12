@@ -238,6 +238,7 @@ namespace Shipwreck {
 			UIMgr.Close<UIEvidenceScreen>();
 			UIMgr.Close<UIPhoneNotif>();
 			SceneManager.LoadScene("Dive_Ship01"); // hack
+			UIMgr.Open<UIDiveScreen>();
 		}
 		private void HandleChainCorrect(StringHash32 root) {
 			if (root == m_locationRoot) {
