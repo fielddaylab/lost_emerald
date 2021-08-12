@@ -73,16 +73,28 @@ namespace Shipwreck {
 
 		}
 		private void HandleCameraActivate() {
-
+			SetCameraMode(true);
 		}
 		private void HandleCameraDeactivate() {
-
+			SetCameraMode(false);
 		}
 		private void HandleTakePhoto() {
 
 		}
 		private void HandleZoom(float value) {
 
+		}
+
+		private void SetCameraMode(bool isCameraActive) {
+			if (isCameraActive) {
+				m_cameraGroup.SetActive(true);
+				m_buttonCameraActivate.gameObject.SetActive(false);
+				m_buttonCameraDeactivate.gameObject.SetActive(true);
+			} else {
+				m_cameraGroup.SetActive(false);
+				m_buttonCameraActivate.gameObject.SetActive(true);
+				m_buttonCameraDeactivate.gameObject.SetActive(false);
+			}
 		}
 
 

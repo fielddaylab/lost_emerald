@@ -123,8 +123,8 @@ CanvasGroup:
   m_GameObject: {fileID: 1022739091089765914}
   m_Enabled: 1
   m_Alpha: 0
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!1 &1788899801021723325
 GameObject:
@@ -728,7 +728,7 @@ MonoBehaviour:
   m_Sprite: {fileID: 21300000, guid: 386610bd888ebbc4eb6631dfa0c55859, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
-  m_FillCenter: 1
+  m_FillCenter: 0
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
@@ -974,7 +974,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 8147553686502634968}
+  m_TargetGraphic: {fileID: 6596676443980761412}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
