@@ -16,17 +16,19 @@ namespace Shipwreck {
 		//private string m_colorProperty = "_BaseColor";
 
 		private DivePointOfInterest m_pointOfInterest;
+		private Vector3 m_startPosition;
+		private Routine m_zoomRoutine;
 		//private Routine m_colorRoutine;
+
+		private void Awake() {
+			m_startPosition = m_camera.transform.position;
+		}
 
 		public void Prioritize() {
 			m_camera.Priority = 10;
-			m_collider.enabled = false;
-			m_circleRenderer.enabled = false;
 		}
 		public void Deprioritize() {
 			m_camera.Priority = 0;
-			m_collider.enabled = true;
-			m_circleRenderer.enabled = true;
 		}
 		public bool MatchesCollider(Collider collider) {
 			return m_collider == collider;
@@ -38,6 +40,24 @@ namespace Shipwreck {
 			// it is acceptable that this can return null
 			return m_pointOfInterest;
 		}
+
+		public void SetActive(bool isActive) {
+			m_collider.enabled = isActive;
+			m_circleRenderer.enabled = isActive;
+		}
+
+		public void SetZoom(float percent) {
+			m_zoomRoutine.Replace(this, Tween.Float(
+				m_camera.m_Lens.FieldOfView,
+				60f - 30f * percent,
+				FieldOfViewSetter, 0.1f
+			).Ease(Curve.QuadOut));
+			//m_startPosition + m_camera.transform.forward * 5f * percent, 
+		}
+		private void FieldOfViewSetter(float value) {
+			m_camera.m_Lens.FieldOfView = value;
+		}
+
 		/*
 		public void SetColor(Color color) {
 			m_colorRoutine.Replace(this, m_circleRenderer.material.ColorTo(m_colorProperty, color, 0.25f, ColorUpdate.FullColor).Ease(Curve.QuadInOut));

@@ -46,7 +46,6 @@ SpriteAtlas:
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
-  - {fileID: 21300000, guid: ab5b3c307990f48cc9b29102602da7cb, type: 3}
   - {fileID: 21300000, guid: 82cbce30f03431f44bf2b7d0a42b9784, type: 3}
   - {fileID: 21300000, guid: 1ef17280142431044ba4e08b167d830a, type: 3}
   - {fileID: 21300000, guid: 13ee57b005423384a864133f2aa056dc, type: 3}
@@ -72,7 +71,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: a418b694415c84967abd730e9eb95a7d, type: 3}
   - {fileID: 21300000, guid: 65c26de4f69714d11b1cd5e2bb9de646, type: 3}
   - {fileID: 21300000, guid: 18ce4d25aa2b140caad634c3dd4b69e2, type: 3}
-  - {fileID: 21300000, guid: 6be63d36b12b94ca4acfbb13a855f669, type: 3}
   - {fileID: 21300000, guid: b92d2866ce79293478f277897bd0ad16, type: 3}
   - {fileID: 21300000, guid: 67168c86290185a4198db8cf6eea2dd6, type: 3}
   - {fileID: 21300000, guid: f2f043070615e5d44bf1c5cf2ff5c0b5, type: 3}
@@ -100,15 +98,12 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 7fd12d0d3f284fa40899dc34b325317b, type: 3}
   - {fileID: 21300000, guid: b0ec3b8d44ae642358eb7e0701410eef, type: 3}
   - {fileID: 21300000, guid: 386610bd888ebbc4eb6631dfa0c55859, type: 3}
-  - {fileID: 21300000, guid: 23789fbd2fd5249f4ac73352c2d3c56c, type: 3}
   - {fileID: 21300000, guid: 068f40cd0e35b44deb9a030ef1e1ec13, type: 3}
   - {fileID: 21300000, guid: 811036ddaf37c49748c7d4a3fd0e152e, type: 3}
   - {fileID: 21300000, guid: c4dd4fdd9b744414dbd607f60e3fd758, type: 3}
   - {fileID: 21300000, guid: cb86ceede706ea24bad46cf5d26b1bae, type: 3}
   - {fileID: 21300000, guid: ca052dfdd98a1c742b96af83bb3b4cc4, type: 3}
   - {fileID: 21300000, guid: 33ac414e0a466684d9d2c58fd2b8dbab, type: 3}
-  - {fileID: 21300000, guid: 8f725d4e1f1d847aeba98ae57a66cabd, type: 3}
-  - {fileID: 21300000, guid: 72eec86ee8bb44374aa11456898a50d6, type: 3}
   - {fileID: 21300000, guid: 7d1d53ae8d55e994598b2b84b04588df, type: 3}
   - {fileID: 21300000, guid: 3cb1d3de80ee9461498367b28b05b097, type: 3}
   - {fileID: 21300000, guid: 374dc90f739bee04a877d6898de07475, type: 3}
@@ -119,7 +114,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 8af87aaf45b9a45b1ac10e59eb8cc01e, type: 3}
   - {fileID: 21300000, guid: c956dfeff8861461abdf841b67df1f27, type: 3}
   m_PackedSpriteNamesToIndex:
-  - knees-timberland
   - office-background
   - button-face
   - node-main
@@ -145,7 +139,6 @@ SpriteAtlas:
   - camera-frame
   - journal
   - camera-button-close
-  - shadow
   - triangle
   - circle
   - photo-knife
@@ -173,15 +166,12 @@ SpriteAtlas:
   - amy_icon
   - icon-journal
   - EmptyRectangle_2px
-  - knees-loretta
   - bouy
   - exclamation
   - phone-full
   - lou_icon
   - PhoneDialog
   - zoom-out
-  - grandpa-postcard-back
-  - grandpa-postcard-photo
   - RoundedRect100
   - photo-ship-name
   - back-arrow

@@ -36,6 +36,11 @@ namespace Shipwreck {
 			}
 		}
 
+		protected override void OnDestroy() {
+			base.OnDestroy();
+			Destroy(gameObject);
+		}
+
 		/// <summary>
 		/// Opens the given screen
 		/// </summary>

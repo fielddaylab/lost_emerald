@@ -79,6 +79,22 @@ MonoBehaviour:
     m_hash: -365248406
   - m_key: UI/Dive/Ascend
     m_hash: 1167888525
+  - m_key: Dive/Message/Nothing
+    m_hash: 1500459705
+  - m_key: Dive/Message/ZoomOut
+    m_hash: 1337769553
+  - m_key: Dive/Message/ZoomIn
+    m_hash: 557825796
+  - m_key: Dive/Message/AlreadyTaken
+    m_hash: 2121355039
+  - m_key: Dive/Level1/Above
+    m_hash: 963169315
+  - m_key: Dive/Level1/Name
+    m_hash: -775899671
+  - m_key: Dive/Level1/Artifact
+    m_hash: -217225992
+  - m_key: UI/Dive/SavePhoto
+    m_hash: 287490530
   m_values:
   - Continue
   - Dad
@@ -112,3 +128,11 @@ MonoBehaviour:
   - Ship Out!
   - Surface
   - Ascend
+  - Nothing to see here.
+  - I should zoom out to get a better view.
+  - I should zoom in to catch a better shot.
+  - We already took a picture of this!
+  - That's a great birds-eye... er fish-eye view of the ship!
+  - It's missing some letters, but this certainly looks like the ship's name!
+  - Woah! That's a cool knife! I wonder whose it was?
+  - Save Photo

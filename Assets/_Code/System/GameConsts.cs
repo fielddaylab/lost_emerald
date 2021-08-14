@@ -13,7 +13,20 @@ namespace Shipwreck {
         public static readonly StringHash32 PhoneClosed = "PhoneClosed";
         public static readonly StringHash32 DialogOpened = "DialogOpened";
         public static readonly StringHash32 DialogClosed = "DialogClosed";
-    }
+
+		public static class Dive {
+			public static readonly StringHash32 NavigationActivated = "NavigationActivated";
+			public static readonly StringHash32 NavigationDeactivated = "NavigationDeactivated";
+			public static readonly StringHash32 LocationChanging = "LocationChanging";
+			public static readonly StringHash32 CameraActivated = "CameraActivated";
+			public static readonly StringHash32 CameraDeactivated = "CameraDeactivated";
+			public static readonly StringHash32 CameraZoomChanged = "CameraZoomChanged";
+			public static readonly StringHash32 CameraTransitionComplete = "CameraTransitionComplete";
+			public static readonly StringHash32 ShowMessage = "ShowDiveMessage";
+			public static readonly StringHash32 AttemptPhoto = "AttemptPhoto";
+			public static readonly StringHash32 ConfirmPhoto = "ConfirmPhoto";
+		}
+	}
 
     public static class GameTriggers {
 

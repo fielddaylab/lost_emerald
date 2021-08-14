@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using BeauUtil;
+using PotatoLocalization;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -17,9 +18,14 @@ namespace Shipwreck {
 		public float ZoomMax {
 			get { return m_zoomMax; }
 		}
+		public LocalizationKey UnlockMessage {
+			get { return m_unlockMessage; }
+		}
 
 		[SerializeField]
 		private SerializedHash32 m_evidenceUnlock = StringHash32.Null;
+		[SerializeField]
+		private LocalizationKey m_unlockMessage = LocalizationKey.Empty;
 		[SerializeField]
 		private float m_zoomMin = 0f;
 		[SerializeField]
@@ -38,9 +44,10 @@ namespace Shipwreck {
 
 				EditorGUI.BeginChangeCheck();
 				EditorGUILayout.PropertyField(serializedObject.FindProperty("m_evidenceUnlock"));
+				EditorGUILayout.PropertyField(serializedObject.FindProperty("m_unlockMessage"));
 
 				EditorGUILayout.BeginHorizontal();
-				EditorGUILayout.PrefixLabel(new GUIContent("Required Zoom"));
+				EditorGUILayout.PrefixLabel(new GUIContent("Zoom Range"));
 				EditorGUILayout.LabelField(min.ToString("0.000"), GUILayout.Width(40f));
 				EditorGUILayout.MinMaxSlider(ref min, ref max, 0f, 1f);
 				EditorGUILayout.LabelField(max.ToString("0.000"), GUILayout.Width(40f));

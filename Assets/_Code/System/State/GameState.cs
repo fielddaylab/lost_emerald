@@ -18,11 +18,14 @@ namespace Shipwreck {
 		bool IsContactUnlocked(StringHash32 contactId);
 		bool IsLevelUnlocked(int levelUnlocked);
 
+		bool IsEvidenceUnlocked(StringHash32 evidenceId);
+
 		StringHash32 GetContactNotificationId(StringHash32 contactId);
 		uint NotificationCount();
 
 		bool HasVisitedNode(ScriptNode node);
 		bool HasVisitedNode(StringHash32 nodeId);
+		
 	}
 
 
@@ -98,6 +101,9 @@ namespace Shipwreck {
 					throw new IndexOutOfRangeException();
 				}
 				return m_levelStates[levelIndex].IsUnlocked;
+			}
+			public bool IsEvidenceUnlocked(StringHash32 evidenceId) {
+				return m_levelStates[m_levelIndex].IsEvidenceUnlocked(evidenceId);
 			}
 
 			public bool UnlockContact(StringHash32 contact) {
