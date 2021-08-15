@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -694,8 +694,8 @@ MonoBehaviour:
     m_Source: LV1-Photo-Name
     m_Hash: 2678298889
   m_unlockMessage:
-    m_key: 
-    m_hash: 0
+    m_key: Dive/Level1/Name
+    m_hash: -775899671
   m_zoomMin: 0
   m_zoomMax: 1
 --- !u!1001 &694113275
@@ -846,8 +846,8 @@ MonoBehaviour:
     m_Source: LV1-Photo-Artifact
     m_Hash: 3548122392
   m_unlockMessage:
-    m_key: 
-    m_hash: 0
+    m_key: Dive/Level1/Artifact
+    m_hash: -217225992
   m_zoomMin: 0.4972063
   m_zoomMax: 1
 --- !u!1001 &809869921
@@ -1971,8 +1971,8 @@ MonoBehaviour:
     m_Source: LV1-Photo-Above
     m_Hash: 1599642307
   m_unlockMessage:
-    m_key: 
-    m_hash: 0
+    m_key: Dive/Level1/Above
+    m_hash: 963169315
   m_zoomMin: 0
   m_zoomMax: 0.15083799
 --- !u!1001 &1808463862

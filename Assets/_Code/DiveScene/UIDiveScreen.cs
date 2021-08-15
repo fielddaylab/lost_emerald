@@ -1,4 +1,5 @@
 ﻿using BeauRoutine;
+using BeauUtil;
 using PotatoLocalization;
 using System;
 using System.Collections;
@@ -12,15 +13,16 @@ namespace Shipwreck {
 	public sealed partial class UIDiveScreen : UIBase { 
 
 		private interface IDiveScreen {
-
 			DiveScreenState Previous { get; }
-			
 			void SetState(DiveScreenState state);
 			void SetCameraActive(bool isActive);
 			void SetNavigationActive(bool isActive);
+			void SetCameraZoom(float value);
 			void FlashCamera(Action callback);
 			void WaitForCameraTransitionEnd(Action callback);
 			void AssignPreviousState(DiveScreenState state);
+			void ShowMessageBox(LocalizationKey m_text, LocalizationKey m_button);
+			void HideMessageBox();
 		}
 
 		private class StateLinkage : IDiveScreen {
@@ -43,6 +45,9 @@ namespace Shipwreck {
 			public void SetNavigationActive(bool isActive) {
 				m_owner.SetNavigationActive(isActive);
 			}
+			public void SetCameraZoom(float value) {
+				m_owner.m_sliderZoom.value = value;
+			}
 			public void SetState(DiveScreenState state) {
 				m_owner.SetState(state);
 			}
@@ -51,6 +56,12 @@ namespace Shipwreck {
 			}
 			public void WaitForCameraTransitionEnd(Action callback) {
 				m_owner.WaitForCameraTransitionEnd(callback);
+			}
+			public void ShowMessageBox(LocalizationKey m_text, LocalizationKey m_button) {
+				m_owner.ShowMessageBox(m_text, m_button);
+			}
+			public void HideMessageBox() {
+				m_owner.HideMessageBox();
 			}
 		}
 
@@ -75,7 +86,7 @@ namespace Shipwreck {
 		private GameObject m_cameraGroup = null;
 
 		[SerializeField, Header("Message Box")]
-		private GameObject m_messageGroup = null; 
+		private RectTransform m_messageGroup = null; 
 		[SerializeField]
 		private LocalizedTextUGUI m_messageText = null;
 		[SerializeField]
@@ -92,6 +103,7 @@ namespace Shipwreck {
 		private DiveScreenState m_previousState;
 		private bool m_isAscended = true;
 		private Routine m_flashRoutine;
+		private Routine m_messageRoutine;
 
 
 		protected override void OnShowCompleted() {
@@ -111,7 +123,7 @@ namespace Shipwreck {
 			m_messageButton.onClick.AddListener(HandleCloseMessage);
 			m_sliderZoom.onValueChanged.AddListener(HandleZoom);
 
-			GameMgr.Events.Register(GameEvents.Dive.ConfirmPhoto, HandleConfirmPhoto);
+			GameMgr.Events.Register<StringHash32>(GameEvents.Dive.ConfirmPhoto, HandleConfirmPhoto);
 			GameMgr.Events.Register<LocalizationKey>(GameEvents.Dive.ShowMessage, HandleShowMessage);
 			GameMgr.Events.Register(GameEvents.Dive.LocationChanging, HandleLocationChanging);
 
@@ -160,8 +172,8 @@ namespace Shipwreck {
 		private void HandleAttemptPhoto() {
 			m_currentState.OnAttemptPhoto();
 		}
-		private void HandleConfirmPhoto() {
-			m_currentState.OnConfirmPhoto();
+		private void HandleConfirmPhoto(StringHash32 evidence) {
+			m_currentState.OnConfirmPhoto(evidence);
 		}
 
 		private void HandleZoom(float value) {
@@ -191,7 +203,6 @@ namespace Shipwreck {
 				m_currentState.OnEnd();
 			}
 			m_currentState = state;
-			Debug.Log("State is: " + m_currentState.GetType().Name);
 			m_currentState.OnStart();
 		}
 
@@ -200,7 +211,6 @@ namespace Shipwreck {
 				m_cameraGroup.SetActive(true);
 				m_buttonCameraDeactivate.gameObject.SetActive(true);
 			} else {
-				m_sliderZoom.value = 0f;
 				m_cameraGroup.SetActive(false);
 				m_buttonCameraDeactivate.gameObject.SetActive(false);
 			}
@@ -220,6 +230,16 @@ namespace Shipwreck {
 				m_buttonJournal.gameObject.SetActive(false);
 			}
 		}
+		private void ShowMessageBox(LocalizationKey message, LocalizationKey buttonText) {
+			m_messageText.Key = message;
+			m_messageButtonText.Key = buttonText;
+			m_messageGroup.anchoredPosition = new Vector2(m_messageGroup.anchoredPosition.x, m_messageHiddenY);
+			m_messageRoutine.Replace(this, m_messageGroup.AnchorPosTo(m_messageShownY, 0.25f, Axis.Y).Ease(Curve.QuadOut));
+		}
+		private void HideMessageBox() {
+			m_messageRoutine.Replace(this, m_messageGroup.AnchorPosTo(m_messageHiddenY, 0.25f, Axis.Y).Ease(Curve.QuadOut));
+		}
+
 		private void FlashCamera(Action callback) {
 			m_flashRoutine.Replace(this, FlashCameraRoutine()).OnComplete(callback).OnStop(callback);
 		}
@@ -247,8 +267,6 @@ namespace Shipwreck {
 
 
 		#endregion
-
-
-
+ 
 	}
 }

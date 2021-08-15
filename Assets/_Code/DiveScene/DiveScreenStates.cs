@@ -1,4 +1,5 @@
-﻿using PotatoLocalization;
+﻿using BeauUtil;
+using PotatoLocalization;
 
 namespace Shipwreck {
 
@@ -21,7 +22,7 @@ namespace Shipwreck {
 			public virtual void OnCameraDeactivate() { }
 			public virtual void OnShowMessage(LocalizationKey key) { }
 			public virtual void OnAttemptPhoto() { }
-			public virtual void OnConfirmPhoto() { }
+			public virtual void OnConfirmPhoto(StringHash32 evidence) { }
 			public virtual void OnCloseMessage() { }
 			public virtual void OnLocationChange() { }
 		}
@@ -74,10 +75,12 @@ namespace Shipwreck {
 			public override void OnAttemptPhoto() {
 				GameMgr.Events.Dispatch(GameEvents.Dive.AttemptPhoto);
 			}
-			public override void OnConfirmPhoto() {
+			public override void OnConfirmPhoto(StringHash32 evidence) {
+				GameMgr.UnlockEvidence(evidence);
 				Screen.SetState(new DiveTakePhoto(Screen));
 			}
 			public override void OnCameraDeactivate() {
+				Screen.SetCameraZoom(0f);
 				Screen.SetState(new DiveNavigation(Screen));
 			}
 			public override void OnShowMessage(LocalizationKey key) {
@@ -93,7 +96,11 @@ namespace Shipwreck {
 				m_button = buttonKey;
 			}
 			public override void OnStart() {
-				
+				Screen.ShowMessageBox(m_text,m_button);
+			}
+			public override void OnCloseMessage() {
+				Screen.HideMessageBox();
+				Screen.SetState(Screen.Previous);
 			}
 		}
 		private class DiveTakePhoto : DiveScreenState {

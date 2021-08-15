@@ -183,6 +183,17 @@ namespace Shipwreck
 			}
 		}
 
+		public static void UnlockEvidence(StringHash32 groupId) {
+			if (I.m_state.UnlockEvidence(I.m_selectedLevel, groupId)) {
+				Events.Dispatch(GameEvents.EvidenceUnlocked, groupId);
+				using (var table = TempVarTable.Alloc()) {
+					table.Set("levelIndex", I.m_selectedLevel+1);
+					table.Set("evidence", groupId);
+					RunTrigger(GameTriggers.OnEvidenceUnlock, table);
+				}
+			}
+		}
+
 
 		[LeafMember]
 		private static bool HasContact(StringHash32 contact) {
