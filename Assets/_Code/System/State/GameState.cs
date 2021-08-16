@@ -75,7 +75,6 @@ namespace Shipwreck {
 					new LevelState(), new LevelState(),
 					new LevelState(), new LevelState()
 				};
-				m_levelStates[0].Unlock();
 			}
 
 			public IEnumerable<IEvidenceGroupState> GetEvidence() {

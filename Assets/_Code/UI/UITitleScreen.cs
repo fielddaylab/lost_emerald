@@ -10,12 +10,16 @@ namespace Shipwreck {
 
 		[SerializeField]
 		private Button m_newGameButton = null;
+		[SerializeField]
+		private Button m_unlockButton = null;
 
 		private void OnEnable() {
 			m_newGameButton.onClick.AddListener(HandleNewGame);
+			m_unlockButton.onClick.AddListener(HandleUnlock);
 		}
 		private void OnDisable() {
 			m_newGameButton.onClick.RemoveListener(HandleNewGame);
+			m_unlockButton.onClick.RemoveListener(HandleUnlock);
 		}
 
 		protected override void OnShowStart() {
@@ -37,6 +41,11 @@ namespace Shipwreck {
 				UIMgr.Open<UIOfficeScreen>();
 				UIPhoneNotif.AttemptReopen();
 			});
+		}
+		private void HandleUnlock() {
+			GameMgr.UnlockLevel(1);
+			GameMgr.UnlockEvidence("LV1-Root");
+			GameMgr.UnlockEvidence("LV1-Transcript-Lou");
 		}
 
 
