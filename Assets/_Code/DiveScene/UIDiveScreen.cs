@@ -17,6 +17,8 @@ namespace Shipwreck {
 
 		private interface IDiveScreen {
 			DiveScreenState Previous { get; }
+			bool IsAtAscendNode { get; set; }
+
 			void SetState(DiveScreenState state);
 			void SetCameraActive(bool isActive);
 			void SetNavigationActive(bool isActive);
@@ -34,6 +36,10 @@ namespace Shipwreck {
 
 			public DiveScreenState Previous { 
 				get { return m_owner.m_previousState; } 
+			}
+			public bool IsAtAscendNode { 
+				get { return m_owner.m_isAscended; }
+				set { m_owner.m_isAscended = value; }
 			}
 
 			private readonly UIDiveScreen m_owner;
@@ -159,7 +165,7 @@ namespace Shipwreck {
 
 			GameMgr.Events.Register<StringHash32>(GameEvents.Dive.ConfirmPhoto, HandleConfirmPhoto);
 			GameMgr.Events.Register<LocalizationKey>(GameEvents.Dive.ShowMessage, HandleShowMessage);
-			GameMgr.Events.Register(GameEvents.Dive.LocationChanging, HandleLocationChanging);
+			GameMgr.Events.Register<bool>(GameEvents.Dive.LocationChanging, HandleLocationChanging);
 			GameMgr.Events.Register<List<DivePointOfInterest>>(GameEvents.Dive.SendPhotoList, HandlePhotoListSent);
 
 			GameMgr.Events.Dispatch(GameEvents.Dive.NavigationDeactivated);
@@ -172,12 +178,13 @@ namespace Shipwreck {
 			m_buttonCameraActivate.onClick.RemoveListener(HandleCameraActivateButton);
 			m_buttonCameraDeactivate.onClick.RemoveListener(HandleCameraDeactivateButton);
 			m_buttonTakePhoto.onClick.RemoveListener(HandleAttemptPhotoButton);
+			m_messageButton.onClick.RemoveListener(HandleCloseMessage);
 			m_sliderZoom.onValueChanged.RemoveListener(HandleZoomSlider);
 			m_journalCloseButton.onClick.RemoveListener(HandleJournalCloseButton);
 
 			GameMgr.Events.Deregister<StringHash32>(GameEvents.Dive.ConfirmPhoto, HandleConfirmPhoto);
 			GameMgr.Events.Deregister<LocalizationKey>(GameEvents.Dive.ShowMessage, HandleShowMessage);
-			GameMgr.Events.Deregister(GameEvents.Dive.LocationChanging, HandleLocationChanging);
+			GameMgr.Events.Deregister<bool>(GameEvents.Dive.LocationChanging, HandleLocationChanging);
 			GameMgr.Events.Deregister<List<DivePointOfInterest>>(GameEvents.Dive.SendPhotoList, HandlePhotoListSent);
 		}
 
@@ -194,8 +201,6 @@ namespace Shipwreck {
 
 		#region Event Handlers
 
-		
-
 		private void HandlePhotoListSent(List<DivePointOfInterest> list) {
 			for (int ix = 0; ix < m_journalChecklist.childCount; ix++) {
 				Destroy(m_journalChecklist.GetChild(ix).gameObject);
@@ -209,13 +214,10 @@ namespace Shipwreck {
 		}
 
 		private void HandleAscendButton() {
-			
+			m_currentState.OnAscend();
 		}
 		private void HandleSurfaceButton() {
-			UIMgr.Close<UIDiveScreen>();
-			SceneManager.LoadScene("Main");
-			UIMgr.Open<UIOfficeScreen>();
-			UIMgr.Open<UIPhoneNotif>();
+			m_currentState.OnSurface();
 		}
 		private void HandleJournalOpenButton() {
 			m_currentState.OnOpenJournal();
@@ -247,8 +249,8 @@ namespace Shipwreck {
 			m_currentState.OnCloseMessage();
 		}
 
-		private void HandleLocationChanging() {
-			m_currentState.OnLocationChange();
+		private void HandleLocationChanging(bool isAscendNode) {			
+			m_currentState.OnLocationChange(isAscendNode);
 		}
 
 		#endregion

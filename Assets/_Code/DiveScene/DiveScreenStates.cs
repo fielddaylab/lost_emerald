@@ -1,6 +1,7 @@
 ﻿using BeauUtil;
 using PotatoLocalization;
 using System;
+using UnityEngine.SceneManagement;
 
 namespace Shipwreck {
 
@@ -25,7 +26,7 @@ namespace Shipwreck {
 			public virtual void OnAttemptPhoto() { }
 			public virtual void OnConfirmPhoto(StringHash32 evidence) { }
 			public virtual void OnCloseMessage() { }
-			public virtual void OnLocationChange() { }
+			public virtual void OnLocationChange(bool isAscendNode) { }
 			public virtual void OnOpenJournal() { }
 			public virtual void OnCloseJournal() { }
 		}
@@ -43,7 +44,8 @@ namespace Shipwreck {
 				Screen.AssignPreviousState(this);
 				GameMgr.Events.Dispatch(GameEvents.Dive.NavigationDeactivated);
 			}
-			public override void OnLocationChange() {
+			public override void OnLocationChange(bool isAscendNode) {
+				Screen.IsAtAscendNode = isAscendNode;
 				Screen.SetState(new DiveMoving(Screen));
 			}
 			public override void OnCameraActivate() {
@@ -51,6 +53,19 @@ namespace Shipwreck {
 			}
 			public override void OnOpenJournal() {
 				Screen.SetState(new DiveJournal(Screen));
+			}
+			public override void OnAscend() {
+				if (!Screen.IsAtAscendNode) {
+					GameMgr.Events.Dispatch(GameEvents.Dive.NavigateToAscendNode);
+				}
+			}
+			public override void OnSurface() {
+				if (Screen.IsAtAscendNode) {
+					UIMgr.Close<UIDiveScreen>();
+					SceneManager.LoadScene("Main");
+					UIMgr.Open<UIOfficeScreen>();
+					UIMgr.Open<UIPhoneNotif>();
+				}
 			}
 
 		}
@@ -143,7 +158,6 @@ namespace Shipwreck {
 			public override void OnEnd() {
 				Screen.HideJournal();
 			}
-
 			public override void OnCloseJournal() {
 				Screen.SetState(Screen.Previous);
 			}

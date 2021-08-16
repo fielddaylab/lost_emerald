@@ -42,6 +42,7 @@ namespace Shipwreck {
 			GameMgr.Events.Register(GameEvents.Dive.NavigationActivated, HandleNavActivated);
 			GameMgr.Events.Register(GameEvents.Dive.NavigationDeactivated, HandleNavDeactivated);
 			GameMgr.Events.Register(GameEvents.Dive.RequestPhotoList, HandlePhotoListRequested);
+			GameMgr.Events.Register(GameEvents.Dive.NavigateToAscendNode, HandleNavToAscendNode);
 		}
 		private void OnDestroy() {
 			if (!GameMgr.Exists) {
@@ -53,6 +54,7 @@ namespace Shipwreck {
 			GameMgr.Events.Deregister(GameEvents.Dive.NavigationActivated, HandleNavActivated);
 			GameMgr.Events.Deregister(GameEvents.Dive.NavigationDeactivated, HandleNavDeactivated);
 			GameMgr.Events.Deregister(GameEvents.Dive.RequestPhotoList, HandlePhotoListRequested);
+			GameMgr.Events.Deregister(GameEvents.Dive.NavigateToAscendNode, HandleNavToAscendNode);
 		}
 
 		private void HandleAttemptPhoto() {
@@ -96,6 +98,10 @@ namespace Shipwreck {
 			m_isNavActive = false;
 		}
 
+		private void HandleNavToAscendNode() {
+			SetNode(m_startNode);
+		}
+
 		private void HandleInteractPressed() {
 			if (m_isNavActive && Physics.Raycast(Camera.main.ScreenPointToRay(InputMgr.Position), out RaycastHit hit)) {
 				foreach (DiveNode node in m_diveNodes) {
@@ -128,7 +134,7 @@ namespace Shipwreck {
 			m_currentNode.Prioritize();
 			m_currentNode.SetActive(false);
 			m_transitionRoutine.Replace(this, WaitForTransitionRoutine());
-			GameMgr.Events.Dispatch(GameEvents.Dive.LocationChanging);
+			GameMgr.Events.Dispatch(GameEvents.Dive.LocationChanging, m_currentNode == m_startNode);
 		}
 
 		private IEnumerator WaitForTransitionRoutine() {

@@ -17,6 +17,7 @@ namespace Shipwreck {
 		public static class Dive {
 			public static readonly StringHash32 NavigationActivated = "NavigationActivated";
 			public static readonly StringHash32 NavigationDeactivated = "NavigationDeactivated";
+			public static readonly StringHash32 NavigateToAscendNode = "NavigateToAscendNode";
 			public static readonly StringHash32 LocationChanging = "LocationChanging";
 			public static readonly StringHash32 CameraActivated = "CameraActivated";
 			public static readonly StringHash32 CameraDeactivated = "CameraDeactivated";
