@@ -3,6 +3,7 @@ using BeauUtil;
 using PotatoLocalization;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -10,7 +11,9 @@ using UnityEngine.UI;
 namespace Shipwreck {
 
 
-	public sealed partial class UIDiveScreen : UIBase { 
+	public sealed partial class UIDiveScreen : UIBase {
+
+		#region Classes
 
 		private interface IDiveScreen {
 			DiveScreenState Previous { get; }
@@ -23,6 +26,8 @@ namespace Shipwreck {
 			void AssignPreviousState(DiveScreenState state);
 			void ShowMessageBox(LocalizationKey m_text, LocalizationKey m_button);
 			void HideMessageBox();
+			void ShowJournal();
+			void HideJournal();
 		}
 
 		private class StateLinkage : IDiveScreen {
@@ -63,8 +68,15 @@ namespace Shipwreck {
 			public void HideMessageBox() {
 				m_owner.HideMessageBox();
 			}
+			public void ShowJournal() {
+				m_owner.ShowJournal();
+			}
+			public void HideJournal() {
+				m_owner.HideJournal();
+			}
 		}
 
+		#endregion
 
 		[SerializeField]
 		private Button m_buttonAscend = null;
@@ -98,6 +110,25 @@ namespace Shipwreck {
 		[SerializeField]
 		private float m_messageShownY = 112f;
 
+		[SerializeField, Header("Journal")]
+		private RectTransform m_journalGroup = null;
+		[SerializeField]
+		private float m_journalHiddenX = -400f;
+		[SerializeField]
+		private float m_journalShownX = 0f;
+		[SerializeField]
+		private DiveJournalItem m_journalItemPrefab = null;
+
+		[SerializeField]
+		private RectTransform m_journalChecklist = null;
+		[SerializeField]
+		private Button m_journalCloseButton = null;
+
+		private Routine m_journalShowHideRoutine;
+
+		
+
+
 		private StateLinkage m_stateLink;
 		private DiveScreenState m_currentState;
 		private DiveScreenState m_previousState;
@@ -105,6 +136,7 @@ namespace Shipwreck {
 		private Routine m_flashRoutine;
 		private Routine m_messageRoutine;
 
+		#region UIBase
 
 		protected override void OnShowCompleted() {
 			base.OnShowCompleted();
@@ -114,30 +146,39 @@ namespace Shipwreck {
 
 			SetNavigationActive(false);
 
-			m_buttonAscend.onClick.AddListener(HandleAscend);
-			m_buttonSurface.onClick.AddListener(HandleSurface);
-			m_buttonJournal.onClick.AddListener(HandleJournalOpen);
-			m_buttonCameraActivate.onClick.AddListener(HandleCameraActivate);
-			m_buttonCameraDeactivate.onClick.AddListener(HandleCameraDeactivate);
-			m_buttonTakePhoto.onClick.AddListener(HandleAttemptPhoto);
+			m_buttonAscend.onClick.AddListener(HandleAscendButton);
+			m_buttonSurface.onClick.AddListener(HandleSurfaceButton);
+			m_buttonJournal.onClick.AddListener(HandleJournalOpenButton);
+			m_buttonCameraActivate.onClick.AddListener(HandleCameraActivateButton);
+			m_buttonCameraDeactivate.onClick.AddListener(HandleCameraDeactivateButton);
+			m_buttonTakePhoto.onClick.AddListener(HandleAttemptPhotoButton);
+			m_journalCloseButton.onClick.AddListener(HandleJournalCloseButton);
 			m_messageButton.onClick.AddListener(HandleCloseMessage);
-			m_sliderZoom.onValueChanged.AddListener(HandleZoom);
+			m_sliderZoom.onValueChanged.AddListener(HandleZoomSlider);
+
 
 			GameMgr.Events.Register<StringHash32>(GameEvents.Dive.ConfirmPhoto, HandleConfirmPhoto);
 			GameMgr.Events.Register<LocalizationKey>(GameEvents.Dive.ShowMessage, HandleShowMessage);
 			GameMgr.Events.Register(GameEvents.Dive.LocationChanging, HandleLocationChanging);
+			GameMgr.Events.Register<List<DivePointOfInterest>>(GameEvents.Dive.SendPhotoList, HandlePhotoListSent);
 
 			GameMgr.Events.Dispatch(GameEvents.Dive.NavigationDeactivated);
 		}
 		protected override void OnHideStart() {
 			base.OnHideStart();
-			m_buttonAscend.onClick.RemoveListener(HandleAscend);
-			m_buttonSurface.onClick.RemoveListener(HandleSurface);
-			m_buttonJournal.onClick.RemoveListener(HandleJournalOpen);
-			m_buttonCameraActivate.onClick.RemoveListener(HandleCameraActivate);
-			m_buttonCameraDeactivate.onClick.RemoveListener(HandleCameraDeactivate);
-			m_buttonTakePhoto.onClick.RemoveListener(HandleAttemptPhoto);
-			m_sliderZoom.onValueChanged.RemoveListener(HandleZoom);
+			m_buttonAscend.onClick.RemoveListener(HandleAscendButton);
+			m_buttonSurface.onClick.RemoveListener(HandleSurfaceButton);
+			m_buttonJournal.onClick.RemoveListener(HandleJournalOpenButton);
+			m_buttonCameraActivate.onClick.RemoveListener(HandleCameraActivateButton);
+			m_buttonCameraDeactivate.onClick.RemoveListener(HandleCameraDeactivateButton);
+			m_buttonTakePhoto.onClick.RemoveListener(HandleAttemptPhotoButton);
+			m_sliderZoom.onValueChanged.RemoveListener(HandleZoomSlider);
+			m_journalCloseButton.onClick.RemoveListener(HandleJournalCloseButton);
+
+			GameMgr.Events.Deregister<StringHash32>(GameEvents.Dive.ConfirmPhoto, HandleConfirmPhoto);
+			GameMgr.Events.Deregister<LocalizationKey>(GameEvents.Dive.ShowMessage, HandleShowMessage);
+			GameMgr.Events.Deregister(GameEvents.Dive.LocationChanging, HandleLocationChanging);
+			GameMgr.Events.Deregister<List<DivePointOfInterest>>(GameEvents.Dive.SendPhotoList, HandlePhotoListSent);
 		}
 
 
@@ -149,34 +190,53 @@ namespace Shipwreck {
 			CanvasGroup.interactable = true;
 		}
 
+		#endregion
+
 		#region Event Handlers
 
-		private void HandleAscend() {
+		
+
+		private void HandlePhotoListSent(List<DivePointOfInterest> list) {
+			for (int ix = 0; ix < m_journalChecklist.childCount; ix++) {
+				Destroy(m_journalChecklist.GetChild(ix).gameObject);
+			}
+			foreach (DivePointOfInterest poi in list) {
+				DiveJournalItem item = Instantiate(m_journalItemPrefab, m_journalChecklist);
+				item.transform.localScale = Vector3.one;
+				item.SetChecked(GameMgr.State.IsEvidenceUnlocked(poi.EvidenceUnlock));
+				item.SetText(poi.PhotoName);
+			}
+		}
+
+		private void HandleAscendButton() {
 			
 		}
-		private void HandleSurface() {
+		private void HandleSurfaceButton() {
 			UIMgr.Close<UIDiveScreen>();
 			SceneManager.LoadScene("Main");
 			UIMgr.Open<UIOfficeScreen>();
 			UIMgr.Open<UIPhoneNotif>();
 		}
-		private void HandleJournalOpen() {
-			
+		private void HandleJournalOpenButton() {
+			m_currentState.OnOpenJournal();
 		}
-		private void HandleCameraActivate() {
+		private void HandleJournalCloseButton() {
+			m_currentState.OnCloseJournal();
+		}
+		private void HandleCameraActivateButton() {
 			m_currentState.OnCameraActivate();
 		}
-		private void HandleCameraDeactivate() {
+		private void HandleCameraDeactivateButton() {
 			m_currentState.OnCameraDeactivate();
 		}
-		private void HandleAttemptPhoto() {
+		private void HandleAttemptPhotoButton() {
 			m_currentState.OnAttemptPhoto();
 		}
 		private void HandleConfirmPhoto(StringHash32 evidence) {
 			m_currentState.OnConfirmPhoto(evidence);
 		}
 
-		private void HandleZoom(float value) {
+		private void HandleZoomSlider(float value) {
 			GameMgr.Events.Dispatch(GameEvents.Dive.CameraZoomChanged, value);
 		}
 
@@ -210,9 +270,11 @@ namespace Shipwreck {
 			if (isCameraActive) {
 				m_cameraGroup.SetActive(true);
 				m_buttonCameraDeactivate.gameObject.SetActive(true);
+				m_buttonJournal.gameObject.SetActive(true);
 			} else {
 				m_cameraGroup.SetActive(false);
 				m_buttonCameraDeactivate.gameObject.SetActive(false);
+				m_buttonJournal.gameObject.SetActive(false);
 			}
 		}
 
@@ -238,6 +300,16 @@ namespace Shipwreck {
 		}
 		private void HideMessageBox() {
 			m_messageRoutine.Replace(this, m_messageGroup.AnchorPosTo(m_messageHiddenY, 0.25f, Axis.Y).Ease(Curve.QuadOut));
+		}
+
+		private void ShowJournal() {
+			GameMgr.Events.Dispatch(GameEvents.Dive.RequestPhotoList);
+			m_buttonJournal.gameObject.SetActive(false);
+			m_journalShowHideRoutine.Replace(this, ((RectTransform)m_journalGroup).AnchorPosTo(m_journalShownX, 0.25f, Axis.X).Ease(Curve.BackInOut));
+		}
+		private void HideJournal() {
+			m_buttonJournal.gameObject.SetActive(true);
+			m_journalShowHideRoutine.Replace(this, ((RectTransform)m_journalGroup).AnchorPosTo(m_journalHiddenX, 0.25f, Axis.X).Ease(Curve.QuadOut));
 		}
 
 		private void FlashCamera(Action callback) {

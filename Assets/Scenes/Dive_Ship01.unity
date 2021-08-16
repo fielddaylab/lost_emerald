@@ -696,6 +696,9 @@ MonoBehaviour:
   m_unlockMessage:
     m_key: Dive/Level1/Name
     m_hash: -775899671
+  m_photoName:
+    m_key: Dive/Level1/Name-Name
+    m_hash: -859953689
   m_zoomMin: 0
   m_zoomMax: 1
 --- !u!1001 &694113275
@@ -848,6 +851,9 @@ MonoBehaviour:
   m_unlockMessage:
     m_key: Dive/Level1/Artifact
     m_hash: -217225992
+  m_photoName:
+    m_key: Dive/Level1/Artifact-Name
+    m_hash: -1453438100
   m_zoomMin: 0.4972063
   m_zoomMax: 1
 --- !u!1001 &809869921
@@ -1973,6 +1979,9 @@ MonoBehaviour:
   m_unlockMessage:
     m_key: Dive/Level1/Above
     m_hash: 963169315
+  m_photoName:
+    m_key: Dive/Level1/Above-Name
+    m_hash: -873237775
   m_zoomMin: 0
   m_zoomMax: 0.15083799
 --- !u!1001 &1808463862

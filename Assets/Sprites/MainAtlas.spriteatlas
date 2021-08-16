@@ -71,6 +71,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: a418b694415c84967abd730e9eb95a7d, type: 3}
   - {fileID: 21300000, guid: 65c26de4f69714d11b1cd5e2bb9de646, type: 3}
   - {fileID: 21300000, guid: 18ce4d25aa2b140caad634c3dd4b69e2, type: 3}
+  - {fileID: 21300000, guid: 9181df563faf4c240b278fd35f45ddfd, type: 3}
   - {fileID: 21300000, guid: b92d2866ce79293478f277897bd0ad16, type: 3}
   - {fileID: 21300000, guid: 67168c86290185a4198db8cf6eea2dd6, type: 3}
   - {fileID: 21300000, guid: f2f043070615e5d44bf1c5cf2ff5c0b5, type: 3}
@@ -139,6 +140,7 @@ SpriteAtlas:
   - camera-frame
   - journal
   - camera-button-close
+  - icon-check-empty
   - triangle
   - circle
   - photo-knife

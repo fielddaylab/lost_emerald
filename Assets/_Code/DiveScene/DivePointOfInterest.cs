@@ -21,11 +21,16 @@ namespace Shipwreck {
 		public LocalizationKey UnlockMessage {
 			get { return m_unlockMessage; }
 		}
+		public LocalizationKey PhotoName {
+			get { return m_photoName; }
+		}
 
 		[SerializeField]
 		private SerializedHash32 m_evidenceUnlock = StringHash32.Null;
 		[SerializeField]
 		private LocalizationKey m_unlockMessage = LocalizationKey.Empty;
+		[SerializeField]
+		private LocalizationKey m_photoName = LocalizationKey.Empty;
 		[SerializeField]
 		private float m_zoomMin = 0f;
 		[SerializeField]
@@ -45,6 +50,7 @@ namespace Shipwreck {
 				EditorGUI.BeginChangeCheck();
 				EditorGUILayout.PropertyField(serializedObject.FindProperty("m_evidenceUnlock"));
 				EditorGUILayout.PropertyField(serializedObject.FindProperty("m_unlockMessage"));
+				EditorGUILayout.PropertyField(serializedObject.FindProperty("m_photoName"));
 
 				EditorGUILayout.BeginHorizontal();
 				EditorGUILayout.PrefixLabel(new GUIContent("Zoom Range"));

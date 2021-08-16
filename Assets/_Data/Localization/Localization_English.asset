@@ -95,6 +95,16 @@ MonoBehaviour:
     m_hash: -217225992
   - m_key: UI/Dive/SavePhoto
     m_hash: 287490530
+  - m_key: Dive/Level1/Above-Name
+    m_hash: -873237775
+  - m_key: Dive/Level1/Name-Name
+    m_hash: -859953689
+  - m_key: Dive/Level1/Artifact-Name
+    m_hash: -1453438100
+  - m_key: UI/Dive/JournalHeader
+    m_hash: 1312424999
+  - m_key: UI/General/Close
+    m_hash: -1663984045
   m_values:
   - Continue
   - Dad
@@ -136,3 +146,8 @@ MonoBehaviour:
   - It's missing some letters, but this certainly looks like the ship's name!
   - Woah! That's a cool knife! I wonder whose it was?
   - Save Photo
+  - Top-Down Photo
+  - Ship Name
+  - Ship Treasure
+  - Dive Photos
+  - Close

@@ -1,6 +1,7 @@
 ﻿using BeauRoutine;
 using PotatoLocalization;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Shipwreck {
@@ -40,6 +41,7 @@ namespace Shipwreck {
 			GameMgr.Events.Register<float>(GameEvents.Dive.CameraZoomChanged, HandleCameraZoomChanged);
 			GameMgr.Events.Register(GameEvents.Dive.NavigationActivated, HandleNavActivated);
 			GameMgr.Events.Register(GameEvents.Dive.NavigationDeactivated, HandleNavDeactivated);
+			GameMgr.Events.Register(GameEvents.Dive.RequestPhotoList, HandlePhotoListRequested);
 		}
 		private void OnDestroy() {
 			if (!GameMgr.Exists) {
@@ -50,6 +52,7 @@ namespace Shipwreck {
 			GameMgr.Events.Deregister<float>(GameEvents.Dive.CameraZoomChanged, HandleCameraZoomChanged);
 			GameMgr.Events.Deregister(GameEvents.Dive.NavigationActivated, HandleNavActivated);
 			GameMgr.Events.Deregister(GameEvents.Dive.NavigationDeactivated, HandleNavDeactivated);
+			GameMgr.Events.Deregister(GameEvents.Dive.RequestPhotoList, HandlePhotoListRequested);
 		}
 
 		private void HandleAttemptPhoto() {
@@ -102,6 +105,18 @@ namespace Shipwreck {
 					}
 				}
 			}
+		}
+
+		private void HandlePhotoListRequested() {
+			// find all of the points of interest
+			List<DivePointOfInterest> list = new List<DivePointOfInterest>();
+			foreach (DiveNode node in m_diveNodes) {
+				DivePointOfInterest poi = node.GetPointOfInterest();
+				if (poi != null) {
+					list.Add(poi);
+				}
+			}
+			GameMgr.Events.Dispatch(GameEvents.Dive.SendPhotoList, list);
 		}
 
 		private void SetNode(DiveNode node) {

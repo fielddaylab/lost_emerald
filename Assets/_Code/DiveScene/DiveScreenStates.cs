@@ -1,5 +1,6 @@
 ﻿using BeauUtil;
 using PotatoLocalization;
+using System;
 
 namespace Shipwreck {
 
@@ -25,6 +26,8 @@ namespace Shipwreck {
 			public virtual void OnConfirmPhoto(StringHash32 evidence) { }
 			public virtual void OnCloseMessage() { }
 			public virtual void OnLocationChange() { }
+			public virtual void OnOpenJournal() { }
+			public virtual void OnCloseJournal() { }
 		}
 
 		private class DiveNavigation : DiveScreenState {
@@ -45,6 +48,9 @@ namespace Shipwreck {
 			}
 			public override void OnCameraActivate() {
 				Screen.SetState(new DiveCamera(Screen));
+			}
+			public override void OnOpenJournal() {
+				Screen.SetState(new DiveJournal(Screen));
 			}
 
 		}
@@ -86,6 +92,9 @@ namespace Shipwreck {
 			public override void OnShowMessage(LocalizationKey key) {
 				Screen.SetState(new DiveMessage(Screen,key,new LocalizationKey("UI/General/Continue")));
 			}
+			public override void OnOpenJournal() {
+				Screen.SetState(new DiveJournal(Screen));
+			}
 		}
 		private class DiveMessage : DiveScreenState {
 
@@ -124,6 +133,20 @@ namespace Shipwreck {
 				}
 			}
 
+		}
+		private class DiveJournal : DiveScreenState {
+			public DiveJournal(IDiveScreen screen) : base(screen) {
+			}
+			public override void OnStart() {
+				Screen.ShowJournal();
+			}
+			public override void OnEnd() {
+				Screen.HideJournal();
+			}
+
+			public override void OnCloseJournal() {
+				Screen.SetState(Screen.Previous);
+			}
 		}
 
 

@@ -25,6 +25,8 @@ namespace Shipwreck {
 			public static readonly StringHash32 ShowMessage = "ShowDiveMessage";
 			public static readonly StringHash32 AttemptPhoto = "AttemptPhoto";
 			public static readonly StringHash32 ConfirmPhoto = "ConfirmPhoto";
+			public static readonly StringHash32 RequestPhotoList = "RequestPhotoList";
+			public static readonly StringHash32 SendPhotoList = "ConfirmPhotoList";
 		}
 	}
 
