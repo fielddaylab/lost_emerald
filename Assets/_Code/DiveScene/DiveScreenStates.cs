@@ -105,7 +105,7 @@ namespace Shipwreck {
 				Screen.SetState(new DiveNavigation(Screen));
 			}
 			public override void OnShowMessage(LocalizationKey key) {
-				Screen.SetState(new DiveMessage(Screen,key,new LocalizationKey("UI/General/Continue")));
+				Screen.SetState(new DiveMessage(Screen,key,new LocalizationKey("UI/General/Continue"),false));
 			}
 			public override void OnOpenJournal() {
 				Screen.SetState(new DiveJournal(Screen));
@@ -115,16 +115,24 @@ namespace Shipwreck {
 
 			private LocalizationKey m_text;
 			private LocalizationKey m_button;
-			public DiveMessage(IDiveScreen screen, LocalizationKey textKey, LocalizationKey buttonKey) : base(screen) {
+			private bool m_showJournal;
+
+			public DiveMessage(IDiveScreen screen, LocalizationKey textKey, LocalizationKey buttonKey, bool showJournal) : base(screen) {
 				m_text = textKey;
 				m_button = buttonKey;
+				m_showJournal = showJournal;
 			}
 			public override void OnStart() {
 				Screen.ShowMessageBox(m_text,m_button);
 			}
 			public override void OnCloseMessage() {
 				Screen.HideMessageBox();
-				Screen.SetState(Screen.Previous);
+				if (m_showJournal) {
+					Screen.SetState(new DiveJournal(Screen));
+				} else {
+					Screen.SetState(Screen.Previous);
+				}
+				
 			}
 		}
 		private class DiveTakePhoto : DiveScreenState {
@@ -144,7 +152,7 @@ namespace Shipwreck {
 				if (m_cachedMessage.Equals(LocalizationKey.Empty)) {
 					Screen.SetState(new DiveCamera(Screen));
 				} else {
-					Screen.SetState(new DiveMessage(Screen, m_cachedMessage, new LocalizationKey("UI/Dive/SavePhoto")));
+					Screen.SetState(new DiveMessage(Screen, m_cachedMessage, new LocalizationKey("UI/Dive/SavePhoto"),true));
 				}
 			}
 
