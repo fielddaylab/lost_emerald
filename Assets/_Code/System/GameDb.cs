@@ -23,6 +23,8 @@ namespace Shipwreck {
 		private Sprite[] m_images;
 		[SerializeField]
 		private NodeKeyPair[] m_nodeKeyPairs;
+		[SerializeField]
+		private LevelData[] m_levelData;
 
 		[SerializeField,Header("Colors")]
 		private Color m_stickyNoteDefault = Color.black;
@@ -51,6 +53,8 @@ namespace Shipwreck {
 		private Dictionary<StringHash32, Sprite> m_imageMap;
 		[NonSerialized]
 		private Dictionary<StringHash32, LocalizationKey> m_nodeKeyPairMap;
+		[NonSerialized]
+		private Dictionary<int, LevelData> m_levelMap;
 
 
 		public static CharacterData GetCharacterData(StringHash32 hash) {
@@ -154,6 +158,16 @@ namespace Shipwreck {
 				}
 			}
 			return I.m_nodeKeyPairMap[nodeId];
+		}
+
+		public static LevelData GetLevelData(int index) {
+			if (I.m_levelMap == null) {
+				I.m_levelMap = new Dictionary<int, LevelData>();
+				foreach (LevelData data in I.m_levelData) {
+					I.m_levelMap.Add(data.LevelIndex, data);
+				}
+			}
+			return I.m_levelMap[index];
 		}
 
 	}

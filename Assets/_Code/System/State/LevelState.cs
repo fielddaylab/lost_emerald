@@ -8,6 +8,8 @@ namespace Shipwreck {
 
 	public interface ILevelState {
 		bool IsUnlocked { get; }
+
+		bool IsLocationChainComplete();
 	}
 
 
@@ -40,9 +42,16 @@ namespace Shipwreck {
 				private List<EvidenceGroupState> m_evidence;
 				private List<EvidenceChainState> m_chains;
 
+				// non-serialized
+				private LevelData m_levelData;
+
 				public LevelState() {
 					m_evidence = new List<EvidenceGroupState>();
 					m_chains = new List<EvidenceChainState>();
+				}
+
+				public void AssignLevelData(LevelData data) {
+					m_levelData = data;
 				}
 
 				public IEvidenceChainState GetChain(StringHash32 root) {
@@ -81,6 +90,9 @@ namespace Shipwreck {
 					return m_evidence.Find((item) => {
 						return item.Identity == group;
 					}) != null;
+				}
+				public bool IsLocationChainComplete() {
+					return GetChain(m_levelData.LocationRoot).IsCorrect;
 				}
 				
 
