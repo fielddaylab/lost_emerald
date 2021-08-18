@@ -27,7 +27,10 @@ namespace Shipwreck {
 
 		bool HasVisitedNode(ScriptNode node);
 		bool HasVisitedNode(StringHash32 nodeId);
-		
+
+		bool HasTakenTopDownPhoto();
+
+
 	}
 
 
@@ -174,6 +177,9 @@ namespace Shipwreck {
 			}
 			public bool HasVisitedNode(StringHash32 nodeId) {
 				return m_visitedNodes.Contains(nodeId);
+			}
+			public bool HasTakenTopDownPhoto() {
+				return m_levelStates[m_levelIndex].HasTakenTopDownPhoto();
 			}
 			public void RecordNodeVisit(ScriptNode node) {
 				m_visitedNodes.Add(node.Id());

@@ -16,12 +16,17 @@ namespace Shipwreck {
 		public StringHash32 LocationRoot {
 			get { return m_locationRoot; }
 		}
+		public StringHash32 TopDownPhotoID {
+			get { return m_topDownPhotoID; }
+		}
 
 		[SerializeField]
 		private int m_levelIndex = 0;
 		[SerializeField]
 		private SerializedHash32 m_locationRoot = StringHash32.Null;
-		
+		[SerializeField]
+		private SerializedHash32 m_topDownPhotoID = StringHash32.Null;
+
 	}
 
 }
