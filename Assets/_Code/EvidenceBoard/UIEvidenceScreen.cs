@@ -31,9 +31,6 @@ namespace Shipwreck {
 		}
 
 		[SerializeField]
-		private SerializedHash32 m_locationRoot = new SerializedHash32("Location");
-
-		[SerializeField]
 		private Transform m_nodeBackGroup = null;
 		[SerializeField]
 		private Transform m_lineGroup = null;
@@ -150,7 +147,7 @@ namespace Shipwreck {
 			}
 
 			// ship out button is only available if the location root is solved
-			m_buttonShipOut.gameObject.SetActive(GameMgr.State.GetChain(m_locationRoot).IsCorrect);
+			m_buttonShipOut.gameObject.SetActive(GameMgr.State.IsLocationChainComplete());
 
 		}
 
@@ -241,7 +238,7 @@ namespace Shipwreck {
 			UIMgr.Open<UIDiveScreen>();
 		}
 		private void HandleChainCorrect(StringHash32 root) {
-			if (root == m_locationRoot) {
+			if (GameMgr.State.IsLocationChainComplete()) {
 				m_buttonShipOut.gameObject.SetActive(true);
 			}
 		}

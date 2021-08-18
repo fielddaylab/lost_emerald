@@ -20,6 +20,8 @@ namespace Shipwreck {
 
 		bool IsEvidenceUnlocked(StringHash32 evidenceId);
 
+		bool IsLocationChainComplete();
+
 		StringHash32 GetContactNotificationId(StringHash32 contactId);
 		uint NotificationCount();
 
@@ -65,7 +67,6 @@ namespace Shipwreck {
 			private List<QueuedNotification> m_queuedNotifications;
 			private LevelState[] m_levelStates;
 
-
 			public GameState() {
 				m_variableTable = new VariantTable();
 				m_visitedNodes = new HashSet<StringHash32>();
@@ -75,6 +76,9 @@ namespace Shipwreck {
 					new LevelState(), new LevelState(),
 					new LevelState(), new LevelState()
 				};
+				for (int index = 0; index < m_levelStates.Length; index++) {
+					m_levelStates[index].AssignLevelData(GameDb.GetLevelData(index));
+				}
 			}
 
 			public IEnumerable<IEvidenceGroupState> GetEvidence() {
@@ -103,6 +107,9 @@ namespace Shipwreck {
 			}
 			public bool IsEvidenceUnlocked(StringHash32 evidenceId) {
 				return m_levelStates[m_levelIndex].IsEvidenceUnlocked(evidenceId);
+			}
+			public bool IsLocationChainComplete() {
+				return m_levelStates[m_levelIndex].IsLocationChainComplete();
 			}
 
 			public bool UnlockContact(StringHash32 contact) {
@@ -181,6 +188,12 @@ namespace Shipwreck {
 				ioSerializer.UInt32ProxySet("unlockedContacts", ref m_unlockedContacts);
 				ioSerializer.ObjectArray("queuedNotifications", ref m_queuedNotifications);
 				ioSerializer.ObjectArray("levelStates", ref m_levelStates);
+
+				if (ioSerializer.IsReading) {
+					for (int index = 0; index < m_levelStates.Length; index++) {
+						m_levelStates[index].AssignLevelData(GameDb.GetLevelData(index));
+					}
+				}
 			}
 
 		}
