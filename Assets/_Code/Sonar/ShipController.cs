@@ -24,6 +24,15 @@ namespace Shipwreck
 
 		private bool m_mouseIsDown; // whether the InputMgr has had an Interact press but not yet a release
 
+		#region MoveToLevelManager
+
+		[SerializeField]
+		private Vector2 m_targetDimensions; // the dimensions of the scene
+
+		private static int DIM_TO_WORLD_PROP = 100; // the proportion of scene dimensions to world space is 100 pixels per unit
+
+		#endregion
+
 		#region Actions
 
 		private System.Action shipInteractPressed;
@@ -71,6 +80,9 @@ namespace Shipwreck
 		private void Start()
 		{
 			RegisterActions();
+
+			// convert dimensions to world space
+			m_targetDimensions /= DIM_TO_WORLD_PROP;
 		}
 
 		// Update is called once per frame
@@ -91,22 +103,15 @@ namespace Shipwreck
 		/// Moves the ship toward the mouse position
 		/// </summary>
 		public void MoveShip()
-		{
-			// find the mouse position relative to the canvas
-			Vector2 mousePosRaw = shipOutCamera.ScreenToViewportPoint(InputMgr.Position);
-
-			// extrapolate the mouse position into screen space
-			Vector2 mouseScreenPos = new Vector2(
-				mousePosRaw.x * Screen.width,
-				mousePosRaw.y * Screen.height
-				);
+		{ 
+			Vector2 mouseScreenPos = shipOutCamera.ScreenToWorldPoint(InputMgr.Position);
 
 			// enforce scene margins
 			if (mouseScreenPos.x < m_sceneMargin) { mouseScreenPos.x = m_sceneMargin; }
-			if (mouseScreenPos.x > Screen.width - m_sceneMargin) { mouseScreenPos.x = Screen.width - m_sceneMargin; }
+			if (mouseScreenPos.x > m_targetDimensions.x - m_sceneMargin) { mouseScreenPos.x = m_targetDimensions.x - m_sceneMargin; }
 
 			if (mouseScreenPos.y < m_sceneMargin) { mouseScreenPos.y = m_sceneMargin; }
-			if (mouseScreenPos.y > Screen.height - m_sceneMargin) { mouseScreenPos.y = Screen.height - m_sceneMargin; }
+			if (mouseScreenPos.y > m_targetDimensions.y - m_sceneMargin) { mouseScreenPos.y = m_targetDimensions.y - m_sceneMargin; }
 
 			// calculate the new location
 			Vector2 newPos = Vector2.MoveTowards(this.transform.position, mouseScreenPos, m_shipSpeed * Time.deltaTime);
