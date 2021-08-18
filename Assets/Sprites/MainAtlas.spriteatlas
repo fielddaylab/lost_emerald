@@ -86,6 +86,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 0d5a7ad870314423a9bbb4f7503c3d25, type: 3}
   - {fileID: 21300000, guid: 132b0ca92ede2104d86bc6e8eb061529, type: 3}
   - {fileID: 21300000, guid: 127b3c0afee2e274ab765b67e3875292, type: 3}
+  - {fileID: 21300000, guid: 09ff471a9a65fa644a5b7b013e1feeea, type: 3}
   - {fileID: 21300000, guid: ece7e92aaba5f494e923e7cda7d69071, type: 3}
   - {fileID: 21300000, guid: 73c09d6a64f3d4fa797ae62a855672e7, type: 3}
   - {fileID: 21300000, guid: 9219a3ba3979b214babe6a768fcade78, type: 3}
@@ -109,11 +110,9 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 3cb1d3de80ee9461498367b28b05b097, type: 3}
   - {fileID: 21300000, guid: 374dc90f739bee04a877d6898de07475, type: 3}
   - {fileID: 21300000, guid: 87da702f0ba413a4fa0b770094855e60, type: 3}
-  - {fileID: 21300000, guid: 4eb6072fb20234022b1e6e6377affdb5, type: 3}
   - {fileID: 21300000, guid: 188f674fd393cb944aa8e6cbaf28b4a9, type: 3}
   - {fileID: 21300000, guid: 56a3518f3cac048178bc2bdbeb9c7486, type: 3}
   - {fileID: 21300000, guid: 8af87aaf45b9a45b1ac10e59eb8cc01e, type: 3}
-  - {fileID: 21300000, guid: c956dfeff8861461abdf841b67df1f27, type: 3}
   m_PackedSpriteNamesToIndex:
   - office-background
   - button-face
@@ -155,6 +154,7 @@ SpriteAtlas:
   - icon-check
   - push-pin
   - zoom-in
+  - lakes-map
   - ship-card
   - descend
   - HiResCircle
@@ -178,10 +178,8 @@ SpriteAtlas:
   - photo-ship-name
   - back-arrow
   - phone_icon
-  - lake-michigan-map-zoomed
   - eyewitness-account
   - marshallsAirport
   - closebutton-2
-  - lake-michigan-map
   m_Tag: MainAtlas
   m_IsVariant: 0
