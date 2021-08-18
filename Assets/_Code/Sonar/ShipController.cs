@@ -14,9 +14,13 @@ namespace Shipwreck
 	public class ShipController : MonoBehaviour
 	{
 		public Camera shipOutCamera; // the main camera for this scene
-		public float shipSpeed; // how quickly the ship moves across the scene
-		public float sceneMargin; // the spacing between the ship and the canvas edges
-		public float rotationSpeed; // the speed at which the ship rotates
+
+		[SerializeField]
+		private float m_shipSpeed; // how quickly the ship moves across the scene
+		[SerializeField]
+		private float m_rotationSpeed; // the speed at which the ship rotates
+		[SerializeField]
+		private float m_sceneMargin; // the spacing between the ship and the canvas edges
 
 		private bool m_mouseIsDown; // whether the InputMgr has had an Interact press but not yet a release
 
@@ -98,14 +102,14 @@ namespace Shipwreck
 				);
 
 			// enforce scene margins
-			if (mouseScreenPos.x < sceneMargin) { mouseScreenPos.x = sceneMargin; }
-			if (mouseScreenPos.x > Screen.width - sceneMargin) { mouseScreenPos.x = Screen.width - sceneMargin; }
+			if (mouseScreenPos.x < m_sceneMargin) { mouseScreenPos.x = m_sceneMargin; }
+			if (mouseScreenPos.x > Screen.width - m_sceneMargin) { mouseScreenPos.x = Screen.width - m_sceneMargin; }
 
-			if (mouseScreenPos.y < sceneMargin) { mouseScreenPos.y = sceneMargin; }
-			if (mouseScreenPos.y > Screen.height - sceneMargin) { mouseScreenPos.y = Screen.height - sceneMargin; }
+			if (mouseScreenPos.y < m_sceneMargin) { mouseScreenPos.y = m_sceneMargin; }
+			if (mouseScreenPos.y > Screen.height - m_sceneMargin) { mouseScreenPos.y = Screen.height - m_sceneMargin; }
 
 			// calculate the new location
-			Vector2 newPos = Vector2.MoveTowards(this.transform.position, mouseScreenPos, shipSpeed * Time.deltaTime);
+			Vector2 newPos = Vector2.MoveTowards(this.transform.position, mouseScreenPos, m_shipSpeed * Time.deltaTime);
 
 			// rotate the ship toward the new location
 			// (implementation helped by the video Rotating in the Direction of Movement 2D, by Ketra Games,
@@ -117,7 +121,7 @@ namespace Shipwreck
 				this.transform.rotation = Quaternion.RotateTowards(
 					this.transform.rotation,
 					toDirection,
-					rotationSpeed * Time.deltaTime
+					 m_rotationSpeed * Time.deltaTime
 					);
 			}
 
