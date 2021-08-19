@@ -1,4 +1,5 @@
 ﻿/*
+ * Organization: Field Day Lab
  * Author(s): Levi Huillet
  */
 
@@ -9,22 +10,28 @@ using UnityEngine;
 namespace Shipwreck
 {
 	/// <summary>
-	/// Enables the ship to move with mouse click controls
+	/// Enables the ship to move with interact (mouse, touch) controls
 	/// </summary>
+	[RequireComponent(typeof(SpriteRenderer))]
 	public class ShipController : MonoBehaviour
 	{
 		public Camera shipOutCamera; // the main camera for this scene
 
 		[SerializeField]
-		private float m_shipSpeed; // how quickly the ship moves across the scene
+		private float m_shipBaseSpeed; // how quickly the ship moves across the scene
+		[SerializeField]
+		private float m_distanceModifier; // how much interact distance from ship affects ship speed
+		[SerializeField]
+		private float m_maxSpeed; // the fastest this ship can move
 		[SerializeField]
 		private float m_rotationSpeed; // the speed at which the ship rotates
 		[SerializeField]
-		private float m_sceneMargin; // the spacing between the ship and the canvas edges
-
-		private bool m_mouseIsDown; // whether the InputMgr has had an Interact press but not yet a release
+		private float m_sceneMargin; // the spacing between the ship and the scene edges
+		private float m_currSpeed; // how quickly the ship is moving this frame
+		private bool m_interactIsActive; // whether the InputMgr has had an Interact press but not yet a release
 
 		#region MoveToLevelManager
+		// TODO: move this code to a Level Manager
 
 		[SerializeField]
 		private Vector2 m_targetDimensions; // the dimensions of the scene
@@ -43,7 +50,7 @@ namespace Shipwreck
 		/// </summary>
 		private void TrackInteractPressed()
 		{
-			m_mouseIsDown = true;
+			m_interactIsActive = true;
 		}
 
 		/// <summary>
@@ -51,7 +58,7 @@ namespace Shipwreck
 		/// </summary>
 		private void TrackInteractReleased()
 		{
-			m_mouseIsDown = false;
+			m_interactIsActive = false;
 		}
 
 		/// <summary>
@@ -73,7 +80,7 @@ namespace Shipwreck
 		private void Awake()
 		{
 			// input does not start pressed down
-			m_mouseIsDown = false;
+			m_interactIsActive = false;
 		}
 
 		// Start is called before the first frame update
@@ -88,9 +95,9 @@ namespace Shipwreck
 		// Update is called once per frame
 		private void Update()
 		{
-			if (m_mouseIsDown && InteractionIsInBounds())
+			if (m_interactIsActive && InteractionIsInBounds())
 			{
-				// Ship moves when mouse is down
+				// Ship moves when input interaction is active
 				MoveShip();
 			}
 		}
@@ -100,21 +107,29 @@ namespace Shipwreck
 		#region Member Functions
 
 		/// <summary>
-		/// Moves the ship toward the mouse position
+		/// Moves the ship toward the interact position
 		/// </summary>
 		public void MoveShip()
-		{ 
-			Vector2 mouseScreenPos = shipOutCamera.ScreenToWorldPoint(InputMgr.Position);
+		{
+			Vector2 interactScreenPos = shipOutCamera.ScreenToWorldPoint(InputMgr.Position);
 
 			// enforce scene margins
-			if (mouseScreenPos.x < m_sceneMargin) { mouseScreenPos.x = m_sceneMargin; }
-			if (mouseScreenPos.x > m_targetDimensions.x - m_sceneMargin) { mouseScreenPos.x = m_targetDimensions.x - m_sceneMargin; }
+			EnforceMargins(ref interactScreenPos);
 
-			if (mouseScreenPos.y < m_sceneMargin) { mouseScreenPos.y = m_sceneMargin; }
-			if (mouseScreenPos.y > m_targetDimensions.y - m_sceneMargin) { mouseScreenPos.y = m_targetDimensions.y - m_sceneMargin; }
+			// apply distance modifier (ship travels faster when the interact position is farther)
+			float interactDistance = Vector2.Distance(interactScreenPos, this.transform.position);
+
+			float rawSpeed = m_shipBaseSpeed + (interactDistance * m_distanceModifier);
+			float correctedSpeed;
+
+			if (rawSpeed > m_maxSpeed) { correctedSpeed = m_maxSpeed; }
+			else { correctedSpeed = rawSpeed; }
 
 			// calculate the new location
-			Vector2 newPos = Vector2.MoveTowards(this.transform.position, mouseScreenPos, m_shipSpeed * Time.deltaTime);
+			Vector2 newPos = Vector2.MoveTowards(this.transform.position, interactScreenPos, correctedSpeed * Time.deltaTime);
+
+			// save the current speed so the sonar can use it for randomization
+			m_currSpeed = correctedSpeed;
 
 			// rotate the ship toward the new location
 			// (implementation helped by the video Rotating in the Direction of Movement 2D, by Ketra Games,
@@ -134,6 +149,46 @@ namespace Shipwreck
 			this.transform.position = newPos;
 		}
 
+		/// <summary>
+		/// Brings the ship's target position to the margin if it is beyond it
+		/// </summary>
+		/// <param name="interactScreenPos">the location of the interact position</param>
+		private void EnforceMargins(ref Vector2 interactScreenPos)
+		{
+			// Horizontal
+			if (interactScreenPos.x < m_sceneMargin)
+			{
+				// too far left
+				interactScreenPos.x = m_sceneMargin;
+			}
+			else if (interactScreenPos.x > m_targetDimensions.x - m_sceneMargin)
+			{
+				// too far right
+				interactScreenPos.x = m_targetDimensions.x - m_sceneMargin;
+			}
+
+			// Vertical
+			if (interactScreenPos.y < m_sceneMargin)
+			{
+				// too far down
+				interactScreenPos.y = m_sceneMargin;
+			}
+			else if (interactScreenPos.y > m_targetDimensions.y - m_sceneMargin)
+			{
+				// too far up
+				interactScreenPos.y = m_targetDimensions.y - m_sceneMargin;
+			}
+		}
+
+		/// <summary>
+		/// Returns this ship's current speed
+		/// </summary>
+		/// <returns>this ship's current speed</returns>
+		public float GetCurrSpeed()
+		{
+			return m_currSpeed;
+		}
+
 		#endregion
 
 		#region BoundsChecking
@@ -145,16 +200,10 @@ namespace Shipwreck
 		private bool InteractionIsInBounds()
 		{
 			// Horizontal
-			if (InputMgr.Position.x < 0 || InputMgr.Position.x > Screen.width)
-			{
-				return false;
-			}
+			if (InputMgr.Position.x < 0 || InputMgr.Position.x > Screen.width) { return false; }
 
 			// Vertical
-			if (InputMgr.Position.y < 0 || InputMgr.Position.y > Screen.height)
-			{
-				return false;
-			}
+			if (InputMgr.Position.y < 0 || InputMgr.Position.y > Screen.height) { return false; }
 
 			return true;
 		}
