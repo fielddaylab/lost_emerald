@@ -1,6 +1,5 @@
 ﻿using BeauUtil;
 using PotatoLocalization;
-using System;
 using UnityEngine.SceneManagement;
 
 namespace Shipwreck {
