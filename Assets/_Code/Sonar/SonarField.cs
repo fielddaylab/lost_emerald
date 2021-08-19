@@ -24,7 +24,7 @@ namespace Shipwreck
 		/// To adjust the rate at which sonar dots appear, mess with the following fields.
 		/// TODO: create a neater solution, where programmer can plug in
 		/// something like: "1 in 2 at base speed, 1 in 40 at maxSpeed",
-		/// and the variables will correct themselves.
+		/// and the variables will adjust themselves.
 		/// </summary>
 		[SerializeField]
 		private float m_speedModifier;
@@ -46,7 +46,7 @@ namespace Shipwreck
 			// modifiedSpeed below threshold automatically detects sonar
 			if (modifiedSpeed >= RAND_THRESHOLD)
 			{
-				float randNum = Random.Range(0.15f, modifiedSpeed);
+				float randNum = Random.Range(RAND_START, modifiedSpeed);
 
 				if (randNum > RAND_THRESHOLD) { return; }
 			}

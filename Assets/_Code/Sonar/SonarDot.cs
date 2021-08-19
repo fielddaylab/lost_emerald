@@ -36,6 +36,8 @@ namespace Shipwreck
 		{
 			m_sr.enabled = true;
 
+			ShipOutMgr.instance.IncrementRevealCount();
+
 			// prevent future OnCollisionEnter2D's from occuring
 			this.GetComponent<BoxCollider2D>().enabled = false;
 		}

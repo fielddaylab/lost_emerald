@@ -89,5 +89,14 @@ namespace Shipwreck
 				m_sonarDots.Add(newDot);
 			}
 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public int GetTargetNumDots()
+		{
+			return m_targetNumDots;
+		}
 	}
 }
