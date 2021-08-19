@@ -42,7 +42,6 @@ namespace Shipwreck
 			float shipSpeed = ship.GetCurrSpeed();
 
 			float modifiedSpeed = shipSpeed * m_speedModifier;
-			Debug.Log(modifiedSpeed);
 
 			// modifiedSpeed below threshold automatically detects sonar
 			if (modifiedSpeed >= RAND_THRESHOLD)
