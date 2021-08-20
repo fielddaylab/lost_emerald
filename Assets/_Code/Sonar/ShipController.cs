@@ -27,6 +27,8 @@ namespace Shipwreck
 		private float m_rotationSpeed; // the speed at which the ship rotates
 		[SerializeField]
 		private float m_sceneMargin; // the spacing between the ship and the scene edges
+		[SerializeField]
+		private float m_buoyMargin; // the spacing between the ship and the buoy
 		private float m_currSpeed; // how quickly the ship is moving this frame
 		private bool m_interactIsActive; // whether the InputMgr has had an Interact press but not yet a release
 		private Vector2 m_sceneDimensions; // the dimensions of the scene the ship finds itself in
@@ -84,7 +86,9 @@ namespace Shipwreck
 		// Update is called once per frame
 		private void Update()
 		{
-			if (m_interactIsActive && InteractionIsInBounds())
+			if (m_interactIsActive
+				&& InteractionIsInBounds()
+				/*&& !InteractionIsOverUI()*/)
 			{
 				// Ship moves when input interaction is active
 				MoveShip();
@@ -105,8 +109,11 @@ namespace Shipwreck
 			// enforce scene margins
 			EnforceMargins(ref interactScreenPos);
 
+			// correct for buoy
+			Vector2 buoyCorrection = CorrectForBuoy(interactScreenPos);
+
 			// apply distance modifier (ship travels faster when the interact position is farther)
-			float interactDistance = Vector2.Distance(interactScreenPos, this.transform.position);
+			float interactDistance = Vector2.Distance(buoyCorrection, this.transform.position);
 
 			float rawSpeed = m_shipBaseSpeed + (interactDistance * m_distanceModifier);
 			float correctedSpeed;
@@ -115,7 +122,7 @@ namespace Shipwreck
 			else { correctedSpeed = rawSpeed; }
 
 			// calculate the new location
-			Vector2 newPos = Vector2.MoveTowards(this.transform.position, interactScreenPos, correctedSpeed * Time.deltaTime);
+			Vector2 newPos = Vector2.MoveTowards(this.transform.position, buoyCorrection, correctedSpeed * Time.deltaTime);
 
 			// save the current speed so the sonar can use it for randomization
 			m_currSpeed = correctedSpeed;
@@ -136,6 +143,29 @@ namespace Shipwreck
 
 			// move the ship toward the new location
 			this.transform.position = newPos;
+		}
+
+		private Vector2 CorrectForBuoy(Vector2 interactScreenPos)
+		{
+			// cast a ray from ship to position
+			RaycastHit2D hit = Physics2D.Linecast(
+				this.transform.position,
+				interactScreenPos,
+				1 << LayerMask.NameToLayer("Obstacle")
+				);
+
+			// if ray hits buoy (or other obstacle), find nearest point and stop there
+			if (hit.collider != null)
+			{
+				Vector2 closestPoint = hit.collider.ClosestPoint(this.transform.position);
+				// push the ship just beyond the bounds to orbit the buoy(-ish)
+				interactScreenPos = closestPoint
+					//+ ((Vector2)this.transform.position - closestPoint).normalized
+					+ (closestPoint - interactScreenPos).normalized
+					* m_buoyMargin;
+			}
+			
+			return interactScreenPos;
 		}
 
 		/// <summary>
@@ -203,6 +233,15 @@ namespace Shipwreck
 		/// <returns></returns>
 		private bool InteractionIsOverBuoy()
 		{
+			Vector2 interactScreenPos = shipOutCamera.ScreenToWorldPoint(InputMgr.Position);
+
+			Collider2D collider = Physics2D.OverlapPoint(interactScreenPos);
+
+			if (collider != null && collider.tag == "Buoy")
+			{
+				return true;
+			}
+
 			return false;
 		}
 
