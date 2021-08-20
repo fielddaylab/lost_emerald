@@ -2,22 +2,14 @@
 using BeauUtil;
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace Shipwreck {
-
-	public interface ILevelState {
-		bool IsUnlocked { get; }
-
-		bool IsLocationChainComplete();
-	}
-
 
 	public sealed partial class GameMgr { // LevelState.cs
 
 		private sealed partial class GameState { // LevelState.cs
 
-			private class LevelState : ILevelState, ISerializedObject, ISerializedVersion {
+			private class LevelState : ISerializedObject, ISerializedVersion {
 				public ushort Version {
 					get { return 1; }
 				}
@@ -93,6 +85,9 @@ namespace Shipwreck {
 				}
 				public bool IsLocationChainComplete() {
 					return GetChain(m_levelData.LocationRoot).IsCorrect;
+				}
+				public bool HasTakenTopDownPhoto() {
+					return IsEvidenceUnlocked(m_levelData.TopDownPhotoID);
 				}
 				
 

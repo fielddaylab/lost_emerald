@@ -105,6 +105,8 @@ MonoBehaviour:
     m_hash: 1312424999
   - m_key: UI/General/Close
     m_hash: -1663984045
+  - m_key: UI/Map/ShipOut
+    m_hash: -1937809989
   m_values:
   - Continue
   - Dad
@@ -127,7 +129,7 @@ MonoBehaviour:
   - Freighter
   - Side-WheelSteamer
   - Schooner
-  - Ship near Rawley's Point
+  - Ship near Rawley Point
   - Location
   - Name
   - Ship Type
@@ -151,3 +153,4 @@ MonoBehaviour:
   - Ship Treasure
   - Dive Photos
   - Close
+  - Ship Out!

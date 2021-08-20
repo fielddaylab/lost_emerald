@@ -1,6 +1,5 @@
 ﻿using BeauUtil;
 using PotatoLocalization;
-using System;
 using UnityEngine.SceneManagement;
 
 namespace Shipwreck {
@@ -77,9 +76,12 @@ namespace Shipwreck {
 				Screen.WaitForCameraTransitionEnd(HandleTransitionEnded);
 			}
 			private void HandleTransitionEnded() {
-				Screen.SetState(new DiveNavigation(Screen));
+				if (GameMgr.State.HasTakenTopDownPhoto()) {
+					Screen.SetState(new DiveNavigation(Screen));
+				} else {
+					Screen.SetState(new DiveTutorialNav(Screen));
+				}
 			}
-
 		}
 		private class DiveCamera : DiveScreenState {
 			public DiveCamera(IDiveScreen screen) : base(screen) {
@@ -152,6 +154,11 @@ namespace Shipwreck {
 				if (m_cachedMessage.Equals(LocalizationKey.Empty)) {
 					Screen.SetState(new DiveCamera(Screen));
 				} else {
+					if (Screen.Previous.GetType() == typeof(DiveTutorialCamera)) {
+						if (GameMgr.State.HasTakenTopDownPhoto()) {
+							Screen.AssignPreviousState(new DiveCamera(Screen));
+						}
+					}
 					Screen.SetState(new DiveMessage(Screen, m_cachedMessage, new LocalizationKey("UI/Dive/SavePhoto"),true));
 				}
 			}
@@ -170,7 +177,61 @@ namespace Shipwreck {
 				Screen.SetState(Screen.Previous);
 			}
 		}
-
+		private class DiveTutorialNav : DiveScreenState {
+			public DiveTutorialNav(IDiveScreen screen) : base(screen) {
+			}
+			public override void OnStart() {
+				Screen.SetNavigationActive(true);
+			}
+			public override void OnEnd() {
+				Screen.SetNavigationActive(false);
+				Screen.AssignPreviousState(this);
+			}
+			public override void OnCameraActivate() {
+				Screen.SetState(new DiveTutorialCamera(Screen));
+			}
+			public override void OnOpenJournal() {
+				Screen.SetState(new DiveJournal(Screen));
+			}
+			public override void OnSurface() {
+				if (Screen.IsAtAscendNode) {
+					UIMgr.Close<UIDiveScreen>();
+					SceneManager.LoadScene("Main");
+					UIMgr.Open<UIOfficeScreen>();
+					UIMgr.Open<UIPhoneNotif>();
+				}
+			}
+		}
+		private class DiveTutorialCamera : DiveScreenState {
+			public DiveTutorialCamera(IDiveScreen screen) : base(screen) {
+			}
+			public override void OnStart() {
+				Screen.SetCameraActive(true);
+				GameMgr.Events.Dispatch(GameEvents.Dive.CameraActivated);
+			}
+			public override void OnEnd() {
+				Screen.SetCameraActive(false);
+				Screen.AssignPreviousState(this);
+				GameMgr.Events.Dispatch(GameEvents.Dive.CameraDeactivated);
+			}
+			public override void OnAttemptPhoto() {
+				GameMgr.Events.Dispatch(GameEvents.Dive.AttemptPhoto);
+			}
+			public override void OnConfirmPhoto(StringHash32 evidence) {
+				GameMgr.UnlockEvidence(evidence);
+				Screen.SetState(new DiveTakePhoto(Screen));
+			}
+			public override void OnCameraDeactivate() {
+				Screen.SetCameraZoom(0f);
+				Screen.SetState(new DiveTutorialNav(Screen));
+			}
+			public override void OnShowMessage(LocalizationKey key) {
+				Screen.SetState(new DiveMessage(Screen, key, new LocalizationKey("UI/General/Continue"), false));
+			}
+			public override void OnOpenJournal() {
+				Screen.SetState(new DiveJournal(Screen));
+			}
+		}
 
 	}
 
