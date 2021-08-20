@@ -18,7 +18,8 @@ namespace Shipwreck
 		[SerializeField]
 		private GameObject m_sonarDotPrefab; // the prefab for a sonar dot
 		[SerializeField]
-		private GameObject m_sonarDotParent; // an empty object that groups the generated dots
+		private GameObject m_sonarDotParentPrefab; // prefab for object that groups the generated dots
+		private GameObject m_sonarDotParent; // // an empty object that groups the generated dots
 		[SerializeField]
 		private int m_targetNumDots;
 		private List<GameObject> m_sonarDots; // all the sonar dots in the scene
@@ -26,6 +27,8 @@ namespace Shipwreck
 
 		/// <summary>
 		/// Generates SonarDots within the given PolygonCollider2D
+		/// NOTE: currently, attempting to regenerate points after running the game creates a new set of points.
+		/// The old sonarDots must be deleted manually.
 		/// </summary>
 		[ContextMenu("Regenerate Points")]
 		private void RegeneratePoints()
@@ -34,11 +37,8 @@ namespace Shipwreck
 
 			if (m_polygonPoints == null) { m_polygonPoints = new List<Vector2>(); }
 
-			// Remove any existing dots
-			foreach (GameObject dot in m_sonarDots)
-			{
-				DestroyImmediate(dot);
-			}
+			DestroyImmediate(m_sonarDotParent);
+			m_sonarDotParent = Instantiate(m_sonarDotParentPrefab, this.transform);
 
 			m_sonarDots.Clear();
 			m_polygonPoints.Clear();
