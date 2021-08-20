@@ -38,6 +38,9 @@ namespace Shipwreck
 		private GameObject m_sonarDotParent; // // an empty object that groups the generated dots
 		private int m_targetNumDots;
 
+		[SerializeField]
+		private GameObject m_buoyPrefab; // prefab for buoy that is dropped
+
 		private static int DIM_TO_WORLD_PROP = 100; // the proportion of scene dimensions to world space is 100 pixels per unit
 
 		private void Start()
@@ -73,7 +76,7 @@ namespace Shipwreck
 			foreach (Vector2 point in sonarPoints)
 			{
 				GameObject newDot = Instantiate(m_sonarDotPrefab, m_sonarDotParent.transform);
-				newDot.transform.position = point;
+				newDot.transform.position = point + m_shipOutData.WreckLocation;
 			}
 
 			m_targetNumDots = sonarPoints.Count;
@@ -108,8 +111,7 @@ namespace Shipwreck
 
 				if (percentComplete >= m_completionPercent)
 				{
-					GameMgr.State.UnlockDive(m_shipOutData.ShipOutIndex);
-					m_soc.SwapButtonForSlider();
+					UnlockDive();
 				}
 			}
 		}
@@ -126,6 +128,22 @@ namespace Shipwreck
 		public ShipOutData GetData()
 		{
 			return m_shipOutData;
+		}
+
+		/// <summary>
+		/// Unlocks dive, activates button, and drops a buoy
+		/// </summary>
+		private void UnlockDive()
+		{
+			// unlock dive
+			GameMgr.State.UnlockDive(m_shipOutData.ShipOutIndex);
+
+			// activate button
+			m_soc.SwapButtonForSlider();
+
+			// drop buoy
+			GameObject buoy = Instantiate(m_buoyPrefab);
+			buoy.transform.position = m_shipOutData.buoyLocation;
 		}
 	}
 }

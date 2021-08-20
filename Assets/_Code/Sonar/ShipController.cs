@@ -197,6 +197,24 @@ namespace Shipwreck
 			return true;
 		}
 
+		/// <summary>
+		/// Checks whether interaction is over a buoy
+		/// </summary>
+		/// <returns></returns>
+		private bool InteractionIsOverBuoy()
+		{
+			return false;
+		}
+
+		/// <summary>
+		/// Checks whether interaction is over a button or other UI
+		/// </summary>
+		/// <returns></returns>
+		private bool InteractionIsOverUI()
+		{
+			return false;
+		}
+
 		#endregion
 	}
 
