@@ -6,6 +6,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Shipwreck
 {
@@ -88,7 +89,7 @@ namespace Shipwreck
 		{
 			if (m_interactIsActive
 				&& InteractionIsInBounds()
-				/*&& !InteractionIsOverUI()*/)
+				&& !InteractionIsOverUI())
 			{
 				// Ship moves when input interaction is active
 				MoveShip();
@@ -251,7 +252,7 @@ namespace Shipwreck
 		/// <returns></returns>
 		private bool InteractionIsOverUI()
 		{
-			return false;
+			return ShipOutMgr.instance.GetInteractIsOverUI();
 		}
 
 		#endregion

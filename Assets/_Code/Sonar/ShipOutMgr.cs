@@ -43,6 +43,16 @@ namespace Shipwreck
 
 		private static int DIM_TO_WORLD_PROP = 100; // the proportion of scene dimensions to world space is 100 pixels per unit
 
+		private bool m_interactIsOverUI; // whether the interaction is over some UI
+		public bool GetInteractIsOverUI()
+		{
+			return m_interactIsOverUI;
+		}
+		public void SetInteractIsOverUI(bool isOver)
+		{
+			m_interactIsOverUI = isOver;
+		}
+
 		private void Start()
 		{
 			// ensure there is only one ShipOutMgr at any given time
@@ -60,6 +70,8 @@ namespace Shipwreck
 
 			// sonar progress starts at 0
 			m_sonarProgress = 0;
+
+			m_interactIsOverUI = false;
 
 			m_shipOutData = GameDb.GetShipOutData(GameMgr.State.GetCurrShipOutIndex());
 

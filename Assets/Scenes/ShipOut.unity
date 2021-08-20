@@ -1204,6 +1204,7 @@ GameObject:
   - component: {fileID: 1110567919}
   - component: {fileID: 1110567918}
   - component: {fileID: 1110567917}
+  - component: {fileID: 1110567920}
   m_Layer: 5
   m_Name: ReturnToOfficeButton
   m_TagString: Untagged
@@ -1311,6 +1312,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1110567915}
   m_CullTransparentMesh: 0
+--- !u!114 &1110567920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1110567915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42f3ba192e20eec49aaab95388318f6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1199379631
 GameObject:
   m_ObjectHideFlags: 0
@@ -1558,7 +1571,7 @@ MonoBehaviour:
   m_shipBaseSpeed: 0.1
   m_distanceModifier: 1.5
   m_maxSpeed: 5
-  m_rotationSpeed: 400
+  m_rotationSpeed: 720
   m_sceneMargin: 1
   m_buoyMargin: 0.2
 --- !u!1 &1374849288
@@ -1726,6 +1739,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1603151199}
   - component: {fileID: 1603151198}
+  - component: {fileID: 1603151200}
   m_Layer: 5
   m_Name: DiveSlider
   m_TagString: Untagged
@@ -1805,6 +1819,18 @@ RectTransform:
   m_AnchoredPosition: {x: 406, y: -280}
   m_SizeDelta: {x: 109.23773, y: 58.466614}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1603151200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603151197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42f3ba192e20eec49aaab95388318f6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1639777603
 GameObject:
   m_ObjectHideFlags: 0
