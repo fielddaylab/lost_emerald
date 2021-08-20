@@ -12,23 +12,19 @@ namespace Shipwreck
 	/// <summary>
 	/// Given a ship's collider, generates sonar dots in the Unity editor
 	/// </summary>
-	public class SonarDotMgr : MonoBehaviour
+	public class SonarDotGenerator : MonoBehaviour
 	{
 		public PolygonCollider2D shipCollider; // the collider of the ship to fill in with sonar dots
-		[SerializeField]
-		private GameObject m_sonarDotPrefab; // the prefab for a sonar dot
-		[SerializeField]
-		private GameObject m_sonarDotParentPrefab; // prefab for object that groups the generated dots
-		private GameObject m_sonarDotParent; // // an empty object that groups the generated dots
 		[SerializeField]
 		private int m_targetNumDots;
 		private List<GameObject> m_sonarDots; // all the sonar dots in the scene
 		private List<Vector2> m_polygonPoints; // the coordinates of all sonar dots in the scene
 
+		[SerializeField]
+		private ShipOutData m_dataToGenerateFor; // the ShipOutData that will store this new data
+
 		/// <summary>
 		/// Generates SonarDots within the given PolygonCollider2D
-		/// NOTE: currently, attempting to regenerate points after running the game creates a new set of points.
-		/// The old sonarDots must be deleted manually.
 		/// </summary>
 		[ContextMenu("Regenerate Points")]
 		private void RegeneratePoints()
@@ -36,9 +32,6 @@ namespace Shipwreck
 			if (m_sonarDots == null) { m_sonarDots = new List<GameObject>(); }
 
 			if (m_polygonPoints == null) { m_polygonPoints = new List<Vector2>(); }
-
-			DestroyImmediate(m_sonarDotParent);
-			m_sonarDotParent = Instantiate(m_sonarDotParentPrefab, this.transform);
 
 			m_sonarDots.Clear();
 			m_polygonPoints.Clear();
@@ -80,14 +73,7 @@ namespace Shipwreck
 				}
 			}
 
-			// Instantiate SonarDot Prefabs at each point
-
-			foreach (Vector2 point in m_polygonPoints)
-			{
-				GameObject newDot = Instantiate(m_sonarDotPrefab, m_sonarDotParent.transform);
-				newDot.transform.position = point;
-				m_sonarDots.Add(newDot);
-			}
+			m_dataToGenerateFor.SetSonarDots(m_polygonPoints);
 		}
 
 		/// <summary>

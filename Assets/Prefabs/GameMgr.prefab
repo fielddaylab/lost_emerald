@@ -118,6 +118,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d923516fa5301434cadd7746c5a40526, type: 2}
   - {fileID: 11400000, guid: 344d0cab738215d4a95dc0b779e229a4, type: 2}
   - {fileID: 11400000, guid: d53af60510904b24fbfe6e3b139a8a9f, type: 2}
+  m_shipOutData:
+  - {fileID: 11400000, guid: 165dce6e12d05c042a33296d58d88703, type: 2}
   m_stickyNoteDefault: {r: 1, g: 0.9889244, b: 0.9575472, a: 1}
   m_stickyNoteIncorrect: {r: 0.9339623, g: 0.638795, b: 0.6580142, a: 1}
   m_stickyNoteComplete: {r: 0.93333334, g: 0.8670039, b: 0.6392157, a: 1}

@@ -16,7 +16,7 @@ namespace Shipwreck
 	public class ShipOutMgr : MonoBehaviour
 	{
 		public static ShipOutMgr instance; // there can only be one
-		public SonarDotMgr m_sdmgr; // the scene's SonarDotMgr
+		public SonarDotGenerator m_sdmgr; // the scene's SonarDotMgr
 
 		[SerializeField]
 		private Vector2 m_targetDimensions; // the dimensions of the scene
@@ -24,6 +24,15 @@ namespace Shipwreck
 		private float m_completionPercent; // the percent of solar dots a player must reveal before diving
 		private int m_sonarProgress; // the number of dots that have been revealed
 		private bool m_diveUnlocked; // whether the dive has been unlocked
+
+		private ShipOutData m_shipOutData;
+
+		[SerializeField]
+		private GameObject m_sonarDotPrefab; // the prefab for a sonar dot
+		[SerializeField]
+		private GameObject m_sonarDotParentPrefab; // prefab for object that groups the generated dots
+		private GameObject m_sonarDotParent; // // an empty object that groups the generated dots
+		private int m_targetNumDots;
 
 		private static int DIM_TO_WORLD_PROP = 100; // the proportion of scene dimensions to world space is 100 pixels per unit
 
@@ -47,6 +56,26 @@ namespace Shipwreck
 
 			// dive starts locked
 			m_diveUnlocked = false;
+
+			m_shipOutData = GameDb.GetShipOutData(GameMgr.State.GetCurrShipOutIndex());
+
+			GenerateSonarDots();
+		}
+
+		private void GenerateSonarDots()
+		{
+			m_sonarDotParent = Instantiate(m_sonarDotParentPrefab, this.transform);
+
+			// Instantiate SonarDot Prefabs at each point
+			List<Vector2> sonarPoints = m_shipOutData.SonarPoints;
+
+			foreach (Vector2 point in sonarPoints)
+			{
+				GameObject newDot = Instantiate(m_sonarDotPrefab, m_sonarDotParent.transform);
+				newDot.transform.position = point;
+			}
+
+			m_targetNumDots = sonarPoints.Count;
 		}
 
 		/// <summary>
@@ -68,7 +97,7 @@ namespace Shipwreck
 
 			if (!m_diveUnlocked)
 			{
-				float percentComplete = ((float)m_sonarProgress / m_sdmgr.GetTargetNumDots()) * 100;
+				float percentComplete = ((float)m_sonarProgress / m_targetNumDots) * 100;
 
 				if (percentComplete >= m_completionPercent)
 				{

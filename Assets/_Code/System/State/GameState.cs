@@ -30,7 +30,8 @@ namespace Shipwreck {
 
 		bool HasTakenTopDownPhoto();
 
-
+		int GetCurrShipOutIndex();
+		void SetCurrShipOutIndex(int index);
 	}
 
 
@@ -69,6 +70,7 @@ namespace Shipwreck {
 			private HashSet<StringHash32> m_unlockedContacts;
 			private List<QueuedNotification> m_queuedNotifications;
 			private LevelState[] m_levelStates;
+			private int m_currShipOutIndex;
 
 			public GameState() {
 				m_variableTable = new VariantTable();
@@ -82,6 +84,7 @@ namespace Shipwreck {
 				for (int index = 0; index < m_levelStates.Length; index++) {
 					m_levelStates[index].AssignLevelData(GameDb.GetLevelData(index));
 				}
+				m_currShipOutIndex = 0;
 			}
 
 			public IEnumerable<IEvidenceGroupState> GetEvidence() {
@@ -202,6 +205,15 @@ namespace Shipwreck {
 				}
 			}
 
+			public int GetCurrShipOutIndex()
+			{
+				return m_currShipOutIndex;
+			}
+
+			public void SetCurrShipOutIndex(int index)
+			{
+				m_currShipOutIndex = index;
+			}
 		}
 
 	}
