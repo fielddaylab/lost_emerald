@@ -69,6 +69,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: a1c05d74f04dfe648862e5e950a0dec0, type: 3}
   - {fileID: 21300000, guid: 79bc76940498e43718f12fad5bfc70a0, type: 3}
   - {fileID: 21300000, guid: a418b694415c84967abd730e9eb95a7d, type: 3}
+  - {fileID: 21300000, guid: e8248fa459895de4b800b7583f203b1e, type: 3}
   - {fileID: 21300000, guid: 65c26de4f69714d11b1cd5e2bb9de646, type: 3}
   - {fileID: 21300000, guid: 8bf1e015bbdf4e848b56964826269e5e, type: 3}
   - {fileID: 21300000, guid: 18ce4d25aa2b140caad634c3dd4b69e2, type: 3}
@@ -79,6 +80,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 672f5227071fc474cb6defa1512f69fe, type: 3}
   - {fileID: 21300000, guid: d9957c5766c597a41a6ec8d725b315c5, type: 3}
   - {fileID: 21300000, guid: 9b578d57ebd2f48418fb4da740929c3b, type: 3}
+  - {fileID: 21300000, guid: 52b1c17784d8a1e45b76754696037547, type: 3}
   - {fileID: 21300000, guid: 2cd1aa97dedd64a7d98a8d2b4dcd26af, type: 3}
   - {fileID: 21300000, guid: 41c798e7bf044e14db7e5f8678187066, type: 3}
   - {fileID: 21300000, guid: a03db20815b8f440fa7f8e764402a8ac, type: 3}
@@ -138,6 +140,7 @@ SpriteAtlas:
   - mom_icon
   - evidence-canaller
   - camera-frame
+  - DiveButtonOutline
   - journal
   - sonar_dot
   - camera-button-close
@@ -148,6 +151,7 @@ SpriteAtlas:
   - list-of-wrecks-loretta
   - mom
   - lou
+  - DiveButtonFilled
   - arrow-up
   - rounded-rect
   - LevelFolder

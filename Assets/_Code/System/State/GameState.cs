@@ -30,6 +30,9 @@ namespace Shipwreck {
 
 		bool HasTakenTopDownPhoto();
 
+		bool IsDiveUnlocked(int shipOutIndex);
+		bool UnlockDive(int shipOutIndex);
+
 		int GetCurrShipOutIndex();
 		void SetCurrShipOutIndex(int index);
 	}
@@ -70,6 +73,7 @@ namespace Shipwreck {
 			private HashSet<StringHash32> m_unlockedContacts;
 			private List<QueuedNotification> m_queuedNotifications;
 			private LevelState[] m_levelStates;
+			private ShipOutState[] m_shipOutStates;
 			private int m_currShipOutIndex;
 
 			public GameState() {
@@ -83,6 +87,13 @@ namespace Shipwreck {
 				};
 				for (int index = 0; index < m_levelStates.Length; index++) {
 					m_levelStates[index].AssignLevelData(GameDb.GetLevelData(index));
+				}
+				m_shipOutStates = new ShipOutState[1] {
+					new ShipOutState()
+				};
+				for (int index = 0; index < m_shipOutStates.Length; index++)
+				{
+					m_shipOutStates[index].AssignShipOutData(GameDb.GetShipOutData(index));
 				}
 				m_currShipOutIndex = 0;
 			}
@@ -190,7 +201,32 @@ namespace Shipwreck {
 					ClearNotification(node.ContactId);
 				}
 			}
-			
+
+			public bool IsDiveUnlocked(int shipOutIndex)
+			{
+				if (shipOutIndex < 0 || shipOutIndex >= m_shipOutStates.Length)
+				{
+					throw new IndexOutOfRangeException();
+				}
+				return m_shipOutStates[shipOutIndex].IsDiveUnlocked();
+			}
+
+			public bool UnlockDive(int shipOutIndex)
+			{
+				if (shipOutIndex < 0 || shipOutIndex >= m_shipOutStates.Length)
+				{
+					throw new IndexOutOfRangeException();
+				}
+				return m_shipOutStates[shipOutIndex].UnlockDive();
+			}
+
+			public int GetCurrShipOutIndex(){
+				return m_currShipOutIndex;
+			}
+			public void SetCurrShipOutIndex(int index){
+				m_currShipOutIndex = index;
+			}
+
 			public void Serialize(Serializer ioSerializer) {
 				ioSerializer.Object("variantTable", ref m_variableTable);
 				ioSerializer.UInt32ProxySet("nodeVisits", ref m_visitedNodes);
@@ -203,16 +239,6 @@ namespace Shipwreck {
 						m_levelStates[index].AssignLevelData(GameDb.GetLevelData(index));
 					}
 				}
-			}
-
-			public int GetCurrShipOutIndex()
-			{
-				return m_currShipOutIndex;
-			}
-
-			public void SetCurrShipOutIndex(int index)
-			{
-				m_currShipOutIndex = index;
 			}
 		}
 

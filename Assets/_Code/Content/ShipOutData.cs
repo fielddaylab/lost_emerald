@@ -15,11 +15,6 @@ namespace Shipwreck
 			get { return m_shipOutIndex; }
 		}
 
-		public Vector2 WreckLocation
-		{
-			get { return m_wreckLocation; }
-		}
-
 		public List<Vector2> SonarPoints
 		{
 			get { return m_sonarPoints; }
@@ -32,8 +27,6 @@ namespace Shipwreck
 
 		[SerializeField]
 		private int m_shipOutIndex;
-		[SerializeField]
-		private Vector2 m_wreckLocation;
 		[SerializeField]
 		private List<Vector2> m_sonarPoints;
 	}

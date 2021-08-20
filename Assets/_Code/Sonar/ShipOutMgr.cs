@@ -7,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace Shipwreck
 {
@@ -17,13 +18,16 @@ namespace Shipwreck
 	{
 		public static ShipOutMgr instance; // there can only be one
 		public SonarDotGenerator m_sdmgr; // the scene's SonarDotMgr
+		[SerializeField]
+		private ShipOutCanvas m_soc; // the scene's ship out canvas
 
 		[SerializeField]
 		private Vector2 m_targetDimensions; // the dimensions of the scene
 		[SerializeField]
 		private float m_completionPercent; // the percent of solar dots a player must reveal before diving
 		private int m_sonarProgress; // the number of dots that have been revealed
-		private bool m_diveUnlocked; // whether the dive has been unlocked
+		[SerializeField]
+		private Slider m_diveSlider; // the progress bar for unlocking the dive
 
 		private ShipOutData m_shipOutData;
 
@@ -53,9 +57,6 @@ namespace Shipwreck
 
 			// sonar progress starts at 0
 			m_sonarProgress = 0;
-
-			// dive starts locked
-			m_diveUnlocked = false;
 
 			m_shipOutData = GameDb.GetShipOutData(GameMgr.State.GetCurrShipOutIndex());
 
@@ -95,14 +96,20 @@ namespace Shipwreck
 		{
 			m_sonarProgress = m_sonarProgress + 1;
 
-			if (!m_diveUnlocked)
+			if (!GameMgr.State.IsDiveUnlocked(m_shipOutData.ShipOutIndex))
 			{
+				// how many dots out of the total have been revealed
 				float percentComplete = ((float)m_sonarProgress / m_targetNumDots) * 100;
+
+				// what percentage of the proportion needed for the dive have been revealed
+				float percentTargetCompletion = percentComplete / m_completionPercent;
+
+				m_diveSlider.normalizedValue = percentTargetCompletion;
 
 				if (percentComplete >= m_completionPercent)
 				{
-					Debug.Log("Dive unlocked!");
-					m_diveUnlocked = true;
+					GameMgr.State.UnlockDive(m_shipOutData.ShipOutIndex);
+					m_soc.SwapButtonForSlider();
 				}
 			}
 		}
@@ -116,16 +123,9 @@ namespace Shipwreck
 			SceneManager.LoadScene(sceneName);
 		}
 
-		/// <summary>
-		/// Loads the given dive scene
-		/// </summary>
-		/// <param name="sceneName"></param>
-		public void Dive(string sceneName)
+		public ShipOutData GetData()
 		{
-			if (m_diveUnlocked)
-			{
-				Debug.Log("Diving!");
-			}
+			return m_shipOutData;
 		}
 	}
 }
