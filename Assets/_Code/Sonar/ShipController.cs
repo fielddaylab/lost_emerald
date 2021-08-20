@@ -29,6 +29,7 @@ namespace Shipwreck
 		private float m_sceneMargin; // the spacing between the ship and the scene edges
 		private float m_currSpeed; // how quickly the ship is moving this frame
 		private bool m_interactIsActive; // whether the InputMgr has had an Interact press but not yet a release
+		private Vector2 m_sceneDimensions; // the dimensions of the scene the ship finds itself in
 
 		#region Actions
 
@@ -77,6 +78,7 @@ namespace Shipwreck
 		private void Start()
 		{
 			RegisterActions();
+			m_sceneDimensions = ShipOutMgr.instance.GetTargetDimensions();
 		}
 
 		// Update is called once per frame
@@ -142,18 +144,16 @@ namespace Shipwreck
 		/// <param name="interactScreenPos">the location of the interact position</param>
 		private void EnforceMargins(ref Vector2 interactScreenPos)
 		{
-			Vector2 targetDimensions = ShipOutMgr.instance.GetTargetDimensions();
-
 			// Horizontal
 			if (interactScreenPos.x < m_sceneMargin)
 			{
 				// too far left
 				interactScreenPos.x = m_sceneMargin;
 			}
-			else if (interactScreenPos.x > targetDimensions.x - m_sceneMargin)
+			else if (interactScreenPos.x > m_sceneDimensions.x - m_sceneMargin)
 			{
 				// too far right
-				interactScreenPos.x = targetDimensions.x - m_sceneMargin;
+				interactScreenPos.x = m_sceneDimensions.x - m_sceneMargin;
 			}
 
 			// Vertical
@@ -162,10 +162,10 @@ namespace Shipwreck
 				// too far down
 				interactScreenPos.y = m_sceneMargin;
 			}
-			else if (interactScreenPos.y > targetDimensions.y - m_sceneMargin)
+			else if (interactScreenPos.y > m_sceneDimensions.y - m_sceneMargin)
 			{
 				// too far up
-				interactScreenPos.y = targetDimensions.y - m_sceneMargin;
+				interactScreenPos.y = m_sceneDimensions.y - m_sceneMargin;
 			}
 		}
 
