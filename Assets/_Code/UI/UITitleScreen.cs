@@ -44,8 +44,12 @@ namespace Shipwreck {
 		}
 		private void HandleUnlock() {
 			GameMgr.UnlockLevel(1);
-			GameMgr.UnlockEvidence("LV1-Root");
-			GameMgr.UnlockEvidence("LV1-Transcript-Lou");
+			GameMgr.UnlockEvidence(1,"LV1-Root");
+			GameMgr.UnlockEvidence(1,"LV1-Transcript-Lou");
+			GameMgr.UnlockEvidence(1,"LV1-Photo-Above");
+			GameMgr.UnlockEvidence(1,"LV1-Photo-Name");
+			GameMgr.UnlockEvidence(1,"LV1-Card-Types");
+			GameMgr.UnlockEvidence(1,"LV1-Table-Wrecks");
 		}
 
 

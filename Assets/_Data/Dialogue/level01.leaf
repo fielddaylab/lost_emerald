@@ -63,3 +63,40 @@
 	$call UnlockLevel(1)
 	$call UnlockEvidence(1,LV1-Root)
 	$call UnlockEvidence(1,LV1-Transcript-Lou)
+
+
+//  Amy
+//  --------------------------------------------------------------------------------------
+
+::amy-meet
+@contact amy, in-person
+@trigger OnEnterOffice
+@when HasEvidence(LV1-Photo-Above), HasEvidence(LV1-Photo-Name)
+@once
+
+	{@you}  Hey Amy. Got a sec?
+	{@amy}  Oh, hey Jules! That was your dad in that newspaper, right? Is he ok?
+	{@you}  He’s fine. That was a normal Tuesday for him.  
+			I’m looking into a new shipwreck. Can you send me a list of ships that went down near Rawley Point?
+	{@amy}  Ok, one sec...
+			Done!
+	$call UnlockEvidence(1,LV1-Card-Types)
+	$call UnlockEvidence(1,LV1-Table-Wrecks)
+
+::amy-letter
+@contact amy, in-person
+@trigger OnChainSolved 
+@when IsChainComplete(Type), IsChainComplete(Name)
+@once
+	
+	{@amy} 	Hey! Any news?
+	{@you} 	Just that my dad is driving me crazy.
+	 		He won’t stop looking for my grandpa’s shipwreck.
+		 	I mean, I know Dad’s upset that people blamed Grandpa. But Grandpa sounds like he was the risk-taking type! How does Dad know it wasn’t his fault?? 
+	{@amy} 	Oh, uh, I meant news on the other shipwreck…
+	{@you} 	Oops. Yep, I found the ship’s name. She’s the Loretta!
+	{@amy} 	Awesome! I’ll see what I can dig up about her in the archives. 
+			I’ll send you what I find!
+	$call UnlockEvidence(1,LV1-Article-Sinking)
+	
+
