@@ -61,10 +61,10 @@ namespace Shipwreck
 		public static LeafThreadHandle RunTrigger(StringHash32 triggerId, VariantTable table = null, ILeafActor actor = null, StringHash32 target = default(StringHash32)) {
 			LeafThreadHandle responseHandle = default(LeafThreadHandle);
 
-			using(PooledList<ScriptNode> nodes = PooledList<ScriptNode>.Create()) {
+			using (PooledList<ScriptNode> nodes = PooledList<ScriptNode>.Create()) {
 				I.m_scriptMgr.GetResponsesForTrigger(triggerId, target, actor, table, nodes);
-				foreach(var node in nodes) {
-					switch(node.Type) {
+				foreach (var node in nodes) {
+					switch (node.Type) {
 						case ScriptNode.NodeType.Function:
 							I.m_scriptMgr.Run(node, actor, table);
 							break;
@@ -153,7 +153,7 @@ namespace Shipwreck
 		public static void UnlockContact(StringHash32 contact) {
 			if (I.m_state.UnlockContact(contact)) {
 				Events.Dispatch(GameEvents.ContactUnlocked, contact);
-				using(var table = TempVarTable.Alloc()) {
+				using (var table = TempVarTable.Alloc()) {
 					table.Set("contactId", contact);
 					RunTrigger(GameTriggers.OnContactAdded, table, null, contact);
 				}
@@ -180,24 +180,37 @@ namespace Shipwreck
 					table.Set("evidence", groupId);
 					RunTrigger(GameTriggers.OnEvidenceUnlock, table);
 				}
+				Debug.Log(groupId);
 			}
 		}
 
+		
 		public static void UnlockEvidence(StringHash32 groupId) {
 			if (I.m_state.UnlockEvidence(I.m_selectedLevel, groupId)) {
 				Events.Dispatch(GameEvents.EvidenceUnlocked, groupId);
 				using (var table = TempVarTable.Alloc()) {
-					table.Set("levelIndex", I.m_selectedLevel+1);
+					table.Set("levelIndex", I.m_selectedLevel + 1);
 					table.Set("evidence", groupId);
 					RunTrigger(GameTriggers.OnEvidenceUnlock, table);
 				}
 			}
 		}
+		
 
+
+		[LeafMember]
+		private static bool HasEvidence(StringHash32 evidence) {
+			return I.m_state.IsEvidenceUnlocked(evidence);
+		}
 
 		[LeafMember]
 		private static bool HasContact(StringHash32 contact) {
 			return I.m_state.IsContactUnlocked(contact);
+		}
+
+		[LeafMember]
+		private static bool IsChainComplete(StringHash32 root) {
+			return I.m_state.IsChainComplete(root);
 		}
 
 		[LeafMember]

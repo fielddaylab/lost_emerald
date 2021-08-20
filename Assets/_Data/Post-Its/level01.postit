@@ -12,5 +12,22 @@
 
 :: shiptype-correct
 @root Type
-@correct card-canaller, photo-above
+@correct card-canaller, photo-above, type-canaller
 	That's does look like a canaller!
+
+:: name-correct
+@root Name
+@correct name-loretta, photo-name
+	The name must be Loretta!
+
+:: cargo-correct
+@root Cargo
+@correct cargo-cargo, cargo-corn
+
+:: cause-correct
+@root Cause
+@correct cause-sandbar
+
+:: artifact-correct
+@root Artifact
+@correct photo-artifact, artifact-trunk

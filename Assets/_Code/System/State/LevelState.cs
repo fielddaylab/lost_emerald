@@ -89,6 +89,11 @@ namespace Shipwreck {
 				public bool HasTakenTopDownPhoto() {
 					return IsEvidenceUnlocked(m_levelData.TopDownPhotoID);
 				}
+				public bool IsChainComplete(StringHash32 root) {
+					return m_chains.Find((item) => {
+						return item.Root() == root;
+					})?.IsCorrect ?? false;
+				}
 				
 
 				public void Serialize(Serializer ioSerializer) {

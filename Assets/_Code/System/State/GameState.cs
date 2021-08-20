@@ -73,7 +73,7 @@ namespace Shipwreck {
 			public GameState() {
 				m_variableTable = new VariantTable();
 				m_visitedNodes = new HashSet<StringHash32>();
-				m_unlockedContacts = new HashSet<StringHash32>() { "mom" };
+				m_unlockedContacts = new HashSet<StringHash32>() { "mom", "amy" };
 				m_queuedNotifications = new List<QueuedNotification>();
 				m_levelStates = new LevelState[4] {
 					new LevelState(), new LevelState(),
@@ -113,6 +113,10 @@ namespace Shipwreck {
 			}
 			public bool IsLocationChainComplete() {
 				return m_levelStates[m_levelIndex].IsLocationChainComplete();
+			}
+
+			public bool IsChainComplete(StringHash32 root) {
+				return m_levelStates[m_levelIndex].IsChainComplete(root);
 			}
 
 			public bool UnlockContact(StringHash32 contact) {
