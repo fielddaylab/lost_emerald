@@ -18,7 +18,7 @@
 //  --------------------------------------------------------------------------------------
 
 ::dad-meet
-@contact dad, in-person
+@contact dad, phone-call
 @trigger OnContactAdded
 @once
 
@@ -40,7 +40,7 @@
 //  --------------------------------------------------------------------------------------
 
 ::lou-meet
-@contact lou, in-person
+@contact lou, phone-call
 @trigger OnContactAdded
 @once
 	// Receive/open a new text from Lou
@@ -69,7 +69,7 @@
 //  --------------------------------------------------------------------------------------
 
 ::amy-meet
-@contact amy, in-person
+@contact amy, phone-call
 @trigger OnEnterOffice
 @when HasEvidence(LV1-Photo-Above), HasEvidence(LV1-Photo-Name)
 @once
@@ -84,7 +84,7 @@
 	$call UnlockEvidence(1,LV1-Table-Wrecks)
 
 ::amy-letter
-@contact amy, in-person
+@contact amy, phone-call
 @trigger OnChainSolved 
 @when IsChainComplete(Type), IsChainComplete(Name)
 @once

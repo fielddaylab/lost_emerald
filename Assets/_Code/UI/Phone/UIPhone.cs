@@ -1,9 +1,6 @@
 ﻿using BeauRoutine;
-using BeauUtil;
-using Leaf.Runtime;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Shipwreck {
 
@@ -38,7 +35,7 @@ namespace Shipwreck {
 			UIMgr.Close(m_textMsgScreen);
 
 			GameMgr.Events.Dispatch(GameEvents.PhoneClosed);
-			UIPhoneNotif.AttemptReopen();
+			//UIPhoneNotif.AttemptReopen();
 		}
 
 		protected override IEnumerator HideRoutine() {

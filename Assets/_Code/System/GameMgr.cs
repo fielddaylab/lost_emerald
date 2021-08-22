@@ -43,6 +43,13 @@ namespace Shipwreck
 			m_scriptMgr.ConfigureEvents();
 
 			m_eventService = new EventService();
+
+			m_eventService.Register<StringHash32>(GameEvents.PhoneNotification, HandlePhoneNotification);
+
+		}
+
+		private void HandlePhoneNotification(StringHash32 contact) {
+			UIMgr.Open<UIPhoneNotif>();
 		}
 
 
@@ -70,11 +77,7 @@ namespace Shipwreck
 							break;
 
 						default:
-							if (node.IsNotification) {
-								QueueNotification(node);
-							} else {
-								responseHandle = I.m_scriptMgr.Run(node, actor, table);
-							}
+							QueueNotification(node);
 							break;
 					}
 				}
@@ -94,10 +97,10 @@ namespace Shipwreck
 		public static void RecordNodeVisited(ScriptNode node) {
 			I.m_state.RecordNodeVisit(node);
 
-			if (node.IsNotification) {
-				I.m_state.ClearNotification(node.ContactId);
-				SetVariable(GameVars.LastNotifiedContactId, null);
-			}
+			
+			I.m_state.ClearNotification(node.ContactId);
+			SetVariable(GameVars.LastNotifiedContactId, null);
+
 		}
 
 		#endregion // Scripting
