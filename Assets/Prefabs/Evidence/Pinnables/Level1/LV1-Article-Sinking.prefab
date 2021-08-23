@@ -680,7 +680,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "The captain\u2019s trunk and all of the cargo was lost. The sailors were
+  m_text: "The captain\u2019s trunk and all of the corn was lost. The sailors were
     rescued by a fishing boat, heading south with an urgent note from Peshtigo (cont.
     p C5)\n"
   m_isRightToLeft: 0
@@ -876,7 +876,7 @@ PrefabInstance:
     - target: {fileID: 5820740882212646554, guid: 8a3c1004efbc77e449d833085e2e9880,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 37.61104
+      value: 33.072838
       objectReference: {fileID: 0}
     - target: {fileID: 5820740882212646554, guid: 8a3c1004efbc77e449d833085e2e9880,
         type: 3}
@@ -921,12 +921,12 @@ PrefabInstance:
     - target: {fileID: 5820740882212646554, guid: 8a3c1004efbc77e449d833085e2e9880,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -104.62
+      value: -106.89
       objectReference: {fileID: 0}
     - target: {fileID: 5820740882212646554, guid: 8a3c1004efbc77e449d833085e2e9880,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -73.1
+      value: -73.2
       objectReference: {fileID: 0}
     - target: {fileID: 5820740882212646554, guid: 8a3c1004efbc77e449d833085e2e9880,
         type: 3}

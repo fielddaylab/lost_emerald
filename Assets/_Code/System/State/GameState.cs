@@ -201,9 +201,7 @@ namespace Shipwreck {
 			}
 			public void RecordNodeVisit(ScriptNode node) {
 				m_visitedNodes.Add(node.Id());
-				if (node.IsNotification) {
-					ClearNotification(node.ContactId);
-				}
+				ClearNotification(node.ContactId);
 			}
 
 			public bool IsDiveUnlocked(int shipOutIndex)

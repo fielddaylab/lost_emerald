@@ -57,7 +57,7 @@ namespace Shipwreck {
 			base.OnHideCompleted();
 
 			GameMgr.Events.Dispatch(GameEvents.DialogClosed);
-			UIPhoneNotif.AttemptReopen();
+			//UIPhoneNotif.AttemptReopen();
 		}
 
 		protected override IEnumerator ShowRoutine() {

@@ -39,7 +39,6 @@ namespace Shipwreck {
 		private void HandleNewGame() {
 			UIMgr.CloseThenCall<UITitleScreen>(() => {
 				UIMgr.Open<UIOfficeScreen>();
-				UIPhoneNotif.AttemptReopen();
 			});
 		}
 		private void HandleUnlock() {

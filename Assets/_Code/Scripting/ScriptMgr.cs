@@ -73,7 +73,7 @@ namespace Shipwreck {
 
 		private readonly Dictionary<LeafAsset,LeafNodePackage<ScriptNode>> m_packages;
 		private readonly Dictionary<TriggerKey,ScriptNodeSet> m_triggerSets;
-		private readonly Dictionary<StringHash32,ScriptNode> m_allNotifications;
+		private readonly Dictionary<StringHash32,ScriptNode> m_allNodes;
 		private readonly Parser m_parser;
 		private readonly CustomVariantResolver m_triggerResolver;
 		private readonly ScriptNodeSet.NodePredicate m_triggerPredicate;
@@ -85,12 +85,11 @@ namespace Shipwreck {
 		public ScriptMgr(MonoBehaviour inHost) : base(inHost, new CustomVariantResolver(), null) {
 			m_packages = new Dictionary<LeafAsset, LeafNodePackage<ScriptNode>>();
 			m_triggerSets = new Dictionary<TriggerKey, ScriptNodeSet>();
-			m_allNotifications = new Dictionary<StringHash32, ScriptNode>();
+			m_allNodes = new Dictionary<StringHash32, ScriptNode>();
 			m_parser = new Parser();
 
 			m_triggerResolver = new CustomVariantResolver();
 			m_triggerResolver.Base = Resolver;
-			m_triggerPredicate = CanRunNode;
 
 			Resolver.SetVar(new TableKeyPair("scene", "name"), () => SceneHelper.ActiveScene().Name);
 		}
@@ -133,7 +132,7 @@ namespace Shipwreck {
 				if (inNode.Type == ScriptNode.NodeType.TextMessage) {
 					m_uiCurrent = UIMgr.Open<UITextMessage>();
 					UIMgr.Close<UIDialogScreen>();
-				} else if (inNode.Type == ScriptNode.NodeType.InPerson) {
+				} else if (inNode.Type == ScriptNode.NodeType.PhoneCall) {
 					m_uiCurrent = UIMgr.Open<UIDialogScreen>();
 					UIMgr.Close<UIPhone>();
 				} else if (inNode.Type == ScriptNode.NodeType.Radio) {
@@ -150,7 +149,7 @@ namespace Shipwreck {
 				return;
 			
 			switch(inNode.Type) {
-					case ScriptNode.NodeType.InPerson:
+					case ScriptNode.NodeType.PhoneCall:
 						{
 							if (m_uiCurrent != null) {
 								UIMgr.Close(m_uiCurrent);
@@ -163,11 +162,11 @@ namespace Shipwreck {
 								UIMgr.Close(m_uiCurrent);
 							}
 
-							if (inNode.IsNotification && GameMgr.State.NotificationCount() == 0) {
+							//if (GameMgr.State.NotificationCount() == 0) {
 								UIMgr.Close<UIPhone>();
-							} else {
-								UIMgr.Open<UIContacts>();
-							}
+							//} else {
+							//	UIMgr.Open<UIContacts>();
+							//}
 							break;
 						}
 
@@ -210,16 +209,15 @@ namespace Shipwreck {
 
 		public ScriptNode GetNotification(StringHash32 id) {
 			ScriptNode node;
-			m_allNotifications.TryGetValue(id, out node);
+			m_allNodes.TryGetValue(id, out node);
 			return node;
 		}
 
 		private void RegisterNodes(LeafNodePackage<ScriptNode> package) {
 			StringHash32 triggerId;
 			foreach(var node in package) {
-				if (node.IsNotification) {
-					m_allNotifications[node.Id()] = node;
-				}
+				
+				m_allNodes[node.Id()] = node;
 
 				triggerId = node.TriggerId;
 				
@@ -240,9 +238,8 @@ namespace Shipwreck {
 		private void DeregisterNodes(LeafNodePackage<ScriptNode> package) {
 			StringHash32 triggerId;
 			foreach(var node in package) {
-				if (node.IsNotification) {
-					m_allNotifications.Remove(node.Id());
-				}
+				
+				m_allNodes.Remove(node.Id());
 
 				triggerId = node.TriggerId;
 				
@@ -262,11 +259,8 @@ namespace Shipwreck {
 		#region Triggers
 
 		private bool CanRunNode(ScriptNode node) {
-			if (node.IsNotification) {
+			
 				return m_cachedGameState.GetContactNotificationId(node.ContactId) != node.Id();
-			}
-
-			return true;
 		}
 
 		public int GetResponsesForTrigger(StringHash32 triggerId, StringHash32 target, ILeafActor actor, VariantTable contextTable, ICollection<ScriptNode> outResponses) {
@@ -276,7 +270,6 @@ namespace Shipwreck {
 			evalParams.Context = actor;
 			evalParams.GameState = m_cachedGameState;
 			evalParams.Target = target;
-			evalParams.Predicate = m_triggerPredicate;
 
 			int count = 0;
 

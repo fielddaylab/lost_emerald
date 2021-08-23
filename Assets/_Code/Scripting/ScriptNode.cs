@@ -14,7 +14,7 @@ namespace Shipwreck {
 		public enum NodeType {
 			Unassigned,
 			TextMessage,
-			InPerson,
+			PhoneCall,
 			Radio,
 			Function
 		}
@@ -39,9 +39,6 @@ namespace Shipwreck {
 		}
 		public bool RunOnce {
 			get { return m_once; }
-		}
-		public bool IsNotification {
-			get { return m_isNotification; }
 		}
 		public bool IsConversation {
 			get { return m_type > NodeType.Unassigned && m_type < NodeType.Function; }

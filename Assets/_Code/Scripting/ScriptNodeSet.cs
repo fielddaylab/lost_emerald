@@ -91,9 +91,6 @@ namespace Shipwreck {
 			if (node.RunOnce && parameters.GameState.HasVisitedNode(node))
 				return false;
 
-			if (parameters.Predicate != null && !parameters.Predicate(node))
-				return false;
-
 			VariantComparison[] conditions = node.TriggerConditions;
 			if (conditions != null) {
 				for(int conditionIdx = 0, conditionCount = conditions.Length; conditionIdx < conditionCount; conditionIdx++) {
@@ -124,7 +121,6 @@ namespace Shipwreck {
 			public IGameState GameState;
 			public StringHash32 Target;
 			public ILeafActor Context;
-			public NodePredicate Predicate;
 		}
 
 		public delegate bool NodePredicate(ScriptNode node);
