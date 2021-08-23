@@ -2153,7 +2153,7 @@ MonoBehaviour:
   - {fileID: 261572184}
   - {fileID: 78415456}
   - {fileID: 1436226735}
-  - {fileID: 0}
+  - {fileID: 1210460362}
   - {fileID: 253769057}
   - {fileID: 1118564484}
 --- !u!224 &1013876172 stripped
@@ -2375,7 +2375,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1210460361
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2416,6 +2416,7 @@ MonoBehaviour:
     Curve: 4
   m_contactScreen: {fileID: 253769057}
   m_textMsgScreen: {fileID: 1118564484}
+  m_overlay: {fileID: 151126293}
 --- !u!224 &1245559753 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1788899801021723324, guid: fd47f395c8018a344a81b659aa54fdc0,
