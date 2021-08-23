@@ -1,4 +1,9 @@
-﻿using BeauData;
+﻿/*
+ * Organization: Field Day Lab
+ * Author(s): Levi Huillet
+ */
+
+using BeauData;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

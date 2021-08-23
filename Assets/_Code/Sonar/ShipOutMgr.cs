@@ -44,6 +44,7 @@ namespace Shipwreck
 		private static int DIM_TO_WORLD_PROP = 100; // the proportion of scene dimensions to world space is 100 pixels per unit
 
 		private bool m_interactIsOverUI; // whether the interaction is over some UI
+
 		public bool GetInteractIsOverUI()
 		{
 			return m_interactIsOverUI;
@@ -75,7 +76,21 @@ namespace Shipwreck
 
 			m_shipOutData = GameDb.GetShipOutData(GameMgr.State.GetCurrShipOutIndex());
 
-			GenerateSonarDots();
+			// when dive is unlocked, load the buoy without sonar
+			if (GameMgr.State.IsDiveUnlocked(GameMgr.State.GetCurrShipOutIndex()))
+			{
+				// activate button
+				m_soc.SwapButtonForSlider();
+
+				// drop buoy
+				GameObject buoy = Instantiate(m_buoyPrefab);
+				buoy.transform.position = m_shipOutData.buoyLocation;
+			}
+			// when the dive is not unlocked, laod the sonar without buoy
+			else
+			{
+				GenerateSonarDots();
+			}
 		}
 
 		private void GenerateSonarDots()

@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿/*
+ * Organization: Field Day Lab
+ * Author(s): Levi Huillet
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
