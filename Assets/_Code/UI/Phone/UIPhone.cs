@@ -7,17 +7,16 @@ namespace Shipwreck {
 	public class UIPhone : UIBase {
 
 		[SerializeField]
+		private RectTransform m_phoneTransform = null;
+		[SerializeField]
 		private TweenSettings m_tweenSettings = new TweenSettings(0.3f, Curve.QuadInOut);
 		[SerializeField]
 		private UIContacts m_contactScreen = null;
 		[SerializeField]
 		private UITextMessage m_textMsgScreen = null;
+		[SerializeField]
+		private CanvasGroup m_overlay = null;
 
-		private RectTransform m_rectTransform;
-
-		private void Awake() {
-			m_rectTransform = (RectTransform)transform;
-		}
 
 		#region UIBase
 
@@ -26,7 +25,7 @@ namespace Shipwreck {
 
 			GameMgr.Events.Dispatch(GameEvents.PhoneOpened);
 			UIMgr.Close<UIPhoneNotif>();
-			m_rectTransform.anchoredPosition = new Vector2(m_rectTransform.anchoredPosition.x, -660f);
+			m_phoneTransform.anchoredPosition = new Vector2(m_phoneTransform.anchoredPosition.x, -660f);
 		}
 		protected override void OnHideCompleted() {
 			base.OnHideCompleted();
@@ -39,10 +38,10 @@ namespace Shipwreck {
 		}
 
 		protected override IEnumerator HideRoutine() {
-			yield return m_rectTransform.AnchorPosTo(-660f, m_tweenSettings, Axis.Y);
+			yield return m_phoneTransform.AnchorPosTo(-660f, m_tweenSettings, Axis.Y);
 		}
 		protected override IEnumerator ShowRoutine() {
-			yield return m_rectTransform.AnchorPosTo(45f, m_tweenSettings, Axis.Y);
+			yield return m_phoneTransform.AnchorPosTo(45f, m_tweenSettings, Axis.Y);
 		}
 
 		#endregion // UIBase
