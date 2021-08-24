@@ -30,7 +30,7 @@ namespace Shipwreck {
 		private DiveNode m_currentNode;
 		private Routine m_startRoutine;
 		private Routine m_transitionRoutine;
-		private bool m_isNavActive = true;
+		private bool m_isNavActive = false;
 		private float m_zoomLevel = 0f;
 
 		private void Awake() {
@@ -49,12 +49,7 @@ namespace Shipwreck {
 				return;
 			}
 			InputMgr.Deregister(InputMgr.OnInteractPressed, HandleInteractPressed);
-			GameMgr.Events.Deregister(GameEvents.Dive.AttemptPhoto, HandleAttemptPhoto);
-			GameMgr.Events.Deregister<float>(GameEvents.Dive.CameraZoomChanged, HandleCameraZoomChanged);
-			GameMgr.Events.Deregister(GameEvents.Dive.NavigationActivated, HandleNavActivated);
-			GameMgr.Events.Deregister(GameEvents.Dive.NavigationDeactivated, HandleNavDeactivated);
-			GameMgr.Events.Deregister(GameEvents.Dive.RequestPhotoList, HandlePhotoListRequested);
-			GameMgr.Events.Deregister(GameEvents.Dive.NavigateToAscendNode, HandleNavToAscendNode);
+			GameMgr.Events.DeregisterAll(this);
 		}
 
 		private void HandleAttemptPhoto() {

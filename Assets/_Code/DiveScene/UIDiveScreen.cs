@@ -168,7 +168,7 @@ namespace Shipwreck {
 			GameMgr.Events.Register<bool>(GameEvents.Dive.LocationChanging, HandleLocationChanging);
 			GameMgr.Events.Register<List<DivePointOfInterest>>(GameEvents.Dive.SendPhotoList, HandlePhotoListSent);
 
-			GameMgr.Events.Dispatch(GameEvents.Dive.NavigationDeactivated);
+			//Routine.Delay(() => { GameMgr.Events.Dispatch(GameEvents.Dive.NavigationDeactivated); }, 0.1f);
 		}
 		protected override void OnHideStart() {
 			base.OnHideStart();

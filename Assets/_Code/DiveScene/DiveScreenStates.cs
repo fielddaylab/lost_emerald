@@ -73,6 +73,7 @@ namespace Shipwreck {
 			}
 
 			public override void OnStart() {
+				GameMgr.Events.Dispatch(GameEvents.Dive.NavigationDeactivated); //hack?
 				Screen.WaitForCameraTransitionEnd(HandleTransitionEnded);
 			}
 			private void HandleTransitionEnded() {

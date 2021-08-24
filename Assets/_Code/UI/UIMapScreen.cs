@@ -53,7 +53,7 @@ namespace Shipwreck {
 			GameMgr.State.SetCurrShipOutIndex(0);
 			SceneManager.LoadScene("ShipOut");
 			// SceneManager.LoadScene("Dive_Ship01"); // hack
-			UIMgr.Open<UIDiveScreen>();
+			//UIMgr.Open<UIDiveScreen>();
 		}
 	}
 

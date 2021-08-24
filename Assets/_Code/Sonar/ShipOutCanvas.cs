@@ -44,6 +44,7 @@ namespace Shipwreck
 			{
 				// TODO: pull this from ShipOutData
 				SceneManager.LoadScene("Dive_Ship01");
+				UIMgr.Open<UIDiveScreen>();
 			}
 		}
 
