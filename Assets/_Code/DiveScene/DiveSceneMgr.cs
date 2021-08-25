@@ -38,11 +38,11 @@ namespace Shipwreck {
 			m_startRoutine.Replace(this, Routine.Delay(()=> { SetNode(m_startNode); }, m_startDelay));
 			InputMgr.Register(InputMgr.OnInteractPressed, HandleInteractPressed);
 			GameMgr.Events.Register(GameEvents.Dive.AttemptPhoto, HandleAttemptPhoto);
-			GameMgr.Events.Register<float>(GameEvents.Dive.CameraZoomChanged, HandleCameraZoomChanged);
-			GameMgr.Events.Register(GameEvents.Dive.NavigationActivated, HandleNavActivated);
-			GameMgr.Events.Register(GameEvents.Dive.NavigationDeactivated, HandleNavDeactivated);
-			GameMgr.Events.Register(GameEvents.Dive.RequestPhotoList, HandlePhotoListRequested);
-			GameMgr.Events.Register(GameEvents.Dive.NavigateToAscendNode, HandleNavToAscendNode);
+			GameMgr.Events.Register<float>(GameEvents.Dive.CameraZoomChanged, HandleCameraZoomChanged, this);
+			GameMgr.Events.Register(GameEvents.Dive.NavigationActivated, HandleNavActivated, this);
+			GameMgr.Events.Register(GameEvents.Dive.NavigationDeactivated, HandleNavDeactivated, this);
+			GameMgr.Events.Register(GameEvents.Dive.RequestPhotoList, HandlePhotoListRequested, this);
+			GameMgr.Events.Register(GameEvents.Dive.NavigateToAscendNode, HandleNavToAscendNode, this);
 		}
 		private void OnDestroy() {
 			if (!GameMgr.Exists) {

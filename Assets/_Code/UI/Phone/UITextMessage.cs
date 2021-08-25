@@ -44,6 +44,10 @@ namespace Shipwreck {
 		protected override void OnHideCompleted() {
 			base.OnHideCompleted();
 			ClearContent();
+			GameMgr.Events.Dispatch(GameEvents.DialogClosed);
+			using (var table = TempVarTable.Alloc()) {
+				GameMgr.RunTrigger(GameTriggers.OnDialogClosed, table);
+			}
 		}
 
 		protected override IEnumerator HideRoutine() {

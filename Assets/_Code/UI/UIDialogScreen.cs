@@ -57,6 +57,10 @@ namespace Shipwreck {
 			base.OnHideCompleted();
 
 			GameMgr.Events.Dispatch(GameEvents.DialogClosed);
+			using (var table = TempVarTable.Alloc()) {
+				GameMgr.RunTrigger(GameTriggers.OnDialogClosed, table);
+			}
+
 			//UIPhoneNotif.AttemptReopen();
 		}
 

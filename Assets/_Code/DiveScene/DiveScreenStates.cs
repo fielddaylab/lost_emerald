@@ -131,6 +131,7 @@ namespace Shipwreck {
 			public override void OnCloseMessage() {
 				Screen.HideMessageBox();
 				if (m_showJournal) {
+					Screen.AssignPreviousState(new DiveNavigation(Screen));
 					Screen.SetState(new DiveJournal(Screen));
 				} else {
 					Screen.SetState(Screen.Previous);

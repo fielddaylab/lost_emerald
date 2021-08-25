@@ -51,11 +51,14 @@ namespace Shipwreck {
 			GameMgr.UnlockEvidence(1,"LV1-Card-Types");
 			GameMgr.UnlockEvidence(1,"LV1-Table-Wrecks");
 			GameMgr.UnlockEvidence(1,"LV1-Article-Sinking");
+			GameMgr.UnlockContact("dad");
+			GameMgr.UnlockContact("lou");
+			GameMgr.UnlockContact("amy");
 			GameMgr.RecordNodeVisited("level01.mom-meet", "mom");
 			GameMgr.RecordNodeVisited("level01.dad-meet", "dad");
 			GameMgr.RecordNodeVisited("level01.lou-meet", "lou");
 			GameMgr.RecordNodeVisited("level01.amy-meet", "amy");
-			GameMgr.RecordNodeVisited("level01.amy-article", "amy");
+			//GameMgr.RecordNodeVisited("level01.amy-article", "amy");
 		}
 
 

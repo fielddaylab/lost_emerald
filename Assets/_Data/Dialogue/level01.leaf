@@ -35,6 +35,15 @@
 	{@dad}  Oh, your sister’s here! She’s gonna help me look through some old stuff. Gotta go bye!
 	$call UnlockContact(lou)
 
+::dad-urgent-text
+@contact dad, text-message
+@trigger OnChainSolved
+@when IsChainComplete(Name), IsChainComplete(Type)
+@once
+	{@dad}  Jules!! Big news!  
+	{@you}  Sorry, Dad. Super busy.
+
+
 
 //  Lou
 //  --------------------------------------------------------------------------------------
@@ -64,6 +73,16 @@
 	$call UnlockEvidence(1,LV1-Root)
 	$call UnlockEvidence(1,LV1-Transcript-Lou)
 
+::lou-complete
+@contact lou, phone-call
+@trigger OnChainSolved
+@when IsChainComplete(Artifact), IsChainComplete(Cargo), IsChainComplete(Cause)
+@once
+	
+	{@you}  Lou! I solved mystery of the ship you saw!
+			Her name was the Loretta and she sank after running into a sand bar!
+	{@lou}  What!? That's amazing!
+
 
 //  Amy
 //  --------------------------------------------------------------------------------------
@@ -85,8 +104,8 @@
 
 ::amy-article
 @contact amy, phone-call
-@trigger OnChainSolved 
-@when IsChainComplete(Type), IsChainComplete(Name)
+@trigger OnDialogClosed
+@when Seen(level01.dad-urgent-text)
 @once
 	
 	{@amy} 	Hey! Any news?
