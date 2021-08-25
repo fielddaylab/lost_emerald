@@ -54,10 +54,7 @@ namespace Shipwreck {
 			base.OnHideCompleted();
 
 			GameMgr.Events.Dispatch(GameEvents.DialogClosed);
-			using (var table = TempVarTable.Alloc()) {
-				GameMgr.RunTrigger(GameTriggers.OnDialogClosed, table);
-			}
-			//UIPhoneNotif.AttemptReopen();
+			GameMgr.RunTrigger(GameTriggers.OnDialogClosed);
 		}
 
 		protected override IEnumerator ShowRoutine() {
@@ -148,6 +145,10 @@ namespace Shipwreck {
 		}
 
 		protected override IEnumerator OnHideImage() {
+			throw new NotSupportedException();
+		}
+
+		protected override void AssignBackground(Sprite background) {
 			throw new NotSupportedException();
 		}
 

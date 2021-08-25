@@ -57,9 +57,7 @@ namespace Shipwreck {
 			base.OnHideCompleted();
 
 			GameMgr.Events.Dispatch(GameEvents.DialogClosed);
-			using (var table = TempVarTable.Alloc()) {
-				GameMgr.RunTrigger(GameTriggers.OnDialogClosed, table);
-			}
+			GameMgr.RunTrigger(GameTriggers.OnDialogClosed);
 
 			//UIPhoneNotif.AttemptReopen();
 		}
@@ -77,8 +75,10 @@ namespace Shipwreck {
 		#region Dialog
 
 		protected override void AssignPartner(CharacterData character) {
-			AssignSpritePreserveAspect(m_portrait, character.Portrait, Axis.Y);
-			AssignSpritePreserveAspect(m_background, character.Background, Axis.Y);
+			//AssignSpritePreserveAspect(m_portrait, character.Portrait, Axis.Y);
+		}
+		protected override void AssignBackground(Sprite background) {
+			AssignSpritePreserveAspect(m_background, background, Axis.Y);
 		}
 
 		protected override void OnPrepareLine(TagString inString) {

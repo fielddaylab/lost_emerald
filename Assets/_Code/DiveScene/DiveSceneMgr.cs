@@ -37,7 +37,7 @@ namespace Shipwreck {
 			m_diveNodes = GetComponentsInChildren<DiveNode>();
 			m_startRoutine.Replace(this, Routine.Delay(()=> { SetNode(m_startNode); }, m_startDelay));
 			InputMgr.Register(InputMgr.OnInteractPressed, HandleInteractPressed);
-			GameMgr.Events.Register(GameEvents.Dive.AttemptPhoto, HandleAttemptPhoto);
+			GameMgr.Events.Register(GameEvents.Dive.AttemptPhoto, HandleAttemptPhoto, this);
 			GameMgr.Events.Register<float>(GameEvents.Dive.CameraZoomChanged, HandleCameraZoomChanged, this);
 			GameMgr.Events.Register(GameEvents.Dive.NavigationActivated, HandleNavActivated, this);
 			GameMgr.Events.Register(GameEvents.Dive.NavigationDeactivated, HandleNavDeactivated, this);

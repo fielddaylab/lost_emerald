@@ -5,7 +5,6 @@
 
 :: mom-meet
 @contact mom, text-message
-@notification // when able to be shown, increases notification count for character
 @trigger OnEnterOffice
 @once
 
@@ -19,6 +18,7 @@
 
 ::dad-meet
 @contact dad, phone-call
+@background dad-yardsale
 @trigger OnContactAdded
 @once
 
@@ -50,6 +50,7 @@
 
 ::lou-meet
 @contact lou, phone-call
+@background lou-ultralight
 @trigger OnContactAdded
 @once
 	// Receive/open a new text from Lou
@@ -75,6 +76,7 @@
 
 ::lou-complete
 @contact lou, phone-call
+@background lou-ultralight
 @trigger OnChainSolved
 @when IsChainComplete(Artifact), IsChainComplete(Cargo), IsChainComplete(Cause)
 @once
@@ -89,6 +91,7 @@
 
 ::amy-meet
 @contact amy, phone-call
+@background amy-office
 @trigger OnEnterOffice
 @when HasEvidence(LV1-Photo-Above), HasEvidence(LV1-Photo-Name)
 @once
@@ -104,6 +107,7 @@
 
 ::amy-article
 @contact amy, phone-call
+@background amy-office
 @trigger OnDialogClosed
 @when Seen(level01.dad-urgent-text)
 @once

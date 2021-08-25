@@ -31,6 +31,9 @@ namespace Shipwreck {
 		public StringHash32 TriggerId {
 			get { return m_trigger; }
 		}
+		public StringHash32 Background {
+			get { return m_background; }
+		}
 		public int TriggerPriority {
 			get { return m_triggerPriority; }
 		}
@@ -48,10 +51,10 @@ namespace Shipwreck {
 		private NodeType m_type = NodeType.Unassigned;
 		private string m_fullName;
 		private StringHash32 m_trigger;
+		private StringHash32 m_background;
 		private int m_triggerPriority;
 		private VariantComparison[] m_conditions;
 		private bool m_once;
-		private bool m_isNotification;
 
 		public ScriptNode(string fullName, ILeafModule inModule) : base(fullName, inModule) {
 			m_fullName = fullName;
@@ -69,6 +72,11 @@ namespace Shipwreck {
 			} else {
 				Debug.LogWarningFormat("Could not set node to type `{0}'. Did you mispell it?",type);
 			}
+		}
+
+		[BlockMeta("background")]
+		private void SetBackground(StringHash32 background) {
+			m_background = background;
 		}
 
 		[BlockMeta("trigger")]
@@ -100,11 +108,6 @@ namespace Shipwreck {
 		[BlockMeta("once")]
 		private void SetOnce() {
 			m_once = true;
-		}
-
-		[BlockMeta("notification")]
-		private void SetNotification() {
-			m_isNotification = true;
 		}
 
 		[BlockMeta("function")]

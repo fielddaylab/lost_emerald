@@ -45,9 +45,7 @@ namespace Shipwreck {
 			base.OnHideCompleted();
 			ClearContent();
 			GameMgr.Events.Dispatch(GameEvents.DialogClosed);
-			using (var table = TempVarTable.Alloc()) {
-				GameMgr.RunTrigger(GameTriggers.OnDialogClosed, table);
-			}
+			GameMgr.RunTrigger(GameTriggers.OnDialogClosed);
 		}
 
 		protected override IEnumerator HideRoutine() {
@@ -65,7 +63,10 @@ namespace Shipwreck {
 		protected override void AssignPartner(CharacterData character) {
 			m_conversationPartner.Key = character.DisplayName;
 		}
-		
+		protected override void AssignBackground(Sprite background) {
+			// do nothing
+		}
+
 		protected override void OnSetSpeaker(CharacterData speaker) {
 			m_currentCharacter = speaker;
 		}

@@ -35,6 +35,7 @@ namespace Shipwreck {
 
 		public virtual void PrepareNode(ScriptNode node) {
 			AssignPartner(GameDb.GetCharacterData(node.ContactId));
+			AssignBackground(node.Background == StringHash32.Null ? null : GameDb.GetBackground(node.Background));
 		}
 
 		public TagStringEventHandler PrepareLine(TagString inString, TagStringEventHandler inBaseHandler) {
@@ -48,6 +49,7 @@ namespace Shipwreck {
 		public abstract IEnumerator CompleteLine();
 
 		protected abstract void AssignPartner(CharacterData character);
+		protected abstract void AssignBackground(Sprite background);
 		protected abstract void OnPrepareLine(TagString inString);
 		protected abstract void OnSetSpeaker(CharacterData speaker);
 		protected abstract IEnumerator OnShowImage(Sprite image);
