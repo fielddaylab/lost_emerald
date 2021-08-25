@@ -83,6 +83,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 52b1c17784d8a1e45b76754696037547, type: 3}
   - {fileID: 21300000, guid: 2cd1aa97dedd64a7d98a8d2b4dcd26af, type: 3}
   - {fileID: 21300000, guid: 41c798e7bf044e14db7e5f8678187066, type: 3}
+  - {fileID: 21300000, guid: 26e9e9e705db0244da31bf3fc9d74718, type: 3}
   - {fileID: 21300000, guid: a03db20815b8f440fa7f8e764402a8ac, type: 3}
   - {fileID: 21300000, guid: 0aa90c38363f5ff45ab3fadfa5d6fd5d, type: 3}
   - {fileID: 21300000, guid: 052b7e48a9cdb4c3cb3c82f094453d1f, type: 3}
@@ -153,6 +154,7 @@ SpriteAtlas:
   - DiveButtonFilled
   - arrow-up
   - rounded-rect
+  - shipwreck_ref
   - LevelFolder
   - RoundedRect100Outline
   - map-marker
