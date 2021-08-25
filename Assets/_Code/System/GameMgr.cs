@@ -97,10 +97,13 @@ namespace Shipwreck
 		public static void RecordNodeVisited(ScriptNode node) {
 			I.m_state.RecordNodeVisit(node);
 
-			
 			I.m_state.ClearNotification(node.ContactId);
 			SetVariable(GameVars.LastNotifiedContactId, null);
-
+		}
+		public static void RecordNodeVisited(StringHash32 nodeId, StringHash32 contactId) {
+			I.m_state.RecordNodeVisit(nodeId, contactId);
+			I.m_state.ClearNotification(contactId);
+			SetVariable(GameVars.LastNotifiedContactId, null);
 		}
 
 		#endregion // Scripting
@@ -183,7 +186,6 @@ namespace Shipwreck
 					table.Set("evidence", groupId);
 					RunTrigger(GameTriggers.OnEvidenceUnlock, table);
 				}
-				Debug.Log(groupId);
 			}
 		}
 

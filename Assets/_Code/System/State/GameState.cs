@@ -203,6 +203,10 @@ namespace Shipwreck {
 				m_visitedNodes.Add(node.Id());
 				ClearNotification(node.ContactId);
 			}
+			public void RecordNodeVisit(StringHash32 nodeId, StringHash32 contactId) {
+				m_visitedNodes.Add(nodeId);
+				ClearNotification(contactId);
+			}
 
 			public bool IsDiveUnlocked(int shipOutIndex)
 			{

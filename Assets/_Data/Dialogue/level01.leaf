@@ -83,7 +83,7 @@
 	$call UnlockEvidence(1,LV1-Card-Types)
 	$call UnlockEvidence(1,LV1-Table-Wrecks)
 
-::amy-letter
+::amy-article
 @contact amy, phone-call
 @trigger OnChainSolved 
 @when IsChainComplete(Type), IsChainComplete(Name)
