@@ -70,9 +70,13 @@ namespace Shipwreck
 			}
 
 			m_dataToGenerateFor.SetSonarDots(m_polygonPoints);
+
+#if UNITY_EDITOR
 			EditorUtility.SetDirty(m_dataToGenerateFor);
 			AssetDatabase.SaveAssets();
 			AssetDatabase.Refresh();
+#endif
+
 		}
 
 		/// <summary>
