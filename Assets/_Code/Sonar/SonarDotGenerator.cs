@@ -70,7 +70,9 @@ namespace Shipwreck
 			}
 
 			m_dataToGenerateFor.SetSonarDots(m_polygonPoints);
+			EditorUtility.SetDirty(m_dataToGenerateFor);
 			AssetDatabase.SaveAssets();
+			AssetDatabase.Refresh();
 		}
 
 		/// <summary>
