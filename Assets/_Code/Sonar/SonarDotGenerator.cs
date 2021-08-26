@@ -5,6 +5,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 namespace Shipwreck
@@ -69,6 +70,7 @@ namespace Shipwreck
 			}
 
 			m_dataToGenerateFor.SetSonarDots(m_polygonPoints);
+			AssetDatabase.SaveAssets();
 		}
 
 		/// <summary>
