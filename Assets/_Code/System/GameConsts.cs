@@ -14,6 +14,9 @@ namespace Shipwreck {
         public static readonly StringHash32 DialogOpened = "DialogOpened";
         public static readonly StringHash32 DialogClosed = "DialogClosed";
 
+		public static readonly StringHash32 BoardComplete = "BoardComplete";
+		public static readonly StringHash32 CaseClosed = "CaseClosedOpened";
+
 		public static class Dive {
 			public static readonly StringHash32 NavigationActivated = "NavigationActivated";
 			public static readonly StringHash32 NavigationDeactivated = "NavigationDeactivated";
@@ -40,6 +43,8 @@ namespace Shipwreck {
         public static readonly StringHash32 OnContactText = "OnContactText";
         public static readonly StringHash32 OnEnterOffice = "OnEnterOffice";
 		public static readonly StringHash32 OnDialogClosed = "OnDialogClosed";
+		public static readonly StringHash32 OnBoardComplete = "OnBoardComplete";
+		public static readonly StringHash32 OnCaseClosed = "OnCaseClosed";
     }
 
     public static class GameVars {

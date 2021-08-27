@@ -13,8 +13,6 @@ namespace Shipwreck {
 		private RectTransform m_phoneTransform = null;
 		[SerializeField]
 		private Button m_button = null;
-		[SerializeField]
-		private CanvasGroup m_overlay = null;
 
 		//[SerializeField]
 		//private GameObject m_notificationGroup = null;
@@ -34,7 +32,6 @@ namespace Shipwreck {
 
 		protected override void OnShowStart() {
 			base.OnShowStart();
-			m_overlay.blocksRaycasts = true;
 			m_button.interactable = false;
 			m_phoneTransform.anchoredPosition = new Vector2(m_phoneTransform.anchoredPosition.x, -200f);
 		}
@@ -45,10 +42,8 @@ namespace Shipwreck {
 
 		protected override IEnumerator HideRoutine() {
 			yield return m_phoneTransform.AnchorPosTo(-200f, m_showHideTween, Axis.Y).DelayBy(0.1f);
-			yield return m_overlay.FadeTo(0f, 0.2f);
 		}
 		protected override IEnumerator ShowRoutine() {
-			yield return m_overlay.FadeTo(1f, 0.2f);
 			yield return m_phoneTransform.AnchorPosTo(0f, m_showHideTween, Axis.Y);
 			m_button.interactable = true;
 		}

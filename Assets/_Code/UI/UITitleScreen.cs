@@ -38,6 +38,7 @@ namespace Shipwreck {
 
 		private void HandleNewGame() {
 			UIMgr.CloseThenCall<UITitleScreen>(() => {
+				GameMgr.MarkTitleScreenComplete();
 				UIMgr.Open<UIOfficeScreen>();
 			});
 		}

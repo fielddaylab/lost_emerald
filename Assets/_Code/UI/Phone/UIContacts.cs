@@ -25,6 +25,7 @@ namespace Shipwreck {
 		protected override void OnShowStart() {
 			base.OnShowStart();
 			UIMgr.Open<UIPhone>();
+			UIMgr.Open<UIModalOverlay>();
 			UIMgr.Close<UITextMessage>();
 
 			foreach (StringHash32 hash in GameMgr.State.GetUnlockedContacts()) {

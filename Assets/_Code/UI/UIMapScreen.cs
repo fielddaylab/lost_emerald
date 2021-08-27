@@ -44,7 +44,6 @@ namespace Shipwreck {
 			UIMgr.Close<UIOfficeScreen>();
 			UIMgr.Close<UIMapScreen>();
 			UIMgr.Open<UIEvidenceScreen>();
-			UIMgr.Open<UIPhoneNotif>();
 		}
 		private void HandleShipOut() {
 			UIMgr.Close<UIOfficeScreen>();

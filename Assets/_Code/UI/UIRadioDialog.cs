@@ -48,6 +48,7 @@ namespace Shipwreck {
 
 			GameMgr.Events.Dispatch(GameEvents.DialogOpened);
 			UIMgr.Close<UIPhone>();
+			UIMgr.Close<UIModalOverlay>();
 		}
 
 		protected override void OnHideCompleted() {

@@ -44,12 +44,25 @@ namespace Shipwreck
 
 			m_eventService = new EventService();
 
-			m_eventService.Register<StringHash32>(GameEvents.PhoneNotification, HandlePhoneNotification);
+			
 
 		}
 
+		public static void MarkTitleScreenComplete() {
+			I.m_eventService.Register<StringHash32>(GameEvents.PhoneNotification, I.HandlePhoneNotification);
+			I.m_eventService.Register(GameEvents.ChainSolved, I.HandleChainCompleted);
+		}
+
+
 		private void HandlePhoneNotification(StringHash32 contact) {
 			UIMgr.Open<UIPhoneNotif>();
+			UIMgr.Open<UIModalOverlay>();
+		}
+		private void HandleChainCompleted() {
+			// check to see if all chains are solved
+			if (m_state.IsBoardComplete()) {
+				UIMgr.Open<UIModalBoardComplete>();
+			}
 		}
 
 

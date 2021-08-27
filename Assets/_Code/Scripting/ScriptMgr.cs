@@ -147,37 +147,26 @@ namespace Shipwreck {
 		public override void OnNodeExit(ScriptNode inNode, LeafThreadState<ScriptNode> inThreadState) {
 			if (inThreadState.GetHandle() != m_currentHandle)
 				return;
+
 			
 			switch(inNode.Type) {
-					case ScriptNode.NodeType.PhoneCall:
-						{
-							if (m_uiCurrent != null) {
-								UIMgr.Close(m_uiCurrent);
-							}
-							break;
-						}
-					case ScriptNode.NodeType.TextMessage:
-						{
-							if (m_uiCurrent != null) {
-								UIMgr.Close(m_uiCurrent);
-							}
-
-							//if (GameMgr.State.NotificationCount() == 0) {
-								UIMgr.Close<UIPhone>();
-							//} else {
-							//	UIMgr.Open<UIContacts>();
-							//}
-							break;
-						}
-
-					case ScriptNode.NodeType.Radio:
-						{
-							if (m_uiCurrent != null) {
-								UIMgr.Close(m_uiCurrent);
-							}
-							break;
-						}
-				}
+				case ScriptNode.NodeType.PhoneCall:
+					if (m_uiCurrent != null) {
+						UIMgr.Close(m_uiCurrent);
+					}
+					break;
+				case ScriptNode.NodeType.TextMessage:
+					if (m_uiCurrent != null) {
+						UIMgr.Close(m_uiCurrent);
+					}
+					UIMgr.Close<UIPhone>();
+					break;
+				case ScriptNode.NodeType.Radio:
+					if (m_uiCurrent != null) {
+						UIMgr.Close(m_uiCurrent);
+					}
+					break;
+			}
 		}
 		public override void OnEnd(LeafThreadState<ScriptNode> inThreadState) {
 			base.OnEnd(inThreadState);

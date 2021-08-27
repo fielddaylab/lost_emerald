@@ -1,10 +1,8 @@
 ﻿using PotatoLocalization;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 using BeauRoutine;
-using Leaf.Defaults;
 using BeauUtil.Tags;
 using System;
 using BeauUtil;
@@ -37,6 +35,7 @@ namespace Shipwreck {
 		protected override void OnShowStart() {
 			base.OnShowStart();
 			UIMgr.Open<UIPhone>();
+			UIMgr.Open<UIModalOverlay>();
 			UIMgr.Close<UIContacts>();
 			ClearContent();
 		}

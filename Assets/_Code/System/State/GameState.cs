@@ -132,6 +132,14 @@ namespace Shipwreck {
 			public bool IsChainComplete(StringHash32 root) {
 				return m_levelStates[m_levelIndex].IsChainComplete(root);
 			}
+			public bool IsBoardComplete() {
+				for (int index = 0; index < m_levelStates[m_levelIndex].ChainCount; index++) {
+					if (!m_levelStates[m_levelIndex].GetChain(index).IsCorrect) {
+						return false;
+					}
+				}
+				return true;
+			}
 
 			public bool UnlockContact(StringHash32 contact) {
 				return m_unlockedContacts.Add(contact);

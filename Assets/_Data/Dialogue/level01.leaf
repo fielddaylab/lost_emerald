@@ -77,8 +77,7 @@
 ::lou-complete
 @contact lou, phone-call
 @background lou-ultralight
-@trigger OnChainSolved
-@when IsChainComplete(Artifact), IsChainComplete(Cargo), IsChainComplete(Cause)
+@trigger OnBoardComplete
 @once
 	
 	{@you}  Lou! I solved mystery of the ship you saw!

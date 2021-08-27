@@ -63,7 +63,6 @@ namespace Shipwreck {
 					UIMgr.Close<UIDiveScreen>();
 					SceneManager.LoadScene("Main");
 					UIMgr.Open<UIOfficeScreen>();
-					UIMgr.Open<UIPhoneNotif>();
 				}
 			}
 
@@ -200,7 +199,6 @@ namespace Shipwreck {
 					UIMgr.Close<UIDiveScreen>();
 					SceneManager.LoadScene("Main");
 					UIMgr.Open<UIOfficeScreen>();
-					UIMgr.Open<UIPhoneNotif>();
 				}
 			}
 		}

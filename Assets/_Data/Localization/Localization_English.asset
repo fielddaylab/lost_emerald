@@ -107,6 +107,10 @@ MonoBehaviour:
     m_hash: -1663984045
   - m_key: UI/Map/ShipOut
     m_hash: -1937809989
+  - m_key: UI/Modal/BoardComplete
+    m_hash: -1203157431
+  - m_key: UI/Modal/CaseClosed
+    m_hash: 8427866
   m_values:
   - Continue
   - Dad
@@ -154,3 +158,5 @@ MonoBehaviour:
   - Dive Photos
   - Close
   - Ship Out!
+  - Evidence Board Complete!
+  - Case Closed!

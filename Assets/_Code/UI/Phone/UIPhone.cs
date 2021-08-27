@@ -14,8 +14,6 @@ namespace Shipwreck {
 		private UIContacts m_contactScreen = null;
 		[SerializeField]
 		private UITextMessage m_textMsgScreen = null;
-		[SerializeField]
-		private CanvasGroup m_overlay = null;
 
 
 		#region UIBase
@@ -39,10 +37,8 @@ namespace Shipwreck {
 
 		protected override IEnumerator HideRoutine() {
 			yield return m_phoneTransform.AnchorPosTo(-660f, m_tweenSettings, Axis.Y);
-			yield return m_overlay.FadeTo(0f, 0.2f);
 		}
 		protected override IEnumerator ShowRoutine() {
-			yield return m_overlay.FadeTo(1f, 0.2f);
 			yield return m_phoneTransform.AnchorPosTo(45f, m_tweenSettings, Axis.Y);
 		}
 
