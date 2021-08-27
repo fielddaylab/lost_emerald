@@ -19,7 +19,7 @@ namespace Shipwreck
 		public static ShipOutMgr instance; // there can only be one
 		public SonarDotGenerator m_sdmgr; // the scene's SonarDotMgr
 		[SerializeField]
-		private ShipOutCanvas m_soc; // the scene's ship out canvas
+		private UIShipOutScreen m_uisos; // the scene's ship out canvas
 
 		[SerializeField]
 		private Vector2 m_targetDimensions; // the dimensions of the scene
@@ -84,7 +84,7 @@ namespace Shipwreck
 			if (GameMgr.State.IsDiveUnlocked(GameMgr.State.GetCurrShipOutIndex()))
 			{
 				// activate button
-				m_soc.SwapButtonForSlider();
+				m_uisos.SwapButtonForSlider();
 
 				// drop buoy
 				GameObject buoy = Instantiate(m_buoyPrefab);
@@ -144,7 +144,19 @@ namespace Shipwreck
 
 				if (percentComplete >= m_completionPercent)
 				{
-					UnlockDive();
+					if (m_uisos.GetCurrMessageState() == UIShipOutScreen.MessageState.showing)
+					{
+						return;
+					}
+
+					if (GameMgr.State.IsTutorialBuoyDropped())
+					{
+						UnlockDive();
+					}
+					else
+					{
+						m_uisos.ShowBuoyMessage();
+					}
 				}
 			}
 		}
@@ -166,13 +178,13 @@ namespace Shipwreck
 		/// <summary>
 		/// Unlocks dive, activates button, and drops a buoy
 		/// </summary>
-		private void UnlockDive()
+		public void UnlockDive()
 		{
 			// unlock dive
 			GameMgr.State.UnlockDive(m_shipOutData.ShipOutIndex);
 
 			// activate button
-			m_soc.SwapButtonForSlider();
+			m_uisos.SwapButtonForSlider();
 
 			// drop buoy
 			GameObject buoy = Instantiate(m_buoyPrefab);

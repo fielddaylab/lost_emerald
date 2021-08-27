@@ -35,6 +35,9 @@ namespace Shipwreck {
 
 		int GetCurrShipOutIndex();
 		void SetCurrShipOutIndex(int index);
+
+		bool IsTutorialBuoyDropped();
+		void SetTutorialBuoyDropped(bool isDropped);
 	}
 
 
@@ -75,6 +78,7 @@ namespace Shipwreck {
 			private LevelState[] m_levelStates;
 			private ShipOutState[] m_shipOutStates;
 			private int m_currShipOutIndex;
+			private bool m_tutorialBuoyDropped;
 
 			public GameState() {
 				m_variableTable = new VariantTable();
@@ -96,6 +100,7 @@ namespace Shipwreck {
 					m_shipOutStates[index].AssignShipOutData(GameDb.GetShipOutData(index));
 				}
 				m_currShipOutIndex = 0;
+				m_tutorialBuoyDropped = false;
 			}
 
 			public IEnumerable<IEvidenceGroupState> GetEvidence() {
@@ -241,12 +246,22 @@ namespace Shipwreck {
 				m_currShipOutIndex = index;
 			}
 
+			public bool IsTutorialBuoyDropped()
+			{
+				return m_tutorialBuoyDropped;
+			}
+			public void SetTutorialBuoyDropped(bool isDropped)
+			{
+				m_tutorialBuoyDropped = isDropped;
+			}
+
 			public void Serialize(Serializer ioSerializer) {
 				ioSerializer.Object("variantTable", ref m_variableTable);
 				ioSerializer.UInt32ProxySet("nodeVisits", ref m_visitedNodes);
 				ioSerializer.UInt32ProxySet("unlockedContacts", ref m_unlockedContacts);
 				ioSerializer.ObjectArray("queuedNotifications", ref m_queuedNotifications);
 				ioSerializer.ObjectArray("levelStates", ref m_levelStates);
+				ioSerializer.ObjectArray("shipOutStates", ref m_shipOutStates);
 
 				if (ioSerializer.IsReading) {
 					for (int index = 0; index < m_levelStates.Length; index++) {
