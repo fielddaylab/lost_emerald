@@ -1,7 +1,7 @@
 #basePath level01 
 
-//  Mom
-//  --------------------------------------------------------------------------------------
+// dialogue nodes are in the order that they should appear when playing the game
+
 
 :: mom-meet
 @contact mom, text-message
@@ -13,8 +13,7 @@
 	{@mom}  [shares newspaper article]
 	$call UnlockContact(dad)
 
-//  Dad
-//  --------------------------------------------------------------------------------------
+
 
 ::dad-meet
 @contact dad, phone-call
@@ -35,18 +34,6 @@
 	{@dad}  Oh, your sister’s here! She’s gonna help me look through some old stuff. Gotta go bye!
 	$call UnlockContact(lou)
 
-::dad-urgent-text
-@contact dad, text-message
-@trigger OnChainSolved
-@when IsChainComplete(Name), IsChainComplete(Type)
-@once
-	{@dad}  Jules!! Big news!  
-	{@you}  Sorry, Dad. Super busy.
-
-
-
-//  Lou
-//  --------------------------------------------------------------------------------------
 
 ::lou-meet
 @contact lou, phone-call
@@ -75,20 +62,7 @@
 	$call UnlockEvidence(1,LV1-Root)
 	$call UnlockEvidence(1,LV1-Transcript-Lou)
 
-::lou-complete
-@contact lou, phone-call
-@background lou-ultralight
-@trigger OnBoardComplete
-@once
-	
-	{@you}  Lou! I solved the mystery of the ship you saw!
-			Her name was the Loretta and she sank after running into a sand bar!
-	{@lou}  What!? That's amazing!
-	$call TriggerCutscene();
 
-
-//  Amy
-//  --------------------------------------------------------------------------------------
 
 ::amy-meet
 @contact amy, phone-call
@@ -106,6 +80,18 @@
 	$call UnlockEvidence(1,LV1-Card-Types)
 	$call UnlockEvidence(1,LV1-Table-Wrecks)
 
+
+
+::dad-urgent-text
+@contact dad, text-message
+@trigger OnChainSolved
+@when IsChainComplete(Name), IsChainComplete(Type)
+@once
+	{@dad}  Jules!! Big news!  
+	{@you}  Sorry, Dad. Super busy.
+
+
+
 ::amy-article
 @contact amy, phone-call
 @background amy-office
@@ -122,5 +108,48 @@
 	{@amy} 	Awesome! I’ll see what I can dig up about her in the archives. 
 			I’ll send you what I find!
 	$call UnlockEvidence(1,LV1-Article-Sinking)
-	
 
+
+::lou-complete
+@contact lou, phone-call
+@background lou-ultralight
+@trigger OnBoardComplete
+@once
+	
+	{@you}  Lou! I solved the mystery of the ship you saw!
+			Her name was the Loretta and she sank after running into a sand bar!
+	{@lou}  What!? That's amazing!
+	$call TriggerCutscene();
+
+
+::amy-level-end
+@contact amy, text-message
+@trigger OnCaseClosed
+@once
+
+	{@you} 	Case closed on the Loretta! I’ll send you the file so you can add it to the archives.
+	{@amy} 	Awesome. Nice work, Jules!
+
+
+
+::dad-level-end
+@contact dad, phone-call
+@background dad-attic
+@trigger OnDialogClosed
+@when Seen(level01.amy-level-end)
+@once
+
+	{@dad} 	Jules! Where have you been? We’ve got big news on the Emerald!
+	{@you} 	Grandpa’s ship?
+	{@dad} 	Yep. Reya found a clue in one of your grandma’s old letters.
+			Turns out the ship was carrying TREASURE!
+	{@you} 	Dad, come on . . . 
+	{@dad} 	Your sister’s great at this stuff. She’s gonna help me track down the wreck!
+	{@you} 	Wait. She is??
+	{@dad}	 Don’t worry, we don’t need your help. I know you’re busy.
+			Besides, Reya says she can handle it. 
+	{@you}	Um . . . actually . . . 
+			I guess I could start a file for Grandpa’s ship. Just in case. 
+	{@dad} 	Wow! Ok, I’ll send the letter over to you.
+			This is great! The Griffin family treasure hunters, working together!
+	{@you} 	Yeah. Super great.
