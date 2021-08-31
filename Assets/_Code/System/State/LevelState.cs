@@ -31,6 +31,7 @@ namespace Shipwreck {
 
 				// serialized
 				private bool m_isUnlocked = false;
+				private bool m_hasSeenCutscene = false;
 				private List<EvidenceGroupState> m_evidence;
 				private List<EvidenceChainState> m_chains;
 
@@ -100,6 +101,11 @@ namespace Shipwreck {
 					ioSerializer.Serialize("isUnlocked", ref m_isUnlocked);
 					ioSerializer.ObjectArray("evidence", ref m_evidence);
 					ioSerializer.ObjectArray("chains", ref m_chains);
+					ioSerializer.Serialize("hasSeenCutscene", ref m_hasSeenCutscene);
+				}
+
+				public void SetCutsceneSeen() {
+					m_hasSeenCutscene = true;
 				}
 			}
 		}

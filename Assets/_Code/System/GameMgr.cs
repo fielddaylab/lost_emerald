@@ -14,7 +14,7 @@ namespace Shipwreck
 
 		public static IGameState State {
 			get { return I.m_state; }
-		}
+		} 
 
 		public static EventService Events {
 			get { return I.m_eventService; }
@@ -43,8 +43,6 @@ namespace Shipwreck
 			m_scriptMgr.ConfigureEvents();
 
 			m_eventService = new EventService();
-
-			
 
 		}
 
@@ -214,7 +212,13 @@ namespace Shipwreck
 			}
 		}
 		
-
+		[LeafMember]
+		private static void TriggerCutscene() {
+			I.m_state.SetCutsceneSeen();
+			UIMgr.Close<UIOfficeScreen>();
+			UIMgr.Close<UIEvidenceScreen>();
+			Routine.Start(Routine.Delay(() => { UIMgr.Open<UICutscene>(); }, 2f));
+		}
 
 		[LeafMember]
 		private static bool HasEvidence(StringHash32 evidence) {

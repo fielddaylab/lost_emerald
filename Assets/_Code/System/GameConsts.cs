@@ -15,6 +15,7 @@ namespace Shipwreck {
         public static readonly StringHash32 DialogClosed = "DialogClosed";
 
 		public static readonly StringHash32 BoardComplete = "BoardComplete";
+		public static readonly StringHash32 CutsceneComplete = "CutsceneComplete";
 		public static readonly StringHash32 CaseClosed = "CaseClosedOpened";
 
 		public static class Dive {

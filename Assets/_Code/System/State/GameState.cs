@@ -255,6 +255,10 @@ namespace Shipwreck {
 				m_tutorialBuoyDropped = isDropped;
 			}
 
+			public void SetCutsceneSeen() {
+				m_levelStates[m_levelIndex].SetCutsceneSeen();
+			}
+
 			public void Serialize(Serializer ioSerializer) {
 				ioSerializer.Object("variantTable", ref m_variableTable);
 				ioSerializer.UInt32ProxySet("nodeVisits", ref m_visitedNodes);

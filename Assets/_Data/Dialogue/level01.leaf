@@ -66,6 +66,7 @@
 	{@you} 	That looks like a shipwreck!
 			Have you seen it before?
 	{@lou} 	Nope. And I fly out here all the time.
+			{/img}
 	{@you} 	The storm last night must’ve uncovered it.
 			I better get out there before the sand covers it again!
 			Thanks, Lou!
@@ -80,9 +81,10 @@
 @trigger OnBoardComplete
 @once
 	
-	{@you}  Lou! I solved mystery of the ship you saw!
+	{@you}  Lou! I solved the mystery of the ship you saw!
 			Her name was the Loretta and she sank after running into a sand bar!
 	{@lou}  What!? That's amazing!
+	$call TriggerCutscene();
 
 
 //  Amy

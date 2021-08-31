@@ -76,7 +76,6 @@ namespace Shipwreck {
 		private readonly Dictionary<StringHash32,ScriptNode> m_allNodes;
 		private readonly Parser m_parser;
 		private readonly CustomVariantResolver m_triggerResolver;
-		private readonly ScriptNodeSet.NodePredicate m_triggerPredicate;
 
 		private LeafThreadHandle m_currentHandle;
 
@@ -148,7 +147,6 @@ namespace Shipwreck {
 			if (inThreadState.GetHandle() != m_currentHandle)
 				return;
 
-			
 			switch(inNode.Type) {
 				case ScriptNode.NodeType.PhoneCall:
 					if (m_uiCurrent != null) {
