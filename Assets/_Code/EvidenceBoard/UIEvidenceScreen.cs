@@ -119,15 +119,23 @@ namespace Shipwreck {
 					m_pinsByRoot[root.NodeID].Add(pin);
 					m_rootsByPin.Add(pin, root.NodeID);
 					EvidenceNode node;
-					if (pinIndex + 1 < chain.Depth && m_nodes.TryGetValue(chain.GetNodeInChain(pinIndex + 1), out node)) {
-						pin.SetPosition(WorldToScreenPoint(node.PinPosition));
-						pin.SetHomePosition(WorldToScreenPoint(node.SubPinPosition));
-					} else if (addDangler && pinIndex > 0 && pinIndex < chain.Depth && m_nodes.TryGetValue(chain.GetNodeInChain(pinIndex), out node)) {
-						pin.SetPosition(WorldToScreenPoint(node.SubPinPosition));
-						pin.SetHomePosition(WorldToScreenPoint(node.SubPinPosition));
-					} else if (pinIndex == 0) {
+
+					if (pinIndex == 0) { // this is a root pin
 						pin.SetHomePosition(WorldToScreenPoint(pin.RectTransform.position));
 						pin.SetPosition(WorldToScreenPoint(pin.RectTransform.position));
+						pin.MarkAsRoot();
+					}
+
+					if (pinIndex + 1 < chain.Depth && m_nodes.TryGetValue(chain.GetNodeInChain(pinIndex + 1), out node)) {
+						pin.SetPosition(WorldToScreenPoint(node.PinPosition));
+						if (pinIndex != 0) {
+							pin.SetHomePosition(WorldToScreenPoint(node.SubPinPosition));
+						}
+					} else if (addDangler && pinIndex > 0 && pinIndex < chain.Depth && m_nodes.TryGetValue(chain.GetNodeInChain(pinIndex), out node)) {
+						pin.SetPosition(WorldToScreenPoint(node.SubPinPosition));
+						if (pinIndex != 0) {
+							pin.SetHomePosition(WorldToScreenPoint(node.SubPinPosition));
+						}
 					}
 					pin.OnPointerDown += HandlePinPressed;
 					pin.OnPointerUp += HandlePinReleased;
@@ -262,7 +270,9 @@ namespace Shipwreck {
 				node = result.gameObject.GetComponent<EvidenceNode>();
 				if (node != null) {
 					Selected.SetPosition(WorldToScreenPoint(node.PinPosition));
-					Selected.SetHomePosition(WorldToScreenPoint(node.SubPinPosition));
+					if (!Selected.IsRoot) {
+						Selected.SetHomePosition(WorldToScreenPoint(node.SubPinPosition));
+					}
 					chainState.Drop(node.NodeID);
 					break;
 				}

@@ -21,6 +21,9 @@ namespace Shipwreck {
 				return m_rectTransform;
 			}
 		}
+		public bool IsRoot {
+			get { return m_isRoot; }
+		}
 
 		[SerializeField]
 		private Image m_image = null;
@@ -29,6 +32,7 @@ namespace Shipwreck {
 		private Routine m_colorRoutine;
 		private Routine m_flyRoutine;
 		private Vector2 m_homePosition;
+		private bool m_isRoot = false;
 
 		public void SetPosition(Vector2 screenPos) {
 			RectTransformUtility.ScreenPointToLocalPointInRectangle(
@@ -45,6 +49,9 @@ namespace Shipwreck {
 				RectTransformUtility.WorldToScreenPoint(Camera.main, transform.position), 
 				m_homePosition, FlyHomeSetter, 0.15f
 			).Ease(Curve.QuadInOut));
+		}
+		public void MarkAsRoot() {
+			m_isRoot = true;
 		}
 
 
