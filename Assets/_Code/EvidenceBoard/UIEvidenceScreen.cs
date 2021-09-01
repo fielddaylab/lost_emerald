@@ -77,7 +77,15 @@ namespace Shipwreck {
 
 		protected override void OnShowStart() {
 			base.OnShowStart();
+			SetupBoard();
+		}
 
+		protected override void OnHideCompleted() {
+			base.OnHideCompleted();
+			ClearBoard();
+		}
+
+		private void SetupBoard() {
 			// get all of the unlocked evidence
 			foreach (IEvidenceGroupState state in GameMgr.State.GetEvidence()) {
 				EvidenceGroup obj = Instantiate(GameDb.GetEvidenceGroup(state.Identity));
@@ -141,26 +149,14 @@ namespace Shipwreck {
 							break;
 					}
 				}
-				
+
 			}
 
 			// ship out button is only available if the location root is solved
 			m_buttonShipOut.gameObject.SetActive(GameMgr.State.IsLocationChainComplete());
-
 		}
 
-		private void AddPin(EvidenceNode root, EvidencePin pin) {
-			if (!m_pinsByRoot.ContainsKey(root.NodeID)) {
-				m_pinsByRoot.Add(root.NodeID, new List<EvidencePin>());
-			}
-			m_pinsByRoot[root.NodeID].Add(pin);
-			m_rootsByPin.Add(pin, root.NodeID);
-			pin.OnPointerDown += HandlePinPressed;
-			pin.OnPointerUp += HandlePinReleased;
-		}
-
-		protected override void OnHideCompleted() {
-			base.OnHideCompleted();
+		private void ClearBoard() {
 			foreach (EvidenceGroup group in m_groups.Values) {
 				Destroy(group.gameObject);
 			}
@@ -184,12 +180,14 @@ namespace Shipwreck {
 			m_buttonBack.onClick.AddListener(HandleBackButton);
 			m_buttonShipOut.onClick.AddListener(HandleShipOutButton);
 			GameMgr.Events.Register<StringHash32>(GameEvents.ChainSolved, HandleChainCorrect);
+			GameMgr.Events.Register<StringHash32>(GameEvents.EvidenceUnlocked, HandleEvidenceUnlocked);
 		}
 		protected override void OnHideStart() {
 			base.OnHideStart();
 			m_buttonBack.onClick.RemoveListener(HandleBackButton);
 			m_buttonShipOut.onClick.RemoveListener(HandleShipOutButton);
 			GameMgr.Events.Deregister<StringHash32>(GameEvents.ChainSolved, HandleChainCorrect);
+			GameMgr.Events.Deregister<StringHash32>(GameEvents.EvidenceUnlocked, HandleEvidenceUnlocked);
 		}
 
 		private EvidencePin Selected {
@@ -231,7 +229,6 @@ namespace Shipwreck {
 		}
 		private void HandleShipOutButton() {
 			UIMgr.Close<UIEvidenceScreen>();
-			UIMgr.Close<UIPhoneNotif>();
 			UIMgr.Open<UIOfficeScreen>();
 			UIMgr.Open<UIMapScreen>();
 		}
@@ -239,6 +236,10 @@ namespace Shipwreck {
 			if (GameMgr.State.IsLocationChainComplete()) {
 				m_buttonShipOut.gameObject.SetActive(true);
 			}
+		}
+		private void HandleEvidenceUnlocked(StringHash32 evidence) {
+			ClearBoard();
+			SetupBoard();
 		}
 
 		private void Lift() {
