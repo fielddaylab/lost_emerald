@@ -18,6 +18,8 @@ namespace Shipwreck {
 
 		private Dictionary<Type, IUIScreen> m_mapByType;
 
+		private HashSet<IUIScreen> m_recorded = new HashSet<IUIScreen>();
+
 		protected override void OnAssigned() {
 			base.OnAssigned();
 			m_mapByType = new Dictionary<Type, IUIScreen>();
@@ -59,8 +61,30 @@ namespace Shipwreck {
 		public static U CloseThenOpen<T, U>() where T : UIBase where U : UIBase {
 			return (U) I.CloseThenOpen(typeof(T), typeof(U)).Component;
 		}
+		public static void CloseAll() {
+			foreach (IUIScreen screen in I.m_opened) {
+				screen.Hide();
+			}
+			I.m_opened.Clear();
+		}
 		public static bool IsOpen<T>() {
 			return I.IsOpen(typeof(T));
+		}
+		public static void RecordState() {
+			I.m_recorded = new HashSet<IUIScreen>(I.m_opened);
+		}
+		public static void RestoreRecordedState() {
+			foreach (IUIScreen screen in I.m_recorded) {
+				if (I.m_opened.Add(screen)) {
+					screen.Show();
+				}
+			}
+			foreach (IUIScreen screen in I.m_opened) {
+				if (!I.m_recorded.Contains(screen)) {
+					I.m_opened.Remove(screen);
+					screen.Hide();
+				}
+			}
 		}
 
 		private IUIScreen Open(Type type) {
@@ -113,6 +137,8 @@ namespace Shipwreck {
 
 			return open;
 		}
+
+
 
 		#if UNITY_EDITOR
 

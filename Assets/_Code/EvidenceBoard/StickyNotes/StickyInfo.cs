@@ -10,6 +10,7 @@ namespace Shipwreck {
             Last,
             First,
             Anywhere,
+			Only
         }
         
         public enum ResponseType {
@@ -116,7 +117,12 @@ namespace Shipwreck {
             m_location = LocationType.First;
             m_predecessors = null;
         }
-
+		
+		[BlockMeta("only")]
+		private void SetOnly() {
+			m_location = LocationType.Only;
+			m_predecessors = null;
+		}
         #endregion // Block Meta
 
         #region Utils

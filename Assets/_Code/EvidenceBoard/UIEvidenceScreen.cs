@@ -141,22 +141,8 @@ namespace Shipwreck {
 					pin.OnPointerUp += HandlePinReleased;
 				}
 				m_chains.Add(chain.Root(), obj);
-				// set the inital color of the chain
-				if (chain.StickyInfo == null) {
-					obj.SetState(ChainStatus.Normal);
-				} else {
-					switch (chain.StickyInfo.Response) {
-						case StickyInfo.ResponseType.Correct:
-							obj.SetState(ChainStatus.Complete);
-							break;
-						case StickyInfo.ResponseType.Hint:
-							obj.SetState(ChainStatus.Normal);
-							break;
-						case StickyInfo.ResponseType.Incorrect:
-							obj.SetState(ChainStatus.Incorrect);
-							break;
-					}
-				}
+
+				RefreshChainState(chain.StickyInfo, obj, null);
 
 			}
 
@@ -283,27 +269,40 @@ namespace Shipwreck {
 			}
 
 			// determine what we do with the chain
+
+			RefreshChainState(chainState.StickyInfo, chainObj, node);
 			
-			StickyInfo data = GameMgr.State.GetChain(m_selectedRoot).StickyInfo;
-			if (data == null) {
-				chainObj.SetState(ChainStatus.Normal);
-				TryExtendingChain(chainObj, node);
+			m_selectedPin = -1;
+			m_dragging = false;
+		}
+
+		private void RefreshChainState(StickyInfo info, EvidenceChain chainObj, EvidenceNode node = null) {
+			if (string.IsNullOrEmpty(info?.Text ?? null)) {
+				chainObj.HideStickyNote();
 			} else {
-				switch (data.Response) {
+				chainObj.ShowStickyNote(info.Text);
+			}
+			if (info == null) {
+				chainObj.SetState(ChainStatus.Normal);
+				if (node != null) {
+					TryExtendingChain(chainObj, node);
+				}
+			} else {
+				switch (info.Response) {
 					case StickyInfo.ResponseType.Correct:
 						chainObj.SetState(ChainStatus.Complete);
 						break;
 					case StickyInfo.ResponseType.Hint:
 						chainObj.SetState(ChainStatus.Normal);
-						TryExtendingChain(chainObj, node);
+						if (node != null) {
+							TryExtendingChain(chainObj, node);
+						}
 						break;
 					case StickyInfo.ResponseType.Incorrect:
 						chainObj.SetState(ChainStatus.Incorrect);
 						break;
 				}
 			}
-			m_selectedPin = -1;
-			m_dragging = false;
 		}
 
 		private void TryExtendingChain(EvidenceChain chainObj, EvidenceNode node) {

@@ -101,6 +101,10 @@ namespace Shipwreck {
 
             switch(data.Location) {
 
+				case StickyInfo.LocationType.Only: {
+					return nodeIds.Contains(chain[0]) && chain.Length == 1;
+				}
+
                 // first - has no support for prerequisites
                 case StickyInfo.LocationType.First: {
                     return nodeIds.Contains(chain[0]);

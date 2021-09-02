@@ -94,6 +94,27 @@ namespace Shipwreck {
 			m_lineColorRoutine.Replace(this, Tween.Color(m_lineRenderer.color, GameDb.GetLineColor(state), SetLineColor, 0.2f));
 		}
 
+		public void ShowStickyNote(string text) {
+			m_stickyNote.SetText(text);
+			m_stickyNote.gameObject.SetActive(true);
+			for (int index = 0; index < m_evidencePins.Length; index++) {
+				// place the note on the last active index
+				if (!m_evidencePins[index].gameObject.activeInHierarchy) {
+					RectTransformUtility.ScreenPointToLocalPointInRectangle(
+						(RectTransform)m_stickyNote.RectTransform.parent,
+						RectTransformUtility.WorldToScreenPoint(Camera.main, m_evidencePins[index-1].RectTransform.position),
+						Camera.main, out Vector2 point
+					);
+					m_stickyNote.RectTransform.localPosition = point;
+					break;
+				}
+			}
+		}
+		public void HideStickyNote() {
+			m_stickyNote.gameObject.SetActive(false);
+		}
+
+
 		private void OnDestroy() {
 			Destroy(m_rootLabel.gameObject);
 			Destroy(m_stickyNote.gameObject);

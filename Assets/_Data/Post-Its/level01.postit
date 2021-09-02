@@ -1,8 +1,12 @@
 
+// -----------------------------------------------------------
+//  Location
+// -----------------------------------------------------------
+
+
 :: location-correct
 @root Location
 @correct location-coordinates
-	I should ship out!
 
 :: location-incorrect
 @root Name, Cause, Cargo, Artifact, Type
@@ -10,24 +14,224 @@
 @anywhere
 	Should use Location instead
 
+
+// -----------------------------------------------------------
+//  Ship Type
+// -----------------------------------------------------------
+
 :: shiptype-correct
 @root Type
 @correct card-canaller, photo-above, type-canaller
-	That's does look like a canaller!
+
+
+:: shiptype-hint-1a
+@root Type
+@hint card-canaller, card-tug, card-freighter, card-side-steamer, card-schooner
+@only
+	Do I have a photo of this?
+
+:: shiptype-hint-1b
+@root Type
+@hint card
+
+:: shiptype-hint-2a
+@root Type
+@hint photo-above
+@precededBy card-canaller
+	Did any canallers sink near our wreck?
+
+:: shiptype-hint-2b
+@root Type
+@hint card-canaller
+@precededBy photo-above
+	Did any canallers sink near our wreck?
+
+:: shiptype-hint-3
+@root Type
+@hint type-canaller, type-freighter, type-schooner, type-tug, type-steamer
+@only
+	How can I prove this?
+
+:: shiptype-hint-4a
+@root Type
+@hint photo-above
+@only
+	Does this match a ship diagram?
+
+:: shiptype-hint-4b
+@root Type
+@hint photo-above
+@precededBy type-canaller
+	Does this match a ship diagram?
+
+
+
+:: shiptype-incorrect-1
+@root Type
+@incorrect card-tug
+@precededBy photo-above
+	Tug boat doesn't look the same
+
+:: shiptype-incorrect-2
+@root Type
+@incorrect card-freighter
+@precededBy photo-above
+	A freighter is too big
+
+:: shiptype-incorrect-3
+@root Type
+@incorrect card-side-steamer
+@precededBy photo-above
+	Wreck doesn't look like a steamer
+
+:: shiptype-incorrect-4
+@root Type
+@incorrect card-schooner
+@precededBy photo-above
+	I don't think it's a schooner
+
+:: shiptype-incorrect-1b
+@root Type
+@precededBy card-tug
+@incorrect photo-above
+	Tug boat doesn't look the same
+
+:: shiptype-incorrect-2b
+@root Type
+@precededBy card-freighter
+@incorrect photo-above
+	A freighter is too big
+
+:: shiptype-incorrect-3b
+@root Type
+@precededBy card-side-steamer
+@incorrect photo-above
+	Wreck doesn't look like a steamer
+
+:: shiptype-incorrect-4b
+@root Type
+@precededBy card-schooner
+@incorrect photo-above
+	I don't think it's a schooner
+
+:: shiptype-incorrect-generic
+@root Type
+@incorrect
+	I don't think this makes sense
+
+
+
+
+
+
+// -----------------------------------------------------------
+// Name
+// -----------------------------------------------------------
 
 :: name-correct
 @root Name
 @correct name-loretta, photo-name
-	The name must be Loretta!
+
+:: name-hint-1
+@root Name
+@hint name-loretta, name-oleander, name-hudson, name-lakeland, name-timberland
+@only
+	Do I have evidence to prove this?
+
+:: name-hint-2
+@root Name
+@hint photo-name
+@only
+	Does a ship name match the photo?
+
+:: name-incorrect-1
+@root Name
+@incorrect photo-name
+@precededBy name-oleander
+	Oleander doesn't match the letters
+
+:: name-incorrect-2
+@root Name
+@incorrect photo-name
+@precededBy name-hudson
+	Hudson doesn't match the letters
+
+:: name-incorrect-3
+@root Name
+@incorrect photo-name
+@precededBy name-lakeland
+	Lakeland doesn't match the letters
+
+:: name-incorrect-4
+@root Name
+@incorrect photo-name
+@precededBy name-timberland
+	Timberland doesn't match the letters
+
+:: name-incorrect-generic
+@root Name
+@incorrect
+	This doesn't make sense
+
+
+// -----------------------------------------------------------
+// Cargo
+// -----------------------------------------------------------
 
 :: cargo-correct
 @root Cargo
 @correct cargo-cargo, cargo-corn
 
+:: cargo-hint-1
+@root Cargo
+@hint cargo-corn, cargo-limestone, cargo-cobblestone, cargo-wheat, cargo-salt
+@only
+	Is there a story proving this?
+
+:: cargo-hint-2
+@root Cargo
+@hint cargo-cargo
+@only
+	Where else was corn mentioned?
+
+:: cargo-incorrect-generic
+@root Cargo
+@incorrect
+	This doesn't make sense
+
+// -----------------------------------------------------------
+// Wreck Cause
+// -----------------------------------------------------------
+
 :: cause-correct
 @root Cause
 @correct cause-sandbar
 
+:: cause-incorrect
+@root Cause
+@incorrect
+	This isn't a cause of the wreck
+
+
+// -----------------------------------------------------------
+// Artifact
+
 :: artifact-correct
 @root Artifact
 @correct photo-artifact, artifact-trunk
+
+:: artifact-hint-1
+@root Artifact
+@hint photo-artifact
+@only
+	Is there a story mentioning this trunk?
+
+:: artifact-hint-2
+@root Artifact
+@hint artifact-trunk
+	Do I have a photo of this?
+
+:: artifact-incorrect
+@root Artifact
+@incorrect
+	Not related to artifacts
