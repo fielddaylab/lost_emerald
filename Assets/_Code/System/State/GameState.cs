@@ -36,7 +36,10 @@ namespace Shipwreck {
 		int GetCurrShipOutIndex();
 		void SetCurrShipOutIndex(int index);
 
-		bool IsTutorialBuoyDropped();
+		bool HasTutorialSonarDisplayed();
+		void SetTutorialSonarDisplayed(bool hasDisplayed);
+
+		bool HasTutorialBuoyDropped();
 		void SetTutorialBuoyDropped(bool isDropped);
 	}
 
@@ -79,6 +82,7 @@ namespace Shipwreck {
 			private ShipOutState[] m_shipOutStates;
 			private int m_currShipOutIndex;
 			private bool m_tutorialBuoyDropped;
+			private bool m_tutorialSonarDisplayed;
 
 			public GameState() {
 				m_variableTable = new VariantTable();
@@ -101,6 +105,7 @@ namespace Shipwreck {
 				}
 				m_currShipOutIndex = 0;
 				m_tutorialBuoyDropped = false;
+				m_tutorialSonarDisplayed = false;
 			}
 
 			public IEnumerable<IEvidenceGroupState> GetEvidence() {
@@ -246,7 +251,15 @@ namespace Shipwreck {
 				m_currShipOutIndex = index;
 			}
 
-			public bool IsTutorialBuoyDropped()
+			public bool HasTutorialSonarDisplayed()
+			{
+				return m_tutorialSonarDisplayed;
+			}
+			public void SetTutorialSonarDisplayed(bool hasDisplayed)
+			{
+				m_tutorialSonarDisplayed = hasDisplayed;
+			}
+			public bool HasTutorialBuoyDropped()
 			{
 				return m_tutorialBuoyDropped;
 			}

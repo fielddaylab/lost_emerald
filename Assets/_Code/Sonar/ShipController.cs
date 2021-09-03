@@ -89,7 +89,8 @@ namespace Shipwreck
 		{
 			if (m_interactIsActive
 				&& InteractionIsInBounds()
-				&& !InteractionIsOverUI())
+				&& !InteractionIsOverUI()
+				&& !ShipOutMgr.instance.IsMessageShowing())
 			{
 				// Ship moves when input interaction is active
 				MoveShip();

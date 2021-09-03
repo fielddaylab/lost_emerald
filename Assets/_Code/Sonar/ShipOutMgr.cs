@@ -45,7 +45,7 @@ namespace Shipwreck
 
 		private static int DIM_TO_WORLD_PROP = 100; // the proportion of scene dimensions to world space is 100 pixels per unit
 		private static Vector3 BUOY_SHIP_OFFSET = new Vector3(-1f, -1f, 0f); // where the ship is placed relative to buoy when
-																	  // re-entering a scene with completed dive
+																			 // re-entering a scene with completed dive
 
 		private bool m_interactIsOverUI; // whether the interaction is over some UI
 
@@ -96,6 +96,19 @@ namespace Shipwreck
 			else
 			{
 				GenerateSonarDots();
+
+				if (!GameMgr.State.HasTutorialSonarDisplayed())
+				{
+					UIShipOutScreen.ActionCode[] codes = new UIShipOutScreen.ActionCode[]
+					{
+						UIShipOutScreen.ActionCode.TutorialSonar
+					};
+					m_uisos.ShowMessage(
+						"Time to use my sonar to see if I can find the wreck Lou shared",
+						"Continue",
+						codes
+						);
+				}
 			}
 		}
 
@@ -132,6 +145,7 @@ namespace Shipwreck
 		{
 			m_sonarProgress = m_sonarProgress + 1;
 
+			// if the dive has not been unlocked yet, check if it should unlock
 			if (!GameMgr.State.IsDiveUnlocked(m_shipOutData.ShipOutIndex))
 			{
 				// how many dots out of the total have been revealed
@@ -142,20 +156,34 @@ namespace Shipwreck
 
 				m_diveSlider.normalizedValue = percentTargetCompletion;
 
+				// when enough dots have been revealed, show buoy message
 				if (percentComplete >= m_completionPercent)
 				{
-					if (m_uisos.GetCurrMessageState() == UIShipOutScreen.MessageState.showing)
+					// when the message is already showing, don't show it again
+					if (IsMessageShowing())
 					{
 						return;
 					}
 
-					if (GameMgr.State.IsTutorialBuoyDropped())
+					// in the first sonar scene, the tutorial buoy must display a message before the dive is unlocked
+					if (GameMgr.State.HasTutorialBuoyDropped())
 					{
+						// no tutorial buoy case
 						UnlockDive();
 					}
 					else
 					{
-						m_uisos.ShowBuoyMessage();
+						// tutorial buoy case
+						UIShipOutScreen.ActionCode[] codes = new UIShipOutScreen.ActionCode[]
+						{
+							UIShipOutScreen.ActionCode.TutorialBuoy,
+							UIShipOutScreen.ActionCode.UnlockDive
+						};
+						m_uisos.ShowMessage(
+							"There it is! I’ll drop a buoy to mark the location.",
+							"Continue",
+							codes
+							);
 					}
 				}
 			}
@@ -173,6 +201,11 @@ namespace Shipwreck
 		public ShipOutData GetData()
 		{
 			return m_shipOutData;
+		}
+
+		public bool IsMessageShowing()
+		{
+			return m_uisos.GetCurrMessageState() == UIShipOutScreen.MessageState.showing;
 		}
 
 		/// <summary>

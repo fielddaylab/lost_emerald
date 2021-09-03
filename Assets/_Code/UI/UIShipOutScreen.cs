@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System;
 using TMPro;
+using UnityEngine.Events;
 
 namespace Shipwreck
 {
@@ -20,6 +21,16 @@ namespace Shipwreck
 			hidden,
 			showing
 		}
+
+
+		// IDs for UnityActions that can occur when a messageBox is closed
+		public enum ActionCode
+		{
+			TutorialSonar,
+			TutorialBuoy,
+			UnlockDive
+		}
+
 
 		[SerializeField]
 		private Button m_returnToOfficeButton; // button that returns the player to office
@@ -51,6 +62,30 @@ namespace Shipwreck
 		{
 			m_returnToOfficeButton.onClick.AddListener(HandleReturnToOfficeButton);
 			m_currentMessageState = MessageState.hidden;
+		}
+
+		private List<UnityAction> GetActions(ActionCode[] codes)
+		{
+			List<UnityAction> actions = new List<UnityAction>();
+			foreach (ActionCode code in codes)
+			{
+				switch (code)
+				{
+					case (ActionCode.TutorialSonar):
+						actions.Add(FlagDisplaySonarTutorial);
+						break;
+					case (ActionCode.TutorialBuoy):
+						actions.Add(FlagDropTutorialBuoy);
+						break;
+					case (ActionCode.UnlockDive):
+						actions.Add(ShipOutMgr.instance.UnlockDive);
+						break;
+					default:
+						break;
+				}
+			}
+
+			return actions;
 		}
 
 		/// <summary>
@@ -91,6 +126,16 @@ namespace Shipwreck
 			m_diveButton.GetComponent<Button>().onClick.AddListener(HandleDiveButton);
 		}
 
+		private void FlagDropTutorialBuoy()
+		{
+			GameMgr.State.SetTutorialBuoyDropped(true);
+		}
+
+		private void FlagDisplaySonarTutorial()
+		{
+			GameMgr.State.SetTutorialSonarDisplayed(true);
+		}
+
 		public MessageState GetCurrMessageState()
 		{
 			return m_currentMessageState;
@@ -98,24 +143,27 @@ namespace Shipwreck
 
 		#region MessageBox
 
-		public void ShowBuoyMessage()
+		public void ShowMessage(string message, string buttonText, ActionCode[] actionCodes)
 		{
-			m_messageText.text = "There it is! I’ll drop a buoy to mark the location.";
-			m_messageButtonText.text = "Continue";
+			m_messageText.text = message;
+			m_messageButtonText.text = buttonText;
 			m_messageGroup.anchoredPosition = new Vector2(m_messageGroup.anchoredPosition.x, m_messageHiddenY);
 			m_messageRoutine.Replace(this, m_messageGroup.AnchorPosTo(m_messageShownY, 0.25f, Axis.Y).Ease(Curve.QuadOut));
 			m_currentMessageState = MessageState.showing;
 			m_messageButton.onClick.AddListener(HideMessageBox);
-			m_messageButton.onClick.AddListener(ShipOutMgr.instance.UnlockDive);
+
+			List<UnityAction> actions = GetActions(actionCodes);
+			foreach (UnityAction action in actions)
+			{
+				m_messageButton.onClick.AddListener(action);
+			}
 		}
 		private void HideMessageBox()
 		{
 			m_messageRoutine.Replace(this, m_messageGroup.AnchorPosTo(m_messageHiddenY, 0.25f, Axis.Y).Ease(Curve.QuadOut));
-			GameMgr.State.SetTutorialBuoyDropped(true);
 			m_currentMessageState = MessageState.hidden;
 			m_messageButton.onClick.RemoveListener(HideMessageBox);
 		}
-
 		#endregion
 
 	}
