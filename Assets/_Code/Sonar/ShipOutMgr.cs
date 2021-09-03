@@ -110,6 +110,8 @@ namespace Shipwreck
 						);
 				}
 			}
+
+			// GameMgr.RunTrigger(GameTriggers.OnEnterSonar);
 		}
 
 		private void GenerateSonarDots()
