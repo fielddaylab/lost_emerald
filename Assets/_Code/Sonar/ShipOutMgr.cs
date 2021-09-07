@@ -18,16 +18,12 @@ namespace Shipwreck
 	{
 		public static ShipOutMgr instance; // there can only be one
 		public SonarDotGenerator m_sdmgr; // the scene's SonarDotMgr
-		[SerializeField]
-		private UIShipOutScreen m_uisos; // the scene's ship out canvas
 
 		[SerializeField]
 		private Vector2 m_targetDimensions; // the dimensions of the scene
 		[SerializeField]
 		private float m_completionPercent; // the percent of solar dots a player must reveal before diving
 		private int m_sonarProgress; // the number of dots that have been revealed
-		[SerializeField]
-		private Slider m_diveSlider; // the progress bar for unlocking the dive
 
 		private ShipOutData m_shipOutData;
 
@@ -80,38 +76,15 @@ namespace Shipwreck
 
 			m_shipOutData = GameDb.GetShipOutData(GameMgr.State.GetCurrShipOutIndex());
 
-			// when dive is unlocked, load the buoy without sonar
-			if (GameMgr.State.IsDiveUnlocked(GameMgr.State.GetCurrShipOutIndex()))
+			if (m_shipOutData.ShipOutIndex == 1)
 			{
-				// activate button
-				m_uisos.SwapButtonForSlider();
-
-				// drop buoy
-				GameObject buoy = Instantiate(m_buoyPrefab);
-				buoy.transform.position = m_shipOutData.buoyLocation;
-
-				m_playerShip.transform.position = buoy.transform.position + BUOY_SHIP_OFFSET;
+				// dialogue triggers on level 2
+				GameMgr.RunTrigger(GameTriggers.OnEnterSonar);
 			}
-			// when the dive is not unlocked, laod the sonar without buoy
 			else
 			{
-				GenerateSonarDots();
-
-				if (!GameMgr.State.HasTutorialSonarDisplayed())
-				{
-					UIShipOutScreen.ActionCode[] codes = new UIShipOutScreen.ActionCode[]
-					{
-						UIShipOutScreen.ActionCode.TutorialSonar
-					};
-					m_uisos.ShowMessage(
-						"Time to use my sonar to see if I can find the wreck Lou shared",
-						"Continue",
-						codes
-						);
-				}
+				ShowSonarScene();
 			}
-
-			// GameMgr.RunTrigger(GameTriggers.OnEnterSonar);
 		}
 
 		private void GenerateSonarDots()
@@ -128,6 +101,45 @@ namespace Shipwreck
 			}
 
 			m_targetNumDots = sonarPoints.Count;
+		}
+
+		public void ShowSonarScene()
+		{
+			UIMgr.Open<UIShipOutScreen>();
+
+			// when dive is unlocked, load the buoy without sonar
+			if (GameMgr.State.IsDiveUnlocked(GameMgr.State.GetCurrShipOutIndex()))
+			{
+				// activate button
+				UIShipOutScreen.instance.SwapButtonForSlider();
+
+				// drop buoy
+				GameObject buoy = Instantiate(m_buoyPrefab);
+				buoy.transform.position = m_shipOutData.buoyLocation;
+
+				m_playerShip.transform.position = buoy.transform.position + BUOY_SHIP_OFFSET;
+			}
+			// when the dive is not unlocked, laod the sonar without buoy
+			else
+			{
+				GenerateSonarDots();
+
+				m_sonarProgress = 0;
+				UIShipOutScreen.instance.GetDiveSlider().normalizedValue = 0;
+
+				if (!GameMgr.State.HasTutorialSonarDisplayed())
+				{
+					UIShipOutScreen.ActionCode[] codes = new UIShipOutScreen.ActionCode[]
+					{
+						UIShipOutScreen.ActionCode.TutorialSonar
+					};
+					UIShipOutScreen.instance.ShowMessage(
+						"Time to use my sonar to see if I can find the wreck Lou shared",
+						"Continue",
+						codes
+						);
+				}
+			}
 		}
 
 		/// <summary>
@@ -156,7 +168,7 @@ namespace Shipwreck
 				// what percentage of the proportion needed for the dive have been revealed
 				float percentTargetCompletion = percentComplete / m_completionPercent;
 
-				m_diveSlider.normalizedValue = percentTargetCompletion;
+				UIShipOutScreen.instance.GetDiveSlider().normalizedValue = percentTargetCompletion;
 
 				// when enough dots have been revealed, show buoy message
 				if (percentComplete >= m_completionPercent)
@@ -181,7 +193,7 @@ namespace Shipwreck
 							UIShipOutScreen.ActionCode.TutorialBuoy,
 							UIShipOutScreen.ActionCode.UnlockDive
 						};
-						m_uisos.ShowMessage(
+						UIShipOutScreen.instance.ShowMessage(
 							"There it is! I’ll drop a buoy to mark the location.",
 							"Continue",
 							codes
@@ -207,7 +219,7 @@ namespace Shipwreck
 
 		public bool IsMessageShowing()
 		{
-			return m_uisos.GetCurrMessageState() == UIShipOutScreen.MessageState.showing;
+			return UIShipOutScreen.instance.GetCurrMessageState() == UIShipOutScreen.MessageState.showing;
 		}
 
 		/// <summary>
@@ -219,7 +231,7 @@ namespace Shipwreck
 			GameMgr.State.UnlockDive(m_shipOutData.ShipOutIndex);
 
 			// activate button
-			m_uisos.SwapButtonForSlider();
+			UIShipOutScreen.instance.SwapButtonForSlider();
 
 			// drop buoy
 			GameObject buoy = Instantiate(m_buoyPrefab);
