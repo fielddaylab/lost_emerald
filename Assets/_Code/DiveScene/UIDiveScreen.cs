@@ -26,7 +26,7 @@ namespace Shipwreck {
 			void FlashCamera(Action callback);
 			void WaitForCameraTransitionEnd(Action callback);
 			void AssignPreviousState(DiveScreenState state);
-			void ShowMessageBox(LocalizationKey m_text, LocalizationKey m_button);
+			void ShowMessageBox(LocalizationKey text, LocalizationKey button);
 			void HideMessageBox();
 			void ShowJournal();
 			void HideJournal();
@@ -68,8 +68,8 @@ namespace Shipwreck {
 			public void WaitForCameraTransitionEnd(Action callback) {
 				m_owner.WaitForCameraTransitionEnd(callback);
 			}
-			public void ShowMessageBox(LocalizationKey m_text, LocalizationKey m_button) {
-				m_owner.ShowMessageBox(m_text, m_button);
+			public void ShowMessageBox(LocalizationKey text, LocalizationKey button) {
+				m_owner.ShowMessageBox(text, button);
 			}
 			public void HideMessageBox() {
 				m_owner.HideMessageBox();
