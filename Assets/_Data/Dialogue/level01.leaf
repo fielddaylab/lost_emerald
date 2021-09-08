@@ -153,15 +153,3 @@
 	{@dad} 	Wow! Ok, I’ll send the letter over to you.
 			This is great! The Griffin family treasure hunters, working together!
 	{@you} 	Yeah. Super great.
-
-
-// This is for building the Rya conversation in L2. Should not leave the sonar branch.
-
-::rya-test
-@contact amy, phone-call
-@background rya-boat
-@trigger OnEnterSonar
-@once
-
-	{@you} 	This is a statement!
-	{@amy} 	Awesome. Here is a response!
