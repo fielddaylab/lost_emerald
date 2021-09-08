@@ -46,8 +46,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2bb035da10c883489ae4b79cbba48d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_postitLevel1: {fileID: -4270002856181823206, guid: 88e61a4ee7f61da4e84ca54d7f6e6393,
-    type: 3}
+  m_levelScripts:
+  - {fileID: -1942890987711236906, guid: aa0a8abdb5c077b48bf23d1c4603f6ee, type: 3}
+  - {fileID: -1942890987711236906, guid: ae3bb266f780cf549a580bcef474b6bc, type: 3}
+  - {fileID: -1942890987711236906, guid: 85cd983c1362d8c45a00cf752ab10fd4, type: 3}
+  - {fileID: -1942890987711236906, guid: 6045c548452b9814481a089a6833c429, type: 3}
+  m_levelStickNotes:
+  - {fileID: -4270002856181823206, guid: 88e61a4ee7f61da4e84ca54d7f6e6393, type: 3}
+  - {fileID: -4270002856181823206, guid: 03a9acd3b96670b45a128afedcdee382, type: 3}
+  - {fileID: -4270002856181823206, guid: 10dfccb11c5ada64ca8a261af169059b, type: 3}
+  - {fileID: -4270002856181823206, guid: 3e4eeacb2fa9f4145a73054e807814f5, type: 3}
 --- !u!114 &531016319209300888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,9 +131,9 @@ MonoBehaviour:
       m_hash: 1962802444
   m_levelData:
   - {fileID: 11400000, guid: 442cb20c0d74d4e41877d37dca307ec9, type: 2}
-  - {fileID: 11400000, guid: d923516fa5301434cadd7746c5a40526, type: 2}
-  - {fileID: 11400000, guid: 344d0cab738215d4a95dc0b779e229a4, type: 2}
-  - {fileID: 11400000, guid: d53af60510904b24fbfe6e3b139a8a9f, type: 2}
+  - {fileID: 11400000, guid: bd4ca47713478c743bc9bf37390f66dd, type: 2}
+  - {fileID: 11400000, guid: a4d6b8e20a116c84aa41e6e63f7a7dc5, type: 2}
+  - {fileID: 11400000, guid: f08efd49901211f4e8ff5a4f8d445187, type: 2}
   m_shipOutData:
   - {fileID: 11400000, guid: 165dce6e12d05c042a33296d58d88703, type: 2}
   m_stickyNoteDefault: {r: 1, g: 0.9889244, b: 0.9575472, a: 1}

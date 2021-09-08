@@ -1,5 +1,6 @@
 ﻿using BeauData;
 using BeauUtil;
+using PotatoLocalization;
 using System;
 using System.Collections.Generic;
 
@@ -12,6 +13,18 @@ namespace Shipwreck {
 			private class LevelState : ISerializedObject, ISerializedVersion {
 				public ushort Version {
 					get { return 1; }
+				}
+
+				public LocalizationKey Name {
+					get {
+						if (!m_isUnlocked) {
+							return m_levelData.LockedKey;
+						} else if (GetChain(m_levelData.NameRoot)?.IsCorrect ?? false) {
+							return m_levelData.NamedKey;
+						} else {
+							return m_levelData.UnnamedKey;
+						}
+					}
 				}
 
 				public bool IsUnlocked {
@@ -48,6 +61,9 @@ namespace Shipwreck {
 				}
 
 				public IEvidenceChainState GetChain(StringHash32 root) {
+					if (m_chains == null) {
+						return null;
+					}
 					return m_chains.Find((item) => {
 						return item.Root() == root;
 					});

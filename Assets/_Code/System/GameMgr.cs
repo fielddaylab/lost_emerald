@@ -5,6 +5,7 @@ using BeauUtil.Debugger;
 using BeauUtil.Variants;
 using Leaf;
 using Leaf.Runtime;
+using System;
 using UnityEngine;
 
 namespace Shipwreck
@@ -25,25 +26,24 @@ namespace Shipwreck
 		private GameState m_state;
 		private EventService m_eventService;
 
-		private int m_selectedLevel = 0;
+		private int m_selectedLevel = -1;
 
 		[SerializeField]
-		private StickyAsset m_postitLevel1;
+		private LeafAsset[] m_levelScripts;
+		[SerializeField]
+		private StickyAsset[] m_levelStickNotes;
 
 		protected override void OnAssigned() {
 			Routine.Settings.DebugMode = false;
 
 			m_state = new GameState();
 
-			m_stickyEvaluator = new StickyEvaluator();
-			m_stickyEvaluator.Load(m_postitLevel1);
-
 			m_scriptMgr = new ScriptMgr(this);
 			m_scriptMgr.LoadGameState(m_state, m_state.VariableTable);
 			m_scriptMgr.ConfigureEvents();
 
 			m_eventService = new EventService();
-
+			SetLevelIndex(0);
 		}
 
 		public static void MarkTitleScreenComplete() {
@@ -51,6 +51,31 @@ namespace Shipwreck
 			I.m_eventService.Register(GameEvents.ChainSolved, I.HandleChainCompleted);
 		}
 
+		public static void SetLevelIndex(int levelIndex) {
+			I.SetLevelIndexInternal(levelIndex);
+		}
+
+		private void SetLevelIndexInternal(int levelIndex) {
+			if (levelIndex < 0 || levelIndex > m_levelScripts.Length) {
+				throw new IndexOutOfRangeException();
+			}
+
+			if (m_stickyEvaluator == null) {
+				m_stickyEvaluator = new StickyEvaluator();
+			}
+			if (m_selectedLevel != -1) {
+				// unload the previous level
+				m_stickyEvaluator.Unload(m_levelStickNotes[m_selectedLevel]);
+				UnloadScript(m_levelScripts[m_selectedLevel]);
+			}
+
+			m_selectedLevel = levelIndex;
+
+			m_stickyEvaluator.Load(m_levelStickNotes[m_selectedLevel]);
+			LoadScript(m_levelScripts[m_selectedLevel]);
+
+			RunTrigger("Start");
+		}
 
 		private void HandlePhoneNotification(StringHash32 contact) {
 			UIMgr.Open<UIPhoneNotif>();

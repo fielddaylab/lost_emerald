@@ -1,6 +1,7 @@
 ﻿using BeauData;
 using BeauUtil;
 using BeauUtil.Variants;
+using PotatoLocalization;
 using System;
 using System.Collections.Generic;
 
@@ -17,6 +18,8 @@ namespace Shipwreck {
 
 		bool IsContactUnlocked(StringHash32 contactId);
 		bool IsLevelUnlocked(int levelUnlocked);
+
+		LocalizationKey GetLevelName(int levelIndex);
 
 		bool IsEvidenceUnlocked(StringHash32 evidenceId);
 
@@ -108,6 +111,10 @@ namespace Shipwreck {
 				m_tutorialSonarDisplayed = false;
 			}
 
+			public void SetLevelIndex(int levelIndex) {
+				m_levelIndex = levelIndex;
+			}
+
 			public IEnumerable<IEvidenceGroupState> GetEvidence() {
 				return m_levelStates[m_levelIndex].Evidence;
 			}
@@ -132,6 +139,13 @@ namespace Shipwreck {
 				}
 				return m_levelStates[levelIndex].IsUnlocked;
 			}
+			public LocalizationKey GetLevelName(int levelIndex) {
+				if (levelIndex < 0 || levelIndex >= m_levelStates.Length) {
+					throw new IndexOutOfRangeException();
+				}
+				return m_levelStates[levelIndex].Name;
+			}
+
 			public bool IsEvidenceUnlocked(StringHash32 evidenceId) {
 				return m_levelStates[m_levelIndex].IsEvidenceUnlocked(evidenceId);
 			}
