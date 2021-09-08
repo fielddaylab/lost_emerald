@@ -5883,6 +5883,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 531016319209300888, guid: 89de7169bb442fc48b40af2381f497c5,
+        type: 3}
+      propertyPath: m_audioClips.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 531016319209300888, guid: 89de7169bb442fc48b40af2381f497c5,
+        type: 3}
+      propertyPath: m_audioClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 0782aaf98ddfa4f1797e5ee3f379a7d5, type: 3}
+    - target: {fileID: 531016319209300888, guid: 89de7169bb442fc48b40af2381f497c5,
+        type: 3}
+      propertyPath: m_audioClips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: b73c30e4a19a348b79ca86a741f15f12, type: 3}
+    - target: {fileID: 531016319209300888, guid: 89de7169bb442fc48b40af2381f497c5,
+        type: 3}
+      propertyPath: m_audioClips.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: a7069662d823ec744ab1ef0f5b499a93, type: 3}
+    - target: {fileID: 531016319209300888, guid: 89de7169bb442fc48b40af2381f497c5,
+        type: 3}
+      propertyPath: m_audioClips.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 547a671f192b91747a29d0b726edd164, type: 3}
     - target: {fileID: 531016319209300889, guid: 89de7169bb442fc48b40af2381f497c5,
         type: 3}
       propertyPath: m_Name

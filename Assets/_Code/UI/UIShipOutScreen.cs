@@ -119,6 +119,7 @@ namespace Shipwreck
 			{
 				// TODO: pull this from ShipOutData
 				SceneManager.LoadScene("Dive_Ship01");
+				AudioSrcMgr.instance.PlayAudio("dive");
 				UIMgr.Close<UIShipOutScreen>();
 				UIMgr.Open<UIDiveScreen>();
 			}
@@ -130,7 +131,7 @@ namespace Shipwreck
 		public void SwapButtonForSlider()
 		{
 			// destory old bar
-			Destroy(m_diveSlider.gameObject);
+			m_diveSlider.gameObject.SetActive(false);
 
 			// create new button
 			m_diveButton = Instantiate(m_diveButtonPrefab, this.transform);

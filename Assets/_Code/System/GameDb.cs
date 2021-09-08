@@ -28,7 +28,9 @@ namespace Shipwreck {
 		[SerializeField]
 		private LevelData[] m_levelData;
 		[SerializeField]
-		private ShipOutData[] m_shipOutData; // here
+		private ShipOutData[] m_shipOutData;
+		[SerializeField]
+		private AudioData[] m_audioData;
 
 		[SerializeField,Header("Colors")]
 		private Color m_stickyNoteDefault = Color.black;
@@ -63,6 +65,8 @@ namespace Shipwreck {
 		private Dictionary<int, LevelData> m_levelMap;
 		[NonSerialized]
 		private Dictionary<int, ShipOutData> m_shipOutMap;
+		[NonSerialized]
+		private Dictionary<string, AudioData> m_audioMap;
 
 
 		public static CharacterData GetCharacterData(StringHash32 hash) {
@@ -206,6 +210,29 @@ namespace Shipwreck {
 				}
 			}
 			return I.m_shipOutMap[index];
+		}
+
+		public static AudioClip GetAudioClip(string id)
+		{
+			// initialize the map if it does not exist
+			if (I.m_audioMap == null)
+			{
+				I.m_audioMap = new Dictionary<string, AudioData>();
+				foreach (AudioData data in I.m_audioData)
+				{
+					I.m_audioMap.Add(data.ID, data);
+				}
+			}
+			if (I.m_audioMap.ContainsKey(id))
+			{
+				return I.m_audioMap[id].Clip;
+			}
+			else
+			{
+				throw new KeyNotFoundException(string.Format("No Audio " +
+					"with id `{0}' is in the database", id
+				));
+			}
 		}
 
 	}
