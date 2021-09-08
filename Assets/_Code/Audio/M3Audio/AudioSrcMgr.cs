@@ -29,9 +29,9 @@ namespace Shipwreck
 			m_audioSrc = this.GetComponent<AudioSource>();
 		}
 
-		public void PlayAudio(AudioClip clip)
+		public void PlayAudio(string clipID)
 		{
-			m_audioSrc.clip = clip;
+			m_audioSrc.clip = GameDb.GetAudioClip(clipID);
 			m_audioSrc.Play();
 		}
 	}
