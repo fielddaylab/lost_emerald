@@ -14,7 +14,7 @@ namespace Shipwreck
 	/// <summary>
 	/// The canvas of the ShipOut scene
 	/// </summary>
-	public class UIShipOutScreen : MonoBehaviour
+	public class UIShipOutScreen : UIBase
 	{
 		public enum MessageState
 		{
@@ -57,9 +57,20 @@ namespace Shipwreck
 
 		private MessageState m_currentMessageState;
 
-		// Awake is called when the script instance is being loaded (before Start)
+		public static UIShipOutScreen instance;
+
 		private void Awake()
 		{
+			// ensure there is only one ShipOutScreen at any given time
+			if (UIShipOutScreen.instance == null)
+			{
+				UIShipOutScreen.instance = this;
+			}
+			else if (UIShipOutScreen.instance != this)
+			{
+				Destroy(this.gameObject);
+			}
+
 			m_returnToOfficeButton.onClick.AddListener(HandleReturnToOfficeButton);
 			m_currentMessageState = MessageState.hidden;
 		}
@@ -94,6 +105,7 @@ namespace Shipwreck
 		private void HandleReturnToOfficeButton()
 		{
 			SceneManager.LoadScene("Main");
+			UIMgr.Close<UIShipOutScreen>();
 			UIMgr.Open<UIOfficeScreen>();
 		}
 
@@ -107,6 +119,7 @@ namespace Shipwreck
 			{
 				// TODO: pull this from ShipOutData
 				SceneManager.LoadScene("Dive_Ship01");
+				UIMgr.Close<UIShipOutScreen>();
 				UIMgr.Open<UIDiveScreen>();
 			}
 		}
@@ -141,6 +154,11 @@ namespace Shipwreck
 			return m_currentMessageState;
 		}
 
+		public Slider GetDiveSlider()
+		{
+			return m_diveSlider;
+		}
+
 		#region MessageBox
 
 		public void ShowMessage(string message, string buttonText, ActionCode[] actionCodes)
@@ -164,6 +182,17 @@ namespace Shipwreck
 			m_currentMessageState = MessageState.hidden;
 			m_messageButton.onClick.RemoveListener(HideMessageBox);
 		}
+
+		protected override IEnumerator ShowRoutine()
+		{
+			yield return CanvasGroup.FadeTo(1f, 0.3f);
+		}
+
+		protected override IEnumerator HideRoutine()
+		{
+			yield return CanvasGroup.FadeTo(0f, 0.3f);
+		}
+
 		#endregion
 
 	}
