@@ -79,7 +79,7 @@ namespace Shipwreck {
 				if (GameMgr.State.HasTakenTopDownPhoto()) {
 					Screen.SetState(new DiveNavigation(Screen));
 				} else {
-					Screen.SetState(new DiveTutorialNav(Screen));
+					Screen.SetState(new DiveTutorialMessage(Screen));
 				}
 			}
 		}
@@ -178,6 +178,19 @@ namespace Shipwreck {
 				Screen.SetState(Screen.Previous);
 			}
 		}
+
+		private class DiveTutorialMessage : DiveScreenState {
+			public DiveTutorialMessage(IDiveScreen screen) : base(screen) {
+			}
+			public override void OnStart() {
+				Screen.ShowMessageBox(new LocalizationKey("Dive/Tutorial/TakeAbovePhoto"), new LocalizationKey("UI/General/Continue"));
+			}
+			public override void OnCloseMessage() {
+				Screen.HideMessageBox();
+				Screen.SetState(new DiveTutorialNav(Screen));
+			}
+		}
+
 		private class DiveTutorialNav : DiveScreenState {
 			public DiveTutorialNav(IDiveScreen screen) : base(screen) {
 			}
