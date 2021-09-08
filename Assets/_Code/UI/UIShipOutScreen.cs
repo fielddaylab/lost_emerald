@@ -119,6 +119,7 @@ namespace Shipwreck
 			{
 				// TODO: pull this from ShipOutData
 				SceneManager.LoadScene("Dive_Ship01");
+				AudioSrcMgr.instance.PlayAudio(GameDb.GetAudioClip("dive"));
 				UIMgr.Close<UIShipOutScreen>();
 				UIMgr.Open<UIDiveScreen>();
 			}
