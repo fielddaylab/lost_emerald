@@ -87,7 +87,7 @@ namespace Shipwreck {
 
 		private void SetupBoard() {
 			// get all of the unlocked evidence
-			foreach (IEvidenceGroupState state in GameMgr.State.GetEvidence()) {
+			foreach (IEvidenceGroupState state in GameMgr.State.CurrentLevel.Evidence) {
 				EvidenceGroup obj = Instantiate(GameDb.GetEvidenceGroup(state.Identity));
 				m_groups.Add(state.Identity, obj);
 				obj.RectTransform.SetParent(m_nodeBackGroup);
@@ -100,8 +100,8 @@ namespace Shipwreck {
 					m_nodes.Add(node.NodeID, node);
 				}
 			}
-			for (int chainIndex = 0; chainIndex < GameMgr.State.ChainCount; chainIndex++) {
-				IEvidenceChainState chain = GameMgr.State.GetChain(chainIndex);
+			for (int chainIndex = 0; chainIndex < GameMgr.State.CurrentLevel.ChainCount; chainIndex++) {
+				IEvidenceChainState chain = GameMgr.State.CurrentLevel.GetChain(chainIndex);
 				EvidenceNode root = m_nodes[chain.Root()];
 				EvidenceChain obj = Instantiate(m_chainPrefab);
 				obj.transform.SetParent(root.RectTransform);
@@ -147,7 +147,7 @@ namespace Shipwreck {
 			}
 
 			// ship out button is only available if the location root is solved
-			m_buttonShipOut.gameObject.SetActive(GameMgr.State.IsLocationChainComplete());
+			m_buttonShipOut.gameObject.SetActive(GameMgr.State.CurrentLevel.IsLocationChainComplete());
 		}
 
 		private void ClearBoard() {
@@ -204,7 +204,7 @@ namespace Shipwreck {
 		private void HandlePinPressed(EvidencePin pin) {
 			if (Selected == pin) {
 				Drop();
-			} else if (Selected == null && !GameMgr.State.GetChain(m_rootsByPin[pin]).IsCorrect) {
+			} else if (Selected == null && !GameMgr.State.CurrentLevel.GetChain(m_rootsByPin[pin]).IsCorrect) {
 				m_selectedRoot = m_rootsByPin[pin];
 				m_selectedPin = m_pinsByRoot[m_selectedRoot].IndexOf(pin);
 				m_homePos = Selected.RectTransform.position;
@@ -227,7 +227,7 @@ namespace Shipwreck {
 			UIMgr.Open<UIMapScreen>();
 		}
 		private void HandleChainCorrect(StringHash32 root) {
-			if (GameMgr.State.IsLocationChainComplete()) {
+			if (GameMgr.State.CurrentLevel.IsLocationChainComplete()) {
 				m_buttonShipOut.gameObject.SetActive(true);
 			}
 		}
@@ -237,7 +237,7 @@ namespace Shipwreck {
 		}
 
 		private void Lift() {
-			GameMgr.State.GetChain(m_selectedRoot).Lift(m_selectedPin);
+			GameMgr.State.CurrentLevel.GetChain(m_selectedRoot).Lift(m_selectedPin);
 			m_chains[m_selectedRoot].SetChainDepth(m_selectedPin+1);
 			m_chains[m_selectedRoot].MoveToFront();
 		}
@@ -248,7 +248,7 @@ namespace Shipwreck {
 			eventData.position = InputMgr.Position;
 			m_raycaster.Raycast(eventData, results);
 
-			IEvidenceChainState chainState = GameMgr.State.GetChain(m_selectedRoot);
+			IEvidenceChainState chainState = GameMgr.State.CurrentLevel.GetChain(m_selectedRoot);
 			EvidenceChain chainObj = m_chains[m_selectedRoot];
 			EvidenceNode node = null;
 

@@ -6,11 +6,26 @@ using System.Collections.Generic;
 
 namespace Shipwreck {
 
+	public interface ILevelState {
+		LocalizationKey Name { get; }
+		bool IsUnlocked { get; }
+		IEnumerable<IEvidenceGroupState> Evidence { get; }
+		int ChainCount { get; }
+		IEvidenceChainState GetChain(int index);
+		IEvidenceChainState GetChain(StringHash32 hash);
+		bool IsEvidenceUnlocked(StringHash32 hash);
+		bool IsLocationChainComplete();
+		bool HasTakenTopDownPhoto();
+		bool IsChainComplete(StringHash32 root);
+		bool IsBoardComplete();
+	}
+
+
 	public sealed partial class GameMgr { // LevelState.cs
 
 		private sealed partial class GameState { // LevelState.cs
 
-			private class LevelState : ISerializedObject, ISerializedVersion {
+			private class LevelState : ILevelState, ISerializedObject, ISerializedVersion {
 				public ushort Version {
 					get { return 1; }
 				}
@@ -54,6 +69,7 @@ namespace Shipwreck {
 				public LevelState() {
 					m_evidence = new List<EvidenceGroupState>();
 					m_chains = new List<EvidenceChainState>();
+					
 				}
 
 				public void AssignLevelData(LevelData data) {
@@ -110,6 +126,14 @@ namespace Shipwreck {
 					return m_chains.Find((item) => {
 						return item.Root() == root;
 					})?.IsCorrect ?? false;
+				}
+				public bool IsBoardComplete() {
+					foreach (EvidenceChainState chain in m_chains) {
+						if (!chain.IsCorrect) {
+							return false;
+						}
+					}
+					return true;
 				}
 				
 

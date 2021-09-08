@@ -70,6 +70,7 @@ namespace Shipwreck
 			}
 
 			m_selectedLevel = levelIndex;
+			m_state.SetCurrentLevel(levelIndex);
 
 			m_stickyEvaluator.Load(m_levelStickNotes[m_selectedLevel]);
 			LoadScript(m_levelScripts[m_selectedLevel]);
@@ -83,7 +84,7 @@ namespace Shipwreck
 		}
 		private void HandleChainCompleted() {
 			// check to see if all chains are solved
-			if (m_state.IsBoardComplete()) {
+			if (m_state.CurrentLevel.IsBoardComplete()) {
 				UIMgr.Open<UIModalBoardComplete>();
 			}
 		}
@@ -247,7 +248,7 @@ namespace Shipwreck
 
 		[LeafMember]
 		private static bool HasEvidence(StringHash32 evidence) {
-			return I.m_state.IsEvidenceUnlocked(evidence);
+			return I.m_state.CurrentLevel.IsEvidenceUnlocked(evidence);
 		}
 
 		[LeafMember]
@@ -257,7 +258,7 @@ namespace Shipwreck
 
 		[LeafMember]
 		private static bool IsChainComplete(StringHash32 root) {
-			return I.m_state.IsChainComplete(root);
+			return I.m_state.CurrentLevel.IsChainComplete(root);
 		}
 
 		[LeafMember]

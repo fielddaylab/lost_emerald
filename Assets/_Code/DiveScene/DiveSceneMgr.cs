@@ -58,7 +58,7 @@ namespace Shipwreck {
 			DivePointOfInterest poi = m_currentNode.GetPointOfInterest();
 			if (poi == null) {
 				GameMgr.Events.Dispatch(GameEvents.Dive.ShowMessage, m_nothingOfInterestKey);
-			} else if (GameMgr.State.IsEvidenceUnlocked(poi.EvidenceUnlock)) {
+			} else if (GameMgr.State.CurrentLevel.IsEvidenceUnlocked(poi.EvidenceUnlock)) {
 				GameMgr.Events.Dispatch(GameEvents.Dive.ShowMessage, m_alreadyTakenKey);
 			} else if (m_zoomLevel < poi.ZoomMin) {
 				GameMgr.Events.Dispatch(GameEvents.Dive.ShowMessage, m_pleaseZoomInKey);

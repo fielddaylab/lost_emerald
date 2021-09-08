@@ -76,7 +76,7 @@ namespace Shipwreck {
 				Screen.WaitForCameraTransitionEnd(HandleTransitionEnded);
 			}
 			private void HandleTransitionEnded() {
-				if (GameMgr.State.HasTakenTopDownPhoto()) {
+				if (GameMgr.State.CurrentLevel.HasTakenTopDownPhoto()) {
 					Screen.SetState(new DiveNavigation(Screen));
 				} else {
 					Screen.SetState(new DiveTutorialMessage(Screen));
@@ -156,7 +156,7 @@ namespace Shipwreck {
 					Screen.SetState(new DiveCamera(Screen));
 				} else {
 					if (Screen.Previous.GetType() == typeof(DiveTutorialCamera)) {
-						if (GameMgr.State.HasTakenTopDownPhoto()) {
+						if (GameMgr.State.CurrentLevel.HasTakenTopDownPhoto()) {
 							Screen.AssignPreviousState(new DiveCamera(Screen));
 						}
 					}

@@ -208,7 +208,7 @@ namespace Shipwreck {
 			foreach (DivePointOfInterest poi in list) {
 				DiveJournalItem item = Instantiate(m_journalItemPrefab, m_journalChecklist);
 				item.transform.localScale = Vector3.one;
-				item.SetChecked(GameMgr.State.IsEvidenceUnlocked(poi.EvidenceUnlock));
+				item.SetChecked(GameMgr.State.CurrentLevel.IsEvidenceUnlocked(poi.EvidenceUnlock));
 				item.SetText(poi.PhotoName);
 			}
 		}
