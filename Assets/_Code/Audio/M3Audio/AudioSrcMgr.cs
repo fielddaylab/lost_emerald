@@ -34,5 +34,21 @@ namespace Shipwreck
 			m_audioSrc.clip = GameDb.GetAudioClip(clipID);
 			m_audioSrc.Play();
 		}
+
+		public void PlayOneShot(string clipID)
+		{
+			AudioClip clip = GameDb.GetAudioClip(clipID);
+			m_audioSrc.PlayOneShot(clip);
+		}
+
+		public bool IsPlayingAudio()
+		{
+			return m_audioSrc.isPlaying;
+		}
+
+		public void StopAudio()
+		{
+			m_audioSrc.Stop();
+		}
 	}
 }

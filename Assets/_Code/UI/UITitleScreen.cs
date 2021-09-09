@@ -37,12 +37,14 @@ namespace Shipwreck {
 		}
 
 		private void HandleNewGame() {
+			AudioSrcMgr.instance.PlayOneShot("click_new_game");
 			UIMgr.CloseThenCall<UITitleScreen>(() => {
 				GameMgr.MarkTitleScreenComplete();
 				UIMgr.Open<UIOfficeScreen>();
 			});
 		}
 		private void HandleUnlock() {
+			AudioSrcMgr.instance.PlayOneShot("click_unlock");
 			GameMgr.UnlockLevel(1);
 			GameMgr.UnlockEvidence(1,"LV1-Root");
 			GameMgr.UnlockEvidence(1,"LV1-Transcript-Lou");
