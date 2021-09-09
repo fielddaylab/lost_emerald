@@ -154,3 +154,4 @@
 			This is great! The Griffin family treasure hunters, working together!
 	{@you} 	Yeah. Super great.
 	$call UnlockLevel(4)
+	$call UnlockEvidence(4,LV4-Letter-Treasure)

@@ -51,6 +51,7 @@ namespace Shipwreck {
 				}	
 				pin.RectTransform.SetParent(layers.Pin);
 				pin.RectTransform.localPosition += Vector3.down * 100f;
+				pin.RectTransform.localScale = Vector3.one;
 				pin.OnPositionSet += HandlePinPositionChanged;
 			}
 			m_stickyNote.transform.SetParent(layers.Label);
@@ -58,6 +59,10 @@ namespace Shipwreck {
 			m_rootLabel.transform.SetParent(layers.Label);
 			m_rootPos = Vector2.zero;
 			m_labelDistance = labelDistance;
+			m_stickyNote.transform.localScale = Vector3.one;
+			m_lineRenderer.transform.localScale = Vector3.one;
+			m_rootLabel.transform.localScale = Vector3.one;
+
 			SetChainDepth(1);
 		}
 		public void MoveToFront() {
