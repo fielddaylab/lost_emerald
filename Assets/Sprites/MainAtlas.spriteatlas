@@ -51,11 +51,13 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 13ee57b005423384a864133f2aa056dc, type: 3}
   - {fileID: 21300000, guid: 3d03c611440aba64fbb670920dcb11c0, type: 3}
   - {fileID: 21300000, guid: 77f86a110f5607542a2bbb5da9044b6e, type: 3}
+  - {fileID: 21300000, guid: b8f94b81841f3074bbf3e63cba43e0a0, type: 3}
   - {fileID: 21300000, guid: 6742bc91c8f5d4e3daea592a062c8b52, type: 3}
   - {fileID: 21300000, guid: 626d98b16d141f54f9ab276e6824ac6f, type: 3}
   - {fileID: 21300000, guid: 25a167d13e4ec455fb823ae9c3388e39, type: 3}
   - {fileID: 21300000, guid: bbda042251f08164aa5b16e04960b800, type: 3}
   - {fileID: 21300000, guid: 5acb7c42884df40b59c8ff374fe31bcb, type: 3}
+  - {fileID: 21300000, guid: aff968628b4fec54da281f472dfe771f, type: 3}
   - {fileID: 21300000, guid: 5f65e64366354fa4182c286b229445c9, type: 3}
   - {fileID: 21300000, guid: d7e29f63d2fd74c079090fd85d7430af, type: 3}
   - {fileID: 21300000, guid: fd8fa1249bf177b46b8ae8dc9dafc693, type: 3}
@@ -91,6 +93,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 993c01cc18d924a278476410f23bec53, type: 3}
   - {fileID: 21300000, guid: 2af87afca5fb68744b9282231b479229, type: 3}
   - {fileID: 21300000, guid: 7fd12d0d3f284fa40899dc34b325317b, type: 3}
+  - {fileID: 21300000, guid: 274e5f2d852693349a1c503ffb7d14d0, type: 3}
   - {fileID: 21300000, guid: b0ec3b8d44ae642358eb7e0701410eef, type: 3}
   - {fileID: 21300000, guid: 386610bd888ebbc4eb6631dfa0c55859, type: 3}
   - {fileID: 21300000, guid: 068f40cd0e35b44deb9a030ef1e1ec13, type: 3}
@@ -102,17 +105,20 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 3cb1d3de80ee9461498367b28b05b097, type: 3}
   - {fileID: 21300000, guid: 374dc90f739bee04a877d6898de07475, type: 3}
   - {fileID: 21300000, guid: 188f674fd393cb944aa8e6cbaf28b4a9, type: 3}
+  - {fileID: 21300000, guid: 9ad6fd8fd9790ea43a0b1b0778ec0f0c, type: 3}
   m_PackedSpriteNamesToIndex:
   - office-background
   - button-face
   - node-main
   - PhoneDialogTalking
   - amy-office
+  - level4_emerald
   - ship
   - sticky-note
   - shipwreck
   - old-ripped-paper
   - ripped-page
+  - level1_loretta
   - lou-ultralight
   - birds-eye-photo-new
   - rusty_icon
@@ -148,6 +154,7 @@ SpriteAtlas:
   - icon-from-camera
   - dad_icon
   - amy_icon
+  - level2_madison
   - icon-journal
   - EmptyRectangle_2px
   - bouy
@@ -159,5 +166,6 @@ SpriteAtlas:
   - photo-ship-name
   - back-arrow
   - eyewitness-account
+  - level3_paradise
   m_Tag: MainAtlas
   m_IsVariant: 0

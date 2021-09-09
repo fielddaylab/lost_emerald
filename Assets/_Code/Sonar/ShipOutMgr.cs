@@ -40,7 +40,7 @@ namespace Shipwreck
 		private GameObject m_playerShip; // the player's ship
 
 		private static int DIM_TO_WORLD_PROP = 100; // the proportion of scene dimensions to world space is 100 pixels per unit
-		private static Vector3 BUOY_SHIP_OFFSET = new Vector3(-1f, -1f, 0f); // where the ship is placed relative to buoy when
+		private static Vector3 BUOY_SHIP_OFFSET = new Vector3(-2f, -2f, 0f); // where the ship is placed relative to buoy when
 																			 // re-entering a scene with completed dive
 
 		private bool m_interactIsOverUI; // whether the interaction is over some UI
