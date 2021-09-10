@@ -104,6 +104,7 @@ namespace Shipwreck
 		/// </summary>
 		private void HandleReturnToOfficeButton()
 		{
+			AudioSrcMgr.instance.PlayOneShot("click_return_office");
 			SceneManager.LoadScene("Main");
 			UIMgr.Close<UIShipOutScreen>();
 			UIMgr.Open<UIOfficeScreen>();
@@ -120,6 +121,7 @@ namespace Shipwreck
 			{
 				// TODO: pull this from ShipOutData
 				SceneManager.LoadScene("Dive_Ship01");
+				AudioSrcMgr.instance.PlayOneShot("click_dive");
 				AudioSrcMgr.instance.PlayAudio("dive");
 				UIMgr.Close<UIShipOutScreen>();
 				UIMgr.Open<UIDiveScreen>();

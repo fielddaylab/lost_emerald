@@ -38,6 +38,10 @@ namespace Shipwreck
 		private AudioSource m_audioSrc; // for making ship movement sounds
 		[SerializeField]
 		private AudioData m_engineAudioData; // the sound to make
+		[SerializeField]
+		private float m_engineRevRate;
+		[SerializeField]
+		private float m_engineDieRate;
 
 		#region Actions
 
@@ -104,6 +108,15 @@ namespace Shipwreck
 				// Ship moves when input interaction is active
 				MoveShip();
 			}
+			else
+			{
+				m_currSpeed = 0;
+			}
+
+			// make boat louder the faster it travels
+			float volumeChange = ((m_currSpeed / m_maxSpeed) - m_audioSrc.volume);
+			if (volumeChange < 0) { volumeChange *= m_engineDieRate; } // shutting off engine is quicker than revving up
+			m_audioSrc.volume += volumeChange * m_engineRevRate * Time.deltaTime;
 		}
 
 		#endregion
@@ -137,9 +150,6 @@ namespace Shipwreck
 
 			// save the current speed so the sonar can use it for randomization
 			m_currSpeed = correctedSpeed;
-
-			// make boat louder the faster it travels
-			m_audioSrc.volume = m_currSpeed / m_maxSpeed;
 
 			// rotate the ship toward the new location
 			// (implementation helped by the video Rotating in the Direction of Movement 2D, by Ketra Games,

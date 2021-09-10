@@ -46,6 +46,7 @@ namespace Shipwreck {
 			UIMgr.Open<UIEvidenceScreen>();
 		}
 		private void HandleShipOut() {
+			AudioSrcMgr.instance.PlayOneShot("click_map_ship_out");
 			UIMgr.Close<UIOfficeScreen>();
 			UIMgr.Close<UIMapScreen>();
 			AudioSrcMgr.instance.PlayAudio("ship_out");

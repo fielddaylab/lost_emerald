@@ -219,9 +219,11 @@ namespace Shipwreck {
 			}
 		}
 		private void HandleBackButton() {
+			AudioSrcMgr.instance.PlayOneShot("click_evidence_back");
 			UIMgr.CloseThenOpen<UIEvidenceScreen,UIOfficeScreen>();
 		}
 		private void HandleShipOutButton() {
+			AudioSrcMgr.instance.PlayOneShot("click_evidence_ship_out");
 			UIMgr.Close<UIEvidenceScreen>();
 			UIMgr.Open<UIOfficeScreen>();
 			UIMgr.Open<UIMapScreen>();
@@ -266,9 +268,11 @@ namespace Shipwreck {
 			// if we didn't find a node, we need to return the pin home
 			if (node == null) {
 				Selected.FlyHome();
+				AudioSrcMgr.instance.PlayOneShot("evidence_wrong");
 			}
 
 			// determine what we do with the chain
+
 
 			RefreshChainState(chainState.StickyInfo, chainObj, node);
 			
@@ -291,6 +295,7 @@ namespace Shipwreck {
 				switch (info.Response) {
 					case StickyInfo.ResponseType.Correct:
 						chainObj.SetState(ChainStatus.Complete);
+						AudioSrcMgr.instance.PlayOneShot("evidence_right");
 						break;
 					case StickyInfo.ResponseType.Hint:
 						chainObj.SetState(ChainStatus.Normal);
@@ -300,6 +305,7 @@ namespace Shipwreck {
 						break;
 					case StickyInfo.ResponseType.Incorrect:
 						chainObj.SetState(ChainStatus.Incorrect);
+						AudioSrcMgr.instance.PlayOneShot("evidence_wrong");
 						break;
 				}
 			}

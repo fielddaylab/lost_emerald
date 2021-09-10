@@ -817,6 +817,8 @@ MonoBehaviour:
   m_sceneMargin: 1
   m_buoyMargin: 0.2
   m_engineAudioData: {fileID: 11400000, guid: a1e47a273e5acbc48bdfc1d3249e9712, type: 2}
+  m_engineRevRate: 1.5
+  m_engineDieRate: 2
 --- !u!82 &1373305834
 AudioSource:
   m_ObjectHideFlags: 0
