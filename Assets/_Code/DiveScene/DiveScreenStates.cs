@@ -63,6 +63,7 @@ namespace Shipwreck {
 					UIMgr.Close<UIDiveScreen>();
 					SceneManager.LoadScene("Main");
 					UIMgr.Open<UIOfficeScreen>();
+					AudioSrcMgr.instance.PlayAudioLoop("office_ambiance");
 				}
 			}
 
@@ -212,6 +213,7 @@ namespace Shipwreck {
 					UIMgr.Close<UIDiveScreen>();
 					SceneManager.LoadScene("Main");
 					UIMgr.Open<UIOfficeScreen>();
+					AudioSrcMgr.instance.PlayAudioLoop("office_ambiance");
 				}
 			}
 		}

@@ -139,7 +139,6 @@ namespace Shipwreck {
 		}
 
 
-
 		#if UNITY_EDITOR
 
 		[UnityEditor.CustomEditor(typeof(UIMgr))]

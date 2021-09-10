@@ -13,6 +13,7 @@ namespace Shipwreck
 		public static AudioSrcMgr instance;
 
 		private AudioSource m_audioSrc;
+		private bool m_looping;
 
 		private void Awake()
 		{
@@ -27,12 +28,30 @@ namespace Shipwreck
 			}
 
 			m_audioSrc = this.GetComponent<AudioSource>();
+			m_looping = false;
+		}
+
+		private void Update()
+		{
+			if (m_looping)
+			{
+				if (!m_audioSrc.isPlaying)
+				{
+					m_audioSrc.Play();
+				}
+			}
 		}
 
 		public void PlayAudio(string clipID)
 		{
 			m_audioSrc.clip = GameDb.GetAudioClip(clipID);
 			m_audioSrc.Play();
+		}
+
+		public void PlayAudioLoop(string clipID)
+		{
+			m_looping = true;
+			PlayAudio(clipID);
 		}
 
 		public void PlayOneShot(string clipID)
