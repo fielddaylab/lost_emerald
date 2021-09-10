@@ -13,7 +13,20 @@ namespace Shipwreck
 		public static AudioSrcMgr instance;
 
 		private AudioSource m_audioSrc;
-		private bool m_looping;
+
+		private struct AudioLoopPair
+		{
+			public AudioLoopPair(AudioClip clip, bool loop)
+			{
+				Clip = clip;
+				Loop = loop;
+			}
+
+			public AudioClip Clip { get; set; }
+			public bool Loop { get; set; }
+		}
+
+		private Queue<AudioLoopPair> m_audioQueue;
 
 		private void Awake()
 		{
@@ -28,36 +41,58 @@ namespace Shipwreck
 			}
 
 			m_audioSrc = this.GetComponent<AudioSource>();
-			m_looping = false;
+			m_audioQueue = new Queue<AudioLoopPair>();
 		}
 
-		private void Update()
+		public void Update()
 		{
-			if (m_looping)
+			if (!m_audioSrc.isPlaying && m_audioQueue.Count > 0)
 			{
-				if (!m_audioSrc.isPlaying)
-				{
-					m_audioSrc.Play();
-				}
+				PlayNextInQueue();
 			}
 		}
 
-		public void PlayAudio(string clipID)
+		public void QueueAudio(string clipID, bool loop = false)
 		{
-			m_audioSrc.clip = GameDb.GetAudioClip(clipID);
-			m_audioSrc.Play();
+			AudioClip clip = GameDb.GetAudioClip(clipID);
+			m_audioQueue.Enqueue(new AudioLoopPair(clip, loop));
 		}
 
-		public void PlayAudioLoop(string clipID)
+		public void PlayNextInQueue()
 		{
-			m_looping = true;
-			PlayAudio(clipID);
+			if (m_audioQueue.Count > 0)
+			{
+				AudioLoopPair pair = m_audioQueue.Dequeue();
+				m_audioSrc.clip = pair.Clip;
+				m_audioSrc.loop = pair.Loop;
+				m_audioSrc.Play();
+			}
 		}
 
+		public void ClearAudioQueue()
+		{
+			m_audioQueue.Clear();
+		}
+
+		/// <summary>
+		/// For short sounds
+		/// </summary>
+		/// <param name="clipID"></param>
 		public void PlayOneShot(string clipID)
 		{
 			AudioClip clip = GameDb.GetAudioClip(clipID);
 			m_audioSrc.PlayOneShot(clip);
+		}
+
+		/// <summary>
+		/// For longer sounds
+		/// </summary>
+		/// <param name="clipID"></param>
+		public void PlayAudio(string clipID, bool loop = false)
+		{
+			m_audioSrc.clip = GameDb.GetAudioClip(clipID);
+			m_audioSrc.loop = loop;
+			m_audioSrc.Play();
 		}
 
 		public bool IsPlayingAudio()

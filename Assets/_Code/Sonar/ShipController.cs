@@ -14,6 +14,7 @@ namespace Shipwreck
 	/// Enables the ship to move with interact (mouse, touch) controls
 	/// </summary>
 	[RequireComponent(typeof(SpriteRenderer))]
+	[RequireComponent(typeof(AudioSource))]
 	public class ShipController : MonoBehaviour
 	{
 		public Camera shipOutCamera; // the main camera for this scene
@@ -33,6 +34,10 @@ namespace Shipwreck
 		private float m_currSpeed; // how quickly the ship is moving this frame
 		private bool m_interactIsActive; // whether the InputMgr has had an Interact press but not yet a release
 		private Vector2 m_sceneDimensions; // the dimensions of the scene the ship finds itself in
+
+		private AudioSource m_audioSrc; // for making ship movement sounds
+		[SerializeField]
+		private AudioData m_engineAudioData; // the sound to make
 
 		#region Actions
 
@@ -75,6 +80,10 @@ namespace Shipwreck
 		{
 			// input does not start pressed down
 			m_interactIsActive = false;
+
+			m_audioSrc = GetComponent<AudioSource>();
+			m_audioSrc.clip = m_engineAudioData.Clip;
+			m_audioSrc.Play();
 		}
 
 		// Start is called before the first frame update
@@ -129,6 +138,9 @@ namespace Shipwreck
 			// save the current speed so the sonar can use it for randomization
 			m_currSpeed = correctedSpeed;
 
+			// make boat louder the faster it travels
+			m_audioSrc.volume = m_currSpeed / m_maxSpeed;
+
 			// rotate the ship toward the new location
 			// (implementation helped by the video Rotating in the Direction of Movement 2D, by Ketra Games,
 			// found here: https://www.youtube.com/watch?v=gs7y2b0xthU)
@@ -145,6 +157,9 @@ namespace Shipwreck
 
 			// move the ship toward the new location
 			this.transform.position = newPos;
+
+			// adjust audio position
+			m_audioSrc.panStereo = (this.transform.position.x * 100) / Screen.width;
 		}
 
 		private Vector2 CorrectForBuoy(Vector2 interactScreenPos)

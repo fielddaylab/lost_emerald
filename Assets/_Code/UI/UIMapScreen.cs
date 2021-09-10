@@ -52,7 +52,6 @@ namespace Shipwreck {
 			// before loading the ShipOut scene, specify which ShipOutData to load
 			GameMgr.State.SetCurrShipOutIndex(0);
 			SceneManager.LoadScene("ShipOut");
-			//UIMgr.Open<UIDiveScreen>();
 		}
 	}
 

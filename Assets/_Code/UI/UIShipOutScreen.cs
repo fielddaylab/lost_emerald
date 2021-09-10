@@ -107,6 +107,7 @@ namespace Shipwreck
 			SceneManager.LoadScene("Main");
 			UIMgr.Close<UIShipOutScreen>();
 			UIMgr.Open<UIOfficeScreen>();
+			AudioSrcMgr.instance.PlayAudio("office_ambiance", true);
 		}
 
 		/// <summary>
@@ -122,6 +123,7 @@ namespace Shipwreck
 				AudioSrcMgr.instance.PlayAudio("dive");
 				UIMgr.Close<UIShipOutScreen>();
 				UIMgr.Open<UIDiveScreen>();
+				AudioSrcMgr.instance.QueueAudio("underwater_ambiance");
 			}
 		}
 

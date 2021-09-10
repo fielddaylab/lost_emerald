@@ -41,7 +41,7 @@ namespace Shipwreck {
 			UIMgr.CloseThenCall<UITitleScreen>(() => {
 				GameMgr.MarkTitleScreenComplete();
 				UIMgr.Open<UIOfficeScreen>();
-				AudioSrcMgr.instance.PlayAudioLoop("office_ambiance");
+				AudioSrcMgr.instance.PlayAudio("office_ambiance", true);
 			});
 		}
 		private void HandleUnlock() {
