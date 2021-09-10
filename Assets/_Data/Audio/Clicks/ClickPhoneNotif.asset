@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01e017eacdcbd5043a5a8d30abbebfaa, type: 3}
-  m_Name: ClickMapShipOut
+  m_Name: ClickPhoneNotif
   m_EditorClassIdentifier: 
-  m_id: click_map_ship_out
-  m_clip: {fileID: 8300000, guid: a7069662d823ec744ab1ef0f5b499a93, type: 3}
+  m_id: click_phone_notif
+  m_clip: {fileID: 8300000, guid: 547a671f192b91747a29d0b726edd164, type: 3}

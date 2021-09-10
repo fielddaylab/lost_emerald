@@ -58,6 +58,7 @@ namespace Shipwreck {
 		#region Handlers
 
 		private void HandleContactClicked(StringHash32 character) {
+			AudioSrcMgr.instance.PlayOneShot("click_contact");
 			LeafThreadHandle convo;
 			if (!GameMgr.TryRunNotification(character, out convo)) {
 				convo = GameMgr.RunTrigger(GameTriggers.OnContactText, null, null, character);
@@ -65,6 +66,7 @@ namespace Shipwreck {
 		}
 
 		private void HandleBackClicked() {
+			AudioSrcMgr.instance.PlayOneShot("click_contacts_back");
 			UIMgr.Close<UIPhone>();
 		}
 

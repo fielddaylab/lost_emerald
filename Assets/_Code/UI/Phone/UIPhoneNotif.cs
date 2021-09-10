@@ -49,6 +49,7 @@ namespace Shipwreck {
 		}
 
 		private void HandlePressed() {
+			AudioSrcMgr.instance.PlayOneShot("click_phone_notif");
 			UIMgr.Close(this);
 			GameMgr.TryRunLastNotification(out var _);
 		}

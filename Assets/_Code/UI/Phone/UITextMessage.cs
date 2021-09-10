@@ -37,11 +37,13 @@ namespace Shipwreck {
 			UIMgr.Open<UIPhone>();
 			UIMgr.Open<UIModalOverlay>();
 			UIMgr.Close<UIContacts>();
+			m_continueButton.onClick.AddListener(ClickSound);
 			ClearContent();
 		}
 
 		protected override void OnHideCompleted() {
 			base.OnHideCompleted();
+			m_continueButton.onClick.RemoveListener(ClickSound);
 			ClearContent();
 			GameMgr.Events.Dispatch(GameEvents.DialogClosed);
 			GameMgr.RunTrigger(GameTriggers.OnDialogClosed);
@@ -106,6 +108,11 @@ namespace Shipwreck {
 			for (int ix = m_content.childCount - 1; ix >= 0; ix--) {
 				Destroy(m_content.GetChild(ix).gameObject);
 			}
+		}
+
+		private void ClickSound()
+		{
+			AudioSrcMgr.instance.PlayOneShot("click_text_continue");
 		}
 	}
 

@@ -41,6 +41,7 @@ namespace Shipwreck {
 		}
 
 		private void HandleClose() {
+			AudioSrcMgr.instance.PlayOneShot("click_map_close");
 			UIMgr.Close<UIOfficeScreen>();
 			UIMgr.Close<UIMapScreen>();
 			UIMgr.Open<UIEvidenceScreen>();
