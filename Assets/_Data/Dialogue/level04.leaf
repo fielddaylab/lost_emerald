@@ -4,5 +4,42 @@
 
 
 //-------------------------------------------
+//  Level 2
+//-------------------------------------------
+
+// these are triggered after viewing the emerald's evidence 
+// board to THEN take you to starting Level 2
+
+:: level2-starter
+@contact dad, phone-call
+@trigger OnEnterOffice
+@background dad-yardsale
+@once
+
+	{@dad} 	Hey Jules! Would you mind putting these up around your office?
+			[POSTER FOR HIS YARD SALE - not made yet]
+	{@you} 	“Real history”?  Dad, nobody here is going to want that old junk. 
+	{@dad}	Don’t be so sure. There’s some awesome stuff here.
+	{@you}	Sorry, Dad. Reya’s calling. Gotta go.
+	$call UnlockContact(reya)
+
+:: level2-meet-reya
+@contact reya, phone-call
+@trigger OnContactAdded
+@background rya-boat
+@once
+	{@reya} Hey sis! Can I borrow some of your dive gear?
+	{@you}	What?? No!
+	{@reya}	Come on. Pretty please? I picked up a side job, and the wreck is down at 300 feet. I need your rebreather!
+	{@you}	You’re not trained to dive that deep. You need an expert to help you.
+	{@reya} Awww, Jules!! Thank you for offering. I would love your help!
+			Here’s the coordinates:
+			[sends coordinates and sonar image] 43.3356°N 87.5698°W
+			Race ya there!
+	$call UnlockLevel(2)
+	$call UnlockEvidence(2,"LV1-Root") //hack?
+	//$call UnlockEvidence(2, "LV2-Coordinates")
+
+//-------------------------------------------
 //  Level 4
 //-------------------------------------------

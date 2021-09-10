@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 766a0ebbe27b89a45be51ff3db5d0d70, type: 3}
+  m_Name: Reya
+  m_EditorClassIdentifier: 
+  m_tag: Reya
+  m_displayName:
+    m_key: Character/Reya/Name
+    m_hash: -137058412
+  m_textingIcon: {fileID: 21300000, guid: 63394811bbb796048a4b3be38f86ec9a, type: 3}
+  m_textingColor: {r: 0.42352942, g: 0.15686275, b: 0.23919562, a: 1}
+  m_textingBackgroundColor: {r: 1, g: 0.7921569, b: 0.8874406, a: 1}
+  m_dialogTextColor: {r: 0.42352942, g: 0.15686275, b: 0.23919562, a: 1}
+  m_dialogBackgroundColor: {r: 1, g: 0.7921569, b: 0.8874406, a: 1}
