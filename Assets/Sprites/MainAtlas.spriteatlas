@@ -100,6 +100,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: c4dd4fdd9b744414dbd607f60e3fd758, type: 3}
   - {fileID: 21300000, guid: cb86ceede706ea24bad46cf5d26b1bae, type: 3}
   - {fileID: 21300000, guid: ca052dfdd98a1c742b96af83bb3b4cc4, type: 3}
+  - {fileID: 21300000, guid: 73e04d3e8b9e9ec4a8b7d4327cd49268, type: 3}
   - {fileID: 21300000, guid: 33ac414e0a466684d9d2c58fd2b8dbab, type: 3}
   - {fileID: 21300000, guid: 7d1d53ae8d55e994598b2b84b04588df, type: 3}
   - {fileID: 21300000, guid: 3cb1d3de80ee9461498367b28b05b097, type: 3}
@@ -161,6 +162,7 @@ SpriteAtlas:
   - phone-full
   - lou_icon
   - PhoneDialog
+  - letter
   - zoom-out
   - RoundedRect100
   - photo-ship-name
