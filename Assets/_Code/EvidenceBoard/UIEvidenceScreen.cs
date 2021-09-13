@@ -268,7 +268,7 @@ namespace Shipwreck {
 			// if we didn't find a node, we need to return the pin home
 			if (node == null) {
 				Selected.FlyHome();
-				AudioSrcMgr.instance.PlayOneShot("evidence_wrong");
+				AudioSrcMgr.instance.PlayOneShot("evidence_miss");
 			}
 
 			// determine what we do with the chain

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01e017eacdcbd5043a5a8d30abbebfaa, type: 3}
-  m_Name: ClickMapClose
+  m_Name: TextReceive
   m_EditorClassIdentifier: 
-  m_id: click_map_close
-  m_clip: {fileID: 8300000, guid: a7069662d823ec744ab1ef0f5b499a93, type: 3}
+  m_id: text_receive
+  m_clip: {fileID: 8300000, guid: c6f914a33052ad145a38238f13186e90, type: 3}
