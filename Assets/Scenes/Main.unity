@@ -6109,6 +6109,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameMgr
       objectReference: {fileID: 0}
+    - target: {fileID: 531016319209300889, guid: 89de7169bb442fc48b40af2381f497c5,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 2776575962981546603, guid: 89de7169bb442fc48b40af2381f497c5,
         type: 3}
       propertyPath: m_Volume

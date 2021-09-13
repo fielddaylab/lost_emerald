@@ -183,6 +183,7 @@ namespace Shipwreck
 		}
 		private void HideMessageBox()
 		{
+			AudioSrcMgr.instance.PlayOneShot("click_dialog_continue");
 			m_messageRoutine.Replace(this, m_messageGroup.AnchorPosTo(m_messageHiddenY, 0.25f, Axis.Y).Ease(Curve.QuadOut));
 			m_currentMessageState = MessageState.hidden;
 			m_messageButton.onClick.RemoveListener(HideMessageBox);
