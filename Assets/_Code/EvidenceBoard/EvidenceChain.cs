@@ -132,7 +132,7 @@ namespace Shipwreck {
 		private void SetLabelDistance() {
 			Vector2 segement1 =  m_points[1] - m_rootPos;
 			Vector2 basePos = m_lineRenderer.rectTransform.position;
-			((RectTransform)m_rootLabel.transform).position =  basePos + (segement1.normalized * Mathf.Min(m_labelDistance, segement1.magnitude* 0.5f));
+			((RectTransform)m_rootLabel.transform).position =  basePos + (segement1.normalized * Mathf.Min(m_labelDistance, segement1.magnitude* 0.75f));
 		}
 
 		private void HandlePinPositionChanged(EvidencePin pin) {
