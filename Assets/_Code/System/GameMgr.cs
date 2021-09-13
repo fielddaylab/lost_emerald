@@ -49,6 +49,7 @@ namespace Shipwreck
 		public static void MarkTitleScreenComplete() {
 			I.m_eventService.Register<StringHash32>(GameEvents.PhoneNotification, I.HandlePhoneNotification);
 			I.m_eventService.Register(GameEvents.ChainSolved, I.HandleChainCompleted);
+			CutscenePlayer.OnVideoComplete += I.HandleCutsceneComplete;
 		}
 
 		public static void SetLevelIndex(int levelIndex) {
@@ -87,6 +88,10 @@ namespace Shipwreck
 			if (m_state.CurrentLevel.IsBoardComplete()) {
 				UIMgr.Open<UIModalBoardComplete>();
 			}
+		}
+		private void HandleCutsceneComplete() {
+			UIMgr.Open<UIOfficeScreen>();
+			UIMgr.Open<UIModalCaseClosed>();
 		}
 
 
@@ -243,7 +248,7 @@ namespace Shipwreck
 			I.m_state.SetCutsceneSeen();
 			UIMgr.Close<UIOfficeScreen>();
 			UIMgr.Close<UIEvidenceScreen>();
-			Routine.Start(Routine.Delay(() => { UIMgr.Open<UICutscene>(); }, 2f));
+			Routine.Start(Routine.Delay(() => { CutscenePlayer.Play(); }, 1.5f));
 		}
 
 		[LeafMember]

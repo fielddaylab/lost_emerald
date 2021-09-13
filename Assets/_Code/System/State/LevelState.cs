@@ -7,6 +7,7 @@ using System.Collections.Generic;
 namespace Shipwreck {
 
 	public interface ILevelState {
+		int Index { get; }
 		LocalizationKey Name { get; }
 		bool IsUnlocked { get; }
 		IEnumerable<IEvidenceGroupState> Evidence { get; }
@@ -28,6 +29,12 @@ namespace Shipwreck {
 			private class LevelState : ILevelState, ISerializedObject, ISerializedVersion {
 				public ushort Version {
 					get { return 1; }
+				}
+
+				public int Index {
+					get {
+						return m_levelData.LevelIndex;
+					}
 				}
 
 				public LocalizationKey Name {
