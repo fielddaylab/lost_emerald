@@ -236,10 +236,20 @@ namespace Shipwreck {
 		}
 		private void HandleConfirmPhoto(StringHash32 evidence) {
 			m_currentState.OnConfirmPhoto(evidence);
+			AudioSrcMgr.instance.PlayOneShot("take_photo");
 		}
 
 		private void HandleZoomSlider(float value) {
 			GameMgr.Events.Dispatch(GameEvents.Dive.CameraZoomChanged, value);
+			//TODO: split these up into start, middle, and end sounds
+			if (value > 0)
+			{
+				AudioSrcMgr.instance.PlayOneShot("zoom_in");
+			}
+			else if (value < 0)
+			{
+				AudioSrcMgr.instance.PlayOneShot("zoom_out");
+			}
 		}
 
 		private void HandleShowMessage(LocalizationKey text) {
