@@ -1,2 +1,18 @@
 
 // todo: fill with level 2 sticky notes
+
+
+// -----------------------------------------------------------
+//  Location
+// -----------------------------------------------------------
+
+
+:: location-correct
+@root Location
+@correct location-coordinates
+
+:: location-incorrect
+@root Name, Cause, Cargo, Artifact, Type
+@incorrect location-coordinates
+@anywhere
+	Should use Location instead
