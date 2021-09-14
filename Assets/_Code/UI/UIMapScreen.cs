@@ -52,7 +52,6 @@ namespace Shipwreck {
 			UIMgr.Close<UIMapScreen>();
 			AudioSrcMgr.instance.PlayAudio("ship_out");
 			// before loading the ShipOut scene, specify which ShipOutData to load
-			GameMgr.State.SetCurrShipOutIndex(0);
 			SceneManager.LoadScene("ShipOut");
 		}
 	}

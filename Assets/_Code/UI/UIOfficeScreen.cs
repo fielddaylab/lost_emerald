@@ -43,6 +43,7 @@ namespace Shipwreck {
 		private void HandleLevelButton(int level) {
 			AudioSrcMgr.instance.PlayOneShot("click_level");
 			GameMgr.SetLevelIndex(level);
+			GameMgr.State.SetCurrShipOutIndex(level);
 			UIMgr.CloseThenOpen<UIOfficeScreen, UIEvidenceScreen>();
 		}
 
