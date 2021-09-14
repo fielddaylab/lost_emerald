@@ -10,7 +10,7 @@
 :: dad-poster
 @contact dad, phone-call
 @background dad-yardsale
-@trigger OnEnterOffice // not final
+@trigger OnEnterOffice
 @once
 
     {@dad}  Hey Jules!
@@ -25,7 +25,7 @@
 :: reya-meet
 @contact reya, phone-call
 @background reya-boat
-@trigger OnDialogClosed // not final
+@trigger OnDialogClosed
 @once
 
     {@reya}	Hey sis! Can I borrow some of your dive gear?
@@ -37,6 +37,7 @@
 			[sends coordinates and sonar image]
 			43.3356°N 87.5698°W
 			Race ya there!
+	$call UnlockContact(reya)
 
 :: reya-boat
 @contact reya, phone-call // radio-call?
