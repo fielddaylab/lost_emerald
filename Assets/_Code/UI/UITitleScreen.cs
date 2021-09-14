@@ -108,16 +108,11 @@ namespace Shipwreck {
 			GameMgr.SetChain(0, "Cargo", "cargo-cargo", "cargo-corn");
 			GameMgr.SetChain(0, "Artifact", "photo-artifact", "artifact-trunk");
 
-			GameMgr.UnlockLevel(2);
 			GameMgr.UnlockLevel(4);
 			GameMgr.UnlockEvidence(4, "LV4-Letter-Treasure");
-			//GameMgr.UnlockEvidence(2, "LV2-Transcript-Reya");
-			GameMgr.UnlockContact("reya");
 			GameMgr.RecordNodeVisited("level01.lou-complete", "lou");
 			GameMgr.RecordNodeVisited("level01.amy-level-end", "amy");
 			GameMgr.RecordNodeVisited("level01.dad-level-end", "dad");
-			GameMgr.RecordNodeVisited("level04.level2-starter", "dad");
-			GameMgr.RecordNodeVisited("level04.level2-meet-reya", "reya");
 		}
 
 		private void UnlockLevel3() {

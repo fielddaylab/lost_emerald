@@ -7,36 +7,9 @@
 //  Level 2
 //-------------------------------------------
 
-:: dad-poster
-@contact dad, phone-call
-@background dad-yardsale
-@trigger OnEnterOffice // not final
-@once
-
-    {@dad}  Hey Jules!
-			Would you mind putting these up at your office?
-			[displays POSTER FOR HIS YARD SALE - not made yet]
-    {@you}  “Real history”?  Dad, nobody is going to want that old junk.
-	{@dad}	Sure they will!
-			Besides, how else am I gonna save up for my new sonar? 
-			Don’t worry, Jules, I know you’re busy. I’ll send it out myself! 
-
-
-:: reya-meet
-@contact reya, phone-call
-@background reya-boat
-@trigger OnDialogClosed // not final
-@once
-
-    {@reya}	Hey sis! Can I borrow some of your dive gear?
-	{@you}	What?? No!
-	{@reya}	Come on. Pretty please? I picked up a side job, and the wreck is down at 300 feet. I need your rebreather!
-	{@you}	You’re not trained to dive that deep. You need an expert to help you.
-	{@reya}	Awww, Jules!! Thank you for offering. I would love your help!
-			Here’s the coordinates:
-			[sends coordinates and sonar image]
-			43.3356°N 87.5698°W
-			Race ya there!
+// reminder: first two dialogues for Level 2 are in the Level 4 file as a work
+// 			 around for level 2 not being unlocked until receiving info from
+//			 Reya about a new wreck
 
 :: reya-boat
 @contact reya, phone-call // radio-call?
