@@ -21,8 +21,8 @@ MonoBehaviour:
     m_hash: -555383108
   - m_key: Character/Mom/Name
     m_hash: -454723190
-  - m_key: Character/Rya/Name
-    m_hash: -634729777
+  - m_key: Character/Reya/Name
+    m_hash: -137058412
   - m_key: Character/Lou/Name
     m_hash: -1419650613
   - m_key: Character/Amy/Name
@@ -111,11 +111,31 @@ MonoBehaviour:
     m_hash: -1203157431
   - m_key: UI/Modal/CaseClosed
     m_hash: 8427866
+  - m_key: Dive/Tutorial/TakeAbovePhoto
+    m_hash: 2036183935
+  - m_key: Level1/Unnamed
+    m_hash: 1841398703
+  - m_key: Level1/Named
+    m_hash: 237844502
+  - m_key: Level2/Unnamed
+    m_hash: -691891502
+  - m_key: Level2/Named
+    m_hash: 1007236703
+  - m_key: Level3/Unnamed
+    m_hash: -530739775
+  - m_key: Level3/Named
+    m_hash: -1339000060
+  - m_key: Level4/Unnamed
+    m_hash: 1782876988
+  - m_key: Level4/Named
+    m_hash: 1924623581
+  - m_key: LevelAny/Locked
+    m_hash: -1811495716
   m_values:
   - Continue
   - Dad
   - Mom
-  - Rya
+  - Reya
   - Lou
   - Amy
   - You
@@ -160,3 +180,13 @@ MonoBehaviour:
   - Ship Out!
   - Evidence Board Complete!
   - Case Closed!
+  - That's the ship! I should take a photo before I dive deeper.
+  - Ship Near Rawley Point
+  - The Loretta
+  - Ship 2 Unnamed
+  - Ship 2 Named
+  - Ship 3 Unnamed
+  - Ship 3 Named
+  - The Emerald
+  - The Emerald
+  - Locked

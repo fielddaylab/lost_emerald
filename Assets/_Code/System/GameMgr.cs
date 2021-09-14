@@ -5,6 +5,7 @@ using BeauUtil.Debugger;
 using BeauUtil.Variants;
 using Leaf;
 using Leaf.Runtime;
+using System;
 using UnityEngine;
 
 namespace Shipwreck
@@ -25,32 +26,66 @@ namespace Shipwreck
 		private GameState m_state;
 		private EventService m_eventService;
 
-		private int m_selectedLevel = 0;
+		private int m_selectedLevel = -1;
 
 		[SerializeField]
-		private StickyAsset m_postitLevel1;
+		private LeafAsset[] m_levelScripts;
+		[SerializeField]
+		private StickyAsset[] m_levelStickNotes;
 
 		protected override void OnAssigned() {
 			Routine.Settings.DebugMode = false;
 
 			m_state = new GameState();
 
-			m_stickyEvaluator = new StickyEvaluator();
-			m_stickyEvaluator.Load(m_postitLevel1);
-
 			m_scriptMgr = new ScriptMgr(this);
 			m_scriptMgr.LoadGameState(m_state, m_state.VariableTable);
 			m_scriptMgr.ConfigureEvents();
 
 			m_eventService = new EventService();
-
+			SetLevelIndex(0);
 		}
 
 		public static void MarkTitleScreenComplete() {
 			I.m_eventService.Register<StringHash32>(GameEvents.PhoneNotification, I.HandlePhoneNotification);
 			I.m_eventService.Register(GameEvents.ChainSolved, I.HandleChainCompleted);
+			CutscenePlayer.OnVideoComplete += I.HandleCutsceneComplete;
 		}
 
+		public static void SetChain(int levelIndex, StringHash32 root, params StringHash32[] chain) {
+			EvidenceChainState chainState = (EvidenceChainState)I.m_state.GetChain(levelIndex, root);
+			chainState.Lift(0);
+			foreach (StringHash32 node in chain) {
+				chainState.Drop(node);
+			}
+		}
+
+		public static void SetLevelIndex(int levelIndex) {
+			I.SetLevelIndexInternal(levelIndex);
+		}
+
+		private void SetLevelIndexInternal(int levelIndex) {
+			if (levelIndex < 0 || levelIndex > m_levelScripts.Length) {
+				throw new IndexOutOfRangeException();
+			}
+
+			if (m_stickyEvaluator == null) {
+				m_stickyEvaluator = new StickyEvaluator();
+			}
+			if (m_selectedLevel != -1) {
+				// unload the previous level
+				m_stickyEvaluator.Unload(m_levelStickNotes[m_selectedLevel]);
+				UnloadScript(m_levelScripts[m_selectedLevel]);
+			}
+
+			m_selectedLevel = levelIndex;
+			m_state.SetCurrentLevel(levelIndex);
+
+			m_stickyEvaluator.Load(m_levelStickNotes[m_selectedLevel]);
+			LoadScript(m_levelScripts[m_selectedLevel]);
+
+			RunTrigger("Start");
+		}
 
 		private void HandlePhoneNotification(StringHash32 contact) {
 			UIMgr.Open<UIPhoneNotif>();
@@ -58,10 +93,16 @@ namespace Shipwreck
 		}
 		private void HandleChainCompleted() {
 			// check to see if all chains are solved
-			if (m_state.IsBoardComplete()) {
+			if (m_state.CurrentLevel.IsBoardComplete()) {
 				UIMgr.Open<UIModalBoardComplete>();
 			}
 		}
+		private void HandleCutsceneComplete() {
+			UIMgr.Open<UIOfficeScreen>();
+			UIMgr.Open<UIModalCaseClosed>();
+		}
+
+		
 
 
 		#region Scripting
@@ -217,12 +258,12 @@ namespace Shipwreck
 			I.m_state.SetCutsceneSeen();
 			UIMgr.Close<UIOfficeScreen>();
 			UIMgr.Close<UIEvidenceScreen>();
-			Routine.Start(Routine.Delay(() => { UIMgr.Open<UICutscene>(); }, 2f));
+			Routine.Start(Routine.Delay(() => { CutscenePlayer.Play(); }, 1.5f));
 		}
 
 		[LeafMember]
 		private static bool HasEvidence(StringHash32 evidence) {
-			return I.m_state.IsEvidenceUnlocked(evidence);
+			return I.m_state.CurrentLevel.IsEvidenceUnlocked(evidence);
 		}
 
 		[LeafMember]
@@ -232,7 +273,7 @@ namespace Shipwreck
 
 		[LeafMember]
 		private static bool IsChainComplete(StringHash32 root) {
-			return I.m_state.IsChainComplete(root);
+			return I.m_state.CurrentLevel.IsChainComplete(root);
 		}
 
 		[LeafMember]

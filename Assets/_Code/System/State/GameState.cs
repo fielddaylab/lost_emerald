@@ -1,26 +1,33 @@
 ﻿using BeauData;
 using BeauUtil;
 using BeauUtil.Variants;
+using PotatoLocalization;
 using System;
 using System.Collections.Generic;
 
 namespace Shipwreck {
 
 	public interface IGameState {
+
+		ILevelState CurrentLevel { get; }
+
+		ILevelState GetLevel(int levelIndex);
+
 		IEnumerable<StringHash32> GetUnlockedContacts();
-		IEnumerable<IEvidenceGroupState> GetEvidence();
+		IEnumerable<IEvidenceGroupState> GetEvidence(int levelIndex);
 
-		IEvidenceChainState GetChain(StringHash32 identity);
+		IEvidenceChainState GetChain(int levelIndex, StringHash32 identity);
 
-		IEvidenceChainState GetChain(int index);
-		int ChainCount { get; }
+		IEvidenceChainState GetChain(int levelIndex, int index);
+		int GetChainCount(int levelIndex);
 
 		bool IsContactUnlocked(StringHash32 contactId);
 		bool IsLevelUnlocked(int levelUnlocked);
 
-		bool IsEvidenceUnlocked(StringHash32 evidenceId);
+		LocalizationKey GetLevelName(int levelIndex);
 
-		bool IsLocationChainComplete();
+		bool IsEvidenceUnlocked(int levelIndex, StringHash32 evidenceId);
+		bool IsLocationChainComplete(int levelIndex);
 
 		StringHash32 GetContactNotificationId(StringHash32 contactId);
 		uint NotificationCount();
@@ -28,7 +35,7 @@ namespace Shipwreck {
 		bool HasVisitedNode(ScriptNode node);
 		bool HasVisitedNode(StringHash32 nodeId);
 
-		bool HasTakenTopDownPhoto();
+		bool HasTakenTopDownPhoto(int levelIndex);
 
 		bool IsDiveUnlocked(int shipOutIndex);
 		bool UnlockDive(int shipOutIndex);
@@ -66,12 +73,12 @@ namespace Shipwreck {
 			public VariantTable VariableTable { 
 				get { return m_variableTable; } 
 			}
-
-			public int ChainCount {
-				get { return m_levelStates[m_levelIndex].ChainCount; }
+			public ILevelState CurrentLevel {
+				get { return m_levelStates[m_currentLevel]; }
 			}
 
-			private int m_levelIndex = 0;
+			// non-serialized
+			private int m_currentLevel;
 
 			// serialized
 			private VariantTable m_variableTable;
@@ -95,6 +102,7 @@ namespace Shipwreck {
 				};
 				for (int index = 0; index < m_levelStates.Length; index++) {
 					m_levelStates[index].AssignLevelData(GameDb.GetLevelData(index));
+					m_levelStates[index].UnlockEvidence(GameDb.GetEvidenceData(string.Format("LV1-Root")));
 				}
 				m_shipOutStates = new ShipOutState[1] {
 					new ShipOutState()
@@ -108,16 +116,25 @@ namespace Shipwreck {
 				m_tutorialSonarDisplayed = false;
 			}
 
-			public IEnumerable<IEvidenceGroupState> GetEvidence() {
-				return m_levelStates[m_levelIndex].Evidence;
+			public ILevelState GetLevel(int levelIndex) {
+				return m_levelStates[levelIndex];
 			}
-			public IEvidenceChainState GetChain(int index) {
-				return m_levelStates[m_levelIndex].GetChain(index);
-			}
-			public IEvidenceChainState GetChain(StringHash32 chainId) {
-				return m_levelStates[m_levelIndex].GetChain(chainId);
+			public void SetCurrentLevel(int levelIndex) {
+				m_currentLevel = levelIndex;
 			}
 
+			public int GetChainCount(int levelIndex) {
+				return m_levelStates[levelIndex].ChainCount;
+			}
+			public IEnumerable<IEvidenceGroupState> GetEvidence(int levelIndex) {
+				return m_levelStates[levelIndex].Evidence;
+			}
+			public IEvidenceChainState GetChain(int levelIndex, int index) {
+				return m_levelStates[levelIndex].GetChain(index);
+			}
+			public IEvidenceChainState GetChain(int levelIndex, StringHash32 chainId) {
+				return m_levelStates[levelIndex].GetChain(chainId);
+			}
 			public IEnumerable<StringHash32> GetUnlockedContacts() {
 				foreach (StringHash32 hash in m_unlockedContacts) {
 					yield return hash;
@@ -132,19 +149,26 @@ namespace Shipwreck {
 				}
 				return m_levelStates[levelIndex].IsUnlocked;
 			}
-			public bool IsEvidenceUnlocked(StringHash32 evidenceId) {
-				return m_levelStates[m_levelIndex].IsEvidenceUnlocked(evidenceId);
-			}
-			public bool IsLocationChainComplete() {
-				return m_levelStates[m_levelIndex].IsLocationChainComplete();
+			public LocalizationKey GetLevelName(int levelIndex) {
+				if (levelIndex < 0 || levelIndex >= m_levelStates.Length) {
+					throw new IndexOutOfRangeException();
+				}
+				return m_levelStates[levelIndex].Name;
 			}
 
-			public bool IsChainComplete(StringHash32 root) {
-				return m_levelStates[m_levelIndex].IsChainComplete(root);
+			public bool IsEvidenceUnlocked(int levelIndex, StringHash32 evidenceId) {
+				return m_levelStates[levelIndex].IsEvidenceUnlocked(evidenceId);
 			}
-			public bool IsBoardComplete() {
-				for (int index = 0; index < m_levelStates[m_levelIndex].ChainCount; index++) {
-					if (!m_levelStates[m_levelIndex].GetChain(index).IsCorrect) {
+			public bool IsLocationChainComplete(int levelIndex) {
+				return m_levelStates[levelIndex].IsLocationChainComplete();
+			}
+
+			public bool IsChainComplete(int levelIndex, StringHash32 root) {
+				return m_levelStates[levelIndex].IsChainComplete(root);
+			}
+			public bool IsBoardComplete(int levelIndex) {
+				for (int index = 0; index < m_levelStates[levelIndex].ChainCount; index++) {
+					if (!m_levelStates[levelIndex].GetChain(index).IsCorrect) {
 						return false;
 					}
 				}
@@ -214,8 +238,8 @@ namespace Shipwreck {
 			public bool HasVisitedNode(StringHash32 nodeId) {
 				return m_visitedNodes.Contains(nodeId);
 			}
-			public bool HasTakenTopDownPhoto() {
-				return m_levelStates[m_levelIndex].HasTakenTopDownPhoto();
+			public bool HasTakenTopDownPhoto(int levelIndex) {
+				return m_levelStates[levelIndex].HasTakenTopDownPhoto();
 			}
 			public void RecordNodeVisit(ScriptNode node) {
 				m_visitedNodes.Add(node.Id());
@@ -269,7 +293,7 @@ namespace Shipwreck {
 			}
 
 			public void SetCutsceneSeen() {
-				m_levelStates[m_levelIndex].SetCutsceneSeen();
+				m_levelStates[m_currentLevel].SetCutsceneSeen();
 			}
 
 			public void Serialize(Serializer ioSerializer) {

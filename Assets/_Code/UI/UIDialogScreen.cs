@@ -98,6 +98,8 @@ namespace Shipwreck {
 			UnityAction action = () => {
 				skipped = true;
 			};
+			m_continueButton.onClick.RemoveListener(ClickSound);
+			m_continueButton.onClick.AddListener(SkipSound);
 			m_continueButton.onClick.AddListener(action);
 
 			while (visibleCharacterCount > 0 && skipped == false) {
@@ -133,6 +135,7 @@ namespace Shipwreck {
 			}
 
 			m_continueButton.onClick.RemoveAllListeners();
+			m_continueButton.onClick.AddListener(ClickSound);
 		}
 
 		public override IEnumerator CompleteLine() {
@@ -158,6 +161,16 @@ namespace Shipwreck {
 		protected override IEnumerator OnHideImage() {
 			yield return m_image.FadeTo(0, 0.1f);
 			m_image.gameObject.SetActive(false);
+		}
+
+		private void ClickSound()
+		{
+			AudioSrcMgr.instance.PlayOneShot("click_dialog_continue");
+		}
+
+		private void SkipSound()
+		{
+			AudioSrcMgr.instance.PlayOneShot("click_dialog_skip");
 		}
 
 		#endregion // Dialog

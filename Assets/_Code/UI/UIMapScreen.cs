@@ -41,18 +41,19 @@ namespace Shipwreck {
 		}
 
 		private void HandleClose() {
+			AudioSrcMgr.instance.PlayOneShot("click_map_close");
 			UIMgr.Close<UIOfficeScreen>();
 			UIMgr.Close<UIMapScreen>();
 			UIMgr.Open<UIEvidenceScreen>();
 		}
 		private void HandleShipOut() {
+			AudioSrcMgr.instance.PlayOneShot("click_map_ship_out");
 			UIMgr.Close<UIOfficeScreen>();
 			UIMgr.Close<UIMapScreen>();
+			AudioSrcMgr.instance.PlayAudio("ship_out");
 			// before loading the ShipOut scene, specify which ShipOutData to load
 			GameMgr.State.SetCurrShipOutIndex(0);
 			SceneManager.LoadScene("ShipOut");
-			// SceneManager.LoadScene("Dive_Ship01"); // hack
-			//UIMgr.Open<UIDiveScreen>();
 		}
 	}
 

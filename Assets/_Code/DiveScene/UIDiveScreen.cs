@@ -26,7 +26,7 @@ namespace Shipwreck {
 			void FlashCamera(Action callback);
 			void WaitForCameraTransitionEnd(Action callback);
 			void AssignPreviousState(DiveScreenState state);
-			void ShowMessageBox(LocalizationKey m_text, LocalizationKey m_button);
+			void ShowMessageBox(LocalizationKey text, LocalizationKey button);
 			void HideMessageBox();
 			void ShowJournal();
 			void HideJournal();
@@ -68,8 +68,8 @@ namespace Shipwreck {
 			public void WaitForCameraTransitionEnd(Action callback) {
 				m_owner.WaitForCameraTransitionEnd(callback);
 			}
-			public void ShowMessageBox(LocalizationKey m_text, LocalizationKey m_button) {
-				m_owner.ShowMessageBox(m_text, m_button);
+			public void ShowMessageBox(LocalizationKey text, LocalizationKey button) {
+				m_owner.ShowMessageBox(text, button);
 			}
 			public void HideMessageBox() {
 				m_owner.HideMessageBox();
@@ -208,7 +208,7 @@ namespace Shipwreck {
 			foreach (DivePointOfInterest poi in list) {
 				DiveJournalItem item = Instantiate(m_journalItemPrefab, m_journalChecklist);
 				item.transform.localScale = Vector3.one;
-				item.SetChecked(GameMgr.State.IsEvidenceUnlocked(poi.EvidenceUnlock));
+				item.SetChecked(GameMgr.State.CurrentLevel.IsEvidenceUnlocked(poi.EvidenceUnlock));
 				item.SetText(poi.PhotoName);
 			}
 		}
@@ -236,10 +236,20 @@ namespace Shipwreck {
 		}
 		private void HandleConfirmPhoto(StringHash32 evidence) {
 			m_currentState.OnConfirmPhoto(evidence);
+			AudioSrcMgr.instance.PlayOneShot("take_photo");
 		}
 
 		private void HandleZoomSlider(float value) {
 			GameMgr.Events.Dispatch(GameEvents.Dive.CameraZoomChanged, value);
+			//TODO: split these up into start, middle, and end sounds
+			if (value > 0)
+			{
+				AudioSrcMgr.instance.PlayOneShot("zoom_in");
+			}
+			else if (value < 0)
+			{
+				AudioSrcMgr.instance.PlayOneShot("zoom_out");
+			}
 		}
 
 		private void HandleShowMessage(LocalizationKey text) {

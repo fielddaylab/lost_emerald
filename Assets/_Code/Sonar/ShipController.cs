@@ -14,6 +14,7 @@ namespace Shipwreck
 	/// Enables the ship to move with interact (mouse, touch) controls
 	/// </summary>
 	[RequireComponent(typeof(SpriteRenderer))]
+	[RequireComponent(typeof(AudioSource))]
 	public class ShipController : MonoBehaviour
 	{
 		public Camera shipOutCamera; // the main camera for this scene
@@ -33,6 +34,14 @@ namespace Shipwreck
 		private float m_currSpeed; // how quickly the ship is moving this frame
 		private bool m_interactIsActive; // whether the InputMgr has had an Interact press but not yet a release
 		private Vector2 m_sceneDimensions; // the dimensions of the scene the ship finds itself in
+
+		private AudioSource m_audioSrc; // for making ship movement sounds
+		[SerializeField]
+		private AudioData m_engineAudioData; // the sound to make
+		[SerializeField]
+		private float m_engineRevRate;
+		[SerializeField]
+		private float m_engineDieRate;
 
 		#region Actions
 
@@ -75,6 +84,10 @@ namespace Shipwreck
 		{
 			// input does not start pressed down
 			m_interactIsActive = false;
+
+			m_audioSrc = GetComponent<AudioSource>();
+			m_audioSrc.clip = m_engineAudioData.Clip;
+			m_audioSrc.Play();
 		}
 
 		// Start is called before the first frame update
@@ -95,6 +108,15 @@ namespace Shipwreck
 				// Ship moves when input interaction is active
 				MoveShip();
 			}
+			else
+			{
+				m_currSpeed = 0;
+			}
+
+			// make boat louder the faster it travels
+			float volumeChange = ((m_currSpeed / m_maxSpeed) - m_audioSrc.volume);
+			if (volumeChange < 0) { volumeChange *= m_engineDieRate; } // shutting off engine is quicker than revving up
+			m_audioSrc.volume += volumeChange * m_engineRevRate * Time.deltaTime;
 		}
 
 		#endregion
@@ -145,6 +167,9 @@ namespace Shipwreck
 
 			// move the ship toward the new location
 			this.transform.position = newPos;
+
+			// adjust audio position
+			m_audioSrc.panStereo = (this.transform.position.x * 100) / Screen.width;
 		}
 
 		private Vector2 CorrectForBuoy(Vector2 interactScreenPos)

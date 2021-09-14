@@ -1,4 +1,5 @@
 ﻿using BeauUtil;
+using PotatoLocalization;
 using UnityEngine;
 
 namespace Shipwreck {
@@ -16,8 +17,20 @@ namespace Shipwreck {
 		public StringHash32 LocationRoot {
 			get { return m_locationRoot; }
 		}
+		public StringHash32 NameRoot {
+			get { return m_nameRoot; }
+		}
 		public StringHash32 TopDownPhotoID {
 			get { return m_topDownPhotoID; }
+		}
+		public LocalizationKey UnnamedKey {
+			get { return m_unnamedKey; }
+		}
+		public LocalizationKey NamedKey {
+			get { return m_namedKey; }
+		}
+		public LocalizationKey LockedKey {
+			get { return m_lockedKey; }
 		}
 
 		[SerializeField]
@@ -25,8 +38,15 @@ namespace Shipwreck {
 		[SerializeField]
 		private SerializedHash32 m_locationRoot = StringHash32.Null;
 		[SerializeField]
+		private SerializedHash32 m_nameRoot = StringHash32.Null;
+		[SerializeField]
 		private SerializedHash32 m_topDownPhotoID = StringHash32.Null;
-
+		[SerializeField]
+		private LocalizationKey m_unnamedKey = LocalizationKey.Empty;
+		[SerializeField]
+		private LocalizationKey m_namedKey = LocalizationKey.Empty;
+		[SerializeField]
+		private LocalizationKey m_lockedKey = LocalizationKey.Empty;
 	}
 
 }

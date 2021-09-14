@@ -89,6 +89,7 @@ namespace Shipwreck {
 		}
 
 		public override IEnumerator TypeLine(TagString inString, TagTextData inType) {
+			AudioSrcMgr.instance.PlayOneShot("text_receive");
 			TextMessageText obj = Instantiate(m_textPrefab, m_content);
 			obj.Populate(m_currentCharacter, inString.RichText);
 			m_layout.ForceRebuild();

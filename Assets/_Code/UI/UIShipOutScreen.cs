@@ -14,7 +14,7 @@ namespace Shipwreck
 	/// <summary>
 	/// The canvas of the ShipOut scene
 	/// </summary>
-	public class UIShipOutScreen : MonoBehaviour
+	public class UIShipOutScreen : UIBase
 	{
 		public enum MessageState
 		{
@@ -57,9 +57,20 @@ namespace Shipwreck
 
 		private MessageState m_currentMessageState;
 
-		// Awake is called when the script instance is being loaded (before Start)
+		public static UIShipOutScreen instance;
+
 		private void Awake()
 		{
+			// ensure there is only one ShipOutScreen at any given time
+			if (UIShipOutScreen.instance == null)
+			{
+				UIShipOutScreen.instance = this;
+			}
+			else if (UIShipOutScreen.instance != this)
+			{
+				Destroy(this.gameObject);
+			}
+
 			m_returnToOfficeButton.onClick.AddListener(HandleReturnToOfficeButton);
 			m_currentMessageState = MessageState.hidden;
 		}
@@ -93,8 +104,11 @@ namespace Shipwreck
 		/// </summary>
 		private void HandleReturnToOfficeButton()
 		{
+			AudioSrcMgr.instance.PlayOneShot("click_return_office");
 			SceneManager.LoadScene("Main");
+			UIMgr.Close<UIShipOutScreen>();
 			UIMgr.Open<UIOfficeScreen>();
+			AudioSrcMgr.instance.PlayAudio("office_ambiance", true);
 		}
 
 		/// <summary>
@@ -107,7 +121,11 @@ namespace Shipwreck
 			{
 				// TODO: pull this from ShipOutData
 				SceneManager.LoadScene("Dive_Ship01");
+				AudioSrcMgr.instance.PlayOneShot("click_dive");
+				AudioSrcMgr.instance.PlayAudio("dive");
+				UIMgr.Close<UIShipOutScreen>();
 				UIMgr.Open<UIDiveScreen>();
+				AudioSrcMgr.instance.QueueAudio("underwater_ambiance");
 			}
 		}
 
@@ -117,7 +135,7 @@ namespace Shipwreck
 		public void SwapButtonForSlider()
 		{
 			// destory old bar
-			Destroy(m_diveSlider.gameObject);
+			m_diveSlider.gameObject.SetActive(false);
 
 			// create new button
 			m_diveButton = Instantiate(m_diveButtonPrefab, this.transform);
@@ -141,6 +159,11 @@ namespace Shipwreck
 			return m_currentMessageState;
 		}
 
+		public Slider GetDiveSlider()
+		{
+			return m_diveSlider;
+		}
+
 		#region MessageBox
 
 		public void ShowMessage(string message, string buttonText, ActionCode[] actionCodes)
@@ -160,10 +183,22 @@ namespace Shipwreck
 		}
 		private void HideMessageBox()
 		{
+			AudioSrcMgr.instance.PlayOneShot("click_dialog_continue");
 			m_messageRoutine.Replace(this, m_messageGroup.AnchorPosTo(m_messageHiddenY, 0.25f, Axis.Y).Ease(Curve.QuadOut));
 			m_currentMessageState = MessageState.hidden;
 			m_messageButton.onClick.RemoveListener(HideMessageBox);
 		}
+
+		protected override IEnumerator ShowRoutine()
+		{
+			yield return CanvasGroup.FadeTo(1f, 0.3f);
+		}
+
+		protected override IEnumerator HideRoutine()
+		{
+			yield return CanvasGroup.FadeTo(0f, 0.3f);
+		}
+
 		#endregion
 
 	}
