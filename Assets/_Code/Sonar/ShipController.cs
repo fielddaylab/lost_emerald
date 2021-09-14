@@ -101,6 +101,8 @@ namespace Shipwreck
 		private void Update()
 		{
 			if (m_interactIsActive
+				&& !UIMgr.IsOpen<UIPhoneNotif>()
+				&& !UIMgr.IsOpen<UIDialogScreen>()
 				&& InteractionIsInBounds()
 				&& !InteractionIsOverUI()
 				&& !ShipOutMgr.instance.IsMessageShowing())

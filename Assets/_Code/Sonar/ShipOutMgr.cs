@@ -80,6 +80,8 @@ namespace Shipwreck
 			{
 				// dialogue triggers on level 2
 				GameMgr.RunTrigger(GameTriggers.OnEnterSonar);
+
+				// TODO: call ShowSonarScene() from Leaf after dialogue
 			}
 			else
 			{
