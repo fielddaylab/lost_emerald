@@ -286,6 +286,12 @@ namespace Shipwreck
 			Log.Msg(inText);
 		}
 
+		[LeafMember]
+		public static void ShowSonarScene()
+		{
+			ShipOutMgr.instance.ShowSonarScene();
+		}
+
 		#endregion // Leaf
 
 	}
