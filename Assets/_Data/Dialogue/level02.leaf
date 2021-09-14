@@ -40,7 +40,7 @@
 :: dive-gash
 @contact reya, phone-call
 // @background
-@trigger OnFindGash
+@trigger HasEvidence(LV2-Photo-Gash)
 @once
 
 	{@you}	Hmm. Looks like something crashed into the ship. 
@@ -50,7 +50,7 @@
 :: dive-cargo
 @contact reya, phone-call
 // @background
-@trigger OnFindCargo
+@trigger HasEvidence(LV2-Photo-Cargo)
 @once
 
 	{@reya}	Whoa. Is that an old car?
@@ -63,7 +63,7 @@
 :: dive-safe
 @contact reya, phone-call
 // @background
-@trigger OnFindSafe
+@trigger HasEvidence(LV2-Photo-Safe)
 @once
 
 	{@reya}	Ooh, a safe! Jules, you gotta bring that up!
@@ -74,7 +74,7 @@
 :: amy-match
 @contact amy, phone-call
 // @background
-@trigger OnMatchShip
+@trigger IsChainComplete(Type)
 @once
 
 	{@amy}	Hey! Heard you went on a dive with your sister. How’d it go?
@@ -84,3 +84,77 @@
 			Here’s the number for my friend at the auto museum. Maybe he can help you!
 			Cooper @ Auto Museum : 555-1598
 	{@you}	Great. Thanks, Amy!
+	$call UnlockContact(cooper)
+	
+
+:: cooper-meet
+@contact cooper, phone-call
+// @background
+@trigger OnCallCurator
+@once
+
+	{@cooper}	Hi there! Are you Amy’s archaeologist friend?
+	{@you}	Yep. Jules Griffin.
+	{@cooper}	Hmm. I’ve worked with the Maritime Society before, but I’ve never heard of you.
+	{@you}	Yeah, I’m pretty new.
+			I need to figure out if a shipwreck was carrying Nash or Kissel cars.
+			Can you send over a few photos?
+	{@cooper}	Of course! I’m here now. Just give me a moment….
+			[SENDS IMAGES]
+	{@you}	Awesome, thanks!
+	{@cooper}	Not a problem.
+			It’s funny. You’ve got the same last name as the captain that caused that awful shipwreck! 
+	{@you}	Oh. Haha, yeah, funny.
+			Wait…. did you say he caused the shipwreck?
+	{@cooper}	Hm? Yes, I was a kid when it happened. It was all over the news. 
+			I’ll send you the report. 
+			[SENDS INVESTIGATION REPORT]
+			Sounds like the captain went out in bad weather. HIs family must feel terrible about it.
+	{@you}	Um…. yeah, maybe.
+			Thanks again for your help!
+	$call UnlockEvidence(2,LV2-Car-Images)
+	$call UnlockEvidence(2,LV2-Investigation-Report)
+		
+
+:: amy-distress
+@contact amy, text-message
+// @background
+@trigger IsChainComplete(Name)
+@once
+
+	{@amy}	Hey, Jules! I just got an email about your dad’s treasure sale. 
+	{@you}	Eek. I told him not to send that.
+	{@amy}	Aw, don’t be embarrassed. I think it’s kind of sweet!  
+			Any news on the ship?
+	{@you}	Yep, she’s definitely the SS Madison. 
+	{@amy}	Great work!
+			I’ll send you the Madison’s radio call from when she was sinking.
+			Looks like we’ve also got the cargo list here. Maybe it’ll be useful!
+			[SENDS DISTRESS CALL TRANSCRIPT, CARGO LIST]
+	{@you}	Thanks, Amy!
+	$call UnlockEvidence(2,LV2-Distress-Transcript)
+	$call UnlockEvidence(2,LV2-Cargo-List)
+
+
+:: reya-safe
+@contact reya, phone-call
+// @background
+@trigger IsChainComplete(Cause)
+@once
+
+	{@reya}	Hey, Jules! Having fun with your paperwork?
+	{@you}	Actually, yes. I got an ID on the ship. She’s the SS Madison!
+	{@reya}	Good for you, sis. I solved a mystery too!
+			[SAFE PHOTO/SELFIE]
+	{@you}	Are you serious? Reya, how did you get that?
+	{@reya}	The guy who hired me got somebody else to bring up the safe. 
+			Don’t worry, he had a permit! Probably. 
+			It was just some nickels and an old clock. Oh well.
+	{@you}	I can’t believe this.
+	{@reya}	You mean how awesome I am? Me neither!! Now I’ve got extra cash to help search for Grandpa’s ship.
+	{@you}	Um, speaking of Grandpa’s ship…did you know that the wreck was his fault? 
+	{@reya}	Huh? Where’d you hear that?
+	{@you}	I was reading the investigation report. 
+	{@reya}	Ha! You are searching for the Emerald! I knew you’d catch the treasure bug.
+	{@you}	What? No way. I’m just trying to keep you and Dad from getting into trouble. Again.
+	{@reya}	Sure. Whatever floats your boat, sis.
