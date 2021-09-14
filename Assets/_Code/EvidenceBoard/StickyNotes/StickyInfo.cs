@@ -14,6 +14,7 @@ namespace Shipwreck {
         }
         
         public enum ResponseType {
+			Unassigned = 0,
             Correct,
             Hint,
             Incorrect

@@ -135,7 +135,6 @@ namespace Shipwreck {
 			public IEvidenceChainState GetChain(int levelIndex, StringHash32 chainId) {
 				return m_levelStates[levelIndex].GetChain(chainId);
 			}
-
 			public IEnumerable<StringHash32> GetUnlockedContacts() {
 				foreach (StringHash32 hash in m_unlockedContacts) {
 					yield return hash;

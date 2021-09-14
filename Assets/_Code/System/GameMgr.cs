@@ -52,6 +52,14 @@ namespace Shipwreck
 			CutscenePlayer.OnVideoComplete += I.HandleCutsceneComplete;
 		}
 
+		public static void SetChain(int levelIndex, StringHash32 root, params StringHash32[] chain) {
+			EvidenceChainState chainState = (EvidenceChainState)I.m_state.GetChain(levelIndex, root);
+			chainState.Lift(0);
+			foreach (StringHash32 node in chain) {
+				chainState.Drop(node);
+			}
+		}
+
 		public static void SetLevelIndex(int levelIndex) {
 			I.SetLevelIndexInternal(levelIndex);
 		}
@@ -93,6 +101,8 @@ namespace Shipwreck
 			UIMgr.Open<UIOfficeScreen>();
 			UIMgr.Open<UIModalCaseClosed>();
 		}
+
+		
 
 
 		#region Scripting
