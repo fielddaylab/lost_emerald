@@ -108,6 +108,9 @@ namespace Shipwreck {
 			GameMgr.SetChain(0, "Cargo", "cargo-cargo", "cargo-corn");
 			GameMgr.SetChain(0, "Artifact", "photo-artifact", "artifact-trunk");
 
+			GameMgr.State.SetTutorialBuoyDropped(true);
+			GameMgr.State.SetTutorialSonarDisplayed(true);
+
 			GameMgr.UnlockLevel(4);
 			GameMgr.UnlockEvidence(4, "LV4-Letter-Treasure");
 			GameMgr.RecordNodeVisited("level01.lou-complete", "lou");
