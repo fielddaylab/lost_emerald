@@ -28,7 +28,8 @@ namespace Shipwreck
 		{
 			TutorialSonar,
 			TutorialBuoy,
-			UnlockDive
+			UnlockDive,
+			EnableSonar
 		}
 
 
@@ -90,6 +91,9 @@ namespace Shipwreck
 						break;
 					case (ActionCode.UnlockDive):
 						actions.Add(ShipOutMgr.instance.UnlockDive);
+						break;
+					case (ActionCode.EnableSonar):
+						actions.Add(ShipOutMgr.instance.EnableSonar.Invoke);
 						break;
 					default:
 						break;
@@ -163,6 +167,7 @@ namespace Shipwreck
 		private void FlagDropTutorialBuoy()
 		{
 			GameMgr.State.SetTutorialBuoyDropped(true);
+			AudioSrcMgr.instance.PlayOneShot("drop_buoy");
 		}
 
 		private void FlagDisplaySonarTutorial()

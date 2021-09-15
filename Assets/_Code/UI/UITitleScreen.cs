@@ -110,6 +110,7 @@ namespace Shipwreck {
 
 			GameMgr.State.SetTutorialBuoyDropped(true);
 			GameMgr.State.SetTutorialSonarDisplayed(true);
+			GameMgr.State.UnlockDive(0);
 
 			GameMgr.UnlockLevel(4);
 			GameMgr.UnlockEvidence(4, "LV4-Letter-Treasure");

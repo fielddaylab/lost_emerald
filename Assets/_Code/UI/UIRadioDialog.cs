@@ -88,6 +88,7 @@ namespace Shipwreck {
 		}
 
 		public override IEnumerator TypeLine(TagString inString, TagTextData inType) {
+			AudioSrcMgr.instance.PlayOneShot("radio_receive");
 			uint visibleCharacterCount = inType.VisibleCharacterCount;
 			float timeToWait = 0f;
 			bool skipped = false;

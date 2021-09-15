@@ -6,6 +6,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -38,6 +39,9 @@ namespace Shipwreck
 		private GameObject m_buoyPrefab; // prefab for buoy that is dropped
 		[SerializeField]
 		private GameObject m_playerShip; // the player's ship
+
+		public UnityEvent EnableSonar = new UnityEvent();
+		public UnityEvent DisableSonar = new UnityEvent();
 
 		private static int DIM_TO_WORLD_PROP = 100; // the proportion of scene dimensions to world space is 100 pixels per unit
 		private static Vector3 BUOY_SHIP_OFFSET = new Vector3(-0.7f, -0.7f, 0f); // where the ship is placed relative to buoy when
@@ -136,13 +140,18 @@ namespace Shipwreck
 				{
 					UIShipOutScreen.ActionCode[] codes = new UIShipOutScreen.ActionCode[]
 					{
-						UIShipOutScreen.ActionCode.TutorialSonar
+						UIShipOutScreen.ActionCode.TutorialSonar,
+						UIShipOutScreen.ActionCode.EnableSonar
 					};
 					UIShipOutScreen.instance.ShowMessage(
 						"Time to use my sonar to see if I can find the wreck Lou shared",
 						"Continue",
 						codes
 						);
+				}
+				else
+				{
+					EnableSonar.Invoke();
 				}
 			}
 		}

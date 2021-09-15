@@ -14,9 +14,14 @@ namespace Shipwreck
 	/// </summary>
 	[RequireComponent(typeof(CapsuleCollider2D))]
 	[RequireComponent(typeof(Rigidbody2D))]
+	[RequireComponent(typeof(AudioSource))]
 	public class SonarField : MonoBehaviour
 	{
 		public ShipController ship; // the ship casting this sonar field
+
+		private AudioSource m_audioSrc; // for making sonar sounds
+		[SerializeField]
+		private AudioData m_sonarAudioData; // the sound to make
 
 		#region Randomization
 
@@ -34,6 +39,28 @@ namespace Shipwreck
 		#endregion
 
 		#region Unity Callbacks
+
+		private void Awake()
+		{
+			m_audioSrc = GetComponent<AudioSource>();
+			m_audioSrc.clip = m_sonarAudioData.Clip;
+		}
+
+		private void Start()
+		{
+			ShipOutMgr.instance.EnableSonar.AddListener(PlaySonar);
+			ShipOutMgr.instance.DisableSonar.AddListener(PlaySonar);
+		}
+
+		private void PlaySonar()
+		{
+			m_audioSrc.Play();
+		}
+
+		private void StopSonar()
+		{
+			m_audioSrc.Stop();
+		}
 
 		// Called when collides with another object
 		void OnCollisionEnter2D(Collision2D other)
