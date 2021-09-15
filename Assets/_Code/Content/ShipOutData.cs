@@ -25,9 +25,14 @@ namespace Shipwreck
 			get { return m_wreckLocation; }
 		}
 
-		public Vector2 buoyLocation
+		public Vector2 BuoyLocation
 		{
 			get { return m_buoyLocation; }
+		}
+
+		public string DiveDest
+		{
+			get { return m_diveDest; }
 		}
 
 		public List<Vector2> SonarPoints
@@ -46,6 +51,8 @@ namespace Shipwreck
 		private Vector2 m_wreckLocation;
 		[SerializeField]
 		private Vector2 m_buoyLocation;
+		[SerializeField]
+		private string m_diveDest;
 		[SerializeField]
 		private List<Vector2> m_sonarPoints;
 	}

@@ -36,7 +36,7 @@ namespace Shipwreck
 		private Button m_returnToOfficeButton; // button that returns the player to office
 		[SerializeField]
 		private GameObject m_diveButtonPrefab; // the prefab from which the dive button is generated
-		private GameObject m_diveButton; // the dive button
+		private GameObject m_diveButton = null; // the dive button
 		[SerializeField]
 		private Slider m_diveSlider; // the dive progress bar
 
@@ -119,8 +119,7 @@ namespace Shipwreck
 			// ensure the dive is locked
 			if (GameMgr.State.IsDiveUnlocked(ShipOutMgr.instance.GetData().ShipOutIndex))
 			{
-				// TODO: pull this from ShipOutData
-				SceneManager.LoadScene("Dive_Ship01");
+				SceneManager.LoadScene(ShipOutMgr.instance.GetData().DiveDest);
 				AudioSrcMgr.instance.PlayOneShot("click_dive");
 				AudioSrcMgr.instance.PlayAudio("dive");
 				UIMgr.Close<UIShipOutScreen>();
@@ -143,6 +142,22 @@ namespace Shipwreck
 
 			// add button functionality
 			m_diveButton.GetComponent<Button>().onClick.AddListener(HandleDiveButton);
+		}
+
+		/// <summary>
+		/// Replaces the filled slider with the clickable dive button
+		/// </summary>
+		public void ResetUI()
+		{
+			// restore initial bar
+			m_diveSlider.gameObject.SetActive(true);
+
+			// destory button if it exists
+			if (m_diveButton != null)
+			{
+				Destroy(m_diveButton.gameObject);
+				m_diveButton = null;
+			}
 		}
 
 		private void FlagDropTutorialBuoy()

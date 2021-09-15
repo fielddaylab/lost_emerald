@@ -102,7 +102,7 @@ namespace Shipwreck
 		{
 			if (m_interactIsActive
 				&& !UIMgr.IsOpen<UIPhoneNotif>()
-				&& !UIMgr.IsOpen<UIDialogScreen>()
+				&& !UIMgr.IsOpen<UIRadioDialog>()
 				&& InteractionIsInBounds()
 				&& !InteractionIsOverUI()
 				&& !ShipOutMgr.instance.IsMessageShowing())

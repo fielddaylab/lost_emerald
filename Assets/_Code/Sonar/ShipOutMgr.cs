@@ -69,9 +69,6 @@ namespace Shipwreck
 			// convert dimensions to world space
 			m_targetDimensions /= DIM_TO_WORLD_PROP;
 
-			// sonar progress starts at 0
-			m_sonarProgress = 0;
-
 			m_interactIsOverUI = false;
 
 			m_shipOutData = GameDb.GetShipOutData(GameMgr.State.GetCurrShipOutIndex());
@@ -79,9 +76,14 @@ namespace Shipwreck
 			if (m_shipOutData.ShipOutIndex == 1)
 			{
 				// dialogue triggers on level 2
-				GameMgr.RunTrigger(GameTriggers.OnEnterSonar);
-
-				// TODO: call ShowSonarScene() from Leaf after dialogue
+				if (GameMgr.State.HasVisitedNode("level02.reya-boat"))
+				{
+					ShowSonarScene();
+				}
+				else
+				{
+					GameMgr.RunTrigger(GameTriggers.OnEnterSonar);
+				}
 			}
 			else
 			{
@@ -108,6 +110,7 @@ namespace Shipwreck
 		public void ShowSonarScene()
 		{
 			UIMgr.Open<UIShipOutScreen>();
+			UIShipOutScreen.instance.ResetUI();
 
 			// when dive is unlocked, load the buoy without sonar
 			if (GameMgr.State.IsDiveUnlocked(GameMgr.State.GetCurrShipOutIndex()))
@@ -117,7 +120,7 @@ namespace Shipwreck
 
 				// drop buoy
 				GameObject buoy = Instantiate(m_buoyPrefab);
-				buoy.transform.position = m_shipOutData.buoyLocation;
+				buoy.transform.position = m_shipOutData.BuoyLocation;
 
 				m_playerShip.transform.position = buoy.transform.position + BUOY_SHIP_OFFSET;
 			}
@@ -237,7 +240,7 @@ namespace Shipwreck
 
 			// drop buoy
 			GameObject buoy = Instantiate(m_buoyPrefab);
-			buoy.transform.position = m_shipOutData.buoyLocation;
+			buoy.transform.position = m_shipOutData.BuoyLocation;
 		}
 	}
 }
