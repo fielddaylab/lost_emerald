@@ -47,6 +47,7 @@ namespace Shipwreck {
 		public static readonly StringHash32 OnBoardComplete = "OnBoardComplete";
 		public static readonly StringHash32 OnCaseClosed = "OnCaseClosed";
 		public static readonly StringHash32 OnEnterSonar = "OnEnterSonar";
+		public static readonly StringHash32 OnEnterDive = "OnEnterDive";
 	}
 
     public static class GameVars {

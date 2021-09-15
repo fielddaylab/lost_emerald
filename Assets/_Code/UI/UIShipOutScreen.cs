@@ -126,6 +126,7 @@ namespace Shipwreck
 				UIMgr.Close<UIShipOutScreen>();
 				UIMgr.Open<UIDiveScreen>();
 				AudioSrcMgr.instance.QueueAudio("underwater_ambiance");
+				GameMgr.RunTrigger(GameTriggers.OnEnterDive);
 			}
 		}
 

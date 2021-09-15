@@ -12,7 +12,7 @@
 //			 Reya about a new wreck
 
 :: reya-boat
-@contact reya, phone-call // radio-call?
+@contact reya, radio
 @background reya-boat
 @trigger OnEnterSonar
 @once
@@ -27,7 +27,7 @@
 	
 
 :: reya-dive
-@contact reya, phone-call
+@contact reya, radio
 // @background
 @trigger OnEnterDive
 @once
@@ -38,7 +38,7 @@
 	
 // If/when you photograph the gash in the side of the ship (optional)
 :: dive-gash
-@contact reya, phone-call
+@contact reya, radio
 // @background
 @trigger HasEvidence(LV2-Photo-Gash)
 @once
@@ -48,7 +48,7 @@
 	
 // When you photograph the cargo, a Nash car covered in mussels:
 :: dive-cargo
-@contact reya, phone-call
+@contact reya, radio
 // @background
 @trigger HasEvidence(LV2-Photo-Cargo)
 @once
@@ -61,7 +61,7 @@
  
 // when you photograph the safe 
 :: dive-safe
-@contact reya, phone-call
+@contact reya, radio
 // @background
 @trigger HasEvidence(LV2-Photo-Safe)
 @once
