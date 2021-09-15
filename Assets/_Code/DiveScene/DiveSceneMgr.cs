@@ -30,7 +30,7 @@ namespace Shipwreck {
 		private DiveNode m_currentNode;
 		private Routine m_startRoutine;
 		private Routine m_transitionRoutine;
-		private bool m_isNavActive = false;
+		private bool m_isNavActive = true;
 		private float m_zoomLevel = 0f;
 
 		private void Awake() {
