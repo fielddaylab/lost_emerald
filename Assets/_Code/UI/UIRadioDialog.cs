@@ -70,6 +70,10 @@ namespace Shipwreck {
 
 		#region Dialog
 
+		public override void PrepareNode(ScriptNode node) {
+			AssignPartner(GameDb.GetCharacterData(node.ContactId));
+		}
+
 		protected override void AssignPartner(CharacterData character) {
 			m_icon.sprite = character.TextingIcon;
 			m_iconOutline.color = character.DialogTextColor;

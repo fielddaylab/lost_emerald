@@ -12,6 +12,8 @@ namespace Shipwreck {
 		[SerializeField]
 		private Graphic m_iconRoot = null;
 		[SerializeField]
+		private Graphic m_iconBack = null;
+		[SerializeField]
 		private HorizontalLayoutGroup m_layout = null;
 		[SerializeField]
 		private Graphic m_tail = null;
@@ -37,8 +39,9 @@ namespace Shipwreck {
 				m_layout.childAlignment = TextAnchor.UpperRight;
 			} else {
 				m_iconRoot.color = character.TextingColor;
+				m_iconBack.color = character.TextingBackgroundColor;
 				m_icon.sprite = icon;
-				m_tail.color = character.TextingColor;
+				m_tail.color = character.TextingBackgroundColor;
 				m_iconRoot.gameObject.SetActive(true);
 				m_tail.gameObject.SetActive(true);
 				m_layout.childAlignment = TextAnchor.UpperLeft;
