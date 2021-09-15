@@ -12,8 +12,8 @@
 //			 Reya about a new wreck
 
 :: reya-boat
-@contact reya, phone-call // radio-call?
-@background reya-boat
+@contact reya, radio
+// @background reya-boat
 @trigger OnEnterSonar
 @once
 
