@@ -104,6 +104,7 @@ namespace Shipwreck {
 			
 			parseConfig.AddEvent("@*", ScriptEvents.Dialog.Target).ProcessWith(ParseTargetArgs);
 			parseConfig.AddEvent("img", ScriptEvents.Dialog.Image).WithStringHashData().CloseWith(ScriptEvents.Dialog.HideImage);
+			parseConfig.AddEvent("obj", ScriptEvents.Dialog.Object).WithStringHashData().CloseWith(ScriptEvents.Dialog.HideObject);
 
 			TagStringEventHandler eventConfig = new TagStringEventHandler();
 			eventConfig.Register(ScriptEvents.Global.Wait, (e, o) => Routine.WaitSeconds(e.GetFloat()));

@@ -31,6 +31,8 @@ namespace Shipwreck {
 		private ShipOutData[] m_shipOutData;
 		[SerializeField]
 		private AudioData[] m_audioData;
+		[SerializeField]
+		private DisplayObjData[] m_displayObjects;
 
 		[SerializeField,Header("Colors")]
 		private Color m_stickyNoteDefault = Color.black;
@@ -44,6 +46,7 @@ namespace Shipwreck {
 		private Color m_lineIncorrect = Color.black;
 		[SerializeField]
 		private Color m_lineComplete = Color.black;
+
 		[SerializeField]
 		private Color m_pinDefault = Color.black;
 		[SerializeField]
@@ -67,6 +70,8 @@ namespace Shipwreck {
 		private Dictionary<int, ShipOutData> m_shipOutMap;
 		[NonSerialized]
 		private Dictionary<string, AudioData> m_audioMap;
+		[NonSerialized]
+		private Dictionary<StringHash32, DisplayObjData> m_displayObjMap;
 
 
 		public static CharacterData GetCharacterData(StringHash32 hash) {
@@ -149,6 +154,22 @@ namespace Shipwreck {
 			} else {
 				throw new KeyNotFoundException(string.Format("No Evidence " +
 					"with groupID `{0}' is in the database", groupID
+				));
+			}
+		}
+
+		public static GameObject GetDisplayObject(StringHash32 hash) {
+			if (I.m_displayObjMap == null) {
+				I.m_displayObjMap = new Dictionary<StringHash32, DisplayObjData>();
+				foreach (DisplayObjData data in I.m_displayObjects) {
+					I.m_displayObjMap.Add(data.Hash, data);
+				}
+			}
+			if (I.m_displayObjMap.ContainsKey(hash)) {
+				return I.m_displayObjMap[hash].Prefab;
+			} else {
+				throw new KeyNotFoundException(string.Format("No Display Object" +
+					"with id `{0}' is in the database", hash.ToDebugString()
 				));
 			}
 		}

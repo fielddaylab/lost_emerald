@@ -10,7 +10,7 @@
 
 	{@mom}  Hey Jules, 
 	{@mom}  Just wanted to give you a heads-up. Your dad is at it again. 
-	{@mom}  [shares newspaper article]
+	{@mom}  {obj EmbarrassingArticle}
 	$call UnlockContact(dad)
 
 

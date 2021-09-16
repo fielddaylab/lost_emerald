@@ -158,6 +158,15 @@ namespace Shipwreck {
 			throw new NotSupportedException();
 		}
 
+		protected override IEnumerator OnShowObject(GameObject prefab) {
+			throw new NotSupportedException();
+		}
+
+		protected override IEnumerator OnHideObject() {
+			throw new NotSupportedException();
+		}
+
+
 		#endregion // Dialog
 	}
 

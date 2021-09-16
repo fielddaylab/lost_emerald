@@ -26,6 +26,8 @@ namespace Shipwreck {
 		private TextMessageText m_textPrefab = null;
 		[SerializeField]
 		private TextMessageImage m_imagePrefab = null;
+		[SerializeField]
+		private TextMessageObject m_objectPrefab = null;
 
 		[NonSerialized]
 		private CharacterData m_currentCharacter = null;
@@ -87,6 +89,21 @@ namespace Shipwreck {
 		protected override IEnumerator OnHideImage() {
 			return null;
 		}
+
+		protected override IEnumerator OnShowObject(GameObject prefab) {
+			TextMessageObject obj = Instantiate(m_objectPrefab, m_content);
+			obj.Populate(m_currentCharacter, prefab);
+			m_layout.ForceRebuild();
+			yield return m_scrollRect.NormalizedPosTo(0f, 0.1f, Axis.Y);
+			yield return 0.15f;
+
+			yield return CompleteLine();
+		}
+
+		protected override IEnumerator OnHideObject() {
+			return null;
+		}
+
 
 		public override IEnumerator TypeLine(TagString inString, TagTextData inType) {
 			AudioSrcMgr.instance.PlayOneShot("text_receive");

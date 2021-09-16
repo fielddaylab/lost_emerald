@@ -20,6 +20,7 @@ namespace Shipwreck {
 			m_tagEvents = new TagStringEventHandler();
 			m_tagEvents.Register(ScriptEvents.Dialog.Target, HandleSetTarget);
 			m_tagEvents.Register(ScriptEvents.Dialog.Image, HandleShowImage);
+			m_tagEvents.Register(ScriptEvents.Dialog.Object, HandleShowObject);
 			m_tagEvents.Register(ScriptEvents.Dialog.HideImage, HandleHideImage);
 		}
 
@@ -31,6 +32,9 @@ namespace Shipwreck {
 		}
 		private IEnumerator HandleHideImage() {
 			return OnHideImage();
+		}
+		private IEnumerator HandleShowObject(TagEventData inEvent, object inContext) {
+			return OnShowObject(GameDb.GetDisplayObject(inEvent.GetStringHash()));
 		}
 
 		public virtual void PrepareNode(ScriptNode node) {
@@ -54,6 +58,8 @@ namespace Shipwreck {
 		protected abstract void OnSetSpeaker(CharacterData speaker);
 		protected abstract IEnumerator OnShowImage(Sprite image);
 		protected abstract IEnumerator OnHideImage();
+		protected abstract IEnumerator OnShowObject(GameObject prefab);
+		protected abstract IEnumerator OnHideObject();
 	}
 
 }

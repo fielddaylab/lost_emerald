@@ -3,6 +3,7 @@ using BeauUtil;
 using BeauUtil.Tags;
 using Leaf.Defaults;
 using PotatoLocalization;
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -163,6 +164,14 @@ namespace Shipwreck {
 			m_image.gameObject.SetActive(false);
 		}
 
+		protected override IEnumerator OnShowObject(GameObject prefab) {
+			throw new NotImplementedException();
+		}
+		protected override IEnumerator OnHideObject() {
+			throw new NotImplementedException();
+		}
+
+
 		private void ClickSound()
 		{
 			AudioSrcMgr.instance.PlayOneShot("click_dialog_continue");
@@ -172,6 +181,7 @@ namespace Shipwreck {
 		{
 			AudioSrcMgr.instance.PlayOneShot("click_dialog_skip");
 		}
+
 
 		#endregion // Dialog
 	}
