@@ -49,6 +49,11 @@ namespace Shipwreck {
 		[SerializeField]
 		private Button m_buttonShipOut = null;
 
+		[SerializeField]
+		private Color m_colorDefault;
+		[SerializeField]
+		private Color m_colorHover;
+
 
 		private Dictionary<StringHash32, EvidenceGroup> m_groups;
 		private Dictionary<StringHash32, EvidenceNode> m_nodes;
@@ -64,6 +69,9 @@ namespace Shipwreck {
 		private bool m_dragging;
 		private Vector2 m_pressPosition;
 		private Vector2 m_homePos;
+		private EvidenceNode m_hoverNode;
+
+		private List<RaycastResult> m_raycastResults;
 
 		private void Awake() {
 			m_layers = new Layers(m_nodeBackGroup, m_lineGroup, m_nodeFrontGroup, m_labelGroup, m_pinGroup);
@@ -73,6 +81,7 @@ namespace Shipwreck {
 			m_chains = new Dictionary<StringHash32, EvidenceChain>();
 			m_rootsByPin = new Dictionary<EvidencePin, StringHash32>();
 			m_pinsByRoot = new Dictionary<StringHash32, List<EvidencePin>>();
+			m_raycastResults = new List<RaycastResult>();
 		}
 
 		protected override void OnShowStart() {
@@ -198,6 +207,18 @@ namespace Shipwreck {
 				Selected.SetPosition(InputMgr.Position);
 				if (!m_dragging) {
 					m_dragging = Vector2.Distance(m_pressPosition, InputMgr.Position) > 4f;
+				} else {
+					EvidenceNode result;
+					RaycastForNode(InputMgr.Position, out result);
+					if (result != m_hoverNode) {
+						if (m_hoverNode != null) {
+							m_hoverNode.SetColor(m_colorDefault);
+						}
+						m_hoverNode = result;
+						if (m_hoverNode != null) {
+							m_hoverNode.SetColor(m_colorHover);
+						}
+					}
 				}
 			}
 		}
@@ -245,39 +266,45 @@ namespace Shipwreck {
 		}
 
 		private void Drop() {
-			List<RaycastResult> results = new List<RaycastResult>();
-			PointerEventData eventData = new PointerEventData(EventSystem.current);
-			eventData.position = InputMgr.Position;
-			m_raycaster.Raycast(eventData, results);
-
 			IEvidenceChainState chainState = GameMgr.State.CurrentLevel.GetChain(m_selectedRoot);
 			EvidenceChain chainObj = m_chains[m_selectedRoot];
-			EvidenceNode node = null;
 
-			foreach (RaycastResult result in results) {
-				node = result.gameObject.GetComponent<EvidenceNode>();
-				if (node != null) {
-					Selected.SetPosition(WorldToScreenPoint(node.PinPosition));
-					if (!Selected.IsRoot) {
-						Selected.SetHomePosition(WorldToScreenPoint(node.SubPinPosition));
-					}
-					chainState.Drop(node.NodeID);
-					break;
+			if (RaycastForNode(InputMgr.Position,out EvidenceNode node)) {
+				Selected.SetPosition(WorldToScreenPoint(node.PinPosition));
+				if (!Selected.IsRoot) {
+					Selected.SetHomePosition(WorldToScreenPoint(node.SubPinPosition));
 				}
-			}
-			// if we didn't find a node, we need to return the pin home
-			if (node == null) {
+				chainState.Drop(node.NodeID);
+			} else {
+				// if we didn't find a node, we need to return the pin home
 				Selected.FlyHome();
 				AudioSrcMgr.instance.PlayOneShot("evidence_miss");
 			}
+			if (m_hoverNode != null) {
+				m_hoverNode.SetColor(m_colorDefault);
+			}
 
 			// determine what we do with the chain
-
-
 			RefreshChainState(chainState.StickyInfo, chainObj, node);
 			
 			m_selectedPin = -1;
 			m_dragging = false;
+		}
+
+		private bool RaycastForNode(Vector2 screenPos, out EvidenceNode node) {
+			m_raycastResults.Clear();
+			PointerEventData eventData = new PointerEventData(EventSystem.current);
+			eventData.position = screenPos;
+			m_raycaster.Raycast(eventData, m_raycastResults);
+			// we only care about the first node result
+			foreach (RaycastResult result in m_raycastResults) {
+				node = result.gameObject.GetComponent<EvidenceNode>();
+				if (node != null) {
+					return true;
+				}
+			}
+			node = null;
+			return false;
 		}
 
 		private void RefreshChainState(StickyInfo info, EvidenceChain chainObj, EvidenceNode node = null) {

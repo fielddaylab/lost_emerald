@@ -94,9 +94,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_canvasGroup: {fileID: 3294547094912159804}
-  m_locationRoot:
-    m_Source: Location
-    m_Hash: 1539345862
   m_nodeBackGroup: {fileID: 841688313991667952}
   m_lineGroup: {fileID: 6333903607280252981}
   m_nodeFrontGroup: {fileID: 1744192855314029962}
@@ -108,6 +105,8 @@ MonoBehaviour:
     type: 3}
   m_buttonBack: {fileID: 4294598243929505027}
   m_buttonShipOut: {fileID: 2247889014930563183}
+  m_colorDefault: {r: 0.6039216, g: 0.9058824, b: 0.8980393, a: 1}
+  m_colorHover: {r: 0.9103774, g: 1, b: 0.9982765, a: 1}
 --- !u!222 &841688314110646079
 CanvasRenderer:
   m_ObjectHideFlags: 0
