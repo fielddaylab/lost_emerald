@@ -1841,6 +1841,64 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 478d0f909ed01417db023dcfd00bab5a, type: 3}
+--- !u!1 &1306336829 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3782994056335260743, guid: 38a81007aa7e04447984bc1df4c89675,
+    type: 3}
+  m_PrefabInstance: {fileID: 1451811939}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1306336831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306336829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15d1cc8a4704bb3499777ec9affed97c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_evidenceUnlock:
+    m_Source: LV2-Photo-Gash
+    m_Hash: 2739637018
+  m_unlockMessage:
+    m_key: Dive/Level2/Gash
+    m_hash: -1108126746
+  m_photoName:
+    m_key: Dive/Level2/Gash-Name
+    m_hash: -15401366
+  m_zoomMin: 0.23809524
+  m_zoomMax: 0.7482993
+--- !u!1 &1393359366 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3782994056335260743, guid: 38a81007aa7e04447984bc1df4c89675,
+    type: 3}
+  m_PrefabInstance: {fileID: 2036054967}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1393359368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1393359366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15d1cc8a4704bb3499777ec9affed97c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_evidenceUnlock:
+    m_Source: LV2-Photo-Cargo
+    m_Hash: 733792627
+  m_unlockMessage:
+    m_key: Dive/Level2/Cargo
+    m_hash: -844222497
+  m_photoName:
+    m_key: Dive/Level2/Cargo-Name
+    m_hash: -991715531
+  m_zoomMin: 0.44217688
+  m_zoomMax: 1
 --- !u!1001 &1411262757
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1915,6 +1973,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 391abad2d74ae4523839d4635cc63562, type: 3}
+--- !u!1 &1419495798 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3782994056335260743, guid: 38a81007aa7e04447984bc1df4c89675,
+    type: 3}
+  m_PrefabInstance: {fileID: 615783719}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1419495800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1419495798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15d1cc8a4704bb3499777ec9affed97c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_evidenceUnlock:
+    m_Source: LV2-Photo-Safe
+    m_Hash: 166034972
+  m_unlockMessage:
+    m_key: Dive/Level2/Safe
+    m_hash: -935389200
+  m_photoName:
+    m_key: Dive/Level2/Safe-Name
+    m_hash: 1951595972
+  m_zoomMin: 0.4897959
+  m_zoomMax: 1
 --- !u!1001 &1423652819
 PrefabInstance:
   m_ObjectHideFlags: 0
