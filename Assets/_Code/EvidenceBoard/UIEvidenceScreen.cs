@@ -322,10 +322,11 @@ namespace Shipwreck {
 				switch (info.Response) {
 					case StickyInfo.ResponseType.Correct:
 						chainObj.SetState(ChainStatus.Complete);
-						AudioSrcMgr.instance.PlayOneShot("evidence_right");
+						AudioSrcMgr.instance.PlayOneShot("evidence_complete");
 						break;
 					case StickyInfo.ResponseType.Hint:
 						chainObj.SetState(ChainStatus.Normal);
+						AudioSrcMgr.instance.PlayOneShot("evidence_right");
 						if (node != null) {
 							TryExtendingChain(chainObj, node);
 						}

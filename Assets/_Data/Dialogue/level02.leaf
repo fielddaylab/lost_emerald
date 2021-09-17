@@ -77,6 +77,7 @@
 @trigger IsChainComplete(Type)
 @once
 
+	$call TriggerConvoMusic(archivist_convo)
 	{@amy}	Hey! Heard you went on a dive with your sister. How’d it go?
 	{@you}	Well, she called me boring and tried to get me in trouble, so…. same as usual.
 			Could you help me? I need a list of freighters carrying cars that sank in that area.
@@ -85,6 +86,7 @@
 			Cooper @ Auto Museum : 555-1598
 	{@you}	Great. Thanks, Amy!
 	$call UnlockContact(cooper)
+	$call EndConvoMusic();
 	
 
 :: cooper-meet
