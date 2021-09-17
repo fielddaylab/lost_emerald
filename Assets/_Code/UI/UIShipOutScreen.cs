@@ -189,6 +189,11 @@ namespace Shipwreck
 			return m_diveSlider;
 		}
 
+		public void HideDiveSlider()
+		{
+			m_diveSlider.gameObject.SetActive(false);
+		}
+
 		#region MessageBox
 
 		public void ShowMessage(string message, string buttonText, ActionCode[] actionCodes)

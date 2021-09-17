@@ -189,7 +189,7 @@ namespace Shipwreck
 			{
 				GenerateSonarDots(true);
 
-				UIShipOutScreen.instance.GetDiveSlider().normalizedValue = 0;
+				UIShipOutScreen.instance.HideDiveSlider();
 
 				// add reya's ship
 				AddReya();
