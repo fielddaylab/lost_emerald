@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1122,8 +1122,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 920271453}
-  m_LocalRotation: {x: 0.17864479, y: -0.051776715, z: 0.006886495, w: 0.98252624}
-  m_LocalPosition: {x: -20.183495, y: 17, z: -27.12603}
+  m_LocalRotation: {x: 0.58778524, y: 0, z: 0, w: 0.809017}
+  m_LocalPosition: {x: 6.81, y: 130.47, z: -28.619999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1847217898}
@@ -2783,14 +2783,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_evidenceUnlock:
-    m_Source: LV1-Photo-Above
-    m_Hash: 1599642307
+    m_Source: LV2-Photo-Above
+    m_Hash: 1942196222
   m_unlockMessage:
-    m_key: Dive/Level1/Above
-    m_hash: 963169315
+    m_key: Dive/Level2/Above
+    m_hash: -385228766
   m_photoName:
-    m_key: Dive/Level1/Above-Name
-    m_hash: -873237775
+    m_key: Dive/Level2/Above-Name
+    m_hash: 1935703230
   m_zoomMin: 0
   m_zoomMax: 0.15083799
 --- !u!1001 &1808463862
