@@ -16,18 +16,22 @@
 @background dad-yardsale
 @once
 
+	$call TriggerConvoMusic(dad_convo)
 	{@dad} 	Hey Jules! Would you mind putting these up around your office?
 			[POSTER FOR HIS YARD SALE - not made yet]
 	{@you} 	“Real history”?  Dad, nobody here is going to want that old junk. 
 	{@dad}	Don’t be so sure. There’s some awesome stuff here.
 	{@you}	Sorry, Dad. Reya’s calling. Gotta go.
 	$call UnlockContact(reya)
+	$call EndConvoMusic();
 
 :: level2-meet-reya
 @contact reya, phone-call
 @trigger OnContactAdded
 @background reya-boat
 @once
+
+	$call TriggerConvoMusic(reya_convo)
 	{@reya} Hey sis! Can I borrow some of your dive gear?
 	{@you}	What?? No!
 	{@reya}	Come on. Pretty please? I picked up a side job, and the wreck is down at 300 feet. I need your rebreather!
@@ -39,6 +43,7 @@
 	$call UnlockLevel(2)
 	$call UnlockEvidence(2,"LV1-Root") //hack?
 	$call UnlockEvidence(2, "LV2-Transcript-Reya")
+	$call EndConvoMusic();
 
 //-------------------------------------------
 //  Level 4

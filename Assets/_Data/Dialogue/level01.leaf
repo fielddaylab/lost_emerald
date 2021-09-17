@@ -20,6 +20,7 @@
 @trigger OnContactAdded
 @once
 
+	$call TriggerConvoMusic(dad_convo)
 	{@dad}  Hey Jules! It’s yard sale day! You gonna stop by? 
 	{@you}  Dad, I saw the news.
 			You’re looking for Grandpa’s ship again?
@@ -32,6 +33,7 @@
 	{@you}  No, that’s not--
 	{@dad}  Oh, your sister’s here! She’s gonna help me look through some old stuff. Gotta go bye!
 	$call UnlockContact(lou)
+	$call EndConvoMusic()
 
 
 ::lou-meet
@@ -39,6 +41,8 @@
 @background lou-ultralight
 @trigger OnContactAdded
 @once
+
+	$call TriggerConvoMusic(lou_convo)
 	// Receive/open a new text from Lou
 	{@lou}  Hey Jules!
 	{@you} 	Hey Lou. What’s all that noise? Where are you?
@@ -60,6 +64,7 @@
 	$call UnlockLevel(1)
 	$call UnlockEvidence(1,LV1-Root)
 	$call UnlockEvidence(1,LV1-Transcript-Lou)
+	$call EndConvoMusic()
 
 
 
@@ -115,10 +120,12 @@
 @trigger OnBoardComplete
 @once
 	
+	$call TriggerConvoMusic(lou_convo)
 	{@you}  Lou! I solved the mystery of the ship you saw!
 			Her name was the Loretta and she sank after running into a sand bar!
 	{@lou}  What!? That's amazing!
 	$call TriggerCutscene();
+	$call EndConvoMusic();
 
 
 ::amy-level-end
@@ -138,6 +145,7 @@
 @when Seen(level01.amy-level-end)
 @once
 
+	$call TriggerConvoMusic(dad_convo)
 	{@dad} 	Jules! Where have you been? We’ve got big news on the Emerald!
 	{@you} 	Grandpa’s ship?
 	{@dad} 	Yep. Reya found a clue in one of your grandma’s old letters.
@@ -154,3 +162,4 @@
 	{@you} 	Yeah. Super great.
 	$call UnlockLevel(4)
 	$call UnlockEvidence(4,LV4-Letter-Treasure)
+	$call EndConvoMusic();

@@ -26,6 +26,8 @@ namespace Shipwreck
 			public bool Loop { get; set; }
 		}
 
+		private AudioLoopPair m_stashedAudio;
+
 		private Queue<AudioLoopPair> m_audioQueue;
 
 		private void Awake()
@@ -103,6 +105,22 @@ namespace Shipwreck
 		public void StopAudio()
 		{
 			m_audioSrc.Stop();
+		}
+
+		// Saves the current audio for later
+		public void StashAudio()
+		{
+			m_stashedAudio = new AudioLoopPair(m_audioSrc.clip, m_audioSrc.loop);
+		}
+
+		// Saves the current audio for later
+		public void ResumeStashedAudio()
+		{
+			if (m_stashedAudio.Clip == null) { return; }
+
+			m_audioSrc.clip = m_stashedAudio.Clip;
+			m_audioSrc.loop = m_stashedAudio.Loop;
+			m_audioSrc.Play();
 		}
 	}
 }

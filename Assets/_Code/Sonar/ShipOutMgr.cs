@@ -63,6 +63,8 @@ namespace Shipwreck
 
 		private void Start()
 		{
+			AudioSrcMgr.instance.PlayAudio("ship_out_music", true);
+
 			// ensure there is only one ShipOutMgr at any given time
 			if (ShipOutMgr.instance == null)
 			{
