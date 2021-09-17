@@ -169,6 +169,8 @@ namespace Shipwreck
 			// when dive is unlocked, load the buoy without sonar
 			if (GameMgr.State.IsDiveUnlocked(GameMgr.State.GetCurrShipOutIndex()))
 			{
+				GenerateSonarDots(true);
+
 				// activate button
 				UIShipOutScreen.instance.SwapButtonForSlider();
 
@@ -189,6 +191,9 @@ namespace Shipwreck
 
 				// add reya's ship
 				AddReya();
+
+				// display reya's speech bubble
+				m_reyaShip.GetComponent<ReyaShip>().ActivateBubble();
 
 				// drop buoy
 				DropBuoy();

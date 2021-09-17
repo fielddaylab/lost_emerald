@@ -108,6 +108,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 374dc90f739bee04a877d6898de07475, type: 3}
   - {fileID: 21300000, guid: 188f674fd393cb944aa8e6cbaf28b4a9, type: 3}
   - {fileID: 21300000, guid: 9ad6fd8fd9790ea43a0b1b0778ec0f0c, type: 3}
+  - {fileID: 21300000, guid: f340479f5687f2148ab164d85f708154, type: 3}
   m_PackedSpriteNamesToIndex:
   - office-background
   - button-face
@@ -171,5 +172,6 @@ SpriteAtlas:
   - back-arrow
   - eyewitness-account
   - level3_paradise
+  - ship_bubble
   m_Tag: MainAtlas
   m_IsVariant: 0
