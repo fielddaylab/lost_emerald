@@ -39,13 +39,16 @@ namespace Shipwreck
 		private GameObject m_buoyPrefab; // prefab for buoy that is dropped
 		[SerializeField]
 		private GameObject m_playerShip; // the player's ship
+		[SerializeField]
+		private GameObject m_reyaShipPrefab; // prefab for reya's ship
+		private GameObject m_reyaShip; // reya's ship
 
 		public UnityEvent EnableSonar = new UnityEvent();
 		public UnityEvent DisableSonar = new UnityEvent();
 
 		private static int DIM_TO_WORLD_PROP = 100; // the proportion of scene dimensions to world space is 100 pixels per unit
 		private static Vector3 BUOY_SHIP_OFFSET = new Vector3(-0.7f, -0.7f, 0f); // where the ship is placed relative to buoy when
-																			 // re-entering a scene with completed dive
+																				 // re-entering a scene with completed dive
 
 		private bool m_interactIsOverUI; // whether the interaction is over some UI
 
@@ -77,25 +80,10 @@ namespace Shipwreck
 
 			m_shipOutData = GameDb.GetShipOutData(GameMgr.State.GetCurrShipOutIndex());
 
-			if (m_shipOutData.ShipOutIndex == 1)
-			{
-				// dialogue triggers on level 2
-				if (GameMgr.State.HasVisitedNode("level02.reya-boat"))
-				{
-					ShowSonarScene();
-				}
-				else
-				{
-					GameMgr.RunTrigger(GameTriggers.OnEnterSonar);
-				}
-			}
-			else
-			{
-				ShowSonarScene();
-			}
+			ShowSonarScene();
 		}
 
-		private void GenerateSonarDots()
+		private void GenerateSonarDots(bool revealed = false)
 		{
 			m_sonarDotParent = Instantiate(m_sonarDotParentPrefab, this.transform);
 
@@ -106,6 +94,15 @@ namespace Shipwreck
 			{
 				GameObject newDot = Instantiate(m_sonarDotPrefab, m_sonarDotParent.transform);
 				newDot.transform.position = point + m_shipOutData.WreckLocation;
+
+				if (revealed)
+				{
+					// reveal dots
+					newDot.GetComponent<SpriteRenderer>().enabled = true;
+
+					// remove all box colliders, since sonar is already revealed
+					newDot.GetComponent<BoxCollider2D>().enabled = false;
+				}
 			}
 
 			m_targetNumDots = sonarPoints.Count;
@@ -116,6 +113,18 @@ namespace Shipwreck
 			UIMgr.Open<UIShipOutScreen>();
 			UIShipOutScreen.instance.ResetUI();
 
+			if (m_shipOutData.ShipOutIndex == 1)
+			{
+				ShowLevel2Sonar();
+			}
+			else
+			{
+				ShowDefaultSonar();
+			}
+		}
+
+		public void ShowDefaultSonar()
+		{
 			// when dive is unlocked, load the buoy without sonar
 			if (GameMgr.State.IsDiveUnlocked(GameMgr.State.GetCurrShipOutIndex()))
 			{
@@ -123,8 +132,7 @@ namespace Shipwreck
 				UIShipOutScreen.instance.SwapButtonForSlider();
 
 				// drop buoy
-				GameObject buoy = Instantiate(m_buoyPrefab);
-				buoy.transform.position = m_shipOutData.BuoyLocation;
+				GameObject buoy = DropBuoy();
 
 				m_playerShip.transform.position = buoy.transform.position + BUOY_SHIP_OFFSET;
 			}
@@ -154,6 +162,50 @@ namespace Shipwreck
 					EnableSonar.Invoke();
 				}
 			}
+		}
+
+		public void ShowLevel2Sonar()
+		{
+			// when dive is unlocked, load the buoy without sonar
+			if (GameMgr.State.IsDiveUnlocked(GameMgr.State.GetCurrShipOutIndex()))
+			{
+				// activate button
+				UIShipOutScreen.instance.SwapButtonForSlider();
+
+				// add reya's ship
+				AddReya();
+
+				// drop buoy
+				GameObject buoy = DropBuoy();
+
+				m_playerShip.transform.position = buoy.transform.position + BUOY_SHIP_OFFSET;
+			}
+			// when the dive is not unlocked, load the sonar without buoy
+			else
+			{
+				GenerateSonarDots(true);
+
+				UIShipOutScreen.instance.GetDiveSlider().normalizedValue = 0;
+
+				// add reya's ship
+				AddReya();
+
+				// drop buoy
+				DropBuoy();
+			}
+		}
+
+		public GameObject DropBuoy()
+		{
+			GameObject buoy = Instantiate(m_buoyPrefab);
+			buoy.transform.position = m_shipOutData.BuoyLocation;
+
+			return buoy;
+		}
+
+		public void AddReya()
+		{
+			m_reyaShip = Instantiate(m_reyaShipPrefab);
 		}
 
 		/// <summary>
@@ -205,7 +257,7 @@ namespace Shipwreck
 						UIShipOutScreen.ActionCode[] codes = new UIShipOutScreen.ActionCode[]
 						{
 							UIShipOutScreen.ActionCode.TutorialBuoy,
-							UIShipOutScreen.ActionCode.UnlockDive
+							UIShipOutScreen.ActionCode.UnlockDive,
 						};
 						UIShipOutScreen.instance.ShowMessage(
 							"There it is! I’ll drop a buoy to mark the location.",
@@ -247,9 +299,14 @@ namespace Shipwreck
 			// activate button
 			UIShipOutScreen.instance.SwapButtonForSlider();
 
+			if (m_shipOutData.ShipOutIndex == 1)
+			{
+				// buoy starts dropped
+				return;
+			}
+
 			// drop buoy
-			GameObject buoy = Instantiate(m_buoyPrefab);
-			buoy.transform.position = m_shipOutData.BuoyLocation;
+			DropBuoy();
 		}
 	}
 }

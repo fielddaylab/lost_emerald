@@ -287,9 +287,9 @@ namespace Shipwreck
 		}
 
 		[LeafMember]
-		public static void ShowSonarScene()
+		public static void UnlockDive()
 		{
-			ShipOutMgr.instance.ShowSonarScene();
+			ShipOutMgr.instance.UnlockDive();
 		}
 
 		#endregion // Leaf

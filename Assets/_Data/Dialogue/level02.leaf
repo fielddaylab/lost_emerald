@@ -14,7 +14,7 @@
 :: reya-boat
 @contact reya, radio
 @background reya-boat
-@trigger OnEnterSonar
+@trigger OnFindReya
 @once
 
     {@reya}	Hey sis! What took ya so long?
@@ -23,7 +23,7 @@
     {@reya}	Yaaaaaawn. I can’t believe we’re related. 
     {@reya}	Anyways, the ship’s down there. Some rich guy hired me to check it out.
     {@reya}	Break a leg! Or a flipper, or whatever.  
-	$call ShowSonarScene()
+	$call UnlockDive()
 	
 
 :: reya-dive

@@ -30,7 +30,7 @@ namespace Shipwreck
 		[SerializeField]
 		private float m_sceneMargin; // the spacing between the ship and the scene edges
 		[SerializeField]
-		private float m_buoyMargin; // the spacing between the ship and the buoy
+		private float m_obstacleMargin; // the spacing between the ship and the buoy
 		private float m_currSpeed; // how quickly the ship is moving this frame
 		private bool m_interactIsActive; // whether the InputMgr has had an Interact press but not yet a release
 		private Vector2 m_sceneDimensions; // the dimensions of the scene the ship finds itself in
@@ -136,10 +136,10 @@ namespace Shipwreck
 			EnforceMargins(ref interactScreenPos);
 
 			// correct for buoy
-			Vector2 buoyCorrection = CorrectForBuoy(interactScreenPos);
+			Vector2 obstacleCorrection = CorrectForObstacle(interactScreenPos);
 
 			// apply distance modifier (ship travels faster when the interact position is farther)
-			float interactDistance = Vector2.Distance(buoyCorrection, this.transform.position);
+			float interactDistance = Vector2.Distance(obstacleCorrection, this.transform.position);
 
 			float rawSpeed = m_shipBaseSpeed + (interactDistance * m_distanceModifier);
 			float correctedSpeed;
@@ -148,7 +148,7 @@ namespace Shipwreck
 			else { correctedSpeed = rawSpeed; }
 
 			// calculate the new location
-			Vector2 newPos = Vector2.MoveTowards(this.transform.position, buoyCorrection, correctedSpeed * Time.deltaTime);
+			Vector2 newPos = Vector2.MoveTowards(this.transform.position, obstacleCorrection, correctedSpeed * Time.deltaTime);
 
 			// save the current speed so the sonar can use it for randomization
 			m_currSpeed = correctedSpeed;
@@ -174,7 +174,7 @@ namespace Shipwreck
 			m_audioSrc.panStereo = (this.transform.position.x * 100) / Screen.width;
 		}
 
-		private Vector2 CorrectForBuoy(Vector2 interactScreenPos)
+		private Vector2 CorrectForObstacle(Vector2 interactScreenPos)
 		{
 			// cast a ray from ship to position
 			RaycastHit2D hit = Physics2D.Linecast(
@@ -187,11 +187,11 @@ namespace Shipwreck
 			if (hit.collider != null)
 			{
 				Vector2 closestPoint = hit.collider.ClosestPoint(this.transform.position);
-				// push the ship just beyond the bounds to orbit the buoy(-ish)
+				// push the ship just beyond the bounds to orbit the obstacle(-ish)
 				interactScreenPos = closestPoint
 					//+ ((Vector2)this.transform.position - closestPoint).normalized
 					+ (closestPoint - interactScreenPos).normalized
-					* m_buoyMargin;
+					* m_obstacleMargin;
 			}
 			
 			return interactScreenPos;

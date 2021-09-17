@@ -49,7 +49,7 @@ namespace Shipwreck
 		private void Start()
 		{
 			ShipOutMgr.instance.EnableSonar.AddListener(PlaySonar);
-			ShipOutMgr.instance.DisableSonar.AddListener(PlaySonar);
+			ShipOutMgr.instance.DisableSonar.AddListener(StopSonar);
 		}
 
 		private void PlaySonar()
@@ -65,6 +65,11 @@ namespace Shipwreck
 		// Called when collides with another object
 		void OnCollisionEnter2D(Collision2D other)
 		{
+			if (other.gameObject.tag != "SonarDot")
+			{
+				return;
+			}
+
 			// generate random number modified by ship velocity
 			float shipSpeed = ship.GetCurrSpeed();
 

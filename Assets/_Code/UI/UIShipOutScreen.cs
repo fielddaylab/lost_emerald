@@ -29,7 +29,8 @@ namespace Shipwreck
 			TutorialSonar,
 			TutorialBuoy,
 			UnlockDive,
-			EnableSonar
+			EnableSonar,
+			DisableSonar
 		}
 
 
@@ -94,6 +95,9 @@ namespace Shipwreck
 						break;
 					case (ActionCode.EnableSonar):
 						actions.Add(ShipOutMgr.instance.EnableSonar.Invoke);
+						break;
+					case (ActionCode.DisableSonar):
+						actions.Add(ShipOutMgr.instance.DisableSonar.Invoke);
 						break;
 					default:
 						break;
