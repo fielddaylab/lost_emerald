@@ -42,6 +42,7 @@
 // @background
 @trigger OnEvidenceUnlock
 @when HasEvidence(LV2-Photo-Gash)
+@once
 
 	{@you}	Hmm. Looks like something crashed into the ship. 
 	
@@ -52,6 +53,7 @@
 // @background
 @trigger OnEvidenceUnlock
 @when HasEvidence(LV2-Photo-Cargo)
+@once
 
 	{@reya}	Whoa. Is that an old car?
 			Do you think it’s worth anything?
@@ -65,6 +67,7 @@
 // @background
 @trigger OnEvidenceUnlock
 @when HasEvidence(LV2-Photo-Safe)
+@once
 
 	{@reya}	Ooh, a safe! Jules, you gotta bring that up!
 	{@you}	I can’t. It’s illegal to take anything from shipwrecks. I could lose my job!
