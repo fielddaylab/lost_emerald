@@ -144,6 +144,7 @@ namespace Shipwreck {
 			m_textBoxOutline.color = speaker.DialogTextColor;
 			m_speakerName.GetComponent<Graphic>().color = speaker.DialogBackgroundColor;
 			m_speakerNameBackground.color = speaker.DialogTextColor;
+			m_icon.sprite = speaker.TextingIcon;
 		}
 
 		protected override IEnumerator OnShowImage(Sprite image) {

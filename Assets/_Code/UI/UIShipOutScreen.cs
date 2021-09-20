@@ -133,7 +133,6 @@ namespace Shipwreck
 				UIMgr.Close<UIShipOutScreen>();
 				UIMgr.Open<UIDiveScreen>();
 				AudioSrcMgr.instance.QueueAudio("dive_music");
-				GameMgr.RunTrigger(GameTriggers.OnEnterDive);
 			}
 		}
 
