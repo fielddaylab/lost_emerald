@@ -40,7 +40,7 @@
 :: dive-gash
 @contact reya, radio
 // @background
-@trigger OnPhotoTaken
+@trigger OnEvidenceUnlock
 @when HasEvidence(LV2-Photo-Gash)
 
 	{@you}	Hmm. Looks like something crashed into the ship. 
@@ -50,7 +50,7 @@
 :: dive-cargo
 @contact reya, radio
 // @background
-@trigger OnPhotoTaken
+@trigger OnEvidenceUnlock
 @when HasEvidence(LV2-Photo-Cargo)
 
 	{@reya}	Whoa. Is that an old car?
@@ -63,7 +63,7 @@
 :: dive-safe
 @contact reya, radio
 // @background
-@trigger OnPhotoTaken
+@trigger OnEvidenceUnlock
 @when HasEvidence(LV2-Photo-Safe)
 
 	{@reya}	Ooh, a safe! Jules, you gotta bring that up!

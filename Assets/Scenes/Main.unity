@@ -1281,6 +1281,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_videoPlayer: {fileID: 438635485}
   m_videoCamera: {fileID: 256927017}
+  m_gameCamera: {fileID: 139503556}
 --- !u!1 &446526408
 GameObject:
   m_ObjectHideFlags: 0
