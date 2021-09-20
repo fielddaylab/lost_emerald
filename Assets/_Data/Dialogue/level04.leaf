@@ -43,6 +43,7 @@
 	$call UnlockLevel(2)
 	$call UnlockEvidence(2,"LV1-Root") //hack?
 	$call UnlockEvidence(2, "LV2-Transcript-Reya")
+	$call UnlockEvidence(2, "LV2-Card-Types")
 	$call EndConvoMusic();
 
 //-------------------------------------------
