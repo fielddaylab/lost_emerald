@@ -40,8 +40,8 @@
 :: dive-gash
 @contact reya, radio
 // @background
-@trigger HasEvidence(LV2-Photo-Gash)
-@once
+@trigger OnPhotoTaken
+@when HasEvidence(LV2-Photo-Gash)
 
 	{@you}	Hmm. Looks like something crashed into the ship. 
 	
@@ -50,8 +50,8 @@
 :: dive-cargo
 @contact reya, radio
 // @background
-@trigger HasEvidence(LV2-Photo-Cargo)
-@once
+@trigger OnPhotoTaken
+@when HasEvidence(LV2-Photo-Cargo)
 
 	{@reya}	Whoa. Is that an old car?
 			Do you think it’s worth anything?
@@ -63,8 +63,8 @@
 :: dive-safe
 @contact reya, radio
 // @background
-@trigger HasEvidence(LV2-Photo-Safe)
-@once
+@trigger OnPhotoTaken
+@when HasEvidence(LV2-Photo-Safe)
 
 	{@reya}	Ooh, a safe! Jules, you gotta bring that up!
 	{@you}	I can’t. It’s illegal to take anything from shipwrecks. I could lose my job!
