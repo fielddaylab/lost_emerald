@@ -127,8 +127,7 @@
 :: amy-distress
 @contact amy, text-message
 // @background
-@trigger OnChainSolved
-@when IsChainComplete(Name)
+@trigger OnDialogClosed
 @once
 
 	{@amy}	Hey, Jules! I just got an email about your dad’s treasure sale. 
