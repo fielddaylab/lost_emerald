@@ -75,7 +75,7 @@
 @when HasEvidence(LV1-Photo-Above), HasEvidence(LV1-Photo-Name)
 @once
 
-	$call TriggerConvoMusic(archivist_convo)
+	$call TriggerConvoMusic(amy_convo)
 	{@you}  Hey Amy. Got a sec?
 	{@amy}  Oh, hey Jules! That was your dad in that newspaper, right? Is he ok?
 	{@you}  He’s fine. That was a normal Tuesday for him.  
@@ -84,7 +84,7 @@
 			Done!
 	$call UnlockEvidence(1,LV1-Card-Types)
 	$call UnlockEvidence(1,LV1-Table-Wrecks)
-	$call EndConvoMusic();
+	$call EndConvoMusic()
 
 
 
@@ -105,7 +105,7 @@
 @when Seen(level01.dad-urgent-text)
 @once
 	
-	$call TriggerConvoMusic(archivist_convo)
+	$call TriggerConvoMusic(amy_convo)
 	{@amy} 	Hey! Any news?
 	{@you} 	Just that my dad is driving me crazy.
 	 		He won’t stop looking for my grandpa’s shipwreck.
@@ -115,7 +115,7 @@
 	{@amy} 	Awesome! I’ll see what I can dig up about her in the archives. 
 			I’ll send you what I find!
 	$call UnlockEvidence(1,LV1-Article-Sinking)
-	$call EndConvoMusic();
+	$call EndConvoMusic()
 
 ::lou-complete
 @contact lou, phone-call
@@ -128,7 +128,7 @@
 			Her name was the Loretta and she sank after running into a sand bar!
 	{@lou}  What!? That's amazing!
 	$call TriggerCutscene();
-	$call EndConvoMusic();
+	$call EndConvoMusic()
 
 
 ::amy-level-end
@@ -165,4 +165,4 @@
 	{@you} 	Yeah. Super great.
 	$call UnlockLevel(4)
 	$call UnlockEvidence(4,LV4-Letter-Treasure)
-	$call EndConvoMusic();
+	$call EndConvoMusic()

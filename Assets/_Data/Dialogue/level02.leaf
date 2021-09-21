@@ -80,7 +80,7 @@
 @trigger IsChainComplete(Type)
 @once
 
-	$call TriggerConvoMusic(archivist_convo)
+	$call TriggerConvoMusic(amy_convo)
 	{@amy}	Hey! Heard you went on a dive with your sister. How’d it go?
 	{@you}	Well, she called me boring and tried to get me in trouble, so…. same as usual.
 			Could you help me? I need a list of freighters carrying cars that sank in that area.
@@ -89,7 +89,7 @@
 			Cooper @ Auto Museum : 555-1598
 	{@you}	Great. Thanks, Amy!
 	$call UnlockContact(cooper)
-	$call EndConvoMusic();
+	$call EndConvoMusic()
 	
 
 :: cooper-meet
@@ -120,7 +120,7 @@
 			Thanks again for your help!
 	$call UnlockEvidence(2,LV2-Car-Images)
 	$call UnlockEvidence(2,LV2-Investigation-Report)
-	$call EndConvoMusic();
+	$call EndConvoMusic()
 		
 
 :: amy-distress
@@ -166,4 +166,4 @@
 	{@reya}	Ha! You are searching for the Emerald! I knew you’d catch the treasure bug.
 	{@you}	What? No way. I’m just trying to keep you and Dad from getting into trouble. Again.
 	{@reya}	Sure. Whatever floats your boat, sis.
-	$call EndConvoMusic();
+	$call EndConvoMusic()
