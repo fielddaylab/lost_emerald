@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c34cd5eacc74f0347a09429f2c2448b3, type: 3}
-  m_Name: LV2-Investigation-Report
+  m_Name: LV2-Table-Wrecks
   m_EditorClassIdentifier: 
   m_groupID:
-    m_Source: LV2-Investigation-Report
-    m_Hash: 352363701
-  m_position: {x: 0, y: 0}
+    m_Source: LV2-Table-Wrecks
+    m_Hash: 571920574
+  m_position: {x: 28, y: -239}
   m_isLocalized: 0
-  m_englishPrefab: {fileID: 0}
+  m_englishPrefab: {fileID: 6225318066743550848, guid: beb823988644fef43a6fd5d3ba6440d7,
+    type: 3}
   m_spanishPrefab: {fileID: 0}
   m_rootNodes: []

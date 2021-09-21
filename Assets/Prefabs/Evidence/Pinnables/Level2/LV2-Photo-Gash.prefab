@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 6686339756038793321, guid: 9fa15ba961f295547a21da5d41a4ece5,
         type: 3}
       propertyPath: m_Name
-      value: LV2-Photo-Gash Variant
+      value: LV2-Photo-Gash
       objectReference: {fileID: 0}
     - target: {fileID: 6869753205252457356, guid: 9fa15ba961f295547a21da5d41a4ece5,
         type: 3}
@@ -64,6 +64,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7500813828539752075, guid: 9fa15ba961f295547a21da5d41a4ece5,
         type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 123
+      objectReference: {fileID: 0}
+    - target: {fileID: 7500813828539752075, guid: 9fa15ba961f295547a21da5d41a4ece5,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -100,12 +105,12 @@ PrefabInstance:
     - target: {fileID: 7500813828539752075, guid: 9fa15ba961f295547a21da5d41a4ece5,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -125
+      value: 207
       objectReference: {fileID: 0}
     - target: {fileID: 7500813828539752075, guid: 9fa15ba961f295547a21da5d41a4ece5,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -37
+      value: 133
       objectReference: {fileID: 0}
     - target: {fileID: 7500813828539752075, guid: 9fa15ba961f295547a21da5d41a4ece5,
         type: 3}
