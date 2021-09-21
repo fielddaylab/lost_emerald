@@ -48,6 +48,7 @@ SpriteAtlas:
   m_PackedSprites:
   - {fileID: 21300000, guid: 82cbce30f03431f44bf2b7d0a42b9784, type: 3}
   - {fileID: 21300000, guid: 1ef17280142431044ba4e08b167d830a, type: 3}
+  - {fileID: 21300000, guid: 976d24b0d86b37a4ea099fd7472eece2, type: 3}
   - {fileID: 21300000, guid: 13ee57b005423384a864133f2aa056dc, type: 3}
   - {fileID: 21300000, guid: 3d03c611440aba64fbb670920dcb11c0, type: 3}
   - {fileID: 21300000, guid: 63394811bbb796048a4b3be38f86ec9a, type: 3}
@@ -58,6 +59,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 25a167d13e4ec455fb823ae9c3388e39, type: 3}
   - {fileID: 21300000, guid: bbda042251f08164aa5b16e04960b800, type: 3}
   - {fileID: 21300000, guid: 5acb7c42884df40b59c8ff374fe31bcb, type: 3}
+  - {fileID: 21300000, guid: 73e01e52390ee6d4ca224fc6a68ef033, type: 3}
   - {fileID: 21300000, guid: aff968628b4fec54da281f472dfe771f, type: 3}
   - {fileID: 21300000, guid: 5f65e64366354fa4182c286b229445c9, type: 3}
   - {fileID: 21300000, guid: d7e29f63d2fd74c079090fd85d7430af, type: 3}
@@ -109,6 +111,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 9f3b238e4fd123e4ab0d16dde8bce38a, type: 3}
   - {fileID: 21300000, guid: 7d1d53ae8d55e994598b2b84b04588df, type: 3}
   - {fileID: 21300000, guid: 3cb1d3de80ee9461498367b28b05b097, type: 3}
+  - {fileID: 21300000, guid: a682b80ffa8c09749aa926661a2b7070, type: 3}
   - {fileID: 21300000, guid: 374dc90f739bee04a877d6898de07475, type: 3}
   - {fileID: 21300000, guid: 188f674fd393cb944aa8e6cbaf28b4a9, type: 3}
   - {fileID: 21300000, guid: 9ad6fd8fd9790ea43a0b1b0778ec0f0c, type: 3}
@@ -116,6 +119,7 @@ SpriteAtlas:
   m_PackedSpriteNamesToIndex:
   - office-background
   - button-face
+  - car-kissel
   - node-main
   - PhoneDialogTalking
   - reya_icon
@@ -126,6 +130,7 @@ SpriteAtlas:
   - shipwreck
   - old-ripped-paper
   - ripped-page
+  - reya-safe
   - level1_loretta
   - lou-ultralight
   - photo-lv1-above
@@ -177,6 +182,7 @@ SpriteAtlas:
   - photo-lv2-safe
   - RoundedRect100
   - photo-lv1-ship-name
+  - car-nash
   - back-arrow
   - eyewitness-account
   - level3_paradise
