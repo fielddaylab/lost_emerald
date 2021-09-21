@@ -15,6 +15,8 @@ namespace Shipwreck {
 		[SerializeField]
 		private Button m_level2Button = null;
 		[SerializeField]
+		private Button m_level2_30Button = null;
+		[SerializeField]
 		private Button m_level3Button = null;
 		[SerializeField]
 		private Button m_level4Button = null;
@@ -23,6 +25,7 @@ namespace Shipwreck {
 			m_newGameButton.onClick.AddListener(HandleNewGame);
 			m_level1Button.onClick.AddListener(HandleUnlock1);
 			m_level2Button.onClick.AddListener(HandleUnlock2);
+			m_level2_30Button.onClick.AddListener(HandleUnlock2_30);
 			m_level3Button.onClick.AddListener(HandleUnlock3);
 			m_level4Button.onClick.AddListener(HandleUnlock4);
 		}
@@ -61,6 +64,12 @@ namespace Shipwreck {
 		private void HandleUnlock2() {
 			AudioSrcMgr.instance.PlayOneShot("click_unlock");
 			UnlockLevel2();
+			HandleNewGame();
+		}
+		private void HandleUnlock2_30()
+		{
+			AudioSrcMgr.instance.PlayOneShot("click_unlock");
+			UnlockLevel2_30();
 			HandleNewGame();
 		}
 		private void HandleUnlock3() {
@@ -117,6 +126,21 @@ namespace Shipwreck {
 			GameMgr.RecordNodeVisited("level01.lou-complete", "lou");
 			GameMgr.RecordNodeVisited("level01.amy-level-end", "amy");
 			GameMgr.RecordNodeVisited("level01.dad-level-end", "dad");
+		}
+
+		private void UnlockLevel2_30()
+		{
+			UnlockLevel2();
+
+			GameMgr.UnlockEvidence(2, "LV2-Photo-Above");
+			GameMgr.UnlockEvidence(2, "LV2-Photo-Cargo");
+			GameMgr.UnlockEvidence(2, "LV2-Photo-Gash");
+			GameMgr.UnlockEvidence(2, "LV2-Photo-Safe");
+			GameMgr.RecordNodeVisited("level02.reya-boat", "reya");
+			GameMgr.RecordNodeVisited("level02.reya-dive", "reya");
+			GameMgr.RecordNodeVisited("level02.dive-gash", "reya");
+			GameMgr.RecordNodeVisited("level02.dive-cargo", "reya");
+			GameMgr.RecordNodeVisited("level02.dive-safe", "reya");
 		}
 
 		private void UnlockLevel3() {

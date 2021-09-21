@@ -77,7 +77,8 @@
 :: amy-match
 @contact amy, phone-call
 // @background
-@trigger IsChainComplete(Type)
+@trigger OnChainSolved
+@when IsChainComplete(Type)
 @once
 
 	$call TriggerConvoMusic(amy_convo)
@@ -95,10 +96,10 @@
 :: cooper-meet
 @contact cooper, phone-call
 // @background
-@trigger OnCallCurator
+@trigger OnContactAdded
 @once
 
-	$call TriggerConvoMusic(cooper_convo)
+	$call TriggerConvoMusic(amy_convo) // cooper does not have their own music
 	{@cooper}	Hi there! Are you Amy’s archaeologist friend?
 	{@you}	Yep. Jules Griffin.
 	{@cooper}	Hmm. I’ve worked with the Maritime Society before, but I’ve never heard of you.
@@ -115,7 +116,7 @@
 	{@cooper}	Hm? Yes, I was a kid when it happened. It was all over the news. 
 			I’ll send you the report. 
 			[SENDS INVESTIGATION REPORT]
-			Sounds like the captain went out in bad weather. HIs family must feel terrible about it.
+			Sounds like the captain went out in bad weather. His family must feel terrible about it.
 	{@you}	Um…. yeah, maybe.
 			Thanks again for your help!
 	$call UnlockEvidence(2,LV2-Car-Images)
@@ -126,7 +127,8 @@
 :: amy-distress
 @contact amy, text-message
 // @background
-@trigger IsChainComplete(Name)
+@trigger OnChainSolved
+@when IsChainComplete(Name)
 @once
 
 	{@amy}	Hey, Jules! I just got an email about your dad’s treasure sale. 
@@ -146,7 +148,8 @@
 :: reya-safe
 @contact reya, phone-call
 // @background
-@trigger IsChainComplete(Cause)
+@trigger OnChainSolved
+@when IsChainComplete(Cause)
 @once
 
 	$call TriggerConvoMusic(reya_convo)
