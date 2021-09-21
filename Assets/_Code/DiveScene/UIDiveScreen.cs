@@ -236,7 +236,6 @@ namespace Shipwreck {
 		}
 		private void HandleConfirmPhoto(StringHash32 evidence) {
 			m_currentState.OnConfirmPhoto(evidence);
-			AudioSrcMgr.instance.PlayOneShot("take_photo");
 		}
 
 		private void HandleZoomSlider(float value) {

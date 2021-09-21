@@ -264,7 +264,7 @@ namespace Shipwreck
 						UIShipOutScreen.ActionCode[] codes = new UIShipOutScreen.ActionCode[]
 						{
 							UIShipOutScreen.ActionCode.TutorialBuoy,
-							UIShipOutScreen.ActionCode.UnlockDive,
+							UIShipOutScreen.ActionCode.UnlockDive
 						};
 						UIShipOutScreen.instance.ShowMessage(
 							"There it is! I’ll drop a buoy to mark the location.",
