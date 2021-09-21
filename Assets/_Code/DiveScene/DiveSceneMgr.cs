@@ -58,15 +58,20 @@ namespace Shipwreck {
 			DivePointOfInterest poi = m_currentNode.GetPointOfInterest();
 			if (poi == null) {
 				GameMgr.Events.Dispatch(GameEvents.Dive.ShowMessage, m_nothingOfInterestKey);
+				AudioSrcMgr.instance.PlayOneShot("photo_fail");
 			} else if (GameMgr.State.CurrentLevel.IsEvidenceUnlocked(poi.EvidenceUnlock)) {
 				GameMgr.Events.Dispatch(GameEvents.Dive.ShowMessage, m_alreadyTakenKey);
+				AudioSrcMgr.instance.PlayOneShot("photo_fail");
 			} else if (m_zoomLevel < poi.ZoomMin) {
 				GameMgr.Events.Dispatch(GameEvents.Dive.ShowMessage, m_pleaseZoomInKey);
+				AudioSrcMgr.instance.PlayOneShot("photo_fail");
 			} else if (m_zoomLevel > poi.ZoomMax) {
 				GameMgr.Events.Dispatch(GameEvents.Dive.ShowMessage, m_pleaseZoomOutKey);
+				AudioSrcMgr.instance.PlayOneShot("photo_fail");
 			} else {
 				GameMgr.Events.Dispatch(GameEvents.Dive.ConfirmPhoto, poi.EvidenceUnlock);
 				GameMgr.Events.Dispatch(GameEvents.Dive.ShowMessage, poi.UnlockMessage);
+				AudioSrcMgr.instance.PlayOneShot("take_photo");
 			}
 		}
 
@@ -130,6 +135,11 @@ namespace Shipwreck {
 			m_currentNode.SetActive(false);
 			m_transitionRoutine.Replace(this, WaitForTransitionRoutine());
 			GameMgr.Events.Dispatch(GameEvents.Dive.LocationChanging, m_currentNode == m_startNode);
+			if (m_currentNode != m_startNode)
+			{
+				AudioSrcMgr.instance.PlayOneShot("click_node");
+			}
+			AudioSrcMgr.instance.PlayOneShot("swim_to_node");
 		}
 
 		private IEnumerator WaitForTransitionRoutine() {
