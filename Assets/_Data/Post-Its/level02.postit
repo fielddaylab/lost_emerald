@@ -11,11 +11,16 @@
 @root Location
 @correct location-coordinates
 
-:: location-incorrect
+:: location-incorrect-1
 @root Name, Cause, Cargo, Artifact, Type
 @incorrect location-coordinates
 @anywhere
 	Should use Location instead
+
+:: location-incorrect-2
+@root Location
+@incorrect
+	This isn't a location.
 
 
 // -----------------------------------------------------------
