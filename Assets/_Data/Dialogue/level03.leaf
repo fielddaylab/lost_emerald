@@ -86,7 +86,7 @@
 	{@tami}	Totally! I gave him my old sonar. It’s a little glitchy, but he didn’t seem to mind.  
 			I heard you’ve got a lead on the PS Paradise!
 			Here’s some stuff I dug up:
-			PS PARADISE ADVERTISEMENT, PHOTO OF ANCHOR
+			[PS PARADISE ADVERTISEMENT, PHOTO OF ANCHOR]
 			People called it a “Palace Steamer” because it looked so fancy. Sorta like an early, smaller version of the Titanic. 
 			But tickets were cheap, so normal people could afford it. 
 	{@you}	Wow. You know all about this ship!
@@ -127,7 +127,7 @@
 @contact tami, radio
 // @background 
 @trigger OnEvidenceUnlock
-@when HasEvidence(LV2-Photo-Gold)
+@when HasEvidence(LV3-Photo-Gold)
 @once
 	
 	{@tami}	Whoa. Are those…. gold bars???
@@ -141,7 +141,7 @@
 @contact tami, radio
 // @background 
 @trigger OnEvidenceUnlock
-@when HasEvidence(LV2-Photo-Cargo)
+@when HasEvidence(LV3-Photo-Cargo)
 @once
 
 	{@tami}	Hmm. Those tins look like they’re full of paint.
