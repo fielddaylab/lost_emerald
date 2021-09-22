@@ -97,7 +97,8 @@
 :: cooper-meet
 @contact cooper, phone-call
 // @background
-@trigger OnContactAdded
+@trigger OnDialogClosed
+@when HasContact(cooper)
 @once
 
 	$call TriggerConvoMusic(amy_convo) // cooper does not have their own music
@@ -108,11 +109,12 @@
 			I need to figure out if a shipwreck was carrying Nash or Kissel cars.
 			Can you send over a few photos?
 	{@cooper}	Of course! I’m here now. Just give me a moment….
-			[SENDS IMAGES]
+			{img lv2-car-images}
 	{@you}	Awesome, thanks!
 	{@cooper}	Not a problem.
 			It’s funny. You’ve got the same last name as the captain that caused that awful shipwreck! 
 	{@you}	Oh. Haha, yeah, funny.
+			{/img}
 			Wait…. did you say he caused the shipwreck?
 	{@cooper}	Hm? Yes, I was a kid when it happened. It was all over the news. 
 			I’ll send you the report. 
@@ -128,8 +130,8 @@
 :: amy-distress
 @contact amy, text-message
 // @background
-@trigger OnChainSolved
-@when IsChainComplete(Name)
+@trigger OnDialogClosed
+@when HasEvidence(LV2-Car-Images)
 @once
 
 	{@amy}	Hey, Jules! I just got an email about your dad’s treasure sale. 
@@ -142,8 +144,8 @@
 			Looks like we’ve also got the cargo list here. Maybe it’ll be useful!
 			[SENDS DISTRESS CALL TRANSCRIPT, CARGO LIST]
 	{@you}	Thanks, Amy!
-	$call UnlockEvidence(2,LV2-Distress-Transcript)
 	$call UnlockEvidence(2,LV2-Cargo-List)
+	$call UnlockEvidence(2,LV2-Distress-Transcript)
 
 
 :: reya-safe
@@ -157,13 +159,14 @@
 	{@reya}	Hey, Jules! Having fun with your paperwork?
 	{@you}	Actually, yes. I got an ID on the ship. She’s the SS Madison!
 	{@reya}	Good for you, sis. I solved a mystery too!
-			[SAFE PHOTO/SELFIE]
+			{img reya-safe}
 	{@you}	Are you serious? Reya, how did you get that?
 	{@reya}	The guy who hired me got somebody else to bring up the safe. 
 			Don’t worry, he had a permit! Probably. 
 			It was just some nickels and an old clock. Oh well.
 	{@you}	I can’t believe this.
 	{@reya}	You mean how awesome I am? Me neither!! Now I’ve got extra cash to help search for Grandpa’s ship.
+			{/img}
 	{@you}	Um, speaking of Grandpa’s ship…did you know that the wreck was his fault? 
 	{@reya}	Huh? Where’d you hear that?
 	{@you}	I was reading the investigation report. 
