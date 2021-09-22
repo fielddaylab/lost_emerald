@@ -89,6 +89,7 @@
 			Here’s the number for my friend at the auto museum. Maybe he can help you!
 			Cooper @ Auto Museum : 555-1598
 	{@you}	Great. Thanks, Amy!
+	$call UnlockEvidence(2, LV2-Table-Wrecks)
 	$call UnlockContact(cooper)
 	$call EndConvoMusic()
 	
