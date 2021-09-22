@@ -109,11 +109,12 @@
 			I need to figure out if a shipwreck was carrying Nash or Kissel cars.
 			Can you send over a few photos?
 	{@cooper}	Of course! I’m here now. Just give me a moment….
-			[SENDS IMAGES]
+			{img lv2-car-images}
 	{@you}	Awesome, thanks!
 	{@cooper}	Not a problem.
 			It’s funny. You’ve got the same last name as the captain that caused that awful shipwreck! 
 	{@you}	Oh. Haha, yeah, funny.
+			{/img}
 			Wait…. did you say he caused the shipwreck?
 	{@cooper}	Hm? Yes, I was a kid when it happened. It was all over the news. 
 			I’ll send you the report. 
@@ -158,13 +159,14 @@
 	{@reya}	Hey, Jules! Having fun with your paperwork?
 	{@you}	Actually, yes. I got an ID on the ship. She’s the SS Madison!
 	{@reya}	Good for you, sis. I solved a mystery too!
-			[SAFE PHOTO/SELFIE]
+			{img reya-safe}
 	{@you}	Are you serious? Reya, how did you get that?
 	{@reya}	The guy who hired me got somebody else to bring up the safe. 
 			Don’t worry, he had a permit! Probably. 
 			It was just some nickels and an old clock. Oh well.
 	{@you}	I can’t believe this.
 	{@reya}	You mean how awesome I am? Me neither!! Now I’ve got extra cash to help search for Grandpa’s ship.
+			{/img}
 	{@you}	Um, speaking of Grandpa’s ship…did you know that the wreck was his fault? 
 	{@reya}	Huh? Where’d you hear that?
 	{@you}	I was reading the investigation report. 
