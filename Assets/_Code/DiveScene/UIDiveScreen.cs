@@ -256,6 +256,7 @@ namespace Shipwreck {
 		}
 		private void HandleCloseMessage() {
 			m_currentState.OnCloseMessage();
+			AudioSrcMgr.instance.PlayOneShot("click_dialog_continue");
 		}
 
 		private void HandleLocationChanging(bool isAscendNode) {			

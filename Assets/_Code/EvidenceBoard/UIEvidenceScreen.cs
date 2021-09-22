@@ -263,6 +263,7 @@ namespace Shipwreck {
 			GameMgr.State.CurrentLevel.GetChain(m_selectedRoot).Lift(m_selectedPin);
 			m_chains[m_selectedRoot].SetChainDepth(m_selectedPin+1);
 			m_chains[m_selectedRoot].MoveToFront();
+			AudioSrcMgr.instance.PlayOneShot("pick_up_pin");
 		}
 
 		private void Drop() {

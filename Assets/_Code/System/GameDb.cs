@@ -233,7 +233,7 @@ namespace Shipwreck {
 			return I.m_shipOutMap[index];
 		}
 
-		public static AudioClip GetAudioClip(string id)
+		public static AudioData GetAudioData(string id)
 		{
 			// initialize the map if it does not exist
 			if (I.m_audioMap == null)
@@ -246,7 +246,7 @@ namespace Shipwreck {
 			}
 			if (I.m_audioMap.ContainsKey(id))
 			{
-				return I.m_audioMap[id].Clip;
+				return I.m_audioMap[id];
 			}
 			else
 			{
