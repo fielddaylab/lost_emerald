@@ -42,6 +42,13 @@ namespace Shipwreck {
 			ClearContent();
 		}
 
+		protected override void OnHideStart() {
+			base.OnHideStart();
+			if (!UIMgr.IsOpen<UIPhoneNotif>()) {
+				UIMgr.Close<UIModalOverlay>();
+			}
+		}
+
 		protected override void OnHideCompleted() {
 			base.OnHideCompleted();
 			ClearContent();
