@@ -92,5 +92,34 @@
 @incorrect
 	This doesn't seem to make sense.
 
+// -----------------------------------------------------------
+//  Cargo
+// -----------------------------------------------------------
 
+:: cargo-correct
+@root Cargo
+@correct photo-cargo, cargo-nash, image-nash
 
+// -----------------------------------------------------------
+//  Cause of Wreck
+// -----------------------------------------------------------
+
+:: cause-correct
+@root Cause
+@correct photo-gash, cause-rammed
+
+// -----------------------------------------------------------
+//	Name
+// -----------------------------------------------------------
+
+:: name-correct
+@root Name
+@correct name-madison
+
+// -----------------------------------------------------------
+//  Artifact
+// -----------------------------------------------------------
+
+:: artifact-correct
+@root Artifact
+@correct photo-safe, artifact-safe
