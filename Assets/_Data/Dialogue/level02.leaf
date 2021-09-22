@@ -76,7 +76,7 @@
 	
 :: amy-match
 @contact amy, phone-call
-// @background
+@background amy-office
 @trigger OnChainSolved
 @when IsChainComplete(Type)
 @once
@@ -120,7 +120,7 @@
 	{@you}	Um…. yeah, maybe.
 			Thanks again for your help!
 	$call UnlockEvidence(2,LV2-Car-Images)
-	$call UnlockEvidence(2,LV2-Investigation-Report)
+	$call UnlockEvidence(4,LV4-Investigation-Report)
 	$call EndConvoMusic()
 		
 
