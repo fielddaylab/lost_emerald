@@ -131,6 +131,16 @@ MonoBehaviour:
     m_hash: 1924623581
   - m_key: LevelAny/Locked
     m_hash: -1811495716
+  - m_key: Dive/Level2/Above-Name
+    m_hash: 1935703230
+  - m_key: Dive/Level2/Cargo-Name
+    m_hash: -991715531
+  - m_key: Dive/Level2/Gash-Name
+    m_hash: -15401366
+  - m_key: Dive/Level2/Safe-Name
+    m_hash: 1951595972
+  - m_key: Character/Cooper/Name
+    m_hash: -233789617
   m_values:
   - Continue
   - Dad
@@ -190,3 +200,8 @@ MonoBehaviour:
   - The Emerald
   - The Emerald
   - Locked
+  - Top-Down Photo
+  - Ship Cargo
+  - Ship Damage
+  - Ship Treasure
+  - Cooper
