@@ -66,7 +66,31 @@
 	$call UnlockEvidence(1,LV1-Transcript-Lou)
 	$call EndConvoMusic()
 
+// specific dive prompts
+
+:: dive-photo-above
+@contact you, radio
+@trigger OnEvidenceUnlock
+@when HasEvidence(LV1-Photo-Above)
+@once
+	{@you} That's a great birds-eye... er fish-eye view of the ship!
+
+:: dive-photo-name
+@contact you, radio
+@trigger OnEvidenceUnlock
+@when HasEvidence(LV1-Photo-Name)
+@once
+	{@you} It's missing some letters, but this certainly looks like the ship's name!
+
+:: dive-photo-artifact
+@contact you, radio
+@trigger OnEvidenceUnlock
+@when HasEvidence(LV1-Photo-Artifact)
+@once
+	{@you} Woah! That's a cool knife! I wonder whose it was?
+
 // generic dive prompts
+
 :: dive-already-taken
 @contact you, radio
 @trigger OnPhotoAlreadyTaken
