@@ -16,18 +16,18 @@ namespace Shipwreck
 
 		private struct AudioLoopPair
 		{
-			public AudioLoopPair(AudioClip clip, bool loop)
+			public AudioLoopPair(AudioData data, bool loop)
 			{
-				Clip = clip;
+				Data = data;
 				Loop = loop;
 			}
 
-			public AudioClip Clip { get; set; }
+			public AudioData Data { get; set; }
 			public bool Loop { get; set; }
 		}
 
 		private AudioLoopPair m_stashedAudio;
-
+		private AudioData m_currData;
 		private Queue<AudioLoopPair> m_audioQueue;
 
 		private void Awake()
@@ -46,6 +46,11 @@ namespace Shipwreck
 			m_audioQueue = new Queue<AudioLoopPair>();
 		}
 
+		public void Start()
+		{
+			CutscenePlayer.OnVideoComplete += ResumeAudio;
+		}
+
 		public void Update()
 		{
 			if (!m_audioSrc.isPlaying && m_audioQueue.Count > 0)
@@ -56,8 +61,8 @@ namespace Shipwreck
 
 		public void QueueAudio(string clipID, bool loop = false)
 		{
-			AudioClip clip = GameDb.GetAudioClip(clipID);
-			m_audioQueue.Enqueue(new AudioLoopPair(clip, loop));
+			AudioData data = GameDb.GetAudioData(clipID);
+			m_audioQueue.Enqueue(new AudioLoopPair(data, loop));
 		}
 
 		public void PlayNextInQueue()
@@ -65,7 +70,7 @@ namespace Shipwreck
 			if (m_audioQueue.Count > 0)
 			{
 				AudioLoopPair pair = m_audioQueue.Dequeue();
-				m_audioSrc.clip = pair.Clip;
+				InitializeAudio(m_audioSrc, pair.Data);
 				m_audioSrc.loop = pair.Loop;
 				m_audioSrc.Play();
 			}
@@ -82,7 +87,7 @@ namespace Shipwreck
 		/// <param name="clipID"></param>
 		public void PlayOneShot(string clipID)
 		{
-			AudioClip clip = GameDb.GetAudioClip(clipID);
+			AudioClip clip = GameDb.GetAudioData(clipID).Clip;
 			m_audioSrc.PlayOneShot(clip);
 		}
 
@@ -92,7 +97,7 @@ namespace Shipwreck
 		/// <param name="clipID"></param>
 		public void PlayAudio(string clipID, bool loop = false)
 		{
-			m_audioSrc.clip = GameDb.GetAudioClip(clipID);
+			InitializeAudio(m_audioSrc, GameDb.GetAudioData(clipID));
 			m_audioSrc.loop = loop;
 			m_audioSrc.Play();
 		}
@@ -106,21 +111,37 @@ namespace Shipwreck
 		{
 			m_audioSrc.Stop();
 		}
+		public void ResumeAudio()
+		{
+			m_audioSrc.Play();
+		}
 
 		// Saves the current audio for later
 		public void StashAudio()
 		{
-			m_stashedAudio = new AudioLoopPair(m_audioSrc.clip, m_audioSrc.loop);
+			m_stashedAudio = new AudioLoopPair(m_currData, m_audioSrc.loop);
 		}
 
 		// Saves the current audio for later
 		public void ResumeStashedAudio()
 		{
-			if (m_stashedAudio.Clip == null) { return; }
+			if (m_stashedAudio.Data == null) { return; }
 
-			m_audioSrc.clip = m_stashedAudio.Clip;
+			InitializeAudio(m_audioSrc, m_stashedAudio.Data);
 			m_audioSrc.loop = m_stashedAudio.Loop;
 			m_audioSrc.Play();
+		}
+
+		public void InitializeAudio(AudioSource source, AudioData data)
+		{ 
+			source.clip = data.Clip;
+			source.volume = data.Volume;
+			source.panStereo = data.Pan;
+
+			if (source == m_audioSrc)
+			{
+				m_currData = data;
+			}
 		}
 	}
 }

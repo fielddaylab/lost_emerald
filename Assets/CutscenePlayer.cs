@@ -23,6 +23,7 @@ namespace Shipwreck {
 #endif
 
 		public static void Play() {
+			AudioSrcMgr.instance.StopAudio();
 			I.m_videoPlayer.url = string.Format(VIDEO_PATH, Application.streamingAssetsPath, GameMgr.State.CurrentLevel.Index + 1);
 			I.m_videoPlayer.Play();
 			I.m_videoCamera.gameObject.SetActive(true);
