@@ -34,7 +34,6 @@ namespace Shipwreck {
 			}
 
 			public override void OnStart() {
-				GameMgr.RunTrigger(GameTriggers.OnEnterDive);
 				Screen.SetNavigationActive(true);
 				GameMgr.Events.Dispatch(GameEvents.Dive.NavigationActivated);
 			}

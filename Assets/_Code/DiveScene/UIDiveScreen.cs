@@ -126,6 +126,7 @@ namespace Shipwreck {
 			base.OnShowCompleted();
 			m_isAscended = true;
 			m_stateLink = new StateLinkage(this);
+			GameMgr.RunTrigger(GameTriggers.OnEnterDive);
 			SetState(new DiveMoving(m_stateLink));
 
 			SetNavigationActive(false);

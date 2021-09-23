@@ -35,6 +35,12 @@
 	{@you}	Wow! This is actually an amazing find.
     {@reya}	Yeah, yeah. See any treasure yet?
 	
+
+:: dive-start
+@contact you, radio
+@trigger OnEnterDive
+@once
+	{@you} That's the ship! I should take a photo before I dive deeper.
 	
 // If/when you photograph the gash in the side of the ship
 :: dive-gash

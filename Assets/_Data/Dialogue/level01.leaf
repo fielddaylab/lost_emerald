@@ -68,6 +68,12 @@
 
 // specific dive prompts
 
+:: dive-start
+@contact you, radio
+@trigger OnEnterDive
+@once
+	{@you} That's the ship! I should take a photo before I dive deeper.
+
 :: dive-photo-above
 @contact you, radio
 @trigger OnEvidenceUnlock
