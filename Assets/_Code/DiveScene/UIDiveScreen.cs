@@ -1,11 +1,9 @@
 ﻿using BeauRoutine;
 using BeauUtil;
-using PotatoLocalization;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Shipwreck {
@@ -25,9 +23,8 @@ namespace Shipwreck {
 			void SetCameraZoom(float value);
 			void FlashCamera(Action callback);
 			void WaitForCameraTransitionEnd(Action callback);
+			void WaitForMessageClosed(Action callback);
 			void AssignPreviousState(DiveScreenState state);
-			void ShowMessageBox(LocalizationKey text, LocalizationKey button);
-			void HideMessageBox();
 			void ShowJournal();
 			void HideJournal();
 		}
@@ -68,12 +65,10 @@ namespace Shipwreck {
 			public void WaitForCameraTransitionEnd(Action callback) {
 				m_owner.WaitForCameraTransitionEnd(callback);
 			}
-			public void ShowMessageBox(LocalizationKey text, LocalizationKey button) {
-				m_owner.ShowMessageBox(text, button);
+			public void WaitForMessageClosed(Action callback) {
+				m_owner.WaitForMessageClosed(callback);
 			}
-			public void HideMessageBox() {
-				m_owner.HideMessageBox();
-			}
+
 			public void ShowJournal() {
 				m_owner.ShowJournal();
 			}
@@ -103,19 +98,6 @@ namespace Shipwreck {
 		[SerializeField]
 		private GameObject m_cameraGroup = null;
 
-		[SerializeField, Header("Message Box")]
-		private RectTransform m_messageGroup = null; 
-		[SerializeField]
-		private LocalizedTextUGUI m_messageText = null;
-		[SerializeField]
-		private Button m_messageButton = null;
-		[SerializeField]
-		private LocalizedTextUGUI m_messageButtonText = null;
-		[SerializeField]
-		private float m_messageHiddenY = -88f;
-		[SerializeField]
-		private float m_messageShownY = 112f;
-
 		[SerializeField, Header("Journal")]
 		private RectTransform m_journalGroup = null;
 		[SerializeField]
@@ -130,17 +112,13 @@ namespace Shipwreck {
 		[SerializeField]
 		private Button m_journalCloseButton = null;
 
-		private Routine m_journalShowHideRoutine;
-
-		
-
 
 		private StateLinkage m_stateLink;
 		private DiveScreenState m_currentState;
 		private DiveScreenState m_previousState;
 		private bool m_isAscended = true;
 		private Routine m_flashRoutine;
-		private Routine m_messageRoutine;
+		private Routine m_journalShowHideRoutine;
 
 		#region UIBase
 
@@ -159,16 +137,13 @@ namespace Shipwreck {
 			m_buttonCameraDeactivate.onClick.AddListener(HandleCameraDeactivateButton);
 			m_buttonTakePhoto.onClick.AddListener(HandleAttemptPhotoButton);
 			m_journalCloseButton.onClick.AddListener(HandleJournalCloseButton);
-			m_messageButton.onClick.AddListener(HandleCloseMessage);
 			m_sliderZoom.onValueChanged.AddListener(HandleZoomSlider);
 
-
 			GameMgr.Events.Register<StringHash32>(GameEvents.Dive.ConfirmPhoto, HandleConfirmPhoto);
-			GameMgr.Events.Register<LocalizationKey>(GameEvents.Dive.ShowMessage, HandleShowMessage);
 			GameMgr.Events.Register<bool>(GameEvents.Dive.LocationChanging, HandleLocationChanging);
 			GameMgr.Events.Register<List<DivePointOfInterest>>(GameEvents.Dive.SendPhotoList, HandlePhotoListSent);
+			GameMgr.Events.Register(GameEvents.Dive.ShowMessage, HandleShowMessage);
 
-			//Routine.Delay(() => { GameMgr.Events.Dispatch(GameEvents.Dive.NavigationDeactivated); }, 0.1f);
 		}
 		protected override void OnHideStart() {
 			base.OnHideStart();
@@ -178,14 +153,13 @@ namespace Shipwreck {
 			m_buttonCameraActivate.onClick.RemoveListener(HandleCameraActivateButton);
 			m_buttonCameraDeactivate.onClick.RemoveListener(HandleCameraDeactivateButton);
 			m_buttonTakePhoto.onClick.RemoveListener(HandleAttemptPhotoButton);
-			m_messageButton.onClick.RemoveListener(HandleCloseMessage);
 			m_sliderZoom.onValueChanged.RemoveListener(HandleZoomSlider);
 			m_journalCloseButton.onClick.RemoveListener(HandleJournalCloseButton);
 
 			GameMgr.Events.Deregister<StringHash32>(GameEvents.Dive.ConfirmPhoto, HandleConfirmPhoto);
-			GameMgr.Events.Deregister<LocalizationKey>(GameEvents.Dive.ShowMessage, HandleShowMessage);
 			GameMgr.Events.Deregister<bool>(GameEvents.Dive.LocationChanging, HandleLocationChanging);
 			GameMgr.Events.Deregister<List<DivePointOfInterest>>(GameEvents.Dive.SendPhotoList, HandlePhotoListSent);
+			GameMgr.Events.Deregister(GameEvents.Dive.ShowMessage, HandleShowMessage);
 		}
 
 
@@ -251,11 +225,8 @@ namespace Shipwreck {
 			}
 		}
 
-		private void HandleShowMessage(LocalizationKey text) {
-			m_currentState.OnShowMessage(text);
-		}
-		private void HandleCloseMessage() {
-			m_currentState.OnCloseMessage();
+		private void HandleShowMessage() {
+			m_currentState.OnShowMessages();
 		}
 
 		private void HandleLocationChanging(bool isAscendNode) {			
@@ -303,15 +274,6 @@ namespace Shipwreck {
 				m_buttonJournal.gameObject.SetActive(false);
 			}
 		}
-		private void ShowMessageBox(LocalizationKey message, LocalizationKey buttonText) {
-			m_messageText.Key = message;
-			m_messageButtonText.Key = buttonText;
-			m_messageGroup.anchoredPosition = new Vector2(m_messageGroup.anchoredPosition.x, m_messageHiddenY);
-			m_messageRoutine.Replace(this, m_messageGroup.AnchorPosTo(m_messageShownY, 0.25f, Axis.Y).Ease(Curve.QuadOut));
-		}
-		private void HideMessageBox() {
-			m_messageRoutine.Replace(this, m_messageGroup.AnchorPosTo(m_messageHiddenY, 0.25f, Axis.Y).Ease(Curve.QuadOut));
-		}
 
 		private void ShowJournal() {
 			GameMgr.Events.Dispatch(GameEvents.Dive.RequestPhotoList);
@@ -331,6 +293,10 @@ namespace Shipwreck {
 			Routine.Start(this, WaitForCameraTransitionEndRoutine()).OnComplete(callback).OnStop(callback);
 		}
 
+		private void WaitForMessageClosed(Action callback) {
+			Routine.Start(this, WaitForMessageClosedRoutine()).OnComplete(callback).OnStop(callback);
+		}
+
 		private IEnumerator FlashCameraRoutine() {
 			m_flashGroup.alpha = 1f;
 			yield return m_flashGroup.FadeTo(0f, 1.5f);
@@ -346,6 +312,18 @@ namespace Shipwreck {
 				yield return null;
 			}
 			GameMgr.Events.Deregister(GameEvents.Dive.CameraTransitionComplete, handleTransitionComplete);
+		}
+
+		private IEnumerator WaitForMessageClosedRoutine() {
+			bool isMessageClosed = false;
+			Action handleMessageClosed = () => {
+				isMessageClosed = true;
+			};
+			GameMgr.Events.Register(GameEvents.DialogClosed, handleMessageClosed);
+			while (!isMessageClosed) {
+				yield return null;
+			}
+			GameMgr.Events.Deregister(GameEvents.DialogClosed, handleMessageClosed);
 		}
 
 

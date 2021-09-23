@@ -88,8 +88,12 @@ namespace Shipwreck
 		}
 
 		private void HandlePhoneNotification(StringHash32 contact) {
-			UIMgr.Open<UIPhoneNotif>();
-			UIMgr.Open<UIModalOverlay>();
+			// DIVE SCENE WILL WAIT UNTIL MESSAGE STATE
+			// to run its messages
+			if (!UIMgr.IsOpen<UIDiveScreen>()) {
+				UIMgr.Open<UIPhoneNotif>();
+				UIMgr.Open<UIModalOverlay>();
+			}
 		}
 		private void HandleChainCompleted() {
 			// check to see if all chains are solved

@@ -21,10 +21,9 @@ namespace Shipwreck {
 			public virtual void OnSurface() { }
 			public virtual void OnCameraActivate() { }
 			public virtual void OnCameraDeactivate() { }
-			public virtual void OnShowMessage(LocalizationKey key) { }
+			public virtual void OnShowMessages() { }
 			public virtual void OnAttemptPhoto() { }
 			public virtual void OnConfirmPhoto(StringHash32 evidence) { }
-			public virtual void OnCloseMessage() { }
 			public virtual void OnLocationChange(bool isAscendNode) { }
 			public virtual void OnOpenJournal() { }
 			public virtual void OnCloseJournal() { }
@@ -108,8 +107,8 @@ namespace Shipwreck {
 				Screen.SetCameraZoom(0f);
 				Screen.SetState(new DiveNavigation(Screen));
 			}
-			public override void OnShowMessage(LocalizationKey key) {
-				Screen.SetState(new DiveMessage(Screen,key,new LocalizationKey("UI/General/Continue"),false));
+			public override void OnShowMessages() {
+				Screen.SetState(new DiveMessage(Screen,false));
 			}
 			public override void OnOpenJournal() {
 				Screen.SetState(new DiveJournal(Screen));
@@ -117,32 +116,28 @@ namespace Shipwreck {
 		}
 		private class DiveMessage : DiveScreenState {
 
-			private LocalizationKey m_text;
-			private LocalizationKey m_button;
 			private bool m_showJournal;
 
-			public DiveMessage(IDiveScreen screen, LocalizationKey textKey, LocalizationKey buttonKey, bool showJournal) : base(screen) {
-				m_text = textKey;
-				m_button = buttonKey;
+			public DiveMessage(IDiveScreen screen, bool showJournal) : base(screen) {
 				m_showJournal = showJournal;
 			}
 			public override void OnStart() {
-				Screen.ShowMessageBox(m_text,m_button);
+				if (GameMgr.TryRunLastNotification(out var _)) {
+					Screen.WaitForMessageClosed(HandleMessageClosed);
+				} else {
+					HandleMessageClosed();
+				}
 			}
-			public override void OnCloseMessage() {
-				Screen.HideMessageBox();
+			private void HandleMessageClosed() {
 				if (m_showJournal) {
 					Screen.AssignPreviousState(new DiveNavigation(Screen));
 					Screen.SetState(new DiveJournal(Screen));
 				} else {
 					Screen.SetState(Screen.Previous);
 				}
-				
 			}
 		}
 		private class DiveTakePhoto : DiveScreenState {
-
-			private LocalizationKey m_cachedMessage;
 
 			public DiveTakePhoto(IDiveScreen screen) : base(screen) {
 			}
@@ -150,20 +145,13 @@ namespace Shipwreck {
 			public override void OnStart() {
 				Screen.FlashCamera(HandleFlashComplete);
 			}
-			public override void OnShowMessage(LocalizationKey key) {
-				m_cachedMessage = key;
-			}
 			private void HandleFlashComplete() {
-				if (m_cachedMessage.Equals(LocalizationKey.Empty)) {
-					Screen.SetState(new DiveCamera(Screen));
-				} else {
-					if (Screen.Previous.GetType() == typeof(DiveTutorialCamera)) {
-						if (GameMgr.State.CurrentLevel.HasTakenTopDownPhoto()) {
-							Screen.AssignPreviousState(new DiveCamera(Screen));
-						}
+				if (Screen.Previous.GetType() == typeof(DiveTutorialCamera)) {
+					if (GameMgr.State.CurrentLevel.HasTakenTopDownPhoto()) {
+						Screen.AssignPreviousState(new DiveCamera(Screen));
 					}
-					Screen.SetState(new DiveMessage(Screen, m_cachedMessage, new LocalizationKey("UI/Dive/SavePhoto"),true));
 				}
+				Screen.SetState(new DiveMessage(Screen,true));
 			}
 
 		}
@@ -185,10 +173,13 @@ namespace Shipwreck {
 			public DiveTutorialMessage(IDiveScreen screen) : base(screen) {
 			}
 			public override void OnStart() {
-				Screen.ShowMessageBox(new LocalizationKey("Dive/Tutorial/TakeAbovePhoto"), new LocalizationKey("UI/General/Continue"));
+				if (GameMgr.TryRunLastNotification(out var _)) {
+					Screen.WaitForMessageClosed(HandleMessageClosed);
+				} else {
+					HandleMessageClosed();
+				}
 			}
-			public override void OnCloseMessage() {
-				Screen.HideMessageBox();
+			private void HandleMessageClosed() {
 				Screen.SetState(new DiveTutorialNav(Screen));
 			}
 		}
@@ -240,9 +231,6 @@ namespace Shipwreck {
 			public override void OnCameraDeactivate() {
 				Screen.SetCameraZoom(0f);
 				Screen.SetState(new DiveTutorialNav(Screen));
-			}
-			public override void OnShowMessage(LocalizationKey key) {
-				Screen.SetState(new DiveMessage(Screen, key, new LocalizationKey("UI/General/Continue"), false));
 			}
 			public override void OnOpenJournal() {
 				Screen.SetState(new DiveJournal(Screen));

@@ -37,6 +37,13 @@ namespace Shipwreck {
 
     public static class GameTriggers {
 
+		public static class Dive {
+			public static readonly StringHash32 OnPhotoAlreadyTaken = "OnPhotoAlreadyTaken";
+			public static readonly StringHash32 OnZoomIn = "OnZoomIn";
+			public static readonly StringHash32 OnZoomOut = "OnZoomOut";
+			public static readonly StringHash32 OnNothingOfInterest = "OnNothingOfInterest";
+		}
+
         public static readonly StringHash32 OnContactAdded = "OnContactAdded";
 		public static readonly StringHash32 OnLevelUnlock = "OnLevelUnlock";
 		public static readonly StringHash32 OnChainSolved = "OnChainSolved";

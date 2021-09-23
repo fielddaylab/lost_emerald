@@ -94,7 +94,7 @@ namespace Shipwreck {
 			public GameState() {
 				m_variableTable = new VariantTable();
 				m_visitedNodes = new HashSet<StringHash32>();
-				m_unlockedContacts = new HashSet<StringHash32>() { "mom", "amy" };
+				m_unlockedContacts = new HashSet<StringHash32>() { "you", "mom", "amy" };
 				m_queuedNotifications = new List<QueuedNotification>();
 				m_levelStates = new LevelState[4] {
 					new LevelState(), new LevelState(),

@@ -31,6 +31,8 @@ namespace Shipwreck {
 		[SerializeField]
 		private LayoutGroup m_layout = null;
 		[SerializeField]
+		private GameObject m_iconGroup = null;
+		[SerializeField]
 		private Image m_icon = null;
 		[SerializeField]
 		private Graphic m_iconOutline = null;
@@ -43,7 +45,6 @@ namespace Shipwreck {
 
 		protected override void OnShowStart() {
 			base.OnShowStart();
-			CanvasGroup.alpha = 0;
 			m_textBox.text = string.Empty;
 
 			GameMgr.Events.Dispatch(GameEvents.DialogOpened);
@@ -59,11 +60,11 @@ namespace Shipwreck {
 		}
 
 		protected override IEnumerator ShowRoutine() {
-			yield return CanvasGroup.FadeTo(1, 0.2f);
+			yield return ((RectTransform)transform).AnchorPosTo(0f, 0.2f, Axis.Y);
 		}
 
 		protected override IEnumerator HideRoutine() {
-			yield return CanvasGroup.FadeTo(0, 0.2f);
+			yield return ((RectTransform)transform).AnchorPosTo(-220f, 0.2f, Axis.Y);
 		}
 
 		#endregion // UIBase
@@ -138,13 +139,20 @@ namespace Shipwreck {
 		}
 
 		protected override void OnSetSpeaker(CharacterData speaker) {
+
 			m_speakerName.Key = speaker.DisplayName;
 			m_textBox.color = speaker.DialogTextColor;
 			m_textBoxBackground.color = speaker.DialogBackgroundColor;
 			m_textBoxOutline.color = speaker.DialogTextColor;
 			m_speakerName.GetComponent<Graphic>().color = speaker.DialogBackgroundColor;
 			m_speakerNameBackground.color = speaker.DialogTextColor;
-			m_icon.sprite = speaker.TextingIcon;
+			if (speaker.TextingIcon != null) {
+				m_icon.sprite = speaker.TextingIcon;
+				m_iconGroup.SetActive(true);
+			} else {
+				m_iconGroup.SetActive(false);
+			}
+			m_layout.ForceRebuild(true);
 		}
 
 		protected override IEnumerator OnShowImage(Sprite image) {

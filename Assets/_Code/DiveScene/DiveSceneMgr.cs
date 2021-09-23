@@ -57,16 +57,20 @@ namespace Shipwreck {
 			// or the request will be ignored
 			DivePointOfInterest poi = m_currentNode.GetPointOfInterest();
 			if (poi == null) {
-				GameMgr.Events.Dispatch(GameEvents.Dive.ShowMessage, m_nothingOfInterestKey);
+				GameMgr.RunTrigger(GameTriggers.Dive.OnNothingOfInterest);
+				GameMgr.Events.Dispatch(GameEvents.Dive.ShowMessage);
 				AudioSrcMgr.instance.PlayOneShot("photo_fail");
 			} else if (GameMgr.State.CurrentLevel.IsEvidenceUnlocked(poi.EvidenceUnlock)) {
-				GameMgr.Events.Dispatch(GameEvents.Dive.ShowMessage, m_alreadyTakenKey);
+				GameMgr.RunTrigger(GameTriggers.Dive.OnPhotoAlreadyTaken);
+				GameMgr.Events.Dispatch(GameEvents.Dive.ShowMessage);
 				AudioSrcMgr.instance.PlayOneShot("photo_fail");
 			} else if (m_zoomLevel < poi.ZoomMin) {
-				GameMgr.Events.Dispatch(GameEvents.Dive.ShowMessage, m_pleaseZoomInKey);
+				GameMgr.RunTrigger(GameTriggers.Dive.OnZoomIn);
+				GameMgr.Events.Dispatch(GameEvents.Dive.ShowMessage);
 				AudioSrcMgr.instance.PlayOneShot("photo_fail");
 			} else if (m_zoomLevel > poi.ZoomMax) {
-				GameMgr.Events.Dispatch(GameEvents.Dive.ShowMessage, m_pleaseZoomOutKey);
+				GameMgr.RunTrigger(GameTriggers.Dive.OnZoomOut);
+				GameMgr.Events.Dispatch(GameEvents.Dive.ShowMessage);
 				AudioSrcMgr.instance.PlayOneShot("photo_fail");
 			} else {
 				GameMgr.Events.Dispatch(GameEvents.Dive.ConfirmPhoto, poi.EvidenceUnlock);

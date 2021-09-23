@@ -28,18 +28,17 @@
 
 :: reya-dive
 @contact reya, radio
-// @background
-@trigger OnEnterDive
+@trigger OnEvidenceUnlock
+@when HasEvidence(LV2-Photo-Above)
 @once
 
 	{@you}	Wow! This is actually an amazing find.
     {@reya}	Yeah, yeah. See any treasure yet?
 	
 	
-// If/when you photograph the gash in the side of the ship (optional)
+// If/when you photograph the gash in the side of the ship
 :: dive-gash
 @contact reya, radio
-// @background
 @trigger OnEvidenceUnlock
 @when HasEvidence(LV2-Photo-Gash)
 @once
@@ -50,7 +49,6 @@
 // When you photograph the cargo, a Nash car covered in mussels:
 :: dive-cargo
 @contact reya, radio
-// @background
 @trigger OnEvidenceUnlock
 @when HasEvidence(LV2-Photo-Cargo)
 @once
@@ -64,7 +62,6 @@
 // when you photograph the safe 
 :: dive-safe
 @contact reya, radio
-// @background
 @trigger OnEvidenceUnlock
 @when HasEvidence(LV2-Photo-Safe)
 @once
@@ -73,7 +70,28 @@
 	{@you}	I can’t. It’s illegal to take anything from shipwrecks. I could lose my job!
 	{@reya}	Ugh. When did you become so boring?
 	
-	
+// generic dive prompts
+:: dive-already-taken
+@contact you, radio
+@trigger OnPhotoAlreadyTaken
+	{@you}	We've already taken a photo of this.
+
+:: dive-zoom-in
+@contact you, radio
+@trigger OnZoomIn
+	{@you}	I should zoom in to catch a better shot.
+
+:: dive-zoom-out
+@contact you, radio
+@trigger OnZoomOut
+	{@you}	I should zoom out to get more in frame!
+
+:: dive-nothing-of-interest
+@contact you, radio
+@trigger OnNothingOfInterest
+	{@you}	Nothing to see here.
+
+
 :: amy-match
 @contact amy, phone-call
 @background amy-office
