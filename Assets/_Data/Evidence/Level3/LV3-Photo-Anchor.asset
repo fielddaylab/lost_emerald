@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c34cd5eacc74f0347a09429f2c2448b3, type: 3}
-  m_Name: LV3-Photo-Lifeboat
+  m_Name: LV3-Photo-Anchor
   m_EditorClassIdentifier: 
   m_groupID:
-    m_Source: 
-    m_Hash: 0
+    m_Source: LV3-Photo-Anchor
+    m_Hash: 214398497
   m_position: {x: 0, y: 0}
   m_isLocalized: 0
-  m_englishPrefab: {fileID: 0}
+  m_englishPrefab: {fileID: 6195258075524575153, guid: 248ba8c537c98c14d95b84df4166a870,
+    type: 3}
   m_spanishPrefab: {fileID: 0}
   m_rootNodes: []
