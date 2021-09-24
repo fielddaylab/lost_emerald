@@ -52,6 +52,7 @@
 	{@you}	Dad--
 	{@dad}	Ah, sonar’s working! Gotta go. Love ya, Jules!
 	$call UnlockEvidence(3,LV3-Transcript-Dad)
+	$call UnlockEvidence(3,LV3-Treasure-Map)
 	$call EndConvoMusic()
 
 
@@ -94,6 +95,8 @@
 	{@tami}	It’s sort of a pet project of mine.
 			Wanna help me check it out?
 	{@you}	Sure! I’ll meet you out there.
+	$call UnlockEvidence(3,LV3-Advertisement-PS)
+	$call UnlockEvidence(3,LV3-Tami-Photo-Anchor)
 	$call EndConvoMusic()
 
 
@@ -170,6 +173,8 @@
 			It means a lot to people, you know? 
 	{@you}	Yeah. I think that’s how my dad feels, too. 
 			Thanks for all your help, Tami!
+	$call UnlockEvidence(3,LV3-Ship-Chart)
+	$call UnlockEvidence(3,LV3-Accounts-Survivor)
 	$call EndConvoMusic()
 
 
