@@ -1,2 +1,52 @@
 
 // todo: fill with level 3 sticky notes
+
+// -----------------------------------------------------------
+//  Location
+// -----------------------------------------------------------
+
+
+:: location-correct
+@root Location
+@correct location-coordinates
+
+// -----------------------------------------------------------
+//  Ship Type
+// -----------------------------------------------------------
+
+:: type-correct
+@root Type
+@correct photo-above // placeholder (not final)
+
+
+// -----------------------------------------------------------
+//  Cargo
+// -----------------------------------------------------------
+
+:: cargo-correct
+@root Cargo
+@correct photo-cargo // placeholder (not final)
+
+// -----------------------------------------------------------
+//  Cause of Wreck
+// -----------------------------------------------------------
+
+:: cause-correct
+@root Cause
+@correct photo-above // placeholder (not final)
+
+// -----------------------------------------------------------
+//	Name
+// -----------------------------------------------------------
+
+:: name-correct
+@root Name
+@correct photo-above // placeholder (not final)
+
+// -----------------------------------------------------------
+//  Artifact
+// -----------------------------------------------------------
+
+:: artifact-correct
+@root Artifact
+@correct photo-above // placeholder (not final)

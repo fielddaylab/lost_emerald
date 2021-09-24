@@ -109,6 +109,7 @@ namespace Shipwreck {
 		}
 		private void UnlockLevel2() {
 			UnlockLevel1();
+			GameMgr.UnlockLevel(2);
 
 			GameMgr.SetLevelIndex(0);
 			GameMgr.SetChain(0, "Type", "card-canaller", "photo-above", "type-canaller");
@@ -132,6 +133,8 @@ namespace Shipwreck {
 		{
 			UnlockLevel2();
 
+			GameMgr.State.UnlockDive(1);
+
 			GameMgr.UnlockEvidence(2, "LV2-Photo-Above");
 			GameMgr.UnlockEvidence(2, "LV2-Photo-Cargo");
 			GameMgr.UnlockEvidence(2, "LV2-Photo-Gash");
@@ -144,7 +147,21 @@ namespace Shipwreck {
 		}
 
 		private void UnlockLevel3() {
-			UnlockLevel2();
+			UnlockLevel2_30();
+			GameMgr.UnlockLevel(3);
+
+			GameMgr.UnlockEvidence(2, "LV2-Transcript-Reya");
+			GameMgr.UnlockEvidence(2, "LV2-Card-Types");
+			GameMgr.UnlockEvidence(2, "LV2-Cargo-List");
+			GameMgr.UnlockEvidence(2, "LV2-Distress-Transcript");
+			GameMgr.UnlockEvidence(2, "LV2-Table-Wrecks");
+			GameMgr.UnlockEvidence(2, "LV2-Car-Images");
+			GameMgr.RecordNodeVisited("level02.amy-match", "amy");
+			GameMgr.RecordNodeVisited("level02.cooper-meet", "cooper");
+			GameMgr.RecordNodeVisited("level02.amy-distress", "amy");
+			GameMgr.RecordNodeVisited("level02.reya-safe", "reya");
+
+			GameMgr.SetLevelIndex(0);
 		}
 
 		private void UnlockLevel4() {

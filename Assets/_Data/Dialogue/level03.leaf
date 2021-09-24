@@ -51,6 +51,7 @@
 	{@dad}	Well, of course they said that. They needed somebody to blame!!
 	{@you}	Dad--
 	{@dad}	Ah, sonar’s working! Gotta go. Love ya, Jules!
+	$call UnlockEvidence(3,LV1-Root)
 	$call UnlockEvidence(3,LV3-Transcript-Dad)
 	$call UnlockEvidence(3,LV3-Treasure-Map)
 	$call EndConvoMusic()
@@ -60,6 +61,7 @@
 @contact amy, phone-call
 // @background 
 @trigger OnDialogClosed
+@when HasEvidence(LV3-Transcript-Dad)
 @once
 
 	$call TriggerConvoMusic(amy_convo)
@@ -183,6 +185,7 @@
 @contact dad, phone-call
 // @background 
 @trigger OnDialogClosed
+@when HasEvidence(LV3-Accounts-Survivor)
 @once
 
 	$call TriggerConvoMusic(dad_convo)
