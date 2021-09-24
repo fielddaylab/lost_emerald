@@ -109,7 +109,7 @@ namespace Shipwreck {
 		}
 		private void UnlockLevel2() {
 			UnlockLevel1();
-			GameMgr.UnlockLevel(2);
+			// GameMgr.UnlockLevel(2);
 
 			GameMgr.SetLevelIndex(0);
 			GameMgr.SetChain(0, "Type", "card-canaller", "photo-above", "type-canaller");
@@ -149,6 +149,7 @@ namespace Shipwreck {
 		private void UnlockLevel3() {
 			UnlockLevel2_30();
 			GameMgr.UnlockLevel(3);
+			GameMgr.State.UnlockDive(2);
 
 			GameMgr.UnlockEvidence(2, "LV2-Transcript-Reya");
 			GameMgr.UnlockEvidence(2, "LV2-Card-Types");
