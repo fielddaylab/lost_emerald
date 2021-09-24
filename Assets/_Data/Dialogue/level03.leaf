@@ -51,6 +51,7 @@
 	{@dad}	Well, of course they said that. They needed somebody to blame!!
 	{@you}	Dad--
 	{@dad}	Ah, sonar’s working! Gotta go. Love ya, Jules!
+	$call UnlockEvidence(3,LV3-Transcript-Dad)
 	$call EndConvoMusic()
 
 
