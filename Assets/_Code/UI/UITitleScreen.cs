@@ -162,6 +162,21 @@ namespace Shipwreck {
 			GameMgr.RecordNodeVisited("level02.amy-distress", "amy");
 			GameMgr.RecordNodeVisited("level02.reya-safe", "reya");
 
+			// Evidence Testing
+			GameMgr.UnlockEvidence(3, "LV1-Root");
+			GameMgr.UnlockEvidence(3, "LV3-Transcript-Dad");
+			GameMgr.UnlockEvidence(3, "LV3-Treasure-Map");
+			GameMgr.UnlockEvidence(3, "LV3-Advertisement-PS");
+			GameMgr.UnlockEvidence(3, "LV3-Tami-Photo-Anchor");
+			
+			GameMgr.UnlockEvidence(3, "LV3-Photo-Above");
+			GameMgr.UnlockEvidence(3, "LV3-Photo-Anchor");
+			GameMgr.UnlockEvidence(3, "LV3-Photo-Gold");
+			GameMgr.UnlockEvidence(3, "LV3-Photo-Cargo");
+			GameMgr.UnlockEvidence(3, "LV3-Ship-Chart");
+			GameMgr.UnlockEvidence(3, "LV3-Accounts-Survivor");
+			GameMgr.UnlockContact("tami");
+
 			GameMgr.SetLevelIndex(0);
 		}
 
