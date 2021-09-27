@@ -154,8 +154,8 @@
 :: amy-distress
 @contact amy, text-message
 // @background
-@trigger OnDialogClosed
-@when HasEvidence(LV2-Car-Images)
+@trigger OnChainSolved
+@when IsChainComplete(Name), IsChainComplete(Cargo)
 @once
 
 	{@amy}	Hey, Jules! I just got an email about your dad’s treasure sale. 

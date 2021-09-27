@@ -168,7 +168,7 @@ namespace Shipwreck {
 			GameMgr.UnlockEvidence(3, "LV3-Treasure-Map");
 			GameMgr.UnlockEvidence(3, "LV3-Advertisement-PS");
 			GameMgr.UnlockEvidence(3, "LV3-Tami-Photo-Anchor");
-			
+
 			GameMgr.UnlockEvidence(3, "LV3-Photo-Above");
 			GameMgr.UnlockEvidence(3, "LV3-Photo-Anchor");
 			GameMgr.UnlockEvidence(3, "LV3-Photo-Gold");
