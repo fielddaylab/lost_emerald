@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: ShipEngine
   m_EditorClassIdentifier: 
   m_id: ship_engine
-  m_clip: {fileID: 8300000, guid: 3dbd11f0032230042bffcbaa36e0afdb, type: 3}
+  m_clip: {fileID: 8300000, guid: 0e6813861ddc6204da9b465b963922de, type: 3}
+  m_volume: 1
+  m_pan: 0.5

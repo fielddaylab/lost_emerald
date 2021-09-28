@@ -113,6 +113,7 @@ namespace Shipwreck
 		private void HandleReturnToOfficeButton()
 		{
 			AudioSrcMgr.instance.PlayOneShot("click_return_office");
+			AudioSrcMgr.instance.StopAmbiance();
 			SceneManager.LoadScene("Main");
 			UIMgr.Close<UIShipOutScreen>();
 			UIMgr.Open<UIOfficeScreen>();
@@ -133,6 +134,7 @@ namespace Shipwreck
 				UIMgr.Close<UIShipOutScreen>();
 				UIMgr.Open<UIDiveScreen>();
 				AudioSrcMgr.instance.QueueAudio("dive_music");
+				AudioSrcMgr.instance.PlayAmbiance("underwater_ambiance", true);
 			}
 		}
 

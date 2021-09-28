@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: DropBuoy
   m_EditorClassIdentifier: 
   m_id: drop_buoy
-  m_clip: {fileID: 8300000, guid: 02fa2f88e7c7dbc4ab2e6d50be338add, type: 3}
+  m_clip: {fileID: 8300000, guid: e235089d01b694b47a582b221f275def, type: 3}
+  m_volume: 1
+  m_pan: 0.5

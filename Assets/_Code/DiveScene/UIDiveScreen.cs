@@ -196,9 +196,11 @@ namespace Shipwreck {
 		}
 		private void HandleJournalOpenButton() {
 			m_currentState.OnOpenJournal();
+			AudioSrcMgr.instance.PlayOneShot("click_notebook");
 		}
 		private void HandleJournalCloseButton() {
 			m_currentState.OnCloseJournal();
+			AudioSrcMgr.instance.PlayOneShot("click_notebook");
 		}
 		private void HandleCameraActivateButton() {
 			m_currentState.OnCameraActivate();

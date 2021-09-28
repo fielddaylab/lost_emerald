@@ -14,6 +14,9 @@ namespace Shipwreck
 
 		private AudioSource m_audioSrc;
 
+		[SerializeField]
+		private AmbianceMgr m_ambianceMgr;
+
 		private struct AudioLoopPair
 		{
 			public AudioLoopPair(AudioData data, bool loop)
@@ -102,6 +105,15 @@ namespace Shipwreck
 			m_audioSrc.Play();
 		}
 
+		/// <summary>
+		/// Delegates call to Ambiance Mgr
+		/// </summary>
+		/// <param name="clipID"></param>
+		public void PlayAmbiance(string clipID, bool loop = false)
+		{
+			m_ambianceMgr.PlayAudio(clipID, loop);
+		}
+
 		public bool IsPlayingAudio()
 		{
 			return m_audioSrc.isPlaying;
@@ -111,6 +123,12 @@ namespace Shipwreck
 		{
 			m_audioSrc.Stop();
 		}
+
+		public void StopAmbiance()
+		{
+			m_ambianceMgr.StopAudio();
+		}
+
 		public void ResumeAudio()
 		{
 			m_audioSrc.Play();
@@ -120,6 +138,12 @@ namespace Shipwreck
 		public void StashAudio()
 		{
 			m_stashedAudio = new AudioLoopPair(m_currData, m_audioSrc.loop);
+			StashAmbiance();
+		}
+
+		public void StashAmbiance()
+		{
+			m_ambianceMgr.StashAudio();
 		}
 
 		// Saves the current audio for later
@@ -130,6 +154,13 @@ namespace Shipwreck
 			InitializeAudio(m_audioSrc, m_stashedAudio.Data);
 			m_audioSrc.loop = m_stashedAudio.Loop;
 			m_audioSrc.Play();
+
+			ResumeStashedAmbiance();
+		}
+
+		public void ResumeStashedAmbiance()
+		{
+			m_ambianceMgr.ResumeAudio();
 		}
 
 		public void InitializeAudio(AudioSource source, AudioData data)

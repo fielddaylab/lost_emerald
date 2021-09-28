@@ -51,6 +51,7 @@ namespace Shipwreck {
 			UIMgr.Close<UIOfficeScreen>();
 			UIMgr.Close<UIMapScreen>();
 			AudioSrcMgr.instance.PlayAudio("ship_out");
+			AudioSrcMgr.instance.PlayAmbiance("ship_out_ambiance", true);
 			// before loading the ShipOut scene, specify which ShipOutData to load
 			SceneManager.LoadScene("ShipOut");
 		}

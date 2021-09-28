@@ -116,9 +116,21 @@ namespace Shipwreck
 			}
 
 			// make boat louder the faster it travels
-			float volumeChange = ((m_currSpeed / m_maxSpeed) - m_audioSrc.volume);
-			if (volumeChange < 0) { volumeChange *= m_engineDieRate; } // shutting off engine is quicker than revving up
+			/*
+			float volumeChange = ((m_currSpeed / (m_maxSpeed - 1f)) - m_audioSrc.volume);
+			if (volumeChange < -.5 || m_currSpeed == 0) { volumeChange *= m_engineDieRate; } // shutting off engine is quicker than revving up
 			m_audioSrc.volume += volumeChange * m_engineRevRate * Time.deltaTime;
+			*/
+
+			// TODO: smooth out engine sounds; break into rev, sustain, and die
+			if (m_currSpeed > 0)
+			{
+				m_audioSrc.volume = 1;
+			}
+			else
+			{
+				m_audioSrc.volume = 0;
+			}
 		}
 
 		#endregion
