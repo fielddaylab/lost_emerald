@@ -16,6 +16,8 @@ namespace Shipwreck
 
 		[SerializeField]
 		private AmbianceMgr m_ambianceMgr;
+		[SerializeField]
+		private DialogAudioMgr m_dialogAudioMgr;
 
 		private struct AudioLoopPair
 		{
@@ -162,6 +164,20 @@ namespace Shipwreck
 		{
 			m_ambianceMgr.ResumeAudio();
 		}
+
+		#region DialogAudioMgr
+
+		public void StartLine(DialogAudioMgr.Type type)
+		{
+			m_dialogAudioMgr.StartLine(type);
+		}
+
+		public void EndLine()
+		{
+			m_dialogAudioMgr.EndLine();
+		}
+
+		#endregion
 
 		public void InitializeAudio(AudioSource source, AudioData data)
 		{ 

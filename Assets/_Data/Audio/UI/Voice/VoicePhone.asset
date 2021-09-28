@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01e017eacdcbd5043a5a8d30abbebfaa, type: 3}
-  m_Name: ShipOutAmbiance
+  m_Name: VoicePhone
   m_EditorClassIdentifier: 
-  m_id: ship_out_ambiance
-  m_clip: {fileID: 8300000, guid: af86080ae5360534aa018e4d97b13566, type: 3}
-  m_volume: 0.5
+  m_id: voice_phone
+  m_clip: {fileID: 8300000, guid: 30a5ae1dd335bb643ab237a194b64b23, type: 3}
+  m_volume: 1
   m_pan: 0.5
