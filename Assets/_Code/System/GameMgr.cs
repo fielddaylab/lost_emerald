@@ -106,8 +106,6 @@ namespace Shipwreck
 			UIMgr.Open<UIModalCaseClosed>();
 		}
 
-		
-
 
 		#region Scripting
 
@@ -297,14 +295,14 @@ namespace Shipwreck
 		}
 
 		[LeafMember]
-		public static void TriggerConvoMusic(string convo_id)
+		private static void TriggerConvoMusic(string convo_id)
 		{
 			AudioSrcMgr.instance.StashAudio();
 			AudioSrcMgr.instance.PlayAudio(convo_id, true);
 		}
 
 		[LeafMember]
-		public static void EndConvoMusic()
+		private static void EndConvoMusic()
 		{
 			AudioSrcMgr.instance.ResumeStashedAudio();
 		}

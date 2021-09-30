@@ -114,7 +114,13 @@
 
 :: name-correct
 @root Name
-@correct name-madison
+@correct name-madison-complete
+
+:: name-hint-cargo-first
+@root Name
+@hint name-madison-incomplete
+@only
+	Am I sure? Maybe I should solve Cargo first.
 
 // -----------------------------------------------------------
 //  Artifact

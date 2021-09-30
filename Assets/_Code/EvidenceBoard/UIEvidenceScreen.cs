@@ -3,6 +3,7 @@ using BeauUtil;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -323,6 +324,7 @@ namespace Shipwreck {
 				switch (info.Response) {
 					case StickyInfo.ResponseType.Correct:
 						chainObj.SetState(ChainStatus.Complete);
+						TriggerChainCompleted();
 						AudioSrcMgr.instance.PlayOneShot("evidence_complete");
 						break;
 					case StickyInfo.ResponseType.Hint:
@@ -360,5 +362,18 @@ namespace Shipwreck {
 		protected override IEnumerator HideRoutine() {
 			yield return CanvasGroup.FadeTo(0f, 0.3f);
 		}
+
+		#region Chain Modification
+
+		// subscribed to by Modifiable Evidence
+
+		public static UnityEvent ChainCompleted = new UnityEvent();
+
+		private void TriggerChainCompleted()
+		{ 
+			ChainCompleted.Invoke();
+		}
+
+		#endregion
 	}
 }
