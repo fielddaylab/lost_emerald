@@ -8,71 +8,29 @@ namespace Shipwreck
 	/// Manages Ambiance audio in a scene
 	/// </summary>
 	[RequireComponent(typeof(AudioSource))]
-	public class AmbianceMgr : MonoBehaviour
+	public class AmbianceMgr : MonoBehaviour, IAudioPlayer
 	{
-		private struct AudioLoopPair
-		{
-			public AudioLoopPair(AudioData data, bool loop)
-			{
-				Data = data;
-				Loop = loop;
-			}
-
-			public AudioData Data { get; set; }
-			public bool Loop { get; set; }
-		}
-
 		private AudioSource m_ambianceSrc;
 
-		private AudioLoopPair m_stashedAudio;
+		private AudioSrcMgr.AudioLoopPair m_stashedAudio;
 		private AudioData m_currData;
-		private Queue<AudioLoopPair> m_audioQueue;
+		private Queue<AudioSrcMgr.AudioLoopPair> m_audioQueue;
+
+		#region Unity Callbacks
 
 		private void Awake()
 		{
 			m_ambianceSrc = this.GetComponent<AudioSource>();
-			// m_audioQueue = new Queue<AudioLoopPair>();
 		}
 
-		public void Start()
+		private void Start()
 		{
 			CutscenePlayer.OnVideoComplete += ResumeAudio;
 		}
 
-		public void Update()
-		{
-			/*
-			if (!m_audioSrc.isPlaying && m_audioQueue.Count > 0)
-			{
-				PlayNextInQueue();
-			}
-			*/
-		}
+		#endregion
 
-		/*
-		public void QueueAudio(string clipID, bool loop = false)
-		{
-			AudioData data = GameDb.GetAudioData(clipID);
-			m_audioQueue.Enqueue(new AudioLoopPair(data, loop));
-		}
-
-		public void PlayNextInQueue()
-		{
-			if (m_audioQueue.Count > 0)
-			{
-				AudioLoopPair pair = m_audioQueue.Dequeue();
-				InitializeAudio(m_audioSrc, pair.Data);
-				m_audioSrc.loop = pair.Loop;
-				m_audioSrc.Play();
-			}
-		}
-		
-
-		public void ClearAudioQueue()
-		{
-			m_audioQueue.Clear();
-		}
-		*/
+		#region IAudioPlayer
 
 		/// <summary>
 		/// For longer sounds
@@ -80,7 +38,7 @@ namespace Shipwreck
 		/// <param name="clipID"></param>
 		public void PlayAudio(string clipID, bool loop = false)
 		{
-			AudioSrcMgr.instance.InitializeAudio(m_ambianceSrc, GameDb.GetAudioData(clipID));
+			LoadAmbianceAudio(clipID);
 			m_ambianceSrc.loop = loop;
 			m_ambianceSrc.Play();
 		}
@@ -102,7 +60,7 @@ namespace Shipwreck
 		// Saves the current audio for later
 		public void StashAudio()
 		{
-			m_stashedAudio = new AudioLoopPair(m_currData, m_ambianceSrc.loop);
+			m_stashedAudio = new AudioSrcMgr.AudioLoopPair(m_currData, m_ambianceSrc.loop);
 		}
 
 		// Saves the current audio for later
@@ -110,9 +68,22 @@ namespace Shipwreck
 		{
 			if (m_stashedAudio.Data == null) { return; }
 
-			AudioSrcMgr.instance.InitializeAudio(m_ambianceSrc, m_stashedAudio.Data);
+			AudioSrcMgr.LoadAudio(m_ambianceSrc, m_stashedAudio.Data);
 			m_ambianceSrc.loop = m_stashedAudio.Loop;
 			m_ambianceSrc.Play();
 		}
+
+		#endregion
+
+		#region Helper Methods
+
+		private void LoadAmbianceAudio(string clipID)
+		{
+			var data = GameDb.GetAudioData(clipID);
+			AudioSrcMgr.LoadAudio(m_ambianceSrc, data);
+			m_currData = data;
+		}
+
+		#endregion
 	}
 }

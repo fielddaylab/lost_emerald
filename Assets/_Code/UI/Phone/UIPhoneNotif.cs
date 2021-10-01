@@ -27,7 +27,7 @@ namespace Shipwreck {
 		private void Awake()
 		{
 			m_audioSrc = GetComponent<AudioSource>();
-			AudioSrcMgr.instance.InitializeAudio(m_audioSrc, m_phoneNotifAudioData);
+			AudioSrcMgr.LoadAudio(m_audioSrc, m_phoneNotifAudioData);
 			m_audioSrc.loop = true;
 		}
 

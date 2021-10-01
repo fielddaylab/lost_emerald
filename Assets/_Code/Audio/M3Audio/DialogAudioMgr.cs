@@ -10,6 +10,8 @@ namespace Shipwreck
 	[RequireComponent(typeof(AudioSource))]
 	public class DialogAudioMgr : MonoBehaviour
 	{
+		#region Inspector
+
 		[SerializeField]
 		private AudioData m_phoneData;
 		[SerializeField]
@@ -21,12 +23,16 @@ namespace Shipwreck
 
 		private bool m_lineInProgress;
 
+		#endregion
+
 		public enum Type
 		{
 			phone,
 			text,
 			radio
 		}
+
+		#region Unity Callbacks
 
 		private void Awake()
 		{
@@ -36,11 +42,15 @@ namespace Shipwreck
 
 		private void Update()
 		{
-			// if sound ends but text is still being generated, loop back over
+			// todo: if sound ends but text is still being generated, loop back over
 
 		}
 
-		public void StartLine(Type type)
+		#endregion
+
+		#region Communication Channels
+
+		public void StartLineAudio(Type type)
 		{
 			AudioData dataToUse;
 
@@ -61,16 +71,18 @@ namespace Shipwreck
 					return;
 			}
 
-			AudioSrcMgr.instance.InitializeAudio(m_audioSrc, dataToUse);
+			AudioSrcMgr.LoadAudio(m_audioSrc, dataToUse);
 
 			m_audioSrc.Play();
 			m_lineInProgress = true;
 		}
 
-		public void EndLine()
+		public void EndLineAudio()
 		{
 			m_audioSrc.Stop();
 			m_lineInProgress = false;
 		}
+
+		#endregion
 	}
 }

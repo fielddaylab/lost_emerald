@@ -86,7 +86,7 @@ namespace Shipwreck
 			m_interactIsActive = false;
 
 			m_audioSrc = GetComponent<AudioSource>();
-			AudioSrcMgr.instance.InitializeAudio(m_audioSrc, m_engineAudioData);
+			AudioSrcMgr.LoadAudio(m_audioSrc, m_engineAudioData);
 			m_audioSrc.Play();
 		}
 

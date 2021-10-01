@@ -43,7 +43,7 @@ namespace Shipwreck
 		private void Awake()
 		{
 			m_audioSrc = GetComponent<AudioSource>();
-			AudioSrcMgr.instance.InitializeAudio(m_audioSrc, m_sonarAudioData);
+			AudioSrcMgr.LoadAudio(m_audioSrc, m_sonarAudioData);
 		}
 
 		private void Start()
