@@ -26,7 +26,9 @@ namespace Shipwreck {
         private StringHash32[] m_predecessors;
         private LocationType m_location;
         private ResponseType m_response;
-        [BlockContent] private string m_text;
+		private StringHash32[] m_requiredChains;
+
+		[BlockContent] private string m_text;
         private int m_specificity;
 
         public StickyInfo(string fullId) {
@@ -49,7 +51,11 @@ namespace Shipwreck {
             get { return m_predecessors; }
         }
 
-        public LocationType Location {
+		public ListSlice<StringHash32> RequiredChains {
+			get { return m_requiredChains; }
+		}
+
+		public LocationType Location {
             get { return m_location; }
         }
 
@@ -124,6 +130,13 @@ namespace Shipwreck {
 			m_location = LocationType.Only;
 			m_predecessors = null;
 		}
+
+		[BlockMeta("requires")]
+		private void SetRequires(StringSlice argsList) { 
+			m_requiredChains = ArrayUtils.MapFrom<StringSlice, StringHash32>(GetArgs(argsList), (s) => s);
+			m_specificity += m_requiredChains.Length;
+		}
+
         #endregion // Block Meta
 
         #region Utils

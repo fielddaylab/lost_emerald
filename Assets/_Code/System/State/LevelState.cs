@@ -74,7 +74,6 @@ namespace Shipwreck {
 			public LevelState() {
 				m_evidence = new List<EvidenceGroupState>();
 				m_chains = new List<EvidenceChainState>();
-					
 			}
 
 			public void AssignLevelData(LevelData data) {
@@ -111,7 +110,9 @@ namespace Shipwreck {
 					// todo: determine position
 					m_evidence.Add(new EvidenceGroupState(group.GroupID, group.Position));
 					foreach (StringHash32 root in group.RootNodes) {
-						m_chains.Add(new EvidenceChainState(root));
+						var chain = new EvidenceChainState(root);
+						chain.SetRootEvaluator(IsChainComplete);
+						m_chains.Add(chain);
 					}
 					return true;
 				}
@@ -147,6 +148,11 @@ namespace Shipwreck {
 				ioSerializer.ObjectArray("evidence", ref m_evidence);
 				ioSerializer.ObjectArray("chains", ref m_chains);
 				ioSerializer.Serialize("hasSeenCutscene", ref m_hasSeenCutscene);
+				if (ioSerializer.IsReading) {
+					foreach (EvidenceChainState chain in m_chains) {
+						chain.SetRootEvaluator(IsChainComplete);
+					}
+				}
 			}
 
 			public void SetCutsceneSeen() {

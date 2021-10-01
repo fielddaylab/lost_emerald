@@ -8,6 +8,8 @@ namespace Shipwreck
         private HashSet<StickyAsset> m_packages = new HashSet<StickyAsset>();
         private Dictionary<StringHash32, StickyRootEvaluator> m_roots = new Dictionary<StringHash32, StickyRootEvaluator>();
 
+		public delegate bool RootSolvedPredicate(StringHash32 rootId);
+
         public void Load(StickyAsset package) {
             if (m_packages.Add(package)) {
                 package.Parse();
@@ -32,12 +34,12 @@ namespace Shipwreck
             }
         }
 
-        public StickyInfo Evaluate(StringHash32 rootId, List<StringHash32> chain) {
-            return GetEvaluator(rootId, false)?.Evaluate(chain);
+        public StickyInfo Evaluate(StringHash32 rootId, List<StringHash32> chain, RootSolvedPredicate alreadySolved) {
+            return GetEvaluator(rootId, false)?.Evaluate(chain, alreadySolved);
         }
 
-        public StickyInfo Evaluate(StringHash32 rootId, StringHash32[] chain) {
-            return GetEvaluator(rootId, false)?.Evaluate(chain);
+        public StickyInfo Evaluate(StringHash32 rootId, StringHash32[] chain, RootSolvedPredicate alreadySolved) {
+            return GetEvaluator(rootId, false)?.Evaluate(chain, alreadySolved);
         }
 
         private StickyRootEvaluator GetEvaluator(StringHash32 rootId, bool create) {

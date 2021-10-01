@@ -144,6 +144,13 @@ namespace Shipwreck {
 			GameMgr.RecordNodeVisited("level02.dive-gash", "reya");
 			GameMgr.RecordNodeVisited("level02.dive-cargo", "reya");
 			GameMgr.RecordNodeVisited("level02.dive-safe", "reya");
+
+			GameMgr.UnlockEvidence(2, "LV2-Transcript-Reya");
+			GameMgr.UnlockEvidence(2, "LV2-Card-Types");
+			GameMgr.UnlockEvidence(2, "LV2-Cargo-List");
+			GameMgr.UnlockEvidence(2, "LV2-Distress-Transcript");
+			GameMgr.UnlockEvidence(2, "LV2-Table-Wrecks");
+			GameMgr.UnlockEvidence(2, "LV2-Car-Images");
 		}
 
 		private void UnlockLevel3() {

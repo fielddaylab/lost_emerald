@@ -52,7 +52,7 @@ namespace Shipwreck {
             }
         }
 
-        public StickyInfo Evaluate(ListSlice<StringHash32> chain) {
+        public StickyInfo Evaluate(ListSlice<StringHash32> chain, StickyEvaluator.RootSolvedPredicate alreadySolved) {
             if (chain.Length == 0)
                 return null;
 
@@ -64,19 +64,19 @@ namespace Shipwreck {
             }
 
             foreach(var correct in m_correctResponses) {
-                if (EvaluateCorrect(correct, chain)) {
+                if (EvaluateCorrect(correct, chain, alreadySolved)) {
                     return correct;
                 }
             }
 
             foreach(var hint in m_hintResponses) {
-                if (EvaluateNormal(hint, MinHintDepth, chain)) {
+                if (EvaluateNormal(hint, MinHintDepth, chain, alreadySolved)) {
                     return hint;
                 }
             }
 
             foreach(var incorrect in m_incorrectResponses) {
-                if (EvaluateNormal(incorrect, MinIncorrectDepth, chain)) {
+                if (EvaluateNormal(incorrect, MinIncorrectDepth, chain, alreadySolved)) {
                     return incorrect;
                 }
             }
@@ -84,17 +84,26 @@ namespace Shipwreck {
             return null;
         }
 
-        static private bool EvaluateCorrect(StickyInfo data, ListSlice<StringHash32> chain) {
-            // correct - no support for location or prerequisites
-            return EvaluateChain(chain, data.NodeIds);
+        static private bool EvaluateCorrect(StickyInfo data, ListSlice<StringHash32> chain, StickyEvaluator.RootSolvedPredicate alreadySolved) {
+
+			if (!EvaluateRequiredChains(data, alreadySolved)){
+				return false;
+			}
+
+			// correct - no support for location or prerequisites
+			return EvaluateChain(chain, data.NodeIds);
         }
 
-        static private bool EvaluateNormal(StickyInfo data, int inMinDepth, ListSlice<StringHash32> chain) {
+        static private bool EvaluateNormal(StickyInfo data, int inMinDepth, ListSlice<StringHash32> chain, StickyEvaluator.RootSolvedPredicate alreadySolved) {
             if (!EvaluateDepth(chain.Length, inMinDepth, data.Location)) {
                 return false;
             }
 
-            var nodeIds = data.NodeIds;
+			if (!EvaluateRequiredChains(data, alreadySolved)){
+				return false;
+			}
+
+			var nodeIds = data.NodeIds;
             if (nodeIds.Length == 0) {
                 return true;
             }
@@ -170,6 +179,16 @@ namespace Shipwreck {
                     return depth >= minDepth;
             }
         }
+
+		static private bool EvaluateRequiredChains(StickyInfo info, StickyEvaluator.RootSolvedPredicate alreadySolved) {
+			foreach (StringHash32 chain in info.RequiredChains) {
+				if (!alreadySolved(chain)) {
+					return false;
+				}
+			}
+
+			return true;
+		}
 
         static private bool EvaluateChain(ListSlice<StringHash32> chain, ListSlice<StringHash32> match) {
             if (chain.Length != match.Length) {

@@ -26,7 +26,7 @@ namespace Shipwreck {
 
 	public sealed partial class GameMgr { // EvidenceChainState.cs
 
-		private class EvidenceChainState : IEvidenceChainState, ISerializedObject {
+		private class EvidenceChainState : IEvidenceChainState, ISerializedObject, ISerializedCallbacks {
 
 			// serialized
 			private StringHash32 m_rootNode;
@@ -34,6 +34,7 @@ namespace Shipwreck {
 
 			// non-serialized
 			private StickyInfo m_stickyData;
+			private StickyEvaluator.RootSolvedPredicate m_levelRootEvaluator;
 
 			public EvidenceChainState() {
 				// empty constructor for deserialization
@@ -60,6 +61,10 @@ namespace Shipwreck {
 				return m_chain;
 			}
 
+			public void SetRootEvaluator(StickyEvaluator.RootSolvedPredicate predicate) {
+				m_levelRootEvaluator = predicate;
+			}
+
 			public StringHash32 GetNodeInChain(int index) {
 				if (index < 1 || index > m_chain.Count) {
 					throw new IndexOutOfRangeException();
@@ -69,7 +74,7 @@ namespace Shipwreck {
 
 			public void ReevaluateStickyInfo() {
 				bool wasCorrect = IsCorrect;
-				m_stickyData = I.m_stickyEvaluator.Evaluate(m_rootNode, m_chain);
+				m_stickyData = I.m_stickyEvaluator.Evaluate(m_rootNode, m_chain, m_levelRootEvaluator);
 				if (!wasCorrect && IsCorrect) {
 					Events.Dispatch(GameEvents.ChainSolved, m_rootNode);
 					using (var table = TempVarTable.Alloc()) {
@@ -129,18 +134,21 @@ namespace Shipwreck {
 					}
 					m_chain.Add(node);
 				}
+				
 				ReevaluateStickyInfo();
 			}
 
 
 			public void Serialize(Serializer ioSerializer) {
-
 				ioSerializer.UInt32Proxy("root", ref m_rootNode);
 				ioSerializer.UInt32ProxyArray("chain", ref m_chain);
-
-				ReevaluateStickyInfo();
 			}
 
+			public void PostSerialize(Serializer.Mode inMode, ISerializerContext inContext) {
+				if (inMode == Serializer.Mode.Read) {
+					ReevaluateStickyInfo();
+				}
+			}
 		}
 	}
 }

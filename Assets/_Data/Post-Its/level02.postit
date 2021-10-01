@@ -114,11 +114,12 @@
 
 :: name-correct
 @root Name
-@correct name-madison-complete
+@correct name-madison
+@requires Cargo
 
 :: name-hint-cargo-first
 @root Name
-@hint name-madison-incomplete
+@hint name-madison
 @only
 	Am I sure? Maybe I should solve Cargo first.
 

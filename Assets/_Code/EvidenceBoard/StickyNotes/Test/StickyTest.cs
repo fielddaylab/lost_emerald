@@ -52,7 +52,7 @@ internal class StickyTest : MonoBehaviour {
 
     private void RefreshHint() {
         StringHash32[] chain = ArrayUtils.MapFrom(m_chain, (b) => new StringHash32(b.name));
-        StickyInfo data = m_eval.Evaluate(Root.name, chain);
+        StickyInfo data = m_eval.Evaluate(Root.name, chain, null);
         if (data != null) {
             Hint.text = data.Text;
             m_incorrect = data.Response == StickyInfo.ResponseType.Incorrect;
