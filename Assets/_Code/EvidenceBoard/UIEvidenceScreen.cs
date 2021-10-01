@@ -324,6 +324,7 @@ namespace Shipwreck {
 				switch (info.Response) {
 					case StickyInfo.ResponseType.Correct:
 						chainObj.SetState(ChainStatus.Complete);
+						// todo: update chains which require this
 						AudioSrcMgr.instance.PlayOneShot("evidence_complete");
 						break;
 					case StickyInfo.ResponseType.Hint:

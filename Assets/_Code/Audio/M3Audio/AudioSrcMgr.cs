@@ -27,8 +27,6 @@ namespace Shipwreck
 
 		#region Inspector
 
-		private AudioSource m_audioSrc;
-
 		[SerializeField]
 		private AmbianceMgr m_ambianceMgr;
 		[SerializeField]
@@ -36,6 +34,7 @@ namespace Shipwreck
 
 		#endregion
 
+		private AudioSource m_audioSrc;
 		private AudioLoopPair m_stashedAudio;
 		private AudioData m_currData;
 		private Queue<AudioLoopPair> m_audioQueue;
