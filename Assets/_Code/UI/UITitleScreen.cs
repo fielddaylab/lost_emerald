@@ -174,6 +174,7 @@ namespace Shipwreck {
 			GameMgr.UnlockEvidence(3, "LV3-Photo-Gold");
 			GameMgr.UnlockEvidence(3, "LV3-Photo-Cargo");
 			GameMgr.UnlockEvidence(3, "LV3-Ship-Chart");
+			GameMgr.UnlockEvidence(3, "LV3-Card-Types");
 			GameMgr.UnlockEvidence(3, "LV3-Accounts-Survivor");
 			GameMgr.UnlockContact("tami");
 
