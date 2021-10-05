@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 namespace Shipwreck
@@ -28,8 +29,17 @@ namespace Shipwreck
 					m_evidencePrefabs[i].transform.localPosition.x,
 					m_evidencePrefabs[i].transform.localPosition.y
 					));
+
+#if UNITY_EDITOR
+				EditorUtility.SetDirty(m_evidenceData[i]);
+#endif
 			}
-			Debug.Log("Transposed");
+
+#if UNITY_EDITOR
+			AssetDatabase.SaveAssets();
+			AssetDatabase.Refresh();
+			Debug.Log("Tranposition Successful");
+#endif
 		}
 	}
 }
