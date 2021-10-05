@@ -1,5 +1,6 @@
 ﻿using BeauRoutine;
 using Cinemachine;
+using System.Collections;
 using UnityEngine;
 
 namespace Shipwreck {
@@ -12,16 +13,17 @@ namespace Shipwreck {
 		private Collider m_collider = null;
 		[SerializeField]
 		private MeshRenderer m_circleRenderer = null;
-		//[SerializeField]
-		//private string m_colorProperty = "_BaseColor";
 
 		private DivePointOfInterest m_pointOfInterest;
 		private Vector3 m_startPosition;
 		private Routine m_zoomRoutine;
-		//private Routine m_colorRoutine;
+		private Routine m_pulseRoutine;
+		private float m_startScale = 1f;
 
 		private void Awake() {
 			m_startPosition = m_camera.transform.position;
+			m_startScale = m_circleRenderer.transform.localScale.x;
+			m_pulseRoutine.Replace(this, PulseRoutine()).ExecuteWhileDisabled();
 		}
 
 		public void Prioritize() {
@@ -52,17 +54,23 @@ namespace Shipwreck {
 				60f - 30f * percent,
 				FieldOfViewSetter, 0.1f
 			).Ease(Curve.QuadOut));
-			//m_startPosition + m_camera.transform.forward * 5f * percent, 
 		}
 		private void FieldOfViewSetter(float value) {
 			m_camera.m_Lens.FieldOfView = value;
 		}
-
-		/*
-		public void SetColor(Color color) {
-			m_colorRoutine.Replace(this, m_circleRenderer.material.ColorTo(m_colorProperty, color, 0.25f, ColorUpdate.FullColor).Ease(Curve.QuadInOut));
+		private IEnumerator PulseRoutine() {
+			while (true) {
+				yield return Routine.Combine(
+					m_circleRenderer.transform.ScaleTo(m_startScale - m_startScale * 0.1f, 1f, Axis.XY).Ease(Curve.QuadIn),
+					m_circleRenderer.material.FadeTo("_BaseColor", 0.3f, 1f)
+				);
+				yield return Routine.Combine(
+					m_circleRenderer.transform.ScaleTo(m_startScale + m_startScale * 0.1f, 1f, Axis.XY).Ease(Curve.QuadOut),
+					m_circleRenderer.material.FadeTo("_BaseColor", 1f, 1f)
+				);
+			}
 		}
-		*/
+
 	}
 
 }
