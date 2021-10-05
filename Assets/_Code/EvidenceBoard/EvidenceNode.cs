@@ -50,6 +50,10 @@ namespace Shipwreck {
 				}
 			}
 		}
+		public bool Pinned
+		{
+			get { return m_pinned; }
+		}
 
 		[SerializeField]
 		private SerializedHash32 m_nodeId = string.Empty;
@@ -61,6 +65,8 @@ namespace Shipwreck {
 		private RectTransform m_subPinPosition = null;
 		[SerializeField]
 		private Image m_image = null;
+		[SerializeField]
+		private bool m_pinned = false; // whether a pin is currently dropped on this node
 
 		private RectTransform m_rectTransform;
 		private Routine m_colorRoutine;
@@ -71,6 +77,11 @@ namespace Shipwreck {
 
 		private IEnumerator ColorTo(Color color) {
 			yield return m_image.ColorTo(color, 0.1f).Ease(Curve.QuadOut);
+		}
+
+		public void SetPinned(bool pinned)
+		{
+			m_pinned = pinned;
 		}
 	}
 

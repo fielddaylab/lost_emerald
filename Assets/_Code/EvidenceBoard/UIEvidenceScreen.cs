@@ -265,6 +265,11 @@ namespace Shipwreck {
 			m_chains[m_selectedRoot].SetChainDepth(m_selectedPin+1);
 			m_chains[m_selectedRoot].MoveToFront();
 			AudioSrcMgr.instance.PlayOneShot("pick_up_pin");
+
+			if (RaycastForNode(InputMgr.Position, out EvidenceNode node))
+			{
+				node.SetPinned(false);
+			}
 		}
 
 		private void Drop() {
@@ -272,11 +277,23 @@ namespace Shipwreck {
 			EvidenceChain chainObj = m_chains[m_selectedRoot];
 
 			if (RaycastForNode(InputMgr.Position,out EvidenceNode node)) {
-				Selected.SetPosition(WorldToScreenPoint(node.PinPosition));
-				if (!Selected.IsRoot) {
-					Selected.SetHomePosition(WorldToScreenPoint(node.SubPinPosition));
+				// check that evidence node does not already have a pin on it
+				if (node.Pinned)
+				{
+					Selected.FlyHome();
+					AudioSrcMgr.instance.PlayOneShot("evidence_miss");
+					node = null;
 				}
-				chainState.Drop(node.NodeID);
+				else
+				{
+					Selected.SetPosition(WorldToScreenPoint(node.PinPosition));
+					if (!Selected.IsRoot)
+					{
+						Selected.SetHomePosition(WorldToScreenPoint(node.SubPinPosition));
+					}
+					chainState.Drop(node.NodeID);
+					node.SetPinned(true);
+				}
 			} else {
 				// if we didn't find a node, we need to return the pin home
 				Selected.FlyHome();
