@@ -33,7 +33,7 @@
 
 :: cause-correct
 @root Cause
-@correct survivor-accounts
+@correct survivor-accounts-cause
 
 // -----------------------------------------------------------
 //	Name
@@ -49,4 +49,4 @@
 
 :: artifact-correct
 @root Artifact
-@correct treasure-map, survivor-accounts, photo-gold
+@correct treasure-map, survivor-accounts-artifact, photo-gold

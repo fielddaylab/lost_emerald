@@ -35,7 +35,10 @@ namespace Shipwreck {
 			}
 		}
 
-		
+		public void SetPosition(Vector2 pos)
+		{
+			m_position = pos;
+		}
 
 		[SerializeField]
 		private SerializedHash32 m_groupID;
