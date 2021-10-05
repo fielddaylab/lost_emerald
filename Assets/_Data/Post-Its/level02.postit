@@ -33,7 +33,7 @@
 
 :: type-hint-1b
 @root Type
-@hint card-freighter, card-canaller, card-tug, card-steamer, card-side-steamer, card-schooner
+@hint card-freighter, card-canaller, card-tug, card-steamer, card-side-steamer
 @only
 	Do I have a matching photo?
 
@@ -75,17 +75,6 @@
 @incorrect card-side-steamer
 @precededBy photo-above
 	I don't think it's a steamer
-
-:: type-incorrect-4a
-@root Type
-@incorrect photo-above
-@precededBy card-schooner
-	It doesn't look like a schooner
-:: type-incorrect-4b
-@root Type
-@incorrect card-schooner
-@precededBy photo-above
-	It doesn't look like a schooner
 
 :: type-incorrect-generic
 @root Type

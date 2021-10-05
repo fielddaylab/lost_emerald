@@ -26,7 +26,7 @@
 
 :: shiptype-hint-1a
 @root Type
-@hint card-canaller, card-tug, card-freighter, card-side-steamer, card-schooner
+@hint card-canaller, card-tug, card-freighter, card-side-steamer
 @only
 	Do I have a photo of this?
 
@@ -48,7 +48,7 @@
 
 :: shiptype-hint-3
 @root Type
-@hint type-canaller, type-freighter, type-schooner, type-tug, type-steamer
+@hint type-canaller, type-freighter, type-tug, type-steamer
 @only
 	How can I prove this?
 
@@ -84,12 +84,6 @@
 @precededBy photo-above
 	Wreck doesn't look like a steamer
 
-:: shiptype-incorrect-4
-@root Type
-@incorrect card-schooner
-@precededBy photo-above
-	I don't think it's a schooner
-
 :: shiptype-incorrect-1b
 @root Type
 @precededBy card-tug
@@ -107,12 +101,6 @@
 @precededBy card-side-steamer
 @incorrect photo-above
 	Wreck doesn't look like a steamer
-
-:: shiptype-incorrect-4b
-@root Type
-@precededBy card-schooner
-@incorrect photo-above
-	I don't think it's a schooner
 
 :: shiptype-incorrect-generic
 @root Type
