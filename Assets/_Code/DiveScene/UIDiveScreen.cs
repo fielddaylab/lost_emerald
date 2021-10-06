@@ -144,6 +144,7 @@ namespace Shipwreck {
 			GameMgr.Events.Register<bool>(GameEvents.Dive.LocationChanging, HandleLocationChanging);
 			GameMgr.Events.Register<List<DivePointOfInterest>>(GameEvents.Dive.SendPhotoList, HandlePhotoListSent);
 			GameMgr.Events.Register(GameEvents.Dive.ShowMessage, HandleShowMessage);
+			GameMgr.Events.Register(GameEvents.Dive.NavigationActivated, HandleNavActivated, this);
 
 		}
 		protected override void OnHideStart() {
@@ -234,6 +235,10 @@ namespace Shipwreck {
 
 		private void HandleLocationChanging(bool isAscendNode) {			
 			m_currentState.OnLocationChange(isAscendNode);
+		}
+
+		private void HandleNavActivated() {
+			m_sliderZoom.value = 0;
 		}
 
 		#endregion
