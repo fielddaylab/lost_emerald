@@ -341,7 +341,14 @@ namespace Shipwreck {
 				switch (info.Response) {
 					case StickyInfo.ResponseType.Correct:
 						chainObj.SetState(ChainStatus.Complete);
-						// todo: update chains which require this
+						// turn evidence nodes complete
+						int numPins = chainObj.PinCount;
+						for (int p = 0; p < numPins; ++p) {
+							if (RaycastForNode(chainObj.GetPin(p).transform.position, out EvidenceNode nodeUnderPin)) {
+								nodeUnderPin.SetColor(GameDb.GetPinColor(ChainStatus.Complete));
+							}
+						}
+						// todo: update chains which require this chain
 						AudioSrcMgr.instance.PlayOneShot("evidence_complete");
 						break;
 					case StickyInfo.ResponseType.Hint:

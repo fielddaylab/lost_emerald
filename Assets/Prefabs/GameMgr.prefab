@@ -225,6 +225,8 @@ MonoBehaviour:
   m_pinDefault: {r: 0.6039216, g: 0.9058824, b: 0.8980393, a: 1}
   m_pinIncorrect: {r: 0.8862745, g: 0.49803922, b: 0.5199506, a: 1}
   m_pinComplete: {r: 1, g: 0.8120668, b: 0.3537736, a: 1}
+  m_evidenceNodeDefault: {r: 0.6039216, g: 0.9058824, b: 0.8980393, a: 1}
+  m_evidenceNodeComplete: {r: 1, g: 0.8117648, b: 0.3529412, a: 1}
 --- !u!114 &7854677246857917389
 MonoBehaviour:
   m_ObjectHideFlags: 0

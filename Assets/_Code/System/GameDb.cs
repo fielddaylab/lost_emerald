@@ -54,6 +54,11 @@ namespace Shipwreck {
 		[SerializeField]
 		private Color m_pinComplete = Color.black;
 
+		[SerializeField]
+		private Color m_evidenceNodeDefault = Color.black;
+		[SerializeField]
+		private Color m_evidenceNodeComplete = Color.black;
+
 		[NonSerialized]
 		private Dictionary<StringHash32, CharacterData> m_characterMap;
 		[NonSerialized]
@@ -196,6 +201,15 @@ namespace Shipwreck {
 				case ChainStatus.Normal: return I.m_pinDefault;
 				case ChainStatus.Incorrect: return I.m_pinIncorrect;
 				case ChainStatus.Complete: return I.m_pinComplete;
+				default: throw new NotImplementedException();
+			}
+		}
+
+		public static Color GetNodeColor(ChainStatus status) {
+			switch (status) {
+				case ChainStatus.Normal: return I.m_evidenceNodeDefault;
+				case ChainStatus.Incorrect: return I.m_evidenceNodeDefault;
+				case ChainStatus.Complete: return I.m_evidenceNodeComplete;
 				default: throw new NotImplementedException();
 			}
 		}
