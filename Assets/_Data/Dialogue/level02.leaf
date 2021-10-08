@@ -169,7 +169,7 @@
 @contact reya, phone-call
 @background reya-boat
 @trigger OnChainSolved
-@when IsChainComplete(Cause)
+@when IsChainComplete(Name), IsChainComplete(Type), IsChainComplete(Cause), IsChainComplete(Artifact), IsChainComplete(Cargo)
 @once
 
 	$call TriggerConvoMusic(reya_convo)

@@ -3,21 +3,10 @@
 // dialogue nodes are in the order that they should appear when playing the game
 
 
-:: mom-meet
-@contact mom, text-message
-@trigger OnEnterOffice
-@once
-
-	{@mom}  Delete this conversation! 
-	{@mom}  Delete!!! 
-	{@mom}  [shares newspaper article]
-	$call UnlockContact(dad)
-
-
 ::dad-meet
 @contact dad, phone-call
 @background dad-attic
-@trigger OnContactAdded
+@trigger OnEnterOffice
 @once
 
 	$call TriggerConvoMusic(dad_convo)

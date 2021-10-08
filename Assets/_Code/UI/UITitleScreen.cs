@@ -50,6 +50,7 @@ namespace Shipwreck {
 
 		private void HandleNewGame() {
 			AudioSrcMgr.instance.PlayOneShot("click_new_game");
+			GameMgr.UnlockContact("dad");
 			UIMgr.CloseThenCall<UITitleScreen>(() => {
 				GameMgr.MarkTitleScreenComplete();
 				UIMgr.Open<UIOfficeScreen>();
@@ -94,7 +95,6 @@ namespace Shipwreck {
 			GameMgr.UnlockEvidence(1, "LV1-Card-Types");
 			GameMgr.UnlockEvidence(1, "LV1-Table-Wrecks");
 			GameMgr.UnlockEvidence(1, "LV1-Article-Sinking");
-			GameMgr.UnlockContact("dad");
 			GameMgr.UnlockContact("lou");
 			GameMgr.UnlockContact("amy");
 			GameMgr.RecordNodeVisited("level01.mom-meet", "mom");
