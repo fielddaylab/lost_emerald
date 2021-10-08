@@ -17,11 +17,15 @@
 @once
 
 	$call TriggerConvoMusic(dad_convo)
-	{@dad} 	Hey Jules! Would you mind putting these up around your office?
-			[POSTER FOR HIS YARD SALE - not made yet]
-	{@you} 	“Real history”?  Dad, nobody here is going to want that old junk. 
-	{@dad}	Don’t be so sure. There’s some awesome stuff here.
-	{@you}	Sorry, Dad. Reya’s calling. Gotta go.
+	{@dad} 	Hey, kiddo. I'm getting ready for a big yard sale!
+		Could you put up these flyers at your work?
+			[YARD SALE POSTER - Treasure! Artifacts! Real history!!]
+	{@you} 	"Real history"?? Dad.... 
+	{@dad}   What? This is awesome stuff!!
+	{@you}   It's super silly. I want people at work to take me seriously.
+	{@dad}   This IS serious, Jules. I need to make some money.
+		 How else am I gonna buy a new sonar?
+	{@you}   Sorry, Dad. Reya's calling. Gotta go. 
 	$call UnlockContact(reya)
 	$call EndConvoMusic();
 
@@ -32,13 +36,17 @@
 @once
 
 	$call TriggerConvoMusic(reya_convo)
-	{@reya} Hey sis! Can I borrow some of your dive gear?
+	{@reya} Hey sis! Can I borrow your dive gear?
 	{@you}	What?? No!
-	{@reya}	Come on. Pretty please? I picked up a side job, and the wreck is down at 300 feet. I need your rebreather!
-	{@you}	You’re not trained to dive that deep. You need an expert to help you.
-	{@reya} Awww, Jules!! Thank you for offering. I would love your help!
-			Here’s the coordinates:
-			[sends coordinates and sonar image] 43.3356°N 87.5698°W
+	{@reya}	Come on. Pretty please? 
+		I picked up a side job and the wreck is down at 300 feet. 
+		I need your fancy deep-diving thing!
+	{@you}	It's called a rebreather, and you're not trained to use it, Reya.
+		You need an expert to help you. 
+	{@reya} Awww, Jules! Thank you. I would love your help. 
+	{@you}  Wait, that's not what I meant--
+	{@reya}	It's near Port Washington. 
+			GPS Location: 43°20'08.2"N 87°34'11.3"W
 			Race ya there!
 	$call UnlockLevel(2)
 	$call UnlockEvidence(2, "LV1-Root")

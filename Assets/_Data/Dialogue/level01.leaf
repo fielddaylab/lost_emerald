@@ -8,30 +8,35 @@
 @trigger OnEnterOffice
 @once
 
-	{@mom}  Hey Jules, 
-	{@mom}  Just wanted to give you a heads-up. Your dad is at it again. 
-	{@mom}  {obj EmbarrassingArticle}
+	{@mom}  Delete this conversation! 
+	{@mom}  Delete!!! 
+	{@mom}  [shares newspaper article]
 	$call UnlockContact(dad)
 
 
 ::dad-meet
 @contact dad, phone-call
-@background dad-yardsale
+@background dad-attic
 @trigger OnContactAdded
 @once
 
 	$call TriggerConvoMusic(dad_convo)
-	{@dad}  Hey Jules! It’s yard sale day! You gonna stop by? 
-	{@you}  Dad, I saw the news.
-			You’re looking for Grandpa’s ship again?
-	{@dad}  Aw, don’t sound so worried, Jules. I’ve got a plan.
-			I’m selling a bunch of old stuff so I can buy that fancy new fish finder!
-	{@you}  Dad. You’re not going to find grandpa’s SHIP with a FISH finder.
-	{@dad}  Ha. We’ll see about that.
-	{@you}  This is serious, Dad. Can’t you just leave the shipwreck hunting to the experts? 
-	{@dad}  Ooh. You mean you want to team up? 
-	{@you}  No, that’s not--
-	{@dad}  Oh, your sister’s here! She’s gonna help me look through some old stuff. Gotta go bye!
+	{@dad}  Hey Jules! Guess what I found in the attic! 
+	{@you}  Dad, can we talk later? I'm at work. 
+	{@dad}  This is important!
+		I found one of your grandpa's old letters. 
+                 His ship, the SS Emerald, was carrying treasure when it sank!
+	{@you}  Since when do you care about treasure, Dad? 
+	{@dad}  I don't. But your sister does!
+                She's gonna help me find my dad's wreck!
+                She also found your grandma's old locket. Looks nice on her.
+	{@you}  Wait. How come Reya gets the locket?? 
+	{@dad}  Never mind that, Jules. We're on a mission!
+	{@you}  Well... I guess I can start a file for Grandpa's ship.
+                But I gotta go for now. Getting a work call.
+	{@dad}  Ooh, sounds important. Have fun, Jules!
+        $call UnlockLevel(4)
+        $call UnlockEvidence(4,LV4-Letter-Treasure)
 	$call UnlockContact(lou)
 	$call EndConvoMusic()
 
@@ -44,23 +49,21 @@
 
 	$call TriggerConvoMusic(lou_convo)
 	// Receive/open a new text from Lou
-	{@lou}  Hey Jules!
-	{@you} 	Hey Lou. What’s all that noise? Where are you?
-	{@lou} 	Huh? Oh! I’m just out flying over Lake Michigan.
+	{@lou}  Hiya, Jules!
+	{@you} 	Hey Lou. What’s all that noise? 
+	{@lou} 	Huh? Oh, I’m just out flying over Lake Michigan.
 	{@you} 	What??? You’re flying right now?
 	{@lou} 	Relax. I’m on my headset.
 			Check this out!
 			{img ultralight-photo}
-			GPS Location: N 44° 11.524' W 087° 30.591'
-			So? What do you think?
-	{@you} 	That looks like a shipwreck!
-			Have you seen it before?
-	{@lou} 	Nope. And I fly out here all the time.
+			What do you think?
+	{@you} 	Looks like a shipwreck!
+			Did you get the location? 
+	{@lou} 	Yep. Right by Rawley Point. 
+                 GPS Location: N 44° 11.524' W 087° 30.591'
 			{/img}
-	{@you} 	The storm last night must’ve uncovered it.
-			I better get out there before the sand covers it again!
-			Thanks, Lou!
-	{@lou} 	No prob!
+	{@you} 	I'll add the location to my file and check it out. 
+		Thanks, Lou!
 	$call UnlockLevel(1)
 	$call UnlockEvidence(1,LV1-Root)
 	$call UnlockEvidence(1,LV1-Transcript-Lou)
@@ -72,50 +75,54 @@
 @contact you, radio
 @trigger OnEnterDive
 @once
-	{@you} That's the ship! I should take a photo before I dive deeper.
+	{@you} That's the ship! 
+               Better grab a photo from up here. 
+                
 
 :: dive-photo-above
 @contact you, radio
 @trigger OnEvidenceUnlock
 @when HasEvidence(LV1-Photo-Above)
 @once
-	{@you} That's a great birds-eye... er fish-eye view of the ship!
+	{@you} Got it!
+               Time to dive down and take more pictures. 
 
 :: dive-photo-name
 @contact you, radio
 @trigger OnEvidenceUnlock
 @when HasEvidence(LV1-Photo-Name)
 @once
-	{@you} It's missing some letters, but this certainly looks like the ship's name!
+	{@you} Yes! The ship's name! 
+                Looks like it's missing some letters. 
 
 :: dive-photo-artifact
 @contact you, radio
 @trigger OnEvidenceUnlock
 @when HasEvidence(LV1-Photo-Artifact)
 @once
-	{@you} Woah! That's a cool knife! I wonder whose it was?
+	{@you} Whoa! What a cool old knife. I wonder whose it was.
 
 // generic dive prompts
 
 :: dive-already-taken
 @contact you, radio
 @trigger OnPhotoAlreadyTaken
-	{@you}	We've already taken a photo of this.
+	{@you}	I already got a photo of this. 
 
 :: dive-zoom-in
 @contact you, radio
 @trigger OnZoomIn
-	{@you}	I should zoom in to catch a better shot.
+	{@you}	Better zoom in so I can get a better shot.
 
 :: dive-zoom-out
 @contact you, radio
 @trigger OnZoomOut
-	{@you}	I should zoom out to get more in frame!
+	{@you}	I should zoom out so I can fit more in the picture! 
 
 :: dive-nothing-of-interest
 @contact you, radio
 @trigger OnNothingOfInterest
-	{@you}	Nothing to see here.
+	{@you}	Nothing useful here.  
 
 ::amy-meet
 @contact amy, phone-call
@@ -125,44 +132,33 @@
 @once
 
 	$call TriggerConvoMusic(amy_convo)
-	{@you}  Hey Amy. Got a sec?
-	{@amy}  Oh, hey Jules! That was your dad in that newspaper, right? Is he ok?
-	{@you}  He’s fine. That was a normal Tuesday for him.  
-			I’m looking into a new shipwreck. Can you send me a list of ships that went down near Rawley Point?
-	{@amy}  Ok, one sec...
-			Done!
+	{@amy}  Hey, Jules! Need some info from the archives? 
+        {@you}  Maybe. I'm trying to ID a shipwreck. 
+                Can you send me a list of all the ships that sank near Rawley Point?
+        {@amy}  Sure! One sec....
+	        Done! Check your evidence board. 
+        {@you}  Thanks, Amy! 
+
 	$call UnlockEvidence(1,LV1-Card-Types)
 	$call UnlockEvidence(1,LV1-Table-Wrecks)
 	$call EndConvoMusic()
 
 
 
-::dad-urgent-text
-@contact dad, text-message
-@trigger OnChainSolved
-@when IsChainComplete(Name), IsChainComplete(Type)
-@once
-	{@dad}  Jules!! Big news!  
-	{@you}  Sorry, Dad. Super busy.
-
-
-
 ::amy-article
 @contact amy, phone-call
 @background amy-office
-@trigger OnDialogClosed
-@when Seen(level01.dad-urgent-text)
+@trigger OnChainSolved
+@when IsChainComplete(Name), IsChainComplete(Type)
 @once
 	
 	$call TriggerConvoMusic(amy_convo)
-	{@amy} 	Hey! Any news?
-	{@you} 	Just that my dad is driving me crazy.
-	 		He won’t stop looking for my grandpa’s shipwreck.
-		 	I mean, I know Dad’s upset that people blamed Grandpa. But Grandpa sounds like he was the risk-taking type! How does Dad know it wasn’t his fault?? 
-	{@amy} 	Oh, uh, I meant news on the other shipwreck…
-	{@you} 	Oops. Yep, I found the ship’s name. She’s the Loretta!
-	{@amy} 	Awesome! I’ll see what I can dig up about her in the archives. 
-			I’ll send you what I find!
+	{@you} 	I got the ship's name. It's the Loretta!
+	{@amy} 	You mean she's the Loretta!
+	{@you} 	Huh?
+	{@amy} 	It's an old sailing thing. Ships are always "she." 
+                 Looks like I've got an old article about her. I'll send it over. 
+	{@you}  Thanks, Amy! 
 	$call UnlockEvidence(1,LV1-Article-Sinking)
 	$call EndConvoMusic()
 
@@ -173,9 +169,17 @@
 @once
 	
 	$call TriggerConvoMusic(lou_convo)
-	{@you}  Lou! I solved the mystery of the ship you saw!
-			Her name was the Loretta and she sank after running into a sand bar!
-	{@lou}  What!? That's amazing!
+	{@lou}  Hey, shipwreck expert! Any juicy details on that wreck?
+	{@you}  Yes! She's the Loretta!
+	{@lou}  Awesome name. How'd she sink?
+         {@you}  Wildfires were burning all across Wisconsin, including a huge fire in Peshtigo.
+                 Tons of smoke blew out over the lake.
+	{@lou}   Uh oh. How could they see where they were sailing?
+	{@you}   They couldn't. The captain got lost in the smoke and ran into a shallow sandbar!
+		The Loretta filled with water and the sailors had to climb up the ropes.
+		Luckily, they were rescued by a fishing boat in the morning.
+	{@lou}	Wow! What a wild story.
+		I wonder what it was like back then... 
 	$call TriggerCutscene();
 	$call EndConvoMusic()
 
@@ -185,33 +189,7 @@
 @trigger OnCaseClosed
 @once
 
-	{@you} 	Case closed on the Loretta! I’ll send you the file so you can add it to the archives.
-	{@amy} 	Awesome. Nice work, Jules!
-
-
-
-::dad-level-end
-@contact dad, phone-call
-@background dad-attic
-@trigger OnDialogClosed
-@when Seen(level01.amy-level-end)
-@once
-
-	$call TriggerConvoMusic(dad_convo)
-	{@dad} 	Jules! Where have you been? We’ve got big news on the Emerald!
-	{@you} 	Grandpa’s ship?
-	{@dad} 	Yep. Reya found a clue in one of your grandma’s old letters.
-			Turns out the ship was carrying TREASURE!
-	{@you} 	Dad, come on . . . 
-	{@dad} 	Your sister’s great at this stuff. She’s gonna help me track down the wreck!
-	{@you} 	Wait. She is??
-	{@dad}	 Don’t worry, we don’t need your help. I know you’re busy.
-			Besides, Reya says she can handle it. 
-	{@you}	Um . . . actually . . . 
-			I guess I could start a file for Grandpa’s ship. Just in case. 
-	{@dad} 	Wow! Ok, I’ll send the letter over to you.
-			This is great! The Griffin family treasure hunters, working together!
-	{@you} 	Yeah. Super great.
-	$call UnlockLevel(4)
-	$call UnlockEvidence(4,LV4-Letter-Treasure)
+	{@you} 	Hey, Amy! Case closed on the Loretta. 
+		I’ll send you the file for the archives.
+	{@amy} 	Thanks, Jules. Nice work! 
 	$call EndConvoMusic()
