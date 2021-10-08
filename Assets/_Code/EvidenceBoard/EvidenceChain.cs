@@ -96,6 +96,14 @@ namespace Shipwreck {
 			foreach (EvidencePin pin in m_evidencePins) {
 				pin.SetColor(GameDb.GetPinColor(state));
 			}
+			// turn evidence nodes complete
+			int numPins = PinCount;
+			for (int p = 0; p < numPins; ++p) {
+				if (GraphicsRaycasterMgr.instance.RaycastForNode(GetPin(p).transform.position, out EvidenceNode nodeUnderPin)) {
+					nodeUnderPin.SetColor(GameDb.GetPinColor(state));
+					nodeUnderPin.SetCurrStatus(state);
+				}
+			}
 			m_lineColorRoutine.Replace(this, Tween.Color(m_lineRenderer.color, GameDb.GetLineColor(state), SetLineColor, 0.2f));
 		}
 

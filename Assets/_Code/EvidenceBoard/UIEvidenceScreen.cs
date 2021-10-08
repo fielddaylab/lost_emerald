@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 namespace Shipwreck {
 
-	
+
 
 	public sealed partial class UIEvidenceScreen : UIBase {
 
@@ -62,7 +62,7 @@ namespace Shipwreck {
 		private Dictionary<StringHash32, List<EvidencePin>> m_pinsByRoot;
 		private Dictionary<EvidencePin, StringHash32> m_rootsByPin;
 
-		private GraphicRaycaster m_raycaster;
+		//private GraphicRaycaster m_raycaster;
 		private Layers m_layers;
 
 		private StringHash32 m_selectedRoot = StringHash32.Null;
@@ -72,17 +72,17 @@ namespace Shipwreck {
 		private Vector2 m_homePos;
 		private EvidenceNode m_hoverNode;
 
-		private List<RaycastResult> m_raycastResults;
+		//private List<RaycastResult> m_raycastResults;
 
 		private void Awake() {
 			m_layers = new Layers(m_nodeBackGroup, m_lineGroup, m_nodeFrontGroup, m_labelGroup, m_pinGroup);
-			m_raycaster = GetComponentInParent<GraphicRaycaster>();
+			//m_raycaster = GetComponentInParent<GraphicRaycaster>();
 			m_groups = new Dictionary<StringHash32, EvidenceGroup>();
 			m_nodes = new Dictionary<StringHash32, EvidenceNode>();
 			m_chains = new Dictionary<StringHash32, EvidenceChain>();
 			m_rootsByPin = new Dictionary<EvidencePin, StringHash32>();
 			m_pinsByRoot = new Dictionary<StringHash32, List<EvidencePin>>();
-			m_raycastResults = new List<RaycastResult>();
+			//m_raycastResults = new List<RaycastResult>();
 		}
 
 		protected override void OnShowStart() {
@@ -141,7 +141,8 @@ namespace Shipwreck {
 						if (pinIndex != 0) {
 							pin.SetHomePosition(WorldToScreenPoint(node.SubPinPosition));
 						}
-					} else if (addDangler && pinIndex > 0 && pinIndex < chain.Depth && m_nodes.TryGetValue(chain.GetNodeInChain(pinIndex), out node)) {
+					}
+					else if (addDangler && pinIndex > 0 && pinIndex < chain.Depth && m_nodes.TryGetValue(chain.GetNodeInChain(pinIndex), out node)) {
 						pin.SetPosition(WorldToScreenPoint(node.SubPinPosition));
 						if (pinIndex != 0) {
 							pin.SetHomePosition(WorldToScreenPoint(node.SubPinPosition));
@@ -198,7 +199,8 @@ namespace Shipwreck {
 			get {
 				if (m_selectedRoot == StringHash32.Null || m_selectedPin == -1) {
 					return null;
-				} else {
+				}
+				else {
 					return m_pinsByRoot[m_selectedRoot][m_selectedPin];
 				}
 			}
@@ -208,12 +210,13 @@ namespace Shipwreck {
 				Selected.SetPosition(InputMgr.Position);
 				if (!m_dragging) {
 					m_dragging = Vector2.Distance(m_pressPosition, InputMgr.Position) > 4f;
-				} else {
+				}
+				else {
 					EvidenceNode result;
-					RaycastForNode(InputMgr.Position, out result);
+					GraphicsRaycasterMgr.instance.RaycastForNode(InputMgr.Position, out result);
 					if (result != m_hoverNode) {
 						if (m_hoverNode != null) {
-							m_hoverNode.SetColor(m_colorDefault);
+							m_hoverNode.SetColor(GameDb.GetPinColor(m_hoverNode.GetCurrStatus()));
 						}
 						m_hoverNode = result;
 						if (m_hoverNode != null) {
@@ -226,7 +229,8 @@ namespace Shipwreck {
 		private void HandlePinPressed(EvidencePin pin) {
 			if (Selected == pin) {
 				Drop();
-			} else if (Selected == null && !GameMgr.State.CurrentLevel.GetChain(m_rootsByPin[pin]).IsCorrect) {
+			}
+			else if (Selected == null && !GameMgr.State.CurrentLevel.GetChain(m_rootsByPin[pin]).IsCorrect) {
 				m_selectedRoot = m_rootsByPin[pin];
 				m_selectedPin = m_pinsByRoot[m_selectedRoot].IndexOf(pin);
 				m_homePos = Selected.RectTransform.position;
@@ -242,7 +246,7 @@ namespace Shipwreck {
 		}
 		private void HandleBackButton() {
 			AudioSrcMgr.instance.PlayOneShot("click_evidence_back");
-			UIMgr.CloseThenOpen<UIEvidenceScreen,UIOfficeScreen>();
+			UIMgr.CloseThenOpen<UIEvidenceScreen, UIOfficeScreen>();
 		}
 		private void HandleShipOutButton() {
 			AudioSrcMgr.instance.PlayOneShot("click_evidence_ship_out");
@@ -262,12 +266,11 @@ namespace Shipwreck {
 
 		private void Lift() {
 			GameMgr.State.CurrentLevel.GetChain(m_selectedRoot).Lift(m_selectedPin);
-			m_chains[m_selectedRoot].SetChainDepth(m_selectedPin+1);
+			m_chains[m_selectedRoot].SetChainDepth(m_selectedPin + 1);
 			m_chains[m_selectedRoot].MoveToFront();
 			AudioSrcMgr.instance.PlayOneShot("pick_up_pin");
 
-			if (RaycastForNode(InputMgr.Position, out EvidenceNode node))
-			{
+			if (GraphicsRaycasterMgr.instance.RaycastForNode(InputMgr.Position, out EvidenceNode node)) {
 				node.SetPinned(false);
 			}
 		}
@@ -275,79 +278,59 @@ namespace Shipwreck {
 		private void Drop() {
 			IEvidenceChainState chainState = GameMgr.State.CurrentLevel.GetChain(m_selectedRoot);
 			EvidenceChain chainObj = m_chains[m_selectedRoot];
+			bool alreadyPinned = false;
 
-			if (RaycastForNode(InputMgr.Position,out EvidenceNode node)) {
+			if (GraphicsRaycasterMgr.instance.RaycastForNode(InputMgr.Position, out EvidenceNode node)) {
+				alreadyPinned = node.Pinned;
 				// check that evidence node does not already have a pin on it
-				if (node.Pinned)
-				{
+				if (alreadyPinned) {
 					Selected.FlyHome();
 					AudioSrcMgr.instance.PlayOneShot("evidence_miss");
-					node = null;
 				}
-				else
-				{
+				else {
 					Selected.SetPosition(WorldToScreenPoint(node.PinPosition));
-					if (!Selected.IsRoot)
-					{
+					if (!Selected.IsRoot) {
 						Selected.SetHomePosition(WorldToScreenPoint(node.SubPinPosition));
 					}
 					chainState.Drop(node.NodeID);
 					node.SetPinned(true);
 				}
-			} else {
+			}
+			else {
 				// if we didn't find a node, we need to return the pin home
 				Selected.FlyHome();
 				AudioSrcMgr.instance.PlayOneShot("evidence_miss");
 			}
 			if (m_hoverNode != null) {
-				m_hoverNode.SetColor(m_colorDefault);
+				m_hoverNode.SetColor(GameDb.GetPinColor(m_hoverNode.GetCurrStatus()));
 			}
 
-			// determine what we do with the chain
-			RefreshChainState(chainState.StickyInfo, chainObj, node);
-			
+			if (!alreadyPinned) {
+				RefreshChainState(chainState.StickyInfo, chainObj, node);
+			}
+
 			m_selectedPin = -1;
 			m_dragging = false;
-		}
-
-		private bool RaycastForNode(Vector2 screenPos, out EvidenceNode node) {
-			m_raycastResults.Clear();
-			PointerEventData eventData = new PointerEventData(EventSystem.current);
-			eventData.position = screenPos;
-			m_raycaster.Raycast(eventData, m_raycastResults);
-			// we only care about the first node result
-			foreach (RaycastResult result in m_raycastResults) {
-				node = result.gameObject.GetComponent<EvidenceNode>();
-				if (node != null) {
-					return true;
-				}
-			}
-			node = null;
-			return false;
 		}
 
 		private void RefreshChainState(StickyInfo info, EvidenceChain chainObj, EvidenceNode node = null) {
 			if (string.IsNullOrEmpty(info?.Text ?? null)) {
 				chainObj.HideStickyNote();
-			} else {
+			}
+			else {
 				chainObj.ShowStickyNote(info.Text);
 			}
 			if (info == null) {
+
 				chainObj.SetState(ChainStatus.Normal);
 				if (node != null) {
 					TryExtendingChain(chainObj, node);
 				}
-			} else {
+			}
+			else {
 				switch (info.Response) {
 					case StickyInfo.ResponseType.Correct:
 						chainObj.SetState(ChainStatus.Complete);
-						// turn evidence nodes complete
-						int numPins = chainObj.PinCount;
-						for (int p = 0; p < numPins; ++p) {
-							if (RaycastForNode(chainObj.GetPin(p).transform.position, out EvidenceNode nodeUnderPin)) {
-								nodeUnderPin.SetColor(GameDb.GetPinColor(ChainStatus.Complete));
-							}
-						}
 						// todo: update chains which require this chain
 						AudioSrcMgr.instance.PlayOneShot("evidence_complete");
 						break;
@@ -359,6 +342,7 @@ namespace Shipwreck {
 						}
 						break;
 					case StickyInfo.ResponseType.Incorrect:
+						Debug.Log("4");
 						chainObj.SetState(ChainStatus.Incorrect);
 						AudioSrcMgr.instance.PlayOneShot("evidence_wrong");
 						break;

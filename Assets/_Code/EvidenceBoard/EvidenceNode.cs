@@ -70,6 +70,7 @@ namespace Shipwreck {
 
 		private RectTransform m_rectTransform;
 		private Routine m_colorRoutine;
+		private ChainStatus m_currStatus;
 
 		public void SetColor(Color color) {
 			m_colorRoutine.Replace(this, ColorTo(color));
@@ -77,6 +78,14 @@ namespace Shipwreck {
 
 		private IEnumerator ColorTo(Color color) {
 			yield return m_image.ColorTo(color, 0.1f).Ease(Curve.QuadOut);
+		}
+
+		public void SetCurrStatus(ChainStatus status) {
+			m_currStatus = status;
+		}
+
+		public ChainStatus GetCurrStatus() {
+			return m_currStatus;
 		}
 
 		public void SetPinned(bool pinned)
