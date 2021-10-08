@@ -22,6 +22,7 @@ namespace Shipwreck {
 		void Drop(StringHash32 node);
 
 		List<StringHash32> Chain();
+		void SetEChain(EvidenceChain eChain);
 	}
 
 	public sealed partial class GameMgr { // EvidenceChainState.cs
@@ -36,12 +37,18 @@ namespace Shipwreck {
 			private StickyInfo m_stickyData;
 			private StickyEvaluator.RootSolvedPredicate m_levelRootEvaluator;
 
+			private EvidenceChain m_eChain;
+
 			public EvidenceChainState() {
 				// empty constructor for deserialization
 			}
 			public EvidenceChainState(StringHash32 root) {
 				m_rootNode = root;
 				m_chain = new List<StringHash32>();
+			}
+
+			public void SetEChain(EvidenceChain eChain) {
+				m_eChain = eChain;
 			}
 
 			public StickyInfo StickyInfo { 
@@ -107,7 +114,12 @@ namespace Shipwreck {
 				}
 			*/
 				while (m_chain.Count > depth) {
+					EvidencePin ePin = m_eChain.GetPin(m_chain.Count - 1);
+					if (GraphicsRaycasterMgr.instance.RaycastForNode(ePin.transform.position, out EvidenceNode node)) {
+						node.SetPinned(false);
+					}
 					m_chain.RemoveAt(m_chain.Count - 1);
+
 					// intentionally removing all nodes in the chain
 					// (including the lifted one) until the desired
 					// node is found or chain is empty

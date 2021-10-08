@@ -114,6 +114,7 @@ namespace Shipwreck {
 				IEvidenceChainState chain = GameMgr.State.CurrentLevel.GetChain(chainIndex);
 				EvidenceNode root = m_nodes[chain.Root()];
 				EvidenceChain obj = Instantiate(m_chainPrefab);
+				chain.SetEChain(obj);
 				obj.transform.SetParent(root.RectTransform);
 				obj.transform.position = root.RectTransform.position;
 				obj.Setup(GameDb.GetNodeLocalizationKey(root.NodeID), m_layers, 20f + 40f * (chainIndex % 2 == 0 ? 0 : 1f));
@@ -342,7 +343,6 @@ namespace Shipwreck {
 						}
 						break;
 					case StickyInfo.ResponseType.Incorrect:
-						Debug.Log("4");
 						chainObj.SetState(ChainStatus.Incorrect);
 						AudioSrcMgr.instance.PlayOneShot("evidence_wrong");
 						break;
