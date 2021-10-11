@@ -117,6 +117,7 @@ namespace Shipwreck {
 					EvidencePin ePin = m_eChain.GetPin(m_chain.Count - 1);
 					if (GraphicsRaycasterMgr.instance.RaycastForNode(ePin.transform.position, out EvidenceNode node)) {
 						node.SetPinned(false);
+						node.SetColor(GameDb.GetPinColor(ChainStatus.Normal));
 					}
 					m_chain.RemoveAt(m_chain.Count - 1);
 
@@ -140,9 +141,11 @@ namespace Shipwreck {
 			*/
 				if (node != m_rootNode) {
 					if (Contains(node)) {
+						/*
 						throw new InvalidOperationException("Cannot Drop " +
 							"pins on nodes that are already within the chain."
 						);
+						*/
 					}
 					m_chain.Add(node);
 				}

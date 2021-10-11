@@ -114,13 +114,17 @@ namespace Shipwreck {
 				IEvidenceChainState chain = GameMgr.State.CurrentLevel.GetChain(chainIndex);
 				EvidenceNode root = m_nodes[chain.Root()];
 				EvidenceChain obj = Instantiate(m_chainPrefab);
-				chain.SetEChain(obj);
 				obj.transform.SetParent(root.RectTransform);
 				obj.transform.position = root.RectTransform.position;
 				obj.Setup(GameDb.GetNodeLocalizationKey(root.NodeID), m_layers, 20f + 40f * (chainIndex % 2 == 0 ? 0 : 1f));
 
 				bool addDangler = chain.Depth < obj.PinCount && (chain.StickyInfo == null || chain.StickyInfo.Response == StickyInfo.ResponseType.Hint);
 				obj.SetChainDepth(chain.Depth - 1 + (addDangler ? 1 : 0));
+
+				// tracks which nodes have been completed.
+				// if all nodes have been completed, set their color to gold
+				// (workaround to bug in SetState raycasting)
+				List<EvidenceNode> pinnedNodes = new List<EvidenceNode>();
 
 				for (int pinIndex = 0; pinIndex < obj.PinCount; pinIndex++) {
 					EvidencePin pin = obj.GetPin(pinIndex);
@@ -139,6 +143,8 @@ namespace Shipwreck {
 
 					if (pinIndex + 1 < chain.Depth && m_nodes.TryGetValue(chain.GetNodeInChain(pinIndex + 1), out node)) {
 						pin.SetPosition(WorldToScreenPoint(node.PinPosition));
+						node.SetPinned(true);
+						pinnedNodes.Add(node);
 						if (pinIndex != 0) {
 							pin.SetHomePosition(WorldToScreenPoint(node.SubPinPosition));
 						}
@@ -152,10 +158,17 @@ namespace Shipwreck {
 					pin.OnPointerDown += HandlePinPressed;
 					pin.OnPointerUp += HandlePinReleased;
 				}
+				chain.SetEChain(obj);
 				m_chains.Add(chain.Root(), obj);
 
+				
+				if (pinnedNodes.Count == chain.Depth - 1) {
+					foreach (EvidenceNode node in pinnedNodes) {
+						node.SetColor(GameDb.GetPinColor(ChainStatus.Complete));
+						node.SetCurrStatus(ChainStatus.Complete);
+					}
+				}
 				RefreshChainState(chain.StickyInfo, obj, null);
-
 			}
 
 			// ship out button is only available if the location root is solved
@@ -322,7 +335,6 @@ namespace Shipwreck {
 				chainObj.ShowStickyNote(info.Text);
 			}
 			if (info == null) {
-
 				chainObj.SetState(ChainStatus.Normal);
 				if (node != null) {
 					TryExtendingChain(chainObj, node);
