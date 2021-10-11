@@ -98,11 +98,13 @@ namespace Shipwreck {
 			m_stickyNote.SetColor(GameDb.GetStickyColor(state));
 			m_rootLabel.SetColor(GameDb.GetLineColor(state));
 			foreach (EvidencePin pin in m_evidencePins) {
-				pin.SetColor(GameDb.GetPinColor(state));
-				if (GraphicsRaycasterMgr.instance.RaycastForNode(pin.transform.position, out EvidenceNode nodeUnderPin)) {
-					nodeUnderPin.SetColor(GameDb.GetPinColor(state));
-					nodeUnderPin.SetCurrStatus(state);
-					nodeUnderPin.SetPinned(state == ChainStatus.Complete);
+				if (pin.gameObject.activeSelf) {
+					pin.SetColor(GameDb.GetPinColor(state));
+					if (GraphicsRaycasterMgr.instance.RaycastForNode(pin.transform.position, out EvidenceNode nodeUnderPin)) {
+						nodeUnderPin.SetColor(GameDb.GetPinColor(state));
+						nodeUnderPin.SetCurrStatus(state);
+						nodeUnderPin.SetPinned(state == ChainStatus.Complete);
+					}
 				}
 			}
 			m_lineColorRoutine.Replace(this, Tween.Color(m_lineRenderer.color, GameDb.GetLineColor(state), SetLineColor, 0.2f));
