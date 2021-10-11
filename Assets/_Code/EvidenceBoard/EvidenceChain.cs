@@ -142,8 +142,14 @@ namespace Shipwreck {
 
 		private void SetLabelDistance() {
 			Vector2 segement1 =  m_points[1] - m_rootPos;
-			Vector2 basePos = m_lineRenderer.rectTransform.position;
-			((RectTransform)m_rootLabel.transform).position =  basePos + (segement1.normalized * Mathf.Min(m_labelDistance, segement1.magnitude* 0.75f));
+			Vector2 basePos = RectTransformUtility.WorldToScreenPoint(Camera.main, m_lineRenderer.rectTransform.position);
+
+			Vector3 proposedPos = basePos + segement1.normalized * Mathf.Min(m_labelDistance, segement1.magnitude * 0.75f);
+
+			RectTransformUtility.ScreenPointToWorldPointInRectangle(
+				(RectTransform)m_rootLabel.transform, proposedPos, Camera.main, out Vector3 finalPos
+			);
+			((RectTransform)m_rootLabel.transform).position = finalPos;
 		}
 
 		private void HandlePinPositionChanged(EvidencePin pin) {

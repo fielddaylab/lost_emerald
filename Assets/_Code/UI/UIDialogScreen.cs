@@ -103,7 +103,7 @@ namespace Shipwreck {
 			m_continueButton.onClick.AddListener(SkipSound);
 			m_continueButton.onClick.AddListener(action);
 
-			AudioSrcMgr.instance.StartLineAudio(DialogAudioMgr.Type.phone);
+			//AudioSrcMgr.instance.StartLineAudio(DialogAudioMgr.Type.phone);
 
 			while (visibleCharacterCount > 0 && skipped == false) {
 				if (timeToWait >= 0) {
@@ -137,7 +137,7 @@ namespace Shipwreck {
 				m_textBox.maxVisibleCharacters += (int) visibleCharacterCount;
 			}
 
-			AudioSrcMgr.instance.EndLineAudio();
+			//AudioSrcMgr.instance.EndLineAudio();
 
 			m_continueButton.onClick.RemoveAllListeners();
 			m_continueButton.onClick.AddListener(ClickSound);
