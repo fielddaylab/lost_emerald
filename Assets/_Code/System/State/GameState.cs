@@ -48,6 +48,8 @@ namespace Shipwreck {
 
 		bool HasTutorialBuoyDropped();
 		void SetTutorialBuoyDropped(bool isDropped);
+
+		bool HasTutorialPinDisplayed();
 	}
 
 
@@ -87,7 +89,7 @@ namespace Shipwreck {
 			private List<QueuedNotification> m_queuedNotifications;
 			private LevelState[] m_levelStates;
 			private ShipOutState[] m_shipOutStates;
-			private int m_currShipOutIndex;
+			private int m_currShipOutIndex; // does this need to be serialized?
 			private bool m_tutorialBuoyDropped;
 			private bool m_tutorialSonarDisplayed;
 
@@ -290,11 +292,13 @@ namespace Shipwreck {
 			{
 				return m_tutorialBuoyDropped;
 			}
-			public void SetTutorialBuoyDropped(bool isDropped)
+			public void SetTutorialBuoyDropped(bool isDropped) 
 			{
 				m_tutorialBuoyDropped = isDropped;
 			}
-
+			public bool HasTutorialPinDisplayed() {
+				return m_levelStates[0].IsLocationChainComplete();
+			}
 			public void SetCutsceneSeen() {
 				m_levelStates[m_currentLevel].SetCutsceneSeen();
 			}
@@ -306,6 +310,9 @@ namespace Shipwreck {
 				ioSerializer.ObjectArray("queuedNotifications", ref m_queuedNotifications);
 				ioSerializer.ObjectArray("levelStates", ref m_levelStates);
 				ioSerializer.ObjectArray("shipOutStates", ref m_shipOutStates);
+
+				ioSerializer.Serialize("tutorialBuoy", ref m_tutorialBuoyDropped);
+				ioSerializer.Serialize("tutorialSonar", ref m_tutorialSonarDisplayed);
 
 				if (ioSerializer.IsReading) {
 					for (int index = 0; index < m_levelStates.Length; index++) {

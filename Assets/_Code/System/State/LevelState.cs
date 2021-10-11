@@ -19,6 +19,7 @@ namespace Shipwreck {
 		bool HasTakenTopDownPhoto();
 		bool IsChainComplete(StringHash32 root);
 		bool IsBoardComplete();
+		bool IsLocationRoot(StringHash32 stringHash32);
 	}
 
 
@@ -157,6 +158,10 @@ namespace Shipwreck {
 
 			public void SetCutsceneSeen() {
 				m_hasSeenCutscene = true;
+			}
+
+			public bool IsLocationRoot(StringHash32 stringHash32) {
+				return m_levelData.LocationRoot == stringHash32;
 			}
 		}
 	}

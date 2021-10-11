@@ -156,10 +156,16 @@ namespace Shipwreck {
 
 				RefreshChainState(chain.StickyInfo, obj, null);
 
+				// if we are tutorializing location, relevant items need to pulse
+				if (!GameMgr.State.HasTutorialPinDisplayed() && GameMgr.State.CurrentLevel.IsLocationRoot(chain.Root())) {
+					obj.GetPin(0).SetPulsing(true);
+				}
 			}
 
 			// ship out button is only available if the location root is solved
 			m_buttonShipOut.gameObject.SetActive(GameMgr.State.CurrentLevel.IsLocationChainComplete());
+
+			
 		}
 
 		private void ClearBoard() {
@@ -273,6 +279,13 @@ namespace Shipwreck {
 
 			if (GraphicsRaycasterMgr.instance.RaycastForNode(InputMgr.Position, out EvidenceNode node)) {
 				node.SetPinned(false);
+			}
+
+			// if we are tutorializing location, relevant items need to pulse
+			if (!GameMgr.State.HasTutorialPinDisplayed() && GameMgr.State.CurrentLevel.IsLocationRoot(m_selectedRoot)) {
+				m_chains[m_selectedRoot].GetPin(0).SetPulsing(false);
+				// the location node needs to pulse
+				m_nodes["location-coordinates"].SetPulsing(true); // gross
 			}
 		}
 

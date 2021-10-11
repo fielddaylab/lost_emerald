@@ -70,6 +70,7 @@ namespace Shipwreck {
 
 		private RectTransform m_rectTransform;
 		private Routine m_colorRoutine;
+		private Routine m_pulseRoutine;
 		private ChainStatus m_currStatus;
 
 		public void SetColor(Color color) {
@@ -91,6 +92,22 @@ namespace Shipwreck {
 		public void SetPinned(bool pinned)
 		{
 			m_pinned = pinned;
+		}
+
+		public void SetPulsing(bool isPulsing) {
+			if (isPulsing) {
+				m_pulseRoutine.Replace(this, PulseRoutine());
+			} else {
+				m_pulseRoutine.Stop();
+				m_rectTransform.localScale = Vector3.one;
+			}
+		}
+
+		private IEnumerator PulseRoutine() {
+			while (true) {
+				yield return transform.ScaleTo(1.25f, 0.5f, Axis.XY);
+				yield return transform.ScaleTo(1.0f, 0.5f, Axis.XY);
+			}
 		}
 	}
 
