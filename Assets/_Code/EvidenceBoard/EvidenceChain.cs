@@ -33,7 +33,11 @@ namespace Shipwreck {
 		private Routine m_lineColorRoutine;
 		private Vector2[] m_points;
 		private float m_labelDistance;
+		private IEvidenceChainState m_eChainState;
 
+		public void SetEChainState(IEvidenceChainState state) {
+			m_eChainState = state;
+		}
 
 		public EvidencePin GetPin(int index) {
 			if (index < 0 || index >= m_evidencePins.Length) {

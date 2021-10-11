@@ -112,6 +112,7 @@ namespace Shipwreck {
 			}
 			for (int chainIndex = 0; chainIndex < GameMgr.State.CurrentLevel.ChainCount; chainIndex++) {
 				IEvidenceChainState chain = GameMgr.State.CurrentLevel.GetChain(chainIndex);
+				GameMgr.Events.Register<StringHash32>(GameEvents.ChainSolved, chain.HandleChainCorrect); // for @requires chains
 				EvidenceNode root = m_nodes[chain.Root()];
 				EvidenceChain obj = Instantiate(m_chainPrefab);
 				obj.transform.SetParent(root.RectTransform);
@@ -159,8 +160,8 @@ namespace Shipwreck {
 					pin.OnPointerUp += HandlePinReleased;
 				}
 				chain.SetEChain(obj);
+				obj.SetEChainState(chain);
 				m_chains.Add(chain.Root(), obj);
-
 				
 				if (pinnedNodes.Count == chain.Depth - 1) {
 					foreach (EvidenceNode node in pinnedNodes) {
@@ -186,6 +187,10 @@ namespace Shipwreck {
 			}
 			foreach (EvidenceChain chain in m_chains.Values) {
 				Destroy(chain.gameObject);
+			}
+			for (int chainIndex = 0; chainIndex < GameMgr.State.CurrentLevel.ChainCount; chainIndex++) {
+				IEvidenceChainState chain = GameMgr.State.CurrentLevel.GetChain(chainIndex);
+				GameMgr.Events.Deregister<StringHash32>(GameEvents.ChainSolved, chain.HandleChainCorrect);
 			}
 			m_groups.Clear();
 			m_chains.Clear();

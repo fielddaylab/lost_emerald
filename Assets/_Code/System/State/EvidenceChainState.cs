@@ -23,6 +23,7 @@ namespace Shipwreck {
 
 		List<StringHash32> Chain();
 		void SetEChain(EvidenceChain eChain);
+		void HandleChainCorrect(StringHash32 chain);
 	}
 
 	public sealed partial class GameMgr { // EvidenceChainState.cs
@@ -45,6 +46,11 @@ namespace Shipwreck {
 			public EvidenceChainState(StringHash32 root) {
 				m_rootNode = root;
 				m_chain = new List<StringHash32>();
+			}
+
+			public void HandleChainCorrect(StringHash32 chain) {
+				// check if chains this chain requires are complete; if so, reset
+				// ReevaluateStickyInfo();
 			}
 
 			public void SetEChain(EvidenceChain eChain) {
@@ -84,6 +90,9 @@ namespace Shipwreck {
 				m_stickyData = I.m_stickyEvaluator.Evaluate(m_rootNode, m_chain, m_levelRootEvaluator);
 				if (!wasCorrect && IsCorrect) {
 					Events.Dispatch(GameEvents.ChainSolved, m_rootNode);
+					/*if (m_eChain != null) {
+						m_eChain.SetState(ChainStatus.Complete);
+					}*/
 					using (var table = TempVarTable.Alloc()) {
 						table.Set("root", m_rootNode);
 						RunTrigger(GameTriggers.OnChainSolved, table);
