@@ -317,13 +317,15 @@ namespace Shipwreck {
 				alreadyPinned = node.Pinned;
 				// check that evidence node does not already have a pin on it
 				if (alreadyPinned) {
-					Selected.FlyHome();
-					AudioSrcMgr.instance.PlayOneShot("evidence_miss");
+					SendSelectionHome();
 				}
 				else {
 					Selected.SetPosition(WorldToScreenPoint(node.PinPosition));
 					if (!Selected.IsRoot) {
 						Selected.SetHomePosition(WorldToScreenPoint(node.SubPinPosition));
+					}
+					if (!GameMgr.State.HasTutorialPinDisplayed() && GameMgr.State.CurrentLevel.IsLocationRoot(m_selectedRoot)) {
+						m_nodes["location-coordinates"].SetPulsing(false); // gross
 					}
 					chainState.Drop(node.NodeID);
 					node.SetPinned(true);
@@ -331,8 +333,7 @@ namespace Shipwreck {
 			}
 			else {
 				// if we didn't find a node, we need to return the pin home
-				Selected.FlyHome();
-				AudioSrcMgr.instance.PlayOneShot("evidence_miss");
+				SendSelectionHome();
 			}
 			if (m_hoverNode != null) {
 				m_hoverNode.SetColor(GameDb.GetPinColor(m_hoverNode.GetCurrStatus()));
@@ -344,6 +345,18 @@ namespace Shipwreck {
 
 			m_selectedPin = -1;
 			m_dragging = false;
+		}
+
+		private void SendSelectionHome() {
+			Selected.FlyHome();
+			AudioSrcMgr.instance.PlayOneShot("evidence_miss");
+
+			// if we are tutorializing location, relevant items need to pulse
+			if (!GameMgr.State.HasTutorialPinDisplayed() && GameMgr.State.CurrentLevel.IsLocationRoot(m_selectedRoot)) {
+				m_chains[m_selectedRoot].GetPin(0).SetPulsing(true);
+				// the location node needs to pulse
+				m_nodes["location-coordinates"].SetPulsing(false); // gross
+			}
 		}
 
 		private void RefreshChainState(StickyInfo info, EvidenceChain chainObj, EvidenceNode node = null) {

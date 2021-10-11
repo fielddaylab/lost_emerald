@@ -99,7 +99,7 @@ namespace Shipwreck {
 				m_pulseRoutine.Replace(this, PulseRoutine());
 			} else {
 				m_pulseRoutine.Stop();
-				m_rectTransform.localScale = Vector3.one;
+				transform.localScale = Vector3.one;
 			}
 		}
 
