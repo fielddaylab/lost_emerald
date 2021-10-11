@@ -33,7 +33,11 @@ namespace Shipwreck {
 		private Routine m_lineColorRoutine;
 		private Vector2[] m_points;
 		private float m_labelDistance;
+		private IEvidenceChainState m_eChainState;
 
+		public void SetEChainState(IEvidenceChainState state) {
+			m_eChainState = state;
+		}
 
 		public EvidencePin GetPin(int index) {
 			if (index < 0 || index >= m_evidencePins.Length) {
@@ -95,13 +99,10 @@ namespace Shipwreck {
 			m_rootLabel.SetColor(GameDb.GetLineColor(state));
 			foreach (EvidencePin pin in m_evidencePins) {
 				pin.SetColor(GameDb.GetPinColor(state));
-			}
-			// turn evidence nodes complete
-			int numPins = PinCount;
-			for (int p = 0; p < numPins; ++p) {
-				if (GraphicsRaycasterMgr.instance.RaycastForNode(GetPin(p).transform.position, out EvidenceNode nodeUnderPin)) {
+				if (GraphicsRaycasterMgr.instance.RaycastForNode(pin.transform.position, out EvidenceNode nodeUnderPin)) {
 					nodeUnderPin.SetColor(GameDb.GetPinColor(state));
 					nodeUnderPin.SetCurrStatus(state);
+					nodeUnderPin.SetPinned(state == ChainStatus.Complete);
 				}
 			}
 			m_lineColorRoutine.Replace(this, Tween.Color(m_lineRenderer.color, GameDb.GetLineColor(state), SetLineColor, 0.2f));

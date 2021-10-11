@@ -17,7 +17,8 @@ namespace Shipwreck {
 		private Camera m_videoCamera = null;
 
 #if UNITY_EDITOR
-		private const string VIDEO_PATH = "file://{0}/cutscene{1:00}.mp4";
+		//private const string VIDEO_PATH = "file://{0}/cutscene{1:00}.mp4";
+		private const string VIDEO_PATH = "file://{0}/cutscene_20211007{1:00}.mov";
 #else
 		private const string VIDEO_PATH = "{0}/cutscene{1:00}.mp4";
 #endif
