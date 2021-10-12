@@ -19,7 +19,7 @@
 	{@dad}  I don't. But your sister does!
                 She's gonna help me find my dad's wreck!
                 She also found your grandma's old locket. Looks nice on her.
-	{@you}  Wait. How come Reya gets the locket?? 
+	{@you}  Wait. How come Reya gets the locket?? I'm the older sister! 
 	{@dad}  Never mind that, Jules. We're on a mission!
 	{@you}  Well... I guess I can start a file for Grandpa's ship.
                 But I gotta go for now. Getting a work call.
@@ -46,12 +46,11 @@
 			Check this out!
 			{img ultralight-photo}
 			What do you think?
-	{@you} 	Looks like a shipwreck!
-			Did you get the location? 
+	{@you} 	Looks like a shipwreck! Did you get the location? 
 	{@lou} 	Yep. Right by Rawley Point. 
                  GPS Location: N 44° 11.524' W 087° 30.591'
 			{/img}
-	{@you} 	I'll add the location to my file and check it out. 
+	{@you} 	I'll start a file and check it out. 
 		Thanks, Lou!
 	$call UnlockLevel(1)
 	$call UnlockEvidence(1,LV1-Root)
@@ -122,10 +121,9 @@
 
 	$call TriggerConvoMusic(amy_convo)
 	{@amy}  Hey, Jules! Need some info from the archives? 
-        {@you}  Maybe. I'm trying to ID a shipwreck. 
-                Can you send me a list of all the ships that sank near Rawley Point?
-        {@amy}  Sure! One sec....
-	        Done! Check your evidence board. 
+        {@you}  That would be great. I'm trying to ID a shipwreck. 
+                Can you send me a chart of all the ships that sank near Rawley Point?
+        {@amy}  Sure! I'll get to work on that.
         {@you}  Thanks, Amy! 
 
 	$call UnlockEvidence(1,LV1-Card-Types)
@@ -145,8 +143,8 @@
 	{@you} 	I got the ship's name. It's the Loretta!
 	{@amy} 	You mean she's the Loretta!
 	{@you} 	Huh?
-	{@amy} 	It's an old sailing thing. Ships are always "she." 
-                 Looks like I've got an old article about her. I'll send it over. 
+	{@amy} 	It's a traditional sailing thing. Ships are always "she." 
+                 Looks like I've got an article about her in the archives. I'll send it over. 
 	{@you}  Thanks, Amy! 
 	$call UnlockEvidence(1,LV1-Article-Sinking)
 	$call EndConvoMusic()

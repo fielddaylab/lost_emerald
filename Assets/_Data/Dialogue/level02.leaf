@@ -20,7 +20,7 @@
     {@reya}	Hey sis! Ready to go treasure hunting? 
 	{@you}	I'm not a treasure hunter, Reya.
 		My job is about history! Solving mysteries, uncovering the past... 
-    {@reya}	Yaaaaawn. Whatever floats your boat, I guess. 
+    {@reya}	Yaaawn. Whatever floats your boat, I guess. 
     {@reya}	Anyway, the ship’s down there.
     {@reya}	Break a leg! Or a flipper, or whatever.  
 	$call UnlockDive()
@@ -109,8 +109,8 @@
 	{@amy}	Hey! Heard you went on a dive with your sister. 
 		How’d it go?
 	{@you}  We found an amazing wreck!
-	        It's a car-carrying freighter near Port Washington.
-	{@amy}  Hmmm. Looks like two car carriers sank out there. 
+	        It's a freighter near Port Washington. It was carrying old cars.
+	{@amy}  Hmmm. Looks like two freighters sank out there with automobiles in the cargo hold. 
 		One with Kissel cars, and one with Nash cars. 
 		You'll need to figure out the cargo to ID the ship. 
 		I'll have my friend at the auto museum call you. 
@@ -136,7 +136,7 @@
 	{@you}	Awesome, thanks!
 			{/img}
 	{@cooper}     It's funny. You've got the same last name as the captain who caused that awful shipwreck. 
-	{@you}	Oh. Haha, yeah. Funny.  
+	{@you}	Oh. Haha, yeah.  
 			Wait... did you say the captain CAUSED the wreck??
 	{@cooper}	That's right. It was all over the news when I was a kid. 
 			Sounds like Captain Griffin went out in bad weather. 
@@ -181,6 +181,7 @@
 	{@you}	What?! Reya, how did you get that safe?
 	{@reya}	The guy who hired me found somebody to bring it up. 
 			Don’t freak out, he had a permit! 
+			It's all going to a museum, though. Oh well. 
 			{/img}
 		So what about the Madison? I wanna know how she sank!
 	{@you}  Fine. Let's see...
