@@ -137,6 +137,16 @@ namespace Shipwreck
 			m_ambianceMgr.PlayAudio(clipID, loop);
 		}
 
+		/// <summary>
+		/// Trigger ambiance when a certain audio clip starts
+		/// </summary>
+		/// <param name="clipIDToPlay"></param>
+		/// <param name="clipIDPlayWhen"></param>
+		/// <param name="loop"></param>
+		public void PlayAmbianceWhenAudio(string clipIDToPlay, string clipIDPlayWhen, bool loop = false) {
+			m_ambianceMgr.PlayAudioWhen(clipIDToPlay, clipIDPlayWhen, loop = false);
+		}
+
 		public void StopAmbiance()
 		{
 			m_ambianceMgr.StopAudio();

@@ -43,6 +43,10 @@ namespace Shipwreck
 			m_ambianceSrc.Play();
 		}
 
+		public void PlayAudioWhen(string clipIDToPlay, string clipIDPlayWhen, bool loop = false) {
+			// todo: implement this
+		}
+
 		public bool IsPlayingAudio()
 		{
 			return m_ambianceSrc.isPlaying;
