@@ -64,12 +64,14 @@ namespace Shipwreck
 		// Saves the current audio for later
 		public void StashAudio()
 		{
+			Debug.Log("Stashing ambiance");
 			m_stashedAudio = new AudioSrcMgr.AudioLoopPair(m_currData, m_ambianceSrc.loop);
 		}
 
 		// Saves the current audio for later
 		public void ResumeStashedAudio()
 		{
+			Debug.Log("resuming ambiance");
 			if (m_stashedAudio.Data == null) { return; }
 
 			AudioSrcMgr.LoadAudio(m_ambianceSrc, m_stashedAudio.Data);

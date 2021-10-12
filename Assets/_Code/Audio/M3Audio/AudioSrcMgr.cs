@@ -109,12 +109,14 @@ namespace Shipwreck
 
 		public void StashAudio()
 		{
+			Debug.Log("Stashing main");
 			m_stashedAudio = new AudioLoopPair(m_currData, m_audioSrc.loop);
 			StashAmbiance();
 		}
 
 		public void ResumeStashedAudio()
 		{
+			Debug.Log("resuming main");
 			if (m_stashedAudio.Data == null) { return; }
 
 			LoadAudio(m_audioSrc, m_stashedAudio.Data);
@@ -159,7 +161,7 @@ namespace Shipwreck
 
 		public void ResumeStashedAmbiance()
 		{
-			m_ambianceMgr.ResumeAudio();
+			m_ambianceMgr.ResumeStashedAudio();
 		}
 
 		#endregion

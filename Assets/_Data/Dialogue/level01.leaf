@@ -36,7 +36,7 @@
 @trigger OnContactAdded
 @once
 
-	$call TriggerConvoMusic(lou_convo)
+	$call TriggerConvoMusic(lou_convo, paraglide_ambiance)
 	// Receive/open a new text from Lou
 	{@lou}  Hiya, Jules!
 	{@you} 	Hey Lou. What’s all that noise? 
