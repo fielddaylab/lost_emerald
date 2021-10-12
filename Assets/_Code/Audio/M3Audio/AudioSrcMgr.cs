@@ -87,7 +87,9 @@ namespace Shipwreck
 
 		public void PlayAudio(string clipID, bool loop = false)
 		{
-			LoadAudio(m_audioSrc, GameDb.GetAudioData(clipID));
+			AudioData newData = GameDb.GetAudioData(clipID);
+			m_currData = newData;
+			LoadAudio(m_audioSrc, newData);
 			m_audioSrc.loop = loop;
 			m_audioSrc.Play();
 		}
@@ -109,16 +111,19 @@ namespace Shipwreck
 
 		public void StashAudio()
 		{
-			Debug.Log("Stashing main");
 			m_stashedAudio = new AudioLoopPair(m_currData, m_audioSrc.loop);
 			StashAmbiance();
 		}
 
 		public void ResumeStashedAudio()
 		{
-			Debug.Log("resuming main");
-			if (m_stashedAudio.Data == null) { return; }
+			if (m_stashedAudio.Data == null) {
+				m_audioSrc.Stop();
+				ResumeStashedAmbiance();
+				return;
+			}
 
+			m_currData = m_stashedAudio.Data;
 			LoadAudio(m_audioSrc, m_stashedAudio.Data);
 			m_audioSrc.loop = m_stashedAudio.Loop;
 			m_audioSrc.Play();
@@ -193,6 +198,7 @@ namespace Shipwreck
 			if (m_audioQueue.Count > 0)
 			{
 				AudioLoopPair pair = m_audioQueue.Dequeue();
+				m_currData = pair.Data;
 				LoadAudio(m_audioSrc, pair.Data);
 				m_audioSrc.loop = pair.Loop;
 				m_audioSrc.Play();

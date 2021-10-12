@@ -64,16 +64,18 @@ namespace Shipwreck
 		// Saves the current audio for later
 		public void StashAudio()
 		{
-			Debug.Log("Stashing ambiance");
 			m_stashedAudio = new AudioSrcMgr.AudioLoopPair(m_currData, m_ambianceSrc.loop);
 		}
 
 		// Saves the current audio for later
 		public void ResumeStashedAudio()
 		{
-			Debug.Log("resuming ambiance");
-			if (m_stashedAudio.Data == null) { return; }
+			if (m_stashedAudio.Data == null) {
+				m_ambianceSrc.Stop();
+				return;
+			}
 
+			m_currData = m_stashedAudio.Data;
 			AudioSrcMgr.LoadAudio(m_ambianceSrc, m_stashedAudio.Data);
 			m_ambianceSrc.loop = m_stashedAudio.Loop;
 			m_ambianceSrc.Play();
@@ -86,8 +88,8 @@ namespace Shipwreck
 		private void LoadAmbianceAudio(string clipID)
 		{
 			var data = GameDb.GetAudioData(clipID);
-			AudioSrcMgr.LoadAudio(m_ambianceSrc, data);
 			m_currData = data;
+			AudioSrcMgr.LoadAudio(m_ambianceSrc, data);
 		}
 
 		#endregion
