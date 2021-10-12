@@ -19,7 +19,7 @@
 	$call TriggerConvoMusic(dad_convo)
 	{@dad} 	Hey, kiddo. I'm getting ready for a big yard sale!
 		Could you put up these flyers at your work?
-			[YARD SALE POSTER - Treasure! Artifacts! Real history!!]
+			[YARD SALE POSTER - Artifacts! Real history!!]
 	{@you} 	"Real history"?? Dad.... 
 	{@dad}   What? This is awesome stuff!!
 	{@you}   It's super silly. I want people at work to take me seriously.
