@@ -155,7 +155,7 @@
 @trigger OnBoardComplete
 @once
 	
-	$call TriggerConvoMusic(lou_convo)
+	$call TriggerConvoMusic(lou_convo, paraglide_ambiance)
 	{@lou}  Hey, shipwreck expert! Any juicy details on that wreck?
 	{@you}  Yes! She's the Loretta!
 	{@lou}  Awesome name. How'd she sink?
