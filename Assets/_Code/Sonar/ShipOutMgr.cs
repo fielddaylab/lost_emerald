@@ -206,6 +206,7 @@ namespace Shipwreck
 		{
 			GameObject buoy = Instantiate(m_buoyPrefab);
 			buoy.transform.position = m_shipOutData.BuoyLocation;
+			AudioSrcMgr.instance.PlayOneShot("drop_buoy");
 
 			return buoy;
 		}
