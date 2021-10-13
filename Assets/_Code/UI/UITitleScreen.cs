@@ -15,7 +15,7 @@ namespace Shipwreck {
 		[SerializeField]
 		private Button m_level2Button = null;
 		[SerializeField]
-		private Button m_level2_30Button = null;
+		private Button m_level2_50Button = null;
 		[SerializeField]
 		private Button m_level3Button = null;
 		[SerializeField]
@@ -25,7 +25,7 @@ namespace Shipwreck {
 			m_newGameButton.onClick.AddListener(HandleNewGame);
 			m_level1Button.onClick.AddListener(HandleUnlock1);
 			m_level2Button.onClick.AddListener(HandleUnlock2);
-			m_level2_30Button.onClick.AddListener(HandleUnlock2_30);
+			m_level2_50Button.onClick.AddListener(HandleUnlock2_50);
 			m_level3Button.onClick.AddListener(HandleUnlock3);
 			m_level4Button.onClick.AddListener(HandleUnlock4);
 		}
@@ -67,10 +67,10 @@ namespace Shipwreck {
 			UnlockLevel2();
 			HandleNewGame();
 		}
-		private void HandleUnlock2_30()
+		private void HandleUnlock2_50()
 		{
 			AudioSrcMgr.instance.PlayOneShot("click_unlock");
-			UnlockLevel2_30();
+			UnlockLevel2_50();
 			HandleNewGame();
 		}
 		private void HandleUnlock3() {
@@ -129,7 +129,7 @@ namespace Shipwreck {
 			GameMgr.RecordNodeVisited("level01.dad-level-end", "dad");
 		}
 
-		private void UnlockLevel2_30()
+		private void UnlockLevel2_50()
 		{
 			UnlockLevel2();
 
@@ -144,10 +144,20 @@ namespace Shipwreck {
 			GameMgr.RecordNodeVisited("level02.dive-gash", "reya");
 			GameMgr.RecordNodeVisited("level02.dive-cargo", "reya");
 			GameMgr.RecordNodeVisited("level02.dive-safe", "reya");
+
+			GameMgr.RecordNodeVisited("level02.amy-match", "amy");
+			GameMgr.UnlockEvidence(2, "LV2-Photo-Safe");
+			GameMgr.UnlockEvidence(2, "LV2-Table-Wrecks");
+			GameMgr.UnlockContact("cooper");
+			GameMgr.RecordNodeVisited("level02.cooper-meet", "cooper");
+			GameMgr.UnlockEvidence(2, "LV2-Images-Car");
+			GameMgr.UnlockEvidence(4, "LV4-Investigation-Report");
+
+			GameMgr.SetChain(1, "Location", "location-coordinates");
 		}
 
 		private void UnlockLevel3() {
-			UnlockLevel2_30();
+			UnlockLevel2_50();
 			GameMgr.UnlockLevel(3);
 			GameMgr.State.UnlockDive(2);
 

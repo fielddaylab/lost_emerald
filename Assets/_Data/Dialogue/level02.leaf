@@ -143,7 +143,7 @@
 			I'll send you the investigation report! 
 	{@you}	Um... okay, great. 
 			Thanks for your help!
-	$call UnlockEvidence(2,LV2-Car-Images)
+	$call UnlockEvidence(2,LV2-Images-Car)
 	$call UnlockEvidence(4,LV4-Investigation-Report)
 	$call EndConvoMusic()
 		
@@ -161,7 +161,7 @@
 		I’ll send you the radio call from when she was sinking.
 			I've also got the cargo list. Maybe it’ll be useful!
 	{@you}	Thanks, Amy!
-	$call UnlockEvidence(2,LV2-Cargo-List)
+	$call UnlockEvidence(2,LV2-List-Cargo)
 	$call UnlockEvidence(2,LV2-Distress-Transcript)
 
 

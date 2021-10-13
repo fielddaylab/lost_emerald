@@ -330,7 +330,7 @@ MonoBehaviour:
   m_newGameButton: {fileID: 2069708453}
   m_level1Button: {fileID: 320961648}
   m_level2Button: {fileID: 1460261042}
-  m_level2_30Button: {fileID: 989064594}
+  m_level2_50Button: {fileID: 989064594}
   m_level3Button: {fileID: 2089317686}
   m_level4Button: {fileID: 1470934328}
 --- !u!224 &78415455 stripped
@@ -1729,7 +1729,7 @@ PrefabInstance:
     - target: {fileID: 2445421194555851411, guid: 790ab65032b9a8941b45e0578b459d51,
         type: 3}
       propertyPath: m_text
-      value: Level 2 30%
+      value: Level 2 50%
       objectReference: {fileID: 0}
     - target: {fileID: 4156136797719367040, guid: 790ab65032b9a8941b45e0578b459d51,
         type: 3}
@@ -1744,7 +1744,7 @@ PrefabInstance:
     - target: {fileID: 6904634551407025576, guid: 790ab65032b9a8941b45e0578b459d51,
         type: 3}
       propertyPath: m_Name
-      value: Level2_30
+      value: Level2_50
       objectReference: {fileID: 0}
     - target: {fileID: 7475936911732219009, guid: 790ab65032b9a8941b45e0578b459d51,
         type: 3}
