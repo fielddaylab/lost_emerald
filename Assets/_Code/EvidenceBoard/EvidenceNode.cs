@@ -3,7 +3,6 @@ using BeauUtil;
 using PotatoLocalization;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Shipwreck {

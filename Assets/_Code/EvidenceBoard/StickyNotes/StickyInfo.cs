@@ -27,6 +27,7 @@ namespace Shipwreck {
         private LocationType m_location;
         private ResponseType m_response;
 		private StringHash32[] m_requiredChains;
+		private bool m_noDangler;
 
 		[BlockContent] private string m_text;
         private int m_specificity;
@@ -75,9 +76,13 @@ namespace Shipwreck {
             get { return m_specificity; }
         }
 
-        #region Block Meta
+		public bool NoDangler {
+			get { return m_noDangler; } // if a hint, does this not use another pin at the end?
+		}
 
-        [BlockMeta("root")]
+		#region Block Meta
+
+		[BlockMeta("root")]
         private void SetRoots(StringSlice argsList) {
             m_roots = ArrayUtils.MapFrom<StringSlice, StringHash32>(GetArgs(argsList), (s) => s);
         }
@@ -135,6 +140,10 @@ namespace Shipwreck {
 		private void SetRequires(StringSlice argsList) { 
 			m_requiredChains = ArrayUtils.MapFrom<StringSlice, StringHash32>(GetArgs(argsList), (s) => s);
 			m_specificity += m_requiredChains.Length;
+		}
+		[BlockMeta("noDangler")]
+		private void SetNoDangler() {
+			m_noDangler = true;
 		}
 
         #endregion // Block Meta

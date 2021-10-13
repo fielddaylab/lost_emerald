@@ -24,6 +24,8 @@ namespace Shipwreck {
 		List<StringHash32> Chain();
 		void SetEChain(EvidenceChain eChain);
 		void HandleChainCorrect(StringHash32 chain);
+
+		void ReevaluateStickyInfo();
 	}
 
 	public sealed partial class GameMgr { // EvidenceChainState.cs

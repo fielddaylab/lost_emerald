@@ -9,12 +9,10 @@ namespace Shipwreck {
     public class StickyRootEvaluator {
 
         private const int MinCorrectDepth = 1;
-        private const int MinHintDepth = 1;
-        private const int MinIncorrectDepth = 1; //hack
+        private const int MinOtherDepth = 1;
 
         private readonly List<StickyInfo> m_correctResponses = new List<StickyInfo>();
-        private readonly List<StickyInfo> m_hintResponses = new List<StickyInfo>();
-        private readonly List<StickyInfo> m_incorrectResponses = new List<StickyInfo>();
+		private readonly List<StickyInfo> m_otherResponses = new List<StickyInfo>();
 
         private bool m_dirty;
 
@@ -23,14 +21,9 @@ namespace Shipwreck {
                 case StickyInfo.ResponseType.Correct:
                     m_correctResponses.Add(data);
                     break;
-
-                case StickyInfo.ResponseType.Hint:
-                    m_hintResponses.Add(data);
-                    break;
-
-                case StickyInfo.ResponseType.Incorrect:
-                    m_incorrectResponses.Add(data);
-                    break;
+				default:
+					m_otherResponses.Add(data);
+					break;
             }
 
             m_dirty = true;
@@ -42,13 +35,9 @@ namespace Shipwreck {
                     m_correctResponses.FastRemove(data);
                     break;
 
-                case StickyInfo.ResponseType.Hint:
-                    m_hintResponses.FastRemove(data);
-                    break;
-
-                case StickyInfo.ResponseType.Incorrect:
-                    m_incorrectResponses.FastRemove(data);
-                    break;
+				default:
+					m_otherResponses.FastRemove(data);
+					break;
             }
         }
 
@@ -58,8 +47,7 @@ namespace Shipwreck {
 
             if (m_dirty) {
                 m_correctResponses.Sort(SortBySpecificity);
-                m_hintResponses.Sort(SortBySpecificity);
-                m_incorrectResponses.Sort(SortBySpecificity);
+				m_otherResponses.Sort(SortBySpecificity);
                 m_dirty = false;
             }
 
@@ -68,18 +56,11 @@ namespace Shipwreck {
                     return correct;
                 }
             }
-
-            foreach(var hint in m_hintResponses) {
-                if (EvaluateNormal(hint, MinHintDepth, chain, alreadySolved)) {
-                    return hint;
-                }
-            }
-
-            foreach(var incorrect in m_incorrectResponses) {
-                if (EvaluateNormal(incorrect, MinIncorrectDepth, chain, alreadySolved)) {
-                    return incorrect;
-                }
-            }
+			foreach (var response in m_otherResponses) {
+				if (EvaluateNormal(response, MinOtherDepth, chain, alreadySolved)) {
+					return response;
+				}
+			}
 
             return null;
         }

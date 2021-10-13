@@ -106,11 +106,23 @@
 @correct name-madison
 @requires Cargo
 
+:: name-incorrect-governer
+@root Name
+@incorrect name-governer
+@requires Cargo
+	Doesn't match with Cargo!
+
 :: name-hint-cargo-first
 @root Name
 @hint name-madison, name-governer
+@noDangler
 @only
-	Am I sure? Maybe I should solve Cargo first.
+	Am I sure? I should solve Cargo first.
+
+:: name-incorrect-generic
+@root Name
+@incorrect
+	This doesn't make any sense.
 
 // -----------------------------------------------------------
 //  Artifact
