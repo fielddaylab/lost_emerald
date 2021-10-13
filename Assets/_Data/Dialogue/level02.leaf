@@ -122,7 +122,7 @@
 
 :: cooper-meet
 @contact cooper, phone-call
-// @background
+@background cooper-museum
 @trigger OnDialogClosed
 @when HasContact(cooper)
 @once
