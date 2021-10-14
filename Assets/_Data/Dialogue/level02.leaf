@@ -132,9 +132,9 @@
 	{@you}	Yep. I'm Jules Griffin.
 			Can you send me photos of Nash brand and Kissel brand cars? 
 	{@cooper}	Of course! Just a minute...
-			{img lv2-car-images}
+			{obj ClassicCars}
 	{@you}	Awesome, thanks!
-			{/img}
+			{/obj}
 	{@cooper}     It's funny. You've got the same last name as the captain who caused that awful shipwreck. 
 	{@you}	Oh. Haha, yeah.  
 			Wait... did you say the captain CAUSED the wreck??
