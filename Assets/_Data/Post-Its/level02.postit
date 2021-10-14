@@ -1,7 +1,4 @@
 
-// todo: fill with level 2 sticky notes
-
-
 // -----------------------------------------------------------
 //  Location
 // -----------------------------------------------------------
@@ -89,6 +86,114 @@
 @root Cargo
 @correct photo-cargo, cargo-nash, image-nash
 
+:: cargo-hint-1a
+@root Cargo
+@hint photo-cargo
+@only
+	What car looks like this?
+
+:: cargo-hint-1b
+@root Cargo
+@hint photo-cargo
+@precededBy image-nash
+	Was a ship carrying Nash cars?
+
+:: cargo-hint-1c
+@root Cargo
+@hint photo-cargo
+@precededBy cargo-nash
+	Do I have an image of a Nash car?
+
+
+
+
+:: cargo-hint-2a
+@root Cargo
+@hint image-nash, image-kissel
+@only
+	Do I have a matching photo?
+
+:: cargo-hint-2b
+@root Cargo
+@hint image-nash
+@precededBy photo-cargo
+	Was a ship carrying Nash cars?
+
+:: cargo-hint-2c
+@root Cargo
+@hint image-nash
+@precededBy cargo-nash
+	Do I have a photo of the cargo?
+
+:: cargo-hint-2d
+@root Cargo
+@hint image-kissel
+@precededBy cargo-kissel
+	Do I have a photo of the cargo?
+
+
+
+
+:: cargo-hint-3a
+@root Cargo
+@hint cargo-nash, cargo-kissel
+@only
+	Do I have a matching photo?
+
+:: cargo-hint-3b
+@root Cargo
+@hint cargo-nash
+@precededBy image-nash
+	Do I have a matching photo?
+
+:: cargo-hint-3c
+@root Cargo
+@hint cargo-nash
+@precededBy photo-cargo
+	Do I have an image of a Nash car?
+
+:: cargo-hint-3d
+@root Cargo
+@hint cargo-kissel
+@precededBy photo-cargo
+	Do I have an image of a Kissel car?
+
+:: cargo-hint-3e
+@root Cargo
+@hint cargo-kissel
+@precededBy image-kissel
+	Do I have a photo of the cargo?
+
+:: cargo-incorrect-2a
+@root Cargo
+@incorrect photo-cargo
+@precededBy image-kissel, cargo-kissel
+	The photo doesn't look like a Kissel car.
+
+:: cargo-incorrect-2b
+@root Cargo
+@incorrect photo-cargo
+@precededBy cargo-kissel, image-kissel
+	The photo doesn't look like a Kissel car.
+
+:: cargo-incorrect-1a
+@root Cargo
+@incorrect photo-cargo
+@precededBy image-kissel
+	The photo doesn't look like a Kissel car.
+
+:: cargo-incorrect-1b
+@root Cargo
+@incorrect image-kissel
+@precededBy photo-cargo
+	The photo doesn't look like a Kissel car.
+
+:: cargo-incorrect-generic
+@root Cargo
+@incorrect
+	Not sure this makes sense.
+
+
 // -----------------------------------------------------------
 //  Cause of Wreck
 // -----------------------------------------------------------
@@ -96,6 +201,23 @@
 :: cause-correct
 @root Cause
 @correct photo-gash, cause-rammed
+
+:: cause-hint-1
+@root Cause
+@hint photo-gash
+@only
+	Is there a record of the damage?
+
+:: cause-hint-2
+@root Cause
+@hint cause-rammed
+@only
+	Do I have a photo of the damage?
+
+:: cause-incorrect-generic
+@root Cause
+@incorrect
+	Not relevant to the wreck's cause
 
 // -----------------------------------------------------------
 //	Name
@@ -131,3 +253,18 @@
 :: artifact-correct
 @root Artifact
 @correct photo-safe, artifact-safe
+
+:: artifact-hint-1
+@root Artifact
+@hint photo-safe
+	Does something mention a safe?
+
+:: artifact-hint-2
+@root Artifact
+@hint artifact-safe
+	Do I have a picture of the safe?
+
+:: artifact-incorrect-generic
+@root Artifact
+@incorrect
+	This seems wrong.
