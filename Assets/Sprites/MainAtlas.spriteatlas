@@ -80,6 +80,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: b92d2866ce79293478f277897bd0ad16, type: 3}
   - {fileID: 21300000, guid: 0b8b988619e68ed408ef667cc5d86d11, type: 3}
   - {fileID: 21300000, guid: 67168c86290185a4198db8cf6eea2dd6, type: 3}
+  - {fileID: 21300000, guid: 59fe56a6223a442439b9c0aef26e2687, type: 3}
   - {fileID: 21300000, guid: e59faca6783a52e409ecd8515871c2a7, type: 3}
   - {fileID: 21300000, guid: f2f043070615e5d44bf1c5cf2ff5c0b5, type: 3}
   - {fileID: 21300000, guid: 52b1c17784d8a1e45b76754696037547, type: 3}
@@ -119,6 +120,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: ca052dfdd98a1c742b96af83bb3b4cc4, type: 3}
   - {fileID: 21300000, guid: 73e04d3e8b9e9ec4a8b7d4327cd49268, type: 3}
   - {fileID: 21300000, guid: 33ac414e0a466684d9d2c58fd2b8dbab, type: 3}
+  - {fileID: 21300000, guid: ca515c6e0d836c941a1e8b9aa842510b, type: 3}
   - {fileID: 21300000, guid: 9f3b238e4fd123e4ab0d16dde8bce38a, type: 3}
   - {fileID: 21300000, guid: 7d1d53ae8d55e994598b2b84b04588df, type: 3}
   - {fileID: 21300000, guid: 3cb1d3de80ee9461498367b28b05b097, type: 3}
@@ -164,6 +166,7 @@ SpriteAtlas:
   - triangle
   - photo-lv2-gash
   - circle
+  - dad-map
   - photo-lv3-anchor
   - photo-lv1-knife
   - DiveButtonFilled
@@ -203,6 +206,7 @@ SpriteAtlas:
   - PhoneDialog
   - letter
   - zoom-out
+  - broken-wheel
   - photo-lv2-safe
   - RoundedRect100
   - photo-lv1-ship-name
