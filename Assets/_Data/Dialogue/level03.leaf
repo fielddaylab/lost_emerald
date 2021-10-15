@@ -28,25 +28,27 @@
 :: dad-superior
 @contact dad, phone-call
 // @background 
-@trigger OnDialogClosed
+@trigger OnEnterOffice
 @once
 
 	$call TriggerConvoMusic(dad_convo)
 	{@dad}	Guess what, Jules! Got a new mystery for ya!
 			My old fishing buddy pulled this up on Lake Michigan.
-			[PHOTO: BROKEN PADDLEWHEEL (ABOVE WATER)]
+			{img broken-wheel}
 	{@you}	Wow, looks like a broken piece of paddlewheel!
 	{@dad}	He found it here: 43°42'08.6"N 87°38'26.0"W
 	{@you}	That’s near Sheboygan! Right by you guys.
 			Do you want to meet me out there? 
 	{@dad}	No can do, kiddo. I’m out on Superior, searching for the Emerald.
+			{/img}
 			Now if only I could figure out this new sonar doohickey….
 			Here, check out my map!! 
-			[SENDS LAKE SUPERIOR TREASURE MAP]
+			{img dad-map}
 			Your grandpa’s last planned route before he sank is marked in red.
 			All I have to do is search the area. Feelin’ lucky today. 
 	{@you}	Ugh. Dad!! You’re wasting your whole life on this.
 	{@dad}	Huh?
+			{/img}
 	{@you}	I found out the wreck was Grandpa’s fault. 
 	{@dad}	Well, of course they said that. They needed somebody to blame!!
 	{@you}	Dad--
