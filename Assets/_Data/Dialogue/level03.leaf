@@ -160,6 +160,7 @@
 @contact tami, phone-call
 // @background 
 @trigger OnEnterOffice
+@when HasEvidence(LV3-Photo-Gold)
 @once
 	
 	$call TriggerConvoMusic(tami_convo)
