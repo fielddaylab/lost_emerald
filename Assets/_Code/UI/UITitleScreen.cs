@@ -127,6 +127,7 @@ namespace Shipwreck {
 			GameMgr.RecordNodeVisited("level01.lou-complete", "lou");
 			GameMgr.RecordNodeVisited("level01.amy-level-end", "amy");
 			GameMgr.RecordNodeVisited("level01.dad-level-end", "dad");
+			GameMgr.SetLevelIndex(1);
 		}
 
 		private void UnlockLevel2_50()
@@ -192,10 +193,14 @@ namespace Shipwreck {
 			GameMgr.UnlockEvidence(3, "LV3-Accounts-Survivor");
 			GameMgr.UnlockContact("tami");
 			*/
+
+			GameMgr.SetLevelIndex(2);
 		}
 
 		private void UnlockLevel4() {
 			UnlockLevel3();
+
+			GameMgr.SetLevelIndex(3);
 		}
 	}
 
