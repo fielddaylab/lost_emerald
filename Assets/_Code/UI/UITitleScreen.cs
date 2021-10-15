@@ -137,6 +137,14 @@ namespace Shipwreck {
 			GameMgr.State.UnlockDive(1);
 			GameMgr.UnlockContact("cooper");
 
+			GameMgr.UnlockContact("reya");
+			GameMgr.RecordNodeVisited("level04.level2-starter", "dad");
+			GameMgr.RecordNodeVisited("level04.level2-meet-reya", "reya");
+			GameMgr.UnlockLevel(2);
+			GameMgr.UnlockEvidence(2, "LV1-Root");
+			GameMgr.UnlockEvidence(2, "LV2-Transcript-Reya");
+			GameMgr.UnlockEvidence(2, "LV2-Card-Types");
+
 			GameMgr.UnlockEvidence(2, "LV2-Photo-Above");
 			GameMgr.UnlockEvidence(2, "LV2-Photo-Cargo");
 			GameMgr.UnlockEvidence(2, "LV2-Photo-Gash");
