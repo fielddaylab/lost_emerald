@@ -24,7 +24,6 @@
 	{@you}  Well... I guess I can start a file for Grandpa's ship.
                 But I gotta go for now. Getting a work call.
 	{@dad}  Ooh, sounds important. Have fun, Jules!
-        $call UnlockLevel(4)
         $call UnlockEvidence(4,LV4-Letter-Treasure)
 	$call UnlockContact(lou)
 	$call EndConvoMusic()
@@ -179,4 +178,5 @@
 	{@you} 	Hey, Amy! Case closed on the Loretta. 
 		I’ll send you the file for the archives.
 	{@amy} 	Thanks, Jules. Nice work! 
+	$call UnlockLevel(4)
 	$call EndConvoMusic()

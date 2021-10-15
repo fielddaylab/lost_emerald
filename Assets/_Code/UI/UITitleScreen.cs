@@ -109,7 +109,6 @@ namespace Shipwreck {
 		}
 		private void UnlockLevel2() {
 			UnlockLevel1();
-			// GameMgr.UnlockLevel(2);
 
 			GameMgr.SetLevelIndex(0);
 			GameMgr.SetChain(0, "Type", "card-canaller", "photo-above", "type-canaller");
@@ -122,6 +121,7 @@ namespace Shipwreck {
 			GameMgr.State.SetTutorialSonarDisplayed(true);
 			GameMgr.State.UnlockDive(0);
 
+			// GameMgr.UnlockLevel(2);
 			GameMgr.UnlockLevel(4);
 			GameMgr.UnlockEvidence(4, "LV4-Letter-Treasure");
 			GameMgr.RecordNodeVisited("level01.lou-complete", "lou");
