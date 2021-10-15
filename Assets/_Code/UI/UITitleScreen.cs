@@ -160,7 +160,7 @@ namespace Shipwreck {
 		private void UnlockLevel3() {
 			UnlockLevel2_50();
 			GameMgr.UnlockLevel(3);
-			GameMgr.State.UnlockDive(2);
+			GameMgr.State.UnlockDive(1);
 
 			GameMgr.UnlockEvidence(2, "LV2-Transcript-Reya");
 			GameMgr.UnlockEvidence(2, "LV2-Card-Types");

@@ -54,7 +54,7 @@ namespace Shipwreck
 			float randomX;
 			float randomY;
 			Vector2 randomPoint;
-			// int numAttempts = 0;
+			int numAttempts = 0;
 
 			while (numFoundDots < m_targetNumDots)
 			{
@@ -66,7 +66,11 @@ namespace Shipwreck
 					m_polygonPoints.Add(randomPoint);
 					++numFoundDots;
 				}
-				// ++numAttempts;
+				++numAttempts;
+				if (numAttempts > 5000) {
+					Debug.Log("Generation failed. Ensure the collider is active.");
+					break;
+				}
 			}
 
 			m_dataToGenerateFor.SetSonarDots(m_polygonPoints);

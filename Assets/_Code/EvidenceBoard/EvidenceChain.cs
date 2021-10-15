@@ -10,6 +10,7 @@ using UnityEngine.UI.Extensions;
 namespace Shipwreck {
 
 	public enum ChainStatus {
+		Unassigned,
 		Normal,
 		Incorrect,
 		Complete
@@ -18,6 +19,9 @@ namespace Shipwreck {
 
 		public int PinCount {
 			get { return m_evidencePins.Length; }
+		}
+		public ChainStatus Status {
+			get { return m_status; }
 		}
 
 		[SerializeField]
@@ -33,11 +37,7 @@ namespace Shipwreck {
 		private Routine m_lineColorRoutine;
 		private Vector2[] m_points;
 		private float m_labelDistance;
-		private IEvidenceChainState m_eChainState;
-
-		public void SetEChainState(IEvidenceChainState state) {
-			m_eChainState = state;
-		}
+		private ChainStatus m_status;
 
 		public EvidencePin GetPin(int index) {
 			if (index < 0 || index >= m_evidencePins.Length) {
@@ -94,20 +94,41 @@ namespace Shipwreck {
 			m_lineRenderer.SetAllDirty();
 		}
 
-		public void SetState(ChainStatus state) {
-			m_stickyNote.SetColor(GameDb.GetStickyColor(state));
-			m_rootLabel.SetColor(GameDb.GetLineColor(state));
-			foreach (EvidencePin pin in m_evidencePins) {
-				if (pin.gameObject.activeSelf) {
-					pin.SetColor(GameDb.GetPinColor(state));
-					if (GraphicsRaycasterMgr.instance.RaycastForNode(pin.transform.position, out EvidenceNode nodeUnderPin)) {
-						nodeUnderPin.SetColor(GameDb.GetPinColor(state));
-						nodeUnderPin.SetCurrStatus(state);
-						nodeUnderPin.SetPinned(state == ChainStatus.Complete);
+		public void SetStatus(ChainStatus status) {
+			// play a sound if our state changed
+			if (status != m_status) {
+				if (m_status == ChainStatus.Unassigned) {
+					// do not play a sound
+					m_status = status;
+				} else {
+					m_status = status;
+					switch (m_status) {
+						case ChainStatus.Complete:
+							AudioSrcMgr.instance.PlayOneShot("evidence_complete");
+							break;
+						case ChainStatus.Normal:
+							AudioSrcMgr.instance.PlayOneShot("evidence_right");
+							break;
+						case ChainStatus.Incorrect:
+							AudioSrcMgr.instance.PlayOneShot("evidence_wrong");
+							break;
 					}
 				}
 			}
-			m_lineColorRoutine.Replace(this, Tween.Color(m_lineRenderer.color, GameDb.GetLineColor(state), SetLineColor, 0.2f));
+
+			m_stickyNote.SetColor(GameDb.GetStickyColor(status));
+			m_rootLabel.SetColor(GameDb.GetLineColor(status));
+			foreach (EvidencePin pin in m_evidencePins) {
+				if (pin.gameObject.activeSelf) {
+					pin.SetColor(GameDb.GetPinColor(status));
+					if (GraphicsRaycasterMgr.instance.RaycastForNode(pin.transform.position, out EvidenceNode nodeUnderPin)) {
+						nodeUnderPin.SetColor(GameDb.GetPinColor(status));
+						nodeUnderPin.SetCurrStatus(status);
+						nodeUnderPin.SetPinned(status == ChainStatus.Complete);
+					}
+				}
+			}
+			m_lineColorRoutine.Replace(this, Tween.Color(m_lineRenderer.color, GameDb.GetLineColor(status), SetLineColor, 0.2f));
 		}
 
 		public void ShowStickyNote(string text) {

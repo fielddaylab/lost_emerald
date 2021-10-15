@@ -128,5 +128,15 @@ PrefabInstance:
       propertyPath: m_nodeId.m_Source
       value: photo-safe
       objectReference: {fileID: 0}
+    - target: {fileID: 4450389252025901035, guid: 0c9e9f4473a8e23468e651758271c793,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 107.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450389252025901035, guid: 0c9e9f4473a8e23468e651758271c793,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 55.4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c9e9f4473a8e23468e651758271c793, type: 3}
