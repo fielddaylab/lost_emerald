@@ -61,17 +61,12 @@ namespace Shipwreck
 			m_interactIsOverUI = isOver;
 		}
 
-		private void Start()
-		{
-			AudioSrcMgr.instance.PlayAudio("ship_out_music", true);
-
+		private void Awake() {
 			// ensure there is only one ShipOutMgr at any given time
-			if (ShipOutMgr.instance == null)
-			{
+			if (ShipOutMgr.instance == null) {
 				ShipOutMgr.instance = this;
 			}
-			else if (ShipOutMgr.instance != this)
-			{
+			else if (ShipOutMgr.instance != this) {
 				Destroy(this.gameObject);
 			}
 
@@ -79,6 +74,11 @@ namespace Shipwreck
 			m_targetDimensions /= DIM_TO_WORLD_PROP;
 
 			m_interactIsOverUI = false;
+		}
+
+		private void Start()
+		{
+			AudioSrcMgr.instance.PlayAudio("ship_out_music", true);
 
 			m_shipOutData = GameDb.GetShipOutData(GameMgr.State.GetCurrShipOutIndex());
 
