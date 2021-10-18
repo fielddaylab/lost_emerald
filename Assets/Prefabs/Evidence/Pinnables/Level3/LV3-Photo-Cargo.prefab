@@ -66,7 +66,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: b52d98df6abf285419b2cc0c4589a0d2, type: 3}
   m_Type: 0
-  m_PreserveAspect: 1
+  m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -150,6 +150,7 @@ MonoBehaviour:
   m_pinPosition: {fileID: 0}
   m_subPinPosition: {fileID: 6380782517736778582}
   m_image: {fileID: 3159721237464646312}
+  m_pinned: 0
 --- !u!222 &2540785038368444772
 CanvasRenderer:
   m_ObjectHideFlags: 0
