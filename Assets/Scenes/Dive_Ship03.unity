@@ -1096,6 +1096,35 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 694113275}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &694113277 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3782994056335260743, guid: 38a81007aa7e04447984bc1df4c89675,
+    type: 3}
+  m_PrefabInstance: {fileID: 694113275}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &694113278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 694113277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15d1cc8a4704bb3499777ec9affed97c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_evidenceUnlock:
+    m_Source: LV3-Photo-Gold
+    m_Hash: 68874342
+  m_unlockMessage:
+    m_key: 
+    m_hash: 0
+  m_photoName:
+    m_key: Dive/Level3/Gold-Name
+    m_hash: 1727564022
+  m_zoomMin: 0.816568
+  m_zoomMax: 1
 --- !u!1001 &739057800
 PrefabInstance:
   m_ObjectHideFlags: 0
