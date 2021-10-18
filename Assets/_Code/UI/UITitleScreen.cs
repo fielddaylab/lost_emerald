@@ -188,7 +188,6 @@ namespace Shipwreck {
 			/*
 			GameMgr.UnlockEvidence(3, "LV1-Root");
 			GameMgr.UnlockEvidence(3, "LV3-Transcript-Dad");
-			GameMgr.UnlockEvidence(3, "LV3-Treasure-Map");
 			GameMgr.UnlockEvidence(3, "LV3-Advertisement-PS");
 			GameMgr.UnlockEvidence(3, "LV3-Tami-Photo-Anchor");
 
