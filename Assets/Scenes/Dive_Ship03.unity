@@ -1123,7 +1123,7 @@ MonoBehaviour:
   m_photoName:
     m_key: Dive/Level3/Gold-Name
     m_hash: 1727564022
-  m_zoomMin: 0.816568
+  m_zoomMin: 0.7455621
   m_zoomMax: 1
 --- !u!1001 &739057800
 PrefabInstance:
@@ -1560,38 +1560,48 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3782994057673315726, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 3782994057673315726, guid: 38a81007aa7e04447984bc1df4c89675,
+        type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.3
+      value: 2.8
       objectReference: {fileID: 0}
     - target: {fileID: 3782994057673315726, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.37
+      value: 0.89
       objectReference: {fileID: 0}
     - target: {fileID: 3782994057673315726, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9369775
+      value: 0.83617616
       objectReference: {fileID: 0}
     - target: {fileID: 3782994057673315726, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.34938982
+      value: 0.532703
       objectReference: {fileID: 0}
     - target: {fileID: 3782994057673315726, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.11008472
       objectReference: {fileID: 0}
     - target: {fileID: 3782994057673315726, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.070131704
       objectReference: {fileID: 0}
     - target: {fileID: 3782994057673315726, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 40.9
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 3782994057673315726, guid: 38a81007aa7e04447984bc1df4c89675,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 3782994057710387678, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
@@ -1616,6 +1626,35 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 936628449}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &936628451 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3782994056335260743, guid: 38a81007aa7e04447984bc1df4c89675,
+    type: 3}
+  m_PrefabInstance: {fileID: 936628449}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &936628452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936628451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15d1cc8a4704bb3499777ec9affed97c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_evidenceUnlock:
+    m_Source: LV3-Photo-Cargo
+    m_Hash: 643582332
+  m_unlockMessage:
+    m_key: 
+    m_hash: 0
+  m_photoName:
+    m_key: Dive/Level3/Cargo-Name
+    m_hash: -1137139972
+  m_zoomMin: 0.147929
+  m_zoomMax: 0.65680474
 --- !u!1001 &1068860058
 PrefabInstance:
   m_ObjectHideFlags: 0
