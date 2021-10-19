@@ -63,7 +63,7 @@ namespace Shipwreck
 					dataToUse = m_textData;
 					break;
 				case (Type.radio):
-					dataToUse = m_textData;
+					dataToUse = m_radioData;
 					break;
 				default:
 					dataToUse = null;

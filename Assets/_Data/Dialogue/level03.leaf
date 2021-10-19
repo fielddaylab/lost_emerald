@@ -10,7 +10,7 @@
 :: mom-photos
 @contact mom, text-message
 // @background 
-@trigger OnEnterOffice
+//@trigger OnEnterOffice
 @once
 
     {@mom}	Hey Jules, check it out! New family photos came in!
@@ -28,25 +28,27 @@
 :: dad-superior
 @contact dad, phone-call
 // @background 
-@trigger OnDialogClosed
+@trigger OnEnterOffice
 @once
 
 	$call TriggerConvoMusic(dad_convo)
 	{@dad}	Guess what, Jules! Got a new mystery for ya!
 			My old fishing buddy pulled this up on Lake Michigan.
-			[PHOTO: BROKEN PADDLEWHEEL (ABOVE WATER)]
+			{img broken-wheel}
 	{@you}	Wow, looks like a broken piece of paddlewheel!
 	{@dad}	He found it here: 43°42'08.6"N 87°38'26.0"W
 	{@you}	That’s near Sheboygan! Right by you guys.
 			Do you want to meet me out there? 
 	{@dad}	No can do, kiddo. I’m out on Superior, searching for the Emerald.
+			{/img}
 			Now if only I could figure out this new sonar doohickey….
 			Here, check out my map!! 
-			[SENDS LAKE SUPERIOR TREASURE MAP]
+			{img dad-map}
 			Your grandpa’s last planned route before he sank is marked in red.
 			All I have to do is search the area. Feelin’ lucky today. 
 	{@you}	Ugh. Dad!! You’re wasting your whole life on this.
 	{@dad}	Huh?
+			{/img}
 	{@you}	I found out the wreck was Grandpa’s fault. 
 	{@dad}	Well, of course they said that. They needed somebody to blame!!
 	{@you}	Dad--
@@ -54,7 +56,6 @@
 	$call UnlockEvidence(3,LV1-Root)
 	$call UnlockEvidence(3,LV3-Card-Types)
 	$call UnlockEvidence(3,LV3-Transcript-Dad)
-	$call UnlockEvidence(3,LV3-Treasure-Map)
 	$call EndConvoMusic()
 
 
@@ -91,9 +92,11 @@
 	{@tami}	Totally! I gave him my old sonar. It’s a little glitchy, but he didn’t seem to mind.  
 			I heard you’ve got a lead on the PS Paradise!
 			Here’s some stuff I dug up:
-			[PS PARADISE ADVERTISEMENT, PHOTO OF ANCHOR]
+			{img ps_paradise_ad_sketch}
+			[PHOTO OF ANCHOR]
 			People called it a “Palace Steamer” because it looked so fancy. Sorta like an early, smaller version of the Titanic. 
 			But tickets were cheap, so normal people could afford it. 
+			{/img}
 	{@you}	Wow. You know all about this ship!
 	{@tami}	It’s sort of a pet project of mine.
 			Wanna help me check it out?
@@ -160,6 +163,7 @@
 @contact tami, phone-call
 // @background 
 @trigger OnEnterOffice
+@when HasEvidence(LV3-Photo-Gold)
 @once
 	
 	$call TriggerConvoMusic(tami_convo)
@@ -185,8 +189,7 @@
 :: dad-steamer
 @contact dad, phone-call
 // @background 
-@trigger OnDialogClosed
-@when HasEvidence(LV3-Accounts-Survivor)
+@trigger OnBoardComplete
 @once
 
 	$call TriggerConvoMusic(dad_convo)

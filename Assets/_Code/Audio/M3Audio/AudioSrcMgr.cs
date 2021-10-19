@@ -87,7 +87,9 @@ namespace Shipwreck
 
 		public void PlayAudio(string clipID, bool loop = false)
 		{
-			LoadAudio(m_audioSrc, GameDb.GetAudioData(clipID));
+			AudioData newData = GameDb.GetAudioData(clipID);
+			m_currData = newData;
+			LoadAudio(m_audioSrc, newData);
 			m_audioSrc.loop = loop;
 			m_audioSrc.Play();
 		}
@@ -115,8 +117,13 @@ namespace Shipwreck
 
 		public void ResumeStashedAudio()
 		{
-			if (m_stashedAudio.Data == null) { return; }
+			if (m_stashedAudio.Data == null) {
+				m_audioSrc.Stop();
+				ResumeStashedAmbiance();
+				return;
+			}
 
+			m_currData = m_stashedAudio.Data;
 			LoadAudio(m_audioSrc, m_stashedAudio.Data);
 			m_audioSrc.loop = m_stashedAudio.Loop;
 			m_audioSrc.Play();
@@ -137,6 +144,16 @@ namespace Shipwreck
 			m_ambianceMgr.PlayAudio(clipID, loop);
 		}
 
+		/// <summary>
+		/// Trigger ambiance when a certain audio clip starts
+		/// </summary>
+		/// <param name="clipIDToPlay"></param>
+		/// <param name="clipIDPlayWhen"></param>
+		/// <param name="loop"></param>
+		public void PlayAmbianceWhenAudio(string clipIDToPlay, string clipIDPlayWhen, bool loop = false) {
+			m_ambianceMgr.PlayAudioWhen(clipIDToPlay, clipIDPlayWhen, loop = false);
+		}
+
 		public void StopAmbiance()
 		{
 			m_ambianceMgr.StopAudio();
@@ -149,7 +166,7 @@ namespace Shipwreck
 
 		public void ResumeStashedAmbiance()
 		{
-			m_ambianceMgr.ResumeAudio();
+			m_ambianceMgr.ResumeStashedAudio();
 		}
 
 		#endregion
@@ -181,6 +198,7 @@ namespace Shipwreck
 			if (m_audioQueue.Count > 0)
 			{
 				AudioLoopPair pair = m_audioQueue.Dequeue();
+				m_currData = pair.Data;
 				LoadAudio(m_audioSrc, pair.Data);
 				m_audioSrc.loop = pair.Loop;
 				m_audioSrc.Play();

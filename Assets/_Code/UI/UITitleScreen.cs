@@ -15,9 +15,11 @@ namespace Shipwreck {
 		[SerializeField]
 		private Button m_level2Button = null;
 		[SerializeField]
-		private Button m_level2_30Button = null;
+		private Button m_level2_50Button = null;
 		[SerializeField]
 		private Button m_level3Button = null;
+		[SerializeField]
+		private Button m_level3_50Button = null;
 		[SerializeField]
 		private Button m_level4Button = null;
 
@@ -25,8 +27,9 @@ namespace Shipwreck {
 			m_newGameButton.onClick.AddListener(HandleNewGame);
 			m_level1Button.onClick.AddListener(HandleUnlock1);
 			m_level2Button.onClick.AddListener(HandleUnlock2);
-			m_level2_30Button.onClick.AddListener(HandleUnlock2_30);
+			m_level2_50Button.onClick.AddListener(HandleUnlock2_50);
 			m_level3Button.onClick.AddListener(HandleUnlock3);
+			m_level3_50Button.onClick.AddListener(HandleUnlock3_50);
 			m_level4Button.onClick.AddListener(HandleUnlock4);
 		}
 		private void OnDisable() {
@@ -67,15 +70,20 @@ namespace Shipwreck {
 			UnlockLevel2();
 			HandleNewGame();
 		}
-		private void HandleUnlock2_30()
+		private void HandleUnlock2_50()
 		{
 			AudioSrcMgr.instance.PlayOneShot("click_unlock");
-			UnlockLevel2_30();
+			UnlockLevel2_50();
 			HandleNewGame();
 		}
 		private void HandleUnlock3() {
 			AudioSrcMgr.instance.PlayOneShot("click_unlock");
 			UnlockLevel3();
+			HandleNewGame();
+		}
+		private void HandleUnlock3_50() {
+			AudioSrcMgr.instance.PlayOneShot("click_unlock");
+			UnlockLevel3_50();
 			HandleNewGame();
 		}
 		private void HandleUnlock4() {
@@ -109,7 +117,6 @@ namespace Shipwreck {
 		}
 		private void UnlockLevel2() {
 			UnlockLevel1();
-			// GameMgr.UnlockLevel(2);
 
 			GameMgr.SetLevelIndex(0);
 			GameMgr.SetChain(0, "Type", "card-canaller", "photo-above", "type-canaller");
@@ -122,53 +129,84 @@ namespace Shipwreck {
 			GameMgr.State.SetTutorialSonarDisplayed(true);
 			GameMgr.State.UnlockDive(0);
 
+			// GameMgr.UnlockLevel(2);
 			GameMgr.UnlockLevel(4);
 			GameMgr.UnlockEvidence(4, "LV4-Letter-Treasure");
 			GameMgr.RecordNodeVisited("level01.lou-complete", "lou");
 			GameMgr.RecordNodeVisited("level01.amy-level-end", "amy");
 			GameMgr.RecordNodeVisited("level01.dad-level-end", "dad");
+			GameMgr.SetLevelIndex(1);
 		}
 
-		private void UnlockLevel2_30()
+		private void UnlockLevel2_50()
 		{
 			UnlockLevel2();
 
 			GameMgr.State.UnlockDive(1);
+			GameMgr.UnlockContact("cooper");
+
+			GameMgr.UnlockContact("reya");
+			GameMgr.RecordNodeVisited("level04.level2-starter", "dad");
+			GameMgr.RecordNodeVisited("level04.level2-meet-reya", "reya");
+			GameMgr.UnlockLevel(2);
+			GameMgr.UnlockEvidence(2, "LV1-Root");
+			GameMgr.UnlockEvidence(2, "LV2-Transcript-Reya");
+			GameMgr.UnlockEvidence(2, "LV2-Card-Types");
 
 			GameMgr.UnlockEvidence(2, "LV2-Photo-Above");
 			GameMgr.UnlockEvidence(2, "LV2-Photo-Cargo");
 			GameMgr.UnlockEvidence(2, "LV2-Photo-Gash");
+			GameMgr.UnlockEvidence(2, "LV2-Table-Wrecks");
 			GameMgr.UnlockEvidence(2, "LV2-Photo-Safe");
+			GameMgr.UnlockEvidence(2, "LV2-Images-Car");
+			GameMgr.UnlockEvidence(4, "LV4-Investigation-Report");
 			GameMgr.RecordNodeVisited("level02.reya-boat", "reya");
 			GameMgr.RecordNodeVisited("level02.reya-dive", "reya");
 			GameMgr.RecordNodeVisited("level02.dive-gash", "reya");
 			GameMgr.RecordNodeVisited("level02.dive-cargo", "reya");
 			GameMgr.RecordNodeVisited("level02.dive-safe", "reya");
+			GameMgr.RecordNodeVisited("level02.amy-match", "amy");
+			GameMgr.RecordNodeVisited("level02.cooper-meet", "cooper");
+
+			GameMgr.SetLevelIndex(1);
+			GameMgr.SetChain(1, "Location", "location-coordinates");
+			GameMgr.SetChain(1, "Type", "photo-above", "card-freighter");
 		}
 
 		private void UnlockLevel3() {
-			UnlockLevel2_30();
+			UnlockLevel2_50();
 			GameMgr.UnlockLevel(3);
-			GameMgr.State.UnlockDive(2);
+			GameMgr.State.UnlockDive(1);
 
 			GameMgr.UnlockEvidence(2, "LV2-Transcript-Reya");
 			GameMgr.UnlockEvidence(2, "LV2-Card-Types");
-			GameMgr.UnlockEvidence(2, "LV2-Cargo-List");
+			GameMgr.UnlockEvidence(2, "LV2-List-Cargo");
 			GameMgr.UnlockEvidence(2, "LV2-Distress-Transcript");
-			GameMgr.UnlockEvidence(2, "LV2-Table-Wrecks");
-			GameMgr.UnlockEvidence(2, "LV2-Car-Images");
 			GameMgr.RecordNodeVisited("level02.amy-match", "amy");
 			GameMgr.RecordNodeVisited("level02.cooper-meet", "cooper");
 			GameMgr.RecordNodeVisited("level02.amy-distress", "amy");
 			GameMgr.RecordNodeVisited("level02.reya-safe", "reya");
 
-			// Evidence Testing
+			GameMgr.SetChain(1, "Cargo", "photo-cargo", "cargo-nash", "image-nash");
+			GameMgr.SetChain(1, "Cause", "photo-gash", "cause-rammed");
+			GameMgr.SetChain(1, "Name", "name-madison");
+			GameMgr.SetChain(1, "Artifact", "photo-safe", "artifact-safe");
+
+			GameMgr.SetLevelIndex(2);
+		}
+
+		private void UnlockLevel3_50() {
+			UnlockLevel3();
+
+			GameMgr.SetLevelIndex(2);
+			GameMgr.SetChain(2, "Location", "location-coordinates");
+
 			GameMgr.UnlockEvidence(3, "LV1-Root");
 			GameMgr.UnlockEvidence(3, "LV3-Transcript-Dad");
-			GameMgr.UnlockEvidence(3, "LV3-Treasure-Map");
 			GameMgr.UnlockEvidence(3, "LV3-Advertisement-PS");
 			GameMgr.UnlockEvidence(3, "LV3-Tami-Photo-Anchor");
 
+			
 			GameMgr.UnlockEvidence(3, "LV3-Photo-Above");
 			GameMgr.UnlockEvidence(3, "LV3-Photo-Anchor");
 			GameMgr.UnlockEvidence(3, "LV3-Photo-Gold");
@@ -177,12 +215,27 @@ namespace Shipwreck {
 			GameMgr.UnlockEvidence(3, "LV3-Card-Types");
 			GameMgr.UnlockEvidence(3, "LV3-Accounts-Survivor");
 			GameMgr.UnlockContact("tami");
+			
 
-			GameMgr.SetLevelIndex(0);
+			GameMgr.RecordNodeVisited("level03.dad-superior", "dad");
+			GameMgr.RecordNodeVisited("level03.amy-paradise", "amy");
+			GameMgr.RecordNodeVisited("level03.tami-meet", "tami");
+
+			GameMgr.State.UnlockDive(2);
+
+			
+			GameMgr.RecordNodeVisited("level03.tami-ship", "tami");
+			GameMgr.RecordNodeVisited("level03.tami-anchor", "tami");
+			GameMgr.RecordNodeVisited("level03.tami-gold", "tami");
+			GameMgr.RecordNodeVisited("level03.tami-cargo", "tami");
+			GameMgr.RecordNodeVisited("level03.tami-regroup", "tami");
+			
 		}
 
 		private void UnlockLevel4() {
-			UnlockLevel3();
+			UnlockLevel3_50();
+
+			GameMgr.SetLevelIndex(3);
 		}
 	}
 

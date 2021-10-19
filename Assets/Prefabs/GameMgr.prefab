@@ -109,13 +109,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ef471699d93d3f54bb6b05e18b0dd323, type: 2}
   - {fileID: 11400000, guid: a7f18656bd463844ab79a6f48a1308e8, type: 2}
   - {fileID: 11400000, guid: ad1ea63eabb1ad2458b492fe3ffd441c, type: 2}
-  - {fileID: 11400000, guid: 5875de122eb78f64abc3a3be60519ac6, type: 2}
   - {fileID: 11400000, guid: bccb88b945de42b4cbebd5c1d41c1d60, type: 2}
   - {fileID: 11400000, guid: c3dc0b44f5a86c14282b75adc8f4a616, type: 2}
   m_images:
   - {fileID: 21300000, guid: ea001b1c59f86ce4c805ebcf8ec11611, type: 3}
   - {fileID: 21300000, guid: bd33810b214a0104fbc3b7c7b52910b8, type: 3}
   - {fileID: 21300000, guid: 73e01e52390ee6d4ca224fc6a68ef033, type: 3}
+  - {fileID: 21300000, guid: 59fe56a6223a442439b9c0aef26e2687, type: 3}
+  - {fileID: 21300000, guid: ca515c6e0d836c941a1e8b9aa842510b, type: 3}
+  - {fileID: 21300000, guid: 00e7886c97ff91a419c635f6cfe99871, type: 3}
   m_backgrounds:
   - {fileID: 21300000, guid: 77f86a110f5607542a2bbb5da9044b6e, type: 3}
   - {fileID: 21300000, guid: f06973bc2e98e2c4baceae48912060d7, type: 3}
@@ -123,6 +125,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c20a108ba4f416048a9867506a6020c7, type: 3}
   - {fileID: 21300000, guid: 5f65e64366354fa4182c286b229445c9, type: 3}
   - {fileID: 21300000, guid: d95b3d2a5159a264e97141fc59fc8d4d, type: 3}
+  - {fileID: 21300000, guid: b546b082ff32bfc4eb779578b389798c, type: 3}
   m_nodeKeyPairs:
   - NodeID:
       m_Source: Location
@@ -214,8 +217,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4b9ad497881709741818630cadd1babf, type: 2}
   - {fileID: 11400000, guid: 712f16c7c533ee94397d7f26cb197512, type: 2}
   - {fileID: 11400000, guid: 2bdf85e1308f4154581245d7d18b01f2, type: 2}
+  - {fileID: 11400000, guid: d82a2b11a6af1244ebc3fa3e0206f6d5, type: 2}
+  - {fileID: 11400000, guid: 19959a680f1fd9c46be85845317c9c10, type: 2}
   m_displayObjects:
   - {fileID: 11400000, guid: 88e0486af9011644b9841453e95a9d19, type: 2}
+  - {fileID: 11400000, guid: eaaa7d3b5a78a9d4daf7bb9d921ac2fb, type: 2}
+  - {fileID: 11400000, guid: 35adc2a8d58b43146bf686cdc6f6a09a, type: 2}
   m_stickyNoteDefault: {r: 1, g: 0.9889244, b: 0.9575472, a: 1}
   m_stickyNoteIncorrect: {r: 0.9339623, g: 0.638795, b: 0.6580142, a: 1}
   m_stickyNoteComplete: {r: 0.93333334, g: 0.8670039, b: 0.6392157, a: 1}

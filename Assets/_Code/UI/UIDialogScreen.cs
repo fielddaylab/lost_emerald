@@ -30,14 +30,16 @@ namespace Shipwreck {
 		private Graphic m_textBoxOutline = null;
 		[SerializeField]
 		private LayoutGroup m_layout = null;
-		[SerializeField]
-		private Image m_portrait = null;
+		//[SerializeField]
+		//private Image m_portrait = null;
 		[SerializeField]
 		private Image m_background = null;
 		[SerializeField]
 		private Image m_image = null;
 		[SerializeField]
 		private Button m_continueButton = null;
+		[SerializeField]
+		private RectTransform m_displayContainer = null;
 
 		#endregion // Inspector
 
@@ -169,10 +171,18 @@ namespace Shipwreck {
 		}
 
 		protected override IEnumerator OnShowObject(GameObject prefab) {
-			throw new NotImplementedException();
+			GameObject obj = Instantiate(prefab, m_displayContainer);
+			obj.transform.localScale = Vector3.zero;
+			obj.transform.localPosition = Vector3.zero;
+			yield return obj.transform.ScaleTo(1f, 0.35f, Axis.XY).Ease(Curve.BackOut);
 		}
 		protected override IEnumerator OnHideObject() {
-			throw new NotImplementedException();
+			for (int index = 0; index < m_displayContainer.childCount; index++) {
+				yield return m_displayContainer.GetChild(index).transform.ScaleTo(0f, 0.35f, Axis.XY).Ease(Curve.BackIn);
+			}
+			for (int index = 0; index < m_displayContainer.childCount; index++) {
+				Destroy(m_displayContainer.GetChild(index).gameObject);
+			}
 		}
 
 

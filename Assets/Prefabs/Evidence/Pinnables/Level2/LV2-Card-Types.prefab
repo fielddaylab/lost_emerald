@@ -607,6 +607,7 @@ MonoBehaviour:
   m_pinPosition: {fileID: 3783543734247412782}
   m_subPinPosition: {fileID: 4543988151579805517}
   m_image: {fileID: 9148506529371105481}
+  m_pinned: 0
 --- !u!114 &9148506529371105481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -707,6 +708,7 @@ MonoBehaviour:
   m_pinPosition: {fileID: 4421571359132032814}
   m_subPinPosition: {fileID: 4842760312409843199}
   m_image: {fileID: 5077781087360820907}
+  m_pinned: 0
 --- !u!114 &5077781087360820907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -842,7 +844,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 114.6, y: 0}
+  m_AnchoredPosition: {x: -134.99997, y: 0}
   m_SizeDelta: {x: 5, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &3220249791325895226
@@ -1120,7 +1122,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 114.6, y: 0}
+  m_AnchoredPosition: {x: -135, y: 0}
   m_SizeDelta: {x: 5, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4476298756558214674
@@ -1155,7 +1157,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 114.6, y: 0}
+  m_AnchoredPosition: {x: -134.99997, y: 0}
   m_SizeDelta: {x: 5, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4508937354839297873
@@ -1582,7 +1584,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 114.6, y: 0}
+  m_AnchoredPosition: {x: -134.99997, y: 0}
   m_SizeDelta: {x: 5, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &7099383039482075091
@@ -1825,6 +1827,7 @@ MonoBehaviour:
   m_pinPosition: {fileID: 7352126299555670250}
   m_subPinPosition: {fileID: 7433038793070548112}
   m_image: {fileID: 2046538184898088255}
+  m_pinned: 0
 --- !u!114 &2046538184898088255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1925,6 +1928,7 @@ MonoBehaviour:
   m_pinPosition: {fileID: 6624219973930149989}
   m_subPinPosition: {fileID: 1860757932551019108}
   m_image: {fileID: 2300169584638480534}
+  m_pinned: 0
 --- !u!114 &2300169584638480534
 MonoBehaviour:
   m_ObjectHideFlags: 0

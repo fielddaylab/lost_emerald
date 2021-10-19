@@ -295,10 +295,13 @@ namespace Shipwreck
 		}
 
 		[LeafMember]
-		private static void TriggerConvoMusic(string convo_id)
+		private static void TriggerConvoMusic(string convo_id, string ambiance_id = null)
 		{
 			AudioSrcMgr.instance.StashAudio();
 			AudioSrcMgr.instance.PlayAudio(convo_id, true);
+			if (ambiance_id != null) {
+				AudioSrcMgr.instance.PlayAmbiance(ambiance_id);
+			}
 		}
 
 		[LeafMember]

@@ -119,7 +119,7 @@ namespace Shipwreck {
 				obj.transform.position = root.RectTransform.position;
 				obj.Setup(GameDb.GetNodeLocalizationKey(root.NodeID), m_layers, 20f + 40f * (chainIndex % 2 == 0 ? 0 : 1f));
 
-				bool addDangler = chain.Depth < obj.PinCount && (chain.StickyInfo == null || chain.StickyInfo.Response == StickyInfo.ResponseType.Hint);
+				bool addDangler = chain.Depth < obj.PinCount && (chain.StickyInfo == null || (chain.StickyInfo.Response == StickyInfo.ResponseType.Hint && !chain.StickyInfo.NoDangler));
 				obj.SetChainDepth(chain.Depth - 1 + (addDangler ? 1 : 0));
 
 				// tracks which nodes have been completed.
@@ -160,7 +160,6 @@ namespace Shipwreck {
 					pin.OnPointerUp += HandlePinReleased;
 				}
 				chain.SetEChain(obj);
-				obj.SetEChainState(chain);
 				m_chains.Add(chain.Root(), obj);
 				
 				if (pinnedNodes.Count == chain.Depth - 1) {
@@ -341,6 +340,7 @@ namespace Shipwreck {
 
 			if (!alreadyPinned) {
 				RefreshChainState(chainState.StickyInfo, chainObj, node);
+				RefreshAllChains();
 			}
 
 			m_selectedPin = -1;
@@ -367,7 +367,7 @@ namespace Shipwreck {
 				chainObj.ShowStickyNote(info.Text);
 			}
 			if (info == null) {
-				chainObj.SetState(ChainStatus.Normal);
+				chainObj.SetStatus(ChainStatus.Normal);
 				if (node != null) {
 					TryExtendingChain(chainObj, node);
 				}
@@ -375,27 +375,37 @@ namespace Shipwreck {
 			else {
 				switch (info.Response) {
 					case StickyInfo.ResponseType.Correct:
-						chainObj.SetState(ChainStatus.Complete);
-						// todo: update chains which require this chain
-						AudioSrcMgr.instance.PlayOneShot("evidence_complete");
+						chainObj.SetStatus(ChainStatus.Complete);
 						break;
 					case StickyInfo.ResponseType.Hint:
-						chainObj.SetState(ChainStatus.Normal);
-						AudioSrcMgr.instance.PlayOneShot("evidence_right");
+						chainObj.SetStatus(ChainStatus.Normal);
 						if (node != null) {
-							TryExtendingChain(chainObj, node);
+							TryExtendingChain(chainObj, node, info);
 						}
 						break;
 					case StickyInfo.ResponseType.Incorrect:
-						chainObj.SetState(ChainStatus.Incorrect);
-						AudioSrcMgr.instance.PlayOneShot("evidence_wrong");
+						chainObj.SetStatus(ChainStatus.Incorrect);
 						break;
 				}
 			}
 		}
 
-		private void TryExtendingChain(EvidenceChain chainObj, EvidenceNode node) {
-			if (node != null && m_selectedPin + 1 < chainObj.PinCount) {
+		private void RefreshAllChains() {
+			// NOTE:
+			// this will only really work if there is only one
+			// layer of dependency of chains
+
+			int index = 0;
+			foreach (EvidenceChain chainObj in m_chains.Values) {
+				IEvidenceChainState state = GameMgr.State.CurrentLevel.GetChain(index++);
+				state.ReevaluateStickyInfo();
+				RefreshChainState(state.StickyInfo, chainObj);
+			}
+		}
+
+		private void TryExtendingChain(EvidenceChain chainObj, EvidenceNode node, StickyInfo info = null) {
+			bool useDangler = info == null || !info.NoDangler;
+			if (node != null && m_selectedPin + 1 < chainObj.PinCount && useDangler) {
 				chainObj.SetChainDepth(m_selectedPin + 2);
 				EvidencePin newPin = chainObj.GetPin(m_selectedPin + 1);
 				newPin.SetPosition(WorldToScreenPoint(node.SubPinPosition));

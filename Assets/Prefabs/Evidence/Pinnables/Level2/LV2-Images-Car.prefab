@@ -303,6 +303,7 @@ MonoBehaviour:
   m_pinPosition: {fileID: 0}
   m_subPinPosition: {fileID: 948895943004467144}
   m_image: {fileID: 9122738159452118835}
+  m_pinned: 0
 --- !u!1 &9122738159877036639
 GameObject:
   m_ObjectHideFlags: 0
@@ -402,6 +403,7 @@ MonoBehaviour:
   m_pinPosition: {fileID: 0}
   m_subPinPosition: {fileID: 7716205419084350827}
   m_image: {fileID: 9122738159877036637}
+  m_pinned: 0
 --- !u!1 &9122738160004132379
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,7 +439,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -83.1, y: 7}
+  m_AnchoredPosition: {x: -101, y: 7}
   m_SizeDelta: {x: 360, y: 123}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7072219460732386782

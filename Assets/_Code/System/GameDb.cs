@@ -201,6 +201,7 @@ namespace Shipwreck {
 				case ChainStatus.Normal: return I.m_pinDefault;
 				case ChainStatus.Incorrect: return I.m_pinIncorrect;
 				case ChainStatus.Complete: return I.m_pinComplete;
+				case ChainStatus.Unassigned: return I.m_pinDefault;
 				default: throw new NotImplementedException();
 			}
 		}

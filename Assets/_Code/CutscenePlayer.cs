@@ -17,15 +17,30 @@ namespace Shipwreck {
 		private Camera m_videoCamera = null;
 
 #if UNITY_EDITOR
-		//private const string VIDEO_PATH = "file://{0}/cutscene{1:00}.mp4";
-		private const string VIDEO_PATH = "file://{0}/cutscene_20211007{1:00}.mov";
+		private const string VIDEO_PATH = "file://{0}/cutscene{1:00}.mp4";
+		private const string VIDEO_PATH_ALT = "file://{0}/cutscene{1:00}.mov"; // temporary hack until movie formats are consistent
 #else
 		private const string VIDEO_PATH = "{0}/cutscene{1:00}.mp4";
+		private const string VIDEO_PATH_ALT = "{0}/cutscene{1:00}.mov"; // temporary hack until movie formats are consistent
 #endif
 
 		public static void Play() {
 			AudioSrcMgr.instance.StopAudio();
-			I.m_videoPlayer.url = string.Format(VIDEO_PATH, Application.streamingAssetsPath, GameMgr.State.CurrentLevel.Index + 1);
+			// temporary hack until movie formats are consistent
+			if (GameMgr.State.CurrentLevel.Index == 0) {
+				I.m_videoPlayer.url = string.Format(
+					VIDEO_PATH_ALT,
+					Application.streamingAssetsPath,
+					GameMgr.State.CurrentLevel.Index + 1
+					);
+			}
+			else {
+				I.m_videoPlayer.url = string.Format(
+					VIDEO_PATH,
+					Application.streamingAssetsPath,
+					GameMgr.State.CurrentLevel.Index + 1
+					);
+			}
 			I.m_videoPlayer.Play();
 			I.m_videoCamera.gameObject.SetActive(true);
 			GameCamera gameCamera = GameCamera.Find();

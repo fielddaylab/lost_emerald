@@ -141,6 +141,16 @@ MonoBehaviour:
     m_hash: 1951595972
   - m_key: Character/Cooper/Name
     m_hash: -233789617
+  - m_key: Dive/Level3/Above-Name
+    m_hash: 771996739
+  - m_key: Dive/Level3/Cargo-Name
+    m_hash: -1137139972
+  - m_key: Dive/Level3/Gold-Name
+    m_hash: 1727564022
+  - m_key: Dive/Level3/Anchor-Name
+    m_hash: -252010229
+  - m_key: Character/Tami/Name
+    m_hash: 166787002
   m_values:
   - Continue
   - Dad
@@ -197,11 +207,16 @@ MonoBehaviour:
   - SS Madison
   - Ship 3 Unnamed
   - Ship 3 Named
-  - The Emerald
-  - The Emerald
+  - The Emerald (Grandpa's Ship)
+  - The Emerald (Grandpa's Ship)
   - Locked
   - Top-Down Photo
   - Ship Cargo
   - Ship Damage
   - Lost Artifact
   - Cooper
+  - Top-Down Photo
+  - Lost Artifact
+  - Ship Cargo
+  - Anchor
+  - Tami
