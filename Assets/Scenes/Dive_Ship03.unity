@@ -1561,42 +1561,42 @@ PrefabInstance:
     - target: {fileID: 3782994057673315726, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.47
+      value: 0.45
       objectReference: {fileID: 0}
     - target: {fileID: 3782994057673315726, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.8
+      value: 5.81
       objectReference: {fileID: 0}
     - target: {fileID: 3782994057673315726, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.71
+      value: -1.46
       objectReference: {fileID: 0}
     - target: {fileID: 3782994057673315726, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.83617616
+      value: 0.8497896
       objectReference: {fileID: 0}
     - target: {fileID: 3782994057673315726, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.532703
+      value: 0.51070595
       objectReference: {fileID: 0}
     - target: {fileID: 3782994057673315726, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.11008472
+      value: -0.11187697
       objectReference: {fileID: 0}
     - target: {fileID: 3782994057673315726, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.070131704
+      value: 0.06723574
       objectReference: {fileID: 0}
     - target: {fileID: 3782994057673315726, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 65
+      value: 62.01
       objectReference: {fileID: 0}
     - target: {fileID: 3782994057673315726, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
@@ -1653,8 +1653,8 @@ MonoBehaviour:
   m_photoName:
     m_key: Dive/Level3/Cargo-Name
     m_hash: -1137139972
-  m_zoomMin: 0.147929
-  m_zoomMax: 0.65680474
+  m_zoomMin: 0.6213018
+  m_zoomMax: 1
 --- !u!1001 &1068860058
 PrefabInstance:
   m_ObjectHideFlags: 0
