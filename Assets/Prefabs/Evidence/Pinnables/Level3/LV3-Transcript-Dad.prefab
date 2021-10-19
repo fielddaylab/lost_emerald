@@ -195,6 +195,7 @@ MonoBehaviour:
   m_pinPosition: {fileID: 0}
   m_subPinPosition: {fileID: 7027330663026036956}
   m_image: {fileID: 3108613273951986254}
+  m_pinned: 0
 --- !u!114 &7453899544283056915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -596,7 +597,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -387.9, y: 141}
+  m_AnchoredPosition: {x: -388, y: 144}
   m_SizeDelta: {x: 200, y: 236.67352}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4800803555498453879

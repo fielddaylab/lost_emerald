@@ -198,12 +198,15 @@ namespace Shipwreck {
 		private void UnlockLevel3_50() {
 			UnlockLevel3();
 
+			GameMgr.SetLevelIndex(2);
+			GameMgr.SetChain(2, "Location", "location-coordinates");
+
 			GameMgr.UnlockEvidence(3, "LV1-Root");
 			GameMgr.UnlockEvidence(3, "LV3-Transcript-Dad");
 			GameMgr.UnlockEvidence(3, "LV3-Advertisement-PS");
 			GameMgr.UnlockEvidence(3, "LV3-Tami-Photo-Anchor");
 
-			/*
+			
 			GameMgr.UnlockEvidence(3, "LV3-Photo-Above");
 			GameMgr.UnlockEvidence(3, "LV3-Photo-Anchor");
 			GameMgr.UnlockEvidence(3, "LV3-Photo-Gold");
@@ -212,7 +215,7 @@ namespace Shipwreck {
 			GameMgr.UnlockEvidence(3, "LV3-Card-Types");
 			GameMgr.UnlockEvidence(3, "LV3-Accounts-Survivor");
 			GameMgr.UnlockContact("tami");
-			*/
+			
 
 			GameMgr.RecordNodeVisited("level03.dad-superior", "dad");
 			GameMgr.RecordNodeVisited("level03.amy-paradise", "amy");
@@ -220,13 +223,13 @@ namespace Shipwreck {
 
 			GameMgr.State.UnlockDive(2);
 
-			/*
+			
 			GameMgr.RecordNodeVisited("level03.tami-ship", "tami");
 			GameMgr.RecordNodeVisited("level03.tami-anchor", "tami");
 			GameMgr.RecordNodeVisited("level03.tami-gold", "tami");
 			GameMgr.RecordNodeVisited("level03.tami-cargo", "tami");
 			GameMgr.RecordNodeVisited("level03.tami-regroup", "tami");
-			*/
+			
 		}
 
 		private void UnlockLevel4() {
