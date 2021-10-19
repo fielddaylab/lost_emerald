@@ -30,8 +30,8 @@ namespace Shipwreck {
 		private Graphic m_textBoxOutline = null;
 		[SerializeField]
 		private LayoutGroup m_layout = null;
-		[SerializeField]
-		private Image m_portrait = null;
+		//[SerializeField]
+		//private Image m_portrait = null;
 		[SerializeField]
 		private Image m_background = null;
 		[SerializeField]

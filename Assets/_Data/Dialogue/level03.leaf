@@ -92,9 +92,11 @@
 	{@tami}	Totally! I gave him my old sonar. It’s a little glitchy, but he didn’t seem to mind.  
 			I heard you’ve got a lead on the PS Paradise!
 			Here’s some stuff I dug up:
-			[PS PARADISE ADVERTISEMENT, PHOTO OF ANCHOR]
+			{img ps_paradise_ad_sketch}
+			[PHOTO OF ANCHOR]
 			People called it a “Palace Steamer” because it looked so fancy. Sorta like an early, smaller version of the Titanic. 
 			But tickets were cheap, so normal people could afford it. 
+			{/img}
 	{@you}	Wow. You know all about this ship!
 	{@tami}	It’s sort of a pet project of mine.
 			Wanna help me check it out?
@@ -187,8 +189,7 @@
 :: dad-steamer
 @contact dad, phone-call
 // @background 
-@trigger OnDialogClosed
-@when HasEvidence(LV3-Accounts-Survivor)
+@trigger OnBoardComplete
 @once
 
 	$call TriggerConvoMusic(dad_convo)

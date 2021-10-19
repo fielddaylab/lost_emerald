@@ -965,7 +965,7 @@ PrefabInstance:
     - target: {fileID: 3782994056335260743, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
       propertyPath: m_Name
-      value: DiveVirtualCamera (17)
+      value: DiveVirtualCamera (gold)
       objectReference: {fileID: 0}
     - target: {fileID: 3782994056335260744, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
@@ -1496,7 +1496,7 @@ PrefabInstance:
     - target: {fileID: 3782994056335260743, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
       propertyPath: m_Name
-      value: DiveVirtualCamera (20)
+      value: DiveVirtualCamera (cargo)
       objectReference: {fileID: 0}
     - target: {fileID: 3782994056335260744, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
@@ -3217,7 +3217,7 @@ PrefabInstance:
     - target: {fileID: 3782994056335260743, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
       propertyPath: m_Name
-      value: DiveVirtualCamera (1)
+      value: DiveVirtualCamera (above)
       objectReference: {fileID: 0}
     - target: {fileID: 3782994056335260744, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
@@ -3910,7 +3910,7 @@ PrefabInstance:
     - target: {fileID: 3782994056335260743, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
       propertyPath: m_Name
-      value: DiveVirtualCamera (15)
+      value: DiveVirtualCamera (anchor)
       objectReference: {fileID: 0}
     - target: {fileID: 3782994056335260744, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
@@ -3974,23 +3974,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3782994057673315726, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3782994057673315726, guid: 38a81007aa7e04447984bc1df4c89675,
+        type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.3
+      value: 2.33
       objectReference: {fileID: 0}
     - target: {fileID: 3782994057673315726, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.37
+      value: -1.49
       objectReference: {fileID: 0}
     - target: {fileID: 3782994057673315726, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9405849
+      value: 0.95170164
       objectReference: {fileID: 0}
     - target: {fileID: 3782994057673315726, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.33955884
+      value: 0.30702436
       objectReference: {fileID: 0}
     - target: {fileID: 3782994057673315726, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
@@ -4005,7 +4010,7 @@ PrefabInstance:
     - target: {fileID: 3782994057673315726, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 39.7
+      value: 35.76
       objectReference: {fileID: 0}
     - target: {fileID: 3782994057710387678, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
@@ -4024,6 +4029,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38a81007aa7e04447984bc1df4c89675, type: 3}
+--- !u!1 &2084417605 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3782994056335260743, guid: 38a81007aa7e04447984bc1df4c89675,
+    type: 3}
+  m_PrefabInstance: {fileID: 2084417604}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2084417606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084417605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15d1cc8a4704bb3499777ec9affed97c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_evidenceUnlock:
+    m_Source: LV3-Photo-Anchor
+    m_Hash: 214398497
+  m_unlockMessage:
+    m_key: 
+    m_hash: 0
+  m_photoName:
+    m_key: Dive/Level3/Anchor-Name
+    m_hash: -252010229
+  m_zoomMin: 0.24852072
+  m_zoomMax: 0.80473375
 --- !u!4 &2096084217 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3782994056335260744, guid: 38a81007aa7e04447984bc1df4c89675,

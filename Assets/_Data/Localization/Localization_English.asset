@@ -147,6 +147,10 @@ MonoBehaviour:
     m_hash: -1137139972
   - m_key: Dive/Level3/Gold-Name
     m_hash: 1727564022
+  - m_key: Dive/Level3/Anchor-Name
+    m_hash: -252010229
+  - m_key: Character/Tami/Name
+    m_hash: 166787002
   m_values:
   - Continue
   - Dad
@@ -214,3 +218,5 @@ MonoBehaviour:
   - Top-Down Photo
   - Lost Artifact
   - Ship Cargo
+  - Anchor
+  - Tami

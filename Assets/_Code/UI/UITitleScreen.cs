@@ -19,6 +19,8 @@ namespace Shipwreck {
 		[SerializeField]
 		private Button m_level3Button = null;
 		[SerializeField]
+		private Button m_level3_50Button = null;
+		[SerializeField]
 		private Button m_level4Button = null;
 
 		private void OnEnable() {
@@ -27,6 +29,7 @@ namespace Shipwreck {
 			m_level2Button.onClick.AddListener(HandleUnlock2);
 			m_level2_50Button.onClick.AddListener(HandleUnlock2_50);
 			m_level3Button.onClick.AddListener(HandleUnlock3);
+			m_level3_50Button.onClick.AddListener(HandleUnlock3_50);
 			m_level4Button.onClick.AddListener(HandleUnlock4);
 		}
 		private void OnDisable() {
@@ -76,6 +79,11 @@ namespace Shipwreck {
 		private void HandleUnlock3() {
 			AudioSrcMgr.instance.PlayOneShot("click_unlock");
 			UnlockLevel3();
+			HandleNewGame();
+		}
+		private void HandleUnlock3_50() {
+			AudioSrcMgr.instance.PlayOneShot("click_unlock");
+			UnlockLevel3_50();
 			HandleNewGame();
 		}
 		private void HandleUnlock4() {
@@ -184,8 +192,12 @@ namespace Shipwreck {
 			GameMgr.SetChain(1, "Name", "name-madison");
 			GameMgr.SetChain(1, "Artifact", "photo-safe", "artifact-safe");
 
-			// Evidence Testing
-			/*
+			GameMgr.SetLevelIndex(2);
+		}
+
+		private void UnlockLevel3_50() {
+			UnlockLevel3();
+
 			GameMgr.UnlockEvidence(3, "LV1-Root");
 			GameMgr.UnlockEvidence(3, "LV3-Transcript-Dad");
 			GameMgr.UnlockEvidence(3, "LV3-Advertisement-PS");
@@ -199,13 +211,19 @@ namespace Shipwreck {
 			GameMgr.UnlockEvidence(3, "LV3-Card-Types");
 			GameMgr.UnlockEvidence(3, "LV3-Accounts-Survivor");
 			GameMgr.UnlockContact("tami");
-			*/
 
-			GameMgr.SetLevelIndex(2);
+			GameMgr.RecordNodeVisited("level03.dad-superior", "dad");
+			GameMgr.RecordNodeVisited("level03.amy-paradise", "amy");
+			GameMgr.RecordNodeVisited("level03.tami-meet", "tami");
+			GameMgr.RecordNodeVisited("level03.tami-ship", "tami");
+			GameMgr.RecordNodeVisited("level03.tami-anchor", "tami");
+			GameMgr.RecordNodeVisited("level03.tami-gold", "tami");
+			GameMgr.RecordNodeVisited("level03.tami-cargo", "tami");
+			GameMgr.RecordNodeVisited("level03.tami-regroup", "tami");
 		}
 
 		private void UnlockLevel4() {
-			UnlockLevel3();
+			UnlockLevel3_50();
 
 			GameMgr.SetLevelIndex(3);
 		}
