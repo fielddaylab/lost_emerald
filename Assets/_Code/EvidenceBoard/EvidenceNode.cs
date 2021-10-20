@@ -71,9 +71,19 @@ namespace Shipwreck {
 		private Routine m_colorRoutine;
 		private Routine m_pulseRoutine;
 		private ChainStatus m_currStatus;
+		private Color m_cachedColor;
+
+		private void Awake() {
+			if (m_image != null) {
+				m_cachedColor = m_image.color;
+			}
+		}
 
 		public void SetColor(Color color) {
-			m_colorRoutine.Replace(this, ColorTo(color));
+			m_cachedColor = color;
+			if (!m_pulseRoutine) {
+				m_colorRoutine.Replace(this, ColorTo(color));
+			}
 		}
 
 		private IEnumerator ColorTo(Color color) {
@@ -95,6 +105,7 @@ namespace Shipwreck {
 
 		public void SetPulsing(bool isPulsing) {
 			if (isPulsing) {
+				m_colorRoutine.Stop();
 				m_pulseRoutine.Replace(this, PulseRoutine());
 			} else {
 				m_pulseRoutine.Stop();
@@ -104,8 +115,14 @@ namespace Shipwreck {
 
 		private IEnumerator PulseRoutine() {
 			while (true) {
-				yield return transform.ScaleTo(1.25f, 0.5f, Axis.XY);
-				yield return transform.ScaleTo(1.0f, 0.5f, Axis.XY);
+				yield return Routine.Combine(
+					transform.ScaleTo(1.25f, 0.5f, Axis.XY),
+					m_image.ColorTo(Color.cyan, 1.0f)
+				);
+				yield return Routine.Combine(
+					transform.ScaleTo(1.0f, 0.5f, Axis.XY),
+					m_image.ColorTo(m_cachedColor, 1.0f)
+				);
 			}
 		}
 	}

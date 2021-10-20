@@ -1,4 +1,5 @@
 ﻿using BeauRoutine;
+using PotatoLocalization;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,6 +14,12 @@ namespace Shipwreck {
 		private TweenSettings m_tweenSettings = new TweenSettings(0.25f, Curve.QuadInOut);
 		[SerializeField]
 		private Button m_continueButton = null;
+		[SerializeField]
+		private LocalizedTextUGUI m_shipName = null;
+		[SerializeField]
+		private LocalizedTextUGUI m_shipType = null;
+		[SerializeField]
+		private LocalizedTextUGUI m_wreckCause = null;
 
 
 		protected override IEnumerator HideRoutine() {
@@ -24,6 +31,11 @@ namespace Shipwreck {
 
 		protected override void OnShowStart() {
 			UIMgr.Open<UIModalOverlay>();
+
+			LevelData level = GameDb.GetLevelData(GameMgr.State.CurrentLevel.Index);
+			m_shipName.Key = level.CaseClosedName;
+			m_shipType.Key = level.CaseClosedType;
+			m_wreckCause.Key = level.CaseClosedCause;
 		}
 
 		protected override void OnShowCompleted() {
