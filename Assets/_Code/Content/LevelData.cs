@@ -34,13 +34,13 @@ namespace Shipwreck {
 			get { return m_lockedKey; }
 		}
 		public Vector2 LevelMarkerPos {
-			get { return m_levelMarkerPos; }
+			get { return m_markerData.MarkerPos; }
 		}
 		public bool LevelLocationKnown {
-			get { return m_levelLocationKnown; }
+			get { return m_markerData.LocationKnown; }
 		}
-		public Sprite LevelUnknownSprite {
-			get { return m_levelUnknownSprite; }
+		public string LevelMarkerUnknownSpriteID {
+			get { return m_markerData.UnknownSpriteID; }
 		}
 
 		[SerializeField]
@@ -58,11 +58,7 @@ namespace Shipwreck {
 		[SerializeField]
 		private LocalizationKey m_lockedKey = LocalizationKey.Empty;
 		[SerializeField]
-		private Vector2 m_levelMarkerPos;
-		[SerializeField]
-		private bool m_levelLocationKnown = true;
-		[SerializeField]
-		private Sprite m_levelUnknownSprite = null;
+		private MarkerData m_markerData = null;
 	}
 
 }

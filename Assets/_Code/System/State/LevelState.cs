@@ -12,7 +12,7 @@ namespace Shipwreck {
 		LocalizationKey Name { get; }
 		Vector2 MarkerPos { get; }
 		bool IsLocationKnown { get; }
-		Sprite UnknownSprite { get; }
+		string MarkerUnknownSpriteID { get; }
 		bool IsUnlocked { get; }
 		IEnumerable<IEvidenceGroupState> Evidence { get; }
 		int ChainCount { get; }
@@ -60,8 +60,8 @@ namespace Shipwreck {
 				get { return m_levelData.LevelMarkerPos; }
 			}
 
-			public Sprite UnknownSprite {
-				get { return m_levelData.LevelUnknownSprite; }
+			public string MarkerUnknownSpriteID {
+				get { return m_levelData.LevelMarkerUnknownSpriteID; }
 			}
 
 			public IEnumerable<IEvidenceGroupState> Evidence {

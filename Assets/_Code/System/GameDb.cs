@@ -24,6 +24,8 @@ namespace Shipwreck {
 		[SerializeField]
 		private Sprite[] m_backgrounds;
 		[SerializeField]
+		private Sprite[] m_markerSprites;
+		[SerializeField]
 		private NodeKeyPair[] m_nodeKeyPairs;
 		[SerializeField]
 		private LevelData[] m_levelData;
@@ -74,6 +76,8 @@ namespace Shipwreck {
 		private Dictionary<StringHash32, Sprite> m_imageMap;
 		[NonSerialized]
 		private Dictionary<StringHash32, Sprite> m_backgroundMap;
+		[NonSerialized]
+		private Dictionary<StringHash32, Sprite> m_markerSpriteMap;
 		[NonSerialized]
 		private Dictionary<StringHash32, LocalizationKey> m_nodeKeyPairMap;
 		[NonSerialized]
@@ -133,6 +137,24 @@ namespace Shipwreck {
 			} else {
 				throw new KeyNotFoundException(Log.Format("No " +
 					"Image with id `{0}' is in the database", hash
+				));
+			}
+		}
+
+		public static Sprite GetMarkerSprite(StringHash32 hash) {
+			if (I.m_markerSpriteMap == null) {
+				I.m_markerSpriteMap = new Dictionary<StringHash32, Sprite>();
+				foreach (Sprite sprite in I.m_markerSprites) {
+					I.m_markerSpriteMap.Add(sprite.name, sprite);
+				}
+			}
+			// find the tag within the map
+			if (I.m_markerSpriteMap.ContainsKey(hash)) {
+				return I.m_markerSpriteMap[hash];
+			}
+			else {
+				throw new KeyNotFoundException(Log.Format("No " +
+					"marker Image with id `{0}' is in the database", hash
 				));
 			}
 		}

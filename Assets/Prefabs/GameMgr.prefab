@@ -126,6 +126,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5f65e64366354fa4182c286b229445c9, type: 3}
   - {fileID: 21300000, guid: d95b3d2a5159a264e97141fc59fc8d4d, type: 3}
   - {fileID: 21300000, guid: b546b082ff32bfc4eb779578b389798c, type: 3}
+  m_markerSprites:
+  - {fileID: 21300000, guid: a2f3a53a9badd184e8e861056e87d4b5, type: 3}
+  - {fileID: 21300000, guid: feb118e70e23a0f41b8cc47dc043f461, type: 3}
   m_nodeKeyPairs:
   - NodeID:
       m_Source: Location
@@ -233,6 +236,7 @@ MonoBehaviour:
   m_pinIncorrect: {r: 0.8862745, g: 0.49803922, b: 0.5199506, a: 1}
   m_pinComplete: {r: 1, g: 0.8120668, b: 0.3537736, a: 1}
   m_markerDefault: {r: 1, g: 0.33333334, b: 0.33333334, a: 1}
+  m_markerUnknown: {r: 0, g: 0, b: 0, a: 1}
   m_markerComplete: {r: 1, g: 0.8117648, b: 0.3529412, a: 1}
   m_evidenceNodeDefault: {r: 0.6039216, g: 0.9058824, b: 0.8980393, a: 1}
   m_evidenceNodeComplete: {r: 1, g: 0.8117648, b: 0.3529412, a: 1}

@@ -50,10 +50,14 @@ namespace Shipwreck {
 				marker.Button.interactable = isUnlocked;
 				marker.gameObject.SetActive(isUnlocked);
 				marker.transform.localPosition = markerPos;
-				if (!GameMgr.State.GetLevel(index).IsLocationKnown) {
-					// todo: give levelState a marker definition
-					marker.SetSprite(GameMgr.State.GetLevel(index).UnknownSprite);
+				Sprite markerSprite;
+				if (GameMgr.State.GetLevel(index).IsLocationKnown) {
+					markerSprite = GameDb.GetMarkerSprite("marker-default");
 				}
+				else {
+					markerSprite = GameDb.GetMarkerSprite(GameMgr.State.GetLevel(index).MarkerUnknownSpriteID);
+				}
+				marker.SetSprite(markerSprite);
 				marker.SetColor(GameDb.GetMarkerColor(index));
 				m_levelLabels[index].Key = GameMgr.State.GetLevelName(index);
 			}

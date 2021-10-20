@@ -29,6 +29,8 @@ namespace Shipwreck {
 		public void SetSprite(Sprite sprite) {
 			m_image.sprite = sprite;
 			m_image.SetNativeSize();
+			// hack? ideally images would be uploaded as the correct size
+			m_image.transform.SetScale(new Vector3(.5f, .5f, 1));
 		}
 
 	}
