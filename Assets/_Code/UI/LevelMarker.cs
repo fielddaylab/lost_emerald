@@ -26,6 +26,11 @@ namespace Shipwreck {
 			yield return m_image.ColorTo(color, 0.1f).Ease(Curve.QuadOut);
 		}
 
+		public void SetSprite(Sprite sprite) {
+			m_image.sprite = sprite;
+			m_image.SetNativeSize();
+		}
+
 	}
 }
 

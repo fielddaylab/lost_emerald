@@ -1,6 +1,7 @@
 ﻿using BeauUtil;
 using PotatoLocalization;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Shipwreck {
 
@@ -35,6 +36,12 @@ namespace Shipwreck {
 		public Vector2 LevelMarkerPos {
 			get { return m_levelMarkerPos; }
 		}
+		public bool LevelLocationKnown {
+			get { return m_levelLocationKnown; }
+		}
+		public Sprite LevelUnknownSprite {
+			get { return m_levelUnknownSprite; }
+		}
 
 		[SerializeField]
 		private int m_levelIndex = 0;
@@ -52,6 +59,10 @@ namespace Shipwreck {
 		private LocalizationKey m_lockedKey = LocalizationKey.Empty;
 		[SerializeField]
 		private Vector2 m_levelMarkerPos;
+		[SerializeField]
+		private bool m_levelLocationKnown = true;
+		[SerializeField]
+		private Sprite m_levelUnknownSprite = null;
 	}
 
 }

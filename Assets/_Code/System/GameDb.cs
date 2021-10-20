@@ -57,6 +57,8 @@ namespace Shipwreck {
 		[SerializeField]
 		private Color m_markerDefault = Color.black;
 		[SerializeField]
+		private Color m_markerUnknown = Color.black;
+		[SerializeField]
 		private Color m_markerComplete = Color.black;
 
 		[SerializeField]
@@ -223,6 +225,9 @@ namespace Shipwreck {
 		public static Color GetMarkerColor(int levelIndex) {
 			if (GameMgr.State.GetLevel(levelIndex).IsBoardComplete()) {
 				return I.m_markerComplete;
+			}
+			else if (!GameMgr.State.GetLevel(levelIndex).IsLocationKnown) {
+				return I.m_markerUnknown;
 			}
 			else {
 				return I.m_markerDefault;
