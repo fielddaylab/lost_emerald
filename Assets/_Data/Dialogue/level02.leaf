@@ -72,8 +72,8 @@
 @once
 
 	{@you}	Hmm. An old safe. I wonder what's inside. 
-	{@reya}	What?? Jules, you gotta grab it! 
-	{@you}   No way, Reya. Shipwrecks are protected. It's illegal to take anything!
+	{@reya}	A safe?! Jules, you gotta grab it! 
+	{@you}   No way, Reya. Shipwrecks are protected. It's illegal to take anything without a permit!
 	{@reya}	Ok, ok. Party pooper. 
 	
 // generic dive prompts
@@ -130,19 +130,19 @@
 	$call TriggerConvoMusic(amy_convo) // cooper does not have their own music
 	{@cooper}	Hi there! Are you Amy’s friend?
 	{@you}	Yep. I'm Jules Griffin.
-			Can you send me photos of Nash brand and Kissel brand cars? 
+			Can you send me photos of Nash and Kissel brand cars? 
 	{@cooper}	Of course! Just a minute...
 			{obj ClassicCars}
 	{@you}	Awesome, thanks!
 			{/obj}
-	{@cooper}     It's funny. You've got the same last name as the captain who caused that awful shipwreck. 
+	{@cooper}     It's funny. You've got the same last name as the captain who caused that awful shipwreck. The Emerald, I believe it was. 
 	{@you}	Oh. Haha, yeah.  
-			Wait... did you say the captain CAUSED the wreck??
+			Wait... did you say the captain CAUSED the shipwreck??
 	{@cooper}	That's right. It was all over the news when I was a kid. 
-			Sounds like Captain Griffin went out in bad weather. 
-			I'll send you the investigation report! 
+			They said Captain Griffin went out in bad weather.
+			The company that owned the ship did an investigation. I'll send you the report! 
 	{@you}	Um... okay, great. 
-			Thanks for your help!
+			Thanks again for your help!
 	$call UnlockEvidence(2,LV2-Images-Car)
 	$call UnlockEvidence(4,LV4-Investigation-Report)
 	$call EndConvoMusic()
@@ -155,11 +155,14 @@
 @when IsChainComplete(Name), IsChainComplete(Cargo)
 @once
 
-	{@amy}	Any news on the ship?
-	{@you}	She’s the Madison! 
+	{@amy}	Any news on the shipwreck?
+	{@you}	Yep, the ship is the Madison! 
 	{@amy}	Nice work, Jules! 
-		I’ll send you the radio call from when she was sinking.
-			I've also got the cargo list. Maybe it’ll be useful!
+		Looks like that ship went down right before the Great Depression.
+	{@you}   Ouch. Not a great time to lose a bunch of fancy new cars. 
+	{@amy}   Nope. 
+		I’ll send you the radio call from when the Madison was sinking.
+		And the cargo list, too!
 	{@you}	Thanks, Amy!
 	$call UnlockEvidence(2,LV2-List-Cargo)
 	$call UnlockEvidence(2,LV2-Distress-Transcript)
@@ -173,26 +176,26 @@
 @once
 
 	$call TriggerConvoMusic(reya_convo)
-	{@reya}	Hey sis! Figure out that ship yet? 
+	{@reya}	Hey sis! Figure out that shipwreck yet? 
 	{@you}	Yep! She's the SS Madison.
 	{@reya}	Cool. I solved a mystery too!
 			{img reya-safe}
-		It's just a bunch of nickels and an old alarm clock. Oh well. 
 	{@you}	What?! Reya, how did you get that safe?
-	{@reya}	The guy who hired me found somebody to bring it up. 
-			Don’t freak out, he had a permit! 
-			It's all going to a museum, though. Oh well. 
+	{@reya}	The guy who hired me found a technical diver to bring it up!
+		Don't freak out, he had a permit. Probably. 	
+		It's an old alarm clock and a bunch of 1929 nickels!  
+		It's all going to a museum, though. Oh well. 
 			{/img}
 		So what about the Madison? I wanna know how she sank!
 	{@you}  Fine. Let's see...
 		It was a super foggy day, right before the Great Depression started. 
 		The Madison was carrying a load of Nash cars to Detroit. 
 	{@reya}  Ooh. Bet this doesn't end well.
-	{@you}   Nope. All of a sudden, another freighter appeared in the fog.
+	{@you}   All of a sudden, another freighter appeared in the fog.
 		The ships were too close to avoid crashing. The SS Lookout rammed the Madison!
 		The captain of the Lookout panicked and headed to port.
 		Luckily, another ship came to help the Madison, but a bunch of people didn't survive.
-	{@reya}  I gotta admit, that is a great story. Super sad, though.
+	{@reya}  I gotta admit, that is a cool story. Super sad, though.
 		I wonder if anybody saw it coming...
 	$call TriggerCutscene();
 	$call UnlockLevel(3)

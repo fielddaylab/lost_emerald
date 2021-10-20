@@ -17,16 +17,19 @@
 @once
 
 	$call TriggerConvoMusic(dad_convo)
-	{@dad} 	Hey, kiddo. I'm getting ready for a big yard sale!
-			Could you put up these flyers at your work?
+	{@dad} 	Hey, kiddo. I'm having a big yard sale!
+			Can you put up these flyers at your work?
 			{obj YardsaleFlyer }
-	{@you} 	"Real history"?? Dad.... 
-	{@dad}  What? This is awesome stuff!!
+	{@you} 	Wait a minute. You're selling all our old stuff?? 
+	{@dad}  Yep! Didn't I tell ya?
 			{/obj}
-	{@you}  It's super silly. I want people at work to take me seriously.
-	{@dad}  This IS serious, Jules. I need to make some money.
-		 	How else am I gonna buy a new sonar?
-	{@you}  Sorry, Dad. Reya's calling. Gotta go. 
+		I need some money to buy a sonar for my boat, so I can look for your grandpa's ship!
+	{@you}  Dad, don't you think you're rushing into this? 
+		We might never find the Emerald. 
+		You don't even know how to use a sonar!
+	{@dad}  Aw, don't worry so much, Jules. 
+		I've been wanting to find that ship my whole life! 
+		I'll send out the flyers myself. Wish me luck!
 	$call UnlockContact(reya)
 	$call EndConvoMusic();
 
@@ -37,17 +40,22 @@
 @once
 
 	$call TriggerConvoMusic(reya_convo)
-	{@reya} Hey sis! Can I borrow your dive gear?
+	{@reya} Hey sis! 
+	        Check out my new necklace. It was Grandma's!
+	{@you}  Wow. It's beautiful!
+		I can't believe Dad just gave it to you. 
+	{@reya} I know! Awesome, right? 
+		That reminds me. I need to borrow your dive gear. 
 	{@you}	What?? No!
-	{@reya}	Come on. Pretty please? 
-		I picked up a side job and the wreck is down at 300 feet. 
+	{@reya}	Come on, Jules. Pretty please? 
+		I got hired for a side job, and the shipwreck is down at 300 feet. 
 		I need your fancy deep-diving thing!
 	{@you}	It's called a rebreather, and you're not trained to use it, Reya.
 		You need an expert to help you. 
 	{@reya} Awww, Jules! Thank you. I would love your help. 
 	{@you}  Wait, that's not what I meant--
 	{@reya}	It's near Port Washington. 
-			GPS Location: 43°20'08.2"N 87°34'11.3"W
+			Location: 43°20'08.2"N 87°34'11.3"W
 			Race ya there!
 	$call UnlockLevel(2)
 	$call UnlockEvidence(2, "LV1-Root")
