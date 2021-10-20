@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5535418088273673708}
   - component: {fileID: 5535418088273673714}
+  - component: {fileID: 1243451931039301354}
   m_Layer: 5
   m_Name: LevelMarker
   m_TagString: Untagged
@@ -46,6 +47,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5535418088273673711}
   m_CullTransparentMesh: 0
+--- !u!114 &1243451931039301354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5535418088273673711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 236efcc0578380949b3e8bb2db9c5388, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_button: {fileID: 2463517163296091733}
 --- !u!1 &8111745949359122110
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,3 +274,15 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 9200717449385798680}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2463517163296091733 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6746295532445467213, guid: 790ab65032b9a8941b45e0578b459d51,
+    type: 3}
+  m_PrefabInstance: {fileID: 9200717449385798680}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

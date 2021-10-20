@@ -32,6 +32,9 @@ namespace Shipwreck {
 		public LocalizationKey LockedKey {
 			get { return m_lockedKey; }
 		}
+		public Vector2 LevelMarkerPos {
+			get { return m_levelMarkerPos; }
+		}
 
 		[SerializeField]
 		private int m_levelIndex = 0;
@@ -47,6 +50,8 @@ namespace Shipwreck {
 		private LocalizationKey m_namedKey = LocalizationKey.Empty;
 		[SerializeField]
 		private LocalizationKey m_lockedKey = LocalizationKey.Empty;
+		[SerializeField]
+		private Vector2 m_levelMarkerPos;
 	}
 
 }

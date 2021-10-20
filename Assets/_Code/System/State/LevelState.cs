@@ -3,12 +3,14 @@ using BeauUtil;
 using PotatoLocalization;
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Shipwreck {
 
 	public interface ILevelState {
 		int Index { get; }
 		LocalizationKey Name { get; }
+		Vector2 MarkerPos { get; }
 		bool IsUnlocked { get; }
 		IEnumerable<IEvidenceGroupState> Evidence { get; }
 		int ChainCount { get; }
@@ -50,6 +52,10 @@ namespace Shipwreck {
 
 			public bool IsUnlocked {
 				get { return m_isUnlocked; }
+			}
+
+			public Vector2 MarkerPos {
+				get { return m_levelData.LevelMarkerPos; }
 			}
 
 			public IEnumerable<IEvidenceGroupState> Evidence {

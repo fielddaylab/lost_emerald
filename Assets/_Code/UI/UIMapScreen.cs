@@ -14,7 +14,7 @@ namespace Shipwreck {
 		[SerializeField]
 		private Button m_closeButton = null;
 		[SerializeField]
-		private Button[] m_levelButtons = null;
+		private LevelMarker[] m_levelMarkers = null;
 		[SerializeField]
 		private LocalizedTextUGUI[] m_levelLabels = null;
 
@@ -37,15 +37,18 @@ namespace Shipwreck {
 			base.OnShowStart();
 
 			CanvasGroup.alpha = 0;
-			m_levelButtons[0].onClick.AddListener(() => { HandleLevelButton(0); });
-			m_levelButtons[1].onClick.AddListener(() => { HandleLevelButton(1); });
-			m_levelButtons[2].onClick.AddListener(() => { HandleLevelButton(2); });
-			m_levelButtons[3].onClick.AddListener(() => { HandleLevelButton(3); });
+			m_levelMarkers[0].Button.onClick.AddListener(() => { HandleLevelButton(0); });
+			m_levelMarkers[1].Button.onClick.AddListener(() => { HandleLevelButton(1); });
+			m_levelMarkers[2].Button.onClick.AddListener(() => { HandleLevelButton(2); });
+			m_levelMarkers[3].Button.onClick.AddListener(() => { HandleLevelButton(3); });
 
 
-			for (int index = 0; index < m_levelButtons.Length; index++) {
-				m_levelButtons[index].interactable = GameMgr.State.IsLevelUnlocked(index);
+			for (int index = 0; index < m_levelMarkers.Length; index++) {
+				Vector2 markerPos = GameMgr.State.GetLevel(index).MarkerPos;
+				m_levelMarkers[index].Button.interactable = GameMgr.State.IsLevelUnlocked(index);
 				m_levelLabels[index].Key = GameMgr.State.GetLevelName(index);
+				m_levelMarkers[index].gameObject.SetActive(GameMgr.State.IsLevelUnlocked(index));
+				m_levelMarkers[index].transform.localPosition = markerPos;
 			}
 
 			GameMgr.Events.Register<int>(GameEvents.LevelUnlocked, HandleLevelUnlocked);
@@ -57,9 +60,10 @@ namespace Shipwreck {
 		protected override void OnHideStart() {
 			m_closeButton.onClick.RemoveListener(HandleClose);
 
-			foreach (Button button in m_levelButtons) {
-				button.onClick.RemoveAllListeners();
-				button.interactable = false;
+			foreach (LevelMarker marker in m_levelMarkers) {
+				marker.Button.onClick.RemoveAllListeners();
+				marker.Button.interactable = false;
+				marker.gameObject.SetActive(false);
 			}
 
 			GameMgr.Events.Deregister<int>(GameEvents.LevelUnlocked, HandleLevelUnlocked);
@@ -79,8 +83,8 @@ namespace Shipwreck {
 		}
 
 		private void HandleLevelUnlocked(int level) {
-			for (int index = 0; index < m_levelButtons.Length; index++) {
-				m_levelButtons[index].interactable = GameMgr.State.IsLevelUnlocked(index);
+			for (int index = 0; index < m_levelMarkers.Length; index++) {
+				m_levelMarkers[index].Button.interactable = GameMgr.State.IsLevelUnlocked(index);
 				m_levelLabels[index].Key = GameMgr.State.GetLevelName(index);
 			}
 		}

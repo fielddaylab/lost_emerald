@@ -11,7 +11,6 @@ namespace Shipwreck {
 
 		protected override void OnShowStart() {
 			base.OnShowStart();
-			CanvasGroup.alpha = 0;
 
 			m_levelMapButton.onClick.AddListener(() => { HandleLevelMapButton(); });
 
