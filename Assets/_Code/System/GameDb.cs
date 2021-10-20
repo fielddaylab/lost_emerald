@@ -55,6 +55,11 @@ namespace Shipwreck {
 		private Color m_pinComplete = Color.black;
 
 		[SerializeField]
+		private Color m_markerDefault = Color.black;
+		[SerializeField]
+		private Color m_markerComplete = Color.black;
+
+		[SerializeField]
 		private Color m_evidenceNodeDefault = Color.black;
 		[SerializeField]
 		private Color m_evidenceNodeComplete = Color.black;
@@ -212,6 +217,15 @@ namespace Shipwreck {
 				case ChainStatus.Incorrect: return I.m_evidenceNodeDefault;
 				case ChainStatus.Complete: return I.m_evidenceNodeComplete;
 				default: throw new NotImplementedException();
+			}
+		}
+
+		public static Color GetMarkerColor(int levelIndex) {
+			if (GameMgr.State.GetLevel(levelIndex).IsBoardComplete()) {
+				return I.m_markerComplete;
+			}
+			else {
+				return I.m_markerDefault;
 			}
 		}
 

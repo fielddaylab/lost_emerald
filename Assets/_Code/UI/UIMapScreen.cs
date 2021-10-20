@@ -45,10 +45,13 @@ namespace Shipwreck {
 
 			for (int index = 0; index < m_levelMarkers.Length; index++) {
 				Vector2 markerPos = GameMgr.State.GetLevel(index).MarkerPos;
-				m_levelMarkers[index].Button.interactable = GameMgr.State.IsLevelUnlocked(index);
+				bool isUnlocked = GameMgr.State.IsLevelUnlocked(index);
+				LevelMarker marker = m_levelMarkers[index];
+				marker.Button.interactable = isUnlocked;
+				marker.gameObject.SetActive(isUnlocked);
+				marker.transform.localPosition = markerPos;
+				marker.SetColor(GameDb.GetMarkerColor(index));
 				m_levelLabels[index].Key = GameMgr.State.GetLevelName(index);
-				m_levelMarkers[index].gameObject.SetActive(GameMgr.State.IsLevelUnlocked(index));
-				m_levelMarkers[index].transform.localPosition = markerPos;
 			}
 
 			GameMgr.Events.Register<int>(GameEvents.LevelUnlocked, HandleLevelUnlocked);
