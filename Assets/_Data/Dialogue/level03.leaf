@@ -58,6 +58,7 @@
 	$call UnlockEvidence(3,LV1-Root)
 	$call UnlockEvidence(3,LV3-Card-Types)
 	$call UnlockEvidence(3,LV3-Transcript-Dad)
+	$call UnlockContact(tami)
 	$call EndConvoMusic()
 
 
