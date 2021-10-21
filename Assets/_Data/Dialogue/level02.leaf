@@ -19,8 +19,8 @@
 
     {@reya}	Hey sis! Ready to go treasure hunting? 
 	{@you}	I'm not a treasure hunter, Reya.
-		My job is about history! Solving mysteries, uncovering the past... 
-    {@reya}	Yaaawn. Whatever floats your boat, I guess. 
+		My job is about history! Solving mysteries, uncovering lost stories... 
+    {@reya}	Yaaaawn. Whatever floats your boat, I guess. 
     {@reya}	Anyway, the ship’s down there.
     {@reya}	Break a leg! Or a flipper, or whatever.  
 	$call UnlockDive()
@@ -34,7 +34,7 @@
 
 	{@you}	Got it!
 	{@you}   Can you hear me on the radio, Reya? I'm diving down deeper.
-	{@reya}  Copy that, sis! 
+	{@reya}  Copy that, sis. 
 	
 
 :: dive-start
@@ -71,10 +71,10 @@
 @when HasEvidence(LV2-Photo-Safe)
 @once
 
-	{@you}	Hmm. An old safe. I wonder what's inside. 
+	{@you}	Wow, an old safe! I wonder what's inside. 
 	{@reya}	A safe?! Jules, you gotta grab it! 
-	{@you}   No way, Reya. Shipwrecks are protected. It's illegal to take anything without a permit!
-	{@reya}	Ok, ok. Party pooper. 
+	{@you}   No way, Reya. It's illegal to take anything without a permit!
+	{@reya}	Ugh. You are SO BORING. I can't believe we're related. 
 	
 // generic dive prompts
 :: dive-already-taken
@@ -108,11 +108,12 @@
 	$call TriggerConvoMusic(amy_convo)
 	{@amy}	Hey! Heard you went on a dive with your sister. 
 		How’d it go?
-	{@you}  We found an amazing wreck!
+	{@you}  Well.... she called me boring and tried to get me in trouble. 
+		But we found an amazing wreck!
 	        It's a freighter near Port Washington. It was carrying old cars.
-	{@amy}  Hmmm. Looks like two freighters sank out there with automobiles in the cargo hold. 
+	{@amy}  Hmm. Looks like two freighters sank out there with automobiles in the cargo hold. 
 		One with Kissel cars, and one with Nash cars. 
-		You'll need to figure out the cargo to ID the ship. 
+		You'll need to figure out the cargo to identify the ship. 
 		I'll have my friend at the auto museum call you. 
 	{@you}	Thanks, Amy!
 	$call UnlockEvidence(2, LV2-Table-Wrecks)
@@ -135,7 +136,7 @@
 			{obj ClassicCars}
 	{@you}	Awesome, thanks!
 			{/obj}
-	{@cooper}     It's funny. You've got the same last name as the captain who caused that awful shipwreck. The Emerald, I believe it was. 
+	{@cooper}     It's funny. You've got the same last name as the captain who caused that awful shipwreck. 
 	{@you}	Oh. Haha, yeah.  
 			Wait... did you say the captain CAUSED the shipwreck??
 	{@cooper}	That's right. It was all over the news when I was a kid. 
@@ -158,10 +159,8 @@
 	{@amy}	Any news on the shipwreck?
 	{@you}	Yep, the ship is the Madison! 
 	{@amy}	Nice work, Jules! 
-		Looks like that ship went down right before the Great Depression.
-	{@you}   Ouch. Not a great time to lose a bunch of fancy new cars. 
-	{@amy}   Nope. 
-		I’ll send you the radio call from when the Madison was sinking.
+		Looks like that ship went down right at the start of the Great Depression.
+		I’ll send you the radio distress call.
 		And the cargo list, too!
 	{@you}	Thanks, Amy!
 	$call UnlockEvidence(2,LV2-List-Cargo)
@@ -176,26 +175,29 @@
 @once
 
 	$call TriggerConvoMusic(reya_convo)
-	{@reya}	Hey sis! Figure out that shipwreck yet? 
-	{@you}	Yep! She's the SS Madison.
-	{@reya}	Cool. I solved a mystery too!
+	{@reya}	Hey, sis! Figure out that ship? 
+	{@you}	Actually, yes. The ship is the SS Madison!
+	{@reya}	Cool. I solved a mystery too. 
 			{img reya-safe}
 	{@you}	What?! Reya, how did you get that safe?
-	{@reya}	The guy who hired me found a technical diver to bring it up!
-		Don't freak out, he had a permit. Probably. 	
-		It's an old alarm clock and a bunch of 1929 nickels!  
+	{@reya}	Ha. You're so jealous. It's adorable. 
+		The guy who hired me got a permit to bring it up.
+		It's an old alarm clock and a bunch of 1920s nickels!
 		It's all going to a museum, though. Oh well. 
 			{/img}
 		So what about the Madison? I wanna know how she sank!
 	{@you}  Fine. Let's see...
 		It was a super foggy day, right before the Great Depression started. 
-		The Madison was carrying a load of Nash cars to Detroit. 
+		The Madison was carrying a load of Wisconsin-made Nash cars to Detroit. 
 	{@reya}  Ooh. Bet this doesn't end well.
-	{@you}   All of a sudden, another freighter appeared in the fog.
+	{@you}   Nope. All of a sudden, another freighter appeared in the fog.
 		The ships were too close to avoid crashing. The SS Lookout rammed the Madison!
 		The captain of the Lookout panicked and headed to port.
 		Luckily, another ship came to help the Madison, but a bunch of people didn't survive.
-	{@reya}  I gotta admit, that is a cool story. Super sad, though.
+	{@reya}  Wow. That's super sad. 
+		All those awesome cars, stuck at the bottom of the lake. 
+	{@you}  Um.... and the people, right?
+	{@reya} Oh yeah. That too. 
 		I wonder if anybody saw it coming...
 	$call TriggerCutscene();
 	$call UnlockLevel(3)

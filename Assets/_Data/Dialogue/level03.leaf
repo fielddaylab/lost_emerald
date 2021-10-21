@@ -13,17 +13,16 @@
 //@trigger OnEnterOffice
 @once
 
-    {@mom}	Hey Sweetie! Our new family photos came in!
-			[SENDS FAMILY PHOTO]
+    {@mom}	Hey Sweetie! The new family photos came in!
+			[FAMILY PHOTO]
 	{@you}	Wow. Why do I look so grumpy?
-	{@mom}	Awww, honey, you look great! Put it on your wall.
-	{@you}	Hey Mom... why didn’t you guys tell me that Grandpa got blamed for the shipwreck?
-	{@mom}	Your dad doesn’t like to talk about it, Sweetie.
-		That’s why he wants to find the Emerald so badly...
-		...to prove it wasn’t your grandpa’s fault.
+	{@mom}	Awww, honey, you look great. 
+	{@you}	Hey Mom... why didn’t you tell me Grandpa got blamed for the shipwreck?
+	{@mom}	Your dad doesn’t like to talk about it.
+		He wants to prove that it wasn't your grandpa's fault. 
 	{@you}	But it was Grandpa’s fault!
 	{@mom}   We don't know that, Jules. 
-		Go easy on your dad, ok? 
+		Go easy on your dad, ok? This means a lot to him. 
 			
 
 :: dad-superior
@@ -33,12 +32,11 @@
 @once
 
 	$call TriggerConvoMusic(dad_convo)
-	{@dad}	Hey, Jules! I've got a new shipwreck for ya!
-		I was chatting with my buddy, a charter boat captain.
-		He pulled this up on his anchor: 
+	{@dad}	Hey, Jules! I've got a new shipwreck for ya.
+		One of my buddies pulled this up on his charter boat anchor.
 			{img broken-wheel}
-	{@you}	Wow, looks like a broken piece of a paddlewheel! Must be from a sidewheel steamer.
-		I'll need to talk to my coworker, Cami. She's an expert on those ships. 
+	{@you}	Looks like a broken piece of a paddlewheel! Must be from a sidewheel steamer.
+		I'll talk to my coworker, Cami. She's an expert on those ships. 
 		Did you get the location? 
 	{@dad}	Yep! 43°42'08.6"N 87°38'26.0"W
 		{/img}
@@ -46,15 +44,14 @@
 	{@dad}	No can do, kiddo. I’m out on Lake Superior.
 			Here, check out my map!
 			{img dad-map}
-			Your grandpa’s last planned route before he sank is marked in red.
+			Your grandpa’s last planned route is marked in red.
 			All I need to do is keep searching! 
 	{@you}  Dad.... I'm worried about you. I know you're trying to clear Grandpa's name. 
-	{@dad}  Well, somebody needs to prove the shipwreck wasn't his fault!
+	{@dad}  Well, somebody needs to prove it wasn't his fault. 
 	{@you}  What if it WAS his fault?
-	        In your stories, it sounded like Grandpa could be pretty reckless. 
-	{@dad}  Sure, he was reckless. But he wasn't stupid. 
-	{@you}   Dad....
-	{@dad}	Ooh, sonar’s working! Gotta go. Love ya, Jules!
+	        From your stories, it sounds like Grandpa could be pretty reckless. 
+	{@dad}  Sure, he liked a little excitement. But he wasn't stupid. 
+		Something's off in that report. I'm going to find out what. 
 	$call UnlockEvidence(3,LV1-Root)
 	$call UnlockEvidence(3,LV3-Card-Types)
 	$call UnlockEvidence(3,LV3-Transcript-Dad)
@@ -73,23 +70,23 @@
 	$call TriggerConvoMusic(tami_convo)
 	{@tami}  Hey Jules! You need some info on a sidewheel steamer? 
 	{@you}   Yep! Thanks for calling. 
-		Ooh, who's that guy with you? 
+		Ooh, who's that cute guy with you? 
 	{@tami}  This is Johnny, my technical diving student.
-		And in case you were wondering, he can hear everything you're saying. 
-	{@you}  Oh!! Uh... hi, Johnny, I'm Jules! But I guess Cami already said that, so, haha, yeah. 
+		Who can hear everything you're saying. 
+	{@you}  Oh!! Uh... hi, Johnny, I'm Jules. But I guess Cami already said that, so, haha, yeah. 
 	{@tami}  Johnny: Hey.
-		So, you found a sidewheel steamer?
+		So, your dad's friend found a sidewheel steamer?
 	{@you}   Yeah, out by Sheboygan. 
 	{@tami}  That could be the Paradise!
 		Here's an old ad from the 1850's: 
 			{img ps_paradise_ad_sketch}
-		The ship was called a Palace Steamer because it was super fancy, but tickets were pretty cheap.
-		The Paradise was carrying some rich passengers, and also plenty of immigrant workers and other ordinary folk.
-		Nobody knows what cargo she was carrying. The manifest was lost. 
+		The ship was super fancy, but tickets were pretty cheap.
+		The Paradise was carrying a mix of rich passengers, immigrant workers, and other ordinary folks. 
+		The manifest got lost, so nobody knows what cargo she was carrying. 
 			{/img}
 	{@you}	Wow. You know all about this ship!
 	{@tami}	It's sort of a pet project of mine. 
-		Look for the famous red anchor. If your ship is the Paradise, it should have the name engraved. 
+		Look for the famous red anchor. It should have the name engraved. 
 	{@you}  Thanks, Cami!	
 	$call UnlockEvidence(3,LV3-Advertisement-PS)
 	$call UnlockEvidence(3,LV3-Tami-Photo-Anchor)
@@ -114,7 +111,7 @@
 @when HasEvidence(LV3-Photo-Anchor)
 @once
 	
-	{@you} Yes! We found the Paradise!
+	{@you} Yes! It's the Paradise!
 	       Can't wait to tell Cami. 
 
 
@@ -139,8 +136,7 @@
 @when HasEvidence(LV3-Photo-Cargo)
 @once
 
-	{@you}  Got the cargo! Time to stop horsing around.
-		(Ha. Better tell Reya that one later.)
+	{@you}  Got the cargo! 
 		
 			
 
@@ -154,18 +150,17 @@
 @once
 	
 	$call TriggerConvoMusic(tami_convo)
-	{@you}	Hey Cami, great news! The ship is the Paradise!
+	{@you}	Hey Cami, great news. The ship is the Paradise!
 	{@tami}  Wahoo! Nice work, Jules.
-		I've wanted to find that ship my whole life!
 		I'll send you the survivor accounts of the sinking. 
-	{@you}	Thanks!
-		Um... so, when you said you've wanted to find the Paradise your WHOLE life, you were joking, right?
-	{@tami}  Nope. When I was little, my best friend had ancestors on that ship.
-		It's the reason I became a maritime archaeologist. 
-		Shipwrecks aren't just stories. They're part of who we are.
-	{@you}  I wonder if that's how my dad feels, too. 
-		Thanks, Cami. 
-	{@tami}  No prob! 
+	{@you}	Thanks!  
+		So... why's this ship so important to you, anyway? 
+	{@tami}  My best friend from when I was little had ancestors on the Paradise.
+		It's the reason I became a diver. 
+	{@you}   Wow. That's amazing!
+	{@tami}  Yeah. It'll mean a lot to tell her we finally found the ship. 
+		 Thanks to you and your dad!
+	{@you}    Oh! Uh... yeah, happy to help! 
 	$call UnlockEvidence(3,LV3-Ship-Chart)
 	$call UnlockEvidence(3,LV3-Accounts-Survivor)
 	$call EndConvoMusic()
@@ -179,12 +174,13 @@
 @once
 
 	$call TriggerConvoMusic(dad_convo)
-	{@you}   Hey, Dad! Any luck finding Grandpa's ship?
+	{@you}   Hey, Dad. Um... sorry I was so hard on you early. 
+		Any luck finding Grandpa's ship?
 	{@dad}	Nah. Sonar’s on the fritz again.
-		Wanna fill me in on what happened to that sidewheel steamer?
+		Wanna fill me in on that sidewheel steamer?
 	{@you}	Sure! The ship is a Palace Steamer, the Paradise.
 	{@you}	She was sailing past Sheboygan when a fire started in the boiler room.
-	{@dad}	Yikes. Fire on a wooden ship--I bet that didn't end well. 
+	{@dad}	Yikes. Fire on a wooden ship--not a good combination. 
 	{@you}	Nope. The fire spread super fast. 
 		There weren't enough lifeboats for everyone, and people panicked. 
 		One guy even jumped into a lifeboat with a bunch of gold bars and broke the ropes!

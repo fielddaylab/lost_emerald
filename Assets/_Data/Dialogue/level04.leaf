@@ -17,19 +17,18 @@
 @once
 
 	$call TriggerConvoMusic(dad_convo)
-	{@dad} 	Hey, kiddo. I'm having a big yard sale!
-			Can you put up these flyers at your work?
+	{@dad} 	Hey, kiddo! I need a favor. 
+		Can you put up these flyers at your work?
 			{obj YardsaleFlyer }
-	{@you} 	Wait a minute. You're selling all our old stuff?? 
+	{@you} 	Wait a minute. You're selling all our stuff?? 
 	{@dad}  Yep! Didn't I tell ya?
 			{/obj}
-		I need some money to buy a sonar for my boat, so I can look for your grandpa's ship!
+		I need some money to buy a sonar for my boat!
 	{@you}  Dad, don't you think you're rushing into this? 
 		We might never find the Emerald. 
 		You don't even know how to use a sonar!
-	{@dad}  Aw, don't worry so much, Jules. 
-		I've been wanting to find that ship my whole life! 
-		I'll send out the flyers myself. Wish me luck!
+	{@dad}  Aw, don't worry, Jules. Reya says it's super easy. 
+		I'll post the flyers myself. Wish me luck!
 	$call UnlockContact(reya)
 	$call EndConvoMusic();
 
@@ -40,16 +39,16 @@
 @once
 
 	$call TriggerConvoMusic(reya_convo)
-	{@reya} Hey sis! 
+	{@reya} Hey, sis! 
 	        Check out my new necklace. It was Grandma's!
 	{@you}  Wow. It's beautiful!
 		I can't believe Dad just gave it to you. 
-	{@reya} I know! Awesome, right? 
-		That reminds me. I need to borrow your dive gear. 
+	{@reya} I know! Awesome, right?  
+		That reminds me. I need your dive gear. 
 	{@you}	What?? No!
-	{@reya}	Come on, Jules. Pretty please? 
-		I got hired for a side job, and the shipwreck is down at 300 feet. 
-		I need your fancy deep-diving thing!
+	{@reya}	Aw, come on. We're sisters. The rules don't count.
+		I got hired to check out a shipwreck, and it's way down at 300 feet.
+		I need your fancy deep-diving thing.
 	{@you}	It's called a rebreather, and you're not trained to use it, Reya.
 		You need an expert to help you. 
 	{@reya} Awww, Jules! Thank you. I would love your help. 
