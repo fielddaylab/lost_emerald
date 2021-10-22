@@ -11,6 +11,7 @@ namespace Shipwreck {
 		int Index { get; }
 		LocalizationKey Name { get; }
 		Vector2 MarkerPos { get; }
+		Vector2 BannerPos { get; }
 		bool IsLocationKnown { get; }
 		string MarkerUnknownSpriteID { get; }
 		bool IsUnlocked { get; }
@@ -58,6 +59,9 @@ namespace Shipwreck {
 
 			public Vector2 MarkerPos {
 				get { return m_levelData.LevelMarkerPos; }
+			}
+			public Vector2 BannerPos {
+				get { return m_levelData.LevelBannerPos; }
 			}
 
 			public string MarkerUnknownSpriteID {

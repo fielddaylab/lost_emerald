@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65ce4a4ce737f224da22289abe0f0542, type: 3}
   m_Name: Level1Marker
   m_EditorClassIdentifier: 
-  m_markerPos: {x: 493, y: -264}
+  m_markerPos: {x: 535, y: -196}
+  m_bannerPos: {x: 0, y: 38.8}
   m_locationKnown: 1
-  m_unknownSprite: {fileID: 0}
+  m_unknownSpriteID: 

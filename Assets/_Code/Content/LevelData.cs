@@ -36,11 +36,15 @@ namespace Shipwreck {
 		public Vector2 LevelMarkerPos {
 			get { return m_markerData.MarkerPos; }
 		}
+		public Vector2 LevelBannerPos {
+			get { return m_markerData.BannerPos; }
+		}
 		public bool LevelLocationKnown {
 			get { return m_markerData.LocationKnown; }
 		}
 		public string LevelMarkerUnknownSpriteID {
 			get { return m_markerData.UnknownSpriteID; }
+		}
 		public LocalizationKey CaseClosedName {
 			get { return m_caseClosedName; }
 		}

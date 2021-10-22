@@ -37,6 +37,7 @@ namespace Shipwreck {
 			base.OnShowStart();
 
 			CanvasGroup.alpha = 0;
+
 			m_levelMarkers[0].Button.onClick.AddListener(() => { HandleLevelButton(0); });
 			m_levelMarkers[1].Button.onClick.AddListener(() => { HandleLevelButton(1); });
 			m_levelMarkers[2].Button.onClick.AddListener(() => { HandleLevelButton(2); });
@@ -44,12 +45,14 @@ namespace Shipwreck {
 
 
 			for (int index = 0; index < m_levelMarkers.Length; index++) {
-				Vector2 markerPos = GameMgr.State.GetLevel(index).MarkerPos;
 				bool isUnlocked = GameMgr.State.IsLevelUnlocked(index);
 				LevelMarker marker = m_levelMarkers[index];
 				marker.Button.interactable = isUnlocked;
 				marker.gameObject.SetActive(isUnlocked);
+				Vector2 markerPos = GameMgr.State.GetLevel(index).MarkerPos;
+				Vector2 bannerPos = GameMgr.State.GetLevel(index).BannerPos;
 				marker.transform.localPosition = markerPos;
+				marker.Banner.transform.localPosition = bannerPos;
 				Sprite markerSprite;
 				if (GameMgr.State.GetLevel(index).IsLocationKnown) {
 					markerSprite = GameDb.GetMarkerSprite("marker-default");

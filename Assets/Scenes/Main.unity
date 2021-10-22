@@ -516,8 +516,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -263.57, y: 161.73}
-  m_SizeDelta: {x: 447.5124, y: 323.4547}
+  m_AnchoredPosition: {x: -7.4, y: 145.5}
+  m_SizeDelta: {x: 521.37024, y: 334.5362}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &182289433
 MonoBehaviour:
@@ -532,7 +532,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7688679, g: 1, b: 0.9924219, a: 1}
+  m_Color: {r: 0.7877358, g: 0.94544053, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -5153,9 +5153,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 82cbce30f03431f44bf2b7d0a42b9784, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e01de3584f1e51246bdea1c949b2544e, type: 3}
   m_Type: 0
-  m_PreserveAspect: 1
+  m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -6108,22 +6108,27 @@ PrefabInstance:
     - target: {fileID: 576157660188102769, guid: f152a7e83e9b80541a6f40142e281c76,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 513
+      value: 502
       objectReference: {fileID: 0}
     - target: {fileID: 576157660188102769, guid: f152a7e83e9b80541a6f40142e281c76,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -63
+      value: -406
       objectReference: {fileID: 0}
     - target: {fileID: 930450372190549109, guid: f152a7e83e9b80541a6f40142e281c76,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 557
+      value: 618
       objectReference: {fileID: 0}
     - target: {fileID: 930450372190549109, guid: f152a7e83e9b80541a6f40142e281c76,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -394
+      value: -152
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720486328145530791, guid: f152a7e83e9b80541a6f40142e281c76,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -69
       objectReference: {fileID: 0}
     - target: {fileID: 5955562302070625036, guid: f152a7e83e9b80541a6f40142e281c76,
         type: 3}
@@ -6133,12 +6138,12 @@ PrefabInstance:
     - target: {fileID: 5955562302070625039, guid: f152a7e83e9b80541a6f40142e281c76,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 493
+      value: 535
       objectReference: {fileID: 0}
     - target: {fileID: 5955562302070625039, guid: f152a7e83e9b80541a6f40142e281c76,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -264
+      value: -196
       objectReference: {fileID: 0}
     - target: {fileID: 6052497462965267717, guid: f152a7e83e9b80541a6f40142e281c76,
         type: 3}
@@ -6198,12 +6203,12 @@ PrefabInstance:
     - target: {fileID: 8142653590215738066, guid: f152a7e83e9b80541a6f40142e281c76,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 214
+      value: 325
       objectReference: {fileID: 0}
     - target: {fileID: 8142653590215738066, guid: f152a7e83e9b80541a6f40142e281c76,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -102
+      value: -40
       objectReference: {fileID: 0}
     - target: {fileID: 8406161840110011797, guid: f152a7e83e9b80541a6f40142e281c76,
         type: 3}
@@ -6308,6 +6313,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 531016319209300888, guid: 89de7169bb442fc48b40af2381f497c5,
+        type: 3}
+      propertyPath: m_markerUnknown.b
+      value: 0.31764707
+      objectReference: {fileID: 0}
+    - target: {fileID: 531016319209300888, guid: 89de7169bb442fc48b40af2381f497c5,
+        type: 3}
+      propertyPath: m_markerUnknown.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 531016319209300888, guid: 89de7169bb442fc48b40af2381f497c5,
+        type: 3}
+      propertyPath: m_markerUnknown.r
+      value: 0.94509804
       objectReference: {fileID: 0}
     - target: {fileID: 531016319209300888, guid: 89de7169bb442fc48b40af2381f497c5,
         type: 3}

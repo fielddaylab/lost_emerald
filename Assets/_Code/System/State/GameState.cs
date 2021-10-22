@@ -195,6 +195,12 @@ namespace Shipwreck {
 				}
 				return m_levelStates[levelIndex].UnlockEvidence(GameDb.GetEvidenceData(groupID));
 			}
+			public bool DiscoverLocation(int levelIndex) {
+				if (levelIndex < 0 || levelIndex >= m_levelStates.Length) {
+					throw new IndexOutOfRangeException();
+				}
+				return m_levelStates[levelIndex].DiscoverLocation();
+			}
 
 			public StringHash32 GetContactNotificationId(StringHash32 contactId) {
 				for(int i = 0, len = m_queuedNotifications.Count; i < len; i++) {

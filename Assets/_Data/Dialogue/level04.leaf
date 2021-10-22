@@ -68,8 +68,9 @@
 
 :: reya-steel
 @contact reya, phone-call
-@trigger OnEnterOffice
 //@background
+@trigger OnEnterOffice
+@when Seen(level03.dad-steamer)
 @once
 
 	$call TriggerConvoMusic(reya_convo)
@@ -94,6 +95,7 @@
 @contact amy, phone-call
 //@background
 @trigger OnDialogClosed
+@when Seen(level03.dad-steamer)
 @once
 
 	$call TriggerConvoMusic(amy_convo)
@@ -110,6 +112,7 @@
 	{@amy}	Sounds great!
 			Good luck, Jules. Hope you find it!
 	$call UnlockEvidence(4, "LV4-Location-Coordinates")
+	$call DiscoverLocation(4)
 	$call EndConvoMusic()
 
 //Text from Reya

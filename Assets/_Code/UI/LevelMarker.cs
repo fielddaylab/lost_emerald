@@ -11,9 +11,14 @@ namespace Shipwreck {
 		private Image m_image;
 		[SerializeField]
 		private Button m_button;
+		[SerializeField]
+		private GameObject m_banner;
 
 		public Button Button {
 			get { return m_button; }
+		}
+		public GameObject Banner {
+			get { return m_banner; }
 		}
 
 		private Routine m_colorRoutine;

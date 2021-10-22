@@ -212,8 +212,8 @@ namespace Shipwreck {
 			GameMgr.UnlockEvidence(3, "LV3-Card-Types");
 			GameMgr.UnlockEvidence(3, "LV3-Accounts-Survivor");
 			GameMgr.UnlockContact("tami");
-			
 
+			GameMgr.RecordNodeVisited("level03.mom-photos", "mom");
 			GameMgr.RecordNodeVisited("level03.dad-superior", "dad");
 			GameMgr.RecordNodeVisited("level03.amy-paradise", "amy");
 			GameMgr.RecordNodeVisited("level03.tami-meet", "tami");
@@ -225,11 +225,12 @@ namespace Shipwreck {
 			GameMgr.RecordNodeVisited("level03.tami-gold", "tami");
 			GameMgr.RecordNodeVisited("level03.tami-cargo", "tami");
 			GameMgr.RecordNodeVisited("level03.tami-regroup", "tami");
-			
 		}
 
 		private void UnlockLevel4() {
 			UnlockLevel3_50();
+
+			GameMgr.RecordNodeVisited("level03.dad-steamer", "dad");
 
 			GameMgr.SetLevelIndex(3);
 		}
