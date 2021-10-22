@@ -55,28 +55,28 @@
 	$call UnlockEvidence(3,LV1-Root)
 	$call UnlockEvidence(3,LV3-Card-Types)
 	$call UnlockEvidence(3,LV3-Transcript-Dad)
-	$call UnlockContact(tami)
+	$call UnlockContact(cami)
 	$call EndConvoMusic()
 
 
-:: tami-meet
-@contact tami, phone-call
+:: cami-meet
+@contact cami, phone-call
 // @background 
 @trigger OnDialogClosed
 @when HasEvidence(LV3-Transcript-Dad)
 @once
 	
-	$call TriggerConvoMusic(tami_convo)
-	{@tami}  Hey Jules! You need some info on a sidewheel steamer? 
+	$call TriggerConvoMusic(cami_convo)
+	{@cami}  Hey Jules! You need some info on a sidewheel steamer? 
 	{@you}   Yep! Thanks for calling. 
 		Ooh, who's that cute guy with you? 
-	{@tami}  This is Johnny, my technical diving student.
+	{@cami}  This is Johnny, my technical diving student.
 		Who can hear everything you're saying. 
 	{@you}  Oh!! Uh... hi, Johnny, I'm Jules. But I guess Cami already said that, so, haha, yeah. 
-	{@tami}  Johnny: Hey.
+	{@cami}  Johnny: Hey.
 		So, your dad's friend found a sidewheel steamer?
 	{@you}   Yeah, out by Sheboygan. 
-	{@tami}  That could be the Paradise!
+	{@cami}  That could be the Paradise!
 		Here's an old ad from the 1850's: 
 			{img ps_paradise_ad_sketch}
 		The ship was super fancy, but tickets were pretty cheap.
@@ -84,14 +84,14 @@
 		The manifest got lost, so nobody knows what cargo she was carrying. 
 			{/img}
 	{@you}	Wow. You know all about this ship!
-	{@tami}	It's sort of a pet project of mine. 
+	{@cami}	It's sort of a pet project of mine. 
 		Look for the famous red anchor. It should have the name engraved. 
 	{@you}  Thanks, Cami!
 	$call EndConvoMusic()
 
 
-:: tami-ship
-@contact tami, radio
+:: cami-ship
+@contact cami, radio
 // @background 
 @trigger OnEnterSonar
 @once
@@ -101,8 +101,8 @@
 	
 
 // When you photograph the anchor
-:: tami-anchor
-@contact tami, radio
+:: cami-anchor
+@contact cami, radio
 // @background 
 @trigger OnEvidenceUnlock
 @when HasEvidence(LV3-Photo-Anchor)
@@ -114,8 +114,8 @@
 
 
 // When you photograph the overturned lifeboat/gold bars
-:: tami-gold
-@contact tami, radio
+:: cami-gold
+@contact cami, radio
 // @background 
 @trigger OnEvidenceUnlock
 @when HasEvidence(LV3-Photo-Gold)
@@ -126,8 +126,8 @@
 
 
 // When you photograph the cargo
-:: tami-cargo
-@contact tami, radio
+:: cami-cargo
+@contact cami, radio
 // @background 
 @trigger OnEvidenceUnlock
 @when HasEvidence(LV3-Photo-Cargo)
@@ -139,23 +139,23 @@
 
 
 
-:: tami-regroup
-@contact tami, phone-call
+:: cami-regroup
+@contact cami, phone-call
 // @background 
 @trigger OnEnterOffice
 @when HasEvidence(LV3-Photo-Gold)
 @once
 	
-	$call TriggerConvoMusic(tami_convo)
+	$call TriggerConvoMusic(cami_convo)
 	{@you}	Hey Cami, great news. The ship is the Paradise!
-	{@tami}  Wahoo! Nice work, Jules.
+	{@cami}  Wahoo! Nice work, Jules.
 		I'll send you the survivor accounts of the sinking. 
 	{@you}	Thanks!  
 		So... why's this ship so important to you, anyway? 
-	{@tami}  My best friend from when I was little had ancestors on the Paradise.
+	{@cami}  My best friend from when I was little had ancestors on the Paradise.
 		It's the reason I became a diver. 
 	{@you}   Wow. That's amazing!
-	{@tami}  Yeah. It'll mean a lot to tell her we finally found the ship. 
+	{@cami}  Yeah. It'll mean a lot to tell her we finally found the ship. 
 		 Thanks to you and your dad!
 	{@you}    Oh! Uh... yeah, happy to help! 
 	$call UnlockEvidence(3,LV3-Ship-Chart)
