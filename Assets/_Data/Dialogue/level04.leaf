@@ -86,14 +86,14 @@
 	{@you}	So, Dad’s been searching the wrong part of the lake!
 	{@you}	This is a huge deal!
 	{@reya}	Ha! I found the important clue! 
+	$call UnlockEvidence(4, "LV1-Root")
 	$call EndConvoMusic()
 
 
 :: amy-lead
 @contact amy, phone-call
 //@background
-@trigger OnChainComplete
-@when HasEvidence(Location)
+@trigger OnDialogClosed
 @once
 
 	$call TriggerConvoMusic(amy_convo)
@@ -109,6 +109,7 @@
 			She’s a structural engineer. She can test the steel and find out more about it.
 	{@amy}	Sounds great!
 			Good luck, Jules. Hope you find it!
+	$call UnlockEvidence(4, "LV4-Location-Coordinates")
 	$call EndConvoMusic()
 
 //Text from Reya
@@ -253,6 +254,7 @@
 			He kept it locked in an old chest while he was on deck, so he wouldn’t lose it.
 			I’m sorry your grandpa got blamed. He was a good captain. 
 	{@you}	Thanks, Ed. My dad’s been waiting his whole life to hear that.
+	$call UnlockEvidence(4, "LV4-Transcript-Survivor")
 	$call EndConvoMusic()
 
 	
@@ -278,6 +280,7 @@
 	{@mom}	I don’t think so. It would’ve broken apart sooner or later--it was only a matter of time.
 	{@you}	Wow. I can’t believe this.
 			Thanks, Mom!
+	$call UnlockEvidence(4, "LV4-Transcript-Mom")
 
 //Evidence board: cause of wreck, cargo
 
