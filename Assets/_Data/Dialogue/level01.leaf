@@ -139,7 +139,6 @@
 @when IsChainComplete(Name), IsChainComplete(Type)
 @once
 	
-	$call TriggerConvoMusic(amy_convo)
 	{@amy}  So? What'd you find out? 
 	{@you} 	Our ship is the Loretta!
 	{@amy} 	Wow! What an amazing find! 
@@ -151,8 +150,7 @@
 	{@you}   Hey, that's the knife I saw! 
 	{@amy}   It must've gone down with the ship.  
 		I've got an article about the sinking. I'll send it over!
-		$call UnlockEvidence(1,LV1-Article-Sinking)
-	$call EndConvoMusic()
+	$call UnlockEvidence(1,LV1-Article-Sinking)
 
 ::lou-complete
 @contact lou, phone-call

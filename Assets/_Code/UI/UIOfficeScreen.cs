@@ -7,6 +7,8 @@ namespace Shipwreck {
 
 	public class UIOfficeScreen : UIBase {
 		[SerializeField]
+		private UIOfficeMapContainer m_officeMapContainer;
+		[SerializeField]
 		private Button m_levelMapButton;
 
 		private void OnEnable() {
