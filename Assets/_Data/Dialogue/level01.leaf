@@ -176,3 +176,4 @@
 	{@you}   Yeah... 
 	$call UnlockLevel(4)
 	$call EndConvoMusic()
+	$call TriggerCutscene()
