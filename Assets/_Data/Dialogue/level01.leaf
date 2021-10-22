@@ -135,7 +135,6 @@
 
 ::amy-article
 @contact amy, text-message
-// @background
 @trigger OnChainSolved
 @when IsChainComplete(Name), IsChainComplete(Type)
 @once
@@ -148,7 +147,7 @@
 		[PAINTING OF THE PESHTIGO FIRE: the burning of Peshtigo, WI, 1871] 
 		The captain of the Loretta got lost in all the smoke.
 		Here's a cool portrait of him: 
-		[CAPTAIN PAINTING, WITH KNIFE FROM TRUNK] 
+		[CAPTAIN PAINTING, WITH KNIFE FROM TRUNK]
 	{@you}   Hey, that's the knife I saw! 
 	{@amy}   It must've gone down with the ship.  
 		I've got an article about the sinking. I'll send it over!

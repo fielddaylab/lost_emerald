@@ -86,9 +86,7 @@
 	{@you}	Wow. You know all about this ship!
 	{@tami}	It's sort of a pet project of mine. 
 		Look for the famous red anchor. It should have the name engraved. 
-	{@you}  Thanks, Cami!	
-	$call UnlockEvidence(3,LV3-Advertisement-PS)
-	$call UnlockEvidence(3,LV3-Tami-Photo-Anchor)
+	{@you}  Thanks, Cami!
 	$call EndConvoMusic()
 
 
