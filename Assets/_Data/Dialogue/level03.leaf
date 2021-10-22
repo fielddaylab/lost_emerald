@@ -10,7 +10,7 @@
 :: mom-photos
 @contact mom, text-message
 // @background 
-//@trigger OnEnterOffice
+@trigger OnEnterOffice
 @once
 
     {@mom}	Hey Sweetie! The new family photos came in!
@@ -27,8 +27,8 @@
 
 :: dad-superior
 @contact dad, phone-call
-// @background 
-@trigger OnEnterOffice
+@background dad-boat
+@trigger OnDialogClosed
 @once
 
 	$call TriggerConvoMusic(dad_convo)
@@ -57,7 +57,6 @@
 	$call UnlockEvidence(3,LV3-Transcript-Dad)
 	$call UnlockContact(tami)
 	$call EndConvoMusic()
-
 
 
 :: tami-meet
