@@ -197,8 +197,6 @@ namespace Shipwreck {
 
 		private void UnlockLevel3_50() {
 			UnlockLevel3();
-
-			GameMgr.SetLevelIndex(2);
 			GameMgr.SetChain(2, "Location", "location-coordinates");
 
 			GameMgr.UnlockEvidence(3, "LV1-Root");
@@ -229,6 +227,13 @@ namespace Shipwreck {
 
 		private void UnlockLevel4() {
 			UnlockLevel3_50();
+			GameMgr.State.UnlockDive(2);
+
+			GameMgr.SetChain(2, "Type", "photo-above", "ship-chart-type", "card-side-steamer");
+			GameMgr.SetChain(2, "Cargo", "photo-cargo", "ship-chart-cargo");
+			GameMgr.SetChain(2, "Cause", "survivor-accounts-cause");
+			GameMgr.SetChain(2, "Name", "photo-anchor", "ship-chart-name");
+			GameMgr.SetChain(2, "Artifact", "survivor-accounts-artifact", "photo-gold");
 
 			GameMgr.RecordNodeVisited("level03.dad-steamer", "dad");
 
