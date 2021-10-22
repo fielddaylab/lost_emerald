@@ -9,10 +9,16 @@ namespace Shipwreck {
 		[SerializeField]
 		private Button m_levelMapButton;
 
+		private void OnEnable() {
+			m_levelMapButton.onClick.AddListener(HandleLevelMapButton);
+		}
+		private void OnDisable() {
+			m_levelMapButton.onClick.RemoveListener(HandleLevelMapButton);
+		}
+
 		protected override void OnShowStart() {
 			base.OnShowStart();
-
-			m_levelMapButton.onClick.AddListener(() => { HandleLevelMapButton(); });
+			base.CanvasGroup.interactable = true;
 
 			GameMgr.RunTrigger(GameTriggers.OnEnterOffice);
 		}
