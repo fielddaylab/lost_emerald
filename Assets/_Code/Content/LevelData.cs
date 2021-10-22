@@ -41,6 +41,14 @@ namespace Shipwreck {
 		}
 		public string LevelMarkerUnknownSpriteID {
 			get { return m_markerData.UnknownSpriteID; }
+		public LocalizationKey CaseClosedName {
+			get { return m_caseClosedName; }
+		}
+		public LocalizationKey CaseClosedType {
+			get { return m_caseClosedType; }
+		}
+		public LocalizationKey CaseClosedCause {
+			get { return m_caseClosedCause; }
 		}
 
 		[SerializeField]
@@ -59,6 +67,12 @@ namespace Shipwreck {
 		private LocalizationKey m_lockedKey = LocalizationKey.Empty;
 		[SerializeField]
 		private MarkerData m_markerData = null;
+		[SerializeField]
+		private LocalizationKey m_caseClosedName = LocalizationKey.Empty;
+		[SerializeField]
+		private LocalizationKey m_caseClosedType = LocalizationKey.Empty;
+		[SerializeField]
+		private LocalizationKey m_caseClosedCause = LocalizationKey.Empty;
 	}
 
 }

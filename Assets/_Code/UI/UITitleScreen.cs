@@ -203,10 +203,7 @@ namespace Shipwreck {
 
 			GameMgr.UnlockEvidence(3, "LV1-Root");
 			GameMgr.UnlockEvidence(3, "LV3-Transcript-Dad");
-			GameMgr.UnlockEvidence(3, "LV3-Advertisement-PS");
-			GameMgr.UnlockEvidence(3, "LV3-Tami-Photo-Anchor");
 
-			
 			GameMgr.UnlockEvidence(3, "LV3-Photo-Above");
 			GameMgr.UnlockEvidence(3, "LV3-Photo-Anchor");
 			GameMgr.UnlockEvidence(3, "LV3-Photo-Gold");
@@ -223,7 +220,6 @@ namespace Shipwreck {
 
 			GameMgr.State.UnlockDive(2);
 
-			
 			GameMgr.RecordNodeVisited("level03.tami-ship", "tami");
 			GameMgr.RecordNodeVisited("level03.tami-anchor", "tami");
 			GameMgr.RecordNodeVisited("level03.tami-gold", "tami");

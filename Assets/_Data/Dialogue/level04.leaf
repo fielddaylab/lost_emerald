@@ -17,16 +17,18 @@
 @once
 
 	$call TriggerConvoMusic(dad_convo)
-	{@dad} 	Hey, kiddo. I'm getting ready for a big yard sale!
-			Could you put up these flyers at your work?
+	{@dad} 	Hey, kiddo! I need a favor. 
+		Can you put up these flyers at your work?
 			{obj YardsaleFlyer }
-	{@you} 	"Real history"?? Dad.... 
-	{@dad}  What? This is awesome stuff!!
+	{@you} 	Wait a minute. You're selling all our stuff?? 
+	{@dad}  Yep! Didn't I tell ya?
 			{/obj}
-	{@you}  It's super silly. I want people at work to take me seriously.
-	{@dad}  This IS serious, Jules. I need to make some money.
-		 	How else am I gonna buy a new sonar?
-	{@you}  Sorry, Dad. Reya's calling. Gotta go. 
+		I need some money to buy a sonar for my boat!
+	{@you}  Dad, don't you think you're rushing into this? 
+		We might never find the Emerald. 
+		You don't even know how to use a sonar!
+	{@dad}  Aw, don't worry, Jules. Reya says it's super easy. 
+		I'll post the flyers myself. Wish me luck!
 	$call UnlockContact(reya)
 	$call EndConvoMusic();
 
@@ -37,17 +39,22 @@
 @once
 
 	$call TriggerConvoMusic(reya_convo)
-	{@reya} Hey sis! Can I borrow your dive gear?
+	{@reya} Hey, sis! 
+	        Check out my new necklace. It was Grandma's!
+	{@you}  Wow. It's beautiful!
+		I can't believe Dad just gave it to you. 
+	{@reya} I know! Awesome, right?  
+		That reminds me. I need your dive gear. 
 	{@you}	What?? No!
-	{@reya}	Come on. Pretty please? 
-		I picked up a side job and the wreck is down at 300 feet. 
-		I need your fancy deep-diving thing!
+	{@reya}	Aw, come on. We're sisters. The rules don't count.
+		I got hired to check out a shipwreck, and it's way down at 300 feet.
+		I need your fancy deep-diving thing.
 	{@you}	It's called a rebreather, and you're not trained to use it, Reya.
 		You need an expert to help you. 
 	{@reya} Awww, Jules! Thank you. I would love your help. 
 	{@you}  Wait, that's not what I meant--
 	{@reya}	It's near Port Washington. 
-			GPS Location: 43°20'08.2"N 87°34'11.3"W
+			Location: 43°20'08.2"N 87°34'11.3"W
 			Race ya there!
 	$call UnlockLevel(2)
 	$call UnlockEvidence(2, "LV1-Root")
@@ -79,14 +86,14 @@
 	{@you}	So, Dad’s been searching the wrong part of the lake!
 	{@you}	This is a huge deal!
 	{@reya}	Ha! I found the important clue! 
+	$call UnlockEvidence(4, "LV1-Root")
 	$call EndConvoMusic()
 
 
 :: amy-lead
 @contact amy, phone-call
 //@background
-@trigger OnChainComplete
-@when HasEvidence(Location)
+@trigger OnDialogClosed
 @once
 
 	$call TriggerConvoMusic(amy_convo)
@@ -102,6 +109,7 @@
 			She’s a structural engineer. She can test the steel and find out more about it.
 	{@amy}	Sounds great!
 			Good luck, Jules. Hope you find it!
+	$call UnlockEvidence(4, "LV4-Location-Coordinates")
 	$call EndConvoMusic()
 
 //Text from Reya
@@ -246,6 +254,7 @@
 			He kept it locked in an old chest while he was on deck, so he wouldn’t lose it.
 			I’m sorry your grandpa got blamed. He was a good captain. 
 	{@you}	Thanks, Ed. My dad’s been waiting his whole life to hear that.
+	$call UnlockEvidence(4, "LV4-Transcript-Survivor")
 	$call EndConvoMusic()
 
 	
@@ -271,6 +280,7 @@
 	{@mom}	I don’t think so. It would’ve broken apart sooner or later--it was only a matter of time.
 	{@you}	Wow. I can’t believe this.
 			Thanks, Mom!
+	$call UnlockEvidence(4, "LV4-Transcript-Mom")
 
 //Evidence board: cause of wreck, cargo
 

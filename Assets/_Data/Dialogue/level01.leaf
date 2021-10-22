@@ -10,20 +10,21 @@
 @once
 
 	$call TriggerConvoMusic(dad_convo)
-	{@dad}  Hey Jules! Guess what I found in the attic! 
-	{@you}  Dad, can we talk later? I'm at work. 
-	{@dad}  This is important!
-		I found one of your grandpa's old letters. 
-                 His ship, the SS Emerald, was carrying treasure when it sank!
+	{@dad}  Hey Jules! Big news!!
+	        You know how your grandpa's ship sank on Lake Superior, when I was just a kid?
+	{@you}  Yep. You tell me crazy stories about Grandpa all the time. 
+	{@dad}  Well, I found one of his old letters.
+	        Turns out his ship, the SS Emerald, was carrying treasure!
 	{@you}  Since when do you care about treasure, Dad? 
 	{@dad}  I don't. But your sister does!
-                She's gonna help me find my dad's wreck!
-                She also found your grandma's old locket. Looks nice on her.
-	{@you}  Wait. How come Reya gets the locket?? I'm the older sister! 
-	{@dad}  Never mind that, Jules. We're on a mission!
-	{@you}  Well... I guess I can start a file for Grandpa's ship.
-                But I gotta go for now. Getting a work call.
-	{@dad}  Ooh, sounds important. Have fun, Jules!
+                She's gonna help me find your grandpa's shipwreck!
+                She also dug up your grandma's locket. Looks pretty snazzy on her.
+	{@you}  Wait. You let Reya take the locket?? I'm the older sister!
+	{@dad}  Well, you weren't here. 
+	        So what do you say? Wanna join in our search? 
+	{@you}  YOUR search? I'm the shipwreck expert!
+	{@dad}  Ooh, so you'll help us? That's great!! Thanks, Jules.
+	        Gotta go. Have fun at work! 
         $call UnlockEvidence(4,LV4-Letter-Treasure)
 	$call UnlockContact(lou)
 	$call EndConvoMusic()
@@ -39,18 +40,19 @@
 	// Receive/open a new text from Lou
 	{@lou}  Hiya, Jules!
 	{@you} 	Hey Lou. What’s all that noise? 
-	{@lou} 	Huh? Oh, I’m just out flying over Lake Michigan.
-	{@you} 	What??? You’re flying right now?
-	{@lou} 	Relax. I’m on my headset.
-			Check this out!
+	{@lou} 	Huh? Oh, I’m just out flying my powered parachute over Lake Michigan.
+	{@you} 	What??? You’re flying right now? 
+		Isn't that dangerous? 
+	{@lou} 	Not as dangerous as sitting at home, bored out of my mind. 
+		Check out what I found! 
 			{img ultralight-photo}
 			What do you think?
-	{@you} 	Looks like a shipwreck! Did you get the location? 
-	{@lou} 	Yep. Right by Rawley Point. 
-                 GPS Location: N 44° 11.524' W 087° 30.591'
+	{@you} 	Looks like a shipwreck! 
+	{@lou} 	Awesome!
+		It was right by Rawley Point. I'll send you the latitude and longitude. 
+                 Location: N 44° 11.524' W 087° 30.591'
 			{/img}
-	{@you} 	I'll start a file and check it out. 
-		Thanks, Lou!
+	{@you} 	Thanks, Lou! Stay safe out there! 
 	$call UnlockLevel(1)
 	$call UnlockEvidence(1,LV1-Root)
 	$call UnlockEvidence(1,LV1-Transcript-Lou)
@@ -120,8 +122,8 @@
 
 	$call TriggerConvoMusic(amy_convo)
 	{@amy}  Hey, Jules! Need some info from the archives? 
-        {@you}  That would be great. I'm trying to ID a shipwreck. 
-                Can you send me a chart of all the ships that sank near Rawley Point?
+        {@you}  That would be great! I'm trying to identify a shipwreck. 
+                Can you send me a list of ships that sank near Rawley Point?
         {@amy}  Sure! I'll get to work on that.
         {@you}  Thanks, Amy! 
 
@@ -132,20 +134,24 @@
 
 
 ::amy-article
-@contact amy, phone-call
-@background amy-office
+@contact amy, text-message
 @trigger OnChainSolved
 @when IsChainComplete(Name), IsChainComplete(Type)
 @once
 	
 	$call TriggerConvoMusic(amy_convo)
-	{@you} 	I got the ship's name. It's the Loretta!
-	{@amy} 	You mean she's the Loretta!
-	{@you} 	Huh?
-	{@amy} 	It's a traditional sailing thing. Ships are always "she." 
-                 Looks like I've got an article about her in the archives. I'll send it over. 
-	{@you}  Thanks, Amy! 
-	$call UnlockEvidence(1,LV1-Article-Sinking)
+	{@amy}  So? What'd you find out? 
+	{@you} 	Our ship is the Loretta!
+	{@amy} 	Wow! What an amazing find! 
+		Looks like she sank on the same day that the town of Peshtigo burned down.
+		[PAINTING OF THE PESHTIGO FIRE: the burning of Peshtigo, WI, 1871] 
+		The captain of the Loretta got lost in all the smoke.
+		Here's a cool portrait of him: 
+		[CAPTAIN PAINTING, WITH KNIFE FROM TRUNK]
+	{@you}   Hey, that's the knife I saw! 
+	{@amy}   It must've gone down with the ship.  
+		I've got an article about the sinking. I'll send it over!
+		$call UnlockEvidence(1,LV1-Article-Sinking)
 	$call EndConvoMusic()
 
 ::lou-complete
@@ -155,28 +161,18 @@
 @once
 	
 	$call TriggerConvoMusic(lou_convo, paraglide_ambiance)
-	{@lou}  Hey, shipwreck expert! Any juicy details on that wreck?
-	{@you}  Yes! She's the Loretta!
+	{@lou}  Hey, Jules! Any juicy details on that shipwreck?
+	{@you}  Yes! The ship is the Loretta!
 	{@lou}  Awesome name. How'd she sink?
-         {@you}  Wildfires were burning all across Wisconsin, including a huge fire in Peshtigo.
+         {@you}  Fires were burning all across Wisconsin.
+		[PAINTING OF THE PESHTIGO FIRE: the burning of Peshtigo, WI, 1871]  
                  Tons of smoke blew out over the lake.
-	{@lou}   Uh oh. How could they see where they were sailing?
-	{@you}   They couldn't. The captain got lost in the smoke and ran into a shallow sandbar!
-		The Loretta filled with water and the sailors had to climb up the ropes.
-		Luckily, they were rescued by a fishing boat in the morning.
+	{@lou}   How could the captain see where he was going?
+	{@you}   He couldn't. The Loretta sailed too close to shore and got stuck on a sandbar. 
+		The sailors had to climb up the ropes. Luckily, they were rescued by a fishing boat.
 	{@lou}	Wow! What a wild story.
-		I wonder what it was like back then... 
-	$call TriggerCutscene();
-	$call EndConvoMusic()
-
-
-::amy-level-end
-@contact amy, text-message
-@trigger OnCaseClosed
-@once
-
-	{@you} 	Hey, Amy! Case closed on the Loretta. 
-		I’ll send you the file for the archives.
-	{@amy} 	Thanks, Jules. Nice work! 
+		Can you imagine what it was like that night?
+	{@you}   Yeah... 
 	$call UnlockLevel(4)
 	$call EndConvoMusic()
+	$call TriggerCutscene()

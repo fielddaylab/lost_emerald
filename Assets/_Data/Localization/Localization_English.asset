@@ -151,6 +151,24 @@ MonoBehaviour:
     m_hash: -252010229
   - m_key: Character/Tami/Name
     m_hash: 166787002
+  - m_key: Level1/Case/Name
+    m_hash: -946708431
+  - m_key: Level1/Case/Type
+    m_hash: -1286633014
+  - m_key: Level1/Case/Cause
+    m_hash: -1681148839
+  - m_key: Level2/Case/Name
+    m_hash: 2128624944
+  - m_key: Level2/Case/Type
+    m_hash: -1388915053
+  - m_key: Level2/Case/Cause
+    m_hash: 377971418
+  - m_key: UI/Modal/CaseClosed/Name
+    m_hash: -1905925876
+  - m_key: UI/Modal/CaseClosed/Type
+    m_hash: -1130392585
+  - m_key: UI/Modal/CaseClosed/Cause
+    m_hash: 2102626838
   m_values:
   - Continue
   - Dad
@@ -216,7 +234,16 @@ MonoBehaviour:
   - Lost Artifact
   - Cooper
   - Top-Down Photo
-  - Lost Artifact
   - Ship Cargo
+  - Lost Artifact
   - Anchor
   - Tami
+  - The Loretta
+  - Canaller
+  - Ran aground in the fog.
+  - SS Madison
+  - Freighter
+  - Collided with another ship.
+  - 'Ship :'
+  - 'Type :'
+  - 'Cause of Wreck :'

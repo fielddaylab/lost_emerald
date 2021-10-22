@@ -1548,7 +1548,7 @@ PrefabInstance:
     - target: {fileID: 6746295532445467213, guid: 790ab65032b9a8941b45e0578b459d51,
         type: 3}
       propertyPath: m_Interactable
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6904634551407025576, guid: 790ab65032b9a8941b45e0578b459d51,
         type: 3}
@@ -6349,6 +6349,11 @@ PrefabInstance:
       propertyPath: m_audioClips.Array.data[3]
       value: 
       objectReference: {fileID: 8300000, guid: 547a671f192b91747a29d0b726edd164, type: 3}
+    - target: {fileID: 531016319209300888, guid: 89de7169bb442fc48b40af2381f497c5,
+        type: 3}
+      propertyPath: m_backgrounds.Array.data[7]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 531016319209300889, guid: 89de7169bb442fc48b40af2381f497c5,
         type: 3}
       propertyPath: m_Name
