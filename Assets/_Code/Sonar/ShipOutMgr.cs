@@ -10,13 +10,11 @@ using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace Shipwreck
-{
+namespace Shipwreck {
 	/// <summary>
 	/// Manages the ShipOut scene
 	/// </summary>
-	public class ShipOutMgr : MonoBehaviour
-	{
+	public class ShipOutMgr : MonoBehaviour {
 		public static ShipOutMgr instance; // there can only be one
 		public SonarDotGenerator m_sdmgr; // the scene's SonarDotMgr
 
@@ -52,12 +50,10 @@ namespace Shipwreck
 
 		private bool m_interactIsOverUI; // whether the interaction is over some UI
 
-		public bool GetInteractIsOverUI()
-		{
+		public bool GetInteractIsOverUI() {
 			return m_interactIsOverUI;
 		}
-		public void SetInteractIsOverUI(bool isOver)
-		{
+		public void SetInteractIsOverUI(bool isOver) {
 			m_interactIsOverUI = isOver;
 		}
 
@@ -76,8 +72,7 @@ namespace Shipwreck
 			m_interactIsOverUI = false;
 		}
 
-		private void Start()
-		{
+		private void Start() {
 			AudioSrcMgr.instance.PlayAudio("ship_out_music", true);
 
 			m_shipOutData = GameDb.GetShipOutData(GameMgr.State.GetCurrShipOutIndex());
@@ -85,20 +80,17 @@ namespace Shipwreck
 			ShowSonarScene();
 		}
 
-		private void GenerateSonarDots(bool revealed = false)
-		{
+		private void GenerateSonarDots(bool revealed = false) {
 			m_sonarDotParent = Instantiate(m_sonarDotParentPrefab, this.transform);
 
 			// Instantiate SonarDot Prefabs at each point
 			List<Vector2> sonarPoints = m_shipOutData.SonarPoints;
 
-			foreach (Vector2 point in sonarPoints)
-			{
+			foreach (Vector2 point in sonarPoints) {
 				GameObject newDot = Instantiate(m_sonarDotPrefab, m_sonarDotParent.transform);
 				newDot.transform.position = point + m_shipOutData.WreckLocation;
 
-				if (revealed)
-				{
+				if (revealed) {
 					// reveal dots
 					newDot.GetComponent<SpriteRenderer>().enabled = true;
 
@@ -110,26 +102,22 @@ namespace Shipwreck
 			m_targetNumDots = sonarPoints.Count;
 		}
 
-		public void ShowSonarScene()
-		{
+		public void ShowSonarScene() {
 			UIMgr.Open<UIShipOutScreen>();
 			UIShipOutScreen.instance.ResetUI();
 
-			if (m_shipOutData.ShipOutIndex == 1)
-			{
+			if (m_shipOutData.ShipOutIndex == 1) {
 				ShowLevel2Sonar();
 			}
-			else
-			{
+			else {
 				ShowDefaultSonar();
+				GameMgr.RunTrigger(GameTriggers.OnEnterSonar);
 			}
 		}
 
-		public void ShowDefaultSonar()
-		{
+		public void ShowDefaultSonar() {
 			// when dive is unlocked, load the buoy without sonar
-			if (GameMgr.State.IsDiveUnlocked(GameMgr.State.GetCurrShipOutIndex()))
-			{
+			if (GameMgr.State.IsDiveUnlocked(GameMgr.State.GetCurrShipOutIndex())) {
 				// activate button
 				UIShipOutScreen.instance.SwapButtonForSlider();
 
@@ -139,15 +127,13 @@ namespace Shipwreck
 				m_playerShip.transform.position = buoy.transform.position + BUOY_SHIP_OFFSET;
 			}
 			// when the dive is not unlocked, laod the sonar without buoy
-			else
-			{
+			else {
 				GenerateSonarDots();
 
 				m_sonarProgress = 0;
 				UIShipOutScreen.instance.GetDiveSlider().normalizedValue = 0;
 
-				if (!GameMgr.State.HasTutorialSonarDisplayed())
-				{
+				if (!GameMgr.State.HasTutorialSonarDisplayed()) {
 					UIShipOutScreen.ActionCode[] codes = new UIShipOutScreen.ActionCode[]
 					{
 						UIShipOutScreen.ActionCode.TutorialSonar,
@@ -159,18 +145,17 @@ namespace Shipwreck
 						codes
 						);
 				}
-				else
-				{
-					EnableSonar.Invoke();
+				else {
+					if (m_shipOutData.SonarImmediate) {
+						EnableSonar.Invoke();
+					}
 				}
 			}
 		}
 
-		public void ShowLevel2Sonar()
-		{
+		public void ShowLevel2Sonar() {
 			// when dive is unlocked, load the buoy without sonar
-			if (GameMgr.State.IsDiveUnlocked(GameMgr.State.GetCurrShipOutIndex()))
-			{
+			if (GameMgr.State.IsDiveUnlocked(GameMgr.State.GetCurrShipOutIndex())) {
 				GenerateSonarDots(true);
 
 				// activate button
@@ -185,8 +170,7 @@ namespace Shipwreck
 				m_playerShip.transform.position = buoy.transform.position + BUOY_SHIP_OFFSET;
 			}
 			// when the dive is not unlocked, load the sonar without buoy
-			else
-			{
+			else {
 				GenerateSonarDots(true);
 
 				UIShipOutScreen.instance.HideDiveSlider();
@@ -202,8 +186,7 @@ namespace Shipwreck
 			}
 		}
 
-		public GameObject DropBuoy()
-		{
+		public GameObject DropBuoy() {
 			GameObject buoy = Instantiate(m_buoyPrefab);
 			buoy.transform.position = m_shipOutData.BuoyLocation;
 			AudioSrcMgr.instance.PlayOneShot("drop_buoy");
@@ -211,8 +194,7 @@ namespace Shipwreck
 			return buoy;
 		}
 
-		public void AddReya()
-		{
+		public void AddReya() {
 			m_reyaShip = Instantiate(m_reyaShipPrefab);
 		}
 
@@ -220,8 +202,7 @@ namespace Shipwreck
 		/// Returns the scene's target dimensions
 		/// </summary>
 		/// <returns></returns>
-		public Vector2 GetTargetDimensions()
-		{
+		public Vector2 GetTargetDimensions() {
 			return m_targetDimensions;
 		}
 
@@ -229,13 +210,11 @@ namespace Shipwreck
 		/// Increments the number of sonar dots that have been revealed, 
 		/// then checks if the dive should be unlocked
 		/// </summary>
-		public void IncrementRevealCount()
-		{
+		public void IncrementRevealCount() {
 			m_sonarProgress = m_sonarProgress + 1;
 
 			// if the dive has not been unlocked yet, check if it should unlock
-			if (!GameMgr.State.IsDiveUnlocked(m_shipOutData.ShipOutIndex))
-			{
+			if (!GameMgr.State.IsDiveUnlocked(m_shipOutData.ShipOutIndex)) {
 				// how many dots out of the total have been revealed
 				float percentComplete = ((float)m_sonarProgress / m_targetNumDots) * 100;
 
@@ -245,22 +224,19 @@ namespace Shipwreck
 				UIShipOutScreen.instance.GetDiveSlider().normalizedValue = percentTargetCompletion;
 
 				// when enough dots have been revealed, show buoy message
-				if (percentComplete >= m_completionPercent)
-				{
+				if (percentComplete >= m_completionPercent) {
 					// when the message is already showing, don't show it again
-					if (IsMessageShowing())
-					{
+					if (IsMessageShowing()) {
 						return;
 					}
 
 					// in the first sonar scene, the tutorial buoy must display a message before the dive is unlocked
-					if (GameMgr.State.HasTutorialBuoyDropped())
-					{
+					if (GameMgr.State.HasTutorialBuoyDropped()) {
 						// no tutorial buoy case
 						UnlockDive();
+						GameMgr.RunTrigger(GameTriggers.OnMowCompleted);
 					}
-					else
-					{
+					else {
 						// tutorial buoy case
 						UIShipOutScreen.ActionCode[] codes = new UIShipOutScreen.ActionCode[]
 						{
@@ -281,34 +257,29 @@ namespace Shipwreck
 		/// Loads the relevant scene
 		/// </summary>
 		/// <param name="sceneName"></param>
-		public void LoadScene(string sceneName)
-		{
+		public void LoadScene(string sceneName) {
 			SceneManager.LoadScene(sceneName);
 		}
 
-		public ShipOutData GetData()
-		{
+		public ShipOutData GetData() {
 			return m_shipOutData;
 		}
 
-		public bool IsMessageShowing()
-		{
+		public bool IsMessageShowing() {
 			return UIShipOutScreen.instance.GetCurrMessageState() == UIShipOutScreen.MessageState.showing;
 		}
 
 		/// <summary>
 		/// Unlocks dive, activates button, and drops a buoy
 		/// </summary>
-		public void UnlockDive()
-		{
+		public void UnlockDive() {
 			// unlock dive
 			GameMgr.State.UnlockDive(m_shipOutData.ShipOutIndex);
 
 			// activate button
 			UIShipOutScreen.instance.SwapButtonForSlider();
 
-			if (m_shipOutData.ShipOutIndex == 1)
-			{
+			if (m_shipOutData.ShipOutIndex == 1) {
 				// buoy starts dropped
 				return;
 			}

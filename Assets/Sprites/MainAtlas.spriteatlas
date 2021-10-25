@@ -46,6 +46,7 @@ SpriteAtlas:
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: 0d2ce10037c29824d89f10646acd937a, type: 3}
   - {fileID: 21300000, guid: 82cbce30f03431f44bf2b7d0a42b9784, type: 3}
   - {fileID: 21300000, guid: 1ef17280142431044ba4e08b167d830a, type: 3}
   - {fileID: 21300000, guid: 976d24b0d86b37a4ea099fd7472eece2, type: 3}
@@ -114,9 +115,11 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 00e7886c97ff91a419c635f6cfe99871, type: 3}
   - {fileID: 21300000, guid: f06973bc2e98e2c4baceae48912060d7, type: 3}
   - {fileID: 21300000, guid: 993c01cc18d924a278476410f23bec53, type: 3}
+  - {fileID: 21300000, guid: d2e4d7ecc901a1a4c9382624fb16ee45, type: 3}
   - {fileID: 21300000, guid: 2af87afca5fb68744b9282231b479229, type: 3}
   - {fileID: 21300000, guid: 7fd12d0d3f284fa40899dc34b325317b, type: 3}
   - {fileID: 21300000, guid: 4495b11dfccfb934ebf50ce533b76639, type: 3}
+  - {fileID: 21300000, guid: e0da8e2d52f1e36418fc0482357db671, type: 3}
   - {fileID: 21300000, guid: 274e5f2d852693349a1c503ffb7d14d0, type: 3}
   - {fileID: 21300000, guid: b0ec3b8d44ae642358eb7e0701410eef, type: 3}
   - {fileID: 21300000, guid: 386610bd888ebbc4eb6631dfa0c55859, type: 3}
@@ -138,6 +141,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: f340479f5687f2148ab164d85f708154, type: 3}
   - {fileID: 21300000, guid: b52d98df6abf285419b2cc0c4589a0d2, type: 3}
   m_PackedSpriteNamesToIndex:
+  - photo-lv4-cargo
   - office-background
   - button-face
   - car-kissel
@@ -206,9 +210,11 @@ SpriteAtlas:
   - ps_paradise_ad_sketch
   - dad-attic
   - icon-from-camera
+  - photo-lv4-name
   - dad_icon
   - amy_icon
   - yardsale
+  - photo-lv4-locket
   - level2_madison
   - icon-journal
   - EmptyRectangle_2px
