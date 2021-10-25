@@ -197,16 +197,11 @@ namespace Shipwreck {
 
 		private void UnlockLevel3_50() {
 			UnlockLevel3();
-
-			GameMgr.SetLevelIndex(2);
 			GameMgr.SetChain(2, "Location", "location-coordinates");
 
 			GameMgr.UnlockEvidence(3, "LV1-Root");
 			GameMgr.UnlockEvidence(3, "LV3-Transcript-Dad");
-			GameMgr.UnlockEvidence(3, "LV3-Advertisement-PS");
-			GameMgr.UnlockEvidence(3, "LV3-Tami-Photo-Anchor");
 
-			
 			GameMgr.UnlockEvidence(3, "LV3-Photo-Above");
 			GameMgr.UnlockEvidence(3, "LV3-Photo-Anchor");
 			GameMgr.UnlockEvidence(3, "LV3-Photo-Gold");
@@ -214,26 +209,33 @@ namespace Shipwreck {
 			GameMgr.UnlockEvidence(3, "LV3-Ship-Chart");
 			GameMgr.UnlockEvidence(3, "LV3-Card-Types");
 			GameMgr.UnlockEvidence(3, "LV3-Accounts-Survivor");
-			GameMgr.UnlockContact("tami");
-			
+			GameMgr.UnlockContact("cami");
 
+			GameMgr.RecordNodeVisited("level03.mom-photos", "mom");
 			GameMgr.RecordNodeVisited("level03.dad-superior", "dad");
 			GameMgr.RecordNodeVisited("level03.amy-paradise", "amy");
-			GameMgr.RecordNodeVisited("level03.tami-meet", "tami");
+			GameMgr.RecordNodeVisited("level03.cami-meet", "cami");
 
 			GameMgr.State.UnlockDive(2);
 
-			
-			GameMgr.RecordNodeVisited("level03.tami-ship", "tami");
-			GameMgr.RecordNodeVisited("level03.tami-anchor", "tami");
-			GameMgr.RecordNodeVisited("level03.tami-gold", "tami");
-			GameMgr.RecordNodeVisited("level03.tami-cargo", "tami");
-			GameMgr.RecordNodeVisited("level03.tami-regroup", "tami");
-			
+			GameMgr.RecordNodeVisited("level03.cami-ship", "cami");
+			GameMgr.RecordNodeVisited("level03.cami-anchor", "cami");
+			GameMgr.RecordNodeVisited("level03.cami-gold", "cami");
+			GameMgr.RecordNodeVisited("level03.cami-cargo", "cami");
+			GameMgr.RecordNodeVisited("level03.cami-regroup", "cami");
 		}
 
 		private void UnlockLevel4() {
 			UnlockLevel3_50();
+			GameMgr.State.UnlockDive(2);
+
+			GameMgr.SetChain(2, "Type", "photo-above", "ship-chart-type", "card-side-steamer");
+			GameMgr.SetChain(2, "Cargo", "photo-cargo", "ship-chart-cargo");
+			GameMgr.SetChain(2, "Cause", "survivor-accounts-cause");
+			GameMgr.SetChain(2, "Name", "photo-anchor", "ship-chart-name");
+			GameMgr.SetChain(2, "Artifact", "survivor-accounts-artifact", "photo-gold");
+
+			GameMgr.RecordNodeVisited("level03.dad-steamer", "dad");
 
 			GameMgr.SetLevelIndex(3);
 		}

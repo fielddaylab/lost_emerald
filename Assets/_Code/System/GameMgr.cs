@@ -232,6 +232,20 @@ namespace Shipwreck
 		}
 
 		[LeafMember]
+		public static void DiscoverLocation(int levelIndex) {
+			if (I.m_state.DiscoverLocation(levelIndex - 1)) {
+				Events.Dispatch(GameEvents.LocationDiscovered);
+				// Events.Dispatch(GameEvents.LocationDiscovered, levelIndex - 1);
+				/*
+				using (var table = TempVarTable.Alloc()) {
+					table.Set("levelIndex", levelIndex);
+					RunTrigger(GameTriggers.OnLevelUnlock, table);
+				}
+				*/
+			}
+		}
+
+		[LeafMember]
 		public static void UnlockEvidence(int levelIndex, StringHash32 groupId) {
 			if (I.m_state.UnlockEvidence(levelIndex - 1, groupId)) {
 				Events.Dispatch(GameEvents.EvidenceUnlocked, groupId);

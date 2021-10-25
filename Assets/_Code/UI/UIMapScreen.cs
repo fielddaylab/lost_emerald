@@ -1,4 +1,5 @@
 ﻿using BeauRoutine;
+using PotatoLocalization;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,9 +12,11 @@ namespace Shipwreck {
 		[SerializeField]
 		private RectTransform m_container = null;
 		[SerializeField]
-		private Button m_shipOutButton = null;
-		[SerializeField]
 		private Button m_closeButton = null;
+		[SerializeField]
+		private LevelMarker[] m_levelMarkers = null;
+		[SerializeField]
+		private LocalizedTextUGUI[] m_levelLabels = null;
 
 		protected override IEnumerator ShowRoutine() {
 			m_container.anchoredPosition = new Vector2(0f, 620f);
@@ -30,30 +33,74 @@ namespace Shipwreck {
 			);
 		}
 
+		protected override void OnShowStart() {
+			base.OnShowStart();
+
+			CanvasGroup.alpha = 0;
+
+			m_levelMarkers[0].Button.onClick.AddListener(() => { HandleLevelButton(0); });
+			m_levelMarkers[1].Button.onClick.AddListener(() => { HandleLevelButton(1); });
+			m_levelMarkers[2].Button.onClick.AddListener(() => { HandleLevelButton(2); });
+			m_levelMarkers[3].Button.onClick.AddListener(() => { HandleLevelButton(3); });
+
+
+			for (int index = 0; index < m_levelMarkers.Length; index++) {
+				bool isUnlocked = GameMgr.State.IsLevelUnlocked(index);
+				LevelMarker marker = m_levelMarkers[index];
+				marker.Button.interactable = isUnlocked;
+				marker.gameObject.SetActive(isUnlocked);
+				Vector2 markerPos = GameMgr.State.GetLevel(index).MarkerPos;
+				Vector2 bannerPos = GameMgr.State.GetLevel(index).BannerPos;
+				marker.transform.localPosition = markerPos;
+				marker.Banner.transform.localPosition = bannerPos;
+				Sprite markerSprite;
+				if (GameMgr.State.GetLevel(index).IsLocationKnown) {
+					markerSprite = GameDb.GetMarkerSprite("marker-default");
+				}
+				else {
+					markerSprite = GameDb.GetMarkerSprite(GameMgr.State.GetLevel(index).MarkerUnknownSpriteID);
+				}
+				marker.SetSprite(markerSprite);
+				marker.SetColor(GameDb.GetMarkerColor(index));
+				m_levelLabels[index].Key = GameMgr.State.GetLevelName(index);
+			}
+
+			GameMgr.Events.Register<int>(GameEvents.LevelUnlocked, HandleLevelUnlocked);
+		}
 
 		protected override void OnShowCompleted() {
 			m_closeButton.onClick.AddListener(HandleClose);
-			m_shipOutButton.onClick.AddListener(HandleShipOut);
 		}
 		protected override void OnHideStart() {
 			m_closeButton.onClick.RemoveListener(HandleClose);
-			m_shipOutButton.onClick.RemoveListener(HandleShipOut);
+
+			foreach (LevelMarker marker in m_levelMarkers) {
+				marker.Button.onClick.RemoveAllListeners();
+				marker.Button.interactable = false;
+				marker.gameObject.SetActive(false);
+			}
+
+			GameMgr.Events.Deregister<int>(GameEvents.LevelUnlocked, HandleLevelUnlocked);
+		}
+
+		private void HandleLevelButton(int level) {
+			AudioSrcMgr.instance.PlayOneShot("click_level");
+			GameMgr.SetLevelIndex(level);
+			GameMgr.State.SetCurrShipOutIndex(level);
+			UIMgr.Close<UIMapScreen>();
+			UIMgr.CloseThenOpen<UIOfficeScreen, UIEvidenceScreen>();
 		}
 
 		private void HandleClose() {
 			AudioSrcMgr.instance.PlayOneShot("click_map_close");
-			UIMgr.Close<UIOfficeScreen>();
 			UIMgr.Close<UIMapScreen>();
-			UIMgr.Open<UIEvidenceScreen>();
 		}
-		private void HandleShipOut() {
-			AudioSrcMgr.instance.PlayOneShot("click_map_ship_out");
-			UIMgr.Close<UIOfficeScreen>();
-			UIMgr.Close<UIMapScreen>();
-			AudioSrcMgr.instance.PlayAudio("ship_out");
-			AudioSrcMgr.instance.PlayAmbiance("ship_out_ambiance", true);
-			// before loading the ShipOut scene, specify which ShipOutData to load
-			SceneManager.LoadScene("ShipOut");
+
+		private void HandleLevelUnlocked(int level) {
+			for (int index = 0; index < m_levelMarkers.Length; index++) {
+				m_levelMarkers[index].Button.interactable = GameMgr.State.IsLevelUnlocked(index);
+				m_levelLabels[index].Key = GameMgr.State.GetLevelName(index);
+			}
 		}
 	}
 

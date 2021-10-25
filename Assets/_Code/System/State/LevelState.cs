@@ -3,12 +3,17 @@ using BeauUtil;
 using PotatoLocalization;
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Shipwreck {
 
 	public interface ILevelState {
 		int Index { get; }
 		LocalizationKey Name { get; }
+		Vector2 MarkerPos { get; }
+		Vector2 BannerPos { get; }
+		bool IsLocationKnown { get; }
+		string MarkerUnknownSpriteID { get; }
 		bool IsUnlocked { get; }
 		IEnumerable<IEvidenceGroupState> Evidence { get; }
 		int ChainCount { get; }
@@ -52,6 +57,17 @@ namespace Shipwreck {
 				get { return m_isUnlocked; }
 			}
 
+			public Vector2 MarkerPos {
+				get { return m_levelData.LevelMarkerPos; }
+			}
+			public Vector2 BannerPos {
+				get { return m_levelData.LevelBannerPos; }
+			}
+
+			public string MarkerUnknownSpriteID {
+				get { return m_levelData.LevelMarkerUnknownSpriteID; }
+			}
+
 			public IEnumerable<IEvidenceGroupState> Evidence {
 				get {
 					foreach (EvidenceGroupState evidence in m_evidence) {
@@ -66,6 +82,7 @@ namespace Shipwreck {
 			// serialized
 			private bool m_isUnlocked = false;
 			private bool m_hasSeenCutscene = false;
+			private bool m_locationKnown = false;
 			private List<EvidenceGroupState> m_evidence;
 			private List<EvidenceChainState> m_chains;
 
@@ -79,6 +96,7 @@ namespace Shipwreck {
 
 			public void AssignLevelData(LevelData data) {
 				m_levelData = data;
+				m_locationKnown = m_levelData.LevelLocationKnown;
 			}
 
 			public IEvidenceChainState GetChain(StringHash32 root) {
@@ -118,6 +136,12 @@ namespace Shipwreck {
 					return true;
 				}
 			}
+			public bool DiscoverLocation() {
+				if (!m_locationKnown) {
+					m_locationKnown = true;
+				}
+				return true;
+			}
 			public bool IsEvidenceUnlocked(StringHash32 group) {
 				return m_evidence.Find((item) => {
 					return item.Identity == group;
@@ -142,7 +166,9 @@ namespace Shipwreck {
 				}
 				return true;
 			}
-				
+			public bool IsLocationKnown {
+				get { return m_locationKnown; }
+			}
 
 			public void Serialize(Serializer ioSerializer) {
 				ioSerializer.Serialize("isUnlocked", ref m_isUnlocked);

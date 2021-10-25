@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Shipwreck {
@@ -274,10 +275,10 @@ namespace Shipwreck {
 			UIMgr.CloseThenOpen<UIEvidenceScreen, UIOfficeScreen>();
 		}
 		private void HandleShipOutButton() {
-			AudioSrcMgr.instance.PlayOneShot("click_evidence_ship_out");
 			UIMgr.Close<UIEvidenceScreen>();
-			UIMgr.Open<UIOfficeScreen>();
-			UIMgr.Open<UIMapScreen>();
+			AudioSrcMgr.instance.PlayAudio("ship_out");
+			AudioSrcMgr.instance.PlayAmbiance("ship_out_ambiance", true);
+			SceneManager.LoadScene("ShipOut");
 		}
 		private void HandleChainCorrect(StringHash32 root) {
 			if (GameMgr.State.CurrentLevel.IsLocationChainComplete()) {

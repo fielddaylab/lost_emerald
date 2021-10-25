@@ -106,11 +106,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: df6020010a03d8e48b3501d0fd57a8ce, type: 2}
   - {fileID: 11400000, guid: 01d89a3db8859244b8a72c0b86e2dadc, type: 2}
   - {fileID: 11400000, guid: 20144a26e2f9ca64bb5cbdc242c032ec, type: 2}
-  - {fileID: 11400000, guid: ef471699d93d3f54bb6b05e18b0dd323, type: 2}
   - {fileID: 11400000, guid: a7f18656bd463844ab79a6f48a1308e8, type: 2}
-  - {fileID: 11400000, guid: ad1ea63eabb1ad2458b492fe3ffd441c, type: 2}
   - {fileID: 11400000, guid: bccb88b945de42b4cbebd5c1d41c1d60, type: 2}
   - {fileID: 11400000, guid: c3dc0b44f5a86c14282b75adc8f4a616, type: 2}
+  - {fileID: 11400000, guid: 43139fb3d0396b14a9b23216d4850523, type: 2}
+  - {fileID: 11400000, guid: a08d6a01b45323941b789a5a64f0b030, type: 2}
+  - {fileID: 11400000, guid: 9ad5b99f289e52c4d958d21943830e7b, type: 2}
+  - {fileID: 11400000, guid: 4da189c3c475ab741a28940a7959ecf9, type: 2}
   m_images:
   - {fileID: 21300000, guid: ea001b1c59f86ce4c805ebcf8ec11611, type: 3}
   - {fileID: 21300000, guid: bd33810b214a0104fbc3b7c7b52910b8, type: 3}
@@ -126,6 +128,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5f65e64366354fa4182c286b229445c9, type: 3}
   - {fileID: 21300000, guid: d95b3d2a5159a264e97141fc59fc8d4d, type: 3}
   - {fileID: 21300000, guid: b546b082ff32bfc4eb779578b389798c, type: 3}
+  m_markerSprites:
+  - {fileID: 21300000, guid: a2f3a53a9badd184e8e861056e87d4b5, type: 3}
+  - {fileID: 21300000, guid: feb118e70e23a0f41b8cc47dc043f461, type: 3}
   m_nodeKeyPairs:
   - NodeID:
       m_Source: Location
@@ -232,6 +237,9 @@ MonoBehaviour:
   m_pinDefault: {r: 0.6039216, g: 0.9058824, b: 0.8980393, a: 1}
   m_pinIncorrect: {r: 0.8862745, g: 0.49803922, b: 0.5199506, a: 1}
   m_pinComplete: {r: 1, g: 0.8120668, b: 0.3537736, a: 1}
+  m_markerDefault: {r: 1, g: 0.33333334, b: 0.33333334, a: 1}
+  m_markerUnknown: {r: 0, g: 0, b: 0, a: 1}
+  m_markerComplete: {r: 1, g: 0.8117648, b: 0.3529412, a: 1}
   m_evidenceNodeDefault: {r: 0.6039216, g: 0.9058824, b: 0.8980393, a: 1}
   m_evidenceNodeComplete: {r: 1, g: 0.8117648, b: 0.3529412, a: 1}
 --- !u!114 &7854677246857917389

@@ -1,6 +1,7 @@
 ﻿using BeauUtil;
 using PotatoLocalization;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Shipwreck {
 
@@ -32,6 +33,27 @@ namespace Shipwreck {
 		public LocalizationKey LockedKey {
 			get { return m_lockedKey; }
 		}
+		public Vector2 LevelMarkerPos {
+			get { return m_markerData.MarkerPos; }
+		}
+		public Vector2 LevelBannerPos {
+			get { return m_markerData.BannerPos; }
+		}
+		public bool LevelLocationKnown {
+			get { return m_markerData.LocationKnown; }
+		}
+		public string LevelMarkerUnknownSpriteID {
+			get { return m_markerData.UnknownSpriteID; }
+		}
+		public LocalizationKey CaseClosedName {
+			get { return m_caseClosedName; }
+		}
+		public LocalizationKey CaseClosedType {
+			get { return m_caseClosedType; }
+		}
+		public LocalizationKey CaseClosedCause {
+			get { return m_caseClosedCause; }
+		}
 
 		[SerializeField]
 		private int m_levelIndex = 0;
@@ -47,6 +69,14 @@ namespace Shipwreck {
 		private LocalizationKey m_namedKey = LocalizationKey.Empty;
 		[SerializeField]
 		private LocalizationKey m_lockedKey = LocalizationKey.Empty;
+		[SerializeField]
+		private MarkerData m_markerData = null;
+		[SerializeField]
+		private LocalizationKey m_caseClosedName = LocalizationKey.Empty;
+		[SerializeField]
+		private LocalizationKey m_caseClosedType = LocalizationKey.Empty;
+		[SerializeField]
+		private LocalizationKey m_caseClosedCause = LocalizationKey.Empty;
 	}
 
 }

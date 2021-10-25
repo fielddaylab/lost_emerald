@@ -74,6 +74,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 2b68ded497414bc499d70016382e1abf, type: 3}
   - {fileID: 21300000, guid: 65c26de4f69714d11b1cd5e2bb9de646, type: 3}
   - {fileID: 21300000, guid: 8bf1e015bbdf4e848b56964826269e5e, type: 3}
+  - {fileID: 21300000, guid: 8fdb36157d656944cba740e9b7d0a776, type: 3}
   - {fileID: 21300000, guid: 6fff9425d950f394ca57678b61b267d0, type: 3}
   - {fileID: 21300000, guid: 18ce4d25aa2b140caad634c3dd4b69e2, type: 3}
   - {fileID: 21300000, guid: 9181df563faf4c240b278fd35f45ddfd, type: 3}
@@ -83,12 +84,15 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 59fe56a6223a442439b9c0aef26e2687, type: 3}
   - {fileID: 21300000, guid: e59faca6783a52e409ecd8515871c2a7, type: 3}
   - {fileID: 21300000, guid: f2f043070615e5d44bf1c5cf2ff5c0b5, type: 3}
+  - {fileID: 21300000, guid: e86351777da7ccd4cb75d3a08bdd7a7b, type: 3}
   - {fileID: 21300000, guid: 52b1c17784d8a1e45b76754696037547, type: 3}
   - {fileID: 21300000, guid: 2cd1aa97dedd64a7d98a8d2b4dcd26af, type: 3}
+  - {fileID: 21300000, guid: feb118e70e23a0f41b8cc47dc043f461, type: 3}
   - {fileID: 21300000, guid: 41c798e7bf044e14db7e5f8678187066, type: 3}
   - {fileID: 21300000, guid: 26e9e9e705db0244da31bf3fc9d74718, type: 3}
   - {fileID: 21300000, guid: 0aa90c38363f5ff45ab3fadfa5d6fd5d, type: 3}
   - {fileID: 21300000, guid: 052b7e48a9cdb4c3cb3c82f094453d1f, type: 3}
+  - {fileID: 21300000, guid: e01de3584f1e51246bdea1c949b2544e, type: 3}
   - {fileID: 21300000, guid: 43f91c98d6d6f794fab854ef25b8eb80, type: 3}
   - {fileID: 21300000, guid: 0d5a7ad870314423a9bbb4f7503c3d25, type: 3}
   - {fileID: 21300000, guid: 132b0ca92ede2104d86bc6e8eb061529, type: 3}
@@ -96,6 +100,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 09ff471a9a65fa644a5b7b013e1feeea, type: 3}
   - {fileID: 21300000, guid: ece7e92aaba5f494e923e7cda7d69071, type: 3}
   - {fileID: 21300000, guid: d95b3d2a5159a264e97141fc59fc8d4d, type: 3}
+  - {fileID: 21300000, guid: a2f3a53a9badd184e8e861056e87d4b5, type: 3}
   - {fileID: 21300000, guid: 19d4257ae6eefc943a85ed0b3dbdcfb8, type: 3}
   - {fileID: 21300000, guid: 9219a3ba3979b214babe6a768fcade78, type: 3}
   - {fileID: 21300000, guid: 74fd1afaaff2da843b02b5e2ef88fc91, type: 3}
@@ -161,6 +166,7 @@ SpriteAtlas:
   - photo-lv2-cargo
   - journal
   - sonar_dot
+  - level-map-sketch
   - cork-board_blank
   - camera-button-close
   - icon-check-empty
@@ -170,12 +176,15 @@ SpriteAtlas:
   - dad-map
   - photo-lv3-anchor
   - photo-lv1-knife
+  - photo-lv4-above
   - DiveButtonFilled
   - arrow-up
+  - marker-unknown-grandpa
   - rounded-rect
   - shipwreck_ref
   - RoundedRect100Outline
   - map-marker
+  - office-background-2
   - cork-board_light_blank
   - icon-check
   - push-pin
@@ -183,6 +192,7 @@ SpriteAtlas:
   - lakes-map
   - ship-card
   - reya-boat
+  - marker-default
   - Yarn
   - HiResCircle
   - ship-card-updated
