@@ -1,24 +1,16 @@
 name: Acquire activation file
-on: 
-  workflow_dispatch:
-    inputs:
-      versionInput:
-        description: 'Unity Version'     
-        required: true
-        default: '2019.4.12f1'
+on: [push]
 jobs:
   activation:
     name: Request manual activation file ??
     runs-on: ubuntu-latest
     steps:
-
     # Request manual activation file
     - name: Request manual activation file
       id: getManualLicenseFile
-      uses: webbertakken/unity-request-manual-activation-file@v1.1
+      uses: game-ci/unity-request-activation-file@v2
       with:
-        unityVersion: ${{ github.event.inputs.versionInput }}
-
+        unityVersion: 2019.4.26f1
     # Upload artifact (Unity_v20XX.X.XXXX.alf)
     - name: Expose as artifact
       uses: actions/upload-artifact@v1
