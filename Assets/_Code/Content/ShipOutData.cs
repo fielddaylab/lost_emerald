@@ -40,6 +40,10 @@ namespace Shipwreck
 			get { return m_sonarPoints; }
 		}
 
+		public bool SonarImmediate {
+			get { return m_sonarImmediate; }
+		}
+
 		public void SetSonarDots(List<Vector2> points)
 		{
 			m_sonarPoints = points;
@@ -55,5 +59,7 @@ namespace Shipwreck
 		private string m_diveDest;
 		[SerializeField]
 		private List<Vector2> m_sonarPoints;
+		[SerializeField]
+		private bool m_sonarImmediate = true;
 	}
 }

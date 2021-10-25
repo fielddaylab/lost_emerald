@@ -324,6 +324,16 @@ namespace Shipwreck
 			AudioSrcMgr.instance.ResumeStashedAudio();
 		}
 
+		[LeafMember]
+		private static void PauseSonar() {
+			ShipOutMgr.instance.DisableSonar.Invoke();
+		}
+
+		[LeafMember]
+		private static void ResumeSonar() {
+			ShipOutMgr.instance.EnableSonar.Invoke();
+		}
+
 		#endregion // Leaf
 
 	}

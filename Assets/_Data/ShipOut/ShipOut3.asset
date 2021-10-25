@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ShipOut3
   m_EditorClassIdentifier: 
   m_shipOutIndex: 3
-  m_wreckLocation: {x: 5.63, y: 1.59}
+  m_wreckLocation: {x: 5.63, y: 1.7}
   m_buoyLocation: {x: 4.77, y: 3.5}
   m_diveDest: Dive_Ship04
   m_sonarPoints:
@@ -267,3 +267,4 @@ MonoBehaviour:
   - {x: 3.5694153, y: 1.0045487}
   - {x: -0.85897744, y: 0.50488484}
   - {x: -2.7089412, y: -0.52638614}
+  m_sonarImmediate: 0

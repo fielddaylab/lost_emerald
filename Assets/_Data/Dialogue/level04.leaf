@@ -142,26 +142,30 @@
 @trigger OnEnterSonar
 @once
 
+	$call PauseSonar()
 	{@reya}	Eee this is so exciting!
 			Mom’s at her lab working on that steel sample right now.
 	{@dad}	Wow. It’s funny. I kinda didn’t think we’d find the Emerald so fast.
 	{@you}	There might not even be a ship down there, Dad. 
 	{@reya}	Go ahead, Jules! Use your fancy sonar thing! 
+	$call ResumeSonar()
 
 // Mow lake
 
 :: reya-mow
 @contact reya, radio
 //@background
-@trigger OnMowComplete // todo: add this trigger
+@trigger OnMowCompleted
 @once
 
+	$call PauseSonar()
 	{@you}	Well...that’s definitely a ship.
 	{@reya}	SQUEEEE!
 	{@dad}	Uh… ya know, maybe we should come back another day.
 	{@reya}	What?!?! Why? You’ve been searching forever!
 	{@you}	Don’t worry, Dad. 
 			Whatever we find, we’re all in this together.
+	$call ResumeSonar()
 
 // Dive
 
@@ -217,7 +221,8 @@
 			Here’s his info: 
 			Phone Contact: Edmund Weathers, 555-9872
 	{@you}	Thanks, Amy!
-	@call EndConvoMusic()
+	$call UnlockContact(ed)
+	$call EndConvoMusic()
 
 
 // Call shipwreck survivor
@@ -225,7 +230,7 @@
 @contact ed, phone-call
 //@background
 @trigger OnDialogClosed
-@when HasEvidence(LV4-Photo-Locket)
+@when Seen(level04.amy-strange)
 @once
 
 	$call TriggerConvoMusic(ed_convo)
@@ -268,8 +273,7 @@
 // Text from your Mom
 :: mom-weak
 @contact mom, text-message
-//@background
-@trigger OnChainComplete
+@trigger OnChainSolved
 @when IsChainComplete(Cause)
 @once
 
@@ -290,9 +294,8 @@
 // Conversation with Reya--same as the beginning convo screen
 :: reya-end
 @contact reya, phone-call
-@trigger OnChainComplete
-@when IsChainComplete(Cause), IsChainComplete(Cargo)
 //@background
+@trigger OnBoardComplete
 @once
 
 	$call TriggerConvoMusic(reya_convo)

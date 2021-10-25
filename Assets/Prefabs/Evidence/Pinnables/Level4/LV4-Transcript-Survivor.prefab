@@ -74,6 +74,41 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &3359271605710575684
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1387236717208625830}
+  m_Layer: 5
+  m_Name: SubPin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1387236717208625830
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3359271605710575684}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1061657780569709412}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 121, y: 9.5}
+  m_SizeDelta: {x: 5, y: 5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5610739170103057145
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,14 +140,15 @@ RectTransform:
   - {fileID: 4710716374370253645}
   - {fileID: 5844721533272053859}
   - {fileID: 1758995458177322865}
+  - {fileID: 1061657780569709412}
   - {fileID: 3804872598070746410}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 363.2, y: -433.8}
-  m_SizeDelta: {x: 237.64435, y: 1485.78}
+  m_AnchoredPosition: {x: 363.2, y: 172.9}
+  m_SizeDelta: {x: 237.64435, y: 272.3191}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &631025490579840557
 MonoBehaviour:
@@ -235,7 +271,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 702}
+  m_AnchoredPosition: {x: 0, y: 107.9}
   m_SizeDelta: {x: 137.42276, y: 40.001373}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4528124671211527840
@@ -365,7 +401,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5767642539662485685}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -399,30 +435,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "YOU: Hi. Are you Mr. Edmund Weathers?\r\n\r\nED: Yup. Call me Ed. \r\n\r\nJOHNNY:
-    Hey! Haven\u2019t we met before?\r\n\r\nYOU: Oh\u2026 uh, yeah! I work with Tami.
-    \r\n\r\nJOHNNY: I didn\u2019t realize you were a diver, too. We should go out
-    sometime!\r\n\r\nJOHNNY: On the lake, I mean.  \r\n\r\nED: You\u2019re the grandkid
-    of Captain Griffin, right?\r\n\r\nYOU: Yep, that\u2019s me. \r\n\r\nED: I\u2019d
-    be happy to answer your questions. I\u2019ve been waitin\u2019 years for somebody
-    to ask me about this. \r\n\r\nYOU: You survived the sinking of the Emerald. Can
-    you tell me what happened?\r\n\r\nED: We were out on one last run. The captain
-    was excited to get the job done and get home.  \r\n\r\nED: The weather was rough,
-    but we were sailing along just fine. \r\n\r\nED: Then, BANG! The Emerald just
-    broke apart.\r\n\r\nYOU: What do you think caused it? \r\n\r\nED: The hull was
-    always creaking and groaning. That old, flimsy steel couldn\u2019t hold up to
-    the waves. \r\n\r\nYOU: What happened next? \r\n\r\n\r\nED: The captain sounded
-    the alarm. He kept everybody calm and helped get a raft ready.\r\n\r\nED: Then
-    a wave knocked me and some other guys overboard. Lucky we had that raft to hold
-    onto. \r\n\r\nJOHNNY: Wow, Gramps. It sounds like he saved your life. \r\n\r\nYOU:
-    Do you know why my Grandpa got blamed?\r\n\r\nED: The steel company lied and
-    said they found the ship in one piece, so they wouldn\u2019t look bad.\r\n\r\nED:
-    I tried to tell my story, but nobody listened. \r\n\r\nYOU: Did my grandpa ever
-    talk about treasure?\r\n\r\nED: Hmmm. Treasure?\r\n\r\nED: Oh, that\u2019d be
-    his locket! It had pictures of his family. \r\n\r\nED: He kept it locked in an
-    old chest while he was on deck, so he wouldn\u2019t lose it. \r\n\r\nED: I\u2019m
-    sorry your grandpa got blamed. He was a good captain. \r\n\r\nYOU: Thanks, Ed.
-    My dad\u2019s been waiting his whole life to hear that. \r\n"
+  m_text: "ED: The weather was rough, but we were sailing along just fine. \r\n\r\nED:
+    Then, BANG! The Emerald just broke apart.\r\n\r\nYOU: What do you think caused
+    it? \r\n\r\nED: The hull was always creaking and groaning. That old, flimsy steel
+    couldn\u2019t hold up to the waves. \r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0f77dbfab1ccf400fa3ef18be7fb6cbf, type: 2}
   m_sharedMaterial: {fileID: -7532545293972598455, guid: 0f77dbfab1ccf400fa3ef18be7fb6cbf,
@@ -492,3 +508,122 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &8981991619191750412
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1061657780569709412}
+  - component: {fileID: 3171667635319947707}
+  - component: {fileID: 3175883007652271641}
+  - component: {fileID: 6624647019053793026}
+  - component: {fileID: 6425518770119979685}
+  m_Layer: 5
+  m_Name: NodeUnderlay
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1061657780569709412
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8981991619191750412}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1387236717208625830}
+  m_Father: {fileID: 5767642539662485685}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.54873, y: -108}
+  m_SizeDelta: {x: 212.54697, y: 36.312748}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3171667635319947707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8981991619191750412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f8220c492b4ce744b851edcefe0490a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_nodeId:
+    m_Source: survivor-waves
+    m_Hash: 2585612356
+  m_label:
+    m_key: 
+    m_hash: 0
+  m_pinPosition: {fileID: 1061657780569709412}
+  m_subPinPosition: {fileID: 1387236717208625830}
+  m_image: {fileID: 6425518770119979685}
+  m_pinned: 0
+--- !u!114 &3175883007652271641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8981991619191750412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 1
+  m_MinWidth: -1
+  m_MinHeight: -1
+  m_PreferredWidth: -1
+  m_PreferredHeight: -1
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
+--- !u!222 &6624647019053793026
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8981991619191750412}
+  m_CullTransparentMesh: 0
+--- !u!114 &6425518770119979685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8981991619191750412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.6039216, g: 0.9058824, b: 0.8980393, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 7d1d53ae8d55e994598b2b84b04588df, type: 3}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 6

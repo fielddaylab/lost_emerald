@@ -171,6 +171,16 @@ MonoBehaviour:
     m_hash: 2102626838
   - m_key: Dive/Level4/Above-Name
     m_hash: -796712168
+  - m_key: Dive/Level4/Cargo-Name
+    m_hash: 1690594843
+  - m_key: Dive/Level4/Artifact-Name
+    m_hash: 1255388007
+  - m_key: Dive/Level4/Name-Name
+    m_hash: 1949874160
+  - m_key: Character/Ed/Name
+    m_hash: -1880479098
+  - m_key: Character/Johnny/Name
+    m_hash: -9541103
   m_values:
   - Continue
   - Dad
@@ -250,3 +260,8 @@ MonoBehaviour:
   - 'Type :'
   - 'Cause of Wreck :'
   - Top-Down Photo
+  - Ore
+  - Locket
+  - Ship Name
+  - Ed
+  - Johnny

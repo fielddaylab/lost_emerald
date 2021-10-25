@@ -238,6 +238,8 @@ namespace Shipwreck {
 			GameMgr.RecordNodeVisited("level03.dad-steamer", "dad");
 
 			GameMgr.SetLevelIndex(3);
+
+			GameMgr.UnlockEvidence(4, "LV4-Photo-Cargo"); // hack until cargo is added to the dive scene
 		}
 	}
 

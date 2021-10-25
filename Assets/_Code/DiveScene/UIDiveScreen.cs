@@ -1,5 +1,6 @@
 ﻿using BeauRoutine;
 using BeauUtil;
+using PotatoLocalization;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -181,11 +182,14 @@ namespace Shipwreck {
 			for (int ix = 0; ix < m_journalChecklist.childCount; ix++) {
 				Destroy(m_journalChecklist.GetChild(ix).gameObject);
 			}
+			List<LocalizationKey> itemLocalizations = new List<LocalizationKey>();
 			foreach (DivePointOfInterest poi in list) {
+				if (itemLocalizations.Contains(poi.PhotoName)) { continue; }
 				DiveJournalItem item = Instantiate(m_journalItemPrefab, m_journalChecklist);
 				item.transform.localScale = Vector3.one;
 				item.SetChecked(GameMgr.State.CurrentLevel.IsEvidenceUnlocked(poi.EvidenceUnlock));
 				item.SetText(poi.PhotoName);
+				itemLocalizations.Add(poi.PhotoName);
 			}
 		}
 
