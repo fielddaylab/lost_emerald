@@ -57,7 +57,6 @@
 			Location: 43°20'08.2"N 87°34'11.3"W
 			Race ya there!
 	$call UnlockLevel(2)
-	$call UnlockEvidence(2, "LV1-Root")
 	$call UnlockEvidence(2, "LV2-Transcript-Reya")
 	$call UnlockEvidence(2, "LV2-Card-Types")
 	$call EndConvoMusic();
@@ -87,7 +86,6 @@
 	{@you}	So, Dad’s been searching the wrong part of the lake!
 	{@you}	This is a huge deal!
 	{@reya}	Ha! I found the important clue! 
-	$call UnlockEvidence(4, "LV1-Root")
 	$call EndConvoMusic()
 
 

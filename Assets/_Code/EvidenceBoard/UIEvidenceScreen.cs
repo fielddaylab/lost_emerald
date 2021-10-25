@@ -44,7 +44,7 @@ namespace Shipwreck {
 		[SerializeField]
 		private EvidenceLabel m_labelPrefab = null;
 		[SerializeField]
-		private EvidenceChain m_chainPrefab = null;
+		private EvidenceChain[] m_chainObjects = null;
 
 		[SerializeField]
 		private Button m_buttonBack = null;
@@ -55,6 +55,10 @@ namespace Shipwreck {
 		private Color m_colorDefault;
 		[SerializeField]
 		private Color m_colorHover;
+
+		private StringHash32[] m_roots = new StringHash32[6] {
+			"Location", "Type", "Name", "Cargo", "Cause", "Artifact"
+		};
 
 
 		private Dictionary<StringHash32, EvidenceGroup> m_groups;
@@ -112,13 +116,12 @@ namespace Shipwreck {
 				}
 			}
 			for (int chainIndex = 0; chainIndex < GameMgr.State.CurrentLevel.ChainCount; chainIndex++) {
-				IEvidenceChainState chain = GameMgr.State.CurrentLevel.GetChain(chainIndex);
+				StringHash32 root = m_roots[chainIndex];
+				IEvidenceChainState chain = GameMgr.State.CurrentLevel.GetChain(root);
 				GameMgr.Events.Register<StringHash32>(GameEvents.ChainSolved, chain.HandleChainCorrect); // for @requires chains
-				EvidenceNode root = m_nodes[chain.Root()];
-				EvidenceChain obj = Instantiate(m_chainPrefab);
-				obj.transform.SetParent(root.RectTransform);
-				obj.transform.position = root.RectTransform.position;
-				obj.Setup(GameDb.GetNodeLocalizationKey(root.NodeID), m_layers, 20f + 40f * (chainIndex % 2 == 0 ? 0 : 1f));
+				
+				EvidenceChain obj = m_chainObjects[chainIndex];
+				obj.Setup(m_layers);
 
 				bool addDangler = chain.Depth < obj.PinCount && (chain.StickyInfo == null || (chain.StickyInfo.Response == StickyInfo.ResponseType.Hint && !chain.StickyInfo.NoDangler));
 				obj.SetChainDepth(chain.Depth - 1 + (addDangler ? 1 : 0));
@@ -130,11 +133,11 @@ namespace Shipwreck {
 
 				for (int pinIndex = 0; pinIndex < obj.PinCount; pinIndex++) {
 					EvidencePin pin = obj.GetPin(pinIndex);
-					if (!m_pinsByRoot.ContainsKey(root.NodeID)) {
-						m_pinsByRoot.Add(root.NodeID, new List<EvidencePin>());
+					if (!m_pinsByRoot.ContainsKey(root)) {
+						m_pinsByRoot.Add(root, new List<EvidencePin>());
 					}
-					m_pinsByRoot[root.NodeID].Add(pin);
-					m_rootsByPin.Add(pin, root.NodeID);
+					m_pinsByRoot[root].Add(pin);
+					m_rootsByPin.Add(pin, root);
 					EvidenceNode node;
 
 					if (pinIndex == 0) { // this is a root pin
@@ -190,10 +193,6 @@ namespace Shipwreck {
 			foreach (EvidencePin pin in m_rootsByPin.Keys) {
 				pin.OnPointerDown -= HandlePinPressed;
 				pin.OnPointerUp -= HandlePinReleased;
-				Destroy(pin.gameObject);
-			}
-			foreach (EvidenceChain chain in m_chains.Values) {
-				Destroy(chain.gameObject);
 			}
 			for (int chainIndex = 0; chainIndex < GameMgr.State.CurrentLevel.ChainCount; chainIndex++) {
 				IEvidenceChainState chain = GameMgr.State.CurrentLevel.GetChain(chainIndex);

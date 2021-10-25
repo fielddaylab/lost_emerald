@@ -51,8 +51,7 @@
 	{@you}  What if it WAS his fault?
 	        From your stories, it sounds like Grandpa could be pretty reckless. 
 	{@dad}  Sure, he liked a little excitement. But he wasn't stupid. 
-		Something's off in that report. I'm going to find out what. 
-	$call UnlockEvidence(3,LV1-Root)
+		Something's off in that report. I'm going to find out what.
 	$call UnlockEvidence(3,LV3-Card-Types)
 	$call UnlockEvidence(3,LV3-Transcript-Dad)
 	$call UnlockContact(cami)

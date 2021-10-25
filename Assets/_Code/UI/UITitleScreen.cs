@@ -95,7 +95,6 @@ namespace Shipwreck {
 
 		private void UnlockLevel1() {
 			GameMgr.UnlockLevel(1);
-			GameMgr.UnlockEvidence(1, "LV1-Root");
 			GameMgr.UnlockEvidence(1, "LV1-Transcript-Lou");
 			GameMgr.UnlockEvidence(1, "LV1-Photo-Above");
 			GameMgr.UnlockEvidence(1, "LV1-Photo-Name");
@@ -149,7 +148,6 @@ namespace Shipwreck {
 			GameMgr.RecordNodeVisited("level04.level2-starter", "dad");
 			GameMgr.RecordNodeVisited("level04.level2-meet-reya", "reya");
 			GameMgr.UnlockLevel(2);
-			GameMgr.UnlockEvidence(2, "LV1-Root");
 			GameMgr.UnlockEvidence(2, "LV2-Transcript-Reya");
 			GameMgr.UnlockEvidence(2, "LV2-Card-Types");
 
@@ -199,7 +197,6 @@ namespace Shipwreck {
 			UnlockLevel3();
 			GameMgr.SetChain(2, "Location", "location-coordinates");
 
-			GameMgr.UnlockEvidence(3, "LV1-Root");
 			GameMgr.UnlockEvidence(3, "LV3-Transcript-Dad");
 
 			GameMgr.UnlockEvidence(3, "LV3-Photo-Above");

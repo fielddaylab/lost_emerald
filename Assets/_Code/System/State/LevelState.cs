@@ -91,7 +91,17 @@ namespace Shipwreck {
 
 			public LevelState() {
 				m_evidence = new List<EvidenceGroupState>();
-				m_chains = new List<EvidenceChainState>();
+				m_chains = new List<EvidenceChainState>() {
+					new EvidenceChainState("Location"),
+					new EvidenceChainState("Type"),
+					new EvidenceChainState("Name"),
+					new EvidenceChainState("Cargo"),
+					new EvidenceChainState("Cause"),
+					new EvidenceChainState("Artifact")
+				};
+				foreach (EvidenceChainState chain in m_chains) {
+					chain.SetRootEvaluator(IsChainComplete);
+				}
 			}
 
 			public void AssignLevelData(LevelData data) {
@@ -128,11 +138,6 @@ namespace Shipwreck {
 				} else {
 					// todo: determine position
 					m_evidence.Add(new EvidenceGroupState(group.GroupID, group.Position));
-					foreach (StringHash32 root in group.RootNodes) {
-						var chain = new EvidenceChainState(root);
-						chain.SetRootEvaluator(IsChainComplete);
-						m_chains.Add(chain);
-					}
 					return true;
 				}
 			}

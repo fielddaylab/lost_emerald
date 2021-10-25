@@ -104,7 +104,6 @@ namespace Shipwreck {
 				};
 				for (int index = 0; index < m_levelStates.Length; index++) {
 					m_levelStates[index].AssignLevelData(GameDb.GetLevelData(index));
-					m_levelStates[index].UnlockEvidence(GameDb.GetEvidenceData(string.Format("LV1-Root")));
 				}
 				m_shipOutStates = new ShipOutState[4] {
 					new ShipOutState(),
