@@ -5,7 +5,7 @@ on:
       versionInput:
         description: 'Unity Version'     
         required: true
-        default: '2019.4.12f1'
+        default: '2019.4.26f1'
 jobs:
   activation:
     name: Request manual activation file ??
