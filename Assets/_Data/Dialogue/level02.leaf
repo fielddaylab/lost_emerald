@@ -170,8 +170,7 @@
 :: reya-safe
 @contact reya, phone-call
 @background reya-boat
-@trigger OnChainSolved
-@when IsChainComplete(Name), IsChainComplete(Type), IsChainComplete(Cause), IsChainComplete(Artifact), IsChainComplete(Cargo)
+@trigger OnBoardComplete
 @once
 
 	$call TriggerConvoMusic(reya_convo)
