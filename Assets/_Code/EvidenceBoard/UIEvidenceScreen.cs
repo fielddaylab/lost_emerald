@@ -74,20 +74,17 @@ namespace Shipwreck {
 		private int m_selectedPin = -1;
 		private bool m_dragging;
 		private Vector2 m_pressPosition;
-		private Vector2 m_homePos;
 		private EvidenceNode m_hoverNode;
 
 		//private List<RaycastResult> m_raycastResults;
 
 		private void Awake() {
 			m_layers = new Layers(m_nodeBackGroup, m_lineGroup, m_nodeFrontGroup, m_labelGroup, m_pinGroup);
-			//m_raycaster = GetComponentInParent<GraphicRaycaster>();
 			m_groups = new Dictionary<StringHash32, EvidenceGroup>();
 			m_nodes = new Dictionary<StringHash32, EvidenceNode>();
 			m_chains = new Dictionary<StringHash32, EvidenceChain>();
 			m_rootsByPin = new Dictionary<EvidencePin, StringHash32>();
 			m_pinsByRoot = new Dictionary<StringHash32, List<EvidencePin>>();
-			//m_raycastResults = new List<RaycastResult>();
 		}
 
 		protected override void OnShowStart() {
@@ -168,8 +165,7 @@ namespace Shipwreck {
 				
 				if (pinnedNodes.Count == chain.Depth - 1) {
 					foreach (EvidenceNode node in pinnedNodes) {
-						node.SetColor(GameDb.GetPinColor(ChainStatus.Complete));
-						node.SetCurrStatus(ChainStatus.Complete);
+						node.SetStatus(ChainStatus.Complete);
 					}
 				}
 				RefreshChainState(chain.StickyInfo, obj, null);
@@ -233,21 +229,21 @@ namespace Shipwreck {
 		private void Update() {
 			if (Selected != null) {
 				Selected.SetPosition(InputMgr.Position);
-				if (!m_dragging) {
-					m_dragging = Vector2.Distance(m_pressPosition, InputMgr.Position) > 4f;
-				}
-				else {
+				if (m_dragging) {
 					EvidenceNode result;
 					GraphicsRaycasterMgr.instance.RaycastForNode(InputMgr.Position, out result);
 					if (result != m_hoverNode) {
-						if (m_hoverNode != null) {
-							m_hoverNode.SetColor(GameDb.GetPinColor(m_hoverNode.GetCurrStatus()));
+						if (m_hoverNode != null && !m_hoverNode.IsPinned) {
+							m_hoverNode.SetHover(false, m_colorHover);
 						}
 						m_hoverNode = result;
-						if (m_hoverNode != null) {
-							m_hoverNode.SetColor(m_colorHover);
+						if (m_hoverNode != null && !m_hoverNode.IsPinned) {
+							m_hoverNode = result;
+							m_hoverNode.SetHover(true, m_colorHover);
 						}
 					}
+				} else {
+					m_dragging = Vector2.Distance(m_pressPosition, InputMgr.Position) > 4f;
 				}
 			}
 		}
@@ -258,7 +254,6 @@ namespace Shipwreck {
 			else if (Selected == null && !GameMgr.State.CurrentLevel.GetChain(m_rootsByPin[pin]).IsCorrect) {
 				m_selectedRoot = m_rootsByPin[pin];
 				m_selectedPin = m_pinsByRoot[m_selectedRoot].IndexOf(pin);
-				m_homePos = Selected.RectTransform.position;
 				m_pressPosition = InputMgr.Position;
 				Selected.RectTransform.SetAsLastSibling();
 				Lift();
@@ -312,37 +307,32 @@ namespace Shipwreck {
 			EvidenceChain chainObj = m_chains[m_selectedRoot];
 			bool alreadyPinned = false;
 
-			if (GraphicsRaycasterMgr.instance.RaycastForNode(InputMgr.Position, out EvidenceNode node)) {
-				alreadyPinned = node.Pinned;
+			if (m_hoverNode != null) {
+				alreadyPinned = m_hoverNode.IsPinned;
 				// check that evidence node does not already have a pin on it
 				if (alreadyPinned) {
 					SendSelectionHome();
-				}
-				else {
-					Selected.SetPosition(WorldToScreenPoint(node.PinPosition));
+				} else {
+					Selected.SetPosition(WorldToScreenPoint(m_hoverNode.PinPosition));
 					if (!Selected.IsRoot) {
-						Selected.SetHomePosition(WorldToScreenPoint(node.SubPinPosition));
+						Selected.SetHomePosition(WorldToScreenPoint(m_hoverNode.SubPinPosition));
 					}
 					if (!GameMgr.State.HasTutorialPinDisplayed() && GameMgr.State.CurrentLevel.IsLocationRoot(m_selectedRoot)) {
 						m_nodes["location-coordinates"].SetPulsing(false); // gross
 					}
-					chainState.Drop(node.NodeID);
-					node.SetPinned(true);
+					chainState.Drop(m_hoverNode.NodeID);
+					m_hoverNode.SetPinned(true);
 				}
-			}
-			else {
+				m_hoverNode.SetHover(false, m_colorHover);
+			} else {
 				// if we didn't find a node, we need to return the pin home
 				SendSelectionHome();
 			}
-			if (m_hoverNode != null) {
-				m_hoverNode.SetColor(GameDb.GetPinColor(m_hoverNode.GetCurrStatus()));
-			}
-
 			if (!alreadyPinned) {
-				RefreshChainState(chainState.StickyInfo, chainObj, node);
+				RefreshChainState(chainState.StickyInfo, chainObj, m_hoverNode);
 				RefreshAllChains();
 			}
-
+			m_hoverNode = null;
 			m_selectedPin = -1;
 			m_dragging = false;
 		}

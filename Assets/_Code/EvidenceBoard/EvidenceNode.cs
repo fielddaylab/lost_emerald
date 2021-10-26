@@ -49,7 +49,7 @@ namespace Shipwreck {
 				}
 			}
 		}
-		public bool Pinned
+		public bool IsPinned
 		{
 			get { return m_pinned; }
 		}
@@ -64,9 +64,8 @@ namespace Shipwreck {
 		private RectTransform m_subPinPosition = null;
 		[SerializeField]
 		private Image m_image = null;
-		[SerializeField]
-		private bool m_pinned = false; // whether a pin is currently dropped on this node
 
+		private bool m_pinned = false; // whether a pin is currently dropped on this node
 		private RectTransform m_rectTransform;
 		private Routine m_colorRoutine;
 		private Routine m_pulseRoutine;
@@ -79,19 +78,25 @@ namespace Shipwreck {
 			}
 		}
 
-		public void SetColor(Color color) {
+		private IEnumerator ColorTo(Color color) {
+			yield return m_image.ColorTo(color, 0.1f).Ease(Curve.QuadOut);
+		}
+
+		public void SetStatus(ChainStatus status) {
+			m_currStatus = status;
+			Color color = GameDb.GetPinColor(status);
 			m_cachedColor = color;
 			if (!m_pulseRoutine) {
 				m_colorRoutine.Replace(this, ColorTo(color));
 			}
 		}
 
-		private IEnumerator ColorTo(Color color) {
-			yield return m_image.ColorTo(color, 0.1f).Ease(Curve.QuadOut);
-		}
-
-		public void SetCurrStatus(ChainStatus status) {
-			m_currStatus = status;
+		public void SetHover(bool isHovering, Color color) {
+			if (isHovering && !m_pulseRoutine) {
+				m_colorRoutine.Replace(this, ColorTo(color));
+			} else {
+				m_colorRoutine.Replace(this, ColorTo(m_cachedColor));
+			}
 		}
 
 		public ChainStatus GetCurrStatus() {
