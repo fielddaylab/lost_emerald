@@ -25,7 +25,9 @@ namespace Shipwreck {
 #endif
 
 		public static void Play() {
+			AudioSrcMgr.instance.StashAudio();
 			AudioSrcMgr.instance.StopAudio();
+			AudioSrcMgr.instance.StopAmbiance();
 			// temporary hack until movie formats are consistent
 			if (GameMgr.State.CurrentLevel.Index == 0) {
 				I.m_videoPlayer.url = string.Format(

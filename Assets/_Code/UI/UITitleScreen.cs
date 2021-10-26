@@ -113,15 +113,16 @@ namespace Shipwreck {
 
 			GameMgr.SetLevelIndex(0);
 			GameMgr.SetChain(0, "Location", "location-coordinates");
+			GameMgr.SetChain(0, "Type", "card-canaller", "photo-above", "type-canaller");
+			GameMgr.SetChain(0, "Name", "photo-name", "name-loretta");
+			GameMgr.SetChain(0, "Cause", "cause-sandbar");
+			GameMgr.SetChain(0, "Cargo", "cargo-cargo", "cargo-corn");
 		}
 		private void UnlockLevel2() {
 			UnlockLevel1();
 
 			GameMgr.SetLevelIndex(0);
-			GameMgr.SetChain(0, "Type", "card-canaller", "photo-above", "type-canaller");
-			GameMgr.SetChain(0, "Name", "photo-name", "name-loretta");
-			GameMgr.SetChain(0, "Cause", "cause-sandbar");
-			GameMgr.SetChain(0, "Cargo", "cargo-cargo", "cargo-corn");
+
 			GameMgr.SetChain(0, "Artifact", "photo-artifact", "artifact-trunk");
 
 			GameMgr.State.SetTutorialBuoyDropped(true);
@@ -236,7 +237,8 @@ namespace Shipwreck {
 
 			GameMgr.SetLevelIndex(3);
 
-			GameMgr.UnlockEvidence(4, "LV4-Photo-Cargo"); // hack until cargo is added to the dive scene
+			// GameMgr.UnlockEvidence(4, "LV4-Photo-Cargo"); // hack until cargo is added to the dive scene
+			GameMgr.UnlockEvidence(4, "LV4-Ship-Chart"); // hack until cargo is added to the dive scene
 		}
 	}
 

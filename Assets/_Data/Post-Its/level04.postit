@@ -16,7 +16,7 @@
 
 :: type-correct
 @root Type
-@correct photo-above
+@correct photo-above, ship-chart-type
 
 
 // -----------------------------------------------------------
@@ -25,7 +25,7 @@
 
 :: cargo-correct
 @root Cargo
-@correct photo-cargo
+@correct ship-chart-cargo
 
 // -----------------------------------------------------------
 //  Cause of Wreck
@@ -33,7 +33,7 @@
 
 :: cause-correct
 @root Cause
-@correct survivor-waves
+@correct photo-above, survivor-waves //, mom-brittle
 
 // -----------------------------------------------------------
 //	Name
@@ -41,7 +41,7 @@
 
 :: name-correct
 @root Name
-@correct photo-name
+@correct ship-chart-name, photo-name
 
 // -----------------------------------------------------------
 //  Artifact
@@ -49,4 +49,4 @@
 
 :: artifact-correct
 @root Artifact
-@correct photo-locket
+@correct letter-locket, photo-locket
