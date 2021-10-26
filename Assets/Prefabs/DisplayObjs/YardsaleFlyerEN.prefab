@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5568965332132005757}
   - component: {fileID: 2145122393105791801}
   m_Layer: 5
-  m_Name: Plea
+  m_Name: Preamble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,12 +30,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2607425991792858908}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -75.2}
-  m_SizeDelta: {x: -54, y: 25.847641}
+  m_AnchoredPosition: {x: 5.744095, y: -33.770996}
+  m_SizeDelta: {x: -42.51172, y: 25.847641}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5568965332132005757
 CanvasRenderer:
@@ -64,9 +64,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Help fund my shipwreck hunting!
-
-'
+  m_text: Dan and Reya Griffin present
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6b7dadc931b3dce478dc8a2799591b4a, type: 2}
   m_sharedMaterial: {fileID: 3901881757509735431, guid: 6b7dadc931b3dce478dc8a2799591b4a,
@@ -101,7 +99,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 8
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -170,8 +168,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -137.3}
-  m_SizeDelta: {x: -54, y: 67.50413}
+  m_AnchoredPosition: {x: 5.744, y: -131.9}
+  m_SizeDelta: {x: -42.511826, y: 67.50413}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8153835668190618506
 CanvasRenderer:
@@ -200,7 +198,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: " Treasure! Real History!! \nGreat Prices!\n"
+  m_text: 'Artifacts! Real History!
+
+    Great Prices!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6b7dadc931b3dce478dc8a2799591b4a, type: 2}
   m_sharedMaterial: {fileID: 3901881757509735431, guid: 6b7dadc931b3dce478dc8a2799591b4a,
@@ -300,12 +300,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2607425991792858908}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -35.74}
-  m_SizeDelta: {x: -54, y: 29.785164}
+  m_AnchoredPosition: {x: 5.744095, y: -72.4}
+  m_SizeDelta: {x: -42.511734, y: 29.785164}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2848979457613180315
 CanvasRenderer:
@@ -334,7 +334,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'World''s Best Yard Sale
+  m_text: 'The World''s Best Yard Sale
 
 '
   m_isRightToLeft: 0
@@ -435,16 +435,16 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 11843313607252726}
   - {fileID: 6841227023670187917}
+  - {fileID: 11843313607252726}
   - {fileID: 8590295122373144970}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000015259, y: 127.5}
-  m_SizeDelta: {x: 253.64423, y: 319.0807}
+  m_AnchoredPosition: {x: 12.16, y: 127.5}
+  m_SizeDelta: {x: 277.9724, y: 319.0807}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6520534053913496958
 CanvasRenderer:

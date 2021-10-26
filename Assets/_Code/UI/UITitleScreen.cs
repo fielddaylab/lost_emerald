@@ -238,7 +238,7 @@ namespace Shipwreck {
 			GameMgr.SetLevelIndex(3);
 
 			// GameMgr.UnlockEvidence(4, "LV4-Photo-Cargo"); // hack until cargo is added to the dive scene
-			GameMgr.UnlockEvidence(4, "LV4-Ship-Chart"); // hack until cargo is added to the dive scene
+			GameMgr.UnlockEvidence(4, "LV4-Ship-Chart");
 		}
 	}
 
