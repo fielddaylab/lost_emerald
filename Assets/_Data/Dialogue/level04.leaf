@@ -89,8 +89,6 @@
 		Let's get out there!!
 	{@you}  I still need to narrow down the location, Reya.
 		I'll let you know what I find. 
-		
-	$call UnlockEvidence(4, "LV1-Root")
 	$call EndConvoMusic()
 
 
@@ -98,7 +96,7 @@
 @contact amy, phone-call
 //@background
 @trigger OnDialogClosed
-@when Seen(level03.dad-steamer)
+@when Seen(level04.reya-steel)
 @once
 
 	$call TriggerConvoMusic(amy_convo)
@@ -121,6 +119,7 @@
 	{@amy}	Sure thing.
 		Good luck, Jules. I hope you find it. 
 	$call UnlockEvidence(4, "LV4-Location-Coordinates")
+	$call UnlockEvidence(4, "LV4-Ship-Chart")
 	$call DiscoverLocation(4)
 	$call EndConvoMusic()
 
@@ -128,8 +127,8 @@
 
 :: reya-rushing
 @contact reya, text-message
-@trigger OnDialogClosed
-@when HasEvidence(location)
+@trigger OnChainSolved
+@when IsChainComplete(Location)
 //@background
 @once
 
@@ -205,6 +204,29 @@
 	{@reya} Ooh, maybe it was Grandpa's. Grab it, Jules!
 	{@you}  Reya, I told you, it's illegal to--
 	{@reya} Okay, okay. Forget I asked. 
+	
+	
+// generic dive prompts
+:: dive-already-taken
+@contact you, radio
+@trigger OnPhotoAlreadyTaken
+	{@you}	I already got a photo of this.
+
+:: dive-zoom-in
+@contact you, radio
+@trigger OnZoomIn
+	{@you}	I should zoom in for a better shot!
+
+:: dive-zoom-out
+@contact you, radio
+@trigger OnZoomOut
+	{@you}	Better zoom out a little. 
+
+:: dive-nothing-of-interest
+@contact you, radio
+@trigger OnNothingOfInterest
+	{@you}	Hmm. Nothing useful here.
+
 
 // Back at your office. Conversation with Amy.
 :: amy-strange
@@ -224,7 +246,7 @@
 	{@amy}	Well, I think I can help. 
 		Cami sent me the contact info of one of the survivors.
 	{@you}  What?? 
-	{amy}   His name is Edmund Jones. He said he'd be willing to talk to you.
+	{@amy}   His name is Edmund Jones. He said he'd be willing to talk to you.
 	{@you}	Thanks, Amy!
 	$call UnlockContact(ed)
 	$call EndConvoMusic()
@@ -279,7 +301,7 @@
 :: mom-weak
 @contact mom, text-message
 @trigger OnChainSolved
-@when IsChainComplete(Cause)
+@when IsChainComplete(Name)
 @once
 
 	{@mom}	Hey Jules. 

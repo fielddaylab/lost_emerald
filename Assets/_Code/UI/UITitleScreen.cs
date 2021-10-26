@@ -22,6 +22,8 @@ namespace Shipwreck {
 		private Button m_level3_50Button = null;
 		[SerializeField]
 		private Button m_level4Button = null;
+		[SerializeField]
+		private Button m_level4_50Button = null;
 
 		private void OnEnable() {
 			m_newGameButton.onClick.AddListener(HandleNewGame);
@@ -31,6 +33,7 @@ namespace Shipwreck {
 			m_level3Button.onClick.AddListener(HandleUnlock3);
 			m_level3_50Button.onClick.AddListener(HandleUnlock3_50);
 			m_level4Button.onClick.AddListener(HandleUnlock4);
+			m_level4_50Button.onClick.AddListener(HandleUnlock4_50);
 		}
 		private void OnDisable() {
 			m_newGameButton.onClick.RemoveListener(HandleNewGame);
@@ -91,7 +94,11 @@ namespace Shipwreck {
 			UnlockLevel4();
 			HandleNewGame();
 		}
-
+		private void HandleUnlock4_50() {
+			AudioSrcMgr.instance.PlayOneShot("click_unlock");
+			UnlockLevel4_50();
+			HandleNewGame();
+		}
 
 		private void UnlockLevel1() {
 			GameMgr.UnlockLevel(1);
@@ -236,9 +243,29 @@ namespace Shipwreck {
 			GameMgr.RecordNodeVisited("level03.dad-steamer", "dad");
 
 			GameMgr.SetLevelIndex(3);
+		}
 
-			// GameMgr.UnlockEvidence(4, "LV4-Photo-Cargo"); // hack until cargo is added to the dive scene
+		private void UnlockLevel4_50() {
+			UnlockLevel4();
+			GameMgr.State.UnlockDive(3);
+
+			GameMgr.RecordNodeVisited("level04.reya-steel", "reya");
+			GameMgr.RecordNodeVisited("level04.amy-lead", "amy");
+			GameMgr.RecordNodeVisited("level04.reya-rushing", "reya");
+			GameMgr.RecordNodeVisited("level04.reya-dad-sonar", "reya");
+			GameMgr.RecordNodeVisited("level04.reya-mow", "reya");
+			GameMgr.RecordNodeVisited("level04.amy-strange", "amy");
+			GameMgr.RecordNodeVisited("level04.ed-survivor", "ed");
+			GameMgr.RecordNodeVisited("level04.reya-mow", "reya");
+
+			GameMgr.UnlockEvidence(4, "LV4-Location-Coordinates");
 			GameMgr.UnlockEvidence(4, "LV4-Ship-Chart");
+			GameMgr.UnlockEvidence(4, "LV4-Photo-Above");
+			GameMgr.UnlockEvidence(4, "LV4-Photo-Name");
+			GameMgr.UnlockEvidence(4, "LV4-Photo-Locket");
+			GameMgr.UnlockEvidence(4, "LV4-Transcript-Survivor");
+
+			GameMgr.DiscoverLocation(4);
 		}
 	}
 

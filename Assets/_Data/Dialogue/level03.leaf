@@ -38,7 +38,6 @@
 		That's why I need to find the Emerald--to clear your Grandpa's name!
 	{@you}  Dad, what if it WAS his fault? From your stories, it sounds like Grandpa could be pretty reckless--
 	{@dad}  Oh, look at that! Sonar's finally working! Gotta go, Jules. Wish me luck!    
-	$call UnlockEvidence(3,LV1-Root)
 	$call UnlockEvidence(3,LV3-Card-Types)
 	$call UnlockEvidence(3,LV3-Transcript-Dad)
 	$call UnlockContact(cami)
@@ -117,6 +116,28 @@
 @once
 
 	{@you}  Got the cargo! 
+	
+
+// generic dive prompts
+:: dive-already-taken
+@contact you, radio
+@trigger OnPhotoAlreadyTaken
+	{@you}	I already got a photo of this.
+
+:: dive-zoom-in
+@contact you, radio
+@trigger OnZoomIn
+	{@you}	I should zoom in for a better shot!
+
+:: dive-zoom-out
+@contact you, radio
+@trigger OnZoomOut
+	{@you}	Better zoom out a little. 
+
+:: dive-nothing-of-interest
+@contact you, radio
+@trigger OnNothingOfInterest
+	{@you}	Hmm. Nothing useful here.
 
 
 :: cami-regroup
