@@ -140,7 +140,7 @@ namespace Shipwreck {
 						UIShipOutScreen.ActionCode.EnableSonar
 					};
 					UIShipOutScreen.instance.ShowMessage(
-						"Time to use my sonar to see if I can find the wreck Lou shared",
+						"Time to use my sonar to find the shipwreck!",
 						"Continue",
 						codes
 						);

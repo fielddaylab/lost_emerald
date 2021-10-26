@@ -56,8 +56,17 @@ namespace Shipwreck
 		{
 			m_ambianceSrc.Stop();
 		}
+
+		public void ClearAudio() {
+			m_currData = null;
+			m_ambianceSrc.clip = null;
+		}
+
 		public void ResumeAudio()
 		{
+			if (m_ambianceSrc.clip == null) {
+				return;
+			}
 			m_ambianceSrc.Play();
 		}
 
@@ -71,7 +80,7 @@ namespace Shipwreck
 		public void ResumeStashedAudio()
 		{
 			if (m_stashedAudio.Data == null) {
-				m_ambianceSrc.Stop();
+				ClearAudio();
 				return;
 			}
 

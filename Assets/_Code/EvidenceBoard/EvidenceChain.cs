@@ -36,7 +36,6 @@ namespace Shipwreck {
 		private Vector2 m_rootPos;
 		private Routine m_lineColorRoutine;
 		private Vector2[] m_points;
-		private float m_labelDistance;
 		private ChainStatus m_status;
 
 		public EvidencePin GetPin(int index) {
@@ -46,26 +45,23 @@ namespace Shipwreck {
 			return m_evidencePins[index];
 		}
 
-		public void Setup(LocalizationKey label, UIEvidenceScreen.Layers layers, float labelDistance) {
-			m_rootLabel.Key = label;
+		public void Setup(UIEvidenceScreen.Layers layers) {
 			int num = 0;
 			foreach (EvidencePin pin in m_evidencePins) {
 				if (num++ > 0) {
 					pin.gameObject.SetActive(false); // hack
 				}	
 				pin.RectTransform.SetParent(layers.Pin);
-				pin.RectTransform.localPosition += Vector3.down * 100f;
+				Vector2 screenPoint = RectTransformUtility.WorldToScreenPoint(Camera.main, m_rootLabel.RectTransform.position + Vector3.down * 100f);
+				pin.SetPosition(screenPoint);
+				pin.SetHomePosition(screenPoint);
 				pin.RectTransform.localScale = Vector3.one;
-				pin.OnPositionSet += HandlePinPositionChanged;
 			}
 			m_stickyNote.transform.SetParent(layers.Label);
 			m_lineRenderer.transform.SetParent(layers.Line);
-			m_rootLabel.transform.SetParent(layers.Label);
 			m_rootPos = Vector2.zero;
-			m_labelDistance = labelDistance;
 			m_stickyNote.transform.localScale = Vector3.one;
 			m_lineRenderer.transform.localScale = Vector3.one;
-			m_rootLabel.transform.localScale = Vector3.one;
 
 			SetChainDepth(1);
 		}
@@ -75,14 +71,13 @@ namespace Shipwreck {
 			}
 			m_stickyNote.transform.SetAsLastSibling();
 			m_lineRenderer.transform.SetAsLastSibling();
-			m_rootLabel.transform.SetAsLastSibling();
 		}
+		
 
 		public void SetChainDepth(int depth) {
 			m_points = new Vector2[depth + 1];
 			m_points[0] = m_rootPos;
 			m_lineRenderer.Points = m_points;
-			SetLabelDistance();
 			int index = 0;
 			while (index < depth) {
 				m_evidencePins[index].gameObject.SetActive(true);
@@ -122,9 +117,8 @@ namespace Shipwreck {
 				if (pin.gameObject.activeSelf) {
 					pin.SetColor(GameDb.GetPinColor(status));
 					if (GraphicsRaycasterMgr.instance.RaycastForNode(pin.transform.position, out EvidenceNode nodeUnderPin)) {
-						nodeUnderPin.SetColor(GameDb.GetPinColor(status));
-						nodeUnderPin.SetCurrStatus(status);
-						nodeUnderPin.SetPinned(status == ChainStatus.Complete);
+						nodeUnderPin.SetStatus(status);
+						//nodeUnderPin.SetPinned(status == ChainStatus.Complete);
 					}
 				}
 			}
@@ -154,6 +148,17 @@ namespace Shipwreck {
 			m_stickyNote.gameObject.SetActive(false);
 		}
 
+		private void OnEnable() {
+			foreach (EvidencePin pin in m_evidencePins) {
+				pin.OnPositionSet += HandlePinPositionChanged;
+			}
+		}
+		private void OnDisable() {
+			foreach (EvidencePin pin in m_evidencePins) {
+				pin.OnPositionSet -= HandlePinPositionChanged;
+			}
+		}
+
 
 		private void OnDestroy() {
 			Destroy(m_rootLabel.gameObject);
@@ -164,23 +169,12 @@ namespace Shipwreck {
 			}
 		}
 
-		private void SetLabelDistance() {
-			Vector2 segement1 =  m_points[1] - m_rootPos;
-			Vector2 basePos = RectTransformUtility.WorldToScreenPoint(Camera.main, m_lineRenderer.rectTransform.position);
-
-			Vector3 proposedPos = basePos + segement1.normalized * Mathf.Min(m_labelDistance, segement1.magnitude * 0.75f);
-
-			RectTransformUtility.ScreenPointToWorldPointInRectangle(
-				(RectTransform)m_rootLabel.transform, proposedPos, Camera.main, out Vector3 finalPos
-			);
-			((RectTransform)m_rootLabel.transform).position = finalPos;
-		}
-
 		private void HandlePinPositionChanged(EvidencePin pin) {
 			int index = Array.IndexOf(m_evidencePins, pin);
-			m_points[index + 1] = PinToLinePoint(pin);
-			m_lineRenderer.SetAllDirty();
-			SetLabelDistance();
+			if (m_points != null && m_points.Length > index + 1) {
+				m_points[index + 1] = PinToLinePoint(pin);
+				m_lineRenderer.SetAllDirty();
+			}
 		}
 
 		private void SetLineColor(Color color) {

@@ -118,6 +118,8 @@ namespace Shipwreck
 			UIMgr.Close<UIShipOutScreen>();
 			UIMgr.Open<UIOfficeScreen>();
 			AudioSrcMgr.instance.PlayAudio("office_music", true);
+			AudioSrcMgr.instance.StopAmbiance();
+			AudioSrcMgr.instance.ClearAmbiance();
 		}
 
 		/// <summary>
