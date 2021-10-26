@@ -154,7 +154,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '[COORDINATES]'
+  m_text: "47\xB005'19.4\"N 90\xB017'17.5\"W"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 91971dd9594b62643ad90120969cfb17, type: 2}
   m_sharedMaterial: {fileID: 3265771203794016092, guid: 91971dd9594b62643ad90120969cfb17,
@@ -496,8 +496,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<b>Amy:</b>Looks like a fisherman pulled up a broken piece of steel near
-    the Apostle Islands!\r"
+  m_text: <b>Amy:</b> Looks like a fisherman pulled up this broken piece of steel
+    near Outer Island.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 91971dd9594b62643ad90120969cfb17, type: 2}
   m_sharedMaterial: {fileID: 3265771203794016092, guid: 91971dd9594b62643ad90120969cfb17,
@@ -628,7 +628,6 @@ MonoBehaviour:
   m_pinPosition: {fileID: 0}
   m_subPinPosition: {fileID: 3871401532367141156}
   m_image: {fileID: 9159160981362641846}
-  m_pinned: 0
 --- !u!114 &3697016637505266411
 MonoBehaviour:
   m_ObjectHideFlags: 0

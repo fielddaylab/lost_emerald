@@ -117,9 +117,8 @@ namespace Shipwreck {
 				if (pin.gameObject.activeSelf) {
 					pin.SetColor(GameDb.GetPinColor(status));
 					if (GraphicsRaycasterMgr.instance.RaycastForNode(pin.transform.position, out EvidenceNode nodeUnderPin)) {
-						nodeUnderPin.SetColor(GameDb.GetPinColor(status));
-						nodeUnderPin.SetCurrStatus(status);
-						nodeUnderPin.SetPinned(status == ChainStatus.Complete);
+						nodeUnderPin.SetStatus(status);
+						//nodeUnderPin.SetPinned(status == ChainStatus.Complete);
 					}
 				}
 			}

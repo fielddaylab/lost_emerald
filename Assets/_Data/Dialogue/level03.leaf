@@ -7,51 +7,37 @@
 //  Level 3
 //-------------------------------------------
 
-:: mom-photos
-@contact mom, text-message
-// @background 
-@trigger OnEnterOffice
-@once
-
-    {@mom}	Hey Sweetie! The new family photos came in!
-			[FAMILY PHOTO]
-	{@you}	Wow. Why do I look so grumpy?
-	{@mom}	Awww, honey, you look great. 
-	{@you}	Hey Mom... why didn’t you tell me Grandpa got blamed for the shipwreck?
-	{@mom}	Your dad doesn’t like to talk about it.
-		He wants to prove that it wasn't your grandpa's fault. 
-	{@you}	But it was Grandpa’s fault!
-	{@mom}   We don't know that, Jules. 
-		Go easy on your dad, ok? This means a lot to him. 
-			
-
 :: dad-superior
 @contact dad, phone-call
 @background dad-boat
-@trigger OnDialogClosed
+@trigger OnEnterOffice
 @once
 
 	$call TriggerConvoMusic(dad_convo)
-	{@dad}	Hey, Jules! I've got a new shipwreck for ya.
-		One of my buddies pulled this up on his charter boat anchor.
-			{img broken-wheel}
+	{@dad}	Hey, Jules! I've got a new shipwreck for you to check out!
+		{img broken-wheel}
+		My buddy pulled this up in his nets on Lake Michigan.
 	{@you}	Looks like a broken piece of a paddlewheel! Must be from a sidewheel steamer.
-		I'll talk to my coworker, Cami. She's an expert on those ships. 
-		Did you get the location? 
-	{@dad}	Yep! 43°42'08.6"N 87°38'26.0"W
+		I'll talk to my colleague, Cami. She's an expert on those ships. 
+		Did you get the latitude and longitude? 
+	{@dad}	Yep! It's near Sheboygan.
+		Location: 43°42'08.6"N 87°38'26.0"W
 		{/img}
-	{@you}	That's near Sheboygan, right by you and Mom! Wanna meet me out there? 
-	{@dad}	No can do, kiddo. I’m out on Lake Superior.
-			Here, check out my map!
-			{img dad-map}
-			Your grandpa’s last planned route is marked in red.
-			All I need to do is keep searching! 
-	{@you}  Dad.... I'm worried about you. I know you're trying to clear Grandpa's name. 
-	{@dad}  Well, somebody needs to prove it wasn't his fault. 
-	{@you}  What if it WAS his fault?
-	        From your stories, it sounds like Grandpa could be pretty reckless. 
-	{@dad}  Sure, he liked a little excitement. But he wasn't stupid. 
-		Something's off in that report. I'm going to find out what.
+	{@you}	Thanks, Dad. How's the new sonar?
+	{@dad}   Uh... great! I think. 
+		I'm out on Lake Superior right now. Check out my map!
+		{img dad-map}
+		Your grandpa’s last scheduled route is marked in red.
+	{@you}   That's a huge area. It could take years to search.
+		{/img}
+	{@dad}   I know! Wanna come out and help me?
+		Jules?
+	{@you} 	Dad, I saw the investigation report.
+		Why didn't you tell me the shipwreck was Grandpa's fault?
+	{@dad}  Of course it wasn't his fault, Jules! They just blamed him.
+		That's why I need to find the Emerald--to clear your Grandpa's name!
+	{@you}  Dad, what if it WAS his fault? From your stories, it sounds like Grandpa could be pretty reckless--
+	{@dad}  Oh, look at that! Sonar's finally working! Gotta go, Jules. Wish me luck!    
 	$call UnlockEvidence(3,LV3-Card-Types)
 	$call UnlockEvidence(3,LV3-Transcript-Dad)
 	$call UnlockContact(cami)
@@ -67,19 +53,16 @@
 	
 	$call TriggerConvoMusic(cami_convo)
 	{@cami}  Hey Jules! You need some info on a sidewheel steamer? 
-	{@you}   Yep! Thanks for calling. 
+	{@you}   Yep! Thanks for calling, Cami. 
 		Ooh, who's that cute guy with you? 
-	{@cami}  This is Johnny, my technical diving student.
-		Who can hear everything you're saying. 
-	{@you}  Oh!! Uh... hi, Johnny, I'm Jules. But I guess Cami already said that, so, haha, yeah. 
-	{@cami}  Johnny: Hey.
-		So, your dad's friend found a sidewheel steamer?
-	{@you}   Yeah, out by Sheboygan. 
-	{@cami}  That could be the Paradise!
-		Here's an old ad from the 1850's: 
+	{@cami}  This is Johnny, my diving student. Who can currently hear everything you're saying.
+	{@you}   Oh!! Um, hi, Johnny! I'm Jules. But I guess Cami already said that, so...yeah. 
+	{@johnny}  Hey.
+	{@cami}  I heard you found a sidewheel steamer out near Sheboygan. 
+		Could be the Paradise! I've been looking for that ship for ages. 
 			{img ps_paradise_ad_sketch}
-		The ship was super fancy, but tickets were pretty cheap.
-		The Paradise was carrying a mix of rich passengers, immigrant workers, and other ordinary folks. 
+		The Paradise was super fancy, but tickets were pretty cheap.
+		She was carrying a mix of rich passengers, immigrant workers, and other folks traveling west. 
 		The manifest got lost, so nobody knows what cargo she was carrying. 
 			{/img}
 	{@you}	Wow. You know all about this ship!
@@ -133,9 +116,28 @@
 @once
 
 	{@you}  Got the cargo! 
-		
-			
+	
 
+// generic dive prompts
+:: dive-already-taken
+@contact you, radio
+@trigger OnPhotoAlreadyTaken
+	{@you}	I already got a photo of this.
+
+:: dive-zoom-in
+@contact you, radio
+@trigger OnZoomIn
+	{@you}	I should zoom in for a better shot!
+
+:: dive-zoom-out
+@contact you, radio
+@trigger OnZoomOut
+	{@you}	Better zoom out a little. 
+
+:: dive-nothing-of-interest
+@contact you, radio
+@trigger OnNothingOfInterest
+	{@you}	Hmm. Nothing useful here.
 
 
 :: cami-regroup
@@ -150,10 +152,10 @@
 	{@cami}  Wahoo! Nice work, Jules.
 		I'll send you the survivor accounts of the sinking. 
 	{@you}	Thanks!  
-		So... why's this ship so important to you, anyway? 
-	{@cami}  My best friend from when I was little had ancestors on the Paradise.
-		It's the reason I became a diver. 
-	{@you}   Wow. That's amazing!
+		So... why's this ship so important to you? 
+	{@cami}  When I was a kid, my best friend had ancestors on the Paradise.
+		It's the reason I decided to become a maritime archaeologist. 
+	{@you}   Wow. That's amazing.
 	{@cami}  Yeah. It'll mean a lot to tell her we finally found the ship. 
 		 Thanks to you and your dad!
 	{@you}    Oh! Uh... yeah, happy to help! 
