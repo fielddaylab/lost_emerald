@@ -254,6 +254,9 @@ namespace Shipwreck {
 			GameMgr.RecordNodeVisited("level04.reya-rushing", "reya");
 			GameMgr.RecordNodeVisited("level04.reya-dad-sonar", "reya");
 			GameMgr.RecordNodeVisited("level04.reya-mow", "reya");
+			GameMgr.RecordNodeVisited("level04.dive-start", "reya");
+			GameMgr.RecordNodeVisited("level04.dive-name", "reya");
+			GameMgr.RecordNodeVisited("level04.dive-locket", "reya");
 			GameMgr.RecordNodeVisited("level04.amy-strange", "amy");
 			GameMgr.RecordNodeVisited("level04.ed-survivor", "ed");
 			GameMgr.RecordNodeVisited("level04.reya-mow", "reya");

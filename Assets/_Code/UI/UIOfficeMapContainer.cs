@@ -33,7 +33,9 @@ namespace Shipwreck {
 					markerSprite = GameDb.GetMarkerSprite("marker-default");
 				}
 				else {
-					markerSprite = GameDb.GetMarkerSprite(GameMgr.State.GetLevel(index).MarkerUnknownSpriteID);
+					ILevelState state = GameMgr.State.GetLevel(index);
+					markerSprite = GameDb.GetMarkerSprite(state.MarkerUnknownSpriteID);
+					marker.transform.localPosition += new Vector3(state.MarkerUnknownSpriteOffset.x, state.MarkerUnknownSpriteOffset.y, 0f);
 				}
 				marker.SetSprite(markerSprite);
 				marker.SetColor(GameDb.GetMarkerColor(index));

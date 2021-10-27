@@ -14,6 +14,7 @@ namespace Shipwreck {
 		Vector2 BannerPos { get; }
 		bool IsLocationKnown { get; }
 		string MarkerUnknownSpriteID { get; }
+		Vector2 MarkerUnknownSpriteOffset { get; }
 		bool IsUnlocked { get; }
 		IEnumerable<IEvidenceGroupState> Evidence { get; }
 		int ChainCount { get; }
@@ -60,12 +61,17 @@ namespace Shipwreck {
 			public Vector2 MarkerPos {
 				get { return m_levelData.LevelMarkerPos; }
 			}
+
 			public Vector2 BannerPos {
 				get { return m_levelData.LevelBannerPos; }
 			}
-
+			
 			public string MarkerUnknownSpriteID {
 				get { return m_levelData.LevelMarkerUnknownSpriteID; }
+			}
+
+			public Vector2 MarkerUnknownSpriteOffset {
+				get { return m_levelData.LevelMarkerUnknownSpriteOffset; }
 			}
 
 			public IEnumerable<IEvidenceGroupState> Evidence {

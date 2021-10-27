@@ -299,7 +299,8 @@
 
 // Text from your Mom
 :: mom-weak
-@contact mom, text-message
+@contact mom, phone-call
+//@background
 @trigger OnChainSolved
 @when IsChainComplete(Name)
 @once
@@ -322,9 +323,8 @@
 	{@you}   Wow. That's amazing!
 	{@mom}   Maybe this will be enough to get some new policies in place and keep people safe. 
 	{@you}   Yeah. I hope so. 
-		
-		
 	$call UnlockEvidence(4, "LV4-Transcript-Mom")
+	
 
 //Evidence board: cause of wreck, cargo
 

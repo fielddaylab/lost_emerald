@@ -45,6 +45,9 @@ namespace Shipwreck {
 		public string LevelMarkerUnknownSpriteID {
 			get { return m_markerData.UnknownSpriteID; }
 		}
+		public Vector2 LevelMarkerUnknownSpriteOffset {
+			get { return m_markerData.UnknownSpriteOffset; }
+		}
 		public LocalizationKey CaseClosedName {
 			get { return m_caseClosedName; }
 		}
