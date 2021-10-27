@@ -37,7 +37,8 @@
 	{@dad}  Of course it wasn't his fault, Jules! They just blamed him.
 		That's why I need to find the Emerald--to clear your Grandpa's name!
 	{@you}  Dad, what if it WAS his fault? From your stories, it sounds like Grandpa could be pretty reckless--
-	{@dad}  Oh, look at that! Sonar's finally working! Gotta go, Jules. Wish me luck!    
+	{@dad}  Oh, look at that! Sonar's finally working! Gotta go, Jules. Wish me luck! 
+	$call UnlockLevel(3)	
 	$call UnlockEvidence(3,LV3-Card-Types)
 	$call UnlockEvidence(3,LV3-Transcript-Dad)
 	$call UnlockContact(cami)
@@ -185,4 +186,5 @@
 		A nearby ship saw the fire and came to help, but they couldn't save everyone. 
 	{@dad}	Oh boy, what a tragedy.
 	{@you}	Yeah. It must've been pretty scary... 
+	$call TriggerCutscene()
 	$call EndConvoMusic()
