@@ -1,9 +1,5 @@
 ﻿using BeauRoutine;
-using BeauUtil;
-using PotatoLocalization;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI.Extensions;
 
