@@ -406,6 +406,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6292901092089657538}
     m_Modifications:
+    - target: {fileID: 2150774659929574209, guid: ec43668cbf7137044baa93c28b3703dc,
+        type: 3}
+      propertyPath: m_Padding.m_Bottom
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2402929945699648077, guid: ec43668cbf7137044baa93c28b3703dc,
         type: 3}
       propertyPath: m_Pivot.x
@@ -511,6 +516,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6780931651958718263, guid: ec43668cbf7137044baa93c28b3703dc,
+        type: 3}
+      propertyPath: m_PreferredHeight
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 6952772132806601097, guid: ec43668cbf7137044baa93c28b3703dc,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -580,6 +590,38 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8361731981639209350, guid: ec43668cbf7137044baa93c28b3703dc,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 8361731981639209350, guid: ec43668cbf7137044baa93c28b3703dc,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 139414a2bfeee544ab93068e88c82be1,
+        type: 2}
+    - target: {fileID: 8361731981639209350, guid: ec43668cbf7137044baa93c28b3703dc,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 8361731981639209350, guid: ec43668cbf7137044baa93c28b3703dc,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -1977380664230201553, guid: 139414a2bfeee544ab93068e88c82be1,
+        type: 2}
+    - target: {fileID: 8361731981639209350, guid: ec43668cbf7137044baa93c28b3703dc,
+        type: 3}
+      propertyPath: m_paragraphSpacing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8361731981639209350, guid: ec43668cbf7137044baa93c28b3703dc,
+        type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 8192
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec43668cbf7137044baa93c28b3703dc, type: 3}

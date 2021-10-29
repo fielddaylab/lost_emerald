@@ -511,7 +511,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -23.12001}
-  m_SizeDelta: {x: 0, y: 1}
+  m_SizeDelta: {x: 34.888367, y: 1}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &910698274993571153
 CanvasRenderer:
@@ -584,8 +584,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -4.30011, y: 9.2014}
-  m_SizeDelta: {x: -94.10327, y: -8.705582}
+  m_AnchoredPosition: {x: 13.140015, y: 9.201401}
+  m_SizeDelta: {x: -59.224487, y: -8.705582}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2277318697636490844
 CanvasRenderer:
@@ -1189,7 +1189,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -4.909912, y: 24.52707}
+  m_AnchoredPosition: {x: -4.909912, y: 31.3}
   m_SizeDelta: {x: -126.1048, y: 25}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &2504350204743000160
@@ -1350,7 +1350,6 @@ MonoBehaviour:
   m_pinPosition: {fileID: 0}
   m_subPinPosition: {fileID: 8074199718783038622}
   m_image: {fileID: 4228680563944801804}
-  m_pinned: 0
 --- !u!114 &8573406700245069649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1707,8 +1706,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 169.62, y: -83.2}
-  m_SizeDelta: {x: 49.458908, y: 21.028809}
+  m_AnchoredPosition: {x: 186.94, y: -83.2}
+  m_SizeDelta: {x: 84.09923, y: 21.028809}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8082735454927228769
 MonoBehaviour:
@@ -1731,7 +1730,6 @@ MonoBehaviour:
   m_pinPosition: {fileID: 0}
   m_subPinPosition: {fileID: 2697880707984927287}
   m_image: {fileID: 223832698781268084}
-  m_pinned: 0
 --- !u!114 &882948027064814812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1961,7 +1959,6 @@ MonoBehaviour:
   m_pinPosition: {fileID: 0}
   m_subPinPosition: {fileID: 691290231009114786}
   m_image: {fileID: 7983033845941926093}
-  m_pinned: 0
 --- !u!114 &8573370225798839348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2054,7 +2051,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 1}
+  m_SizeDelta: {x: 34.888336, y: 1}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &8994012044015667101
 CanvasRenderer:
@@ -2493,7 +2490,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ???
+  m_text: Riding Horses
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 91971dd9594b62643ad90120969cfb17, type: 2}
   m_sharedMaterial: {fileID: 3265771203794016092, guid: 91971dd9594b62643ad90120969cfb17,
@@ -2557,7 +2554,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 25.445633}
+  m_margin: {x: -12.99408, y: 0, z: 0, w: 25.445633}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

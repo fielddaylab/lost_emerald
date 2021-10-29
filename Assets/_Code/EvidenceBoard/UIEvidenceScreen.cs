@@ -44,7 +44,7 @@ namespace Shipwreck {
 		[SerializeField]
 		private EvidenceLabel m_labelPrefab = null;
 		[SerializeField]
-		private EvidenceChain m_chainPrefab = null;
+		private EvidenceChain[] m_chainObjects = null;
 
 		[SerializeField]
 		private Button m_buttonBack = null;
@@ -55,6 +55,10 @@ namespace Shipwreck {
 		private Color m_colorDefault;
 		[SerializeField]
 		private Color m_colorHover;
+
+		private StringHash32[] m_roots = new StringHash32[6] {
+			"Location", "Type", "Name", "Cargo", "Cause", "Artifact"
+		};
 
 
 		private Dictionary<StringHash32, EvidenceGroup> m_groups;
@@ -70,20 +74,17 @@ namespace Shipwreck {
 		private int m_selectedPin = -1;
 		private bool m_dragging;
 		private Vector2 m_pressPosition;
-		private Vector2 m_homePos;
 		private EvidenceNode m_hoverNode;
 
 		//private List<RaycastResult> m_raycastResults;
 
 		private void Awake() {
 			m_layers = new Layers(m_nodeBackGroup, m_lineGroup, m_nodeFrontGroup, m_labelGroup, m_pinGroup);
-			//m_raycaster = GetComponentInParent<GraphicRaycaster>();
 			m_groups = new Dictionary<StringHash32, EvidenceGroup>();
 			m_nodes = new Dictionary<StringHash32, EvidenceNode>();
 			m_chains = new Dictionary<StringHash32, EvidenceChain>();
 			m_rootsByPin = new Dictionary<EvidencePin, StringHash32>();
 			m_pinsByRoot = new Dictionary<StringHash32, List<EvidencePin>>();
-			//m_raycastResults = new List<RaycastResult>();
 		}
 
 		protected override void OnShowStart() {
@@ -112,13 +113,12 @@ namespace Shipwreck {
 				}
 			}
 			for (int chainIndex = 0; chainIndex < GameMgr.State.CurrentLevel.ChainCount; chainIndex++) {
-				IEvidenceChainState chain = GameMgr.State.CurrentLevel.GetChain(chainIndex);
+				StringHash32 root = m_roots[chainIndex];
+				IEvidenceChainState chain = GameMgr.State.CurrentLevel.GetChain(root);
 				GameMgr.Events.Register<StringHash32>(GameEvents.ChainSolved, chain.HandleChainCorrect); // for @requires chains
-				EvidenceNode root = m_nodes[chain.Root()];
-				EvidenceChain obj = Instantiate(m_chainPrefab);
-				obj.transform.SetParent(root.RectTransform);
-				obj.transform.position = root.RectTransform.position;
-				obj.Setup(GameDb.GetNodeLocalizationKey(root.NodeID), m_layers, 20f + 40f * (chainIndex % 2 == 0 ? 0 : 1f));
+				
+				EvidenceChain obj = m_chainObjects[chainIndex];
+				obj.Setup(m_layers);
 
 				bool addDangler = chain.Depth < obj.PinCount && (chain.StickyInfo == null || (chain.StickyInfo.Response == StickyInfo.ResponseType.Hint && !chain.StickyInfo.NoDangler));
 				obj.SetChainDepth(chain.Depth - 1 + (addDangler ? 1 : 0));
@@ -130,11 +130,11 @@ namespace Shipwreck {
 
 				for (int pinIndex = 0; pinIndex < obj.PinCount; pinIndex++) {
 					EvidencePin pin = obj.GetPin(pinIndex);
-					if (!m_pinsByRoot.ContainsKey(root.NodeID)) {
-						m_pinsByRoot.Add(root.NodeID, new List<EvidencePin>());
+					if (!m_pinsByRoot.ContainsKey(root)) {
+						m_pinsByRoot.Add(root, new List<EvidencePin>());
 					}
-					m_pinsByRoot[root.NodeID].Add(pin);
-					m_rootsByPin.Add(pin, root.NodeID);
+					m_pinsByRoot[root].Add(pin);
+					m_rootsByPin.Add(pin, root);
 					EvidenceNode node;
 
 					if (pinIndex == 0) { // this is a root pin
@@ -165,8 +165,7 @@ namespace Shipwreck {
 				
 				if (pinnedNodes.Count == chain.Depth - 1) {
 					foreach (EvidenceNode node in pinnedNodes) {
-						node.SetColor(GameDb.GetPinColor(ChainStatus.Complete));
-						node.SetCurrStatus(ChainStatus.Complete);
+						node.SetStatus(ChainStatus.Complete);
 					}
 				}
 				RefreshChainState(chain.StickyInfo, obj, null);
@@ -190,10 +189,6 @@ namespace Shipwreck {
 			foreach (EvidencePin pin in m_rootsByPin.Keys) {
 				pin.OnPointerDown -= HandlePinPressed;
 				pin.OnPointerUp -= HandlePinReleased;
-				Destroy(pin.gameObject);
-			}
-			foreach (EvidenceChain chain in m_chains.Values) {
-				Destroy(chain.gameObject);
 			}
 			for (int chainIndex = 0; chainIndex < GameMgr.State.CurrentLevel.ChainCount; chainIndex++) {
 				IEvidenceChainState chain = GameMgr.State.CurrentLevel.GetChain(chainIndex);
@@ -234,21 +229,21 @@ namespace Shipwreck {
 		private void Update() {
 			if (Selected != null) {
 				Selected.SetPosition(InputMgr.Position);
-				if (!m_dragging) {
-					m_dragging = Vector2.Distance(m_pressPosition, InputMgr.Position) > 4f;
-				}
-				else {
+				if (m_dragging) {
 					EvidenceNode result;
 					GraphicsRaycasterMgr.instance.RaycastForNode(InputMgr.Position, out result);
 					if (result != m_hoverNode) {
-						if (m_hoverNode != null) {
-							m_hoverNode.SetColor(GameDb.GetPinColor(m_hoverNode.GetCurrStatus()));
+						if (m_hoverNode != null && !m_hoverNode.IsPinned) {
+							m_hoverNode.SetHover(false, m_colorHover);
 						}
 						m_hoverNode = result;
-						if (m_hoverNode != null) {
-							m_hoverNode.SetColor(m_colorHover);
+						if (m_hoverNode != null && !m_hoverNode.IsPinned) {
+							m_hoverNode = result;
+							m_hoverNode.SetHover(true, m_colorHover);
 						}
 					}
+				} else {
+					m_dragging = Vector2.Distance(m_pressPosition, InputMgr.Position) > 4f;
 				}
 			}
 		}
@@ -259,7 +254,6 @@ namespace Shipwreck {
 			else if (Selected == null && !GameMgr.State.CurrentLevel.GetChain(m_rootsByPin[pin]).IsCorrect) {
 				m_selectedRoot = m_rootsByPin[pin];
 				m_selectedPin = m_pinsByRoot[m_selectedRoot].IndexOf(pin);
-				m_homePos = Selected.RectTransform.position;
 				m_pressPosition = InputMgr.Position;
 				Selected.RectTransform.SetAsLastSibling();
 				Lift();
@@ -313,37 +307,32 @@ namespace Shipwreck {
 			EvidenceChain chainObj = m_chains[m_selectedRoot];
 			bool alreadyPinned = false;
 
-			if (GraphicsRaycasterMgr.instance.RaycastForNode(InputMgr.Position, out EvidenceNode node)) {
-				alreadyPinned = node.Pinned;
+			if (m_hoverNode != null) {
+				alreadyPinned = m_hoverNode.IsPinned;
 				// check that evidence node does not already have a pin on it
 				if (alreadyPinned) {
 					SendSelectionHome();
-				}
-				else {
-					Selected.SetPosition(WorldToScreenPoint(node.PinPosition));
+				} else {
+					Selected.SetPosition(WorldToScreenPoint(m_hoverNode.PinPosition));
 					if (!Selected.IsRoot) {
-						Selected.SetHomePosition(WorldToScreenPoint(node.SubPinPosition));
+						Selected.SetHomePosition(WorldToScreenPoint(m_hoverNode.SubPinPosition));
 					}
 					if (!GameMgr.State.HasTutorialPinDisplayed() && GameMgr.State.CurrentLevel.IsLocationRoot(m_selectedRoot)) {
 						m_nodes["location-coordinates"].SetPulsing(false); // gross
 					}
-					chainState.Drop(node.NodeID);
-					node.SetPinned(true);
+					chainState.Drop(m_hoverNode.NodeID);
+					m_hoverNode.SetPinned(true);
 				}
-			}
-			else {
+				m_hoverNode.SetHover(false, m_colorHover);
+			} else {
 				// if we didn't find a node, we need to return the pin home
 				SendSelectionHome();
 			}
-			if (m_hoverNode != null) {
-				m_hoverNode.SetColor(GameDb.GetPinColor(m_hoverNode.GetCurrStatus()));
-			}
-
 			if (!alreadyPinned) {
-				RefreshChainState(chainState.StickyInfo, chainObj, node);
+				RefreshChainState(chainState.StickyInfo, chainObj, m_hoverNode);
 				RefreshAllChains();
 			}
-
+			m_hoverNode = null;
 			m_selectedPin = -1;
 			m_dragging = false;
 		}

@@ -70,7 +70,7 @@ namespace Shipwreck
 
 		private void Start()
 		{
-			CutscenePlayer.OnVideoComplete += ResumeAudio;
+			CutscenePlayer.OnVideoComplete += ResumeStashedAudio;
 		}
 
 		private void Update()
@@ -102,10 +102,14 @@ namespace Shipwreck
 		public void StopAudio()
 		{
 			m_audioSrc.Stop();
+			//m_audioSrc.clip = null;
 		}
 
 		public void ResumeAudio()
 		{
+			if (m_audioSrc.clip == null) {
+				return;
+			}
 			m_audioSrc.Play();
 		}
 
@@ -119,6 +123,7 @@ namespace Shipwreck
 		{
 			if (m_stashedAudio.Data == null) {
 				m_audioSrc.Stop();
+				m_currData = null;
 				ResumeStashedAmbiance();
 				return;
 			}
@@ -157,6 +162,10 @@ namespace Shipwreck
 		public void StopAmbiance()
 		{
 			m_ambianceMgr.StopAudio();
+		}
+
+		public void ClearAmbiance() {
+			m_ambianceMgr.ClearAudio();
 		}
 
 		public void StashAmbiance()

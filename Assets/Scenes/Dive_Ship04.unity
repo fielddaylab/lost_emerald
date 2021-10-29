@@ -998,7 +998,7 @@ PrefabInstance:
     - target: {fileID: 3782994056335260743, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
       propertyPath: m_Name
-      value: DiveVirtualCamera (29)
+      value: DiveVirtualCamera (name2)
       objectReference: {fileID: 0}
     - target: {fileID: 3782994056335260743, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
@@ -2622,7 +2622,7 @@ PrefabInstance:
     - target: {fileID: 3782994056335260743, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
       propertyPath: m_Name
-      value: DiveVirtualCamera (14)
+      value: DiveVirtualCamera (locket)
       objectReference: {fileID: 0}
     - target: {fileID: 3782994056335260743, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
@@ -2778,7 +2778,7 @@ MonoBehaviour:
   m_photoName:
     m_key: Dive/Level4/Artifact-Name
     m_hash: 1255388007
-  m_zoomMin: 0
+  m_zoomMin: 0.61538464
   m_zoomMax: 1
 --- !u!1001 &809869921
 PrefabInstance:
@@ -3441,17 +3441,17 @@ MonoBehaviour:
   m_clickTargetBaseColor: {r: 0, g: 1, b: 1, a: 0.5019608}
   m_clickTargetSelectedColor: {r: 0, g: 0, b: 0, a: 0}
   m_nothingOfInterestKey:
-    m_key: 
-    m_hash: 0
+    m_key: Dive/Message/Nothing
+    m_hash: 1500459705
   m_pleaseZoomInKey:
-    m_key: 
-    m_hash: 0
+    m_key: Dive/Message/ZoomIn
+    m_hash: 557825796
   m_pleaseZoomOutKey:
-    m_key: 
-    m_hash: 0
+    m_key: Dive/Message/ZoomOut
+    m_hash: 1337769553
   m_alreadyTakenKey:
-    m_key: 
-    m_hash: 0
+    m_key: Dive/Message/AlreadyTaken
+    m_hash: 2121355039
 --- !u!4 &1300327086 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3782994056335260744, guid: 38a81007aa7e04447984bc1df4c89675,

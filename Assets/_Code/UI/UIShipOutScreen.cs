@@ -9,23 +9,19 @@ using System;
 using TMPro;
 using UnityEngine.Events;
 
-namespace Shipwreck
-{
+namespace Shipwreck {
 	/// <summary>
 	/// The canvas of the ShipOut scene
 	/// </summary>
-	public class UIShipOutScreen : UIBase
-	{
-		public enum MessageState
-		{
+	public class UIShipOutScreen : UIBase {
+		public enum MessageState {
 			hidden,
 			showing
 		}
 
 
 		// IDs for UnityActions that can occur when a messageBox is closed
-		public enum ActionCode
-		{
+		public enum ActionCode {
 			TutorialSonar,
 			TutorialBuoy,
 			UnlockDive,
@@ -38,7 +34,7 @@ namespace Shipwreck
 		private Button m_returnToOfficeButton; // button that returns the player to office
 		[SerializeField]
 		private GameObject m_diveButtonPrefab; // the prefab from which the dive button is generated
-		private GameObject m_diveButton = null; // the dive button
+		private Button m_diveButton = null; // the dive button
 		[SerializeField]
 		private Slider m_diveSlider; // the dive progress bar
 
@@ -61,15 +57,12 @@ namespace Shipwreck
 
 		public static UIShipOutScreen instance;
 
-		private void Awake()
-		{
+		private void Awake() {
 			// ensure there is only one ShipOutScreen at any given time
-			if (UIShipOutScreen.instance == null)
-			{
+			if (UIShipOutScreen.instance == null) {
 				UIShipOutScreen.instance = this;
 			}
-			else if (UIShipOutScreen.instance != this)
-			{
+			else if (UIShipOutScreen.instance != this) {
 				Destroy(this.gameObject);
 			}
 
@@ -77,13 +70,20 @@ namespace Shipwreck
 			m_currentMessageState = MessageState.hidden;
 		}
 
-		private List<UnityAction> GetActions(ActionCode[] codes)
-		{
+		protected override void OnShowStart() {
+			GameMgr.Events.Register(GameEvents.PhoneNotification, HandlePhoneNotification);
+			GameMgr.Events.Register(GameEvents.DialogClosed, HandleDialogClosed);
+		}
+
+		protected override void OnHideStart() {
+			GameMgr.Events.Deregister(GameEvents.PhoneNotification, HandlePhoneNotification);
+			GameMgr.Events.Deregister(GameEvents.DialogClosed, HandleDialogClosed);
+		}
+
+		private List<UnityAction> GetActions(ActionCode[] codes) {
 			List<UnityAction> actions = new List<UnityAction>();
-			foreach (ActionCode code in codes)
-			{
-				switch (code)
-				{
+			foreach (ActionCode code in codes) {
+				switch (code) {
 					case (ActionCode.TutorialSonar):
 						actions.Add(FlagDisplaySonarTutorial);
 						break;
@@ -110,24 +110,29 @@ namespace Shipwreck
 		/// <summary>
 		/// Handles when the office button is clicked
 		/// </summary>
-		private void HandleReturnToOfficeButton()
-		{
+		private void HandleReturnToOfficeButton() {
+			if (m_currentMessageState == MessageState.showing) {
+				return;
+			}
 			AudioSrcMgr.instance.PlayOneShot("click_return_office");
 			AudioSrcMgr.instance.StopAmbiance();
 			SceneManager.LoadScene("Main");
 			UIMgr.Close<UIShipOutScreen>();
 			UIMgr.Open<UIOfficeScreen>();
 			AudioSrcMgr.instance.PlayAudio("office_music", true);
+			AudioSrcMgr.instance.StopAmbiance();
+			AudioSrcMgr.instance.ClearAmbiance();
 		}
 
 		/// <summary>
 		/// Handles when the dive button is clicked
 		/// </summary>
-		private void HandleDiveButton()
-		{
+		private void HandleDiveButton() {
+			if (m_currentMessageState == MessageState.showing) {
+				return;
+			}
 			// ensure the dive is locked
-			if (GameMgr.State.IsDiveUnlocked(ShipOutMgr.instance.GetData().ShipOutIndex))
-			{
+			if (GameMgr.State.IsDiveUnlocked(ShipOutMgr.instance.GetData().ShipOutIndex)) {
 				SceneManager.LoadScene(ShipOutMgr.instance.GetData().DiveDest);
 				AudioSrcMgr.instance.PlayOneShot("click_dive");
 				AudioSrcMgr.instance.PlayAudio("dive");
@@ -141,64 +146,55 @@ namespace Shipwreck
 		/// <summary>
 		/// Replaces the filled slider with the clickable dive button
 		/// </summary>
-		public void SwapButtonForSlider()
-		{
+		public void SwapButtonForSlider() {
 			// destory old bar
 			m_diveSlider.gameObject.SetActive(false);
 
 			// create new button
-			m_diveButton = Instantiate(m_diveButtonPrefab, this.transform);
+			m_diveButton = Instantiate(m_diveButtonPrefab, this.transform).GetComponent<Button>();
 
 			// add button functionality
-			m_diveButton.GetComponent<Button>().onClick.AddListener(HandleDiveButton);
+			m_diveButton.onClick.AddListener(HandleDiveButton);
 		}
 
 		/// <summary>
 		/// Replaces the filled slider with the clickable dive button
 		/// </summary>
-		public void ResetUI()
-		{
+		public void ResetUI() {
 			// restore initial bar
 			m_diveSlider.gameObject.SetActive(true);
 
 			// destory button if it exists
-			if (m_diveButton != null)
-			{
+			if (m_diveButton != null) {
 				Destroy(m_diveButton.gameObject);
 				m_diveButton = null;
 			}
 		}
 
-		private void FlagDropTutorialBuoy()
-		{
+		private void FlagDropTutorialBuoy() {
 			GameMgr.State.SetTutorialBuoyDropped(true);
 			AudioSrcMgr.instance.PlayOneShot("drop_buoy");
 		}
 
-		private void FlagDisplaySonarTutorial()
-		{
+		private void FlagDisplaySonarTutorial() {
 			GameMgr.State.SetTutorialSonarDisplayed(true);
 		}
 
-		public MessageState GetCurrMessageState()
-		{
+		public MessageState GetCurrMessageState() {
 			return m_currentMessageState;
 		}
 
-		public Slider GetDiveSlider()
-		{
+		public Slider GetDiveSlider() {
 			return m_diveSlider;
 		}
 
-		public void HideDiveSlider()
-		{
+		public void HideDiveSlider() {
 			m_diveSlider.gameObject.SetActive(false);
 		}
 
 		#region MessageBox
 
-		public void ShowMessage(string message, string buttonText, ActionCode[] actionCodes)
-		{
+		public void ShowMessage(string message, string buttonText, ActionCode[] actionCodes) {
 			m_messageText.text = message;
 			m_messageButtonText.text = buttonText;
 			m_messageGroup.anchoredPosition = new Vector2(m_messageGroup.anchoredPosition.x, m_messageHiddenY);
@@ -207,27 +203,38 @@ namespace Shipwreck
 			m_messageButton.onClick.AddListener(HideMessageBox);
 
 			List<UnityAction> actions = GetActions(actionCodes);
-			foreach (UnityAction action in actions)
-			{
+			foreach (UnityAction action in actions) {
 				m_messageButton.onClick.AddListener(action);
 			}
 		}
-		private void HideMessageBox()
-		{
+		private void HideMessageBox() {
 			AudioSrcMgr.instance.PlayOneShot("click_dialog_continue");
 			m_messageRoutine.Replace(this, m_messageGroup.AnchorPosTo(m_messageHiddenY, 0.25f, Axis.Y).Ease(Curve.QuadOut));
 			m_currentMessageState = MessageState.hidden;
 			m_messageButton.onClick.RemoveAllListeners();
 		}
 
-		protected override IEnumerator ShowRoutine()
-		{
+		protected override IEnumerator ShowRoutine() {
 			yield return CanvasGroup.FadeTo(1f, 0.3f);
 		}
 
-		protected override IEnumerator HideRoutine()
-		{
+		protected override IEnumerator HideRoutine() {
 			yield return CanvasGroup.FadeTo(0f, 0.3f);
+		}
+
+		private void HandlePhoneNotification() {
+			m_currentMessageState = MessageState.showing;
+			m_returnToOfficeButton.interactable = false;
+			if (m_diveButton != null) {
+				m_diveButton.interactable = false;
+			}
+		}
+		private void HandleDialogClosed() {
+			m_currentMessageState = MessageState.hidden;
+			m_returnToOfficeButton.interactable = true;
+			if (m_diveButton != null) {
+				m_diveButton.interactable = true;
+			}
 		}
 
 		#endregion

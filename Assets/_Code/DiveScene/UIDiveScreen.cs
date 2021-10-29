@@ -123,14 +123,20 @@ namespace Shipwreck {
 
 		#region UIBase
 
-		protected override void OnShowCompleted() {
-			base.OnShowCompleted();
+		protected override void OnShowStart() {
+			base.OnShowStart();
+
 			m_isAscended = true;
 			m_stateLink = new StateLinkage(this);
-			GameMgr.RunTrigger(GameTriggers.OnEnterDive);
-			SetState(new DiveMoving(m_stateLink));
-
 			SetNavigationActive(false);
+
+			SetState(new DiveMoving(m_stateLink));
+		}
+
+		protected override void OnShowCompleted() {
+			base.OnShowCompleted();
+			
+			GameMgr.RunTrigger(GameTriggers.OnEnterDive);
 
 			m_buttonAscend.onClick.AddListener(HandleAscendButton);
 			m_buttonSurface.onClick.AddListener(HandleSurfaceButton);

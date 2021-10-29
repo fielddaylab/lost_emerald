@@ -27,13 +27,6 @@ namespace Shipwreck {
 				}
 			}
 		}
-		public IEnumerable<StringHash32> RootNodes {
-			get {
-				foreach (SerializedHash32 node in m_rootNodes) {
-					yield return node;
-				}
-			}
-		}
 
 		public void SetPosition(Vector2 pos)
 		{
@@ -50,8 +43,6 @@ namespace Shipwreck {
 		private EvidenceGroup m_englishPrefab = null;
 		[SerializeField]
 		private EvidenceGroup m_spanishPrefab = null;
-		[SerializeField]
-		private SerializedHash32[] m_rootNodes = null;
 
 	}
 

@@ -104,7 +104,6 @@ namespace Shipwreck {
 				};
 				for (int index = 0; index < m_levelStates.Length; index++) {
 					m_levelStates[index].AssignLevelData(GameDb.GetLevelData(index));
-					m_levelStates[index].UnlockEvidence(GameDb.GetEvidenceData(string.Format("LV1-Root")));
 				}
 				m_shipOutStates = new ShipOutState[4] {
 					new ShipOutState(),
@@ -195,6 +194,12 @@ namespace Shipwreck {
 				}
 				return m_levelStates[levelIndex].UnlockEvidence(GameDb.GetEvidenceData(groupID));
 			}
+			public bool RemoveEvidence(int levelIndex, StringHash32 groupId) {
+				if (levelIndex < 0 || levelIndex >= m_levelStates.Length) {
+					throw new IndexOutOfRangeException();
+				}
+				return m_levelStates[levelIndex].RemoveEvidence(groupId);
+			}
 			public bool DiscoverLocation(int levelIndex) {
 				if (levelIndex < 0 || levelIndex >= m_levelStates.Length) {
 					throw new IndexOutOfRangeException();
@@ -256,6 +261,7 @@ namespace Shipwreck {
 				m_visitedNodes.Add(node.Id());
 				ClearNotification(node.ContactId);
 			}
+
 			public void RecordNodeVisit(StringHash32 nodeId, StringHash32 contactId) {
 				m_visitedNodes.Add(nodeId);
 				ClearNotification(contactId);

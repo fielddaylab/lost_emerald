@@ -14,6 +14,7 @@ namespace Shipwreck {
 		Vector2 BannerPos { get; }
 		bool IsLocationKnown { get; }
 		string MarkerUnknownSpriteID { get; }
+		Vector2 MarkerUnknownSpriteOffset { get; }
 		bool IsUnlocked { get; }
 		IEnumerable<IEvidenceGroupState> Evidence { get; }
 		int ChainCount { get; }
@@ -60,12 +61,17 @@ namespace Shipwreck {
 			public Vector2 MarkerPos {
 				get { return m_levelData.LevelMarkerPos; }
 			}
+
 			public Vector2 BannerPos {
 				get { return m_levelData.LevelBannerPos; }
 			}
-
+			
 			public string MarkerUnknownSpriteID {
 				get { return m_levelData.LevelMarkerUnknownSpriteID; }
+			}
+
+			public Vector2 MarkerUnknownSpriteOffset {
+				get { return m_levelData.LevelMarkerUnknownSpriteOffset; }
 			}
 
 			public IEnumerable<IEvidenceGroupState> Evidence {
@@ -91,7 +97,17 @@ namespace Shipwreck {
 
 			public LevelState() {
 				m_evidence = new List<EvidenceGroupState>();
-				m_chains = new List<EvidenceChainState>();
+				m_chains = new List<EvidenceChainState>() {
+					new EvidenceChainState("Location"),
+					new EvidenceChainState("Type"),
+					new EvidenceChainState("Name"),
+					new EvidenceChainState("Cargo"),
+					new EvidenceChainState("Cause"),
+					new EvidenceChainState("Artifact")
+				};
+				foreach (EvidenceChainState chain in m_chains) {
+					chain.SetRootEvaluator(IsChainComplete);
+				}
 			}
 
 			public void AssignLevelData(LevelData data) {
@@ -128,14 +144,21 @@ namespace Shipwreck {
 				} else {
 					// todo: determine position
 					m_evidence.Add(new EvidenceGroupState(group.GroupID, group.Position));
-					foreach (StringHash32 root in group.RootNodes) {
-						var chain = new EvidenceChainState(root);
-						chain.SetRootEvaluator(IsChainComplete);
-						m_chains.Add(chain);
-					}
 					return true;
 				}
 			}
+			public bool RemoveEvidence(StringHash32 groupId) {
+				if (IsEvidenceUnlocked(groupId)) {
+					EvidenceGroupState state = m_evidence.Find((item) => {
+						return item.Identity == groupId;
+					});
+					m_evidence.Remove(state);
+					return true;
+				} else {
+					return false;
+				}
+			}
+
 			public bool DiscoverLocation() {
 				if (!m_locationKnown) {
 					m_locationKnown = true;

@@ -36,6 +36,7 @@ namespace Shipwreck {
 		private void Awake() {
 			m_diveNodes = GetComponentsInChildren<DiveNode>();
 			m_startRoutine.Replace(this, Routine.Delay(()=> { SetNode(m_startNode); }, m_startDelay));
+			HandleNavDeactivated(); // default to off
 			InputMgr.Register(InputMgr.OnInteractPressed, HandleInteractPressed);
 			GameMgr.Events.Register(GameEvents.Dive.AttemptPhoto, HandleAttemptPhoto, this);
 			GameMgr.Events.Register<float>(GameEvents.Dive.CameraZoomChanged, HandleCameraZoomChanged, this);

@@ -17,6 +17,9 @@ namespace Shipwreck {
 		public string UnknownSpriteID {
 			get { return m_unknownSpriteID; }
 		}
+		public Vector2 UnknownSpriteOffset {
+			get { return m_unknownSpriteOffset; }
+		}
 
 		[SerializeField]
 		private Vector2 m_markerPos;
@@ -26,6 +29,8 @@ namespace Shipwreck {
 		private bool m_locationKnown = true;
 		[SerializeField]
 		private string m_unknownSpriteID = null;
+		[SerializeField]
+		private Vector2 m_unknownSpriteOffset = new Vector2(0, 0f);
 	}
 
 }
