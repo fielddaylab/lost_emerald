@@ -172,5 +172,6 @@
 		Can you imagine what it was like that night?
 	{@you}   Yeah... 
 	$call UnlockLevel(4)
+	$call UnlockEvidence(4,LV4-Do-Later-Note)
 	$call EndConvoMusic()
 	$call TriggerCutscene()

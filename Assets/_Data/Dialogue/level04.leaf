@@ -120,6 +120,7 @@
 		Good luck, Jules. I hope you find it. 
 	$call UnlockEvidence(4, "LV4-Location-Coordinates")
 	$call UnlockEvidence(4, "LV4-Ship-Chart")
+	$call RemoveEvidence(4, "LV4-Do-Later-Note")
 	$call DiscoverLocation(4)
 	$call EndConvoMusic()
 

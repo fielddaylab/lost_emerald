@@ -7028,36 +7028,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 531016319209300888, guid: 89de7169bb442fc48b40af2381f497c5,
         type: 3}
-      propertyPath: m_markerUnknown.b
-      value: 0.31764707
-      objectReference: {fileID: 0}
-    - target: {fileID: 531016319209300888, guid: 89de7169bb442fc48b40af2381f497c5,
-        type: 3}
-      propertyPath: m_markerUnknown.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 531016319209300888, guid: 89de7169bb442fc48b40af2381f497c5,
-        type: 3}
-      propertyPath: m_markerUnknown.r
-      value: 0.94509804
-      objectReference: {fileID: 0}
-    - target: {fileID: 531016319209300888, guid: 89de7169bb442fc48b40af2381f497c5,
-        type: 3}
-      propertyPath: m_markerComplete.b
-      value: 0.104396604
-      objectReference: {fileID: 0}
-    - target: {fileID: 531016319209300888, guid: 89de7169bb442fc48b40af2381f497c5,
-        type: 3}
-      propertyPath: m_markerComplete.g
-      value: 0.7327954
-      objectReference: {fileID: 0}
-    - target: {fileID: 531016319209300888, guid: 89de7169bb442fc48b40af2381f497c5,
-        type: 3}
-      propertyPath: m_markerComplete.r
-      value: 0.9622642
-      objectReference: {fileID: 0}
-    - target: {fileID: 531016319209300888, guid: 89de7169bb442fc48b40af2381f497c5,
-        type: 3}
       propertyPath: m_images.Array.data[6]
       value: 
       objectReference: {fileID: 0}
