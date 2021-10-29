@@ -1,9 +1,5 @@
 ﻿using BeauRoutine;
-using BeauUtil;
-using PotatoLocalization;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI.Extensions;
 
@@ -131,9 +127,9 @@ namespace Shipwreck {
 			for (int index = 0; index < m_evidencePins.Length; index++) {
 				// place the note on the last active index
 				if (!m_evidencePins[index].gameObject.activeInHierarchy) {
-
-					Vector2 screenPoint = RectTransformUtility.WorldToScreenPoint(Camera.main, m_evidencePins[index - 1].RectTransform.position);
-					screenPoint.y = Mathf.Max(100f, screenPoint.y);
+					EvidencePin pin = m_evidencePins[index - 1];
+					Vector2 screenPoint = RectTransformUtility.WorldToScreenPoint(Camera.main, pin.RectTransform.position);
+					screenPoint.y = Mathf.Max(100f * pin.GetComponentInParent<Canvas>().scaleFactor, screenPoint.y);
 					RectTransformUtility.ScreenPointToLocalPointInRectangle(
 						(RectTransform)m_stickyNote.RectTransform.parent,
 						screenPoint,
