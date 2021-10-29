@@ -8,6 +8,8 @@ namespace Shipwreck {
 		[SerializeField]
 		private LevelMarker[] m_levelMarkers = null;
 
+		private static Vector2 MAP_DISCREPANCY = new Vector2((740 - 720) / 2.0f, (500 - 480) / -2.0f);
+
 		private void OnEnable() {
 			GameMgr.Events.Register(GameEvents.LevelUnlocked, RefreshMarkers); // new marker
 			GameMgr.Events.Register(GameEvents.LocationDiscovered, RefreshMarkers); // unknown -> known
@@ -27,7 +29,7 @@ namespace Shipwreck {
 				LevelMarker marker = m_levelMarkers[index];
 				marker.gameObject.SetActive(isUnlocked);
 				Vector2 markerPos = GameMgr.State.GetLevel(index).MarkerPos;
-				marker.transform.localPosition = markerPos;
+				marker.transform.localPosition = markerPos + MAP_DISCREPANCY;
 				Sprite markerSprite;
 				if (GameMgr.State.GetLevel(index).IsLocationKnown) {
 					markerSprite = GameDb.GetMarkerSprite("marker-default");
