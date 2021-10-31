@@ -143,12 +143,12 @@
 	{@you} 	Our ship is the Loretta!
 	{@amy} 	Wow! What an amazing find! 
 		Looks like she sank on the same day that the town of Peshtigo burned down.
-		[PAINTING OF THE PESHTIGO FIRE: Fire at Peshtigo, WI, 1871] 
+		{img peshtigo}
 		The captain of the Loretta got lost in all the smoke.
 		Here's a cool portrait of him: 
-		[CAPTAIN PORTRAIT: standing with lake behind him, knife artifact on his belt]
-	{@you}   Hey, that's the knife I saw! 
-	{@amy}   It must've gone down with the ship.  
+		{img captain-with-knife}
+	{@you}  Hey, that's the knife I saw! 
+	{@amy}  It must've gone down with the ship.  
 		I've got an article about the sinking. I'll send it over!
 	$call UnlockEvidence(1,LV1-Article-Sinking)
 
@@ -162,10 +162,11 @@
 	{@lou}  Hey, Jules! Any juicy details on that shipwreck?
 	{@you}  Yes! The ship is the Loretta!
 	{@lou}  Awesome name. How'd she sink?
+		{img peshtigo}
          {@you}  Fires were burning all across Wisconsin.
-		[PAINTING OF THE PESHTIGO FIRE: Fire at Peshtigo, WI, 1871]  
                  Tons of smoke blew out over the lake.
 	{@lou}   How could the captain see where he was going?
+		{/img}
 	{@you}   He couldn't. The Loretta sailed too close to shore and got stuck on a sandbar. 
 		The sailors had to climb up the ropes. Luckily, they were rescued by a fishing boat.
 	{@lou}	Wow! What a wild story.

@@ -17,7 +17,7 @@ namespace Shipwreck {
 
 		public void Populate(CharacterData character, Sprite image) {
 			m_layout.Populate(character);
-			UIBase.AssignSpritePreserveAspect(m_bodyImage, m_imageSizer, image, Axis.Y);
+			UIBase.AssignSpritePreserveAspect(m_bodyImage, m_imageSizer, image, Axis.X);
 		}
 	}
 
