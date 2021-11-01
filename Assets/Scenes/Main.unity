@@ -7028,6 +7028,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 531016319209300888, guid: 89de7169bb442fc48b40af2381f497c5,
         type: 3}
+      propertyPath: m_markerUnknown.b
+      value: 0.3529412
+      objectReference: {fileID: 0}
+    - target: {fileID: 531016319209300888, guid: 89de7169bb442fc48b40af2381f497c5,
+        type: 3}
+      propertyPath: m_markerUnknown.g
+      value: 0.8117648
+      objectReference: {fileID: 0}
+    - target: {fileID: 531016319209300888, guid: 89de7169bb442fc48b40af2381f497c5,
+        type: 3}
+      propertyPath: m_markerUnknown.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 531016319209300888, guid: 89de7169bb442fc48b40af2381f497c5,
+        type: 3}
       propertyPath: m_audioClips.Array.size
       value: 4
       objectReference: {fileID: 0}

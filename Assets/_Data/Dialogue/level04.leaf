@@ -359,4 +359,5 @@
 	{@reya}  He wants your number, but I told him you're too busy with paperwork.
 	{@you}   Reya, wait--
 	{@reya}  Sorry, sis, gotta run. The lake is calling!
+	$call TriggerCutscene()
 	$call EndConvoMusic()
