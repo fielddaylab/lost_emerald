@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -16.566}
+  m_AnchoredPosition: {x: 0, y: 3.1}
   m_SizeDelta: {x: 180.92374, y: 91.555786}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4712751979675130723
@@ -195,7 +195,6 @@ MonoBehaviour:
   m_pinPosition: {fileID: 0}
   m_subPinPosition: {fileID: 7027330663026036956}
   m_image: {fileID: 3108613273951986254}
-  m_pinned: 0
 --- !u!114 &7453899544283056915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,10 +316,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '<b>Dad:</b> My old fishing buddy pulled this up on Lake Michigan.
-
-    He
-    found it here:'
+  m_text: <b>Dad:</b> My old fishing buddy pulled this up on Lake Michigan.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 91971dd9594b62643ad90120969cfb17, type: 2}
   m_sharedMaterial: {fileID: 3265771203794016092, guid: 91971dd9594b62643ad90120969cfb17,
@@ -459,7 +455,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000043213, y: -89.77}
+  m_AnchoredPosition: {x: -0.000043213, y: -67.8}
   m_SizeDelta: {x: 180.92383, y: 43.31292}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7331424175939437273
@@ -489,7 +485,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "  43\xB042'08.6\"N 87\xB038'26.0\"W"
+  m_text: "He found it here:\n  43\xB042'08.6\"N 87\xB038'26.0\"W"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 91971dd9594b62643ad90120969cfb17, type: 2}
   m_sharedMaterial: {fileID: 3265771203794016092, guid: 91971dd9594b62643ad90120969cfb17,
@@ -678,7 +674,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ea001b1c59f86ce4c805ebcf8ec11611, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ca515c6e0d836c941a1e8b9aa842510b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

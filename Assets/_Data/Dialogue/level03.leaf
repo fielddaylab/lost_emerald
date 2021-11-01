@@ -10,7 +10,8 @@
 :: dad-superior
 @contact dad, phone-call
 @background dad-boat
-@trigger OnEnterOffice
+@trigger OnCaseClosed
+@when Seen(level02.reya-safe)
 @once
 
 	$call TriggerConvoMusic(dad_convo)

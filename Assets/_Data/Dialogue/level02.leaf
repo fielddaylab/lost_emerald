@@ -200,4 +200,5 @@
 		I wonder if anybody saw it coming...
 	$call TriggerCutscene()
 	$call UnlockLevel(3)
+	$call BeginLevel(3)
 	$call EndConvoMusic()

@@ -341,6 +341,12 @@ namespace Shipwreck
 			ShipOutMgr.instance.EnableSonar.Invoke();
 		}
 
+
+		[LeafMember]
+		private static void BeginLevel(int index) {
+			SetLevelIndex(index - 1);
+		}
+
 		#endregion // Leaf
 
 	}
