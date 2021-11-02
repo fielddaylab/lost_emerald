@@ -81,7 +81,7 @@ namespace Shipwreck {
 		}
 		private void HandleUnlock3() {
 			AudioSrcMgr.instance.PlayOneShot("click_unlock");
-			UnlockLevel3();
+			UnlockLevel3(true);
 			HandleNewGame();
 		}
 		private void HandleUnlock3_50() {
@@ -179,7 +179,7 @@ namespace Shipwreck {
 			GameMgr.SetChain(1, "Type", "photo-above", "card-freighter");
 		}
 
-		private void UnlockLevel3() {
+		private void UnlockLevel3(bool furthestUnlock) {
 			UnlockLevel2_50();
 			GameMgr.UnlockLevel(3);
 			GameMgr.State.UnlockDive(1);
@@ -198,11 +198,15 @@ namespace Shipwreck {
 			GameMgr.SetChain(1, "Name", "name-madison");
 			GameMgr.SetChain(1, "Artifact", "photo-safe", "artifact-safe");
 
-			UIMgr.Open<UIModalCaseClosed>();
+			if (furthestUnlock) {
+				UIMgr.Open<UIModalOverlay>();
+				UIMgr.Open<UIModalCaseClosed>();
+			}
 		}
 
 		private void UnlockLevel3_50() {
-			UnlockLevel3();
+			UnlockLevel3(false);
+
 			GameMgr.SetLevelIndex(2);
 			GameMgr.SetChain(2, "Location", "location-coordinates");
 

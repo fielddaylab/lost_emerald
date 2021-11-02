@@ -511,7 +511,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -23.12001}
-  m_SizeDelta: {x: 34.888367, y: 1}
+  m_SizeDelta: {x: -2.4937134, y: 1}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &910698274993571153
 CanvasRenderer:
@@ -584,8 +584,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 13.140015, y: 9.201401}
-  m_SizeDelta: {x: -59.224487, y: -8.705582}
+  m_AnchoredPosition: {x: -5.5799866, y: 9.201401}
+  m_SizeDelta: {x: -96.658264, y: -8.705582}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2277318697636490844
 CanvasRenderer:
@@ -1706,8 +1706,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 186.94, y: -83.2}
-  m_SizeDelta: {x: 84.09923, y: 21.028809}
+  m_AnchoredPosition: {x: 165.68, y: -83.2}
+  m_SizeDelta: {x: 41.58642, y: 21.028809}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8082735454927228769
 MonoBehaviour:
@@ -2051,7 +2051,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 34.888336, y: 1}
+  m_SizeDelta: {x: -2.553711, y: 1}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &8994012044015667101
 CanvasRenderer:
@@ -2460,8 +2460,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 221.2, y: -28.700012}
-  m_SizeDelta: {x: 79.96396, y: 44.59955}
+  m_AnchoredPosition: {x: 190.1, y: -28.700012}
+  m_SizeDelta: {x: 24.224518, y: 44.59955}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5266194822974307593
 CanvasRenderer:
@@ -2490,7 +2490,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Riding Horses
+  m_text: ???
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 91971dd9594b62643ad90120969cfb17, type: 2}
   m_sharedMaterial: {fileID: 3265771203794016092, guid: 91971dd9594b62643ad90120969cfb17,
@@ -2554,7 +2554,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -12.99408, y: 0, z: 0, w: 25.445633}
+  m_margin: {x: 0.29040527, y: 0, z: 0.22601318, w: 25.445633}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
