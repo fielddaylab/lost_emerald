@@ -63,6 +63,9 @@ namespace Shipwreck {
 		protected override IEnumerator ShowRoutine() {
 			yield break;
 		}
+		protected override IEnumerator HideImmediateRoutine() {
+			throw new System.NotImplementedException();
+		}
 
 		#endregion // UIBase
 

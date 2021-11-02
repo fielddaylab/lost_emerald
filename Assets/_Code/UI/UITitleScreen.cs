@@ -54,6 +54,10 @@ namespace Shipwreck {
 			CanvasGroup.interactable = true;
 		}
 
+		protected override IEnumerator HideImmediateRoutine() {
+			throw new System.NotImplementedException();
+		}
+
 		private void HandleNewGame() {
 			AudioSrcMgr.instance.PlayOneShot("click_new_game");
 			GameMgr.UnlockContact("dad");
@@ -117,6 +121,10 @@ namespace Shipwreck {
 			GameMgr.RecordNodeVisited("level01.amy-meet", "amy");
 			GameMgr.RecordNodeVisited("level01.dad-urgent-text", "dad");
 			GameMgr.RecordNodeVisited("level01.amy-article", "amy");
+			GameMgr.RecordNodeVisited("level01.dive-start", "you");
+			GameMgr.RecordNodeVisited("level01.dive-photo-above", "you");
+			GameMgr.RecordNodeVisited("level01.dive-photo-name", "you");
+			GameMgr.RecordNodeVisited("level01.dive-photo-artifact", "you");
 
 			GameMgr.SetLevelIndex(0);
 			GameMgr.SetChain(0, "Location", "location-coordinates");

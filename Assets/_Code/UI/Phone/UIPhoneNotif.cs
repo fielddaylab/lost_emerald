@@ -60,6 +60,9 @@ namespace Shipwreck {
 			yield return m_phoneTransform.AnchorPosTo(0f, m_showHideTween, Axis.Y);
 			m_button.interactable = true;
 		}
+		protected override IEnumerator HideImmediateRoutine() {
+			throw new System.NotImplementedException();
+		}
 
 		private void HandlePressed() {
 			m_audioSrc.Stop();

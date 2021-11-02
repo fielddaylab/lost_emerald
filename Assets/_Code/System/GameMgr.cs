@@ -279,8 +279,8 @@ namespace Shipwreck
 		[LeafMember]
 		private static void TriggerCutscene() {
 			I.m_state.SetCutsceneSeen();
-			UIMgr.Close<UIOfficeScreen>();
-			UIMgr.Close<UIEvidenceScreen>();
+			UIMgr.CloseImmediately<UIOfficeScreen>();
+			UIMgr.CloseImmediately<UIEvidenceScreen>();
 			Routine.Start(Routine.Delay(() => { CutscenePlayer.Play(); }, 1.5f));
 		}
 

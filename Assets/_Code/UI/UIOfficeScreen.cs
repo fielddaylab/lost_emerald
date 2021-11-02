@@ -40,6 +40,9 @@ namespace Shipwreck {
 		protected override IEnumerator ShowRoutine() {
 			yield return CanvasGroup.FadeTo(1f, 0.3f);
 		}
+		protected override IEnumerator HideImmediateRoutine() {
+			throw new System.NotImplementedException();
+		}
 	}
 
 }

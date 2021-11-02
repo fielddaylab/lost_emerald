@@ -41,6 +41,9 @@ namespace Shipwreck {
 		protected override IEnumerator ShowRoutine() {
 			yield return m_phoneTransform.AnchorPosTo(45f, m_tweenSettings, Axis.Y);
 		}
+		protected override IEnumerator HideImmediateRoutine() {
+			throw new System.NotImplementedException();
+		}
 
 		#endregion // UIBase
 	}

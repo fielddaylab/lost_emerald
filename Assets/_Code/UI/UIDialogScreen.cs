@@ -74,6 +74,10 @@ namespace Shipwreck {
 			yield return CanvasGroup.FadeTo(0, 0.2f);
 		}
 
+		protected override IEnumerator HideImmediateRoutine() {
+			throw new System.NotImplementedException();
+		}
+
 		#endregion // UIBase
 
 		#region Dialog

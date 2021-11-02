@@ -179,6 +179,9 @@ namespace Shipwreck {
 			yield return CanvasGroup.FadeTo(1f, 0.3f);
 			CanvasGroup.interactable = true;
 		}
+		protected override IEnumerator HideImmediateRoutine() {
+			throw new System.NotImplementedException();
+		}
 
 		#endregion
 
