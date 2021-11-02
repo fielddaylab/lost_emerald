@@ -199,6 +199,8 @@ namespace Shipwreck {
 			GameMgr.SetChain(1, "Artifact", "photo-safe", "artifact-safe");
 
 			GameMgr.SetLevelIndex(2);
+
+			UIMgr.Open<UIModalCaseClosed>();
 		}
 
 		private void UnlockLevel3_50() {
