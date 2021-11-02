@@ -198,13 +198,12 @@ namespace Shipwreck {
 			GameMgr.SetChain(1, "Name", "name-madison");
 			GameMgr.SetChain(1, "Artifact", "photo-safe", "artifact-safe");
 
-			GameMgr.SetLevelIndex(2);
-
 			UIMgr.Open<UIModalCaseClosed>();
 		}
 
 		private void UnlockLevel3_50() {
 			UnlockLevel3();
+			GameMgr.SetLevelIndex(2);
 			GameMgr.SetChain(2, "Location", "location-coordinates");
 
 			GameMgr.UnlockEvidence(3, "LV3-Transcript-Dad");
@@ -218,8 +217,8 @@ namespace Shipwreck {
 			GameMgr.UnlockEvidence(3, "LV3-Accounts-Survivor");
 			GameMgr.UnlockContact("cami");
 
-			GameMgr.RecordNodeVisited("level03.mom-photos", "mom");
-			GameMgr.RecordNodeVisited("level03.dad-superior", "dad");
+			//GameMgr.RecordNodeVisited("level03.mom-photos", "mom");
+			GameMgr.RecordNodeVisited("level02.dad-superior", "dad");
 			GameMgr.RecordNodeVisited("level03.amy-paradise", "amy");
 			GameMgr.RecordNodeVisited("level03.cami-meet", "cami");
 
