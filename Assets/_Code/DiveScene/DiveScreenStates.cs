@@ -44,6 +44,7 @@ namespace Shipwreck {
 			}
 			public override void OnLocationChange(bool isAscendNode) {
 				Screen.IsAtAscendNode = isAscendNode;
+				Screen.HasDescended = Screen.HasDescended || !isAscendNode;
 				Screen.SetState(new DiveMoving(Screen));
 			}
 			public override void OnCameraActivate() {
