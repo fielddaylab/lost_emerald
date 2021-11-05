@@ -48,14 +48,12 @@ SpriteAtlas:
   m_PackedSprites:
   - {fileID: 21300000, guid: 0d2ce10037c29824d89f10646acd937a, type: 3}
   - {fileID: 21300000, guid: 4668ef405d8fd794e84a6c16503f01c2, type: 3}
-  - {fileID: 21300000, guid: 8424956010533114581ce0167f872568, type: 3}
   - {fileID: 21300000, guid: 1ef17280142431044ba4e08b167d830a, type: 3}
   - {fileID: 21300000, guid: 976d24b0d86b37a4ea099fd7472eece2, type: 3}
   - {fileID: 21300000, guid: 13ee57b005423384a864133f2aa056dc, type: 3}
   - {fileID: 21300000, guid: 3d03c611440aba64fbb670920dcb11c0, type: 3}
   - {fileID: 21300000, guid: 63394811bbb796048a4b3be38f86ec9a, type: 3}
   - {fileID: 21300000, guid: 77f86a110f5607542a2bbb5da9044b6e, type: 3}
-  - {fileID: 21300000, guid: e7b7fc4143f4e454f9c8298e80d7c235, type: 3}
   - {fileID: 21300000, guid: d563b37132fe19c498f92f3b400aa37a, type: 3}
   - {fileID: 21300000, guid: b8f94b81841f3074bbf3e63cba43e0a0, type: 3}
   - {fileID: 21300000, guid: 6742bc91c8f5d4e3daea592a062c8b52, type: 3}
@@ -133,7 +131,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: c4f3860e134ac3b43830b59b72474fc3, type: 3}
   - {fileID: 21300000, guid: 73e04d3e8b9e9ec4a8b7d4327cd49268, type: 3}
   - {fileID: 21300000, guid: 33ac414e0a466684d9d2c58fd2b8dbab, type: 3}
-  - {fileID: 21300000, guid: f1a6745e5de82c6479639359084d0810, type: 3}
   - {fileID: 21300000, guid: ca515c6e0d836c941a1e8b9aa842510b, type: 3}
   - {fileID: 21300000, guid: 9f3b238e4fd123e4ab0d16dde8bce38a, type: 3}
   - {fileID: 21300000, guid: 7d1d53ae8d55e994598b2b84b04588df, type: 3}
@@ -141,20 +138,19 @@ SpriteAtlas:
   - {fileID: 21300000, guid: a682b80ffa8c09749aa926661a2b7070, type: 3}
   - {fileID: 21300000, guid: 374dc90f739bee04a877d6898de07475, type: 3}
   - {fileID: 21300000, guid: f0c9db0f6da47a143ace33406d796551, type: 3}
+  - {fileID: 21300000, guid: 30b1682fb69bab7409496d80cd3e3183, type: 3}
   - {fileID: 21300000, guid: 188f674fd393cb944aa8e6cbaf28b4a9, type: 3}
   - {fileID: 21300000, guid: 9ad6fd8fd9790ea43a0b1b0778ec0f0c, type: 3}
   - {fileID: 21300000, guid: f340479f5687f2148ab164d85f708154, type: 3}
   m_PackedSpriteNamesToIndex:
   - photo-lv4-cargo
   - photo-lv3-cargo
-  - photo-lv3-above2
   - button-face
   - car-kissel
   - node-main
   - PhoneDialogTalking
   - reya_icon
   - amy-office
-  - photo-lv3-above1
   - photo-lv3-anchor
   - level4_emerald
   - ship
@@ -196,7 +192,7 @@ SpriteAtlas:
   - map-marker
   - cork-board_light_blank
   - icon-check
-  - photo-lv3-above4
+  - photo-lv3-above
   - push-pin
   - zoom-in
   - ship-card
@@ -232,7 +228,6 @@ SpriteAtlas:
   - captain-with-knife
   - letter
   - zoom-out
-  - photo-lv3-above3
   - broken-wheel
   - photo-lv2-safe
   - RoundedRect100
@@ -240,6 +235,7 @@ SpriteAtlas:
   - car-nash
   - back-arrow
   - lv2 gps
+  - jules_icon
   - eyewitness-account
   - level3_paradise
   - ship_bubble
