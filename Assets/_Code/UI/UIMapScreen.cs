@@ -32,6 +32,9 @@ namespace Shipwreck {
 				CanvasGroup.FadeTo(0f, 0.25f)
 			);
 		}
+		protected override IEnumerator HideImmediateRoutine() {
+			throw new System.NotImplementedException();
+		}
 
 		protected override void OnShowStart() {
 			base.OnShowStart();

@@ -55,6 +55,9 @@ namespace Shipwreck {
 		public static void Close<T>() where T : UIBase {
 			I.Close(typeof(T));
 		}
+		public static void CloseImmediately<T>() where T : UIBase {
+			I.CloseImmediately(typeof(T));
+		}
 		public static void CloseThenCall<T>(Action callback, bool invokeIfAlreadyClosed = true) where T : UIBase {
 			I.CloseThenCall(typeof(T), callback, invokeIfAlreadyClosed);
 		}
@@ -102,6 +105,12 @@ namespace Shipwreck {
 			IUIScreen screen = m_mapByType[type];
 			if (m_opened.Remove(screen)) {
 				screen.Hide();
+			}
+		}
+		private void CloseImmediately(Type type) {
+			IUIScreen screen = m_mapByType[type];
+			if (m_opened.Remove(screen)) {
+				screen.HideImmediate();
 			}
 		}
 		private void CloseThenCall(Type type, Action callback, bool invokeIfAlreadyClosed) {

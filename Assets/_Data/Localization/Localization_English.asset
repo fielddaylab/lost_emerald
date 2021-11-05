@@ -181,6 +181,20 @@ MonoBehaviour:
     m_hash: -1880479098
   - m_key: Character/Johnny/Name
     m_hash: -9541103
+  - m_key: Level3/Case/Name
+    m_hash: 1984137139
+  - m_key: Level3/Case/Type
+    m_hash: -1318127304
+  - m_key: Level3/Case/Cause
+    m_hash: 743692395
+  - m_key: Level4/Case/Name
+    m_hash: -1803992006
+  - m_key: Level4/Case/Type
+    m_hash: 1211508233
+  - m_key: Level4/Case/Cause
+    m_hash: -1568440620
+  - m_key: Dive/Level4/Cause-Name
+    m_hash: -1787967902
   m_values:
   - Continue
   - Dad
@@ -261,7 +275,14 @@ MonoBehaviour:
   - 'Cause of Wreck :'
   - Top-Down Photo
   - Ore
-  - Locket
+  - Lost Artifact
   - Ship Name
   - Ed
   - Johnny
+  - PS Paradise
+  - Sidewheel Steamer
+  - Fire in the boiler room.
+  - The Emerald
+  - Freighter
+  - Flimsy steel broke in the waves.
+  - Split in Half

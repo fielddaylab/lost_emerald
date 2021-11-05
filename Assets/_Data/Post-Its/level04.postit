@@ -16,7 +16,7 @@
 
 :: type-correct
 @root Type
-@correct ship-chart-type
+@correct ship-chart-type, photo-above, card-freighter
 
 
 // -----------------------------------------------------------
@@ -33,7 +33,7 @@
 
 :: cause-correct
 @root Cause
-@correct photo-above, survivor-waves, mom-brittle
+@correct photo-cause, survivor-waves, mom-brittle
 
 // -----------------------------------------------------------
 //	Name

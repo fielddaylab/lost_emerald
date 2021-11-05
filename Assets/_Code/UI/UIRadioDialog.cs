@@ -67,6 +67,10 @@ namespace Shipwreck {
 			yield return ((RectTransform)transform).AnchorPosTo(-220f, 0.2f, Axis.Y);
 		}
 
+		protected override IEnumerator HideImmediateRoutine() {
+			throw new System.NotImplementedException();
+		}
+
 		#endregion // UIBase
 
 		#region Dialog

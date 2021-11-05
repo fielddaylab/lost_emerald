@@ -10,6 +10,7 @@ namespace Shipwreck {
 		event Action OnOpenComplete;
 		void Show();
 		void Hide();
+		void HideImmediate();
 		MonoBehaviour Component { get; }
 	}
 	public abstract class UIBase : MonoBehaviour {
@@ -35,6 +36,9 @@ namespace Shipwreck {
 			}
 			public void Hide() {
 				m_owner.Hide();
+			}
+			public void HideImmediate() {
+				m_owner.HideImmediate();
 			}
 
 			public MonoBehaviour Component {
@@ -90,6 +94,18 @@ namespace Shipwreck {
 				.OnComplete(HandlehideCmplete)
 				.OnStop(HandlehideCmplete);
 		}
+		private void HideImmediate() {
+			if (!m_isShown) {
+				return;
+			}
+			m_isShown = false;
+			gameObject.SetActive(true);
+			OnHideStart();
+			m_showHideRoutine.Replace(this, HideImmediateRoutine())
+				.ExecuteWhileDisabled()
+				.OnComplete(HandlehideCmplete)
+				.OnStop(HandlehideCmplete);
+		}
 
 		protected virtual void OnShowStart() {
 			if (m_canvasGroup != null) {
@@ -130,6 +146,8 @@ namespace Shipwreck {
 		protected abstract IEnumerator ShowRoutine();
 
 		protected abstract IEnumerator HideRoutine();
+
+		protected abstract IEnumerator HideImmediateRoutine();
 
 		static public void AssignSpritePreserveAspect(Image target, Sprite sprite, Axis preserveAspect) {
 			target.sprite = sprite;

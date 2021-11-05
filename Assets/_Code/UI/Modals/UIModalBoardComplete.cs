@@ -22,6 +22,9 @@ namespace Shipwreck {
 			m_groupTransform.localScale = Vector3.zero;
 			yield return m_groupTransform.ScaleTo(1f, m_tweenSettings);
 		}
+		protected override IEnumerator HideImmediateRoutine() {
+			throw new System.NotImplementedException();
+		}
 
 		protected override void OnShowCompleted() {
 			base.OnShowCompleted();
@@ -42,7 +45,6 @@ namespace Shipwreck {
 			GameMgr.Events.Dispatch(GameEvents.BoardComplete);
 			GameMgr.RunTrigger(GameTriggers.OnBoardComplete);
 		}
-
 	}
 
 }

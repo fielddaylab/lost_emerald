@@ -17,7 +17,7 @@ namespace Shipwreck {
 		private interface IDiveScreen {
 			DiveScreenState Previous { get; }
 			bool IsAtAscendNode { get; set; }
-
+			bool HasDescended { get; set; }
 			void SetState(DiveScreenState state);
 			void SetCameraActive(bool isActive);
 			void SetNavigationActive(bool isActive);
@@ -38,6 +38,10 @@ namespace Shipwreck {
 			public bool IsAtAscendNode { 
 				get { return m_owner.m_isAscended; }
 				set { m_owner.m_isAscended = value; }
+			}
+			public bool HasDescended {
+				get { return m_owner.m_hasDescended; }
+				set { m_owner.m_hasDescended = value; }
 			}
 
 			private readonly UIDiveScreen m_owner;
@@ -118,6 +122,7 @@ namespace Shipwreck {
 		private DiveScreenState m_currentState;
 		private DiveScreenState m_previousState;
 		private bool m_isAscended = true;
+		private bool m_hasDescended = false;
 		private Routine m_flashRoutine;
 		private Routine m_journalShowHideRoutine;
 
@@ -127,6 +132,7 @@ namespace Shipwreck {
 			base.OnShowStart();
 
 			m_isAscended = true;
+			m_hasDescended = false;
 			m_stateLink = new StateLinkage(this);
 			SetNavigationActive(false);
 
@@ -178,6 +184,9 @@ namespace Shipwreck {
 		protected override IEnumerator ShowRoutine() {
 			yield return CanvasGroup.FadeTo(1f, 0.3f);
 			CanvasGroup.interactable = true;
+		}
+		protected override IEnumerator HideImmediateRoutine() {
+			throw new System.NotImplementedException();
 		}
 
 		#endregion
@@ -282,7 +291,7 @@ namespace Shipwreck {
 			if (isNavActive) {
 				m_buttonCameraActivate.gameObject.SetActive(true);
 				m_buttonAscend.gameObject.SetActive(!m_isAscended);
-				m_buttonSurface.gameObject.SetActive(m_isAscended);
+				m_buttonSurface.gameObject.SetActive(m_isAscended && m_hasDescended);
 				m_buttonJournal.gameObject.SetActive(true);
 
 			} else {

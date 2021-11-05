@@ -222,6 +222,10 @@ namespace Shipwreck {
 			yield return CanvasGroup.FadeTo(0f, 0.3f);
 		}
 
+		protected override IEnumerator HideImmediateRoutine() {
+			throw new System.NotImplementedException();
+		}
+
 		private void HandlePhoneNotification() {
 			m_currentMessageState = MessageState.showing;
 			m_returnToOfficeButton.interactable = false;
