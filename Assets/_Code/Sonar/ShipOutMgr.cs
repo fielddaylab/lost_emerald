@@ -140,7 +140,7 @@ namespace Shipwreck {
 						UIShipOutScreen.ActionCode.EnableSonar
 					};
 					UIShipOutScreen.instance.ShowMessage(
-						"Time to use my sonar to find the shipwreck!",
+						"The ship should be under the water in this area. Time to drive my boat around and find it with my sonar.",
 						"Continue",
 						codes
 						);
