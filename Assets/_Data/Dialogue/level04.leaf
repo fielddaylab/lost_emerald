@@ -89,6 +89,7 @@
 		Let's get out there!!
 	{@you}  I still need to narrow down the location, Reya.
 		I'll let you know what I find. 
+	$call UnlockEvidence(4, "LV4-Card-Types")
 	$call EndConvoMusic()
 
 
@@ -119,7 +120,6 @@
 	{@amy}	Sure thing.
 		Good luck, Jules. I hope you find it. 
 	$call UnlockEvidence(4, "LV4-Location-Coordinates")
-	$call UnlockEvidence(4, "LV4-Ship-Chart")
 	$call RemoveEvidence(4, "LV4-Do-Later-Note")
 	$call DiscoverLocation(4)
 	$call EndConvoMusic()
@@ -250,6 +250,7 @@
 	{@amy}   His name is Edmund Jones. He said he'd be willing to talk to you.
 	{@you}	Thanks, Amy!
 	$call UnlockContact(ed)
+	$call UnlockEvidence(4, "LV4-Ship-Chart") // still needs to be reflected in script
 	$call EndConvoMusic()
 
 

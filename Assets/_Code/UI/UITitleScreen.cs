@@ -173,7 +173,7 @@ namespace Shipwreck {
 			GameMgr.UnlockEvidence(2, "LV2-Table-Wrecks");
 			GameMgr.UnlockEvidence(2, "LV2-Photo-Safe");
 			GameMgr.UnlockEvidence(2, "LV2-Images-Car");
-			GameMgr.UnlockEvidence(4, "LV4-Investigation-Report");
+			//GameMgr.UnlockEvidence(4, "LV4-Investigation-Report");
 			GameMgr.RecordNodeVisited("level02.reya-boat", "reya");
 			GameMgr.RecordNodeVisited("level02.reya-dive", "reya");
 			GameMgr.RecordNodeVisited("level02.dive-gash", "reya");
@@ -275,8 +275,10 @@ namespace Shipwreck {
 			GameMgr.RecordNodeVisited("level04.reya-mow", "reya");
 
 			GameMgr.UnlockEvidence(4, "LV4-Location-Coordinates");
+			GameMgr.UnlockEvidence(4, "LV4-Card-Types");
 			GameMgr.UnlockEvidence(4, "LV4-Ship-Chart");
 			GameMgr.UnlockEvidence(4, "LV4-Photo-Above");
+			GameMgr.UnlockEvidence(4, "LV4-Photo-Cause");
 			GameMgr.UnlockEvidence(4, "LV4-Photo-Name");
 			GameMgr.UnlockEvidence(4, "LV4-Photo-Locket");
 			GameMgr.UnlockEvidence(4, "LV4-Transcript-Survivor");
