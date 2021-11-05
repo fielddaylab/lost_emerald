@@ -95,7 +95,7 @@
 
 :: amy-lead
 @contact amy, phone-call
-//@background
+@background amy-office
 @trigger OnDialogClosed
 @when Seen(level04.reya-steel)
 @once
@@ -232,7 +232,7 @@
 // Back at your office. Conversation with Amy.
 :: amy-strange
 @contact amy, phone-call
-//@background
+@background amy-office
 @trigger OnEnterOffice
 @when HasEvidence(LV4-Photo-Locket)
 @once
