@@ -47,7 +47,7 @@ namespace Shipwreck
 		}
 
 		public static void MarkTitleScreenComplete() {
-			I.m_eventService.Register<StringHash32>(GameEvents.PhoneNotification, I.HandlePhoneNotification);
+			I.m_eventService.Register<ScriptNode>(GameEvents.PhoneNotification, I.HandlePhoneNotification);
 			I.m_eventService.Register(GameEvents.ChainSolved, I.HandleChainCompleted);
 			CutscenePlayer.OnVideoComplete += I.HandleCutsceneComplete;
 		}
@@ -87,12 +87,18 @@ namespace Shipwreck
 			RunTrigger("Start");
 		}
 
-		private void HandlePhoneNotification(StringHash32 contact) {
+		private void HandlePhoneNotification(ScriptNode node) {
 			// DIVE SCENE WILL WAIT UNTIL MESSAGE STATE
 			// to run its messages
 			if (!UIMgr.IsOpen<UIDiveScreen>()) {
-				UIMgr.Open<UIPhoneNotif>();
-				UIMgr.Open<UIModalOverlay>();
+				// check to see if the message should be
+				// opened automatically
+				if (node.OpenAutomatically) {
+					TryRunLastNotification(out var _);
+				} else {
+					UIMgr.Open<UIPhoneNotif>();
+					UIMgr.Open<UIModalOverlay>();
+				}
 			}
 		}
 		private void HandleChainCompleted() {
@@ -167,7 +173,7 @@ namespace Shipwreck
 		public static void QueueNotification(ScriptNode node) {
 			if (I.m_state.QueueNotification(node.ContactId, node.Id())) {
 				SetVariable(GameVars.LastNotifiedContactId, node.ContactId);
-				Events.Dispatch(GameEvents.PhoneNotification, node.ContactId);
+				Events.Dispatch(GameEvents.PhoneNotification, node);
 			}
 		}
 

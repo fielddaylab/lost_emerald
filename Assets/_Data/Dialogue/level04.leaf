@@ -147,6 +147,7 @@
 //@background 
 @trigger OnEnterSonar
 @once
+@automatic
 
 	$call PauseSonar()
 	{@reya}	Eee this is so exciting!
@@ -162,6 +163,7 @@
 //@background
 @trigger OnMowCompleted
 @once
+@automatic
 
 	$call PauseSonar()
 	{@you}	Well...that’s definitely a ship.
