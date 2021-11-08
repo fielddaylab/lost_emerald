@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4500668, g: 0.49754357, b: 0.56167483, a: 1}
+  m_IndirectSpecularColor: {r: 0.45006657, g: 0.49754304, b: 0.5616746, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -822,7 +822,7 @@ PrefabInstance:
     - target: {fileID: 3782994056335260743, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
       propertyPath: m_Name
-      value: DiveVirtualCamera (17)
+      value: DiveVirtualCamera (safe)
       objectReference: {fileID: 0}
     - target: {fileID: 3782994056335260744, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
@@ -2567,7 +2567,7 @@ PrefabInstance:
     - target: {fileID: 3782994056335260743, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
       propertyPath: m_Name
-      value: DiveVirtualCamera (10)
+      value: DiveVirtualCamera (gash)
       objectReference: {fileID: 0}
     - target: {fileID: 3782994056335260744, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
@@ -3085,7 +3085,7 @@ PrefabInstance:
     - target: {fileID: 3782994056335260743, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
       propertyPath: m_Name
-      value: DiveVirtualCamera (1)
+      value: DiveVirtualCamera (above)
       objectReference: {fileID: 0}
     - target: {fileID: 3782994056335260744, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
@@ -3632,7 +3632,7 @@ PrefabInstance:
     - target: {fileID: 3782994056335260743, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
       propertyPath: m_Name
-      value: DiveVirtualCamera (12)
+      value: DiveVirtualCamera (cargo)
       objectReference: {fileID: 0}
     - target: {fileID: 3782994056335260744, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
