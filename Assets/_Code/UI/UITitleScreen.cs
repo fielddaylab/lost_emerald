@@ -206,10 +206,14 @@ namespace Shipwreck {
 			GameMgr.SetChain(1, "Name", "name-madison");
 			GameMgr.SetChain(1, "Artifact", "photo-safe", "artifact-safe");
 
+			
 			if (furthestUnlock) {
 				UIMgr.Open<UIModalOverlay>();
 				UIMgr.Open<UIModalCaseClosed>();
 			}
+			
+			//GameMgr.RunTrigger(GameTriggers.OnCaseClosed);
+			//GameMgr.SetLevelIndex(2);
 		}
 
 		private void UnlockLevel3_50() {

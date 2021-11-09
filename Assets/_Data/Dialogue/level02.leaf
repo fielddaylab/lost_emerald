@@ -201,19 +201,15 @@
 	{@reya} Oh yeah. That too. 
 		I wonder if anybody saw it coming...
 	$call TriggerCutscene()
+	$call UnlockLevel(3)
 	$call EndConvoMusic()
+
 	
-//-------------------------------------------
-//  Level 3
-//-------------------------------------------
-
-// this is a workaround to allow this level 3 conversation
-// to trigger immediately after completing level 2
-
 :: dad-superior
 @contact dad, phone-call
 @background dad-boat
 @trigger OnCaseClosed
+@when Seen(level02.reya-safe)
 @once
 
 	$call TriggerConvoMusic(dad_convo)
@@ -239,9 +235,8 @@
 	{@you}  The steel company said it was.
 	{@dad}  They just needed somebody to blame. That's why I need to find the Emerald--to prove his innocence!
 	{@you} I don't know, Dad. From your stories, it sounds like Grandpa could be pretty reckless--
-	{@dad}  Oh, look at that! Sonar's working! Gotta go, Jules. Wish me luck! 
-	$call UnlockLevel(3)	
-	$call BeginLevel(3)
+	{@dad}  Oh, look at that! Sonar's working! Gotta go, Jules. Wish me luck!
+	$call BeginLevel(3)	
 	$call UnlockEvidence(3,LV3-Card-Types)
 	$call UnlockEvidence(3,LV3-Transcript-Dad)
 	$call UnlockContact(cami)
