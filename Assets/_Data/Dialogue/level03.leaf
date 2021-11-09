@@ -21,21 +21,23 @@
 	$call TriggerConvoMusic(cami_convo)
 	{@cami}  Hey Jules! You need some info on a sidewheel steamer? 
 	{@you}   Yep! Thanks for calling, Cami. 
-		Ooh, who's that cute guy with you? 
-	{@cami}  This is Johnny, my diving student. Who can currently hear everything you're saying.
-	{@you}   Oh!! Um, hi, Johnny! I'm Jules. But I guess Cami already said that, so...yeah. 
-	{@johnny}  Hey.
-	{@cami}  I heard you found a sidewheel steamer out near Sheboygan. 
-		Could be the Paradise! I've been looking for that ship for ages. 
+		 Ooh, who's that cute guy with you? 
+	{@cami}  This is Johnny, my new diving student. 
+		 He can hear everything you're saying, by the way. 
+	{@you}   Oh! Um... haha, hi, Johnny. 
+	{@johnny} Hey.
+	{@cami}  So, where's this sidewheel steamer?
+	{@you}  Right near Sheboygan.
+	{@cami} Ooh, that could be the Paradise! I would love to find that ship!
+		Here, check it out!
 			{img ps_paradise_ad_sketch}
-		The Paradise was super fancy, but tickets were pretty cheap.
-		She was carrying a mix of rich passengers, immigrant workers, and other folks traveling west. 
-		The manifest got lost, so nobody knows what cargo she was carrying. 
+		Gorgeous, huh? She sank in 1856.
+		The manifest was lost, so the cargo is still unknown. 
 			{/img}
-	{@you}	Wow. You know all about this ship!
-	{@cami}	It's sort of a pet project of mine. 
-		Look for the famous red anchor. It should have the name engraved. 
-	{@you}  Thanks, Cami!
+	{@you}  Wow, you know a ton about this ship!
+	{@cami} It's sort of a pet project of mine. 
+		Keep a lookout for the famous red anchor. It should have the name on it!
+	{@you}  Awesome, thanks, Cami! 
 	$call EndConvoMusic()
 
 

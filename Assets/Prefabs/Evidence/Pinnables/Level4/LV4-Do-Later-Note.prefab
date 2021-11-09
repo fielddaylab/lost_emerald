@@ -109,7 +109,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -13}
-  m_SizeDelta: {x: -32, y: 85.81}
+  m_SizeDelta: {x: -32, y: 127.992676}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &1949372500833826193
 CanvasRenderer:
@@ -166,8 +166,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22
-  m_fontSizeBase: 22
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 5141263981520001396}
   - component: {fileID: 6245729847242349478}
   m_Layer: 5
-  m_Name: LV4-DoLaterNote
+  m_Name: LV4-Do-Later-Note
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -244,7 +244,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 62}
-  m_SizeDelta: {x: 118.16922, y: 123.91495}
+  m_SizeDelta: {x: 156.444, y: 164.05078}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6245729847242349478
 MonoBehaviour:
