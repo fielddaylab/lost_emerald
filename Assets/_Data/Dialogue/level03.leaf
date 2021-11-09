@@ -46,6 +46,7 @@
 // @background 
 @trigger OnEnterSonar
 @once
+@automatic
 	
 	{@you}	The ship should be down there somewhere. Time to use my sonar!
 	

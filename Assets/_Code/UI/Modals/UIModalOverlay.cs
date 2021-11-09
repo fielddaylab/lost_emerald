@@ -23,6 +23,9 @@ namespace Shipwreck {
 		protected override IEnumerator ShowRoutine() {
 			yield return m_overlay.FadeTo(1f, m_tweenSettings);
 		}
+		protected override IEnumerator HideImmediateRoutine() {
+			throw new System.NotImplementedException();
+		}
 	}
 
 }

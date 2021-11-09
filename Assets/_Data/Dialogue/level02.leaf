@@ -147,7 +147,7 @@
 	{@cooper}  Happy to help! 
 		
 	$call UnlockEvidence(2,LV2-Images-Car)
-	$call UnlockEvidence(4,LV4-Investigation-Report)
+	//$call UnlockEvidence(4,LV4-Investigation-Report)
 	$call EndConvoMusic()
 		
 

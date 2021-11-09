@@ -89,12 +89,13 @@
 		Let's get out there!!
 	{@you}  I still need to narrow down the location, Reya.
 		I'll let you know what I find. 
+	$call UnlockEvidence(4, "LV4-Card-Types")
 	$call EndConvoMusic()
 
 
 :: amy-lead
 @contact amy, phone-call
-//@background
+@background amy-office
 @trigger OnDialogClosed
 @when Seen(level04.reya-steel)
 @once
@@ -120,7 +121,6 @@
 	{@amy}	Sure thing.
 		Good luck, Jules. I hope you find it. 
 	$call UnlockEvidence(4, "LV4-Location-Coordinates")
-	$call UnlockEvidence(4, "LV4-Ship-Chart")
 	$call RemoveEvidence(4, "LV4-Do-Later-Note")
 	$call DiscoverLocation(4)
 	$call EndConvoMusic()
@@ -147,6 +147,7 @@
 //@background 
 @trigger OnEnterSonar
 @once
+@automatic
 
 	$call PauseSonar()
 	{@reya}	Eee this is so exciting!
@@ -162,6 +163,7 @@
 //@background
 @trigger OnMowCompleted
 @once
+@automatic
 
 	$call PauseSonar()
 	{@you}	Well...that’s definitely a ship.
@@ -232,7 +234,7 @@
 // Back at your office. Conversation with Amy.
 :: amy-strange
 @contact amy, phone-call
-//@background
+@background amy-office
 @trigger OnEnterOffice
 @when HasEvidence(LV4-Photo-Locket)
 @once
@@ -246,6 +248,7 @@
 		He said he'd be willing to talk to you.
 	{@you}	Wow, that's so lucky! Thanks, Amy!
 	$call UnlockContact(ed)
+	$call UnlockEvidence(4, "LV4-Ship-Chart") // still needs to be reflected in script
 	$call EndConvoMusic()
 
 

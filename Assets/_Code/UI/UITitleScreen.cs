@@ -54,6 +54,10 @@ namespace Shipwreck {
 			CanvasGroup.interactable = true;
 		}
 
+		protected override IEnumerator HideImmediateRoutine() {
+			throw new System.NotImplementedException();
+		}
+
 		private void HandleNewGame() {
 			AudioSrcMgr.instance.PlayOneShot("click_new_game");
 			GameMgr.UnlockContact("dad");
@@ -117,6 +121,10 @@ namespace Shipwreck {
 			GameMgr.RecordNodeVisited("level01.amy-meet", "amy");
 			GameMgr.RecordNodeVisited("level01.dad-urgent-text", "dad");
 			GameMgr.RecordNodeVisited("level01.amy-article", "amy");
+			GameMgr.RecordNodeVisited("level01.dive-start", "you");
+			GameMgr.RecordNodeVisited("level01.dive-photo-above", "you");
+			GameMgr.RecordNodeVisited("level01.dive-photo-name", "you");
+			GameMgr.RecordNodeVisited("level01.dive-photo-artifact", "you");
 
 			GameMgr.SetLevelIndex(0);
 			GameMgr.SetChain(0, "Location", "location-coordinates");
@@ -165,7 +173,7 @@ namespace Shipwreck {
 			GameMgr.UnlockEvidence(2, "LV2-Table-Wrecks");
 			GameMgr.UnlockEvidence(2, "LV2-Photo-Safe");
 			GameMgr.UnlockEvidence(2, "LV2-Images-Car");
-			GameMgr.UnlockEvidence(4, "LV4-Investigation-Report");
+			//GameMgr.UnlockEvidence(4, "LV4-Investigation-Report");
 			GameMgr.RecordNodeVisited("level02.reya-boat", "reya");
 			GameMgr.RecordNodeVisited("level02.reya-dive", "reya");
 			GameMgr.RecordNodeVisited("level02.dive-gash", "reya");
@@ -267,8 +275,10 @@ namespace Shipwreck {
 			GameMgr.RecordNodeVisited("level04.reya-mow", "reya");
 
 			GameMgr.UnlockEvidence(4, "LV4-Location-Coordinates");
+			GameMgr.UnlockEvidence(4, "LV4-Card-Types");
 			GameMgr.UnlockEvidence(4, "LV4-Ship-Chart");
 			GameMgr.UnlockEvidence(4, "LV4-Photo-Above");
+			GameMgr.UnlockEvidence(4, "LV4-Photo-Cause");
 			GameMgr.UnlockEvidence(4, "LV4-Photo-Name");
 			GameMgr.UnlockEvidence(4, "LV4-Photo-Locket");
 			GameMgr.UnlockEvidence(4, "LV4-Transcript-Survivor");

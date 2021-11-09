@@ -46,6 +46,9 @@ namespace Shipwreck {
 		public bool IsConversation {
 			get { return m_type > NodeType.Unassigned && m_type < NodeType.Function; }
 		}
+		public bool OpenAutomatically {
+			get { return m_automatic; }
+		}
 
 		private StringHash32 m_contactId = default(StringHash32);
 		private NodeType m_type = NodeType.Unassigned;
@@ -55,6 +58,7 @@ namespace Shipwreck {
 		private int m_triggerPriority;
 		private VariantComparison[] m_conditions;
 		private bool m_once;
+		private bool m_automatic;
 
 		public ScriptNode(string fullName, ILeafModule inModule) : base(fullName, inModule) {
 			m_fullName = fullName;
@@ -114,6 +118,11 @@ namespace Shipwreck {
 		private void SetFunction() {
 			m_type = NodeType.Function;
 			m_once = false;
+		}
+
+		[BlockMeta("automatic")]
+		private void SetAutomatic() {
+			m_automatic = true;
 		}
 
 		#endregion // Meta

@@ -28,6 +28,9 @@ namespace Shipwreck {
 		protected override IEnumerator ShowRoutine() {
 			yield return m_groupTransform.ScaleTo(1f, m_tweenSettings);
 		}
+		protected override IEnumerator HideImmediateRoutine() {
+			throw new System.NotImplementedException();
+		}
 
 		protected override void OnShowStart() {
 			UIMgr.Open<UIModalOverlay>();

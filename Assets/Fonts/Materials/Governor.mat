@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Governor
-  m_Shader: {fileID: -6465566751694194690, guid: b7c0c6f4176614dd683090399e6cee89,
+  m_Shader: {fileID: -6465566751694194690, guid: 4aa46d33b0afb5e49bb0703218e42e0e,
     type: 3}
   m_ShaderKeywords: _DETAIL_MULX2 _GLOSSYREFLECTIONS_OFF _NORMALMAP _SPECULARHIGHLIGHTS_OFF
   m_LightmapFlags: 4
@@ -69,10 +69,12 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_38BD3441: 0.4
-    - Vector1_CF8B0D8D: 6
+    - Vector1_154BF4A3: 0.85
+    - Vector1_38BD3441: 0.406
+    - Vector1_CF8B0D8D: 2
+    - Vector1_E219725: 1
     - Vector1_EC8E19D2: 0
-    - Vector1_ED5ABFD9: 0.05
+    - Vector1_ED5ABFD9: 0
     - Vector1_F3F6B787: 0
     - Vector1_F651DF24: 0.19
     - _BumpScale: 1.28
@@ -93,10 +95,10 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - Color_1EA15D16: {r: 0.6415094, g: 0.6415094, b: 0.6415094, a: 0}
-    - Color_28180829: {r: 0.5019608, g: 0.3019608, b: 0.05882353, a: 1}
-    - Color_57D43A16: {r: 0.9528302, g: 0.9528302, b: 0.9528302, a: 0}
-    - Color_F689E8B9: {r: 0.9245283, g: 0.6391348, b: 0.2921858, a: 1}
+    - Color_28180829: {r: 0.6981132, g: 0.6981132, b: 0.6981132, a: 1}
+    - Color_57D43A16: {r: 0, g: 0, b: 0, a: 0}
+    - Color_F689E8B9: {r: 1, g: 1, b: 1, a: 1}
     - Vector2_96964D17: {r: 70, g: 70, b: 0, a: 0}
-    - Vector2_B6BA9460: {r: 1, g: 1, b: 0, a: 0}
+    - Vector2_B6BA9460: {r: 100, g: 100, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
