@@ -7734,6 +7734,7 @@ MonoBehaviour:
   m_image: {fileID: 1602324347213302077}
   m_button: {fileID: 0}
   m_banner: {fileID: 0}
+  m_bannerImage: {fileID: 0}
 --- !u!114 &4058939370335559527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7749,6 +7750,7 @@ MonoBehaviour:
   m_image: {fileID: 2102031455691877689}
   m_button: {fileID: 0}
   m_banner: {fileID: 0}
+  m_bannerImage: {fileID: 0}
 --- !u!114 &5220637829187989063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7793,6 +7795,7 @@ MonoBehaviour:
   m_image: {fileID: 7770260091207008154}
   m_button: {fileID: 0}
   m_banner: {fileID: 0}
+  m_bannerImage: {fileID: 0}
 --- !u!1 &5949353119161934647
 GameObject:
   m_ObjectHideFlags: 0
@@ -8080,6 +8083,7 @@ MonoBehaviour:
   m_image: {fileID: 5220637829187989063}
   m_button: {fileID: 0}
   m_banner: {fileID: 0}
+  m_bannerImage: {fileID: 0}
 --- !u!224 &7985776862185076837
 RectTransform:
   m_ObjectHideFlags: 0

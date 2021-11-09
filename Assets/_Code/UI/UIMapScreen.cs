@@ -67,6 +67,12 @@ namespace Shipwreck {
 				}
 				marker.SetSprite(markerSprite);
 				marker.SetColor(GameDb.GetMarkerColor(index));
+				if (GameMgr.State.GetLevel(index).IsBoardComplete()) {
+					marker.SetBannerSprite(GameDb.GetMarkerSprite("bar-closed"));
+				}
+				else {
+					marker.SetBannerSprite(GameDb.GetMarkerSprite("bar-open"));
+				}
 				m_levelLabels[index].Key = GameMgr.State.GetLevelName(index);
 			}
 

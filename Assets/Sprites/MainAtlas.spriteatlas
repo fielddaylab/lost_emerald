@@ -63,7 +63,9 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 5acb7c42884df40b59c8ff374fe31bcb, type: 3}
   - {fileID: 21300000, guid: 73e01e52390ee6d4ca224fc6a68ef033, type: 3}
   - {fileID: 21300000, guid: aff968628b4fec54da281f472dfe771f, type: 3}
+  - {fileID: 21300000, guid: 82618d62d12ee8540b94dc51fa21c5c8, type: 3}
   - {fileID: 21300000, guid: b546b082ff32bfc4eb779578b389798c, type: 3}
+  - {fileID: 21300000, guid: ce666db2b00acd64bab360705851b63e, type: 3}
   - {fileID: 21300000, guid: 394202035ee436f448f54bd29c07b239, type: 3}
   - {fileID: 21300000, guid: 9bf4c5333a04df6498fbdeb5c60ebb04, type: 3}
   - {fileID: 21300000, guid: 5f65e64366354fa4182c286b229445c9, type: 3}
@@ -80,6 +82,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 6fff9425d950f394ca57678b61b267d0, type: 3}
   - {fileID: 21300000, guid: 18ce4d25aa2b140caad634c3dd4b69e2, type: 3}
   - {fileID: 21300000, guid: 6d6d68b52d8caf5469b1bc33bfdc07a2, type: 3}
+  - {fileID: 21300000, guid: 11d87fb59aa76de4385120beb7b89f6a, type: 3}
   - {fileID: 21300000, guid: 4c79450638844d24995f52e92ca8fcb2, type: 3}
   - {fileID: 21300000, guid: 9181df563faf4c240b278fd35f45ddfd, type: 3}
   - {fileID: 21300000, guid: b92d2866ce79293478f277897bd0ad16, type: 3}
@@ -111,6 +114,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: bd33810b214a0104fbc3b7c7b52910b8, type: 3}
   - {fileID: 21300000, guid: 731c122b3a19c420abd944082c76bccc, type: 3}
   - {fileID: 21300000, guid: d2d6e82b83314714bac1fcd40e1c416a, type: 3}
+  - {fileID: 21300000, guid: c7876a4b94f279f4eb754ca7b2512aae, type: 3}
   - {fileID: 21300000, guid: c20a108ba4f416048a9867506a6020c7, type: 3}
   - {fileID: 21300000, guid: 3acf4abb67ae7744292d804a07f1c37a, type: 3}
   - {fileID: 21300000, guid: ea001b1c59f86ce4c805ebcf8ec11611, type: 3}
@@ -118,6 +122,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 00e7886c97ff91a419c635f6cfe99871, type: 3}
   - {fileID: 21300000, guid: f06973bc2e98e2c4baceae48912060d7, type: 3}
   - {fileID: 21300000, guid: 993c01cc18d924a278476410f23bec53, type: 3}
+  - {fileID: 21300000, guid: bb54a1cc58e8e9f4693df88dfa5cbbc6, type: 3}
   - {fileID: 21300000, guid: 2af87afca5fb68744b9282231b479229, type: 3}
   - {fileID: 21300000, guid: 7fd12d0d3f284fa40899dc34b325317b, type: 3}
   - {fileID: 21300000, guid: 4495b11dfccfb934ebf50ce533b76639, type: 3}
@@ -163,7 +168,9 @@ SpriteAtlas:
   - ripped-page
   - reya-safe
   - level1_loretta
+  - marker-unknown-lv4
   - cooper-museum
+  - bar-closed
   - photo-lv2-safe
   - photo-lv2-above
   - lou-ultralight
@@ -180,6 +187,7 @@ SpriteAtlas:
   - cork-board_blank
   - camera-button-close
   - photo-lv2-gash5
+  - bar-open
   - photo-lv2-gash2
   - icon-check-empty
   - triangle
@@ -211,6 +219,7 @@ SpriteAtlas:
   - lv2-car-images
   - lake-overview
   - photo-lv2-gash4
+  - closed-tag
   - dad-yardsale
   - cork-board
   - ultralight-photo
@@ -218,6 +227,7 @@ SpriteAtlas:
   - ps_paradise_ad_sketch
   - dad-attic
   - icon-from-camera
+  - marker-default
   - dad_icon
   - amy_icon
   - yardsale
