@@ -6830,7 +6830,7 @@ PrefabInstance:
     - target: {fileID: 5279529513073968348, guid: f152a7e83e9b80541a6f40142e281c76,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 2.9
+      value: -67
       objectReference: {fileID: 0}
     - target: {fileID: 5955562302070625036, guid: f152a7e83e9b80541a6f40142e281c76,
         type: 3}
@@ -7028,6 +7028,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 531016319209300888, guid: 89de7169bb442fc48b40af2381f497c5,
         type: 3}
+      propertyPath: m_markerDefault.b
+      value: 0.10588236
+      objectReference: {fileID: 0}
+    - target: {fileID: 531016319209300888, guid: 89de7169bb442fc48b40af2381f497c5,
+        type: 3}
+      propertyPath: m_markerDefault.g
+      value: 0.73333335
+      objectReference: {fileID: 0}
+    - target: {fileID: 531016319209300888, guid: 89de7169bb442fc48b40af2381f497c5,
+        type: 3}
+      propertyPath: m_markerDefault.r
+      value: 0.9607844
+      objectReference: {fileID: 0}
+    - target: {fileID: 531016319209300888, guid: 89de7169bb442fc48b40af2381f497c5,
+        type: 3}
       propertyPath: m_markerUnknown.b
       value: 0.3529412
       objectReference: {fileID: 0}
@@ -7066,6 +7081,11 @@ PrefabInstance:
       propertyPath: m_audioClips.Array.data[3]
       value: 
       objectReference: {fileID: 8300000, guid: 547a671f192b91747a29d0b726edd164, type: 3}
+    - target: {fileID: 531016319209300888, guid: 89de7169bb442fc48b40af2381f497c5,
+        type: 3}
+      propertyPath: m_markerSprites.Array.data[5]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 531016319209300889, guid: 89de7169bb442fc48b40af2381f497c5,
         type: 3}
       propertyPath: m_Name
@@ -7731,10 +7751,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 236efcc0578380949b3e8bb2db9c5388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_image: {fileID: 1602324347213302077}
-  m_button: {fileID: 0}
+  m_markerImage: {fileID: 1602324347213302077}
+  m_bannerButton: {fileID: 0}
+  m_markerButton: {fileID: 0}
   m_banner: {fileID: 0}
   m_bannerImage: {fileID: 0}
+  m_caseClosedTag: {fileID: 0}
 --- !u!114 &4058939370335559527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7747,10 +7769,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 236efcc0578380949b3e8bb2db9c5388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_image: {fileID: 2102031455691877689}
-  m_button: {fileID: 0}
+  m_markerImage: {fileID: 2102031455691877689}
+  m_bannerButton: {fileID: 0}
+  m_markerButton: {fileID: 0}
   m_banner: {fileID: 0}
   m_bannerImage: {fileID: 0}
+  m_caseClosedTag: {fileID: 0}
 --- !u!114 &5220637829187989063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7792,10 +7816,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 236efcc0578380949b3e8bb2db9c5388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_image: {fileID: 7770260091207008154}
-  m_button: {fileID: 0}
+  m_markerImage: {fileID: 7770260091207008154}
+  m_bannerButton: {fileID: 0}
+  m_markerButton: {fileID: 0}
   m_banner: {fileID: 0}
   m_bannerImage: {fileID: 0}
+  m_caseClosedTag: {fileID: 0}
 --- !u!1 &5949353119161934647
 GameObject:
   m_ObjectHideFlags: 0
@@ -8080,10 +8106,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 236efcc0578380949b3e8bb2db9c5388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_image: {fileID: 5220637829187989063}
-  m_button: {fileID: 0}
+  m_markerImage: {fileID: 5220637829187989063}
+  m_bannerButton: {fileID: 0}
+  m_markerButton: {fileID: 0}
   m_banner: {fileID: 0}
   m_bannerImage: {fileID: 0}
+  m_caseClosedTag: {fileID: 0}
 --- !u!224 &7985776862185076837
 RectTransform:
   m_ObjectHideFlags: 0
