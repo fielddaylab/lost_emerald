@@ -47,6 +47,7 @@ SpriteAtlas:
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: 4668ef405d8fd794e84a6c16503f01c2, type: 3}
+  - {fileID: 21300000, guid: 34be7f50dca717b49919f3c830f832c1, type: 3}
   - {fileID: 21300000, guid: 1ef17280142431044ba4e08b167d830a, type: 3}
   - {fileID: 21300000, guid: 976d24b0d86b37a4ea099fd7472eece2, type: 3}
   - {fileID: 21300000, guid: 13ee57b005423384a864133f2aa056dc, type: 3}
@@ -65,7 +66,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: aff968628b4fec54da281f472dfe771f, type: 3}
   - {fileID: 21300000, guid: 82618d62d12ee8540b94dc51fa21c5c8, type: 3}
   - {fileID: 21300000, guid: b546b082ff32bfc4eb779578b389798c, type: 3}
-  - {fileID: 21300000, guid: ce666db2b00acd64bab360705851b63e, type: 3}
   - {fileID: 21300000, guid: 394202035ee436f448f54bd29c07b239, type: 3}
   - {fileID: 21300000, guid: 9bf4c5333a04df6498fbdeb5c60ebb04, type: 3}
   - {fileID: 21300000, guid: 5f65e64366354fa4182c286b229445c9, type: 3}
@@ -82,7 +82,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 6fff9425d950f394ca57678b61b267d0, type: 3}
   - {fileID: 21300000, guid: 18ce4d25aa2b140caad634c3dd4b69e2, type: 3}
   - {fileID: 21300000, guid: 6d6d68b52d8caf5469b1bc33bfdc07a2, type: 3}
-  - {fileID: 21300000, guid: 11d87fb59aa76de4385120beb7b89f6a, type: 3}
   - {fileID: 21300000, guid: 4c79450638844d24995f52e92ca8fcb2, type: 3}
   - {fileID: 21300000, guid: 9181df563faf4c240b278fd35f45ddfd, type: 3}
   - {fileID: 21300000, guid: b92d2866ce79293478f277897bd0ad16, type: 3}
@@ -94,12 +93,11 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 289fae17660e1b5468819bd39d453625, type: 3}
   - {fileID: 21300000, guid: 52b1c17784d8a1e45b76754696037547, type: 3}
   - {fileID: 21300000, guid: 2cd1aa97dedd64a7d98a8d2b4dcd26af, type: 3}
-  - {fileID: 21300000, guid: feb118e70e23a0f41b8cc47dc043f461, type: 3}
   - {fileID: 21300000, guid: 41c798e7bf044e14db7e5f8678187066, type: 3}
   - {fileID: 21300000, guid: 26e9e9e705db0244da31bf3fc9d74718, type: 3}
   - {fileID: 21300000, guid: abbdb528fd8b57140a34defba4ece433, type: 3}
   - {fileID: 21300000, guid: 0aa90c38363f5ff45ab3fadfa5d6fd5d, type: 3}
-  - {fileID: 21300000, guid: 052b7e48a9cdb4c3cb3c82f094453d1f, type: 3}
+  - {fileID: 21300000, guid: ce0f3c5897ff89b40b636119fd1f35f9, type: 3}
   - {fileID: 21300000, guid: 43f91c98d6d6f794fab854ef25b8eb80, type: 3}
   - {fileID: 21300000, guid: 0d5a7ad870314423a9bbb4f7503c3d25, type: 3}
   - {fileID: 21300000, guid: 4a981159b8896524888fca5b6765cc69, type: 3}
@@ -107,7 +105,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 127b3c0afee2e274ab765b67e3875292, type: 3}
   - {fileID: 21300000, guid: ece7e92aaba5f494e923e7cda7d69071, type: 3}
   - {fileID: 21300000, guid: d95b3d2a5159a264e97141fc59fc8d4d, type: 3}
-  - {fileID: 21300000, guid: a2f3a53a9badd184e8e861056e87d4b5, type: 3}
   - {fileID: 21300000, guid: 19d4257ae6eefc943a85ed0b3dbdcfb8, type: 3}
   - {fileID: 21300000, guid: 9219a3ba3979b214babe6a768fcade78, type: 3}
   - {fileID: 21300000, guid: 74fd1afaaff2da843b02b5e2ef88fc91, type: 3}
@@ -115,6 +112,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 731c122b3a19c420abd944082c76bccc, type: 3}
   - {fileID: 21300000, guid: d2d6e82b83314714bac1fcd40e1c416a, type: 3}
   - {fileID: 21300000, guid: c7876a4b94f279f4eb754ca7b2512aae, type: 3}
+  - {fileID: 21300000, guid: d290646b05eca384f9f74df67057a562, type: 3}
   - {fileID: 21300000, guid: c20a108ba4f416048a9867506a6020c7, type: 3}
   - {fileID: 21300000, guid: 3acf4abb67ae7744292d804a07f1c37a, type: 3}
   - {fileID: 21300000, guid: ea001b1c59f86ce4c805ebcf8ec11611, type: 3}
@@ -153,6 +151,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 6f2144ff7db16544c88a2b26c4584b12, type: 3}
   m_PackedSpriteNamesToIndex:
   - photo-lv3-cargo
+  - bar-open-minimal
   - button-face
   - car-kissel
   - node-main
@@ -171,7 +170,6 @@ SpriteAtlas:
   - level1_loretta
   - marker-unknown-lv4
   - cooper-museum
-  - bar-closed
   - photo-lv2-safe
   - photo-lv2-above
   - lou-ultralight
@@ -188,7 +186,6 @@ SpriteAtlas:
   - cork-board_blank
   - camera-button-close
   - photo-lv2-gash5
-  - bar-open
   - photo-lv2-gash2
   - icon-check-empty
   - triangle
@@ -200,12 +197,11 @@ SpriteAtlas:
   - photo-lv4-name
   - DiveButtonFilled
   - arrow-up
-  - marker-unknown-grandpa
   - rounded-rect
   - shipwreck_ref
   - office-live
   - RoundedRect100Outline
-  - map-marker
+  - bar-closed-minimal
   - cork-board_light_blank
   - icon-check
   - photo-lv3-above
@@ -213,7 +209,6 @@ SpriteAtlas:
   - zoom-in
   - ship-card
   - reya-boat
-  - marker-default
   - Yarn
   - HiResCircle
   - ship-card-updated
@@ -221,6 +216,7 @@ SpriteAtlas:
   - lake-overview
   - photo-lv2-gash4
   - closed-tag
+  - close-button
   - dad-yardsale
   - cork-board
   - ultralight-photo
