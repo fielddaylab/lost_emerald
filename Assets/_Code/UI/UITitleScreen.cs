@@ -146,6 +146,7 @@ namespace Shipwreck {
 
 			// GameMgr.UnlockLevel(2);
 			GameMgr.UnlockLevel(4);
+			GameMgr.UnlockEvidence(4, "LV4-Do-Later-Note");
 			GameMgr.UnlockEvidence(4, "LV4-Letter-Treasure");
 			GameMgr.RecordNodeVisited("level01.lou-complete", "lou");
 			GameMgr.RecordNodeVisited("level01.amy-level-end", "amy");
@@ -260,6 +261,9 @@ namespace Shipwreck {
 
 		private void UnlockLevel4_50() {
 			UnlockLevel4();
+
+			GameMgr.RemoveEvidence(4, "LV4-Do-Later-Note");
+
 			GameMgr.State.UnlockDive(3);
 
 			GameMgr.RecordNodeVisited("level04.reya-steel", "reya");

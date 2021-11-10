@@ -69,6 +69,7 @@ namespace Shipwreck {
 
 		//private GraphicRaycaster m_raycaster;
 		private Layers m_layers;
+		private Routine m_routineShipOut;
 
 		private StringHash32 m_selectedRoot = StringHash32.Null;
 		private int m_selectedPin = -1;
@@ -90,6 +91,8 @@ namespace Shipwreck {
 		protected override void OnShowStart() {
 			base.OnShowStart();
 			SetupBoard();
+			m_routineShipOut.Stop();
+			m_buttonShipOut.transform.localScale = Vector3.one;
 		}
 
 		protected override void OnHideCompleted() {
@@ -277,11 +280,20 @@ namespace Shipwreck {
 		private void HandleChainCorrect(StringHash32 root) {
 			if (GameMgr.State.CurrentLevel.IsLocationChainComplete()) {
 				m_buttonShipOut.gameObject.SetActive(true);
+				// this indicates that the button should also pulse
+				m_routineShipOut.Replace(this, PulseShipOutButton());
 			}
 		}
 		private void HandleEvidenceUnlocked(StringHash32 evidence) {
 			ClearBoard();
 			SetupBoard();
+		}
+
+		private IEnumerator PulseShipOutButton() {
+			while (true) {
+				yield return m_buttonShipOut.transform.ScaleTo(1.1f, 0.5f, Axis.XY).Ease(Curve.QuadIn);
+				yield return m_buttonShipOut.transform.ScaleTo(1f, 0.5f, Axis.XY).Ease(Curve.QuadOut);
+			}
 		}
 
 		private void Lift() {
