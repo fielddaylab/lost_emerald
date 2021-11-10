@@ -131,21 +131,23 @@
 	$call TriggerConvoMusic(amy_convo) // cooper does not have their own music
 	{@cooper}	Hi there! Are you Amy’s friend?
 	{@you}	Yep. I'm Jules Griffin.
+			I'm trying to ID a shipwreck with an old car in the cargo hold. 
 			Can you send me photos of Nash and Kissel brand cars? 
 	{@cooper}	Of course! Just a minute...
 			{obj ClassicCars}
 	{@you}	Awesome, thanks!
 			{/obj}
 	{@cooper}     It's funny. You've got the same last name as the captain who caused that awful shipwreck. 
-	{@you}	Oh. Haha, yeah.  
+	{@you}	Oh. Haha, yeah. Funny. 
 			Wait... did you say the captain CAUSED the shipwreck??
-	{@cooper}	That's right. It was all over the news when I was a kid. 
+	{@cooper}	That's right. The company that owned the ship, O.K. Steel, did a report.
 			They said Captain Griffin went out in bad weather.
-			The company that owned the ship did an investigation. I'll send you the report! 
-	{@you}	Um... okay, great. 
-			Thanks again for your help!
+	{@you} Wow. I had no idea. 
+	       Thanks again, Cooper. 
+	{@cooper}  Happy to help! 
+		
 	$call UnlockEvidence(2,LV2-Images-Car)
-	$call UnlockEvidence(4,LV4-Investigation-Report)
+	//$call UnlockEvidence(4,LV4-Investigation-Report)
 	$call EndConvoMusic()
 		
 
@@ -199,5 +201,48 @@
 	{@reya} Oh yeah. That too. 
 		I wonder if anybody saw it coming...
 	$call TriggerCutscene()
-	$call UnlockLevel(3)
+	$call EndConvoMusic()
+	
+//-------------------------------------------
+//  Level 3
+//-------------------------------------------
+
+// this is a workaround to allow this level 3 conversation
+// to trigger immediately after completing level 2
+
+:: dad-superior
+@contact dad, phone-call
+@background dad-boat
+@trigger OnCaseClosed
+@once
+
+	$call TriggerConvoMusic(dad_convo)
+	{@dad}	Hey, Jules! I've got a shipwreck for you to check out!
+		{img broken-wheel}
+		My buddy pulled this up in his nets on Lake Michigan.
+	{@you}	Looks like a broken piece of a sidewheel steamer!
+		I'll talk to my mentor, Cami. She's an expert on those ships. 
+		Did you get the latitude and longitude? 
+	{@dad}	Yep! It's near Sheboygan.
+		Location: 43°42'08.6"N 87°38'26.0"W
+		{/img}
+	{@you}	Thanks, Dad. How's the new sonar?
+	{@dad}   Uh... great! Well, sort of. 
+		I'm out on Lake Superior right now. Check out my map!
+		{img dad-map}
+		Your grandpa’s last known route is marked in red.
+		{/img}
+	{@dad}   Now all I need to do is keep searching! Easy peasy, right, Jules? 
+		Jules?
+	{@you} 	Dad, why didn't you tell me the shipwreck was Grandpa's fault?
+	{@dad}  What?! Of course it wasn't his fault! 
+	{@you}  The steel company said it was.
+	{@dad}  They just needed somebody to blame. That's why I need to find the Emerald--to prove his innocence!
+	{@you} I don't know, Dad. From your stories, it sounds like Grandpa could be pretty reckless--
+	{@dad}  Oh, look at that! Sonar's working! Gotta go, Jules. Wish me luck! 
+	$call UnlockLevel(3)	
+	$call BeginLevel(3)
+	$call UnlockEvidence(3,LV3-Card-Types)
+	$call UnlockEvidence(3,LV3-Transcript-Dad)
+	$call UnlockContact(cami)
 	$call EndConvoMusic()

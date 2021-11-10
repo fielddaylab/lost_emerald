@@ -147,6 +147,18 @@ namespace Shipwreck {
 					return true;
 				}
 			}
+			public bool RemoveEvidence(StringHash32 groupId) {
+				if (IsEvidenceUnlocked(groupId)) {
+					EvidenceGroupState state = m_evidence.Find((item) => {
+						return item.Identity == groupId;
+					});
+					m_evidence.Remove(state);
+					return true;
+				} else {
+					return false;
+				}
+			}
+
 			public bool DiscoverLocation() {
 				if (!m_locationKnown) {
 					m_locationKnown = true;

@@ -54,6 +54,10 @@ namespace Shipwreck {
 			CanvasGroup.interactable = true;
 		}
 
+		protected override IEnumerator HideImmediateRoutine() {
+			throw new System.NotImplementedException();
+		}
+
 		private void HandleNewGame() {
 			AudioSrcMgr.instance.PlayOneShot("click_new_game");
 			GameMgr.UnlockContact("dad");
@@ -81,7 +85,7 @@ namespace Shipwreck {
 		}
 		private void HandleUnlock3() {
 			AudioSrcMgr.instance.PlayOneShot("click_unlock");
-			UnlockLevel3();
+			UnlockLevel3(true);
 			HandleNewGame();
 		}
 		private void HandleUnlock3_50() {
@@ -117,6 +121,10 @@ namespace Shipwreck {
 			GameMgr.RecordNodeVisited("level01.amy-meet", "amy");
 			GameMgr.RecordNodeVisited("level01.dad-urgent-text", "dad");
 			GameMgr.RecordNodeVisited("level01.amy-article", "amy");
+			GameMgr.RecordNodeVisited("level01.dive-start", "you");
+			GameMgr.RecordNodeVisited("level01.dive-photo-above", "you");
+			GameMgr.RecordNodeVisited("level01.dive-photo-name", "you");
+			GameMgr.RecordNodeVisited("level01.dive-photo-artifact", "you");
 
 			GameMgr.SetLevelIndex(0);
 			GameMgr.SetChain(0, "Location", "location-coordinates");
@@ -165,7 +173,7 @@ namespace Shipwreck {
 			GameMgr.UnlockEvidence(2, "LV2-Table-Wrecks");
 			GameMgr.UnlockEvidence(2, "LV2-Photo-Safe");
 			GameMgr.UnlockEvidence(2, "LV2-Images-Car");
-			GameMgr.UnlockEvidence(4, "LV4-Investigation-Report");
+			//GameMgr.UnlockEvidence(4, "LV4-Investigation-Report");
 			GameMgr.RecordNodeVisited("level02.reya-boat", "reya");
 			GameMgr.RecordNodeVisited("level02.reya-dive", "reya");
 			GameMgr.RecordNodeVisited("level02.dive-gash", "reya");
@@ -179,7 +187,7 @@ namespace Shipwreck {
 			GameMgr.SetChain(1, "Type", "photo-above", "card-freighter");
 		}
 
-		private void UnlockLevel3() {
+		private void UnlockLevel3(bool furthestUnlock) {
 			UnlockLevel2_50();
 			GameMgr.UnlockLevel(3);
 			GameMgr.State.UnlockDive(1);
@@ -198,11 +206,16 @@ namespace Shipwreck {
 			GameMgr.SetChain(1, "Name", "name-madison");
 			GameMgr.SetChain(1, "Artifact", "photo-safe", "artifact-safe");
 
-			GameMgr.SetLevelIndex(2);
+			if (furthestUnlock) {
+				UIMgr.Open<UIModalOverlay>();
+				UIMgr.Open<UIModalCaseClosed>();
+			}
 		}
 
 		private void UnlockLevel3_50() {
-			UnlockLevel3();
+			UnlockLevel3(false);
+
+			GameMgr.SetLevelIndex(2);
 			GameMgr.SetChain(2, "Location", "location-coordinates");
 
 			GameMgr.UnlockEvidence(3, "LV3-Transcript-Dad");
@@ -216,8 +229,8 @@ namespace Shipwreck {
 			GameMgr.UnlockEvidence(3, "LV3-Accounts-Survivor");
 			GameMgr.UnlockContact("cami");
 
-			GameMgr.RecordNodeVisited("level03.mom-photos", "mom");
-			GameMgr.RecordNodeVisited("level03.dad-superior", "dad");
+			//GameMgr.RecordNodeVisited("level03.mom-photos", "mom");
+			GameMgr.RecordNodeVisited("level02.dad-superior", "dad");
 			GameMgr.RecordNodeVisited("level03.amy-paradise", "amy");
 			GameMgr.RecordNodeVisited("level03.cami-meet", "cami");
 
@@ -262,8 +275,10 @@ namespace Shipwreck {
 			GameMgr.RecordNodeVisited("level04.reya-mow", "reya");
 
 			GameMgr.UnlockEvidence(4, "LV4-Location-Coordinates");
+			GameMgr.UnlockEvidence(4, "LV4-Card-Types");
 			GameMgr.UnlockEvidence(4, "LV4-Ship-Chart");
 			GameMgr.UnlockEvidence(4, "LV4-Photo-Above");
+			GameMgr.UnlockEvidence(4, "LV4-Photo-Cause");
 			GameMgr.UnlockEvidence(4, "LV4-Photo-Name");
 			GameMgr.UnlockEvidence(4, "LV4-Photo-Locket");
 			GameMgr.UnlockEvidence(4, "LV4-Transcript-Survivor");

@@ -414,5 +414,9 @@ namespace Shipwreck {
 		protected override IEnumerator HideRoutine() {
 			yield return CanvasGroup.FadeTo(0f, 0.3f);
 		}
+
+		protected override IEnumerator HideImmediateRoutine() {
+			yield return CanvasGroup.FadeTo(0f, 0.0f);
+		}
 	}
 }

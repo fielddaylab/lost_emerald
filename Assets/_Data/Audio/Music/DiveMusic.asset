@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: DiveMusic
   m_EditorClassIdentifier: 
   m_id: dive_music
-  m_clip: {fileID: 8300000, guid: 66483bd83136be046b2b437a509d0bee, type: 3}
+  m_clip: {fileID: 8300000, guid: e6bae2abd1c698d48ae8353b2364d9ec, type: 3}
+  m_volume: 1
+  m_pan: 0.5
