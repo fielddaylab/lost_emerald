@@ -76,6 +76,7 @@ namespace Shipwreck {
 		private bool m_dragging;
 		private Vector2 m_pressPosition;
 		private EvidenceNode m_hoverNode;
+		private bool m_wasLocationComplete = false;
 
 		//private List<RaycastResult> m_raycastResults;
 
@@ -93,6 +94,7 @@ namespace Shipwreck {
 			SetupBoard();
 			m_routineShipOut.Stop();
 			m_buttonShipOut.transform.localScale = Vector3.one;
+			m_wasLocationComplete = GameMgr.State.CurrentLevel.IsLocationChainComplete();
 		}
 
 		protected override void OnHideCompleted() {
@@ -278,10 +280,11 @@ namespace Shipwreck {
 			SceneManager.LoadScene("ShipOut");
 		}
 		private void HandleChainCorrect(StringHash32 root) {
-			if (GameMgr.State.CurrentLevel.IsLocationChainComplete()) {
+			if (GameMgr.State.CurrentLevel.IsLocationChainComplete() && !m_wasLocationComplete) {
 				m_buttonShipOut.gameObject.SetActive(true);
 				// this indicates that the button should also pulse
 				m_routineShipOut.Replace(this, PulseShipOutButton());
+				m_wasLocationComplete = true;
 			}
 		}
 		private void HandleEvidenceUnlocked(StringHash32 evidence) {
