@@ -128,10 +128,6 @@ namespace Shipwreck {
 
 			GameMgr.SetLevelIndex(0);
 			GameMgr.SetChain(0, "Location", "location-coordinates");
-			GameMgr.SetChain(0, "Type", "card-canaller", "photo-above", "type-canaller");
-			GameMgr.SetChain(0, "Name", "photo-name", "name-loretta");
-			GameMgr.SetChain(0, "Cause", "cause-sandbar");
-			GameMgr.SetChain(0, "Cargo", "cargo-cargo", "cargo-corn");
 		}
 		private void UnlockLevel2() {
 			UnlockLevel1();
@@ -139,6 +135,10 @@ namespace Shipwreck {
 			GameMgr.SetLevelIndex(0);
 
 			GameMgr.SetChain(0, "Artifact", "photo-artifact", "artifact-trunk");
+			GameMgr.SetChain(0, "Type", "card-canaller", "photo-above", "type-canaller");
+			GameMgr.SetChain(0, "Name", "photo-name", "name-loretta");
+			GameMgr.SetChain(0, "Cause", "cause-sandbar");
+			GameMgr.SetChain(0, "Cargo", "cargo-cargo", "cargo-corn");
 
 			GameMgr.State.SetTutorialBuoyDropped(true);
 			GameMgr.State.SetTutorialSonarDisplayed(true);
@@ -146,6 +146,7 @@ namespace Shipwreck {
 
 			// GameMgr.UnlockLevel(2);
 			GameMgr.UnlockLevel(4);
+			GameMgr.UnlockEvidence(4, "LV4-Do-Later-Note");
 			GameMgr.UnlockEvidence(4, "LV4-Letter-Treasure");
 			GameMgr.RecordNodeVisited("level01.lou-complete", "lou");
 			GameMgr.RecordNodeVisited("level01.amy-level-end", "amy");
@@ -206,9 +207,16 @@ namespace Shipwreck {
 			GameMgr.SetChain(1, "Name", "name-madison");
 			GameMgr.SetChain(1, "Artifact", "photo-safe", "artifact-safe");
 
+			
 			if (furthestUnlock) {
-				UIMgr.Open<UIModalOverlay>();
-				UIMgr.Open<UIModalCaseClosed>();
+				// this will cause the initial phone conversation
+				// to run instead of needing to show the case
+				// closed modal
+				Routine.Start(this, Routine.Delay(() => {
+					GameMgr.SetLevelIndex(1); // must be at level 2
+					GameMgr.Events.Dispatch(GameEvents.CaseClosed);
+					GameMgr.RunTrigger(GameTriggers.OnCaseClosed);
+				}, 0.5f)).ExecuteWhileDisabled();
 			}
 		}
 
@@ -260,6 +268,9 @@ namespace Shipwreck {
 
 		private void UnlockLevel4_50() {
 			UnlockLevel4();
+
+			GameMgr.RemoveEvidence(4, "LV4-Do-Later-Note");
+
 			GameMgr.State.UnlockDive(3);
 
 			GameMgr.RecordNodeVisited("level04.reya-steel", "reya");

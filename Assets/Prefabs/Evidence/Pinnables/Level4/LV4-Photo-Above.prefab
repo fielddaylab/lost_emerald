@@ -64,7 +64,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e86351777da7ccd4cb75d3a08bdd7a7b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 298463e072d2ab44c8f30989a4f5d4ee, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -150,7 +150,6 @@ MonoBehaviour:
   m_pinPosition: {fileID: 0}
   m_subPinPosition: {fileID: 9157866724176192236}
   m_image: {fileID: 2094104092157066336}
-  m_pinned: 0
 --- !u!222 &7159731858918218425
 CanvasRenderer:
   m_ObjectHideFlags: 0

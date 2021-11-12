@@ -41,33 +41,48 @@ namespace Shipwreck {
 
 			CanvasGroup.alpha = 0;
 
-			m_levelMarkers[0].Button.onClick.AddListener(() => { HandleLevelButton(0); });
-			m_levelMarkers[1].Button.onClick.AddListener(() => { HandleLevelButton(1); });
-			m_levelMarkers[2].Button.onClick.AddListener(() => { HandleLevelButton(2); });
-			m_levelMarkers[3].Button.onClick.AddListener(() => { HandleLevelButton(3); });
-
+			m_levelMarkers[0].BannerButton.onClick.AddListener(() => { HandleLevelButton(0); });
+			m_levelMarkers[0].MarkerButton.onClick.AddListener(() => { HandleLevelButton(0); });
+			m_levelMarkers[1].BannerButton.onClick.AddListener(() => { HandleLevelButton(1); });
+			m_levelMarkers[1].MarkerButton.onClick.AddListener(() => { HandleLevelButton(1); });
+			m_levelMarkers[2].BannerButton.onClick.AddListener(() => { HandleLevelButton(2); });
+			m_levelMarkers[2].MarkerButton.onClick.AddListener(() => { HandleLevelButton(2); });
+			m_levelMarkers[3].BannerButton.onClick.AddListener(() => { HandleLevelButton(3); });
+			m_levelMarkers[3].MarkerButton.onClick.AddListener(() => { HandleLevelButton(3); });
 
 			for (int index = 0; index < m_levelMarkers.Length; index++) {
 				bool isUnlocked = GameMgr.State.IsLevelUnlocked(index);
 				LevelMarker marker = m_levelMarkers[index];
-				marker.Button.interactable = isUnlocked;
+				marker.BannerButton.interactable = isUnlocked;
+				marker.MarkerButton.interactable = isUnlocked;
 				marker.gameObject.SetActive(isUnlocked);
 				Vector2 markerPos = GameMgr.State.GetLevel(index).MarkerPos;
-				Vector2 bannerPos = GameMgr.State.GetLevel(index).BannerPos;
 				marker.transform.localPosition = markerPos;
-				marker.Banner.transform.localPosition = bannerPos;
 				Sprite markerSprite;
 				if (GameMgr.State.GetLevel(index).IsLocationKnown) {
 					markerSprite = GameDb.GetMarkerSprite("marker-default");
+					marker.SetBannerOrder("back");
 				}
 				else {
 					ILevelState state = GameMgr.State.GetLevel(index);
 					markerSprite = GameDb.GetMarkerSprite(state.MarkerUnknownSpriteID);
 					marker.transform.localPosition += new Vector3(state.MarkerUnknownSpriteOffset.x, state.MarkerUnknownSpriteOffset.y, 0f);
+					marker.SetBannerOrder("front");
 				}
 				marker.SetSprite(markerSprite);
 				marker.SetColor(GameDb.GetMarkerColor(index));
+				if (GameMgr.State.GetLevel(index).IsBoardComplete()) {
+					marker.SetBannerSprite(GameDb.GetMarkerSprite("bar-closed-minimal"));
+					marker.SetTagVisible(true);
+				}
+				else {
+					marker.SetBannerSprite(GameDb.GetMarkerSprite("bar-open-minimal"));
+					marker.SetTagVisible(false);
+				}
 				m_levelLabels[index].Key = GameMgr.State.GetLevelName(index);
+
+				Vector2 bannerPos = GameMgr.State.GetLevel(index).BannerPos;
+				marker.SetBannerPos(bannerPos);
 			}
 
 			GameMgr.Events.Register<int>(GameEvents.LevelUnlocked, HandleLevelUnlocked);
@@ -80,8 +95,10 @@ namespace Shipwreck {
 			m_closeButton.onClick.RemoveListener(HandleClose);
 
 			foreach (LevelMarker marker in m_levelMarkers) {
-				marker.Button.onClick.RemoveAllListeners();
-				marker.Button.interactable = false;
+				marker.BannerButton.onClick.RemoveAllListeners();
+				marker.MarkerButton.onClick.RemoveAllListeners();
+				marker.BannerButton.interactable = false;
+				marker.MarkerButton.interactable = false;
 				marker.gameObject.SetActive(false);
 			}
 
@@ -103,7 +120,8 @@ namespace Shipwreck {
 
 		private void HandleLevelUnlocked(int level) {
 			for (int index = 0; index < m_levelMarkers.Length; index++) {
-				m_levelMarkers[index].Button.interactable = GameMgr.State.IsLevelUnlocked(index);
+				m_levelMarkers[index].BannerButton.interactable = GameMgr.State.IsLevelUnlocked(index);
+				m_levelMarkers[index].MarkerButton.interactable = GameMgr.State.IsLevelUnlocked(index);
 				m_levelLabels[index].Key = GameMgr.State.GetLevelName(index);
 			}
 		}
