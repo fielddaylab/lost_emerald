@@ -209,15 +209,15 @@ namespace Shipwreck {
 
 			
 			if (furthestUnlock) {
-				
-				UIMgr.Open<UIModalOverlay>();
-				UIMgr.Open<UIModalCaseClosed>();
-				
-				GameMgr.RunTrigger(GameTriggers.OnCaseClosed);
+				// this will cause the initial phone conversation
+				// to run instead of needing to show the case
+				// closed modal
+				Routine.Start(this, Routine.Delay(() => {
+					GameMgr.SetLevelIndex(1); // must be at level 2
+					GameMgr.Events.Dispatch(GameEvents.CaseClosed);
+					GameMgr.RunTrigger(GameTriggers.OnCaseClosed);
+				}, 0.5f)).ExecuteWhileDisabled();
 			}
-			
-			//GameMgr.RunTrigger(GameTriggers.OnCaseClosed);
-			//GameMgr.SetLevelIndex(2);
 		}
 
 		private void UnlockLevel3_50() {
