@@ -137,6 +137,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 73e04d3e8b9e9ec4a8b7d4327cd49268, type: 3}
   - {fileID: 21300000, guid: 33ac414e0a466684d9d2c58fd2b8dbab, type: 3}
   - {fileID: 21300000, guid: ca515c6e0d836c941a1e8b9aa842510b, type: 3}
+  - {fileID: 21300000, guid: 4daef49e29bd24445a5e0ed986c5b888, type: 3}
   - {fileID: 21300000, guid: 7d1d53ae8d55e994598b2b84b04588df, type: 3}
   - {fileID: 21300000, guid: 3cb1d3de80ee9461498367b28b05b097, type: 3}
   - {fileID: 21300000, guid: ef9b660f56c8fe54fa19156b3c0113a8, type: 3}
@@ -241,6 +242,7 @@ SpriteAtlas:
   - letter
   - zoom-out
   - broken-wheel
+  - cooper_icon
   - RoundedRect100
   - photo-lv1-ship-name
   - photo-lv4-locket
