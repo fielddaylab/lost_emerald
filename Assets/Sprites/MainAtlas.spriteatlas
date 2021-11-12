@@ -77,6 +77,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: a1c05d74f04dfe648862e5e950a0dec0, type: 3}
   - {fileID: 21300000, guid: a418b694415c84967abd730e9eb95a7d, type: 3}
   - {fileID: 21300000, guid: e8248fa459895de4b800b7583f203b1e, type: 3}
+  - {fileID: 21300000, guid: cf026ed4fd262cc4086c2f0e8483c733, type: 3}
   - {fileID: 21300000, guid: 65c26de4f69714d11b1cd5e2bb9de646, type: 3}
   - {fileID: 21300000, guid: 8bf1e015bbdf4e848b56964826269e5e, type: 3}
   - {fileID: 21300000, guid: 6fff9425d950f394ca57678b61b267d0, type: 3}
@@ -178,6 +179,7 @@ SpriteAtlas:
   - mom_icon
   - camera-frame
   - DiveButtonOutline
+  - ship-shadow
   - journal
   - sonar_dot
   - cork-board_blank

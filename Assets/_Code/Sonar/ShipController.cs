@@ -13,7 +13,6 @@ namespace Shipwreck
 	/// <summary>
 	/// Enables the ship to move with interact (mouse, touch) controls
 	/// </summary>
-	[RequireComponent(typeof(SpriteRenderer))]
 	[RequireComponent(typeof(AudioSource))]
 	public class ShipController : MonoBehaviour
 	{
@@ -36,6 +35,9 @@ namespace Shipwreck
 		private Vector2 m_sceneDimensions; // the dimensions of the scene the ship finds itself in
 
 		private AudioSource m_audioSrc; // for making ship movement sounds
+
+		[SerializeField]
+		private Transform m_shipShadow; // need to manually move and spin the shadow
 		[SerializeField]
 		private AudioData m_engineAudioData; // the sound to make
 		[SerializeField]
@@ -177,10 +179,12 @@ namespace Shipwreck
 					toDirection,
 					 m_rotationSpeed * Time.deltaTime
 					);
+				m_shipShadow.rotation = transform.rotation;
 			}
 
 			// move the ship toward the new location
 			this.transform.position = newPos;
+			m_shipShadow.transform.position = newPos + new Vector2(-0.2f,0f);
 
 			// adjust audio position
 			m_audioSrc.panStereo = (this.transform.position.x * 100) / Screen.width;
