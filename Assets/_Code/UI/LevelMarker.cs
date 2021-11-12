@@ -1,6 +1,7 @@
 ﻿using BeauRoutine;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -71,6 +72,15 @@ namespace Shipwreck {
 				default:
 					break;
 			}
+		}
+
+		public void SetBannerPos(Vector2 rawPos) {
+			LayoutRebuilder.ForceRebuildLayoutImmediate(m_bannerImage.rectTransform);
+			Vector2 textWidthOffset = new Vector2(
+				(m_bannerImage.rectTransform.rect.width / 2.0f) + 3,
+				0f
+				);
+			m_banner.transform.localPosition = rawPos + textWidthOffset;
 		}
 
 	}

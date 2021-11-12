@@ -57,9 +57,7 @@ namespace Shipwreck {
 				marker.MarkerButton.interactable = isUnlocked;
 				marker.gameObject.SetActive(isUnlocked);
 				Vector2 markerPos = GameMgr.State.GetLevel(index).MarkerPos;
-				Vector2 bannerPos = GameMgr.State.GetLevel(index).BannerPos;
 				marker.transform.localPosition = markerPos;
-				marker.Banner.transform.localPosition = bannerPos;
 				Sprite markerSprite;
 				if (GameMgr.State.GetLevel(index).IsLocationKnown) {
 					markerSprite = GameDb.GetMarkerSprite("marker-default");
@@ -74,14 +72,17 @@ namespace Shipwreck {
 				marker.SetSprite(markerSprite);
 				marker.SetColor(GameDb.GetMarkerColor(index));
 				if (GameMgr.State.GetLevel(index).IsBoardComplete()) {
-					marker.SetBannerSprite(GameDb.GetMarkerSprite("bar-closed"));
+					marker.SetBannerSprite(GameDb.GetMarkerSprite("bar-closed-minimal"));
 					marker.SetTagVisible(true);
 				}
 				else {
-					marker.SetBannerSprite(GameDb.GetMarkerSprite("bar-open"));
+					marker.SetBannerSprite(GameDb.GetMarkerSprite("bar-open-minimal"));
 					marker.SetTagVisible(false);
 				}
 				m_levelLabels[index].Key = GameMgr.State.GetLevelName(index);
+
+				Vector2 bannerPos = GameMgr.State.GetLevel(index).BannerPos;
+				marker.SetBannerPos(bannerPos);
 			}
 
 			GameMgr.Events.Register<int>(GameEvents.LevelUnlocked, HandleLevelUnlocked);

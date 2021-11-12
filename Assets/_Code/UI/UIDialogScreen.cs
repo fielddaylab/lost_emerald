@@ -29,6 +29,15 @@ namespace Shipwreck {
 		[SerializeField]
 		private Graphic m_textBoxOutline = null;
 		[SerializeField]
+		private Image m_icon = null;
+		[SerializeField]
+		private GameObject m_iconGroup = null;
+		[SerializeField]
+		private Graphic m_iconOutline = null;
+		[SerializeField]
+		private Graphic m_iconBackground = null;
+
+		[SerializeField]
 		private LayoutGroup m_layout = null;
 		//[SerializeField]
 		//private Image m_portrait = null;
@@ -160,6 +169,15 @@ namespace Shipwreck {
 			m_textBoxOutline.color = speaker.DialogTextColor;
 			m_speakerName.GetComponent<Graphic>().color = speaker.DialogBackgroundColor;
 			m_speakerNameBackground.color = speaker.DialogTextColor;
+
+			if (speaker.TextingIcon != null) {
+				m_icon.sprite = speaker.TextingIcon;
+				m_iconOutline.color = speaker.DialogTextColor;
+				m_iconBackground.color = speaker.DialogBackgroundColor;
+				m_iconGroup.SetActive(true);
+			} else {
+				m_iconGroup.SetActive(false);
+			}
 		}
 
 		protected override IEnumerator OnShowImage(Sprite image) {
