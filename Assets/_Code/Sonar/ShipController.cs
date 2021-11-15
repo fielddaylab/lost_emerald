@@ -109,7 +109,7 @@ namespace Shipwreck
 			if (m_interactIsActive
 				&& !UIMgr.IsOpen<UIPhoneNotif>()
 				&& !UIMgr.IsOpen<UIRadioDialog>()
-				&& InteractionIsInBounds()
+				//&& InteractionIsInBounds()
 				&& !InteractionIsOverUI()
 				&& !ShipOutMgr.instance.IsMessageShowing())
 			{
@@ -210,7 +210,7 @@ namespace Shipwreck
 				// push the ship just beyond the bounds to orbit the obstacle(-ish)
 				interactScreenPos = closestPoint
 					//+ ((Vector2)this.transform.position - closestPoint).normalized
-					+ (closestPoint - interactScreenPos).normalized
+					- (closestPoint - (Vector2)this.transform.position).normalized
 					* m_obstacleMargin;
 			}
 			

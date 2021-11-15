@@ -60,6 +60,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 6742bc91c8f5d4e3daea592a062c8b52, type: 3}
   - {fileID: 21300000, guid: 626d98b16d141f54f9ab276e6824ac6f, type: 3}
   - {fileID: 21300000, guid: 25a167d13e4ec455fb823ae9c3388e39, type: 3}
+  - {fileID: 21300000, guid: 2af279e18c8bfd5418df2a548269fa1e, type: 3}
   - {fileID: 21300000, guid: bbda042251f08164aa5b16e04960b800, type: 3}
   - {fileID: 21300000, guid: 5acb7c42884df40b59c8ff374fe31bcb, type: 3}
   - {fileID: 21300000, guid: 73e01e52390ee6d4ca224fc6a68ef033, type: 3}
@@ -162,6 +163,7 @@ SpriteAtlas:
   - ship
   - sticky-note
   - shipwreck
+  - lv2-gps
   - old-ripped-paper
   - ripped-page
   - reya-safe
