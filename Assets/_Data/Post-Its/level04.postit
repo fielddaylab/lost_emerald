@@ -110,7 +110,7 @@
 @root Location, Name, Cause, Cargo, Artifact
 @incorrect card-canaller, card-freighter, card-tug, card-side-steamer
 @anywhere
-	Should use Type instead
+	This is a Type of ship.
 
 
 // -----------------------------------------------------------
@@ -126,8 +126,14 @@
 @incorrect ship-chart-cargo
 @anywhere
 	This seems more like cargo.
-
+	
 :: cargo-incorrect-2
+@root Cargo
+@incorrect photo-locket
+@anywhere
+	This is luggage, not cargo.
+
+:: cargo-incorrect-3
 @root Cargo
 @incorrect
 	This doesn't seem like cargo.
@@ -236,3 +242,13 @@
 @root Artifact
 @hint letter-locket
 	Do I have a photo of this?
+	
+:: artifact-hint-2
+@root Artifact
+@hint photo-locket
+	Is this locket mentioned anywhere?
+
+:: artifact-incorrect-2
+@root Artifact
+@incorrect
+	I don't think this makes sense.
