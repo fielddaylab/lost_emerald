@@ -10,6 +10,17 @@
 @root Location
 @correct location-coordinates
 
+:: location-incorrect-1
+@root Name, Cause, Cargo, Artifact, Type
+@incorrect location-coordinates
+@anywhere
+	Should use Location instead
+
+:: location-incorrect-2
+@root Location
+@incorrect
+	This isn't a location.
+
 // -----------------------------------------------------------
 //  Ship Type
 // -----------------------------------------------------------
@@ -17,6 +28,89 @@
 :: type-correct
 @root Type
 @correct ship-chart-type, photo-above, card-freighter
+
+:: shiptype-hint-1a
+@root Type
+@hint card-canaller, card-tug, card-freighter, card-side-steamer
+@only
+	Do I have a photo of this?
+	
+:: shiptype-hint-2a
+@root Type
+@hint photo-above
+@precededBy card-freighter
+	Did any freighters sink near our wreck?
+
+:: shiptype-hint-2b
+@root Type
+@hint card-freighter
+@precededBy photo-above
+	Did any freighters sink near our wreck?
+	
+:: shiptype-hint-4a
+@root Type
+@hint photo-above
+@only
+	Does this match a ship diagram?
+	
+:: shiptype-hint-5a
+@root Type
+@hint ship-chart-type
+@only
+	Do I have a photo of this?
+	
+:: shiptype-hint-5b
+@root Type
+@hint ship-chart-type
+@precededBy photo-above
+	Does this match a ship diagram?
+	
+:: shiptype-hint-5c
+@root Type
+@hint ship-chart-type
+@precededBy card-freighter
+	Do I have a photo of this?
+
+:: shiptype-incorrect-1
+@root Type
+@incorrect card-tug
+@precededBy photo-above
+	Tug boat doesn't look the same
+
+:: shiptype-incorrect-2
+@root Type
+@incorrect card-canaller
+@precededBy photo-above
+	A canaller seems too small
+
+:: shiptype-incorrect-3
+@root Type
+@incorrect card-side-steamer
+@precededBy photo-above
+	Wreck doesn't look like a steamer
+	
+:: shiptype-incorrect-2b
+@root Type
+@precededBy card-canaller
+@incorrect photo-above
+	A canaller seems too small
+
+:: shiptype-incorrect-3b
+@root Type
+@precededBy card-side-steamer
+@incorrect photo-above
+	Wreck doesn't look like a steamer
+
+:: shiptype-incorrect-generic
+@root Type
+@incorrect
+	I don't think this makes sense
+	
+:: shiptype-incorrect-4a
+@root Location, Name, Cause, Cargo, Artifact
+@incorrect card-canaller, card-freighter, card-tug, card-side-steamer
+@anywhere
+	This is a Type of ship.
 
 
 // -----------------------------------------------------------
@@ -27,6 +121,23 @@
 @root Cargo
 @correct ship-chart-cargo
 
+:: cargo-incorrect-1
+@root Location, Name, Cause, Artifact, Type
+@incorrect ship-chart-cargo
+@anywhere
+	This seems more like cargo.
+	
+:: cargo-incorrect-2
+@root Cargo
+@incorrect photo-locket
+@anywhere
+	This is luggage, not cargo.
+
+:: cargo-incorrect-3
+@root Cargo
+@incorrect
+	This doesn't seem like cargo.
+
 // -----------------------------------------------------------
 //  Cause of Wreck
 // -----------------------------------------------------------
@@ -34,6 +145,65 @@
 :: cause-correct
 @root Cause
 @correct photo-cause, survivor-waves, mom-brittle
+
+:: cause-hint-1a
+@root Cause
+@hint photo-cause
+@only
+	Is there a story proving this?
+
+:: cause-hint-1b
+@root Cause
+@hint photo-cause
+@precededBy survivor-waves
+	Are there any other reports about this?
+	
+:: cause-hint-1b
+@root Cause
+@hint photo-cause
+@precededBy mom-brittle
+	Does another story back this up?
+
+:: cause-hint-2a
+@root Cause
+@hint survivor-waves
+@only
+	Are there any other reports about this?
+
+:: cause-hint-2b
+@root Cause
+@hint survivor-waves
+@precededBy photo-cause
+	Are there any other reports about this?
+
+:: cause-hint-2c
+@root Cause
+@hint survivor-waves
+@precededBy mom-brittle
+	Do I have a photo of the damage?
+	
+:: cause-hint-3a
+@root Cause
+@hint mom-brittle
+@only
+	Does another story back this up?	
+
+:: cause-hint-3b
+@root Cause
+@hint mom-brittle
+@precededBy photo-cause
+	Does another story back this up?
+
+:: cause-hint-3c
+@root Cause
+@hint mom-brittle
+@precededBy survivor-waves
+	Do I have a photo of the damage?
+
+:: cause-incorrect-generic
+@root Cause
+@incorrect
+	I don't think this makes sense
 
 // -----------------------------------------------------------
 //	Name
@@ -43,6 +213,23 @@
 @root Name
 @correct ship-chart-name, photo-name
 
+:: name-hint-1
+@root Name
+@hint photo-name
+@only
+	Does a ship name match the photo?
+
+:: name-hint-2
+@root Name
+@hint ship-chart-name
+@only
+	Do I have a photo proving this?
+
+:: name-incorrect-2
+@root Name
+@incorrect
+	I don't see a name on here.
+
 // -----------------------------------------------------------
 //  Artifact
 // -----------------------------------------------------------
@@ -50,3 +237,18 @@
 :: artifact-correct
 @root Artifact
 @correct letter-locket, photo-locket
+
+:: artifact-hint-1
+@root Artifact
+@hint letter-locket
+	Do I have a photo of this?
+	
+:: artifact-hint-2
+@root Artifact
+@hint photo-locket
+	Is this locket mentioned anywhere?
+
+:: artifact-incorrect-2
+@root Artifact
+@incorrect
+	I don't think this makes sense.
