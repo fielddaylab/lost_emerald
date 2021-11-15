@@ -165,14 +165,15 @@ namespace Shipwreck {
 					pin.OnPointerDown += HandlePinPressed;
 					pin.OnPointerUp += HandlePinReleased;
 				}
-				chain.SetEChain(obj);
+				chain.SetEvidenceChain(obj);
 				m_chains.Add(chain.Root(), obj);
 				
-				if (pinnedNodes.Count == chain.Depth - 1) {
+				if (chain.IsCorrect) {
 					foreach (EvidenceNode node in pinnedNodes) {
 						node.SetStatus(ChainStatus.Complete);
 					}
 				}
+
 				RefreshChainState(chain.StickyInfo, obj, null);
 
 				// if we are tutorializing location, relevant items need to pulse
