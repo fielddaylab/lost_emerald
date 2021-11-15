@@ -207,6 +207,23 @@
 @root Name
 @correct ship-chart-name, photo-name
 
+:: name-hint-1
+@root Name
+@hint photo-name
+@only
+	Does a ship name match the photo?
+
+:: name-hint-2
+@root Name
+@hint ship-chart-name
+@only
+	Do I have a photo proving this?
+
+:: name-incorrect-2
+@root Name
+@incorrect
+	I don't see a name on here.
+
 // -----------------------------------------------------------
 //  Artifact
 // -----------------------------------------------------------
