@@ -97,6 +97,10 @@ namespace Shipwreck
 		{
 			RegisterActions();
 			m_sceneDimensions = ShipOutMgr.instance.GetTargetDimensions();
+
+			m_shipShadow.transform.position = new Vector3(transform.position.x - 0.2f, transform.position.y, m_shipShadow.transform.position.z);
+			m_shipShadow.transform.rotation = transform.rotation;
+
 		}
 
 		// Update is called once per frame
