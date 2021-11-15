@@ -140,6 +140,65 @@
 @root Cause
 @correct photo-cause, survivor-waves, mom-brittle
 
+:: cause-hint-1a
+@root Cause
+@hint photo-cause
+@only
+	Is there a story proving this?
+
+:: cause-hint-1b
+@root Cause
+@hint photo-cause
+@precededBy survivor-waves
+	Are there any other reports about this?
+	
+:: cause-hint-1b
+@root Cause
+@hint photo-cause
+@precededBy mom-brittle
+	Does another story back this up?
+
+:: cause-hint-2a
+@root Cause
+@hint survivor-waves
+@only
+	Are there any other reports about this?
+
+:: cause-hint-2b
+@root Cause
+@hint survivor-waves
+@precededBy photo-cause
+	Are there any other reports about this?
+
+:: cause-hint-2c
+@root Cause
+@hint survivor-waves
+@precededBy mom-brittle
+	Do I have a photo of the damage?
+	
+:: cause-hint-3a
+@root Cause
+@hint mom-brittle
+@only
+	Does another story back this up?	
+
+:: cause-hint-3b
+@root Cause
+@hint mom-brittle
+@precededBy photo-cause
+	Does another story back this up?
+
+:: cause-hint-3c
+@root Cause
+@hint mom-brittle
+@precededBy survivor-waves
+	Do I have a photo of the damage?
+
+:: cause-incorrect-generic
+@root Cause
+@incorrect
+	I don't think this makes sense
+
 // -----------------------------------------------------------
 //	Name
 // -----------------------------------------------------------
