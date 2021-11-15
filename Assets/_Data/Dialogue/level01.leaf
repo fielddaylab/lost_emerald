@@ -147,9 +147,17 @@
 		The captain of the Loretta got lost in all the smoke.
 		Here's a cool portrait of him: 
 		{img captain-with-knife}
+    $if HasEvidence(LV1-Photo-Artifact)
 	{@you}  Hey, that's the knife I saw! 
 	{@amy}  It must've gone down with the ship.  
-		I've got an article about the sinking. I'll send it over!
+    $else
+    	// note for Lindy: replace text for not having taken a picture of the knife
+    	{@you}  That looks like a cool knife!
+    	{@amy}  Apparently, the captain's chest went down with the ship.
+    	{@you}  I should dive again to see if I can find that!
+    $endif
+	{@amy}  I've got an article about the sinking. I'll send it over!
+
 	$call UnlockEvidence(1,LV1-Article-Sinking)
 
 ::lou-complete
