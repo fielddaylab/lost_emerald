@@ -38,13 +38,13 @@
 @root Type
 @hint photo-above
 @precededBy card-canaller
-	Did any canallers sink near our wreck?
+	Any canallers on the list of shipwrecks?
 
 :: shiptype-hint-2b
 @root Type
 @hint card-canaller
 @precededBy photo-above
-	Did any canallers sink near our wreck?
+	Any canallers on the list of shipwrecks?
 
 :: shiptype-hint-3
 @root Type
@@ -124,7 +124,7 @@
 @root Name
 @hint name-loretta, name-oleander, name-hudson, name-lakeland, name-timberland
 @only
-	Do I have evidence to prove this?
+	Do I have a photo to prove this?
 
 :: name-hint-2
 @root Name
