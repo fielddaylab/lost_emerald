@@ -121,6 +121,17 @@
 @root Cargo
 @correct ship-chart-cargo
 
+:: cargo-incorrect-1
+@root Location, Name, Cause, Artifact, Type
+@incorrect ship-chart-cargo
+@anywhere
+	This seems more like cargo.
+
+:: cargo-incorrect-2
+@root Cargo
+@incorrect
+	This doesn't seem like cargo.
+
 // -----------------------------------------------------------
 //  Cause of Wreck
 // -----------------------------------------------------------
