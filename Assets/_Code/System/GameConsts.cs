@@ -7,6 +7,7 @@ namespace Shipwreck {
         public static readonly StringHash32 ContactUnlocked = "ContactUnlocked";
 		public static readonly StringHash32 LevelUnlocked = "LevelUnlocked";
 		public static readonly StringHash32 EvidenceUnlocked = "EvidenceUnlocked";
+		public static readonly StringHash32 EvidenceRemoved = "EvidenceRemoved";
 		public static readonly StringHash32 ChainSolved = "ChainSolved";
 
         public static readonly StringHash32 PhoneOpened = "PhoneOpened";
@@ -51,6 +52,7 @@ namespace Shipwreck {
 		public static readonly StringHash32 OnEvidenceUnlock = "OnEvidenceUnlock";
         public static readonly StringHash32 OnContactText = "OnContactText";
         public static readonly StringHash32 OnEnterOffice = "OnEnterOffice";
+		public static readonly StringHash32 OnEnterEvidenceBoard = "OnEnterEvidenceBoard";
 		public static readonly StringHash32 OnDialogClosed = "OnDialogClosed";
 		public static readonly StringHash32 OnBoardComplete = "OnBoardComplete";
 		public static readonly StringHash32 OnCaseClosed = "OnCaseClosed";
