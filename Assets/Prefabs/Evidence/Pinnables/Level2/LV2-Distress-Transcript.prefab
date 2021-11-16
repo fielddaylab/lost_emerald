@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 2274868922382036475}
   - component: {fileID: 1037463253254795049}
   m_Layer: 5
-  m_Name: LV2-Transcript-Wreck
+  m_Name: LV2-Distress-Transcript
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -171,7 +171,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 183, y: -49}
+  m_AnchoredPosition: {x: 183, y: -63}
   m_SizeDelta: {x: 202.44928, y: 206.82599}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1037463253254795049
