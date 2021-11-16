@@ -68,7 +68,7 @@
 :: reya-steel
 @contact reya, phone-call
 //@background
-@trigger OnEnterOffice
+@trigger OnEnterEvidenceBoard
 @when Seen(level03.dad-steamer)
 @once
 

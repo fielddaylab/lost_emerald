@@ -95,6 +95,8 @@ namespace Shipwreck {
 			m_routineShipOut.Stop();
 			m_buttonShipOut.transform.localScale = Vector3.one;
 			m_wasLocationComplete = GameMgr.State.CurrentLevel.IsLocationChainComplete();
+
+			GameMgr.RunTrigger(GameTriggers.OnEnterEvidenceBoard);
 		}
 
 		protected override void OnHideCompleted() {
@@ -213,6 +215,7 @@ namespace Shipwreck {
 			m_buttonShipOut.onClick.AddListener(HandleShipOutButton);
 			GameMgr.Events.Register<StringHash32>(GameEvents.ChainSolved, HandleChainCorrect);
 			GameMgr.Events.Register<StringHash32>(GameEvents.EvidenceUnlocked, HandleEvidenceUnlocked);
+			GameMgr.Events.Register<StringHash32>(GameEvents.EvidenceRemoved, HandleEvidenceRemoved);
 		}
 		protected override void OnHideStart() {
 			base.OnHideStart();
@@ -220,6 +223,7 @@ namespace Shipwreck {
 			m_buttonShipOut.onClick.RemoveListener(HandleShipOutButton);
 			GameMgr.Events.Deregister<StringHash32>(GameEvents.ChainSolved, HandleChainCorrect);
 			GameMgr.Events.Deregister<StringHash32>(GameEvents.EvidenceUnlocked, HandleEvidenceUnlocked);
+			GameMgr.Events.Deregister<StringHash32>(GameEvents.EvidenceRemoved, HandleEvidenceRemoved);
 		}
 
 		private EvidencePin Selected {
@@ -289,6 +293,10 @@ namespace Shipwreck {
 			}
 		}
 		private void HandleEvidenceUnlocked(StringHash32 evidence) {
+			ClearBoard();
+			SetupBoard();
+		}
+		private void HandleEvidenceRemoved(StringHash32 evidence) {
 			ClearBoard();
 			SetupBoard();
 		}
