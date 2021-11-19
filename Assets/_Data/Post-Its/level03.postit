@@ -133,6 +133,23 @@
 @root Cargo
 @correct photo-cargo, ship-chart-cargo
 
+:: cargo-hint-1
+@root Cargo
+@hint ship-chart-cargo
+@only
+	Do any of my photos identify what this was?
+	
+:: cargo-hint-2
+@root Cargo
+@hint photo-cargo
+@only
+	What were these doing on the ship?
+
+:: cargo-incorrect-generic
+@root Cargo
+@incorrect
+	This doesn't make sense
+
 // -----------------------------------------------------------
 //  Cause of Wreck
 // -----------------------------------------------------------
