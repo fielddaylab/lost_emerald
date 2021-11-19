@@ -110,7 +110,7 @@
 @root Location, Name, Cause, Cargo, Artifact
 @incorrect card-canaller, card-freighter, card-tug, card-side-steamer
 @anywhere
-	This is a Type of ship.
+	This is a Type of ship
 
 
 // -----------------------------------------------------------
@@ -125,18 +125,18 @@
 @root Location, Name, Cause, Artifact, Type
 @incorrect ship-chart-cargo
 @anywhere
-	This seems more like cargo.
+	This seems more like cargo
 	
 :: cargo-incorrect-2
 @root Cargo
 @incorrect photo-locket
 @anywhere
-	This is luggage, not cargo.
+	This is luggage, not cargo
 
 :: cargo-incorrect-3
 @root Cargo
 @incorrect
-	This doesn't seem like cargo.
+	This doesn't seem like cargo
 
 // -----------------------------------------------------------
 //  Cause of Wreck
@@ -228,7 +228,7 @@
 :: name-incorrect-2
 @root Name
 @incorrect
-	I don't see a name on here.
+	I don't see a name on here
 
 // -----------------------------------------------------------
 //  Artifact
