@@ -61,7 +61,7 @@
 @once
 
 	{@you}	Wow! There's an old car in the cargo area!
-	{@reya} Ha. I bet that car's not going to car-GO anywhere. Get it? 
+	{@reya} Ha. The "cargo" is a car that won't go! Get it?? 
  
  
 // when you photograph the safe 
@@ -95,7 +95,7 @@
 :: dive-nothing-of-interest
 @contact you, radio
 @trigger OnNothingOfInterest
-	{@you}	Hmm. Nothing useful here.
+	{@you}	I don't need a photo of this. 
 
 
 :: amy-match
@@ -113,7 +113,9 @@
 	        It's a freighter near Port Washington. It was carrying old cars.
 	{@amy}  Hmm. Looks like two freighters sank out there with automobiles in the cargo hold. 
 		One with Kissel cars, and one with Nash cars. 
-		You'll need to figure out the cargo to identify the ship. 
+	{@you}   Hmm. I've never heard of those.
+	{@amy}   They used to be made here in Wisconsin!
+		If you can identify the car you found, you'll be able to figure out what ship it is!
 		I'll have my friend at the auto museum call you. 
 	{@you}	Thanks, Amy!
 	$call UnlockEvidence(2, LV2-Table-Wrecks)
@@ -140,9 +142,12 @@
 	{@cooper}     It's funny. You've got the same last name as the captain who caused that awful shipwreck. 
 	{@you}	Oh. Haha, yeah. Funny. 
 			Wait... did you say the captain CAUSED the shipwreck??
-	{@cooper}	That's right. The company that owned the ship, O.K. Steel, did a report.
-			They said Captain Griffin went out in bad weather.
-	{@you} Wow. I had no idea. 
+	{@cooper}	That's right. It was a local legend when I was a kid. 
+		 	The steel company said the ship was in great condition...the sturdiest freighter on the lake. 
+			But the captain took it out in a terrible storm.
+			Sounds like the waves swallowed it up.
+			It's such a shame. If only the captain had been more careful. 
+		{@you} Wow. I had no idea. 
 	       Thanks again, Cooper. 
 	{@cooper}  Happy to help! 
 		
@@ -161,9 +166,8 @@
 	{@amy}	Any news on the shipwreck?
 	{@you}	Yep, the ship is the Madison! 
 	{@amy}	Nice work, Jules! 
-		Looks like that ship went down right at the start of the Great Depression.
 		I’ll send you the radio distress call.
-		And the cargo list, too!
+		And the ship manifest, too!
 	{@you}	Thanks, Amy!
 	$call UnlockEvidence(2,LV2-List-Cargo)
 	$call UnlockEvidence(2,LV2-Distress-Transcript)
@@ -181,24 +185,23 @@
 	{@reya}	Cool. I solved a mystery too. 
 			{img reya-safe}
 	{@you}	What?! Reya, how did you get that safe?
-	{@reya}	Ha. You're so jealous. It's adorable. 
-		The guy who hired me got a permit to bring it up.
-		It's an old alarm clock and a bunch of 1920s nickels!
-		It's all going to a museum, though. Oh well. 
+	{@reya}	The guy who hired me got a permit to bring it up.
+		It's just a bunch of nickels and an old alarm clock. I was hoping it was gold or something.
+		But they're gonna display it at a museum, with my name on it!
 			{/img}
-		So what about the Madison? I wanna know how she sank!
+	{@you}  Your name? What about me?
+	{@reya}  Ha. Don't be jealous, sis. 
+		What about the Madison? I wanna know how she sank!
 	{@you}  Fine. Let's see...
-		It was a super foggy day, right before the Great Depression started. 
-		The Madison was carrying a load of Wisconsin-made Nash cars to Detroit. 
-	{@reya}  Ooh. Bet this doesn't end well.
-	{@you}   Nope. All of a sudden, another freighter appeared in the fog.
+		It was a super foggy day--the same day the stock market crashed and started the Great Depression. 
+		The Madison was carrying 268 Wisconsin-made Nash cars to Detroit. 
+		All of a sudden, another freighter appeared in the fog.
 		The ships were too close to avoid crashing. The SS Lookout rammed the Madison!
-		The captain of the Lookout panicked and headed to port.
-		Luckily, another ship came to help the Madison, but a bunch of people didn't survive.
-	{@reya}  Wow. That's super sad. 
-		All those awesome cars, stuck at the bottom of the lake. 
-	{@you}  Um.... and the people, right?
-	{@reya} Oh yeah. That too. 
+	{@reya}  Ha. Biggest car wreck ever!
+	{@you}	The captain of the Lookout panicked and headed to port, leaving the Madison behind. 
+		Luckily, another ship came to help, but a bunch of people didn't survive.
+	{@reya}  Wow. That's actually a great story.
+		Super sad, though.
 		I wonder if anybody saw it coming...
 	$call TriggerCutscene()
 	$call UnlockLevel(3)
@@ -213,29 +216,34 @@
 @once
 
 	$call TriggerConvoMusic(dad_convo)
-	{@dad}	Hey, Jules! I've got a shipwreck for you to check out!
+	{@dad}	Hey, Jules. I've got a shipwreck for you to check out.
 		{img broken-wheel}
-		My buddy pulled this up in his nets on Lake Michigan.
+		My fishing buddy pulled this up on Lake Michigan.
 	{@you}	Looks like a broken piece of a sidewheel steamer!
 		I'll talk to my mentor, Cami. She's an expert on those ships. 
 		Did you get the latitude and longitude? 
-	{@dad}	Yep! It's near Sheboygan.
+	{@dad}	Yep. It's near Sheboygan.
 		Location: 43°42'08.6"N 87°38'26.0"W
 		{/img}
-	{@you}	Thanks, Dad. How's the new sonar?
-	{@dad}   Uh... great! Well, sort of. 
-		I'm out on Lake Superior right now. Check out my map!
+	{@you}	Thanks, Dad. 
+		You sound a little upset. How's the new sonar?
+	{@dad}   Uh... not so great.
+	{@you}   Oh, Dad. I tried to warn you.
+	{@dad}   I'll figure it out. Just a little hiccup. 
+		I'm out on Lake Superior right now. Got my old map with me!
 		{img dad-map}
-		Your grandpa’s last known route is marked in red.
+		Your grandpa’s last scheduled route is marked in red.
+		I just need to search the whole area. Easy peasy.
 		{/img}
-	{@dad}   Now all I need to do is keep searching! Easy peasy, right, Jules? 
-		Jules?
-	{@you} 	Dad, why didn't you tell me the shipwreck was Grandpa's fault?
-	{@dad}  What?! Of course it wasn't his fault! 
+	{@you} 	Dad... why didn't you tell me the shipwreck was Grandpa's fault?
+	{@dad}  What?! Of course it wasn't his fault. 
 	{@you}  The steel company said it was.
-	{@dad}  They just needed somebody to blame. That's why I need to find the Emerald--to prove his innocence!
-	{@you} I don't know, Dad. From your stories, it sounds like Grandpa could be pretty reckless--
-	{@dad}  Oh, look at that! Sonar's working! Gotta go, Jules. Wish me luck!
+	{@dad}  They just needed somebody to blame. Legends aren't always true, you know.
+	{@you}   Well, sometimes they are. 
+		From your stories, it sounds like Grandpa could be pretty reckless.
+	{@dad}  I thought you would believe me, Jules.
+	{@you}  It's not about belief, Dad. It's about evidence.
+	{@dad}  That's why I need to find the Emerald. To finally get some proof and clear his name!
 	$call BeginLevel(3)	
 	$call UnlockEvidence(3,LV3-Card-Types)
 	$call UnlockEvidence(3,LV3-Transcript-Dad)
