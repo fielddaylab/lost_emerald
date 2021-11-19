@@ -141,6 +141,17 @@
 @root Cause
 @correct survivor-accounts-cause
 
+:: cause-incorrect-1
+@root Location, Name, Cargo, Artifact, Type
+@incorrect survivor-accounts-cause
+@anywhere
+	This seems more like a cause of the wreck
+	
+:: cause-incorrect-3
+@root Cause
+@incorrect
+	This wouldn't have caused the wreck
+
 // -----------------------------------------------------------
 //	Name
 // -----------------------------------------------------------

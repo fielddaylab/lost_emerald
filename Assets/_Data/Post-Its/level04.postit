@@ -125,18 +125,18 @@
 @root Location, Name, Cause, Artifact, Type
 @incorrect ship-chart-cargo
 @anywhere
-	This seems more like cargo.
+	This seems more like cargo
 	
 :: cargo-incorrect-2
 @root Cargo
 @incorrect photo-locket
 @anywhere
-	This is luggage, not cargo.
+	This is luggage, not cargo
 
 :: cargo-incorrect-3
 @root Cargo
 @incorrect
-	This doesn't seem like cargo.
+	This doesn't seem like cargo
 
 // -----------------------------------------------------------
 //  Cause of Wreck
