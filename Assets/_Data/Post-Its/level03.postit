@@ -184,3 +184,18 @@
 :: artifact-correct
 @root Artifact
 @correct survivor-accounts-artifact, photo-gold
+
+:: artifact-hint-1
+@root Artifact
+@hint survivor-accounts-artifact
+	Do I have a photo of this?
+	
+:: artifact-hint-2
+@root Artifact
+@hint photo-gold
+	Is gold mentioned anywhere?
+
+:: artifact-incorrect-2
+@root Artifact
+@incorrect
+	I don't think this makes sense.
