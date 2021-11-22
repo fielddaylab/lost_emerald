@@ -23,12 +23,14 @@
 	{@you} 	Wait a minute. You're selling all our stuff?? 
 	{@dad}  Yep! Didn't I tell ya?
 			{/obj}
-		I need some money to buy a sonar for my boat!
-	{@you}  Dad, don't you think you're rushing into this? 
-		We might never find the Emerald. 
+		I need some money to buy a sonar for my boat.
+	{@you}	Dad, don't you think you're rushing into this? 
 		You don't even know how to use a sonar!
-	{@dad}  Aw, don't worry, Jules. Reya says it's super easy. 
-		I'll post the flyers myself. Wish me luck!
+	{@dad}   Aw, don't worry, Jules. Reya says it's super easy.
+		Besides, this is our family legacy.
+		Your grandpa was an amazing captain. You're a shipwreck expert.
+		Reya is.... well, Reya.
+		It's time for me to dive in! Wish me luck, kiddo!		
 	$call UnlockContact(reya)
 	$call EndConvoMusic();
 
@@ -45,7 +47,7 @@
 		I can't believe Dad just gave it to you. 
 	{@reya} I know! Awesome, right?  
 		That reminds me. I need your dive gear. 
-	{@you}	What?? No!
+	{@you}	What?? No! That's not allowed. 
 	{@reya}	Aw, come on. We're sisters. The rules don't count.
 		I got hired to check out a shipwreck, and it's way down at 300 feet.
 		I need your fancy deep-diving thing.
@@ -68,28 +70,29 @@
 :: reya-steel
 @contact reya, phone-call
 //@background
-@trigger OnEnterOffice
+@trigger OnEnterEvidenceBoard
 @when Seen(level03.dad-steamer)
 @once
 
 	$call TriggerConvoMusic(reya_convo)
 	{@reya} Hey sis!
-		I'm going through the leftover yard sale stuff. 
-		It's mostly old letters and paperwork, but check out this awesome postcard!
+		Dad and I are going through the rest of Grandma's old stuff. 
+		Check out this awesome postcard from Grandpa!
+		What a legend. I bet his life was never boring. 
 		{img postcard}
-		Think it's worth anything? 
-	{@you}   Whoa, wait a sec. Reya, did you read this??
-		The steel company sent Grandpa on an extra, unplanned trip.
+	{@you}   Wait a sec. Did you read this??
+		It says the steel company sent Grandpa on an extra, unplanned trip.
 	{@reya}  Um.... so? 
-	{@you}   Dad doesn't know about this. He's been searching the wrong part of the lake!
-	{@reya}  Ooh! I found... a clue??
-		In this boring old stuff? 
-	{@you}   It's not boring, Reya. It's our history!  
-	{@reya}  Ha. Of course you would say that.
+	{@you}   There weren't any official records of this.
+	{@dad}   Wait a minute. You mean... I've been searching the wrong part of the lake??
+	{@you}   Looks like it. 
 		{/img}
-		Let's get out there!!
+	{@reya}  Yes!!! I found a clue! 
+		Jules, you need to take your fancy research boat out there and check it out!
 	{@you}  I still need to narrow down the location.
-		I'll let you know what I find. 
+	{@reya}  Okay, okay. What are you waiting for? Make with the boring research! 
+	{@you}   It's not boring, Reya. It's our history!
+	{@reya}  Ha. Of course you would say that. 
 	$call UnlockEvidence(4, "LV4-Card-Types")
 	$call EndConvoMusic()
 
@@ -102,22 +105,22 @@
 @once
 
 	$call TriggerConvoMusic(amy_convo)
-	{@you}	Hey Amy, big news! I found a new lead on Grandpa’s ship!
+	{@you}	Amy, I need your help. I found a new lead on Grandpa’s ship!
 	{@amy}  You did?? I didn't know you were looking into it. 
-	{@you}  Well.... my sister might've helped. A little. 
+	{@you}  Well.... my sister helped. A little. 
 		[SEND MAP with new route added] 
 		I marked my grandpa's route in blue.  
 		He mentioned rough waves near the Apostle Islands. 
-		Do you have any leads on shipwrecks in that area? 
+		Do you have any evidence of shipwrecks in that area? 
 	{@amy}	Hmm, let’s see... 
 		[Send image: piece of steel with OK Steel logo]
-		A fisherman pulled up this broken piece of steel a few years ago. 
-		It could be from a freighter like your grandpa's.
+		A fisherman pulled up this broken piece of steel near Outer Island.  
+		It could be from a freighter like your grandpa's!
 		Location: 47°05'19.4"N 90°17'17.5"W
 	{@you}	Thanks, Amy!
 		I'll send the steel sample to my mom. 
-		She can test it in her lab and learn more about it. 
-	{@amy}	Good plan. Let me know what you find out!
+		She can test it in her lab and find out more about it. 
+	{@amy}	
 	$call UnlockEvidence(4, "LV4-Location-Coordinates")
 	$call RemoveEvidence(4, "LV4-Do-Later-Note")
 	$call DiscoverLocation(4)
@@ -133,12 +136,15 @@
 @once
 
 	{@reya} Well????
-	{@you}	I’ve got a location, but I haven’t checked it out yet. Don’t tell--
-	{@reya} I GOTTA TELL DAD!
-	{@you}	Reya, wait! 
-		What if it's not the Emerald? Dad will be crushed.
-	{@reya} Aw, sis. You worry too much.
-	        We'll meet you out there! 
+	{@you}	I’ve got a location.
+	{@reya}  Yes!!! Treasure, here we come!
+	{@you}  Reya, wait!
+		What if we find out the wreck was Grandpa's fault?
+		Or what if it's not the Emerald at all? 
+	{@reya}  Aww, sis. You worry too much.
+		 Get out there and check it out!
+		Dad and I will be waiting by the phone! 
+		
 
 :: reya-dad-sonar
 @contact reya, radio
@@ -147,9 +153,7 @@
 @once
 @automatic
 
-	$call PauseSonar()
-	{@reya}	Eee this is so exciting!
-	{@dad}  Go ahead, Jules! Use that fancy sonar of yours!  
+	$call PauseSonar()	 
 	$call ResumeSonar()
 
 // Mow lake
@@ -163,7 +167,7 @@
 
 	$call PauseSonar()
 	{@you}	Well...that’s definitely a ship.
-	{@reya}	YES!!! Treasure, here we come!
+		I wonder if it's Grandpa's. 
 	$call ResumeSonar()
 
 // Dive
@@ -183,9 +187,8 @@
 @when HasEvidence(LV4-Photo-Name)
 @once
 
-	{@you}	I found the name. The ship is the Emerald!
-	{@reya} Yes!!
-	{@dad}	I can’t believe it. After all these years.
+	{@you}	Wow. I can't believe it. We found it!
+		I can’t wait to tell Dad! 
 
 //When you photograph the locket:
 :: dive-locket
@@ -194,10 +197,7 @@
 @when HasEvidence(LV4-Photo-Locket)
 @once
 
-	{@you}  Wow. There's a locket down here. It's just like yours, Reya!
-	{@reya} Ooh, grab it, Jules!
-	{@you}  Reya, I told you, it's illegal to--
-	{@reya} Okay, okay. Forget I asked. 
+	{@you}  That locket looks just like Reya's!
 	
 	
 // generic dive prompts
@@ -219,7 +219,7 @@
 :: dive-nothing-of-interest
 @contact you, radio
 @trigger OnNothingOfInterest
-	{@you}	Hmm. Nothing useful here.
+	{@you}	I don't need a photo of this. 
 
 
 // Back at your office. Conversation with Amy.
@@ -231,12 +231,14 @@
 @once
 
 	$call TriggerConvoMusic(amy_convo)
-	{@amy}	So? How’d it go?
-	{@you}	We found the Emerald!
-		It was broken in half, but I'm still not sure how it happened. 
-	{@amy}	I think I can help. 
-		Cami managed to track down one of the survivors. 
-		He said he'd be willing to do an interview.
+	{@amy}	Hey, Jules! How’d it go?
+	{@you}	I found the Emerald!
+		Now I need to figure out what happened. 
+		The legend says the ship was in great condition, but the ship I found was broken in two. 
+	{@amy}  I think I can help.
+		I managed to track down a survivor from the Emerald! 
+		His grandson is a friend of Cami's. She passed on his contact information.
+		Survivor Contact: 555-1242
 	{@you}	Wow, that's so lucky! Thanks, Amy!
 	$call UnlockContact(ed)
 	$call UnlockEvidence(4, "LV4-Ship-Chart") // still needs to be reflected in script
@@ -252,32 +254,31 @@
 @once
 
 	$call TriggerConvoMusic(ed_convo)
-	{@you}	Hi. Are you Edmund Jones?
-	{@ed}	Yup. Call me Ed. This is my grandson, Johnny. 
-	{@johnny} You're Cami's friend, right? Didn't realize you were a diver, too. 
-	{@you}   Oh, uh, yeah! I love it. Diving. Maybe we should go out sometime. 
+	{@you}	Hi. Are you Mr. Edward Jones?
+	{@ed}	Call me Ed. This is my grandson, Johnny. 
+	{@you}   Wait. I saw you last week! You're Cami's contact??
+	{@johnny} Yep. Last time we went diving, she asked about my family. 
+		I told her all about how my grandpa survived the Emerald.  
+		So, you're a diver too? 
+	{@you}   Oh, uh, yeah! I love it. Diving. We should go out sometime!
 		Um... out on the lake, I mean.
-	{@ed}    So, you're related to Captain Griffin?
-	{@you}   He was my grandpa. I'm trying to figure out what really happened.
-	{@ed}   I was on that ship. I'll tell you what I know.
-		The steel company sent us out on an unplanned run. 
-		The waves were rough, but nothing we hadn't seen before. 
-		I was below decks when I heard a loud BANG.
-	{@you}  What happened?
-	{@ed}   The ship just broke apart. Her old hull must've finally given out.
-		Your grandpa did the best he could. He sounded the alarm and got a life raft ready.
-		Then a wave knocked a bunch of us overboard. Lucky we had that raft to hold onto. 
-	{@johnny} Wow, Pops. Sounds like Captain Griffin saved your life. 
+	{@ed}   How can I help you, Jules? 
+	{@you}   My grandpa was the captain of the Emerald.
+		I'm trying to find out what really happened.
+	{@ed}    I'll send you my journal entry. I wrote it all down.
+		JOURNAL ENTRY: account of the ship breaking in half 
+	{@you}   Wow. The ship just broke in half? 
+	{@ed}    Yup. The captain did everything he could. 
+		I wouldn't have made it without him. 
 	{@you}	Did you tell anyone what happened?
-	{@ed}   I tried, but then O.K. Steel put out their report.
+	{@ed}   I tried, but then O.K. Steel put all the blame on your grandpa. 
 		People said I must've remembered it wrong. 
-	{@you}	Did my grandpa ever talk about treasure?
-	{@ed}	Huh. Treasure?
-		You must mean his locket! It had photos of his wife and kid.
-		He kept it in a chest while he was on deck, so he wouldn't lose it.
+	{@you}	Just one more thing. Did my grandpa ever talk about treasure?
+	{@ed}	Hmm. Treasure?
+		Oh, you must mean his locket! It had photos of his wife and son.
 	{@you}	Thank you, Ed. I'm sorry it took so long for someone to listen to you. 
-	{@ed}   I always hoped the truth would come out. Good thing you didn't give up the search.
-	{@you}   Uh, actually, my dad was the one who wouldn't give up.
+	{@ed}   I always hoped the truth would come out. I'm glad you didn't give up the search.
+	{@you}   Uh, actually, it was my dad who wouldn't give up.
 	{@ed}   Well, tell him thank you from me. 
 		
 	$call UnlockEvidence(4, "LV4-Transcript-Survivor")
@@ -296,24 +297,20 @@
 @when IsChainComplete(Name)
 @once
 
-	{@mom}	Hey Jules. 
-		Your dad told me you found the Emerald!
-		Nice work out there. 
-	{@you}	Thanks, Mom. What did you find out?
-	{@mom}	That sample you sent me?
-		It was brittle, notch-sensitive steel, made in the 1930s.
-	{@you}	Brittle? Notch-sensitive? What does that mean?
-	{@mom}  Basically, the steel was weak.
-		Definitely not strong enough to hold up against the waves. 
+	{@mom}	Hey Sweetie! How'd it go out there?
+	{@you}   I found the Emerald!
+	{@mom}   That's wonderful, Jules!
+		Your dad will be thrilled.
+	{@you}   I still need to solve the mystery of why it happened.
+	{@mom}   Actually... it's not such a mystery. 
+		I tested the steel sample you sent me.
+		It was weak and brittle. There's no way it could've held up against the waves.
 	{@you}   Wow. So that's why the Emerald broke apart!
-	{@mom}  This is a big deal, Jules.  
-		Any ship made with this steel is still at risk.
-	{@you}   Oh no. We need to get the word out!
-	{@mom}   Your dad's already on it. 
-		[Newspaper article: "Captain Griffin redeemed! The wreck of the Emerald was caused by brittle steel used in her construction. Now shipwreck hunter Daniel Griffin is on a mission to warn ship owners..."
-	{@you}   Wow. That's amazing!
-	{@mom}   Maybe this will be enough to get some new policies in place and keep people safe. 
-	{@you}   Yeah. I hope so. 
+	{@mom}   Yep. It was only a matter of time.
+	{@you}   I need to tell Dad. He was right all along.
+	{@mom}   Maybe, but he couldn't have done it without you.
+		I'm proud of you, Jules. You two make a pretty great team. 
+	{@you}   Yeah. I guess so. 		
 	$call UnlockEvidence(4, "LV4-Transcript-Mom")
 	
 
@@ -327,27 +324,32 @@
 @once
 
 	$call TriggerConvoMusic(reya_convo)
-	{@you}	Reya, we solved it!
-		The wreck wasn't Grandpa's fault. Dad was right!
-	{@reya}  Whoa. Seriously?? I thought Grandpa was this wild, daredevil type guy.
-		So what really happened? 
-	{@you}	The Emerald was sailing on rough seas, on her last run of the season.
-		Then the ship suddenly broke in half!
+	{@reya}  Well??? What happened?
+		It was the Emerald, right? Wasn't it? 
+	{@you}   Yep.
+	{@reya}  YESS!!!!
+	{@dad}   I can't believe it. After all this time.
+	{@you}   The wreck wasn't Grandpa's fault. You were right, Dad.
+	{@reya}   Whoa. Seriously?? I thought Grandpa was this wild, daredevil type guy. Always going on adventures. 
+	{@you}   You can be adventurous and follow the rules at the same time, Reya. Like Grandpa.
+	{@reya}   Hmm. I guess so...
+	{@dad}   Fill us in, Jules. What really happened?
+	{@you}   The Emerald was sent on an unplanned run. The waves were rough, but the ship was sailing smoothly.
+		Then there was a loud BANG, and the ship suddenly broke in half!
 		Grandpa helped launch a life raft, but he wasn't able to make it to safety. 
-	{@reya}  No way. How could a huge freighter just break apart?
-	{@you}   Mom found out that brittle steel was used in its construction.
-		Dad is on a mission to warn ship owners and make sure it never happens again. 
-	{@reya}  Huh. That's nice for him, I guess.
-		What about the treasure? Grandpa's letter was the whole reason I did this!
+	{@reya}  I don't get it. How could a huge freighter just break apart?
+	{@you}   Mom found out that weak steel was used in its construction.
+	{@dad}   That's awful. I need to get the word out!
+		What if there are more disasters that could be prevented?
+	{@reya}  Yeah, yeah. That's important and all, but what about the treasure? 
 	{@you}	The treasure was Grandpa’s locket.
-	{@reya}  What??? That's it? 
-		Well, at least you can get a permit and go grab it. I know you're jealous of mine.
-	{@you}   You know...I think I'll let the locket stay with the Emerald. 
+	{@reya}  What?? That's it? 
+		Well, at least you can get a permit and go grab the locket. I know you're jealous of mine.
+	{@you}   Actually, I think I'll donate it to the museum.
+		 I want everyone to be able to see it and remember what happened.
 	{@reya}  Ugh. Boring, but whatever.
 		 Oh, by the way, my friend Johnny said he met you.
-	{@you}   What?? You know him?
-	{@reya}  He wants your number, but I told him you're too busy with paperwork.
-	{@you}   Reya, wait--
-	{@reya}  Sorry, sis, gotta run. The lake is calling!
+	{@you}   What?? You know him, too?
+	{@reya}  He wants to hang out with us, but I told him you're too busy with paperwork.
 	$call TriggerCutscene()
 	$call EndConvoMusic()

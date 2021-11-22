@@ -138,7 +138,7 @@ namespace Shipwreck {
 				AudioSrcMgr.instance.PlayAudio("dive");
 				UIMgr.Close<UIShipOutScreen>();
 				UIMgr.Open<UIDiveScreen>();
-				AudioSrcMgr.instance.QueueAudio("dive_music");
+				AudioSrcMgr.instance.QueueAudio("dive_music", true);
 				AudioSrcMgr.instance.PlayAmbiance("underwater_ambiance", true);
 			}
 		}

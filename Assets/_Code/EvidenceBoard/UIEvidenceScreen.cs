@@ -95,6 +95,8 @@ namespace Shipwreck {
 			m_routineShipOut.Stop();
 			m_buttonShipOut.transform.localScale = Vector3.one;
 			m_wasLocationComplete = GameMgr.State.CurrentLevel.IsLocationChainComplete();
+
+			GameMgr.RunTrigger(GameTriggers.OnEnterEvidenceBoard);
 		}
 
 		protected override void OnHideCompleted() {
@@ -165,14 +167,15 @@ namespace Shipwreck {
 					pin.OnPointerDown += HandlePinPressed;
 					pin.OnPointerUp += HandlePinReleased;
 				}
-				chain.SetEChain(obj);
+				chain.SetEvidenceChain(obj);
 				m_chains.Add(chain.Root(), obj);
 				
-				if (pinnedNodes.Count == chain.Depth - 1) {
+				if (chain.IsCorrect) {
 					foreach (EvidenceNode node in pinnedNodes) {
 						node.SetStatus(ChainStatus.Complete);
 					}
 				}
+
 				RefreshChainState(chain.StickyInfo, obj, null);
 
 				// if we are tutorializing location, relevant items need to pulse
@@ -212,6 +215,7 @@ namespace Shipwreck {
 			m_buttonShipOut.onClick.AddListener(HandleShipOutButton);
 			GameMgr.Events.Register<StringHash32>(GameEvents.ChainSolved, HandleChainCorrect);
 			GameMgr.Events.Register<StringHash32>(GameEvents.EvidenceUnlocked, HandleEvidenceUnlocked);
+			GameMgr.Events.Register<StringHash32>(GameEvents.EvidenceRemoved, HandleEvidenceRemoved);
 		}
 		protected override void OnHideStart() {
 			base.OnHideStart();
@@ -219,6 +223,7 @@ namespace Shipwreck {
 			m_buttonShipOut.onClick.RemoveListener(HandleShipOutButton);
 			GameMgr.Events.Deregister<StringHash32>(GameEvents.ChainSolved, HandleChainCorrect);
 			GameMgr.Events.Deregister<StringHash32>(GameEvents.EvidenceUnlocked, HandleEvidenceUnlocked);
+			GameMgr.Events.Deregister<StringHash32>(GameEvents.EvidenceRemoved, HandleEvidenceRemoved);
 		}
 
 		private EvidencePin Selected {
@@ -291,6 +296,10 @@ namespace Shipwreck {
 			ClearBoard();
 			SetupBoard();
 		}
+		private void HandleEvidenceRemoved(StringHash32 evidence) {
+			ClearBoard();
+			SetupBoard();
+		}
 
 		private IEnumerator PulseShipOutButton() {
 			while (true) {
@@ -300,9 +309,18 @@ namespace Shipwreck {
 		}
 
 		private void Lift() {
+			IEvidenceChainState chain = GameMgr.State.CurrentLevel.GetChain(m_selectedRoot);
+			EvidenceChain obj = m_chains[m_selectedRoot];
+
+
+			if (m_selectedPin < obj.Depth - 1 || (chain.StickyInfo != null && (chain.StickyInfo.NoDangler || chain.StickyInfo.Response != StickyInfo.ResponseType.Hint))) {
+				// if you lift a non dangler pin, the sticky note hides
+				obj.HideStickyNote();
+			}
 			GameMgr.State.CurrentLevel.GetChain(m_selectedRoot).Lift(m_selectedPin);
-			m_chains[m_selectedRoot].SetChainDepth(m_selectedPin + 1);
-			m_chains[m_selectedRoot].MoveToFront();
+			
+			obj.SetChainDepth(m_selectedPin + 1);
+			obj.MoveToFront();
 			AudioSrcMgr.instance.PlayOneShot("pick_up_pin");
 
 			if (GraphicsRaycasterMgr.instance.RaycastForNode(InputMgr.Position, out EvidenceNode node)) {
@@ -329,9 +347,9 @@ namespace Shipwreck {
 					SendSelectionHome();
 				} else {
 					Selected.SetPosition(WorldToScreenPoint(m_hoverNode.PinPosition));
-					if (!Selected.IsRoot) {
+					/*if (!Selected.IsRoot) {
 						Selected.SetHomePosition(WorldToScreenPoint(m_hoverNode.SubPinPosition));
-					}
+					}*/
 					if (!GameMgr.State.HasTutorialPinDisplayed() && GameMgr.State.CurrentLevel.IsLocationRoot(m_selectedRoot)) {
 						m_nodes["location-coordinates"].SetPulsing(false); // gross
 					}
@@ -365,12 +383,6 @@ namespace Shipwreck {
 		}
 
 		private void RefreshChainState(StickyInfo info, EvidenceChain chainObj, EvidenceNode node = null) {
-			if (string.IsNullOrEmpty(info?.Text ?? null)) {
-				chainObj.HideStickyNote();
-			}
-			else {
-				chainObj.ShowStickyNote(info.Text);
-			}
 			if (info == null) {
 				chainObj.SetStatus(ChainStatus.Normal);
 				if (node != null) {
@@ -392,6 +404,13 @@ namespace Shipwreck {
 						chainObj.SetStatus(ChainStatus.Incorrect);
 						break;
 				}
+			}
+
+			if (string.IsNullOrEmpty(info?.Text ?? null)) {
+				chainObj.HideStickyNote();
+			} else {
+				bool useDangler = !info.NoDangler;
+				chainObj.ShowStickyNote(info.Text, useDangler);
 			}
 		}
 

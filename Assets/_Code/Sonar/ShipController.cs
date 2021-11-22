@@ -97,6 +97,10 @@ namespace Shipwreck
 		{
 			RegisterActions();
 			m_sceneDimensions = ShipOutMgr.instance.GetTargetDimensions();
+
+			m_shipShadow.transform.position = new Vector3(transform.position.x - 0.2f, transform.position.y, m_shipShadow.transform.position.z);
+			m_shipShadow.transform.rotation = transform.rotation;
+
 		}
 
 		// Update is called once per frame
@@ -105,7 +109,7 @@ namespace Shipwreck
 			if (m_interactIsActive
 				&& !UIMgr.IsOpen<UIPhoneNotif>()
 				&& !UIMgr.IsOpen<UIRadioDialog>()
-				&& InteractionIsInBounds()
+				//&& InteractionIsInBounds()
 				&& !InteractionIsOverUI()
 				&& !ShipOutMgr.instance.IsMessageShowing())
 			{
@@ -206,7 +210,7 @@ namespace Shipwreck
 				// push the ship just beyond the bounds to orbit the obstacle(-ish)
 				interactScreenPos = closestPoint
 					//+ ((Vector2)this.transform.position - closestPoint).normalized
-					+ (closestPoint - interactScreenPos).normalized
+					- (closestPoint - (Vector2)this.transform.position).normalized
 					* m_obstacleMargin;
 			}
 			

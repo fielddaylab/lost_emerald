@@ -278,7 +278,7 @@ namespace Shipwreck
 		[LeafMember]
 		public static void RemoveEvidence(int levelIndex, StringHash32 groupId) {
 			if (I.m_state.RemoveEvidence(levelIndex-1, groupId)) {
-				// todo: events if needed
+				Events.Dispatch(GameEvents.EvidenceRemoved, groupId);
 			}
 		}
 

@@ -22,7 +22,7 @@ namespace Shipwreck {
 		void Drop(StringHash32 node);
 
 		List<StringHash32> Chain();
-		void SetEChain(EvidenceChain eChain);
+		void SetEvidenceChain(EvidenceChain eChain);
 		void HandleChainCorrect(StringHash32 chain);
 
 		void ReevaluateStickyInfo();
@@ -40,7 +40,7 @@ namespace Shipwreck {
 			private StickyInfo m_stickyData;
 			private StickyEvaluator.RootSolvedPredicate m_levelRootEvaluator;
 
-			private EvidenceChain m_eChain;
+			private EvidenceChain m_evidenceChain;
 
 			public EvidenceChainState() {
 				// empty constructor for deserialization
@@ -55,8 +55,8 @@ namespace Shipwreck {
 				// ReevaluateStickyInfo();
 			}
 
-			public void SetEChain(EvidenceChain eChain) {
-				m_eChain = eChain;
+			public void SetEvidenceChain(EvidenceChain eChain) {
+				m_evidenceChain = eChain;
 			}
 
 			public StickyInfo StickyInfo { 
@@ -92,8 +92,8 @@ namespace Shipwreck {
 				m_stickyData = I.m_stickyEvaluator.Evaluate(m_rootNode, m_chain, m_levelRootEvaluator);
 				if (!wasCorrect && IsCorrect) {
 					Events.Dispatch(GameEvents.ChainSolved, m_rootNode);
-					/*if (m_eChain != null) {
-						m_eChain.SetState(ChainStatus.Complete);
+					/*if (m_evidenceChain != null) {
+						m_evidenceChain.SetState(ChainStatus.Complete);
 					}*/
 					using (var table = TempVarTable.Alloc()) {
 						table.Set("root", m_rootNode);
@@ -125,7 +125,7 @@ namespace Shipwreck {
 				}
 			*/
 				while (m_chain.Count > depth) {
-					EvidencePin ePin = m_eChain.GetPin(m_chain.Count - 1);
+					EvidencePin ePin = m_evidenceChain.GetPin(m_chain.Count - 1);
 					if (GraphicsRaycasterMgr.instance.RaycastForNode(ePin.transform.position, out EvidenceNode node)) {
 						node.SetPinned(false);
 						node.SetStatus(ChainStatus.Normal);

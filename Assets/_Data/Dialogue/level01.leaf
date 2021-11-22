@@ -12,7 +12,7 @@
 	$call TriggerConvoMusic(dad_convo)
 	{@dad}  Hey Jules! Big news!!
 	        You know how your grandpa's ship sank on Lake Superior, when I was just a kid?
-	{@you}  Yep. You tell me crazy stories about Grandpa all the time. 
+	{@you}  Of course. You tell me crazy stories about Grandpa all the time. 
 	{@dad}  Well, I found one of his old letters.
 	        Turns out his ship, the SS Emerald, was carrying treasure!
 	{@you}  Since when do you care about treasure, Dad? 
@@ -21,11 +21,12 @@
                 She also dug up your grandma's locket. Looks pretty snazzy on her.
 	{@you}  Wait. You let Reya take the locket?? I'm the older sister!
 	{@dad}  Well, you weren't here. 
-	        So what do you say? Wanna join the search? 
+	        So what do you say? Wanna help us? 
 	{@you}  Well.... I guess I can start a file for Grandpa's ship.
-		You guys could probably use the help. 
-	{@dad}  That's great! Thanks, Jules.
-	        Gotta go. Have fun at work! 
+	{@dad}  That's great! 
+		I've been hearing stories about that shipwreck my whole life. 
+		Maybe we'll finally find out the truth about what happened! 
+	        
         $call UnlockEvidence(4,LV4-Letter-Treasure)
 	$call UnlockContact(lou)
 	$call EndConvoMusic()
@@ -49,8 +50,9 @@
 			{img ultralight-photo}
 			What do you think?
 	{@you} 	Looks like a shipwreck! 
-	{@lou} 	Awesome!
-		It was right by Rawley Point. I'll send you the latitude and longitude. 
+	{@lou} 	Awesome! I thought it might be. 
+		It's in Lake Michigan, near Rawley Point. Must've been uncovered by last night's storm.
+		I'll send you the latitude and longitude. 
                  Location: N 44° 11.524' W 087° 30.591'
 			{/img}
 	{@you} 	Thanks, Lou! Stay safe out there! 
@@ -64,8 +66,9 @@
 @contact you, radio
 @trigger OnEnterDive
 @once
-	{@you} That's the ship! 
-               Better grab a photo from up here. 
+	{@you} Wow, it's not overgrown with mussels at all!
+	       Must've been covered with sand until now.
+               I'll take a photo from up here. 
                 
 
 :: dive-photo-above
@@ -82,7 +85,7 @@
 @when HasEvidence(LV1-Photo-Name)
 @once
 	{@you} Yes! The ship's name! 
-                Looks like it's missing some letters. 
+                Looks like some letters are missing. 
 
 :: dive-photo-artifact
 @contact you, radio
@@ -101,17 +104,17 @@
 :: dive-zoom-in
 @contact you, radio
 @trigger OnZoomIn
-	{@you}	Better zoom in so I can get a better shot.
+	{@you}	Better zoom in so I can see this better.
 
 :: dive-zoom-out
 @contact you, radio
 @trigger OnZoomOut
-	{@you}	I should zoom out so I can fit more in the picture! 
+	{@you}	I should zoom out so I can fit more in the picture.
 
 :: dive-nothing-of-interest
 @contact you, radio
 @trigger OnNothingOfInterest
-	{@you}	Nothing useful here.  
+	{@you}	I don't need a photo of this.  
 
 ::amy-meet
 @contact amy, phone-call
@@ -141,15 +144,26 @@
 	
 	{@amy}  So? What'd you find out? 
 	{@you} 	Our ship is the Loretta!
-	{@amy} 	Wow! What an amazing find! 
+	{@amy} 	Wow! What an amazing find. 
 		Looks like she sank on the same day that the town of Peshtigo burned down.
+	{@you}   Yikes. A whole town burned down?
+	{@amy}   Well, not the WHOLE town, but a lot of it. 
+		It was the worst fire in American history.  
 		{img peshtigo}
-		The captain of the Loretta got lost in all the smoke.
+		All the smoke blew out over the lake and made it hard for the captain to see. 
 		Here's a cool portrait of him: 
 		{img captain-with-knife}
+    $if HasEvidence(LV1-Photo-Artifact)
 	{@you}  Hey, that's the knife I saw! 
-	{@amy}  It must've gone down with the ship.  
-		I've got an article about the sinking. I'll send it over!
+	{@amy}  It must've gone down with the ship. 
+    $else
+    	// note for Lindy: replace text for not having taken a picture of the knife
+    	{@you}  Wow, look at that sailor's knife! 
+    	{@amy}  It was the captain's. Sounds like it went down with the ship. 
+    	{@you}  Hmm. I should dive again. Maybe it's still down there. 
+    $endif
+	{@amy}  I've got an article about the sinking. I'll send it over!
+
 	$call UnlockEvidence(1,LV1-Article-Sinking)
 
 ::lou-complete
@@ -159,15 +173,17 @@
 @once
 	
 	$call TriggerConvoMusic(lou_convo, paraglide_ambiance)
-	{@lou}  Hey, Jules! Any juicy details on that shipwreck?
+	{@lou}  Hey, Jules! 
+		I'm still out flying. Weather's great today! 
+		Any juicy details on that shipwreck?
 	{@you}  Yes! The ship is the Loretta!
 	{@lou}  Awesome name. How'd she sink?
 		{img peshtigo}
-         {@you}  Fires were burning all across Wisconsin.
-                 Tons of smoke blew out over the lake.
+         {@you}  Wildfires were burning all across Wisconsin, including a devastating fire in the town of Peshtigo.
+		The wind blew a ton of smoke out over the lake. 
 	{@lou}   How could the captain see where he was going?
 		{/img}
-	{@you}   He couldn't. The Loretta sailed too close to shore and got stuck on a sandbar. 
+	{@you}   He couldn't. The Loretta sailed too close to shore and got stuck on a sandbar! 
 		The sailors had to climb up the ropes. Luckily, they were rescued by a fishing boat.
 	{@lou}	Wow! What a wild story.
 		Can you imagine what it was like that night?

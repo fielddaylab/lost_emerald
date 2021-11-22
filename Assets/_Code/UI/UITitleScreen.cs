@@ -295,6 +295,8 @@ namespace Shipwreck {
 			GameMgr.UnlockEvidence(4, "LV4-Transcript-Survivor");
 
 			GameMgr.DiscoverLocation(4);
+
+			GameMgr.SetChain(3, "Location", "location-coordinates");
 		}
 	}
 

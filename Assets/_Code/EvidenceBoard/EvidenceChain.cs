@@ -19,6 +19,9 @@ namespace Shipwreck {
 		public ChainStatus Status {
 			get { return m_status; }
 		}
+		public int Depth {
+			get { return m_depth; }
+		}
 
 		[SerializeField]
 		private EvidenceLabel m_rootLabel = null;
@@ -33,6 +36,7 @@ namespace Shipwreck {
 		private Routine m_lineColorRoutine;
 		private Vector2[] m_points;
 		private ChainStatus m_status;
+		private int m_depth = 0;
 
 		public EvidencePin GetPin(int index) {
 			if (index < 0 || index >= m_evidencePins.Length) {
@@ -74,6 +78,7 @@ namespace Shipwreck {
 			m_points = new Vector2[depth + 1];
 			m_points[0] = m_rootPos;
 			m_lineRenderer.Points = m_points;
+			m_depth = depth;
 			int index = 0;
 			while (index < depth) {
 				m_evidencePins[index].gameObject.SetActive(true);
@@ -121,24 +126,22 @@ namespace Shipwreck {
 			m_lineColorRoutine.Replace(this, Tween.Color(m_lineRenderer.color, GameDb.GetLineColor(status), SetLineColor, 0.2f));
 		}
 
-		public void ShowStickyNote(string text) {
+		public void ShowStickyNote(string text, bool hasDangler) {
 			m_stickyNote.SetText(text);
 			m_stickyNote.gameObject.SetActive(true);
-			for (int index = 0; index < m_evidencePins.Length; index++) {
-				// place the note on the last active index
-				if (!m_evidencePins[index].gameObject.activeInHierarchy) {
-					EvidencePin pin = m_evidencePins[index - 1];
-					Vector2 screenPoint = RectTransformUtility.WorldToScreenPoint(Camera.main, pin.RectTransform.position);
-					screenPoint.y = Mathf.Max(100f * pin.GetComponentInParent<Canvas>().scaleFactor, screenPoint.y);
-					RectTransformUtility.ScreenPointToLocalPointInRectangle(
-						(RectTransform)m_stickyNote.RectTransform.parent,
-						screenPoint,
-						Camera.main, out Vector2 point
-					);
-					m_stickyNote.RectTransform.localPosition = point;
-					break;
-				}
-			}
+
+			hasDangler = Status == ChainStatus.Normal && hasDangler;
+
+			EvidencePin pin = m_evidencePins[m_depth - (hasDangler? 2 : 1)];
+			Vector2 screenPoint = RectTransformUtility.WorldToScreenPoint(Camera.main, pin.RectTransform.position);
+			screenPoint.y = Mathf.Max(100f * pin.GetComponentInParent<Canvas>().scaleFactor, screenPoint.y);
+			RectTransformUtility.ScreenPointToLocalPointInRectangle(
+				(RectTransform)m_stickyNote.RectTransform.parent,
+				screenPoint,
+				Camera.main, out Vector2 point
+			);
+			m_stickyNote.RectTransform.localPosition = point;
+				
 		}
 		public void HideStickyNote() {
 			m_stickyNote.gameObject.SetActive(false);
