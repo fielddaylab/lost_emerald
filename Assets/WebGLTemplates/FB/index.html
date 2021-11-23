@@ -11,13 +11,15 @@
     <script src="%UNITY_WEBGL_LOADER_URL%"></script>
     <script>
       var unityInstance = UnityLoader.instantiate("unityContainer", "%UNITY_WEBGL_BUILD_URL%", {onProgress: UnityProgress});
-      var scaler = UWTAspectScaleCreate(1000,660,null,"unityContainer");
-      unityInstance.Module.onRuntimeInitialized = function() { UWTAspectScaleShow(scaler); }
+      unityInstance.Module.onRuntimeInitialized = function() { 
+        var scaler = UWTAspectScaleCreate(1000,660,1.51515,"unityContainer");
+        UWTAspectScaleShow(scaler); 
+      }
     </script>
   </head>
   <body>
-    <div class="webgl-content" style="width:100%; height: 100%;">
-      <div id="unityContainer"></div>
+    <div class="webgl-content" style="width: 100%; height: 100%; background-color: #000;">
+      <div id="unityContainer" style="width: 100%; height: 100%"></div>
     </div>
   </body>
   <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>

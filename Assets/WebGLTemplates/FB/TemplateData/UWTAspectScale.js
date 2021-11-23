@@ -30,10 +30,8 @@ function UWTAspectScaler(elementId, width, height, maxAspectRatio) {
 function UWTAspectScaleCreate(width, height, maxAspectRatio, elementId) {
     var scaler = new UWTAspectScaler(elementId, width, height, maxAspectRatio);
 
-    document.addEventListener("DOMContentLoaded", function() {
-        scaler.element = document.getElementById(scaler.elementId);
-        UWTAspectScaleHide(scaler);
-    });
+    scaler.element = document.getElementById(scaler.elementId);
+    UWTAspectScaleHide(scaler);
 
     window.addEventListener("resize", function() {
         if (scaler.elementVisible) {
