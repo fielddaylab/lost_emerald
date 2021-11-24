@@ -1,0 +1,121 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7277934384930219751
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7277934384929995463}
+  - component: {fileID: 7277934384939897607}
+  m_Layer: 0
+  m_Name: FishSchool00
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7277934384929995463
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7277934384930219751}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 7, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7277934384939897607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7277934384930219751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dd308086043c5446a9c6d26a0f8e42c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _childPrefab:
+  - {fileID: 2670641444218373463, guid: 73adac78a28ae4074802759f07d69ef1, type: 3}
+  _groupChildToNewTransform: 0
+  _groupTransform: {fileID: 0}
+  _groupName: 
+  _groupChildToSchool: 0
+  _childAmount: 50
+  _spawnSphere: 2
+  _spawnSphereDepth: 1
+  _spawnSphereHeight: 2
+  _childSpeedMultipler: 2
+  _minSpeed: 0.25
+  _maxSpeed: 0.5
+  _speedCurveMultiplier:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _minScale: 0.5
+  _maxScale: 1
+  _minDamping: 0.5
+  _maxDamping: 5
+  _waypointDistance: 0.67
+  _minAnimationSpeed: 0.5
+  _maxAnimationSpeed: 1
+  _randomPositionTimerMax: 10
+  _randomPositionTimerMin: 6
+  _acceleration: 0.025
+  _brake: 0.01
+  _positionSphere: 14
+  _positionSphereDepth: 4
+  _positionSphereHeight: 4
+  _childTriggerPos: 0
+  _forceChildWaypoints: 1
+  _autoRandomPosition: 1
+  _forcedRandomDelay: 2
+  _schoolSpeed: 1.490509
+  _roamers: []
+  _posBuffer: {x: -1.11, y: 6.78, z: 0.2}
+  _posOffset: {x: 0, y: 0, z: 0}
+  _avoidance: 0
+  _avoidAngle: 0.35
+  _avoidDistance: 1
+  _avoidSpeed: 75
+  _stopDistance: 0.5
+  _stopSpeedMultiplier: 2
+  _avoidanceMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  _push: 0
+  _pushDistance: 0
+  _pushForce: 5
+  _bubbles: {fileID: 0}
+  _updateDivisor: 1
+  _newDelta: 0
+  _updateCounter: 0
+  _activeChildren: 0
