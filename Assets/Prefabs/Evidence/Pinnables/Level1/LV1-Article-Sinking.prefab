@@ -161,12 +161,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 9020094535072169229}
-  m_RootOrder: 6
+  m_Father: {fileID: 6995726673772874426}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -20.8, y: 90.5}
+  m_AnchoredPosition: {x: 26.22002, y: 8.182373}
   m_SizeDelta: {x: 5, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &3633479453481151535
@@ -203,7 +203,6 @@ RectTransform:
   - {fileID: 2985376720370429580}
   - {fileID: 8658443267639983135}
   - {fileID: 6995726673772874426}
-  - {fileID: 343757326893812361}
   - {fileID: 6873277276265529279}
   - {fileID: 2888601285654964958}
   - {fileID: 4838319092568437500}
@@ -212,7 +211,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 120, y: -92}
+  m_AnchoredPosition: {x: 120, y: -125}
   m_SizeDelta: {x: 291.76947, y: 274.6117}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8199045099123497973
@@ -451,7 +450,7 @@ GameObject:
   - component: {fileID: 1909560304571053838}
   - component: {fileID: 5519843462240150185}
   m_Layer: 5
-  m_Name: Body
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -469,7 +468,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9020094535072169229}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -503,9 +502,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "The fires raging across Wisconsin have caused a shipwreck! Yesterday,
-    smoke blew out over the lake. The Loretta got lost in the smoke and \nhit a shallow
-    sandbar! \n"
+  m_text: 'The fires raging across Wisconsin have caused a shipwreck! Yesterday,
+    smoke blew out over the lake. The captain of the Loretta got lost in the smoke
+    and hit a sandbar! '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0f77dbfab1ccf400fa3ef18be7fb6cbf, type: 2}
   m_sharedMaterial: {fileID: -7532545293972598455, guid: 0f77dbfab1ccf400fa3ef18be7fb6cbf,
@@ -569,7 +568,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -6.135559, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -587,7 +586,7 @@ GameObject:
   - component: {fileID: 7200189090869001240}
   - component: {fileID: 2188840237490801787}
   m_Layer: 5
-  m_Name: Body (1)
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -605,12 +604,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9020094535072169229}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4.21, y: -79.115005}
-  m_SizeDelta: {x: 225.98969, y: 83.85213}
+  m_AnchoredPosition: {x: -14.87, y: -79.115005}
+  m_SizeDelta: {x: 204.66895, y: 83.85213}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7200189090869001240
 CanvasRenderer:
@@ -639,9 +638,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "The captain\u2019s trunk and all of the corn was lost. The sailors were
-    rescued by a fishing boat, heading south with an urgent note from Peshtigo\n(cont.
-    p C5)\n"
+  m_text: "\rThe captain\u2019s trunk and the cargo, 10,000 bushels of corn, was
+    lost. The sailors were rescued by a boat heading south with an urgent note from
+    Peshtigo\u2026\n(cont. p c5)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0f77dbfab1ccf400fa3ef18be7fb6cbf, type: 2}
   m_sharedMaterial: {fileID: -7532545293972598455, guid: 0f77dbfab1ccf400fa3ef18be7fb6cbf,
@@ -705,7 +704,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -0.8182373, w: 0}
+  m_margin: {x: 0, y: 0, z: 6.0006104, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -745,8 +744,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 1.7599945, y: -5.8}
+  m_SizeDelta: {x: 3.510498, y: 11.6067505}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6907699235122246167
 CanvasRenderer:
@@ -810,7 +809,7 @@ PrefabInstance:
     - target: {fileID: 5820740882212646554, guid: 8a3c1004efbc77e449d833085e2e9880,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5820740882212646554, guid: 8a3c1004efbc77e449d833085e2e9880,
         type: 3}
@@ -840,7 +839,7 @@ PrefabInstance:
     - target: {fileID: 5820740882212646554, guid: 8a3c1004efbc77e449d833085e2e9880,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 19.306442
+      value: 18.230362
       objectReference: {fileID: 0}
     - target: {fileID: 5820740882212646554, guid: 8a3c1004efbc77e449d833085e2e9880,
         type: 3}
@@ -880,12 +879,12 @@ PrefabInstance:
     - target: {fileID: 5820740882212646554, guid: 8a3c1004efbc77e449d833085e2e9880,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 95.2
+      value: 37.3
       objectReference: {fileID: 0}
     - target: {fileID: 5820740882212646554, guid: 8a3c1004efbc77e449d833085e2e9880,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -46.2
+      value: -64.06
       objectReference: {fileID: 0}
     - target: {fileID: 5820740882212646554, guid: 8a3c1004efbc77e449d833085e2e9880,
         type: 3}
@@ -992,7 +991,7 @@ PrefabInstance:
     - target: {fileID: 5820740882212646554, guid: 8a3c1004efbc77e449d833085e2e9880,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 136.15668
+      value: 82.872986
       objectReference: {fileID: 0}
     - target: {fileID: 5820740882212646554, guid: 8a3c1004efbc77e449d833085e2e9880,
         type: 3}
@@ -1037,7 +1036,7 @@ PrefabInstance:
     - target: {fileID: 5820740882212646554, guid: 8a3c1004efbc77e449d833085e2e9880,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -52.85
+      value: -76.7
       objectReference: {fileID: 0}
     - target: {fileID: 5820740882212646554, guid: 8a3c1004efbc77e449d833085e2e9880,
         type: 3}

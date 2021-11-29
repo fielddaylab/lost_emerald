@@ -289,14 +289,15 @@
 //Connect cause of wreck to the quote from the interview transcript: that old, flimsy steel couldn’t hold up to the waves. 
 //Sticky note: How can I prove this?
 
-// Text from your Mom
+// Call from your Mom
 :: mom-weak
 @contact mom, phone-call
-//@background
+@background mom-office
 @trigger OnChainSolved
 @when IsChainComplete(Name)
 @once
 
+	$call TriggerConvoMusic(amy_convo)
 	{@mom}	Hey Sweetie! How'd it go out there?
 	{@you}   I found the Emerald!
 	{@mom}   That's wonderful, Jules!
@@ -312,6 +313,7 @@
 		I'm proud of you, Jules. You two make a pretty great team. 
 	{@you}   Yeah. I guess so. 		
 	$call UnlockEvidence(4, "LV4-Transcript-Mom")
+	$call EndConvoMusic()
 	
 
 //Evidence board: cause of wreck, cargo

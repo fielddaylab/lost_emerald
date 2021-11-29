@@ -124,7 +124,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000043213, y: -89.77}
+  m_AnchoredPosition: {x: -0.000043213, y: -103.37}
   m_SizeDelta: {x: 180.92383, y: 43.31292}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3567291113923488545
@@ -154,7 +154,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "47\xB005'19.4\"N 90\xB017'17.5\"W"
+  m_text: "Location:\n  47\xB005'19.4\"N 90\xB017'17.5\"W"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 91971dd9594b62643ad90120969cfb17, type: 2}
   m_sharedMaterial: {fileID: 3265771203794016092, guid: 91971dd9594b62643ad90120969cfb17,
@@ -189,7 +189,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -333,7 +333,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -16.566}
+  m_AnchoredPosition: {x: 0, y: -34.9}
   m_SizeDelta: {x: 180.92374, y: 91.555786}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1538240798142493339
@@ -392,8 +392,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.6100006, y: 0.91000366}
-  m_SizeDelta: {x: 9.69342, y: 7.8759155}
+  m_AnchoredPosition: {x: 0.6100006, y: -4.96}
+  m_SizeDelta: {x: 9.69342, y: 19.625458}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6498135406263935974
 CanvasRenderer:
@@ -496,8 +496,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <b>Amy:</b> Looks like a fisherman pulled up this broken piece of steel
-    near Outer Island.
+  m_text: '<b>Amy:</b> A fisherman pulled up this broken piece of steel near Outer
+    Island.
+
+    It could be from a freighter like your grandpa''s!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 91971dd9594b62643ad90120969cfb17, type: 2}
   m_sharedMaterial: {fileID: 3265771203794016092, guid: 91971dd9594b62643ad90120969cfb17,
@@ -604,7 +606,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.33, y: -77.766}
+  m_AnchoredPosition: {x: -1.33, y: -115.9}
   m_SizeDelta: {x: 169.6495, y: 19.306442}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4574060829526332089
