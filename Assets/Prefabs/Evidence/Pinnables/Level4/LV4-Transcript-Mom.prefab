@@ -147,8 +147,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 372.19, y: -50}
-  m_SizeDelta: {x: 208.0806, y: 288}
+  m_AnchoredPosition: {x: 372.19, y: -17.27}
+  m_SizeDelta: {x: 208.0806, y: 222.53448}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &641430470008843215
 MonoBehaviour:
@@ -198,7 +198,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.7999268, y: 116}
+  m_AnchoredPosition: {x: -2.7999268, y: 83.3}
   m_SizeDelta: {x: 137.42276, y: 40.001373}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3124397262084161540
@@ -384,7 +384,7 @@ GameObject:
   - component: {fileID: 5670705696026275676}
   - component: {fileID: 7500726134553448980}
   m_Layer: 5
-  m_Name: Body
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -436,10 +436,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "MOM: That steel you sent me? It was made in 1930, and was brittle.\r\n\nJULES:
-    What do you mean, brittle?\r\n\nMOM: Weak. Definitely not sturdy enough for a
-    freighter.\n\nThere\u2019s no way that brittle steel could\u2019ve held up against
-    the waves. \r"
+  m_text: '<b>Mom:</b> I tested the steel sample you sent me.
+
+
+    It was weak and
+    brittle. There''s no way it could''ve held up against the waves.
+
+
+    <b>You:</b>
+    Wow. So that''s why the Emerald broke apart!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0f77dbfab1ccf400fa3ef18be7fb6cbf, type: 2}
   m_sharedMaterial: {fileID: -7532545293972598455, guid: 0f77dbfab1ccf400fa3ef18be7fb6cbf,
@@ -546,8 +551,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.4266, y: -101.83}
-  m_SizeDelta: {x: 197.36166, y: 63.28827}
+  m_AnchoredPosition: {x: -1.4266, y: -27.3}
+  m_SizeDelta: {x: 197.36166, y: 58.180862}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2394938361407093753
 MonoBehaviour:

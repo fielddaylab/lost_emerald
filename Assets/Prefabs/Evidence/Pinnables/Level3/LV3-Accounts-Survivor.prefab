@@ -89,7 +89,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.61, y: 59}
+  m_AnchoredPosition: {x: -18.8, y: 59}
   m_SizeDelta: {x: 226.89569, y: 35.8851}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1388460789633181535
@@ -226,7 +226,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -65.21, y: -75.9}
+  m_AnchoredPosition: {x: -45.1, y: -56.7}
   m_SizeDelta: {x: 103.04147, y: 21.028809}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3607957783980159857
@@ -250,7 +250,6 @@ MonoBehaviour:
   m_pinPosition: {fileID: 0}
   m_subPinPosition: {fileID: 204386831369319943}
   m_image: {fileID: 1478725689287934907}
-  m_pinned: 0
 --- !u!114 &3031610003297295150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -442,13 +441,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "A fire started in the boiler room and spread across the ship. There was
-    smoke everywhere! \r\nSome of the lifeboats got tangled up. People were throwing
-    things into the water--doors, tables, trunks, anything that might float. \r\n\rOne
-    lifeboat was partly lowered when a rich passenger jumped in with his arms full
-    of heavy gold bars! The lifeboat broke loose and plunged to the water.\r\n\rA
-    nearby ship must\u2019ve seen the fire. They showed up and pulled us out of the
-    water. \r"
+  m_text: "We were sailing past Sheboygan when a fire broke out in the boiler room.
+    By the time we saw the smoke, it was too late.\r\nThere weren't enough lifeboats.
+    Everyone panicked! I was lucky to escape.\r\nI was helping to lower one of the
+    lifeboats. Then a man jumped in with a bunch of heavy gold bars! The boat broke
+    loose and plunged into the lake. \r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 91971dd9594b62643ad90120969cfb17, type: 2}
   m_sharedMaterial: {fileID: 3265771203794016092, guid: 91971dd9594b62643ad90120969cfb17,
@@ -584,8 +581,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.30000305, y: -75.4}
-  m_SizeDelta: {x: 43.00656, y: 159.06506}
+  m_AnchoredPosition: {x: -8.13, y: -47.526}
+  m_SizeDelta: {x: 27.44339, y: 103.43771}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2360648311548113580
 CanvasRenderer:
@@ -661,7 +658,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -55.56, y: 97.6}
+  m_AnchoredPosition: {x: -54.6, y: 79.4}
   m_SizeDelta: {x: 196.01236, y: 21.028809}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3935663560104595829
@@ -685,7 +682,6 @@ MonoBehaviour:
   m_pinPosition: {fileID: 0}
   m_subPinPosition: {fileID: 4349885833582263016}
   m_image: {fileID: 8574850746132252794}
-  m_pinned: 0
 --- !u!114 &4227310203663294759
 MonoBehaviour:
   m_ObjectHideFlags: 0

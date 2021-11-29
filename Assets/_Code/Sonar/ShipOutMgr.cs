@@ -133,22 +133,8 @@ namespace Shipwreck {
 				m_sonarProgress = 0;
 				UIShipOutScreen.instance.GetDiveSlider().normalizedValue = 0;
 
-				if (!GameMgr.State.HasTutorialSonarDisplayed()) {
-					UIShipOutScreen.ActionCode[] codes = new UIShipOutScreen.ActionCode[]
-					{
-						UIShipOutScreen.ActionCode.TutorialSonar,
-						UIShipOutScreen.ActionCode.EnableSonar
-					};
-					UIShipOutScreen.instance.ShowMessage(
-						"The ship should be under the water in this area. Time to drive my boat around and find it with my sonar.",
-						"Continue",
-						codes
-						);
-				}
-				else {
-					if (m_shipOutData.SonarImmediate) {
-						EnableSonar.Invoke();
-					}
+				if (m_shipOutData.SonarImmediate) {
+					EnableSonar.Invoke();
 				}
 			}
 		}
@@ -237,17 +223,7 @@ namespace Shipwreck {
 						GameMgr.RunTrigger(GameTriggers.OnMowCompleted);
 					}
 					else {
-						// tutorial buoy case
-						UIShipOutScreen.ActionCode[] codes = new UIShipOutScreen.ActionCode[]
-						{
-							UIShipOutScreen.ActionCode.TutorialBuoy,
-							UIShipOutScreen.ActionCode.UnlockDive
-						};
-						UIShipOutScreen.instance.ShowMessage(
-							"There it is! I’ll drop a buoy to mark the location.",
-							"Continue",
-							codes
-							);
+						GameMgr.RunTrigger(GameTriggers.OnMowCompleted);
 					}
 				}
 			}
