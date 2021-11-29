@@ -270,7 +270,6 @@
 	{@ed}   I always hoped the truth would come out. I'm glad you didn't give up the search.
 	{@you}   Uh, actually, it was my dad who wouldn't give up.
 	{@ed}   Well, tell him thank you from me. 
-		
 	$call UnlockEvidence(4, "LV4-Transcript-Survivor")
 	$call EndConvoMusic()
 

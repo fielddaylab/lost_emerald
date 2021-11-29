@@ -7288,7 +7288,7 @@ PrefabInstance:
     - target: {fileID: 2343840576634054272, guid: e5cdebae1f163174bb4ad3ce54afa167,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 464
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2343840576634054272, guid: e5cdebae1f163174bb4ad3ce54afa167,
         type: 3}
@@ -7419,6 +7419,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2938903144978857196, guid: e5cdebae1f163174bb4ad3ce54afa167,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5677593168239786900, guid: e5cdebae1f163174bb4ad3ce54afa167,
         type: 3}
@@ -7554,12 +7559,6 @@ MonoBehaviour:
   m_diveButtonPrefab: {fileID: 7376120463518852647, guid: ef58800966e998e45b8837f1c63bd99b,
     type: 3}
   m_diveSlider: {fileID: 710217385}
-  m_messageGroup: {fileID: 913256404}
-  m_messageText: {fileID: 620745031}
-  m_messageButton: {fileID: 229375017}
-  m_messageButtonText: {fileID: 935336582}
-  m_messageHiddenY: -88
-  m_messageShownY: 112
 --- !u!224 &1973513322
 RectTransform:
   m_ObjectHideFlags: 0
