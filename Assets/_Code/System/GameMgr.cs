@@ -347,6 +347,17 @@ namespace Shipwreck
 			ShipOutMgr.instance.EnableSonar.Invoke();
 		}
 
+		[LeafMember]
+		private static void MarkSonarTutorialComplete() {
+			UIShipOutScreen.instance.MarkSonarTutorialComplete();
+		}
+
+		[LeafMember]
+		private static void DropSonarTutorialBuoy() {
+			UIShipOutScreen.instance.DropSonarTutorialBuoy();
+			ShipOutMgr.instance.UnlockDive();
+		}
+
 
 		[LeafMember]
 		private static void BeginLevel(int index) {

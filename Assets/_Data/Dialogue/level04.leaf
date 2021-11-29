@@ -146,16 +146,6 @@
 		Dad and I will be waiting by the phone! 
 		
 
-:: reya-dad-sonar
-@contact reya, radio
-//@background 
-@trigger OnEnterSonar
-@once
-@automatic
-
-	$call PauseSonar()	 
-	$call ResumeSonar()
-
 // Mow lake
 
 :: reya-mow

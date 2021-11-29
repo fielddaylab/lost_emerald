@@ -59,6 +59,28 @@
 	$call UnlockLevel(1)
 	$call UnlockEvidence(1,LV1-Transcript-Lou)
 	$call EndConvoMusic()
+	
+:: sonar-tutorial
+@contact you, radio
+@trigger OnEnterSonar
+@once
+@automatic
+	
+	$call PauseSonar()
+	{@you}	The ship should be under the water in this area. Time to drive my boat around and find it with my sonar.
+	$call ResumeSonar()
+	$call MarkSonarTutorialComplete()
+	
+:: buoy-drop
+@contact you, radio
+@trigger OnMowCompleted
+@once
+@automatic
+	
+	$call PauseSonar()
+	{@you}	There it is! I’ll drop a buoy to mark the location.
+	$call ResumeSonar()
+	$call DropSonarTutorialBuoy()
 
 // specific dive prompts
 
