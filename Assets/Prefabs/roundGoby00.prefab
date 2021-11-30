@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6273446595101373452}
   - component: {fileID: 6962593499219344297}
   - component: {fileID: 5135491897719607139}
-  - component: {fileID: 4581200144837191297}
   m_Layer: 0
   m_Name: roundGoby00
   m_TagString: Untagged
@@ -80,20 +79,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &4581200144837191297
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6648459686827191990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01b67c8c535019d47ba387e88bd5adcd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spawner: {fileID: 0}
-  _speed: 10
-  _model: {fileID: 6273446595101373452}
-  _scanner: {fileID: 0}
-  _cacheTransform: {fileID: 0}
