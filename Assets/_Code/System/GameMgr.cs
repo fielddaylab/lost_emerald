@@ -366,9 +366,7 @@ namespace Shipwreck
 
 		[LeafMember]
 		private static void MapTutorial() {
-			if (!I.m_state.HasTutorialMapDisplayed()) {
-				Events.Dispatch(GameEvents.MapTutorial);
-			}
+			Events.Dispatch(GameEvents.MapTutorial);
 		} 
 
 		#endregion // Leaf
