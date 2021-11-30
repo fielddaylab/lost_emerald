@@ -19,17 +19,6 @@ namespace Shipwreck {
 			showing
 		}
 
-
-		// IDs for UnityActions that can occur when a messageBox is closed
-		public enum ActionCode {
-			TutorialSonar,
-			TutorialBuoy,
-			UnlockDive,
-			EnableSonar,
-			DisableSonar
-		}
-
-
 		[SerializeField]
 		private Button m_returnToOfficeButton; // button that returns the player to office
 		[SerializeField]
@@ -37,19 +26,6 @@ namespace Shipwreck {
 		private Button m_diveButton = null; // the dive button
 		[SerializeField]
 		private Slider m_diveSlider; // the dive progress bar
-
-		[SerializeField, Header("Message Box")]
-		private RectTransform m_messageGroup = null;
-		[SerializeField]
-		private TextMeshProUGUI m_messageText = null;
-		[SerializeField]
-		private Button m_messageButton = null;
-		[SerializeField]
-		private TextMeshProUGUI m_messageButtonText = null;
-		[SerializeField]
-		private float m_messageHiddenY = -88f;
-		[SerializeField]
-		private float m_messageShownY = 150f;
 
 		private Routine m_messageRoutine;
 
@@ -78,33 +54,6 @@ namespace Shipwreck {
 		protected override void OnHideStart() {
 			GameMgr.Events.Deregister(GameEvents.PhoneNotification, HandlePhoneNotification);
 			GameMgr.Events.Deregister(GameEvents.DialogClosed, HandleDialogClosed);
-		}
-
-		private List<UnityAction> GetActions(ActionCode[] codes) {
-			List<UnityAction> actions = new List<UnityAction>();
-			foreach (ActionCode code in codes) {
-				switch (code) {
-					case (ActionCode.TutorialSonar):
-						actions.Add(FlagDisplaySonarTutorial);
-						break;
-					case (ActionCode.TutorialBuoy):
-						actions.Add(FlagDropTutorialBuoy);
-						break;
-					case (ActionCode.UnlockDive):
-						actions.Add(ShipOutMgr.instance.UnlockDive);
-						break;
-					case (ActionCode.EnableSonar):
-						actions.Add(ShipOutMgr.instance.EnableSonar.Invoke);
-						break;
-					case (ActionCode.DisableSonar):
-						actions.Add(ShipOutMgr.instance.DisableSonar.Invoke);
-						break;
-					default:
-						break;
-				}
-			}
-
-			return actions;
 		}
 
 		/// <summary>
@@ -171,12 +120,12 @@ namespace Shipwreck {
 			}
 		}
 
-		private void FlagDropTutorialBuoy() {
+		public void DropSonarTutorialBuoy() {
 			GameMgr.State.SetTutorialBuoyDropped(true);
 			AudioSrcMgr.instance.PlayOneShot("drop_buoy");
 		}
 
-		private void FlagDisplaySonarTutorial() {
+		public void MarkSonarTutorialComplete() {
 			GameMgr.State.SetTutorialSonarDisplayed(true);
 		}
 
@@ -190,28 +139,6 @@ namespace Shipwreck {
 
 		public void HideDiveSlider() {
 			m_diveSlider.gameObject.SetActive(false);
-		}
-
-		#region MessageBox
-
-		public void ShowMessage(string message, string buttonText, ActionCode[] actionCodes) {
-			m_messageText.text = message;
-			m_messageButtonText.text = buttonText;
-			m_messageGroup.anchoredPosition = new Vector2(m_messageGroup.anchoredPosition.x, m_messageHiddenY);
-			m_messageRoutine.Replace(this, m_messageGroup.AnchorPosTo(m_messageShownY, 0.25f, Axis.Y).Ease(Curve.QuadOut));
-			m_currentMessageState = MessageState.showing;
-			m_messageButton.onClick.AddListener(HideMessageBox);
-
-			List<UnityAction> actions = GetActions(actionCodes);
-			foreach (UnityAction action in actions) {
-				m_messageButton.onClick.AddListener(action);
-			}
-		}
-		private void HideMessageBox() {
-			AudioSrcMgr.instance.PlayOneShot("click_dialog_continue");
-			m_messageRoutine.Replace(this, m_messageGroup.AnchorPosTo(m_messageHiddenY, 0.25f, Axis.Y).Ease(Curve.QuadOut));
-			m_currentMessageState = MessageState.hidden;
-			m_messageButton.onClick.RemoveAllListeners();
 		}
 
 		protected override IEnumerator ShowRoutine() {
@@ -240,8 +167,6 @@ namespace Shipwreck {
 				m_diveButton.interactable = true;
 			}
 		}
-
-		#endregion
 
 	}
 }

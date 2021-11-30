@@ -347,11 +347,29 @@ namespace Shipwreck
 			ShipOutMgr.instance.EnableSonar.Invoke();
 		}
 
+		[LeafMember]
+		private static void MarkSonarTutorialComplete() {
+			UIShipOutScreen.instance.MarkSonarTutorialComplete();
+		}
+
+		[LeafMember]
+		private static void DropSonarTutorialBuoy() {
+			UIShipOutScreen.instance.DropSonarTutorialBuoy();
+			ShipOutMgr.instance.UnlockDive();
+		}
+
 
 		[LeafMember]
 		private static void BeginLevel(int index) {
 			SetLevelIndex(index - 1);
 		}
+
+		[LeafMember]
+		private static void MapTutorial() {
+			if (!I.m_state.HasTutorialMapDisplayed()) {
+				Events.Dispatch(GameEvents.MapTutorial);
+			}
+		} 
 
 		#endregion // Leaf
 

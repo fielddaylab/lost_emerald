@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -16.566}
+  m_AnchoredPosition: {x: 0, y: 16.9}
   m_SizeDelta: {x: 180.92374, y: 91.555786}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6149002995490859954
@@ -198,8 +198,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<b>Reya:</b> Awww, Jules!! Thank you for offering. I would love your help!\r
-    \nHere\u2019s the coordinates:\r"
+  m_text: <b>Reya:</b> It's near Port Washington.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 91971dd9594b62643ad90120969cfb17, type: 2}
   m_sharedMaterial: {fileID: 3265771203794016092, guid: 91971dd9594b62643ad90120969cfb17,
@@ -358,7 +357,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000043213, y: -89.77}
+  m_AnchoredPosition: {x: -0.000043213, y: -57.9}
   m_SizeDelta: {x: 180.92383, y: 43.31292}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8182152256092729864
@@ -388,7 +387,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "  43\xB020'08.2\"N  87\xB034'11.3\"W\n<b>Reya:</b> Race ya there!"
+  m_text: "Location:\n  43\xB020'08.2\"N 87\xB034'11.3\"W\nRace ya there!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 91971dd9594b62643ad90120969cfb17, type: 2}
   m_sharedMaterial: {fileID: 3265771203794016092, guid: 91971dd9594b62643ad90120969cfb17,
@@ -632,7 +631,7 @@ PrefabInstance:
     - target: {fileID: 5820740882212646554, guid: 8a3c1004efbc77e449d833085e2e9880,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -77.766
+      value: -69.4
       objectReference: {fileID: 0}
     - target: {fileID: 5820740882212646554, guid: 8a3c1004efbc77e449d833085e2e9880,
         type: 3}

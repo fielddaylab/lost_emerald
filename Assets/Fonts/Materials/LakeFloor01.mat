@@ -34,7 +34,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_5C8D4E2A:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 50a4053663b3440b8a03baae49570f0b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -89,7 +89,7 @@ Material:
     - Vector1_C939A787: 2
     - Vector1_CF8B0D8D: 2
     - Vector1_ED5ABFD9: 0
-    - Vector1_F3F6B787: 0.51
+    - Vector1_F3F6B787: 0.57
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -119,7 +119,7 @@ Material:
     - Color_28180829: {r: 0.496, g: 0.46427906, b: 0.40372095, a: 1}
     - Color_57D43A16: {r: 0, g: 0, b: 0, a: 0}
     - Color_F689E8B9: {r: 0.6745098, g: 0.6313726, b: 0.54901963, a: 1}
-    - Vector2_B6BA9460: {r: 1, g: 1, b: 0, a: 0}
+    - Vector2_B6BA9460: {r: 8, g: 8, b: 0, a: 0}
     - _BaseColor: {r: 0.674, g: 0.6325529, b: 0.54931, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
