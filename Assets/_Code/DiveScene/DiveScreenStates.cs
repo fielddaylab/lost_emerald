@@ -80,8 +80,14 @@ namespace Shipwreck {
 			}
 			private void HandleTransitionEnded() {
 				if (GameMgr.State.CurrentLevel.HasTakenTopDownPhoto()) {
-					Screen.SetState(new DiveNavigation(Screen));
-				} else {
+					if (!GameMgr.State.CurrentLevel.IsCurrentObservation("")) {
+						Screen.SetState(new DiveMessage(Screen, false));
+					}
+					else {
+						Screen.SetState(new DiveNavigation(Screen));
+					}
+				}
+				else {
 					Screen.SetState(new DiveTutorialMessage(Screen));
 				}
 			}

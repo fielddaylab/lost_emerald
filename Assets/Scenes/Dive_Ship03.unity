@@ -700,7 +700,7 @@ PrefabInstance:
     - target: {fileID: 3782994056335260743, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
       propertyPath: m_Name
-      value: DiveVirtualCamera (20)
+      value: DiveVirtualCamera (wheel)
       objectReference: {fileID: 0}
     - target: {fileID: 3782994056335260743, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
@@ -5426,7 +5426,7 @@ PrefabInstance:
     - target: {fileID: 3782994056335260743, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
       propertyPath: m_Name
-      value: DiveVirtualCamera (6)
+      value: DiveVirtualCamera (better angle)
       objectReference: {fileID: 0}
     - target: {fileID: 3782994056335260744, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
@@ -5545,6 +5545,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38a81007aa7e04447984bc1df4c89675, type: 3}
+--- !u!1 &1996958137 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3782994056335260743, guid: 38a81007aa7e04447984bc1df4c89675,
+    type: 3}
+  m_PrefabInstance: {fileID: 1996958136}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1996958138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1996958137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 625f0e414cab63d4f842a4c3873e9acf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_customMessageKey:
+    m_Source: better-angle
+    m_Hash: 3002469405
 --- !u!1 &2006459709
 GameObject:
   m_ObjectHideFlags: 0
@@ -5766,6 +5787,21 @@ MonoBehaviour:
     m_hash: -252010229
   m_zoomMin: 0.24852072
   m_zoomMax: 0.80473375
+--- !u!114 &2084417607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084417605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acffa432162c5644daa45b87c3c51f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_observationKey:
+    m_Source: anchor-name
+    m_Hash: 470554688
 --- !u!4 &2096084217 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3782994056335260744, guid: 38a81007aa7e04447984bc1df4c89675,

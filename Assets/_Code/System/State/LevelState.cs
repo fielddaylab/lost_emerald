@@ -15,6 +15,8 @@ namespace Shipwreck {
 		bool IsLocationKnown { get; }
 		string MarkerUnknownSpriteID { get; }
 		Vector2 MarkerUnknownSpriteOffset { get; }
+		void SetCurrentMessage(StringHash32 messageKey);
+		void SetCurrentObservation(StringHash32 observationKey);
 		bool IsUnlocked { get; }
 		IEnumerable<IEvidenceGroupState> Evidence { get; }
 		int ChainCount { get; }
@@ -22,6 +24,8 @@ namespace Shipwreck {
 		IEvidenceChainState GetChain(StringHash32 hash);
 		bool IsEvidenceUnlocked(StringHash32 hash);
 		bool IsLocationChainComplete();
+		bool IsCurrentMessage(StringHash32 messageKey);
+		bool IsCurrentObservation(StringHash32 observationKey);
 		bool HasTakenTopDownPhoto();
 		bool IsChainComplete(StringHash32 root);
 		bool IsBoardComplete();
@@ -94,6 +98,8 @@ namespace Shipwreck {
 
 			// non-serialized
 			private LevelData m_levelData;
+			private StringHash32 m_currMessage;
+			private StringHash32 m_currObservation = "";
 
 			public LevelState() {
 				m_evidence = new List<EvidenceGroupState>();
@@ -158,6 +164,12 @@ namespace Shipwreck {
 					return false;
 				}
 			}
+			public void SetCurrentMessage(StringHash32 messageKey) {
+				m_currMessage = messageKey;
+			}
+			public void SetCurrentObservation(StringHash32 observationKey) {
+				m_currObservation = observationKey;
+			}
 
 			public bool DiscoverLocation() {
 				if (!m_locationKnown) {
@@ -191,6 +203,20 @@ namespace Shipwreck {
 			}
 			public bool IsLocationKnown {
 				get { return m_locationKnown; }
+			}
+
+			public bool IsCurrentMessage(StringHash32 messageKey) {
+				if (m_currMessage == messageKey) {
+					return true;
+				}
+				return false;
+			}
+
+			public bool IsCurrentObservation(StringHash32 observationKey) {
+				if (m_currObservation == observationKey) {
+					return true;
+				}
+				return false;
 			}
 
 			public void Serialize(Serializer ioSerializer) {

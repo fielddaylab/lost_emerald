@@ -88,6 +88,21 @@
 		Yikes. That's not creepy at all. 
 	
 
+// dive observations
+:: dive-observation-frame
+@contact you, radio
+@trigger OnObservationMade
+@when CurrentObservationIs(anchor-name)
+@once
+	{@you}	What is that written on the anchor?
+	
+//custom dive prompts
+:: dive-better-angle
+@contact you, radio
+@trigger OnNothingOfInterest
+@when CurrentCustomMessageIs(better-angle)
+	{@you}	I should try a different angle for a better shot
+
 // generic dive prompts
 :: dive-already-taken
 @contact you, radio

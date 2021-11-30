@@ -45,6 +45,7 @@ namespace Shipwreck {
 			public static readonly StringHash32 OnZoomIn = "OnZoomIn";
 			public static readonly StringHash32 OnZoomOut = "OnZoomOut";
 			public static readonly StringHash32 OnNothingOfInterest = "OnNothingOfInterest";
+			public static readonly StringHash32 OnObservationMade = "OnObservationMade";
 		}
 
         public static readonly StringHash32 OnContactAdded = "OnContactAdded";

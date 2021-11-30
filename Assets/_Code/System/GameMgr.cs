@@ -112,6 +112,10 @@ namespace Shipwreck
 			UIMgr.Open<UIModalCaseClosed>();
 		}
 
+		public void SetCurrentCustomMessage(StringHash32 messageKey) {
+			I.m_state.CurrentLevel.SetCurrentMessage(messageKey);
+		}
+
 
 		#region Scripting
 
@@ -367,7 +371,17 @@ namespace Shipwreck
 		[LeafMember]
 		private static void MapTutorial() {
 			Events.Dispatch(GameEvents.MapTutorial);
-		} 
+		}
+
+		[LeafMember]
+		private static bool CurrentCustomMessageIs(StringHash32 messageKey) {
+			return I.m_state.CurrentLevel.IsCurrentMessage(messageKey);
+		}
+
+		[LeafMember]
+		private static bool CurrentObservationIs(StringHash32 observationKey) {
+			return I.m_state.CurrentLevel.IsCurrentObservation(observationKey);
+		}
 
 		#endregion // Leaf
 

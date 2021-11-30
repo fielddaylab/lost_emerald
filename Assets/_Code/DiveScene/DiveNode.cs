@@ -15,6 +15,8 @@ namespace Shipwreck {
 		private MeshRenderer m_circleRenderer = null;
 
 		private DivePointOfInterest m_pointOfInterest;
+		private DivePointCustomMessage m_pointCustomMessage;
+		private DiveObservationPoint m_observationPoint;
 		private Vector3 m_startPosition;
 		private Routine m_zoomRoutine;
 		private Routine m_pulseRoutine;
@@ -41,6 +43,22 @@ namespace Shipwreck {
 			}
 			// it is acceptable that this can return null
 			return m_pointOfInterest;
+		}
+
+		public DivePointCustomMessage GetPointCustomMessage() {
+			if (m_pointCustomMessage == null) {
+				m_pointCustomMessage = GetComponent<DivePointCustomMessage>();
+			}
+			// it is acceptable that this can return null
+			return m_pointCustomMessage;
+		}
+
+		public DiveObservationPoint GetObservationPoint() {
+			if (m_observationPoint == null) {
+				m_observationPoint = GetComponent<DiveObservationPoint>();
+			}
+			// it is acceptable that this can return null
+			return m_observationPoint;
 		}
 
 		public void SetActive(bool isActive) {

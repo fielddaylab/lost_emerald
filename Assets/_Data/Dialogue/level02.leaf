@@ -76,6 +76,13 @@
 	{@you}   No way, Reya. It's illegal to take anything without a permit!
 	{@reya}	Ugh. You are SO BORING. I can't believe we're related. 
 	
+//custom dive prompts
+:: dive-better-angle
+@contact you, radio
+@trigger OnNothingOfInterest
+@when CurrentCustomMessageIs(other-side)
+	{@you}	I'll have a better view of that from the other side.
+	
 // generic dive prompts
 :: dive-already-taken
 @contact you, radio

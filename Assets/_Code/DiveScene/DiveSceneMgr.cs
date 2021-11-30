@@ -16,6 +16,7 @@ namespace Shipwreck {
 		private Color m_clickTargetBaseColor = Color.black;
 		[SerializeField]
 		private Color m_clickTargetSelectedColor = Color.black;
+
 		[SerializeField]
 		private LocalizationKey m_nothingOfInterestKey = LocalizationKey.Empty;
 		[SerializeField]
@@ -24,7 +25,6 @@ namespace Shipwreck {
 		private LocalizationKey m_pleaseZoomOutKey = LocalizationKey.Empty;
 		[SerializeField]
 		private LocalizationKey m_alreadyTakenKey = LocalizationKey.Empty;
-
 
 		private DiveNode[] m_diveNodes;
 		private DiveNode m_currentNode;
@@ -35,7 +35,7 @@ namespace Shipwreck {
 
 		private void Awake() {
 			m_diveNodes = GetComponentsInChildren<DiveNode>();
-			m_startRoutine.Replace(this, Routine.Delay(()=> { SetNode(m_startNode); }, m_startDelay));
+			m_startRoutine.Replace(this, Routine.Delay(() => { SetNode(m_startNode); }, m_startDelay));
 			HandleNavDeactivated(); // default to off
 			InputMgr.Register(InputMgr.OnInteractPressed, HandleInteractPressed);
 			GameMgr.Events.Register(GameEvents.Dive.AttemptPhoto, HandleAttemptPhoto, this);
@@ -54,26 +54,43 @@ namespace Shipwreck {
 		}
 
 		private void HandleAttemptPhoto() {
-			// there must be a point of interest at the location
+			// Reset any previous custom messages
+			GameMgr.State.CurrentLevel.SetCurrentMessage("");
+
+			// there must be a point of interest or custom message at the location
 			// or the request will be ignored
 			DivePointOfInterest poi = m_currentNode.GetPointOfInterest();
 			if (poi == null) {
-				GameMgr.RunTrigger(GameTriggers.Dive.OnNothingOfInterest);
-				GameMgr.Events.Dispatch(GameEvents.Dive.ShowMessage);
-				AudioSrcMgr.instance.PlayOneShot("photo_fail");
-			} else if (GameMgr.State.CurrentLevel.IsEvidenceUnlocked(poi.EvidenceUnlock)) {
+				// check for custom message
+				DivePointCustomMessage pcm = m_currentNode.GetPointCustomMessage();
+				if (pcm == null) {
+					GameMgr.RunTrigger(GameTriggers.Dive.OnNothingOfInterest);
+					GameMgr.Events.Dispatch(GameEvents.Dive.ShowMessage);
+					AudioSrcMgr.instance.PlayOneShot("photo_fail");
+				}
+				else {
+					GameMgr.State.CurrentLevel.SetCurrentMessage(pcm.CustomMessageKey);
+					GameMgr.RunTrigger(GameTriggers.Dive.OnNothingOfInterest);
+					GameMgr.Events.Dispatch(GameEvents.Dive.ShowMessage, pcm.CustomMessageKey);
+					AudioSrcMgr.instance.PlayOneShot("photo_fail");
+				}
+			}
+			else if (GameMgr.State.CurrentLevel.IsEvidenceUnlocked(poi.EvidenceUnlock)) {
 				GameMgr.RunTrigger(GameTriggers.Dive.OnPhotoAlreadyTaken);
 				GameMgr.Events.Dispatch(GameEvents.Dive.ShowMessage);
 				AudioSrcMgr.instance.PlayOneShot("photo_fail");
-			} else if (m_zoomLevel < poi.ZoomMin) {
+			}
+			else if (m_zoomLevel < poi.ZoomMin) {
 				GameMgr.RunTrigger(GameTriggers.Dive.OnZoomIn);
 				GameMgr.Events.Dispatch(GameEvents.Dive.ShowMessage);
 				AudioSrcMgr.instance.PlayOneShot("photo_fail");
-			} else if (m_zoomLevel > poi.ZoomMax) {
+			}
+			else if (m_zoomLevel > poi.ZoomMax) {
 				GameMgr.RunTrigger(GameTriggers.Dive.OnZoomOut);
 				GameMgr.Events.Dispatch(GameEvents.Dive.ShowMessage);
 				AudioSrcMgr.instance.PlayOneShot("photo_fail");
-			} else {
+			}
+			else {
 				GameMgr.Events.Dispatch(GameEvents.Dive.ConfirmPhoto, poi.EvidenceUnlock);
 				GameMgr.Events.Dispatch(GameEvents.Dive.ShowMessage, poi.UnlockMessage);
 				AudioSrcMgr.instance.PlayOneShot("take_photo");
@@ -140,9 +157,19 @@ namespace Shipwreck {
 			m_currentNode.SetActive(false);
 			m_transitionRoutine.Replace(this, WaitForTransitionRoutine());
 			GameMgr.Events.Dispatch(GameEvents.Dive.LocationChanging, m_currentNode == m_startNode);
-			if (m_currentNode != m_startNode)
-			{
+			if (m_currentNode != m_startNode) {
 				AudioSrcMgr.instance.PlayOneShot("click_node");
+
+				//reset previous observations
+				GameMgr.State.CurrentLevel.SetCurrentObservation("");
+
+				// display observation upon arrival at node
+				DiveObservationPoint op = m_currentNode.GetObservationPoint();
+				if (op != null) {
+					GameMgr.State.CurrentLevel.SetCurrentObservation(op.ObservationKey);
+					GameMgr.RunTrigger(GameTriggers.Dive.OnObservationMade);
+					GameMgr.Events.Dispatch(GameEvents.Dive.ShowMessage, op.ObservationKey);
+				}
 			}
 			AudioSrcMgr.instance.PlayOneShot("swim_to_node");
 		}
