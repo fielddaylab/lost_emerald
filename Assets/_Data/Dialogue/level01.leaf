@@ -58,6 +58,7 @@
 	{@you} 	Thanks, Lou! Stay safe out there! 
 	$call UnlockLevel(1)
 	$call UnlockEvidence(1,LV1-Transcript-Lou)
+	$call MapTutorial()
 	$call EndConvoMusic()
 	
 :: sonar-tutorial

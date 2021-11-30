@@ -19,6 +19,7 @@ namespace Shipwreck {
 		public static readonly StringHash32 CutsceneComplete = "CutsceneComplete";
 		public static readonly StringHash32 CaseClosed = "CaseClosedOpened";
 		public static readonly StringHash32 LocationDiscovered = "LocationDiscovered";
+		public static readonly StringHash32 MapTutorial = "MapTutorial";
 
 		public static class Dive {
 			public static readonly StringHash32 NavigationActivated = "NavigationActivated";
