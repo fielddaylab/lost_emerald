@@ -85,8 +85,8 @@ MonoBehaviour:
   _minDamping: 0.5
   _maxDamping: 5
   _waypointDistance: 0.67
-  _minAnimationSpeed: 0.5
-  _maxAnimationSpeed: 1
+  _minAnimationSpeed: 0.25
+  _maxAnimationSpeed: 0.5
   _randomPositionTimerMax: 10
   _randomPositionTimerMin: 6
   _acceleration: 0.025
@@ -100,7 +100,7 @@ MonoBehaviour:
   _forcedRandomDelay: 2
   _schoolSpeed: 1.490509
   _roamers: []
-  _posBuffer: {x: -1.11, y: 6.78, z: 0.2}
+  _posBuffer: {x: 0, y: 7, z: 0}
   _posOffset: {x: 0, y: 0, z: 0}
   _avoidance: 0
   _avoidAngle: 0.35
