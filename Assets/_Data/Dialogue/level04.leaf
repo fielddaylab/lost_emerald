@@ -189,6 +189,14 @@
 
 	{@you}  That locket looks just like Reya's!
 	
+// dive observations
+:: dive-obs-split
+@contact you, radio
+@trigger OnObservationMade
+@when CurrentObservationIs(split)
+@once
+	{@you}	I should get a photo of the ship split in half
+	
 // generic dive prompts
 :: dive-already-taken
 @contact you, radio
