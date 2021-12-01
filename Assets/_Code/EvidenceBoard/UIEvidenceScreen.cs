@@ -279,10 +279,13 @@ namespace Shipwreck {
 			UIMgr.CloseThenOpen<UIEvidenceScreen, UIOfficeScreen>();
 		}
 		private void HandleShipOutButton() {
+			UIMgr.Open<UIEnRouteScreen>();
+			/*
 			UIMgr.Close<UIEvidenceScreen>();
 			AudioSrcMgr.instance.PlayAudio("ship_out");
 			AudioSrcMgr.instance.PlayAmbiance("ship_out_ambiance", true);
 			SceneManager.LoadScene("ShipOut");
+			*/
 		}
 		private void HandleChainCorrect(StringHash32 root) {
 			if (GameMgr.State.CurrentLevel.IsLocationChainComplete() && !m_wasLocationComplete) {
