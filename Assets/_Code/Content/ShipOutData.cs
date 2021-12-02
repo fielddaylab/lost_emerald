@@ -29,6 +29,9 @@ namespace Shipwreck
 		{
 			get { return m_buoyLocation; }
 		}
+		public Vector2 DiveButtonLocation {
+			get { return m_diveButtonLocation; }
+		}
 
 		public string DiveDest
 		{
@@ -55,6 +58,8 @@ namespace Shipwreck
 		private Vector2 m_wreckLocation;
 		[SerializeField]
 		private Vector2 m_buoyLocation;
+		[SerializeField]
+		private Vector2 m_diveButtonLocation;
 		[SerializeField]
 		private string m_diveDest;
 		[SerializeField]

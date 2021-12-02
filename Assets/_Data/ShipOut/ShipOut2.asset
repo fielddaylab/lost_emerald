@@ -15,6 +15,7 @@ MonoBehaviour:
   m_shipOutIndex: 2
   m_wreckLocation: {x: 3.2, y: 4.5}
   m_buoyLocation: {x: 4.71, y: 5.58}
+  m_diveButtonLocation: {x: 47, y: 235}
   m_diveDest: Dive_Ship03
   m_sonarPoints:
   - {x: -0.5237977, y: 0.7042699}

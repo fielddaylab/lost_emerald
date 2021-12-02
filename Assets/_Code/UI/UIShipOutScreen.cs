@@ -95,12 +95,13 @@ namespace Shipwreck {
 		/// <summary>
 		/// Replaces the filled slider with the clickable dive button
 		/// </summary>
-		public void SwapButtonForSlider() {
+		public void SwapButtonForSlider(Vector2 buttonPosition) {
 			// destory old bar
 			m_diveSlider.gameObject.SetActive(false);
 
 			// create new button
-			m_diveButton = Instantiate(m_diveButtonPrefab, this.transform).GetComponent<Button>();
+			m_diveButton = Instantiate(m_diveButtonPrefab, transform).GetComponent<Button>();
+			((RectTransform)m_diveButton.transform).anchoredPosition = buttonPosition;
 
 			// add button functionality
 			m_diveButton.onClick.AddListener(HandleDiveButton);
