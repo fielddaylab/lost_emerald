@@ -28,6 +28,9 @@ namespace Shipwreck {
 		public Color DialogTextColor { 
 			get { return m_dialogTextColor; }
 		}
+		public Sprite RadioIcon {
+			get { return m_radioIcon; }
+		}
 
 		[SerializeField, Tooltip("Tag used to refer to this Characer from Leaf scripts")]
 		private string m_tag = string.Empty;
@@ -47,6 +50,10 @@ namespace Shipwreck {
 		private Color m_dialogTextColor = Color.white;
 		[SerializeField, Tooltip("Color used to tint the dialog background")]
 		private Color m_dialogBackgroundColor = Color.grey;
+
+		[Header("Radio")]
+		[SerializeField, Tooltip("Icon used for radio messages sent by this Character")]
+		private Sprite m_radioIcon = null;
 
 	}
 

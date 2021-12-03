@@ -264,10 +264,11 @@
 	{@you}   My grandpa was the captain of the Emerald.
 		I'm trying to find out what really happened.
 	{@ed}    I'll send you my journal entry. I wrote it all down.
-		JOURNAL ENTRY: account of the ship breaking in half 
+		{img survivor-journal}
 	{@you}   Wow. The ship just broke in half? 
 	{@ed}    Yup. The captain did everything he could. 
 		I wouldn't have made it without him. 
+		{/img}
 	{@you}	Did you tell anyone what happened?
 	{@ed}   I tried, but then O.K. Steel put all the blame on your grandpa. 
 		People said I must've remembered it wrong. 
