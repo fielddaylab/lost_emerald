@@ -51,6 +51,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 4668ef405d8fd794e84a6c16503f01c2, type: 3}
   - {fileID: 21300000, guid: 34be7f50dca717b49919f3c830f832c1, type: 3}
   - {fileID: 21300000, guid: 1ef17280142431044ba4e08b167d830a, type: 3}
+  - {fileID: 21300000, guid: 3dcb3aa06bc98de439006eaa2242e6b2, type: 3}
   - {fileID: 21300000, guid: 976d24b0d86b37a4ea099fd7472eece2, type: 3}
   - {fileID: 21300000, guid: 298463e072d2ab44c8f30989a4f5d4ee, type: 3}
   - {fileID: 21300000, guid: 3d03c611440aba64fbb670920dcb11c0, type: 3}
@@ -100,6 +101,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 6146582a659c49547b0767f3e41d7aa6, type: 3}
   - {fileID: 21300000, guid: d95b3d2a5159a264e97141fc59fc8d4d, type: 3}
   - {fileID: 21300000, guid: 19d4257ae6eefc943a85ed0b3dbdcfb8, type: 3}
+  - {fileID: 21300000, guid: 740fe87a28265344fb5affa315668548, type: 3}
   - {fileID: 21300000, guid: 9219a3ba3979b214babe6a768fcade78, type: 3}
   - {fileID: 21300000, guid: 74fd1afaaff2da843b02b5e2ef88fc91, type: 3}
   - {fileID: 21300000, guid: bd33810b214a0104fbc3b7c7b52910b8, type: 3}
@@ -151,6 +153,7 @@ SpriteAtlas:
   - photo-lv3-cargo
   - bar-open-minimal
   - button-face
+  - survivor-journal
   - car-kissel
   - photo-lv4-above
   - PhoneDialogTalking
@@ -200,6 +203,7 @@ SpriteAtlas:
   - dad-map-blue-line
   - reya-boat
   - Yarn
+  - jules_icon_gear
   - HiResCircle
   - ship-card-updated
   - lv2-car-images
