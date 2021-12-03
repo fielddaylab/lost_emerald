@@ -225,7 +225,7 @@
 @contact amy, phone-call
 @background amy-office
 @trigger OnEnterOffice
-@when HasEvidence(LV4-Photo-Locket)
+@when Seen(level04.dive-start)
 @once
 
 	$call TriggerConvoMusic(amy_convo)
@@ -239,7 +239,7 @@
 		Survivor Contact: 555-1242
 	{@you}	Wow, that's so lucky! Thanks, Amy!
 	$call UnlockContact(ed)
-	$call UnlockEvidence(4, "LV4-Ship-Chart") // still needs to be reflected in script
+	$call UnlockEvidence(4, "LV4-Ship-Chart")
 	$call EndConvoMusic()
 
 
