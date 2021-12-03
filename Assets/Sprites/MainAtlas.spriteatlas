@@ -88,7 +88,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: b92d2866ce79293478f277897bd0ad16, type: 3}
   - {fileID: 21300000, guid: 0b8b988619e68ed408ef667cc5d86d11, type: 3}
   - {fileID: 21300000, guid: 67168c86290185a4198db8cf6eea2dd6, type: 3}
-  - {fileID: 21300000, guid: 59fe56a6223a442439b9c0aef26e2687, type: 3}
   - {fileID: 21300000, guid: f72a4bb635c912348be218b77740ae06, type: 3}
   - {fileID: 21300000, guid: f2f043070615e5d44bf1c5cf2ff5c0b5, type: 3}
   - {fileID: 21300000, guid: 289fae17660e1b5468819bd39d453625, type: 3}
@@ -105,6 +104,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 132b0ca92ede2104d86bc6e8eb061529, type: 3}
   - {fileID: 21300000, guid: 4437300a3ad20184488215937c1d80b4, type: 3}
   - {fileID: 21300000, guid: 127b3c0afee2e274ab765b67e3875292, type: 3}
+  - {fileID: 21300000, guid: 6146582a659c49547b0767f3e41d7aa6, type: 3}
   - {fileID: 21300000, guid: ece7e92aaba5f494e923e7cda7d69071, type: 3}
   - {fileID: 21300000, guid: d95b3d2a5159a264e97141fc59fc8d4d, type: 3}
   - {fileID: 21300000, guid: 19d4257ae6eefc943a85ed0b3dbdcfb8, type: 3}
@@ -130,6 +130,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 2af87afca5fb68744b9282231b479229, type: 3}
   - {fileID: 21300000, guid: 7fd12d0d3f284fa40899dc34b325317b, type: 3}
   - {fileID: 21300000, guid: 4495b11dfccfb934ebf50ce533b76639, type: 3}
+  - {fileID: 21300000, guid: 64ae431d12c5aff4a9db73213a837de9, type: 3}
   - {fileID: 21300000, guid: 4351881d5986f5e4c9fee4b2bcef03aa, type: 3}
   - {fileID: 21300000, guid: 274e5f2d852693349a1c503ffb7d14d0, type: 3}
   - {fileID: 21300000, guid: b0ec3b8d44ae642358eb7e0701410eef, type: 3}
@@ -197,7 +198,6 @@ SpriteAtlas:
   - triangle
   - photo-lv2-gash
   - circle
-  - dad-map
   - photo-lv3-gold
   - photo-lv1-knife
   - photo-lv4-name
@@ -214,6 +214,7 @@ SpriteAtlas:
   - push-pin
   - poster-top
   - zoom-in
+  - dad-map-blue-line
   - ship-card
   - reya-boat
   - Yarn
@@ -239,6 +240,7 @@ SpriteAtlas:
   - dad_icon
   - amy_icon
   - yardsale
+  - dad-map-red-line
   - postcard
   - level2_madison
   - icon-journal

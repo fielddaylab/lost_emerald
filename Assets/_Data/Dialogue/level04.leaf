@@ -108,9 +108,10 @@
 	{@you}	Amy, I need your help. I found a new lead on Grandpa’s ship!
 	{@amy}  You did?? I didn't know you were looking into it. 
 	{@you}  Well.... my sister helped. A little. 
-		[SEND MAP with new route added] 
+		{img dad-map-blue-line}
 		I marked my grandpa's route in blue.  
 		He mentioned rough waves near the Apostle Islands. 
+		{/img}
 		Do you have any evidence of shipwrecks in that area? 
 	{@amy}	Hmm, let’s see... 
 		[Send image: piece of steel with OK Steel logo]
