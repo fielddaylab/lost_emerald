@@ -114,8 +114,9 @@
 		{/img}
 		Do you have any evidence of shipwrecks in that area? 
 	{@amy}	Hmm, let’s see... 
-		[Send image: piece of steel with OK Steel logo]
-		A fisherman pulled up this broken piece of steel near Outer Island.  
+		{img brittle-steel}
+		A fisherman pulled up this broken piece of steel near Outer Island.
+		{/img}
 		It could be from a freighter like your grandpa's!
 		Location: 47°05'19.4"N 90°17'17.5"W
 	{@you}	Thanks, Amy!
