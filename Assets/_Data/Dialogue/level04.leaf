@@ -108,13 +108,15 @@
 	{@you}	Amy, I need your help. I found a new lead on Grandpa’s ship!
 	{@amy}  You did?? I didn't know you were looking into it. 
 	{@you}  Well.... my sister helped. A little. 
-		[SEND MAP with new route added] 
+		{img dad-map-blue-line}
 		I marked my grandpa's route in blue.  
 		He mentioned rough waves near the Apostle Islands. 
+		{/img}
 		Do you have any evidence of shipwrecks in that area? 
 	{@amy}	Hmm, let’s see... 
-		[Send image: piece of steel with OK Steel logo]
-		A fisherman pulled up this broken piece of steel near Outer Island.  
+		{img brittle-steel}
+		A fisherman pulled up this broken piece of steel near Outer Island.
+		{/img}
 		It could be from a freighter like your grandpa's!
 		Location: 47°05'19.4"N 90°17'17.5"W
 	{@you}	Thanks, Amy!
@@ -224,7 +226,7 @@
 @contact amy, phone-call
 @background amy-office
 @trigger OnEnterOffice
-@when HasEvidence(LV4-Photo-Locket)
+@when Seen(level04.dive-start)
 @once
 
 	$call TriggerConvoMusic(amy_convo)
@@ -238,7 +240,7 @@
 		Survivor Contact: 555-1242
 	{@you}	Wow, that's so lucky! Thanks, Amy!
 	$call UnlockContact(ed)
-	$call UnlockEvidence(4, "LV4-Ship-Chart") // still needs to be reflected in script
+	$call UnlockEvidence(4, "LV4-Ship-Chart")
 	$call EndConvoMusic()
 
 
@@ -263,10 +265,11 @@
 	{@you}   My grandpa was the captain of the Emerald.
 		I'm trying to find out what really happened.
 	{@ed}    I'll send you my journal entry. I wrote it all down.
-		JOURNAL ENTRY: account of the ship breaking in half 
+		{img survivor-journal}
 	{@you}   Wow. The ship just broke in half? 
 	{@ed}    Yup. The captain did everything he could. 
 		I wouldn't have made it without him. 
+		{/img}
 	{@you}	Did you tell anyone what happened?
 	{@ed}   I tried, but then O.K. Steel put all the blame on your grandpa. 
 		People said I must've remembered it wrong. 

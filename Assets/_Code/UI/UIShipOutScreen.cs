@@ -28,6 +28,7 @@ namespace Shipwreck {
 		private Slider m_diveSlider; // the dive progress bar
 
 		private Routine m_messageRoutine;
+		private Routine m_divePulseRoutine;
 
 		private MessageState m_currentMessageState;
 
@@ -49,6 +50,7 @@ namespace Shipwreck {
 		protected override void OnShowStart() {
 			GameMgr.Events.Register(GameEvents.PhoneNotification, HandlePhoneNotification);
 			GameMgr.Events.Register(GameEvents.DialogClosed, HandleDialogClosed);
+			m_divePulseRoutine.Stop();
 		}
 
 		protected override void OnHideStart() {
@@ -95,12 +97,13 @@ namespace Shipwreck {
 		/// <summary>
 		/// Replaces the filled slider with the clickable dive button
 		/// </summary>
-		public void SwapButtonForSlider() {
+		public void SwapButtonForSlider(Vector2 buttonPosition) {
 			// destory old bar
 			m_diveSlider.gameObject.SetActive(false);
 
 			// create new button
-			m_diveButton = Instantiate(m_diveButtonPrefab, this.transform).GetComponent<Button>();
+			m_diveButton = Instantiate(m_diveButtonPrefab, transform).GetComponent<Button>();
+			((RectTransform)m_diveButton.transform).anchoredPosition = buttonPosition;
 
 			// add button functionality
 			m_diveButton.onClick.AddListener(HandleDiveButton);
@@ -123,6 +126,7 @@ namespace Shipwreck {
 		public void DropSonarTutorialBuoy() {
 			GameMgr.State.SetTutorialBuoyDropped(true);
 			AudioSrcMgr.instance.PlayOneShot("drop_buoy");
+			BeginDivePulse();
 		}
 
 		public void MarkSonarTutorialComplete() {
@@ -167,6 +171,21 @@ namespace Shipwreck {
 				m_diveButton.interactable = true;
 			}
 		}
+
+		private void BeginDivePulse() {
+			m_divePulseRoutine.Replace(this, PulseDiveButton());
+		}
+
+		#region Routines
+
+		private IEnumerator PulseDiveButton() {
+			while (true) {
+				yield return m_diveButton.transform.ScaleTo(1.1f, 0.5f, Axis.XY).Ease(Curve.QuadIn);
+				yield return m_diveButton.transform.ScaleTo(1f, 0.5f, Axis.XY).Ease(Curve.QuadOut);
+			}
+		}
+
+		#endregion
 
 	}
 }

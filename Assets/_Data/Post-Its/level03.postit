@@ -39,7 +39,7 @@
 @root Type
 @hint photo-above
 @only
-	Does this match a ship diagram?
+	Does this match any ship types?
 
 :: shiptype-hint-2b
 @root Type
@@ -51,7 +51,7 @@
 @root Type
 @hint photo-above
 @precededBy ship-chart-type
-	Does this match a ship diagram?
+	Does this match any ship types?
 
 :: shiptype-hint-3a
 @root Type
@@ -75,7 +75,7 @@
 @root Type
 @hint ship-chart-type
 @precededBy photo-above
-	Does this match a ship diagram?
+	Does this match any ship types?
 
 :: shiptype-hint-4c
 @root Type

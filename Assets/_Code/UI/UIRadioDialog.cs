@@ -150,7 +150,11 @@ namespace Shipwreck {
 			m_textBoxOutline.color = speaker.DialogTextColor;
 			m_speakerName.GetComponent<Graphic>().color = speaker.DialogBackgroundColor;
 			m_speakerNameBackground.color = speaker.DialogTextColor;
-			if (speaker.TextingIcon != null) {
+			if (speaker.RadioIcon != null && UIMgr.IsOpen<UIDiveScreen>()) {
+				m_icon.sprite = speaker.RadioIcon;
+				m_iconGroup.SetActive(true);
+			}
+			else if (speaker.TextingIcon != null) {
 				m_icon.sprite = speaker.TextingIcon;
 				m_iconGroup.SetActive(true);
 			} else {

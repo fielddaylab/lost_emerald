@@ -119,7 +119,7 @@ namespace Shipwreck {
 			// when dive is unlocked, load the buoy without sonar
 			if (GameMgr.State.IsDiveUnlocked(GameMgr.State.GetCurrShipOutIndex())) {
 				// activate button
-				UIShipOutScreen.instance.SwapButtonForSlider();
+				UIShipOutScreen.instance.SwapButtonForSlider(m_shipOutData.DiveButtonLocation);
 
 				// drop buoy
 				GameObject buoy = DropBuoy();
@@ -145,7 +145,7 @@ namespace Shipwreck {
 				GenerateSonarDots(true);
 
 				// activate button
-				UIShipOutScreen.instance.SwapButtonForSlider();
+				UIShipOutScreen.instance.SwapButtonForSlider(m_shipOutData.DiveButtonLocation);
 
 				// add reya's ship
 				AddReya();
@@ -253,7 +253,7 @@ namespace Shipwreck {
 			GameMgr.State.UnlockDive(m_shipOutData.ShipOutIndex);
 
 			// activate button
-			UIShipOutScreen.instance.SwapButtonForSlider();
+			UIShipOutScreen.instance.SwapButtonForSlider(m_shipOutData.DiveButtonLocation);
 
 			if (m_shipOutData.ShipOutIndex == 1) {
 				// buoy starts dropped
