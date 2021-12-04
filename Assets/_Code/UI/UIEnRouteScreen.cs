@@ -14,6 +14,8 @@ namespace Shipwreck {
 		private Button m_closeButton = null;
 		[SerializeField]
 		private Button m_shipOutButton = null;
+		[SerializeField]
+		private Image m_mapImage = null;
 
 		protected override IEnumerator HideImmediateRoutine() {
 			throw new System.NotImplementedException();
@@ -38,6 +40,9 @@ namespace Shipwreck {
 			base.OnShowStart();
 
 			CanvasGroup.alpha = 0;
+
+			LevelData levelData = GameDb.GetLevelData(GameMgr.State.CurrentLevel.Index);
+			m_mapImage.sprite = levelData.EnRouteMap;
 		}
 
 		protected override void OnShowCompleted() {

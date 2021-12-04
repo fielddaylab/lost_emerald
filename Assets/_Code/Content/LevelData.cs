@@ -57,6 +57,9 @@ namespace Shipwreck {
 		public LocalizationKey CaseClosedCause {
 			get { return m_caseClosedCause; }
 		}
+		public Sprite EnRouteMap {
+			get { return m_enRouteMap; }
+		}
 
 		[SerializeField]
 		private int m_levelIndex = 0;
@@ -80,6 +83,8 @@ namespace Shipwreck {
 		private LocalizationKey m_caseClosedType = LocalizationKey.Empty;
 		[SerializeField]
 		private LocalizationKey m_caseClosedCause = LocalizationKey.Empty;
+		[SerializeField]
+		private Sprite m_enRouteMap = null;
 	}
 
 }

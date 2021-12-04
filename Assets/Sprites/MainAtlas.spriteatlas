@@ -88,6 +88,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: f72a4bb635c912348be218b77740ae06, type: 3}
   - {fileID: 21300000, guid: f2f043070615e5d44bf1c5cf2ff5c0b5, type: 3}
   - {fileID: 21300000, guid: 289fae17660e1b5468819bd39d453625, type: 3}
+  - {fileID: 21300000, guid: 311983876fa02b3489f016d9e58c7d5d, type: 3}
   - {fileID: 21300000, guid: 2cd1aa97dedd64a7d98a8d2b4dcd26af, type: 3}
   - {fileID: 21300000, guid: 83c623e77b3e2644387a29f9935bb645, type: 3}
   - {fileID: 21300000, guid: 41c798e7bf044e14db7e5f8678187066, type: 3}
@@ -96,6 +97,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: ce0f3c5897ff89b40b636119fd1f35f9, type: 3}
   - {fileID: 21300000, guid: 0d5a7ad870314423a9bbb4f7503c3d25, type: 3}
   - {fileID: 21300000, guid: 4a981159b8896524888fca5b6765cc69, type: 3}
+  - {fileID: 21300000, guid: d3d348993d5341f40acdff68afd4acc4, type: 3}
   - {fileID: 21300000, guid: 132b0ca92ede2104d86bc6e8eb061529, type: 3}
   - {fileID: 21300000, guid: 4437300a3ad20184488215937c1d80b4, type: 3}
   - {fileID: 21300000, guid: 6146582a659c49547b0767f3e41d7aa6, type: 3}
@@ -126,6 +128,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 64ae431d12c5aff4a9db73213a837de9, type: 3}
   - {fileID: 21300000, guid: 4351881d5986f5e4c9fee4b2bcef03aa, type: 3}
   - {fileID: 21300000, guid: 274e5f2d852693349a1c503ffb7d14d0, type: 3}
+  - {fileID: 21300000, guid: 5306646de07063d44a206df3d02785d1, type: 3}
   - {fileID: 21300000, guid: b0ec3b8d44ae642358eb7e0701410eef, type: 3}
   - {fileID: 21300000, guid: 386610bd888ebbc4eb6631dfa0c55859, type: 3}
   - {fileID: 21300000, guid: 068f40cd0e35b44deb9a030ef1e1ec13, type: 3}
@@ -148,6 +151,8 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 4db6355f193152f4daf78da81f8281a0, type: 3}
   - {fileID: 21300000, guid: 9ad6fd8fd9790ea43a0b1b0778ec0f0c, type: 3}
   - {fileID: 21300000, guid: f340479f5687f2148ab164d85f708154, type: 3}
+  - {fileID: 21300000, guid: b4a1a2cffccd2ab4b897dc5ec371c9b9, type: 3}
+  - {fileID: 21300000, guid: c2323dff0f3176f45aa5b57947862a2c, type: 3}
   m_PackedSpriteNamesToIndex:
   - marker-unknown-lv4-v2
   - family-photo
@@ -191,6 +196,7 @@ SpriteAtlas:
   - photo-lv3-gold
   - photo-lv1-knife
   - photo-lv4-name
+  - enroute-lv3
   - arrow-up
   - mom-office
   - rounded-rect
@@ -199,6 +205,7 @@ SpriteAtlas:
   - bar-closed-minimal
   - icon-check
   - photo-lv3-above
+  - enroute-lv2
   - push-pin
   - poster-top
   - dad-map-blue-line
@@ -229,6 +236,7 @@ SpriteAtlas:
   - dad-map-red-line
   - postcard
   - level2_madison
+  - enroute-lv1
   - icon-journal
   - EmptyRectangle_2px
   - bouy
@@ -251,5 +259,7 @@ SpriteAtlas:
   - photo-lv2-cargo
   - level3_paradise
   - ship_bubble
+  - enroute-frame
+  - enroute-lv4
   m_Tag: MainAtlas
   m_IsVariant: 0
