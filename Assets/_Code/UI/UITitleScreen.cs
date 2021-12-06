@@ -24,6 +24,8 @@ namespace Shipwreck {
 		private Button m_level4Button = null;
 		[SerializeField]
 		private Button m_level4_50Button = null;
+		[SerializeField]
+		private Button m_credits = null;
 
 		private void OnEnable() {
 			m_newGameButton.onClick.AddListener(HandleNewGame);
@@ -34,6 +36,7 @@ namespace Shipwreck {
 			m_level3_50Button.onClick.AddListener(HandleUnlock3_50);
 			m_level4Button.onClick.AddListener(HandleUnlock4);
 			m_level4_50Button.onClick.AddListener(HandleUnlock4_50);
+			m_credits.onClick.AddListener(HandleCredits);
 		}
 		private void OnDisable() {
 			m_newGameButton.onClick.RemoveListener(HandleNewGame);
@@ -67,6 +70,10 @@ namespace Shipwreck {
 				AudioSrcMgr.instance.PlayAudio("office_music", true);
 			});
 		}
+		private void HandleCredits() {
+			UIMgr.CloseThenOpen<UITitleScreen, UITitleCredits>();
+		}
+
 		private void HandleUnlock1() {
 			AudioSrcMgr.instance.PlayOneShot("click_unlock");
 			UnlockLevel1();
