@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: OfficeMusic
   m_EditorClassIdentifier: 
   m_id: office_music
-  m_clip: {fileID: 8300000, guid: f62c534155ccbe64e99e0ce1a4f07c12, type: 3}
+  m_clip: {fileID: 8300000, guid: 8b33862892521ac4c9f279004dabd5fa, type: 3}
+  m_volume: 1
+  m_pan: 0.5

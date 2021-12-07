@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: ShipOutMusic
   m_EditorClassIdentifier: 
   m_id: ship_out_music
-  m_clip: {fileID: 8300000, guid: f62b3b185dff9eb4ca86d74ce4c4a15b, type: 3}
+  m_clip: {fileID: 8300000, guid: 932f232cce911d64c9092486e5d3a564, type: 3}
+  m_volume: 1
+  m_pan: 0.5
