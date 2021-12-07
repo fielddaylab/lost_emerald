@@ -2233,7 +2233,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &486434294
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2285,7 +2285,20 @@ MonoBehaviour:
   m_slideHeading: {fileID: 1611252717}
   m_slideBody: {fileID: 1289210736}
   m_colorBody: {r: 1, g: 1, b: 1, a: 1}
-  m_colorHeading: {r: 1, g: 1, b: 1, a: 1}
+  m_colorHeading: {r: 0.8349056, g: 0.9100771, b: 1, a: 1}
+  m_backButton: {fileID: 491935045}
+--- !u!114 &491935045 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6746295532445467213, guid: 790ab65032b9a8941b45e0578b459d51,
+    type: 3}
+  m_PrefabInstance: {fileID: 583033613}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &495184361 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1884388410460401145, guid: a94f06c62dbef5c499e85ed75fa0e928,
@@ -5847,8 +5860,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 16777215
-  m_fontColor: {r: 1, g: 1, b: 1, a: 0}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -6837,8 +6850,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 16777215
-  m_fontColor: {r: 1, g: 1, b: 1, a: 0}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
