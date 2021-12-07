@@ -41,6 +41,13 @@ namespace Shipwreck {
 		private void OnDisable() {
 			m_newGameButton.onClick.RemoveListener(HandleNewGame);
 			m_level1Button.onClick.RemoveListener(HandleUnlock1);
+			m_level2Button.onClick.RemoveListener(HandleUnlock2);
+			m_level2_50Button.onClick.RemoveListener(HandleUnlock2_50);
+			m_level3Button.onClick.RemoveListener(HandleUnlock3);
+			m_level3_50Button.onClick.RemoveListener(HandleUnlock3_50);
+			m_level4Button.onClick.RemoveListener(HandleUnlock4);
+			m_level4_50Button.onClick.RemoveListener(HandleUnlock4_50);
+			m_credits.onClick.RemoveListener(HandleCredits);
 		}
 
 		protected override void OnShowStart() {
@@ -304,6 +311,15 @@ namespace Shipwreck {
 			GameMgr.DiscoverLocation(4);
 
 			GameMgr.SetChain(3, "Location", "location-coordinates");
+		}
+
+		private void UnlockAll() {
+			UnlockLevel4_50();
+
+			GameMgr.RecordNodeVisited("level04.mom-weak", "mom");
+			GameMgr.RecordNodeVisited("level04.reya-end", "reya");
+
+
 		}
 	}
 
