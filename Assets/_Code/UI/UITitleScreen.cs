@@ -25,6 +25,8 @@ namespace Shipwreck {
 		[SerializeField]
 		private Button m_level4_50Button = null;
 		[SerializeField]
+		private Button m_levelAllButton = null;
+		[SerializeField]
 		private Button m_credits = null;
 
 		private void OnEnable() {
@@ -36,6 +38,7 @@ namespace Shipwreck {
 			m_level3_50Button.onClick.AddListener(HandleUnlock3_50);
 			m_level4Button.onClick.AddListener(HandleUnlock4);
 			m_level4_50Button.onClick.AddListener(HandleUnlock4_50);
+			m_levelAllButton.onClick.AddListener(HandleUnlockAll);
 			m_credits.onClick.AddListener(HandleCredits);
 		}
 		private void OnDisable() {
@@ -47,6 +50,7 @@ namespace Shipwreck {
 			m_level3_50Button.onClick.RemoveListener(HandleUnlock3_50);
 			m_level4Button.onClick.RemoveListener(HandleUnlock4);
 			m_level4_50Button.onClick.RemoveListener(HandleUnlock4_50);
+			m_levelAllButton.onClick.RemoveListener(HandleUnlockAll);
 			m_credits.onClick.RemoveListener(HandleCredits);
 		}
 
@@ -115,6 +119,11 @@ namespace Shipwreck {
 		private void HandleUnlock4_50() {
 			AudioSrcMgr.instance.PlayOneShot("click_unlock");
 			UnlockLevel4_50();
+			HandleNewGame();
+		}
+		private void HandleUnlockAll() {
+			AudioSrcMgr.instance.PlayOneShot("click_unlock");
+			UnlockAll();
 			HandleNewGame();
 		}
 
@@ -319,6 +328,13 @@ namespace Shipwreck {
 			GameMgr.RecordNodeVisited("level04.mom-weak", "mom");
 			GameMgr.RecordNodeVisited("level04.reya-end", "reya");
 
+			GameMgr.UnlockEvidence(4, "LV4-Transcript-Mom");
+
+			GameMgr.SetChain(3, "Type", "ship-chart-type", "photo-above", "card-freighter");
+			GameMgr.SetChain(3, "Cargo", "ship-chart-cargo");
+			GameMgr.SetChain(3, "Cause", "photo-cause", "survivor-waves", "mom-brittle");
+			GameMgr.SetChain(3, "Name", "ship-chart-name", "photo-name");
+			GameMgr.SetChain(3, "Artifact", "letter-locket", "photo-locket");
 
 		}
 	}
