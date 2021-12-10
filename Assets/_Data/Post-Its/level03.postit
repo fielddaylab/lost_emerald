@@ -33,31 +33,39 @@
 @root Type
 @hint card-canaller, card-tug, card-freighter, card-side-steamer
 @only
-	Do I have a photo of this?
+	Do I have a matching photo?
 	
 :: shiptype-hint-2a
 @root Type
 @hint photo-above
 @only
+<<<<<<< Updated upstream
 	Does this match any ship types?
+=======
+	Does this match a ship type?
+>>>>>>> Stashed changes
 
 :: shiptype-hint-2b
 @root Type
 @hint photo-above
 @precededBy card-side-steamer
-	Did any sidewheel steamers sink near our wreck?
+	Any sidewheel steamers on my ship chart?
 	
 :: shiptype-hint-2c
 @root Type
 @hint photo-above
 @precededBy ship-chart-type
+<<<<<<< Updated upstream
 	Does this match any ship types?
+=======
+	Does this match a ship type?
+>>>>>>> Stashed changes
 
 :: shiptype-hint-3a
 @root Type
 @hint card-side-steamer
 @precededBy photo-above
-	Did any sidewheel steamers sink near our wreck?
+	Any sidewheel steamers on my ship chart?
 	
 :: shiptype-hint-3b
 @root Type
@@ -75,7 +83,11 @@
 @root Type
 @hint ship-chart-type
 @precededBy photo-above
+<<<<<<< Updated upstream
 	Does this match any ship types?
+=======
+	Does this match a ship type?
+>>>>>>> Stashed changes
 
 :: shiptype-hint-4c
 @root Type
@@ -122,7 +134,7 @@
 @root Location, Name, Cause, Cargo, Artifact
 @incorrect card-canaller, card-freighter, card-tug, card-side-steamer
 @anywhere
-	This is a Type of ship
+	This is a type of ship
 
 
 // -----------------------------------------------------------
@@ -143,7 +155,7 @@
 @root Cargo
 @hint photo-cargo
 @only
-	What were these doing on the ship?
+	Does this help fill in my ship chart?
 
 :: cargo-incorrect-generic
 @root Cargo

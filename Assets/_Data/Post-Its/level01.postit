@@ -28,7 +28,7 @@
 @root Type
 @hint card-canaller, card-tug, card-freighter, card-side-steamer
 @only
-	Do I have a photo of this?
+	Do I have a matching photo?
 
 :: shiptype-hint-1b
 @root Type
@@ -56,13 +56,21 @@
 @root Type
 @hint photo-above
 @only
+<<<<<<< Updated upstream
 	Does this match any ship types?
+=======
+	Does this match a ship type?
+>>>>>>> Stashed changes
 
 :: shiptype-hint-4b
 @root Type
 @hint photo-above
 @precededBy type-canaller
+<<<<<<< Updated upstream
 	Does this match any ship types?
+=======
+	Does this match a ship type?
+>>>>>>> Stashed changes
 
 
 
@@ -130,7 +138,7 @@
 @root Name
 @hint photo-name
 @only
-	Does a ship name match the photo?
+	Does this match a Ship Name on my list?
 
 :: name-incorrect-1
 @root Name
@@ -174,13 +182,13 @@
 @root Cargo
 @hint cargo-corn, cargo-limestone, cargo-cobblestone, cargo-wheat, cargo-salt
 @only
-	Is there a story proving this?
+	Does the news story mention corn?
 
 :: cargo-hint-2
 @root Cargo
 @hint cargo-cargo
 @only
-	Where else was corn mentioned?
+	Is corn mentioned on my List of Shipwrecks?
 
 :: cargo-incorrect-generic
 @root Cargo
@@ -212,7 +220,7 @@
 @root Artifact
 @hint photo-artifact
 @only
-	Is there a story mentioning this trunk?
+	Does the news story mention this trunk?
 
 :: artifact-hint-2
 @root Artifact

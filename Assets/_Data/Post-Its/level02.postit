@@ -38,7 +38,11 @@
 @root Type
 @hint photo-above
 @only
+<<<<<<< Updated upstream
 	Does this match any ship types?
+=======
+	Does this match a ship type?
+>>>>>>> Stashed changes
 
 :: type-incorrect-1a
 @root Type
@@ -90,19 +94,19 @@
 @root Cargo
 @hint photo-cargo
 @only
-	What car looks like this?
+	Which car looks like this?
 
 :: cargo-hint-1b
 @root Cargo
 @hint photo-cargo
 @precededBy image-nash
-	Was a ship carrying Nash cars?
+	Any Nash cars on my list of ships?
 
 :: cargo-hint-1c
 @root Cargo
 @hint photo-cargo
 @precededBy cargo-nash
-	Do I have an image of a Nash car?
+	Do I have a photo of a Nash car?
 
 
 
@@ -117,7 +121,7 @@
 @root Cargo
 @hint image-nash
 @precededBy photo-cargo
-	Was a ship carrying Nash cars?
+	Any Nash cars on my list of ships?
 
 :: cargo-hint-2c
 @root Cargo
@@ -217,7 +221,7 @@
 :: cause-incorrect-generic
 @root Cause
 @incorrect
-	Not relevant to the wreck's cause
+	Not related to the wreck's cause
 
 // -----------------------------------------------------------
 //	Name
@@ -244,7 +248,7 @@
 :: name-incorrect-generic
 @root Name
 @incorrect
-	This doesn't make any sense.
+	This doesn't make sense.
 
 // -----------------------------------------------------------
 //  Artifact
@@ -257,14 +261,14 @@
 :: artifact-hint-1
 @root Artifact
 @hint photo-safe
-	Does something mention a safe?
+	Is the safe listed anywhere?
 
 :: artifact-hint-2
 @root Artifact
 @hint artifact-safe
-	Do I have a picture of the safe?
+	Do I have a photo of the safe?
 
 :: artifact-incorrect-generic
 @root Artifact
 @incorrect
-	This seems wrong.
+	This doesn't make sense.

@@ -24,19 +24,19 @@
 		 Who's that guy with you? 
 	{@cami}  Johnny's my new diving student.
 		 He's full of awesome stories. You should chat with him sometime!
-	{@you}   Yeah, maybe later. 
+	{@you}   Maybe later. 
 		Have you heard of any sidewheel steamers that wrecked near Sheboygan?
-	{@cami} Ooh, that could be the Paradise! I would love to find that ship!
+	{@cami} Ooh, could be the Paradise! 
 		Here, check it out!
 			{img steamer-ad}
 		Gorgeous, huh? She sank in 1856.
 		People called these type of ships Palace Steamers, because they were so fancy.
-		The manifest was lost, so the cargo is still unknown. 
+		The manifest was lost, so the cargo is unknown. 
 			{/img}
 	{@you}  Wow, you know a ton about this ship!
-	{@cami} 
+	{@cami}  Yep! It's a favorite project of mine. 
 		Keep a lookout for the red anchor. It should have the name on it!
-	{@you}  Awesome, thanks, Cami! 
+	{@you}  Thanks, Cami! 
 	$call EndConvoMusic()
 
 
@@ -84,8 +84,9 @@
 @when HasEvidence(LV3-Photo-Cargo)
 @once
 
-	{@you}  Got the cargo! Looks like old wooden rocking horses.
-		Yikes. That's not creepy at all. 
+	{@you}  Got the cargo! 
+		Looks like somebody lost a lot of rocking horses. 
+
 	
 
 // dive observations
@@ -94,7 +95,7 @@
 @trigger OnObservationMade
 @when CurrentObservationIs(anchor-name)
 @once
-	{@you}	What is that written on the anchor?
+	{@you}	What's that written on the anchor?
 	
 //custom dive prompts
 :: dive-better-angle
@@ -137,12 +138,11 @@
 	{@cami}  Wahoo! Nice work, Jules.
 		I'll send you the survivor accounts of the sinking. 
 	{@you}	Thanks!  
-		So... why's this ship so important to you? 
-	{@cami}  I found out about it when I was a kid.  
-		My best friend had ancestors on the Paradise.
-		It's the reason I became a maritime archaeologist!
+		So, why's this ship so important to you? 
+	{@cami}  When I was little, my best friend had ancestors who were lost on the Paradise.
+		It's the reason I became a maritime archaeologist. 
 		It'll mean a lot to tell her we finally it.
-	{@you}  Wow, that's amazing!
+	{@you}  Wow, that's amazing.
 	        I'm glad I could help. 
 	$call UnlockEvidence(3,LV3-Ship-Chart)
 	$call UnlockEvidence(3,LV3-Accounts-Survivor)
@@ -157,19 +157,18 @@
 @once
 
 	$call TriggerConvoMusic(dad_convo)
-	{@you}   Hey, Dad. Um... sorry I was so hard on you early. 
-		Any luck finding Grandpa's ship?
+	{@you}   Hey, Dad! Any luck finding Grandpa's ship?
 	{@dad}	Nah. Sonar’s on the fritz again.
 		You were right, Jules. I'm not cut out for this. 
 	{@you}  Aw, Dad. Don't give up.
-		Thanks to you, we just found a piece of history that was lost for more than a hundred years!
+		Thanks to you, we found a piece of history that was lost for more than 100 years!
 	{@dad}  Ooh. That sidewheel steamer? What'd you find out?
 	{@you}	The ship is a Palace Steamer, the Paradise!
 	{@you}	She was traveling past Sheboygan when a fire started in the boiler room.
-	{@dad}	Yikes. Fire on a wooden ship—not a good combination. 
-	{@you}	Nope. The fire spread super fast. There weren't enough lifeboats, and people panicked. 
+	{@dad}	Yikes. Fire on a wooden ship—that's not good
+	{@you}	Nope. The fire spread super fast, and people panicked. 
 		One guy even jumped into a lifeboat with a bunch of heavy gold bars and broke the ropes!
-		A nearby ship saw the fire and came to help, but they couldn't save everyone. 
+		Another ship saw the fire and came to help, but they couldn't save everyone. 
 	{@dad}	Oh boy, what a tragedy.
 	{@you}	Yeah. It must've been pretty scary... 
 	$call TriggerCutscene()

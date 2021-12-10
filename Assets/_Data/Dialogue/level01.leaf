@@ -10,22 +10,25 @@
 @once
 
 	$call TriggerConvoMusic(dad_convo)
-	{@dad}  Hey Jules! Big news!!
+	{@dad}  Hey Jules! Big news!
 	        You know how your grandpa's ship sank on Lake Superior, when I was just a kid?
-	{@you}  Of course. You tell me crazy stories about Grandpa all the time. 
-	{@dad}  Well, I found one of his old letters.
-	        Turns out his ship, the SS Emerald, was carrying treasure!
+	{@you}  Of course. You've been talking about that shipwreck since I was little. 
+	{@dad}  Well, I found one of your grandpa's old letters.
+	        His ship, the SS Emerald, was carrying treasure!
 	{@you}  Since when do you care about treasure, Dad? 
-	{@dad}  I don't. But your sister does!
-                She's gonna help me find your grandpa's shipwreck!
-                She also dug up your grandma's locket. Looks pretty snazzy on her.
-	{@you}  Wait. You let Reya take the locket?? I'm the older sister!
+	{@dad}  I don't, but your sister does! 
+		She's gonna help me find the shipwreck!
+                She also dug up your grandma's locket. Looks nice on her.
+	{@you}  Wait. You let Reya take the locket?? 
 	{@dad}  Well, you weren't here. 
 	        So what do you say? Wanna help us? 
 	{@you}  Well.... I guess I can start a file for Grandpa's ship.
 	{@dad}  That's great! 
-		I've been hearing stories about that shipwreck my whole life. 
-		Maybe we'll finally find out the truth about what happened! 
+		The Emerald has been lost for so long.
+		If I could just find it, it would fix everything!
+	{@you}  Wait... fix what? What do you mean?
+	{@dad}  Sorry, Jules, no time to talk. I've got work to do!
+
 	        
         $call UnlockEvidence(4,LV4-Letter-Treasure)
 	$call UnlockContact(lou)
@@ -42,20 +45,19 @@
 	// Receive/open a new text from Lou
 	{@lou}  Hiya, Jules!
 	{@you} 	Hey Lou. What’s all that noise? 
-	{@lou} 	Huh? Oh, I’m just out flying my ultralight plane over Lake Michigan.
-	{@you} 	What??? You’re flying right now? 
-		Isn't that dangerous? 
+	{@lou} 	Oh, I’m just out flying over Lake Michigan on my ultralight plane.
+	{@you} 	What??? You’re flying right now? Isn't that dangerous? 
 	{@lou} 	Not as dangerous as sitting at home, bored out of my mind. 
 		Check out what I found! 
 			{img ultralight-photo}
 			What do you think?
 	{@you} 	Looks like a shipwreck! 
 	{@lou} 	Awesome! I thought it might be. 
-		It's in Lake Michigan, near Rawley Point. Must've been uncovered by last night's storm.
+		It's in Lake Michigan, near Rawley Point. 
 		I'll send you the latitude and longitude. 
                  Location: N 44° 11.524' W 087° 30.591'
 			{/img}
-	{@you} 	Thanks, Lou! Stay safe out there! 
+	{@you} 	Thanks, Lou. Stay safe out there! 
 	$call UnlockLevel(1)
 	$call UnlockEvidence(1,LV1-Transcript-Lou)
 	$call MapTutorial()
@@ -89,8 +91,7 @@
 @contact you, radio
 @trigger OnEnterDive
 @once
-	{@you} Wow, it's not overgrown with mussels at all!
-	       Must've been covered with sand until now.
+	{@you} There's the ship! 
                I'll take a photo from up here. 
                 
 
@@ -147,12 +148,16 @@
 @once
 
 	$call TriggerConvoMusic(amy_convo)
-	{@amy}  Hey, Jules! Need some info from the archives? 
-        {@you}  That would be great! I'm trying to identify a shipwreck. 
-                Can you send me a list of ships that sank near Rawley Point?
-        {@amy}  Sure! I'll get to work on that.
-        {@you}  Thanks, Amy! 
-
+	{@amy}  Hey, Jules! 
+		Lou clued me in. How was the dive?
+	{@you}  Beautiful! The ship was in great condition. No mussels or plant life. 
+	{@amy}   Hmmm. Must've been covered in sand until now.
+		Do you need any info from the archives? 
+	{@you}  That would be great! The ship was near Rawley Point.
+		Can you send me a list of ships that sank in that area?
+	{@amy}   Sure. I'll get to work on that.
+	{@you}   Thanks, Amy!
+	
 	$call UnlockEvidence(1,LV1-Card-Types)
 	$call UnlockEvidence(1,LV1-Table-Wrecks)
 	$call EndConvoMusic()
@@ -173,8 +178,8 @@
 	{@amy}   Well, not the WHOLE town, but a lot of it. 
 		It was the worst fire in American history.  
 		{img peshtigo}
-		All the smoke blew out over the lake and made it hard for the captain to see. 
-		Here's a cool portrait of him: 
+		All the smoke blew over the lake and made it hard for the captain to see. 
+		Here's a portrait of him: 
 		{img captain-with-knife}
     $if HasEvidence(LV1-Photo-Artifact)
 	{@you}  Hey, that's the knife I saw! 
@@ -185,7 +190,7 @@
     	{@amy}  It was the captain's. Sounds like it went down with the ship. 
     	{@you}  Hmm. I should dive again. Maybe it's still down there. 
     $endif
-	{@amy}  I've got an article about the sinking. I'll send it over!
+	{@amy}  I've got an article about how it sank. I'll send it over!
 
 	$call UnlockEvidence(1,LV1-Article-Sinking)
 
@@ -202,10 +207,10 @@
 	{@you}  Yes! The ship is the Loretta!
 	{@lou}  Awesome name. How'd she sink?
 		{img peshtigo}
-         {@you}  Wildfires were burning all across Wisconsin, including a devastating fire in the town of Peshtigo.
+         {@you}  Wildfires were burning all across Wisconsin, including an awful fire in Peshtigo, Wisconsin.
 		The wind blew a ton of smoke out over the lake. 
-	{@lou}   How could the captain see where he was going?
 		{/img}
+	{@lou}   How could the captain see where he was going?
 	{@you}   He couldn't. The Loretta sailed too close to shore and got stuck on a sandbar! 
 		The sailors had to climb up the ropes. Luckily, they were rescued by a fishing boat.
 	{@lou}	Wow! What a wild story.
