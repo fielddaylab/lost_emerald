@@ -232,20 +232,11 @@
 	{@you}	Thanks, Dad. 
 		How's the new sonar?
 	{@dad}   Uh... not so great.
-<<<<<<< Updated upstream
-	{@you}   Oh, Dad. I tried to warn you.
-	{@dad}   I'll figure it out. Just a little hiccup. 
-		I'm out on Lake Superior right now. Got my old map with me!
-		{img dad-map-red-line}
-		Your grandpa’s last scheduled route is marked in red.
-		I just need to search the whole area. Easy peasy.
-=======
 		But I'm sure I'll figure it out. Eventually. 
 		I'm out on Lake Superior right now. Got my map with me. 
 		{img dad-map}
 		Your grandpa’s last planned route is marked in red.
 		The Emerald must be around here somewhere.
->>>>>>> Stashed changes
 		{/img}
 	{@you} 	Dad... why didn't you tell me the shipwreck was Grandpa's fault?
 	{@dad}  What?! Of course it wasn't his fault. 

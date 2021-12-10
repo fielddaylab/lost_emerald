@@ -114,16 +114,10 @@
 		{/img}
 		Do you have any evidence of shipwrecks in that area? 
 	{@amy}	Hmm, let’s see... 
-<<<<<<< Updated upstream
 		{img brittle-steel}
 		A fisherman pulled up this broken piece of steel near Outer Island.
 		{/img}
-		It could be from a freighter like your grandpa's!
-=======
-		[Send image: piece of steel with OK Steel logo]
-		A fisherman pulled up this broken piece of steel near Outer Island.  
 		It could be from a freighter like your grandpa's.
->>>>>>> Stashed changes
 		Location: 47°05'19.4"N 90°17'17.5"W
 	{@you}	Thanks, Amy!
 		I'll send the steel sample to my mom. 
@@ -259,25 +253,6 @@
 @once
 
 	$call TriggerConvoMusic(ed_convo)
-<<<<<<< Updated upstream
-	{@you}	Hi. Are you Mr. Edward Jones?
-	{@ed}	Call me Ed. This is my grandson, Johnny. 
-	{@you}   Wait. I saw you last week! You're Cami's contact??
-	{@johnny} Yep. Last time we went diving, she asked about my family. 
-		I told her all about how my grandpa survived the Emerald.  
-		So, you're a diver too? 
-	{@you}   Oh, uh, yeah! I love it. Diving. We should go out sometime!
-		Um... out on the lake, I mean.
-	{@ed}   How can I help you, Jules? 
-	{@you}   My grandpa was the captain of the Emerald.
-		I'm trying to find out what really happened.
-	{@ed}    I'll send you my journal entry. I wrote it all down.
-		{img survivor-journal}
-	{@you}   Wow. The ship just broke in half? 
-	{@ed}    Yup. The captain did everything he could. 
-		I wouldn't have made it without him. 
-		{/img}
-=======
 	{@you}	Hi. Are you Mr. Jones?
 	{@ed}	Call me Ed. This is my grandson, Johnny.
 	{@you}   Hold on. I saw you last week. You're Cami's contact??
@@ -287,12 +262,13 @@
 	{@johnny} We took a skydiving class together.
 		 I had no idea she was related to the captain of the Emerald!
 	{@you}  Yeah. My family never talks about it. 
-		I'm trying to find out what really happened. 
-	{@ed}   I wrote it all down in my journal. 
+		I'm trying to find out what really happened.
+	{@ed}   I wrote it all down in my journal.
+		{img survivor-journal}
 		We were sailing smoothly when all of a sudden, there was a loud BANG.
 		The ship had started to break in half!
-		The captain helped launch a lifeboat. Then he tried to radio for help, but the power went out as the ship broke apart.  
->>>>>>> Stashed changes
+		The captain helped launch a lifeboat. Then he tried to radio for help, but the power went out as the ship broke apart.
+		{/img}
 	{@you}	Did you tell anyone what happened?
 	{@ed}   I tried, but O.K. Steel put the blame on your grandpa. 
 		People said I must've remembered it wrong. 
