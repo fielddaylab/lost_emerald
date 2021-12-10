@@ -181,14 +181,19 @@ namespace Shipwreck {
 		}
 
 		protected override IEnumerator OnShowImage(Sprite image) {
+			//m_image.sprite = image;
 			m_image.gameObject.SetActive(true);
-			m_image.SetAlpha(0);
+			//m_image.SetAlpha(0);
 			AssignSpritePreserveAspect(m_image, image, Axis.Y);
-			yield return m_image.FadeTo(1, 0.1f);
+			m_image.transform.localScale = Vector3.zero;
+			m_image.transform.localPosition = Vector3.zero;
+			yield return m_image.transform.ScaleTo(1f, 0.35f, Axis.XY).Ease(Curve.BackOut);
+			//yield return m_image.FadeTo(1, 0.1f);
 		}
 
 		protected override IEnumerator OnHideImage() {
-			yield return m_image.FadeTo(0, 0.1f);
+			//yield return m_image.FadeTo(0, 0.1f);
+			yield return m_image.transform.ScaleTo(0f, 0.35f, Axis.XY).Ease(Curve.BackIn);
 			m_image.gameObject.SetActive(false);
 		}
 

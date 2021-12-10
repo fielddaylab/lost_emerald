@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1254,6 +1254,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 342160670}
   m_CullTransparentMesh: 0
+--- !u!114 &363852847 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7653542830602797592, guid: e5cdebae1f163174bb4ad3ce54afa167,
+    type: 3}
+  m_PrefabInstance: {fileID: 1858003031}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &369458573 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 192917858811783696, guid: a94f06c62dbef5c499e85ed75fa0e928,
@@ -7878,6 +7890,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 994095764}
     m_Modifications:
+    - target: {fileID: 1751984918340768429, guid: e5cdebae1f163174bb4ad3ce54afa167,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2343840576347372892, guid: e5cdebae1f163174bb4ad3ce54afa167,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -8093,6 +8110,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5278899195939851063, guid: e5cdebae1f163174bb4ad3ce54afa167,
+        type: 3}
+      propertyPath: m_outline
+      value: 
+      objectReference: {fileID: 363852847}
     - target: {fileID: 5677593168239786900, guid: e5cdebae1f163174bb4ad3ce54afa167,
         type: 3}
       propertyPath: m_AnchorMax.y
