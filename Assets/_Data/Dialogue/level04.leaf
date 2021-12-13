@@ -324,8 +324,9 @@
 @once
 
 	$call TriggerConvoMusic(reya_convo)
-	{@reya}  Hey sis, I heard you called Johnny! How cute. 
+	{@reya}  Hey sis, I heard you called Johnny! How sweet. 
 	{@you}   It was about the shipwreck.
+	{@reya}  Ha. Sure it was. 
 	{@dad}   Well?? What did you find out? 
 	{@you}   We found it, Dad. The shipwreck is the Emerald. 
 	{@reya}  YESS!!!!
@@ -343,14 +344,14 @@
 	{@reya}  Okay, okay, that's great and all. But what about the treasure??
 	{@you}   The treasure was Grandpa's locket. It had a picture of you, Dad.
 	{@reya}   What? That's it?? 
-		 At least you can get a permit and go grab it. I know you're jealous of mine.
+		 Well, at least you can get a permit and go grab it. I know you're jealous of mine.
 	{@you}   Actually, I think I'll donate the locket to the museum, in Grandpa's memory.
 		 Sounds like he was an amazing captain.
 	{@dad}   Well, about that.... 
 		 He was actually pretty reckless. 
 	{@you}   What?!
 	{@dad}    Oh, yeah. A real daredevil. 
-	{@jules}  Reya, he sounds a little like you.
+	{@you}  Reya, he sounds a little like you.
 	{@reya}  I can't wait to hear more stories!
 	{@dad}   Ooh, here's a good one. Did I ever tell you about the time he sailed through the worst storm of '62 on a broken paddleboat...?
 	$call TriggerCutscene()
