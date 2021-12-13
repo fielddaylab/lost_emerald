@@ -70,7 +70,7 @@
 @automatic
 	
 	$call PauseSonar()
-	{@you}	The ship should be under the water in this area. Time to drive my boat around and find it with my sonar.
+	{@you}	The ship should be around here somewhere. Time to drive my boat around and find it with my sonar.
 	$call ResumeSonar()
 	$call MarkSonarTutorialComplete()
 	
