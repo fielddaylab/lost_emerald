@@ -21,8 +21,10 @@ namespace Shipwreck {
 			m_tagEvents.Register(ScriptEvents.Dialog.Target, HandleSetTarget);
 			m_tagEvents.Register(ScriptEvents.Dialog.Image, HandleShowImage);
 			m_tagEvents.Register(ScriptEvents.Dialog.Object, HandleShowObject);
+			m_tagEvents.Register(ScriptEvents.Dialog.Evidence, HandleShowEvidence);
 			m_tagEvents.Register(ScriptEvents.Dialog.HideImage, HandleHideImage);
 			m_tagEvents.Register(ScriptEvents.Dialog.HideObject, HandleHideObject);
+			m_tagEvents.Register(ScriptEvents.Dialog.HideEvidence, HandleHideEvidence);
 		}
 
 		private void HandleSetTarget(TagEventData inEvent, object inContext) {
@@ -39,6 +41,12 @@ namespace Shipwreck {
 		}
 		private IEnumerator HandleHideObject() {
 			return OnHideObject();
+		}
+		private IEnumerator HandleShowEvidence(TagEventData inEvent, object inContext) {
+			return OnShowEvidence(GameDb.GetEvidenceGroup(inEvent.GetStringHash()));
+		}
+		private IEnumerator HandleHideEvidence() {
+			return OnHideEvidence();
 		}
 
 		public virtual void PrepareNode(ScriptNode node) {
@@ -64,6 +72,8 @@ namespace Shipwreck {
 		protected abstract IEnumerator OnHideImage();
 		protected abstract IEnumerator OnShowObject(GameObject prefab);
 		protected abstract IEnumerator OnHideObject();
+		protected abstract IEnumerator OnShowEvidence(EvidenceGroup prefab);
+		protected abstract IEnumerator OnHideEvidence();
 	}
 
 }

@@ -1110,6 +1110,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Node-Trunk
       objectReference: {fileID: 0}
+    - target: {fileID: 3461412492710348346, guid: 8a3c1004efbc77e449d833085e2e9880,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5820740882212646554, guid: 8a3c1004efbc77e449d833085e2e9880,
         type: 3}
       propertyPath: m_Pivot.x
