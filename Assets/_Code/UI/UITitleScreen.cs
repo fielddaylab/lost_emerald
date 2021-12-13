@@ -143,7 +143,7 @@ namespace Shipwreck {
 			GameMgr.RecordNodeVisited("level01.lou-meet", "lou");
 			GameMgr.RecordNodeVisited("level01.amy-meet", "amy");
 			GameMgr.RecordNodeVisited("level01.dad-urgent-text", "dad");
-			GameMgr.RecordNodeVisited("level01.amy-article", "amy");
+			//GameMgr.RecordNodeVisited("level01.amy-article", "amy");
 			GameMgr.RecordNodeVisited("level01.dive-start", "you");
 			GameMgr.RecordNodeVisited("level01.dive-photo-above", "you");
 			GameMgr.RecordNodeVisited("level01.dive-photo-name", "you");
