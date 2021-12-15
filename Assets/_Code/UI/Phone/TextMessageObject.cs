@@ -15,6 +15,13 @@ namespace Shipwreck {
 			obj.transform.localPosition = Vector3.zero;
 			obj.transform.localScale = Vector3.one;
 		}
+		public void Populate(CharacterData character, EvidenceGroup prefab) {
+			m_layout.Populate(character);
+			EvidenceGroup obj = Instantiate(prefab, m_content);
+			obj.transform.localPosition = Vector3.zero;
+			obj.transform.localScale = Vector3.one;
+			obj.RemoveNodes();
+		}
 	}
 
 }

@@ -183,6 +183,13 @@ namespace Shipwreck {
 			throw new NotSupportedException();
 		}
 
+		protected override IEnumerator OnShowEvidence(EvidenceGroup prefab) {
+			throw new NotSupportedException();
+		}
+		protected override IEnumerator OnHideEvidence() {
+			throw new NotSupportedException();
+		}
+
 
 		#endregion // Dialog
 	}

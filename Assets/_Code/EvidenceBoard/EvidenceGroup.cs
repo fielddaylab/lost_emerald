@@ -34,25 +34,13 @@ namespace Shipwreck {
 			}
 		}
 
-		/*
-		public void OnPointerDown(PointerEventData eventData) {
-			if (m_selected) {
-				m_selected = false;
-			} else {
-				m_selected = true;
-				RectTransform.SetAsLastSibling();
-				RectTransformUtility.ScreenPointToLocalPointInRectangle(
-					RectTransform, InputMgr.Position, Camera.main, out m_offset
-				);
+		public void RemoveNodes() {
+			foreach (EvidenceNode node in m_nodes) {
+				Destroy(node.gameObject);
 			}
-			
+			m_nodes = null;
 		}
-		public void OnPointerUp(PointerEventData eventData) {
-			if (m_selected && Vector2.Distance(eventData.pressPosition,eventData.position) > 12f) {
-				m_selected = false;
-			}
-		}
-		*/
+
 	}
 
 }

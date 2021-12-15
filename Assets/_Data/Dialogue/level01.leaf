@@ -14,8 +14,10 @@
 	        You know how your grandpa's ship sank on Lake Superior, when I was just a kid?
 	{@you}  Of course. You've been talking about that shipwreck since I was little. 
 	{@dad}  Well, I found one of your grandpa's old letters.
+			{evidence LV4-Letter-Treasure}
 	        His ship, the SS Emerald, was carrying treasure!
-	{@you}  Since when do you care about treasure, Dad? 
+	{@you}  Since when do you care about treasure, Dad?
+			{/evidence}
 	{@dad}  I don't, but your sister does! 
 		She's gonna help me find the shipwreck!
                 She also dug up your grandma's locket. Looks nice on her.
@@ -164,7 +166,9 @@
 		Do you need any info from the archives? 
 	{@you}  That would be great! The ship was near Rawley Point.
 		Can you send me a list of ships that sank in that area?
-	{@amy}   Sure. I'll get to work on that.
+			{evidence LV1-Table-Wrecks}
+	{@amy}   Sure. Here you go!
+			{/evidence}
 	{@you}   Thanks, Amy!
 	
 	$call UnlockEvidence(1,LV1-Card-Types)
