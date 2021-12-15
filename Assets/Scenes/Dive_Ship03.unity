@@ -855,6 +855,27 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 466950636}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &466950638 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3782994056335260743, guid: 38a81007aa7e04447984bc1df4c89675,
+    type: 3}
+  m_PrefabInstance: {fileID: 466950636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &466950639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466950638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acffa432162c5644daa45b87c3c51f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_observationKey:
+    m_Source: paddle-wheel
+    m_Hash: 2179332999
 --- !u!1001 &490251378
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -77,13 +77,13 @@
 
 	$call TriggerConvoMusic(reya_convo)
 	{@reya} Hey sis!
-		My friend Johnny asked for your number. 
+		I heard you met my friend Johnny. He asked for your number!
 	{@you}   Johnny.... that's Cami's diving student, right? 
-	{@reya}  Yep. I think he likes you. 
+	{@reya}  Yep. I think he likes you!
 		Don't worry, I told him you were too busy with paperwork.
 		Ooh, that reminds me... check out this awesome postcard!
 		{img postcard}
-		It was left over from the yard sale. Think it's worth anything? 
+		It was left over from Dad's yard sale. Think it's worth anything? 
 	{@you}   Hold on. Did you read this, Reya??
 		Grandpa wrote that O.K. Steel sent him on an extra trip.
 	{@reya}  Um.... so? 
@@ -91,7 +91,7 @@
 	{@dad}   Wait a sec. You mean... I've been searching the wrong part of the lake?? 
 		{/img}
 	{@reya}  Yes!!! I found a clue!!!
-	{@you}   We have Grandpa's final route. Now we need to narrow down the exact location.
+	{@you}   We have Grandpa's final route. Now we need to narrow down the location.
 	{@reya}  Well, what are you waiting for, sis? Go do some research!!
 	$call UnlockEvidence(4, "LV4-Card-Types")
 	$call EndConvoMusic()
@@ -138,7 +138,7 @@
 @once
 
 	{@reya} Well????
-	{@you}	I’ve got a location of steel shipwreck. It could be Grandpa's. 
+	{@you}	I’ve got a location of a steel shipwreck. It could be Grandpa's. 
 	{@reya}  Yes!!! Treasure, here we come!
 	{@you}  Reya, slow down. 
 		What if it's not the Emerald? 
@@ -168,7 +168,6 @@
 @contact reya, radio
 @trigger OnEnterDive
 @once
-
 	{@you}	Whoa. Is it me or is that ship....broken in half?!
 
 // When you photograph the name on the bell, or the side of the ship
@@ -177,8 +176,7 @@
 @trigger OnEvidenceUnlock
 @when HasEvidence(LV4-Photo-Name)
 @once
-
-	{@you}	Wow. I can't believe it. We found it!
+	{@you}	Wow. I can't believe it. We found the Emerald!
 		I can’t wait to tell Dad! 
 
 //When you photograph the locket:
@@ -187,8 +185,8 @@
 @trigger OnEvidenceUnlock
 @when HasEvidence(LV4-Photo-Locket)
 @once
-
 	{@you}  That locket looks just like Reya's!
+		I wonder if it was Grandpa's. 
 	
 // dive observations
 :: dive-obs-split
@@ -196,8 +194,22 @@
 @trigger OnObservationMade
 @when CurrentObservationIs(split)
 @once
-	{@you}	I should get a photo of the ship split in half
-	
+	{@you}	I should get a photo of the ship split in half.
+
+:: dive-observation-crane
+@contact you, radio
+@trigger OnObservationMade
+@when CurrentObservationIs(crane)
+@once
+	{@you}	There's the crane they used for loading the cargo!
+
+:: dive-observation-cabin
+@contact you, radio
+@trigger OnObservationMade
+@when CurrentObservationIs(captain-cabin)
+@once
+	{@you}	Wow, the captain's cabin. That would've been where Grandpa worked!
+
 // generic dive prompts
 :: dive-already-taken
 @contact you, radio
@@ -231,9 +243,9 @@
 	$call TriggerConvoMusic(amy_convo)
 	{@amy}	Hey, Jules! How’d it go?
 	{@you}	I found the Emerald!
-		Now I need to figure out how it sank. 
+		Now I need to figure out how she sank. 
 		The legend says the ship was super strong.
-		I wonder how it broke in half. 
+		I wonder how she broke in half. 
 	{@amy}  I think I can help.
 		Cami managed to track down a survivor from the Emerald! 
 		She sent me his contact info.
@@ -299,7 +311,7 @@
 	{@mom}	Hey Sweetie! How'd it go out there?
 	{@you}   I found the Emerald!
 	{@mom}   That's wonderful, Jules!
-	{@you}   I still need to solve the mystery of why it sank.
+	{@you}   I still need to solve the mystery of why the ship sank.
 	{@mom}   Actually... it's not such a mystery. 
 		I tested the steel sample you sent me.
 		It was weak and brittle. There's no way that ship could've held up against the waves.
@@ -324,7 +336,7 @@
 @once
 
 	$call TriggerConvoMusic(reya_convo)
-	{@reya}  Hey sis, I heard you called Johnny! How sweet. 
+	{@reya}  Hey sis. I heard you called Johnny! 
 	{@you}   It was about the shipwreck.
 	{@reya}  Ha. Sure it was. 
 	{@dad}   Well?? What did you find out? 
@@ -347,7 +359,7 @@
 		 Well, at least you can get a permit and go grab it. I know you're jealous of mine.
 	{@you}   Actually, I think I'll donate the locket to the museum, in Grandpa's memory.
 		 Sounds like he was an amazing captain.
-	{@dad}   Well, about that.... 
+	{@dad}   Um, about that.... 
 		 He was actually pretty reckless. 
 	{@you}   What?!
 	{@dad}    Oh, yeah. A real daredevil. 

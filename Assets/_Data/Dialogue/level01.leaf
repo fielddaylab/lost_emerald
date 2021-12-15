@@ -87,6 +87,15 @@
 	$call ResumeSonar()
 	$call DropSonarTutorialBuoy()
 
+// dive observations
+
+:: dive-observation-mast
+@contact you, radio
+@trigger OnObservationMade
+@when CurrentObservationIs(mast-ropes)
+@once
+	{@you}	Looks like some of the ropes that held up the mast are still here!
+
 // specific dive prompts
 
 :: dive-start
@@ -118,7 +127,8 @@
 @trigger OnEvidenceUnlock
 @when HasEvidence(LV1-Photo-Artifact)
 @once
-	{@you} Whoa! What a cool old knife. I wonder whose it was.
+	{@you} Whoa! What a cool old artifact. 
+	       Looks like a knife. I wonder whose it was.
 
 // generic dive prompts
 
@@ -151,7 +161,7 @@
 
 	$call TriggerConvoMusic(amy_convo)
 	{@amy}  Hey, Jules! 
-		Lou clued me in. How was the dive?
+	        Lou clued me in on the dive. How was it? 
 	{@you}  Beautiful! The ship was in great condition. No mussels or plant life. 
 	{@amy}   Hmmm. Must've been covered in sand until now.
 		Do you need any info from the archives? 

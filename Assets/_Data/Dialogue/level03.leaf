@@ -90,14 +90,27 @@
 	
 
 // dive observations
-:: dive-observation-frame
+:: dive-observation-anchor
 @contact you, radio
 @trigger OnObservationMade
 @when CurrentObservationIs(anchor-name)
 @once
 	{@you}	What's that written on the anchor?
 	
+:: dive-observation-paddle-wheel
+@contact you, radio
+@trigger OnObservationMade
+@when CurrentObservationIs(paddle-wheel)
+@once
+	{@you}	That must be one of the paddle wheels!
+	
 //custom dive prompts
+:: dive-start
+@contact you, radio
+@trigger OnEnterDive
+@once
+	{@you} There's the ship! Better grab a photo.
+
 :: dive-better-angle
 @contact you, radio
 @trigger OnNothingOfInterest
@@ -141,7 +154,7 @@
 		So, why's this ship so important to you? 
 	{@cami}  When I was little, my best friend had ancestors who were lost on the Paradise.
 		It's the reason I became a maritime archaeologist. 
-		It'll mean a lot to tell her we finally it.
+		It'll mean a lot to tell her we finally found it.
 	{@you}  Wow, that's amazing.
 	        I'm glad I could help. 
 	$call UnlockEvidence(3,LV3-Ship-Chart)
