@@ -85,6 +85,15 @@
 	$call ResumeSonar()
 	$call DropSonarTutorialBuoy()
 
+// dive observations
+
+:: dive-observation-mast
+@contact you, radio
+@trigger OnObservationMade
+@when CurrentObservationIs(mast-ropes)
+@once
+	{@you}	Looks like some of the ropes that held up the mast are still here!
+
 // specific dive prompts
 
 :: dive-start

@@ -168,7 +168,6 @@
 @contact reya, radio
 @trigger OnEnterDive
 @once
-
 	{@you}	Whoa. Is it me or is that ship....broken in half?!
 
 // When you photograph the name on the bell, or the side of the ship
@@ -177,7 +176,6 @@
 @trigger OnEvidenceUnlock
 @when HasEvidence(LV4-Photo-Name)
 @once
-
 	{@you}	Wow. I can't believe it. We found it!
 		I can’t wait to tell Dad! 
 
@@ -187,7 +185,6 @@
 @trigger OnEvidenceUnlock
 @when HasEvidence(LV4-Photo-Locket)
 @once
-
 	{@you}  That locket looks just like Reya's!
 	
 // dive observations
@@ -196,8 +193,22 @@
 @trigger OnObservationMade
 @when CurrentObservationIs(split)
 @once
-	{@you}	I should get a photo of the ship split in half
-	
+	{@you}	I should get a photo of the ship split in half.
+
+:: dive-observation-crane
+@contact you, radio
+@trigger OnObservationMade
+@when CurrentObservationIs(crane)
+@once
+	{@you}	There's the crane they used for loading the cargo!
+
+:: dive-observation-cabin
+@contact you, radio
+@trigger OnObservationMade
+@when CurrentObservationIs(captain-cabin)
+@once
+	{@you}	Wow, the captain's cabin. That would've been where Grandpa worked!
+
 // generic dive prompts
 :: dive-already-taken
 @contact you, radio
