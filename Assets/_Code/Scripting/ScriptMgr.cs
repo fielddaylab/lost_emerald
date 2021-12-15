@@ -117,6 +117,8 @@ namespace Shipwreck {
 			if (inNode.Type == ScriptNode.NodeType.Function) {
 				return base.Run(inNode, inActor, inLocals, inName);
 			}
+
+            GameMgr.Events.Dispatch(GameEvents.DialogRun, inNode);
 			
 			m_currentHandle.Kill();
 			return m_currentHandle = base.Run(inNode, inActor, inLocals, inName);

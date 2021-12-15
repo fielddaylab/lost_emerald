@@ -88,6 +88,10 @@ namespace Shipwreck {
 			}
 
 			public void ReevaluateStickyInfo() {
+				ReevaluateStickyInfo(true);
+			}
+
+            private void ReevaluateStickyInfo(bool dispatchSecondaryEvents) {
 				bool wasCorrect = IsCorrect;
 				m_stickyData = I.m_stickyEvaluator.Evaluate(m_rootNode, m_chain, m_levelRootEvaluator);
 				if (!wasCorrect && IsCorrect) {
@@ -99,7 +103,13 @@ namespace Shipwreck {
 						table.Set("root", m_rootNode);
 						RunTrigger(GameTriggers.OnChainSolved, table);
 					}
-				}
+				} else if (m_stickyData != null && dispatchSecondaryEvents) {
+                    if (m_stickyData.Response == StickyInfo.ResponseType.Hint) {
+                        Events.Dispatch(GameEvents.ChainHint, this);
+                    } else if (m_stickyData.Response == StickyInfo.ResponseType.Incorrect) {
+                        Events.Dispatch(GameEvents.ChainIncorrect, this);
+                    }
+                }
 			}
 
 			public bool Contains(StringHash32 node) {
@@ -136,7 +146,7 @@ namespace Shipwreck {
 					// (including the lifted one) until the desired
 					// node is found or chain is empty
 				}
-				ReevaluateStickyInfo();
+				ReevaluateStickyInfo(false);
 			}
 
 			/// <summary>
@@ -172,7 +182,7 @@ namespace Shipwreck {
 
 			public void PostSerialize(Serializer.Mode inMode, ISerializerContext inContext) {
 				if (inMode == Serializer.Mode.Read) {
-					ReevaluateStickyInfo();
+					ReevaluateStickyInfo(false);
 				}
 			}
 		}

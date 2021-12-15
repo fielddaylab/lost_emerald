@@ -30,6 +30,7 @@ namespace Shipwreck {
 			AudioSrcMgr.instance.StashAudio();
 			AudioSrcMgr.instance.StopAudio();
 			AudioSrcMgr.instance.StopAmbiance();
+            GameMgr.Events.Dispatch(GameEvents.ViewCutscene);
 #if !UNITY_EDITOR
 			if (IsSafari()) {
 				I.HandleVideoComplete(I.m_videoPlayer);

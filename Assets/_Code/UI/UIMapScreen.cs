@@ -85,6 +85,8 @@ namespace Shipwreck {
 			}
 
 			GameMgr.Events.Register<int>(GameEvents.LevelUnlocked, HandleLevelUnlocked);
+
+            GameMgr.Events.Dispatch(GameEvents.MapOpened);
 		}
 
 		protected override void OnShowCompleted() {
