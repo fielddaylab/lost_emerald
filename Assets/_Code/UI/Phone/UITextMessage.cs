@@ -114,6 +114,18 @@ namespace Shipwreck {
 			return null;
 		}
 
+		protected override IEnumerator OnShowEvidence(EvidenceGroup prefab) {
+			TextMessageObject obj = Instantiate(m_objectPrefab, m_content);
+			obj.Populate(m_currentCharacter, prefab);
+			yield return m_scrollRect.NormalizedPosTo(0f, 0.1f, Axis.Y);
+			yield return 0.15f;
+
+			yield return CompleteLine();
+		}
+		protected override IEnumerator OnHideEvidence() {
+			return null;
+		}
+
 
 		public override IEnumerator TypeLine(TagString inString, TagTextData inType) {
 			AudioSrcMgr.instance.PlayOneShot("text_receive");

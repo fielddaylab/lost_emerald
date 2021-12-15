@@ -49,6 +49,18 @@ namespace Shipwreck {
 			UIMgr.Open<UICloseInspect>();
 		}
 
+		public void OpenCloseInspect(Sprite inspectSprite) {
+			m_inspectImage.sprite = inspectSprite;
+			m_inspectImage.rectTransform.sizeDelta = inspectSprite.rect.size.normalized * REFERENCE_DIM;
+			// more space for landscape photos
+			if (m_inspectImage.rectTransform.sizeDelta.x > m_inspectImage.rectTransform.sizeDelta.y) {
+				m_inspectImage.rectTransform.sizeDelta *=
+					m_inspectImage.rectTransform.sizeDelta.x
+					/ m_inspectImage.rectTransform.sizeDelta.y;
+			}
+			UIMgr.Open<UICloseInspect>();
+		}
+
 		private void HandleClose() {
 			AudioSrcMgr.instance.PlayOneShot("click_map_close");
 			UIMgr.Close<UICloseInspect>();

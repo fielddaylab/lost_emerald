@@ -120,9 +120,11 @@
 	{@you}  Well.... she called me boring and tried to get me in trouble. 
 		But we found an amazing wreck!
 	        It's a freighter near Port Washington. It was carrying old cars.
+	        {evidence LV2-Table-Wrecks}
 	{@amy}  Hmm. Looks like two freighters sank in that area with cars onboard. 
 		One with Kissel cars, and one with Nash cars. 
 		They used to be made here in Wisconsin!
+			{/evidence}
 	{@you}   Hmm. So if I can identify the car I found, I should be able to figure out the ship!
 	{@amy}   I've got a friend at the auto museum. I'll have him call you. 
 	{@you}	Thanks, Amy!
@@ -173,7 +175,9 @@
 	{@you}	Yep, the ship is the Madison! 
 	{@amy}	Nice work, Jules! 
 		I’ll send you the radio distress call.
+		//{evidence LV2-Distress-Transcript}
 		And the ship manifest, too!
+		//{evidence LV2-List-Cargo}
 	{@you}	Thanks, Amy!
 	$call UnlockEvidence(2,LV2-List-Cargo)
 	$call UnlockEvidence(2,LV2-Distress-Transcript)
@@ -234,7 +238,7 @@
 	{@dad}   Uh... not so great.
 		But I'm sure I'll figure it out. Eventually. 
 		I'm out on Lake Superior right now. Got my map with me. 
-		{img dad-map}
+		{img dad-map-red-line}
 		Your grandpa’s last planned route is marked in red.
 		The Emerald must be around here somewhere.
 		{/img}

@@ -16,6 +16,8 @@ namespace Shipwreck {
 			public static readonly StringHash32 HideImage = "hide-image";
 			public static readonly StringHash32 Object = "object";
 			public static readonly StringHash32 HideObject = "hide-object";
+			public static readonly StringHash32 Evidence = "evidence";
+			public static readonly StringHash32 HideEvidence = "hide-evidence";
 
 		}
 

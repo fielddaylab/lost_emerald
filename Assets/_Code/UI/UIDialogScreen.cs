@@ -212,6 +212,22 @@ namespace Shipwreck {
 			}
 		}
 
+		protected override IEnumerator OnShowEvidence(EvidenceGroup prefab) {
+			EvidenceGroup group = Instantiate(prefab, m_displayContainer);
+			group.transform.localScale = Vector3.zero;
+			group.transform.localPosition = Vector3.zero;
+			group.RemoveNodes();
+			yield return group.transform.ScaleTo(1f, 0.35f, Axis.XY).Ease(Curve.BackOut);
+		}
+		protected override IEnumerator OnHideEvidence() {
+			for (int index = 0; index < m_displayContainer.childCount; index++) {
+				yield return m_displayContainer.GetChild(index).transform.ScaleTo(0f, 0.35f, Axis.XY).Ease(Curve.BackIn);
+			}
+			for (int index = 0; index < m_displayContainer.childCount; index++) {
+				Destroy(m_displayContainer.GetChild(index).gameObject);
+			}
+		}
+
 
 		private void ClickSound()
 		{

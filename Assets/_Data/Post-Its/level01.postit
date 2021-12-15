@@ -32,7 +32,9 @@
 
 :: shiptype-hint-1b
 @root Type
-@hint card
+@hint card-canaller
+@precededBy type-canaller
+	Do I have a matching photo?
 
 :: shiptype-hint-2a
 @root Type
@@ -46,11 +48,23 @@
 @precededBy photo-above
 	Any canallers on the list of shipwrecks?
 
-:: shiptype-hint-3
+:: shiptype-hint-3a
 @root Type
 @hint type-canaller, type-freighter, type-tug, type-steamer
 @only
-	How can I prove this?
+	Does this match a ship type?
+
+:: shiptype-hint-3b
+@root Type
+@hint type-canaller
+@precededBy photo-above
+	Does this match a ship type?
+
+:: shiptype-hint-3c
+@root Type
+@hint type-canaller
+@precededBy card-canaller
+	Do I have a matching photo?
 
 :: shiptype-hint-4a
 @root Type
@@ -64,6 +78,51 @@
 @precededBy type-canaller
 	Does this match a ship type?
 
+:: shiptype-hint-x1a
+@root Type
+@hint type-freighter
+@precededBy card-freighter
+	Do I have a matching photo?
+:: shiptype-hint-x1aa
+@root Type
+@hint card-freighter
+@precededBy type-freighter
+	Do I have a matching photo?
+
+:: shiptype-incorrect-x1b
+@root Type
+@incorrect photo-above
+@precededBy type-freighter, card-freighter
+	A frieghter is too big!
+
+:: shiptype-incorrect-x1c
+@root Type
+@incorrect photo-above
+@precededBy card-freighter, type-freighter
+	A frieghter is too big!
+
+:: shiptype-hint-x2a
+@root Type
+@hint type-steamer
+@precededBy card-side-steamer
+	Do I have a matching photo?
+:: shiptype-hint-x2aa
+@root Type
+@hint card-side-steamer
+@precededBy type-steamer
+	Do I have a matching photo?
+
+:: shiptype-incorrect-x2b
+@root Type
+@incorrect photo-above
+@precededBy card-side-steamer, type-steamer
+	Wreck doesn't look like a steamer.
+
+:: shiptype-incorrect-x2c
+@root Type
+@incorrect photo-above
+@precededBy type-steamer, card-side-steamer
+	Wreck doesn't look like a steamer.
 
 
 :: shiptype-incorrect-1
@@ -76,19 +135,19 @@
 @root Type
 @incorrect card-freighter
 @precededBy photo-above
-	A freighter is too big
+	A freighter is too big!
 
 :: shiptype-incorrect-3
 @root Type
 @incorrect card-side-steamer
 @precededBy photo-above
-	Wreck doesn't look like a steamer
+	Wreck doesn't look like a steamer.
 
 :: shiptype-incorrect-1b
 @root Type
 @precededBy card-tug
 @incorrect photo-above
-	Tug boat doesn't look the same
+	Tug boat doesn't look the same.
 
 :: shiptype-incorrect-2b
 @root Type
@@ -100,12 +159,12 @@
 @root Type
 @precededBy card-side-steamer
 @incorrect photo-above
-	Wreck doesn't look like a steamer
+	Wreck doesn't look like a steamer.
 
 :: shiptype-incorrect-generic
 @root Type
 @incorrect
-	I don't think this makes sense
+	I don't think this makes sense.
 
 
 
