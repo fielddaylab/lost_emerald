@@ -17,9 +17,14 @@ namespace Shipwreck {
 		public EvidenceNode[] Nodes {
 			get { return m_nodes; }
 		}
+		public float PopupScale {
+			get { return m_popupScale; }
+		}
 
 		[SerializeField]
 		private EvidenceNode[] m_nodes;
+		[SerializeField,Tooltip("Scale to display the evidence at when shown in dialogue.")]
+		private float m_popupScale = 1f;
 
 		private RectTransform m_rectTransform;
 		private Vector2 m_offset;
