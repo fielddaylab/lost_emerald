@@ -40,6 +40,10 @@ namespace Shipwreck {
             get { return m_fullId; }
         }
 
+        public string Name {
+            get { return m_fullId; }
+        }
+
         public ListSlice<StringHash32> RootIds {
             get { return m_roots; }
         }

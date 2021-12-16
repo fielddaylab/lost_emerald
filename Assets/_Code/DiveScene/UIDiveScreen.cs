@@ -142,6 +142,7 @@ namespace Shipwreck {
 		protected override void OnShowCompleted() {
 			base.OnShowCompleted();
 			
+            GameMgr.Events.Dispatch(GameEvents.Dive.EnterDive);
 			GameMgr.RunTrigger(GameTriggers.OnEnterDive);
 
 			m_buttonAscend.onClick.AddListener(HandleAscendButton);
@@ -175,6 +176,8 @@ namespace Shipwreck {
 			GameMgr.Events.Deregister<bool>(GameEvents.Dive.LocationChanging, HandleLocationChanging);
 			GameMgr.Events.Deregister<List<DivePointOfInterest>>(GameEvents.Dive.SendPhotoList, HandlePhotoListSent);
 			GameMgr.Events.Deregister(GameEvents.Dive.ShowMessage, HandleShowMessage);
+
+            GameMgr.Events.Dispatch(GameEvents.Dive.ExitDive);
 		}
 
 

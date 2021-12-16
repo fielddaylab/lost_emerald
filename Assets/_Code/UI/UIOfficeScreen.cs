@@ -40,6 +40,7 @@ namespace Shipwreck {
 			base.OnShowStart();
 			base.CanvasGroup.interactable = true;
 
+            GameMgr.Events.Dispatch(GameEvents.OfficeOpened);
 			GameMgr.RunTrigger(GameTriggers.OnEnterOffice);
 		}
 		protected override void OnHideStart() {

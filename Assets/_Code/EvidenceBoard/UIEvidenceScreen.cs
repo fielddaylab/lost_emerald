@@ -96,6 +96,7 @@ namespace Shipwreck {
 			m_buttonShipOut.transform.localScale = Vector3.one;
 			m_wasLocationComplete = GameMgr.State.CurrentLevel.IsLocationChainComplete();
 
+            GameMgr.Events.Dispatch(GameEvents.BoardOpened);
 			GameMgr.RunTrigger(GameTriggers.OnEnterEvidenceBoard);
 		}
 

@@ -112,6 +112,7 @@ namespace Shipwreck {
 			else {
 				ShowDefaultSonar();
 				GameMgr.RunTrigger(GameTriggers.OnEnterSonar);
+                GameMgr.Events.Dispatch(GameEvents.SonarStarted);
 			}
 		}
 
@@ -207,6 +208,8 @@ namespace Shipwreck {
 				// what percentage of the proportion needed for the dive have been revealed
 				float percentTargetCompletion = percentComplete / m_completionPercent;
 
+                GameMgr.Events.Dispatch(GameEvents.SonarProgressUpdated, percentTargetCompletion);
+
 				UIShipOutScreen.instance.GetDiveSlider().normalizedValue = percentTargetCompletion;
 
 				// when enough dots have been revealed, show buoy message
@@ -225,6 +228,8 @@ namespace Shipwreck {
 					else {
 						GameMgr.RunTrigger(GameTriggers.OnMowCompleted);
 					}
+
+                    GameMgr.Events.Dispatch(GameEvents.SonarCompleted);
 				}
 			}
 		}

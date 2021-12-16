@@ -85,6 +85,7 @@ namespace Shipwreck
 			LoadScript(m_levelScripts[m_selectedLevel]);
 
 			RunTrigger("Start");
+            Events.Dispatch(GameEvents.LevelStart, levelIndex);
 		}
 
 		private void HandlePhoneNotification(ScriptNode node) {

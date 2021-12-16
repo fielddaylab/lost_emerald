@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -151,7 +151,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1180531907}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -225,7 +225,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1180531907}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -572,8 +572,8 @@ RectTransform:
   - {fileID: 2011368637}
   - {fileID: 1252614857}
   - {fileID: 2110532565}
-  - {fileID: 192559161}
   - {fileID: 327912491}
+  - {fileID: 192559161}
   - {fileID: 1036714567}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -650,8 +650,8 @@ MonoBehaviour:
   m_background: {fileID: 1252614858}
   m_logos:
   - {fileID: 2110532566}
-  - {fileID: 192559162}
   - {fileID: 327912492}
+  - {fileID: 192559162}
   m_spinner: {fileID: 2011368637}
   m_tween:
     Time: 1
