@@ -209,6 +209,20 @@
 @when CurrentObservationIs(captain-cabin)
 @once
 	{@you}	Wow, the captain's cabin. That would've been where Grandpa worked!
+	
+//custom dive prompts for attempting photo
+
+:: split-head-on
+@contact you, radio
+@trigger OnNothingOfInterest
+@when CurrentCustomMessageIs(split-head-on), !HasEvidence(LV4-Photo-Cause)
+	{@you}	Maybe I can get a better angle to show both sides of the break in the ship.
+	
+:: split-wrong-side
+@contact you, radio
+@trigger OnNothingOfInterest
+@when CurrentCustomMessageIs(split-wrong-side), !HasEvidence(LV4-Photo-Cause)
+	{@you}	The other side might have a better angle to show both sides of the break in the ship.
 
 // generic dive prompts
 :: dive-already-taken

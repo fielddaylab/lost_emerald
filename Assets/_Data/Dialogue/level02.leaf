@@ -82,7 +82,7 @@
 :: dive-better-angle
 @contact you, radio
 @trigger OnNothingOfInterest
-@when CurrentCustomMessageIs(other-side)
+@when CurrentCustomMessageIs(other-side), !HasEvidence(LV2-Photo-Gash)
 	{@you}	I'll have a better view of that from the other side.
 	
 // generic dive prompts
