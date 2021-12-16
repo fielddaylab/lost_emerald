@@ -120,6 +120,33 @@ namespace Shipwreck {
 				m_tutorialSonarDisplayed = false;
 			}
 
+			public void Clear() {
+				m_variableTable.Clear();
+				m_visitedNodes.Clear();
+				m_unlockedContacts = new HashSet<StringHash32>() { "you", "mom", "amy" };
+				m_queuedNotifications = new List<QueuedNotification>();
+				m_levelStates = new LevelState[4] {
+					new LevelState(), new LevelState(),
+					new LevelState(), new LevelState()
+				};
+				for (int index = 0; index < m_levelStates.Length; index++) {
+					m_levelStates[index].AssignLevelData(GameDb.GetLevelData(index));
+				}
+				m_shipOutStates = new ShipOutState[4] {
+					new ShipOutState(),
+					new ShipOutState(),
+					new ShipOutState(),
+					new ShipOutState()
+				};
+				for (int index = 0; index < m_shipOutStates.Length; index++) {
+					m_shipOutStates[index].AssignShipOutData(GameDb.GetShipOutData(index));
+				}
+				m_currShipOutIndex = 0;
+				m_tutorialBuoyDropped = false;
+				m_tutorialSonarDisplayed = false;
+			}
+
+
 			public ILevelState GetLevel(int levelIndex) {
 				return m_levelStates[levelIndex];
 			}

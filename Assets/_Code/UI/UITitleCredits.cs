@@ -105,50 +105,51 @@ namespace Shipwreck {
 			m_slideHeading.color = new Color(0, 0, 0, 0);
 			m_slideBody.color = new Color(0, 0, 0, 0);
 			ParseCredits();
-			m_backButton.onClick.AddListener(HandleBackButton);
+			if (m_backButton != null) {
+				m_backButton.onClick.AddListener(HandleBackButton);
+			}
+			
 		}
 		protected override void OnShowCompleted() {
-			m_routine.Replace(CreditsRoutine());
+			m_routine.Replace(Routine.StartLoopRoutine(CreditsRoutine));
 		}
 		protected override void OnHideStart() {
-			m_backButton.onClick.RemoveListener(HandleBackButton);
+			if (m_backButton != null) {
+				m_backButton.onClick.RemoveListener(HandleBackButton);
+			}
 		}
 
 		private void HandleBackButton() {
 			UIMgr.CloseThenOpen<UITitleCredits, UITitleScreen>();
 		}
 
-		private IEnumerator CreditsRoutine() {
-
-			
-			while (true) {
-				int index = 0;
-				foreach (MainGroup group in m_mainGroups) {
-					m_slideHeading.text = group.Heading;
-					StringBuilder builder = new StringBuilder();
-					foreach (SubGroup sub in group) {
-						builder.Append("<b>").Append(sub.Heading).Append('\n').Append("</b>");
-						foreach (string name in sub) {
-							builder.Append(name).Append('\n');
-						}
-						builder.Append('\n');
+		protected IEnumerator CreditsRoutine() {
+			int index = 0;
+			foreach (MainGroup group in m_mainGroups) {
+				m_slideHeading.text = group.Heading;
+				StringBuilder builder = new StringBuilder();
+				foreach (SubGroup sub in group) {
+					builder.Append("<b>").Append(sub.Heading).Append('\n').Append("</b>");
+					foreach (string name in sub) {
+						builder.Append(name).Append('\n');
 					}
-					m_slideBody.text = builder.ToString();
-					yield return Routine.Combine(
-						m_slideHeading.ColorTo(m_colorHeading, 1f, ColorUpdate.FullColor),
-						m_slideBody.ColorTo(m_colorBody, 1f, ColorUpdate.FullColor)
-					);
-					yield return 4f;
-					if (index + 1 < m_mainGroups.Count && m_mainGroups[index + 1].Heading == group.Heading) {
-						yield return m_slideBody.ColorTo(new Color(0, 0, 0, 0), 1f, ColorUpdate.FullColor);
-					} else {
-						yield return Routine.Combine(
-							m_slideHeading.ColorTo(new Color(0, 0, 0, 0), 1f, ColorUpdate.FullColor),
-							m_slideBody.ColorTo(new Color(0, 0, 0, 0), 1f, ColorUpdate.FullColor)
-						);
-					}
-					index++;
+					builder.Append('\n');
 				}
+				m_slideBody.text = builder.ToString();
+				yield return Routine.Combine(
+					m_slideHeading.ColorTo(m_colorHeading, 1f, ColorUpdate.FullColor),
+					m_slideBody.ColorTo(m_colorBody, 1f, ColorUpdate.FullColor)
+				);
+				yield return 4f;
+				if (index + 1 < m_mainGroups.Count && m_mainGroups[index + 1].Heading == group.Heading) {
+					yield return m_slideBody.ColorTo(new Color(0, 0, 0, 0), 1f, ColorUpdate.FullColor);
+				} else {
+					yield return Routine.Combine(
+						m_slideHeading.ColorTo(new Color(0, 0, 0, 0), 1f, ColorUpdate.FullColor),
+						m_slideBody.ColorTo(new Color(0, 0, 0, 0), 1f, ColorUpdate.FullColor)
+					);
+				}
+				index++;
 			}
 		}
 

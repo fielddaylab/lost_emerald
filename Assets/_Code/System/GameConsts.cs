@@ -28,6 +28,7 @@ namespace Shipwreck {
         public static readonly StringHash32 MapOpened = "MapOpened";
 		public static readonly StringHash32 MapTutorial = "MapTutorial";
         public static readonly StringHash32 OfficeOpened = "OfficeOpened";
+		public static readonly StringHash32 GameCompleted = "GameCompleted";
 
         public static readonly StringHash32 SonarStarted = "SonarStarted";
         public static readonly StringHash32 SonarProgressUpdated = "SonarProgressUpdated";

@@ -15,7 +15,7 @@ namespace Shipwreck
 
 		public static IGameState State {
 			get { return I.m_state; }
-		} 
+		}
 
 		public static EventService Events {
 			get { return I.m_eventService; }
@@ -49,7 +49,16 @@ namespace Shipwreck
 		public static void MarkTitleScreenComplete() {
 			I.m_eventService.Register<ScriptNode>(GameEvents.PhoneNotification, I.HandlePhoneNotification);
 			I.m_eventService.Register(GameEvents.ChainSolved, I.HandleChainCompleted);
+			I.m_eventService.Register(GameEvents.CaseClosed, I.HandleGameEnding);
 			CutscenePlayer.OnVideoComplete += I.HandleCutsceneComplete;
+		}
+
+		public static void ClearState() {
+			I.m_state.Clear();
+			I.m_eventService.Deregister<ScriptNode>(GameEvents.PhoneNotification, I.HandlePhoneNotification);
+			I.m_eventService.Deregister(GameEvents.ChainSolved, I.HandleChainCompleted);
+			I.m_eventService.Deregister(GameEvents.CaseClosed, I.HandleGameEnding);
+			CutscenePlayer.OnVideoComplete -= I.HandleCutsceneComplete;
 		}
 
 		public static void SetChain(int levelIndex, StringHash32 root, params StringHash32[] chain) {
@@ -85,7 +94,7 @@ namespace Shipwreck
 			LoadScript(m_levelScripts[m_selectedLevel]);
 
 			RunTrigger("Start");
-            Events.Dispatch(GameEvents.LevelStart, levelIndex);
+			Events.Dispatch(GameEvents.LevelStart, levelIndex);
 		}
 
 		private void HandlePhoneNotification(ScriptNode node) {
@@ -111,6 +120,13 @@ namespace Shipwreck
 		private void HandleCutsceneComplete() {
 			UIMgr.Open<UIOfficeScreen>();
 			UIMgr.Open<UIModalCaseClosed>();
+		}
+		private void HandleGameEnding() {
+			if (m_state.IsBoardComplete(3)) {
+				UIMgr.CloseImmediately<UIOfficeScreen>();
+				UIMgr.CloseImmediately<UIEvidenceScreen>();
+				UIMgr.Open<UIEndingCredits>();
+			}
 		}
 
 		public void SetCurrentCustomMessage(StringHash32 messageKey) {

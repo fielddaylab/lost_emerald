@@ -30,7 +30,7 @@ namespace Shipwreck {
 		private Button m_credits = null;
 
 		private void OnEnable() {
-			m_newGameButton.onClick.AddListener(HandleNewGame);
+			m_newGameButton.onClick.AddListener(HandleNewGameButton);
 			m_level1Button.onClick.AddListener(HandleUnlock1);
 			m_level2Button.onClick.AddListener(HandleUnlock2);
 			m_level2_50Button.onClick.AddListener(HandleUnlock2_50);
@@ -42,7 +42,7 @@ namespace Shipwreck {
 			m_credits.onClick.AddListener(HandleCredits);
 		}
 		private void OnDisable() {
-			m_newGameButton.onClick.RemoveListener(HandleNewGame);
+			m_newGameButton.onClick.RemoveListener(HandleNewGameButton);
 			m_level1Button.onClick.RemoveListener(HandleUnlock1);
 			m_level2Button.onClick.RemoveListener(HandleUnlock2);
 			m_level2_50Button.onClick.RemoveListener(HandleUnlock2_50);
@@ -72,7 +72,9 @@ namespace Shipwreck {
 			throw new System.NotImplementedException();
 		}
 
-		private void HandleNewGame() {
+		
+
+		private void StartGame() {
 			AudioSrcMgr.instance.PlayOneShot("click_new_game");
 			GameMgr.UnlockContact("dad");
 			UIMgr.CloseThenCall<UITitleScreen>(() => {
@@ -81,50 +83,64 @@ namespace Shipwreck {
 				AudioSrcMgr.instance.PlayAudio("office_music", true);
 			});
 		}
+
+		private void HandleNewGameButton() {
+			GameMgr.ClearState();
+			StartGame();
+		}
+
 		private void HandleCredits() {
 			UIMgr.CloseThenOpen<UITitleScreen, UITitleCredits>();
 		}
 
 		private void HandleUnlock1() {
+			GameMgr.ClearState();
 			AudioSrcMgr.instance.PlayOneShot("click_unlock");
 			UnlockLevel1();
-			HandleNewGame();
+			StartGame();
 		}
 		private void HandleUnlock2() {
+			GameMgr.ClearState();
 			AudioSrcMgr.instance.PlayOneShot("click_unlock");
 			UnlockLevel2();
-			HandleNewGame();
+			StartGame();
 		}
 		private void HandleUnlock2_50()
 		{
+			GameMgr.ClearState();
 			AudioSrcMgr.instance.PlayOneShot("click_unlock");
 			UnlockLevel2_50();
-			HandleNewGame();
+			StartGame();
 		}
 		private void HandleUnlock3() {
+			GameMgr.ClearState();
 			AudioSrcMgr.instance.PlayOneShot("click_unlock");
 			UnlockLevel3(true);
-			HandleNewGame();
+			StartGame();
 		}
 		private void HandleUnlock3_50() {
+			GameMgr.ClearState();
 			AudioSrcMgr.instance.PlayOneShot("click_unlock");
 			UnlockLevel3_50();
-			HandleNewGame();
+			StartGame();
 		}
 		private void HandleUnlock4() {
+			GameMgr.ClearState();
 			AudioSrcMgr.instance.PlayOneShot("click_unlock");
 			UnlockLevel4();
-			HandleNewGame();
+			StartGame();
 		}
 		private void HandleUnlock4_50() {
+			GameMgr.ClearState();
 			AudioSrcMgr.instance.PlayOneShot("click_unlock");
 			UnlockLevel4_50();
-			HandleNewGame();
+			StartGame();
 		}
 		private void HandleUnlockAll() {
+			GameMgr.ClearState();
 			AudioSrcMgr.instance.PlayOneShot("click_unlock");
 			UnlockAll();
-			HandleNewGame();
+			StartGame();
 		}
 
 		private void UnlockLevel1() {

@@ -77,7 +77,7 @@ namespace Shipwreck {
 			yield return CanvasGroup.FadeTo(1f, 0.3f);
 		}
 		protected override IEnumerator HideImmediateRoutine() {
-			throw new System.NotImplementedException();
+			yield return CanvasGroup.FadeTo(0f, 0.0f);
 		}
 	}
 
