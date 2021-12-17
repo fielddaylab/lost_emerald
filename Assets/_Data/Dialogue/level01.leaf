@@ -20,11 +20,11 @@
 			{/evidence}
 	{@dad}  I don't, but your sister does! 
 		She's gonna help me find the shipwreck!
-                She also dug up your grandma's locket. Looks nice on her.
+                She also found your grandma's locket. Looks nice on her.
 	{@you}  Wait. You let Reya take the locket?? 
 	{@dad}  Well, you weren't here. 
 	        So what do you say? Wanna help us? 
-	{@you}  Well.... I guess I can start a file for Grandpa's ship.
+	{@you}  Well... I guess I can start a file for Grandpa's ship.
 	{@dad}  That's great! 
 		The Emerald has been lost for so long.
 		If I could just find it, it would fix everything!
@@ -94,7 +94,7 @@
 @trigger OnObservationMade
 @when CurrentObservationIs(mast-ropes)
 @once
-	{@you}	Looks like some of the ropes that held up the mast are still here!
+	{@you}	Looks like some of the rigging that held up the mast is still here!
 
 // specific dive prompts
 
@@ -187,7 +187,7 @@
 	{@amy}  So? What'd you find out? 
 	{@you} 	Our ship is the Loretta!
 	{@amy} 	Wow! What an amazing find. 
-		Looks like she sank on the same day that the town of Peshtigo burned down.
+		Looks like it sank on the same day that the town of Peshtigo burned down.
 	{@you}   Yikes. A whole town burned down?
 	{@amy}   Well, not the WHOLE town, but a lot of it. 
 		It was the worst fire in American history.  
@@ -216,17 +216,17 @@
 	
 	$call TriggerConvoMusic(lou_convo, paraglide_ambiance)
 	{@lou}  Hey, Jules! 
-		I'm still out flying. Weather's great today! 
+		I'm out flying again. Weather's great today! 
 		Any juicy details on that shipwreck?
 	{@you}  Yes! The ship is the Loretta!
-	{@lou}  Awesome name. How'd she sink?
+	{@lou}  Awesome name. How'd it sink?
 		{img peshtigo}
          {@you}  Wildfires were burning all across Wisconsin, including an awful fire in Peshtigo, Wisconsin.
 		The wind blew a ton of smoke out over the lake. 
 		{/img}
 	{@lou}   How could the captain see where he was going?
 	{@you}   He couldn't. The Loretta sailed too close to shore and got stuck on a sandbar! 
-		The sailors had to climb up the ropes. Luckily, they were rescued by a fishing boat.
+		The sailors had to climb up into the rigging. Luckily, they were rescued by a fishing boat.
 	{@lou}	Wow! What a wild story.
 		Can you imagine what it was like that night?
 	{@you}   Yeah... 

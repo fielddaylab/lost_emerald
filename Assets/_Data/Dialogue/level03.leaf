@@ -29,13 +29,13 @@
 	{@cami} Ooh, could be the Paradise! 
 		Here, check it out!
 			{img steamer-ad}
-		Gorgeous, huh? She sank in 1856.
+		Gorgeous, huh? It sank in 1856.
 		People called these type of ships Palace Steamers, because they were so fancy.
 		The manifest was lost, so the cargo is unknown. 
 			{/img}
 	{@you}  Wow, you know a ton about this ship!
 	{@cami}  Yep! It's a favorite project of mine. 
-		Keep a lookout for the red anchor. It should have the name on it!
+		Keep a lookout for the red anchor. It should have the name engraved on it.
 	{@you}  Thanks, Cami! 
 	$call EndConvoMusic()
 
@@ -85,7 +85,6 @@
 @once
 
 	{@you}  Got the cargo! 
-		Looks like somebody lost a lot of rocking horses. 
 
 	
 
@@ -109,7 +108,9 @@
 @contact you, radio
 @trigger OnEnterDive
 @once
-	{@you} There's the ship! Better grab a photo.
+	{@you} Whoa. What happened here? The ship is totally destroyed!
+	       Looks like the engine is missing. Must've been salvaged from the wreck. 
+	      
 
 :: dive-better-angle
 @contact you, radio
@@ -155,8 +156,8 @@
 	{@cami}  When I was little, my best friend had ancestors who were lost on the Paradise.
 		It's the reason I became a maritime archaeologist. 
 		It'll mean a lot to tell her we finally found it.
-	{@you}  Wow, that's amazing.
-	        I'm glad I could help. 
+	{@you}  Wow, that's amazing!
+	        Glad I could help. 
 	$call UnlockEvidence(3,LV3-Ship-Chart)
 	$call UnlockEvidence(3,LV3-Accounts-Survivor)
 	$call EndConvoMusic()
@@ -177,8 +178,8 @@
 		Thanks to you, we found a piece of history that was lost for more than 100 years!
 	{@dad}  Ooh. That sidewheel steamer? What'd you find out?
 	{@you}	The ship is a Palace Steamer, the Paradise!
-	{@you}	She was traveling past Sheboygan when a fire started in the boiler room.
-	{@dad}	Yikes. Fire on a wooden ship—that's not good
+	{@you}	It was traveling past Sheboygan when a fire started in the boiler room.
+	{@dad}	Yikes. Fire on a wooden ship—that's not good.
 	{@you}	Nope. The fire spread super fast, and people panicked. 
 		One guy even jumped into a lifeboat with a bunch of heavy gold bars and broke the ropes!
 		Another ship saw the fire and came to help, but they couldn't save everyone. 
