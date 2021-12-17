@@ -85,6 +85,21 @@
 @when CurrentCustomMessageIs(other-side), !HasEvidence(LV2-Photo-Gash)
 	{@you}	I'll have a better view of that from the other side.
 	
+// dive observations
+:: obs-cargo-hatch
+@contact you, radio
+@trigger OnObservationMade
+@when CurrentObservationIs(cargo-hatch)
+@once
+	{@you}	There's the cargo hatch!
+	
+:: obs-nash-remains
+@contact you, radio
+@trigger OnObservationMade
+@when CurrentObservationIs(nash-remains)
+@once
+	Hmm. Looks like part of an old car, but there's not much left.
+	
 // generic dive prompts
 :: dive-already-taken
 @contact you, radio
