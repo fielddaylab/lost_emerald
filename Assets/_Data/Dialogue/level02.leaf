@@ -33,7 +33,7 @@
 @once
 
 	{@you}	Got it!
-	{@you}   Can you hear me on the radio, Reya? I'm diving down deeper.
+	{@you}   Can you hear me through the coms, Reya? I'm diving down deeper.
 	{@reya}  Copy that, sis. 
 	
 
@@ -117,7 +117,7 @@
 	$call TriggerConvoMusic(amy_convo)
 	{@amy}	Hey! Heard you went on a dive with your sister. 
 		How’d it go?
-	{@you}  Well.... she called me boring and tried to get me in trouble. 
+	{@you}  Well... she called me boring and tried to get me in trouble. 
 		But we found an amazing wreck!
 	        It's a freighter near Port Washington. It was carrying old cars.
 	        {evidence LV2-Table-Wrecks}
@@ -174,7 +174,7 @@
 	{@amy}	Any news on the shipwreck?
 	{@you}	Yep, the ship is the Madison! 
 	{@amy}	Nice work, Jules! 
-		I’ll send you the radio distress call.
+		I’ll send you the transcript of the radio distress call.
 		//{evidence LV2-Distress-Transcript}
 		And the ship manifest, too!
 		//{evidence LV2-List-Cargo}
@@ -199,7 +199,7 @@
 		It's just a bunch of nickels and an old alarm clock. I was hoping for gold.
 		But they're gonna display it at a museum, with my name on it!
 			{/img}
-		What about the Madison? I wanna know how she sank!
+		What about the Madison? I wanna know how it sank!
 	{@you}  Fine. Let's see...
 		It was a super foggy day—the same day the stock market crashed and started the Great Depression. 
 		The Madison was carrying 268 Wisconsin-made Nash cars to Detroit. 
