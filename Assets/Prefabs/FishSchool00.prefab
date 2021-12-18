@@ -83,10 +83,10 @@ MonoBehaviour:
   _minScale: 0.5
   _maxScale: 1
   _minDamping: 0.5
-  _maxDamping: 5
+  _maxDamping: 3
   _waypointDistance: 0.67
-  _minAnimationSpeed: 0.25
-  _maxAnimationSpeed: 0.5
+  _minAnimationSpeed: 2
+  _maxAnimationSpeed: 3
   _randomPositionTimerMax: 10
   _randomPositionTimerMin: 6
   _acceleration: 0.025
