@@ -211,6 +211,13 @@
 @once
 	{@you}	Wow, the pilot house. That would've been where Grandpa worked!
 	
+:: dive-observation-ore
+@contact you, radio
+@trigger OnObservationMade
+@when CurrentObservationIs(ore)
+@once
+	{@you}	Looks like Grampa was hauling iron ore.
+	
 //custom dive prompts for attempting photo
 
 :: split-head-on
