@@ -10,11 +10,17 @@ namespace Shipwreck {
 		[SerializeField]
 		private RectTransform m_grouper = null;
 		[SerializeField]
+		private Image m_overlay = null;
+		[SerializeField]
+		private CanvasGroup m_buttonGroup = null;
+		[SerializeField]
 		private Button m_buttonNewGame = null;
 		[SerializeField]
 		private Button m_buttonLoadLevel = null;
 		[SerializeField]
 		private Button m_buttonCredits = null;
+
+		private Routine m_introPan;
 
 		private void OnEnable() {
 			m_buttonNewGame.onClick.AddListener(HandleNewGameButton);
@@ -29,16 +35,30 @@ namespace Shipwreck {
 
 		protected override void OnShowStart() {
 			base.OnShowStart();
-			CanvasGroup.alpha = 0;
+			m_overlay.color = Color.black;
+			m_buttonGroup.interactable = false;
+			m_buttonGroup.alpha = 0f;
+			m_grouper.anchoredPosition = new Vector2(0f, 880f);
+			m_introPan.Replace(this, IntroPanRoutine());
+		}
+		protected override void OnHideStart() {
+			base.OnHideStart();
+			m_buttonGroup.interactable = false;
+		}
+
+		private IEnumerator IntroPanRoutine() {
+			yield return m_grouper.AnchorPosTo(0f, 8f, Axis.Y).Ease(Curve.QuadInOut);
+			yield return m_buttonGroup.FadeTo(1f, 0.3f);
+			m_buttonGroup.interactable = true;
+			CanvasGroup.interactable = true;
 		}
 
 		protected override IEnumerator HideRoutine() {
-			yield return CanvasGroup.FadeTo(0f, 0.3f);
+			yield return m_overlay.FadeTo(1f, 0.3f);
 		}
 
 		protected override IEnumerator ShowRoutine() {
-			yield return CanvasGroup.FadeTo(1f, 0.3f);
-			CanvasGroup.interactable = true;
+			yield return m_overlay.FadeTo(0f, 1f);
 		}
 
 		protected override IEnumerator HideImmediateRoutine() {
