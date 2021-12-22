@@ -87,13 +87,16 @@ namespace Shipwreck {
 		}
 
 		private void HandleCredits() {
+			AudioSrcMgr.instance.PlayOneShot("click_contact");
 			UIMgr.CloseThenOpen<UITitleScreen, UITitleCredits>();
 		}
 
 		private void HandleLoadLevel() {
+			AudioSrcMgr.instance.PlayOneShot("click_contact");
 			UIMgr.Open<UITitleUnlocks>();
 		}
 		private void HandleOptions() {
+			AudioSrcMgr.instance.PlayOneShot("click_contact");
 			UIMgr.Open<UITitleOptions>();
 		}
 		

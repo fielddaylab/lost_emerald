@@ -45,19 +45,24 @@ namespace Shipwreck {
 
 
 		private void HandleClose() {
+			AudioSrcMgr.instance.PlayOneShot("click_map_close");
 			UIMgr.Close(this);
 		}
 		private void HandleSound(bool value) {
 			AudioSrcMgr.instance.MuteAudio(!value);
+			AudioSrcMgr.instance.PlayOneShot("click_contact");
 		}
 		private void HandleFullscreen(bool value) {
 			Screen.fullScreen = value;
+			AudioSrcMgr.instance.PlayOneShot("click_contact");
 		}
 		private void HandleEnglish() {
 			LocalizationMgr.SetLanguage(new LanguageCode("en"));
+			AudioSrcMgr.instance.PlayOneShot("click_contact");
 		}
 		private void HandleEspanol() {
 			LocalizationMgr.SetLanguage(new LanguageCode("es"));
+			AudioSrcMgr.instance.PlayOneShot("click_contact");
 		}
 
 
