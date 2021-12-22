@@ -60,6 +60,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: d563b37132fe19c498f92f3b400aa37a, type: 3}
   - {fileID: 21300000, guid: b8f94b81841f3074bbf3e63cba43e0a0, type: 3}
   - {fileID: 21300000, guid: 6742bc91c8f5d4e3daea592a062c8b52, type: 3}
+  - {fileID: 21300000, guid: 4faa53a10a404554e82b738c2f1fbfa4, type: 3}
   - {fileID: 21300000, guid: 626d98b16d141f54f9ab276e6824ac6f, type: 3}
   - {fileID: 21300000, guid: 25a167d13e4ec455fb823ae9c3388e39, type: 3}
   - {fileID: 21300000, guid: 2af279e18c8bfd5418df2a548269fa1e, type: 3}
@@ -89,6 +90,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 8d7980b67b262e949944a61d67aa7f16, type: 3}
   - {fileID: 21300000, guid: f72a4bb635c912348be218b77740ae06, type: 3}
   - {fileID: 21300000, guid: f2f043070615e5d44bf1c5cf2ff5c0b5, type: 3}
+  - {fileID: 21300000, guid: 460613178d0a2e340a8683c2317803c9, type: 3}
   - {fileID: 21300000, guid: 289fae17660e1b5468819bd39d453625, type: 3}
   - {fileID: 21300000, guid: 5edb9b470523f1a44a9745876e2dd3ba, type: 3}
   - {fileID: 21300000, guid: 311983876fa02b3489f016d9e58c7d5d, type: 3}
@@ -174,6 +176,7 @@ SpriteAtlas:
   - photo-lv3-anchor
   - level4_emerald
   - ship
+  - toggle_off
   - sticky-note
   - shipwreck
   - lv2-gps
@@ -203,6 +206,7 @@ SpriteAtlas:
   - newspaper
   - photo-lv3-gold
   - photo-lv1-knife
+  - toggle_on
   - photo-lv4-name
   - title-boat
   - enroute-lv3

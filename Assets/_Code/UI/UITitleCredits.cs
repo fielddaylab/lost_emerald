@@ -140,7 +140,7 @@ namespace Shipwreck {
 					m_slideHeading.ColorTo(m_colorHeading, 1f, ColorUpdate.FullColor),
 					m_slideBody.ColorTo(m_colorBody, 1f, ColorUpdate.FullColor)
 				);
-				yield return 4f;
+				yield return 6f;
 				if (index + 1 < m_mainGroups.Count && m_mainGroups[index + 1].Heading == group.Heading) {
 					yield return m_slideBody.ColorTo(new Color(0, 0, 0, 0), 1f, ColorUpdate.FullColor);
 				} else {

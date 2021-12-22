@@ -235,6 +235,12 @@ MonoBehaviour:
     m_hash: 36376348
   - m_key: UI/Title/Review
     m_hash: -1288760173
+  - m_key: UI/Title/Sound
+    m_hash: -299765446
+  - m_key: UI/Title/Fullscreen
+    m_hash: -1098101222
+  - m_key: UI/Title/Language
+    m_hash: 140845341
   m_values:
   - Continue
   - Dad
@@ -346,3 +352,6 @@ MonoBehaviour:
   - Part 1
   - Part 2
   - Review
+  - Sound
+  - Fullscreen
+  - Language
