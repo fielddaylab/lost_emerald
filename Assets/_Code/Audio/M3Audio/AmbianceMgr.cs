@@ -90,6 +90,13 @@ namespace Shipwreck
 			m_ambianceSrc.Play();
 		}
 
+		public void MuteAudio(bool isMute) {
+			m_ambianceSrc.mute = isMute;
+		}
+		public bool IsMute() {
+			return m_ambianceSrc.mute;
+		}
+
 		#endregion
 
 		#region Helper Methods

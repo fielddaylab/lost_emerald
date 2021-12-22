@@ -544,7 +544,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 59514424}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca919add191732c4597e9209bae3f42b, type: 3}
+  m_Script: {fileID: 11500000, guid: cd0a94e7a929ec146bcf57c4e9f982b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_canvasGroup: {fileID: 59514426}
@@ -554,6 +554,7 @@ MonoBehaviour:
   m_buttonNewGame: {fileID: 2017916185}
   m_buttonLoadLevel: {fileID: 2070420130}
   m_buttonCredits: {fileID: 310774875}
+  m_buttonOptions: {fileID: 2139676397}
 --- !u!1 &67155810
 GameObject:
   m_ObjectHideFlags: 0
@@ -4093,7 +4094,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 486434293}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18252ae9be4426846bf85df43166f0fa, type: 3}
+  m_Script: {fileID: 11500000, guid: e6ac529a430804e42916a2e0c8885893, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_canvasGroup: {fileID: 486434295}
@@ -7411,6 +7412,7 @@ MonoBehaviour:
   m_screens:
   - {fileID: 59514427}
   - {fileID: 1313786161}
+  - {fileID: 1705230374}
   - {fileID: 486434296}
   - {fileID: 1883946787}
   - {fileID: 907246931}
@@ -9207,7 +9209,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1313786158}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93c5d52ef62cfc44b87290d1f7c96fa9, type: 3}
+  m_Script: {fileID: 11500000, guid: 6aa7aaf155654ba4faa7811ebe13821d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_canvasGroup: {fileID: 1313786160}
@@ -11764,10 +11766,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1705230371}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1009b0d20e1a551478b1a968c70a13ec, type: 3}
+  m_Script: {fileID: 11500000, guid: 860bb31a46280c843ab792ac4b67d05f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_canvasGroup: {fileID: 1705230373}
+  m_grouper: {fileID: 867164480}
+  m_overlay: {fileID: 1749777823}
+  m_buttonClose: {fileID: 2118734678}
+  m_toggleSound: {fileID: 1949810068}
+  m_toggleFullscreen: {fileID: 1716693581}
+  m_buttonEnglish: {fileID: 229274088}
+  m_buttonEspanol: {fileID: 263721312}
 --- !u!1 &1716693579
 GameObject:
   m_ObjectHideFlags: 0
@@ -15758,41 +15767,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 531016319209300888, guid: 89de7169bb442fc48b40af2381f497c5,
-        type: 3}
-      propertyPath: m_lineComplete.a
-      value: 0.48235294
-      objectReference: {fileID: 0}
-    - target: {fileID: 531016319209300888, guid: 89de7169bb442fc48b40af2381f497c5,
-        type: 3}
-      propertyPath: m_markerDefault.b
-      value: 0.10588236
-      objectReference: {fileID: 0}
-    - target: {fileID: 531016319209300888, guid: 89de7169bb442fc48b40af2381f497c5,
-        type: 3}
-      propertyPath: m_markerDefault.g
-      value: 0.73333335
-      objectReference: {fileID: 0}
-    - target: {fileID: 531016319209300888, guid: 89de7169bb442fc48b40af2381f497c5,
-        type: 3}
-      propertyPath: m_markerDefault.r
-      value: 0.9607844
-      objectReference: {fileID: 0}
-    - target: {fileID: 531016319209300888, guid: 89de7169bb442fc48b40af2381f497c5,
-        type: 3}
-      propertyPath: m_markerUnknown.b
-      value: 0.3529412
-      objectReference: {fileID: 0}
-    - target: {fileID: 531016319209300888, guid: 89de7169bb442fc48b40af2381f497c5,
-        type: 3}
-      propertyPath: m_markerUnknown.g
-      value: 0.8117648
-      objectReference: {fileID: 0}
-    - target: {fileID: 531016319209300888, guid: 89de7169bb442fc48b40af2381f497c5,
-        type: 3}
-      propertyPath: m_markerUnknown.r
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 531016319209300888, guid: 89de7169bb442fc48b40af2381f497c5,
         type: 3}

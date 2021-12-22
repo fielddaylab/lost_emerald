@@ -19,6 +19,8 @@ namespace Shipwreck {
 		private Button m_buttonLoadLevel = null;
 		[SerializeField]
 		private Button m_buttonCredits = null;
+		[SerializeField]
+		private Button m_buttonOptions = null;
 
 		private Routine m_introPan;
 
@@ -26,11 +28,13 @@ namespace Shipwreck {
 			m_buttonNewGame.onClick.AddListener(HandleNewGameButton);
 			m_buttonCredits.onClick.AddListener(HandleCredits);
 			m_buttonLoadLevel.onClick.AddListener(HandleLoadLevel);
+			m_buttonOptions.onClick.AddListener(HandleOptions);
 		}
 		private void OnDisable() {
 			m_buttonNewGame.onClick.RemoveListener(HandleNewGameButton);
 			m_buttonCredits.onClick.RemoveListener(HandleCredits);
 			m_buttonLoadLevel.onClick.RemoveListener(HandleLoadLevel);
+			m_buttonOptions.onClick.RemoveListener(HandleOptions);
 		}
 
 		protected override void OnShowStart() {
@@ -89,7 +93,9 @@ namespace Shipwreck {
 		private void HandleLoadLevel() {
 			UIMgr.Open<UITitleUnlocks>();
 		}
-
+		private void HandleOptions() {
+			UIMgr.Open<UITitleOptions>();
+		}
 		
 	}
 

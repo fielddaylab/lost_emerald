@@ -38,4 +38,15 @@ public interface IAudioPlayer
 	/// Resumes previously stashed audio
 	/// </summary>
 	void ResumeStashedAudio();
+
+	/// <summary>
+	/// Mutes audio source
+	/// </summary>
+	void MuteAudio(bool isMute);
+
+	/// <summary>
+	/// returns whether the audio player is currently muted
+	/// </summary>
+	/// <returns></returns>
+	bool IsMute();
 }
