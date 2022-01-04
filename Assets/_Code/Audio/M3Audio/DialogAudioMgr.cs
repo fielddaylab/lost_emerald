@@ -32,6 +32,10 @@ namespace Shipwreck
 			radio
 		}
 
+		public void Mute(bool isMute) {
+			m_audioSrc.mute = isMute;
+		}
+
 		#region Unity Callbacks
 
 		private void Awake()

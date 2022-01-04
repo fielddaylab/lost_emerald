@@ -46,6 +46,7 @@ namespace Shipwreck
 			source.clip = data.Clip;
 			source.volume = data.Volume;
 			source.panStereo = data.Pan;
+			source.mute = instance.m_audioSrc.mute;
 		}
 
 		#endregion
@@ -134,6 +135,15 @@ namespace Shipwreck
 			m_audioSrc.Play();
 
 			ResumeStashedAmbiance();
+		}
+
+		public void MuteAudio(bool isMute) {
+			m_audioSrc.mute = isMute;
+			m_dialogAudioMgr.Mute(isMute);
+			m_ambianceMgr.MuteAudio(isMute);
+		}
+		public bool IsMute() {
+			return m_audioSrc.mute;
 		}
 
 		#endregion

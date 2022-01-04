@@ -146,6 +146,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d95b3d2a5159a264e97141fc59fc8d4d, type: 3}
   - {fileID: 21300000, guid: b546b082ff32bfc4eb779578b389798c, type: 3}
   - {fileID: 21300000, guid: 83c623e77b3e2644387a29f9935bb645, type: 3}
+  - {fileID: 21300000, guid: cba8b1ef0ca37cf4088e953ccfee4e55, type: 3}
+  - {fileID: 21300000, guid: a4c0f4952434618439cc0b8002bcdf40, type: 3}
+  - {fileID: 21300000, guid: 9184fe5a971e5fd47b3870091e9f56b0, type: 3}
   m_markerSprites:
   - {fileID: 21300000, guid: bb54a1cc58e8e9f4693df88dfa5cbbc6, type: 3}
   - {fileID: 21300000, guid: c7876a4b94f279f4eb754ca7b2512aae, type: 3}
@@ -245,6 +248,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2bdf85e1308f4154581245d7d18b01f2, type: 2}
   - {fileID: 11400000, guid: d82a2b11a6af1244ebc3fa3e0206f6d5, type: 2}
   - {fileID: 11400000, guid: 19959a680f1fd9c46be85845317c9c10, type: 2}
+  - {fileID: 11400000, guid: 3110632aebbbf2146b0df04632db3602, type: 2}
   m_displayObjects:
   - {fileID: 11400000, guid: 88e0486af9011644b9841453e95a9d19, type: 2}
   - {fileID: 11400000, guid: eaaa7d3b5a78a9d4daf7bb9d921ac2fb, type: 2}
@@ -254,12 +258,12 @@ MonoBehaviour:
   m_stickyNoteComplete: {r: 0.93333334, g: 0.8670039, b: 0.6392157, a: 1}
   m_lineDefault: {r: 0.6039216, g: 0.9058824, b: 0.8980393, a: 1}
   m_lineIncorrect: {r: 0.9716981, g: 0.35292807, b: 0.38134104, a: 1}
-  m_lineComplete: {r: 1, g: 0.77647066, b: 0.23137257, a: 1}
+  m_lineComplete: {r: 1, g: 0.77647066, b: 0.23137257, a: 0.48235294}
   m_pinDefault: {r: 0.6039216, g: 0.9058824, b: 0.8980393, a: 1}
   m_pinIncorrect: {r: 0.8862745, g: 0.49803922, b: 0.5199506, a: 1}
   m_pinComplete: {r: 1, g: 0.8120668, b: 0.3537736, a: 1}
-  m_markerDefault: {r: 1, g: 0.33333334, b: 0.33333334, a: 1}
-  m_markerUnknown: {r: 0.94509804, g: 1, b: 0.31764707, a: 1}
+  m_markerDefault: {r: 0.9607844, g: 0.73333335, b: 0.10588236, a: 1}
+  m_markerUnknown: {r: 1, g: 0.8117648, b: 0.3529412, a: 1}
   m_markerComplete: {r: 0.9622642, g: 0.7327954, b: 0.104396604, a: 1}
   m_evidenceNodeDefault: {r: 0.6039216, g: 0.9058824, b: 0.8980393, a: 1}
   m_evidenceNodeComplete: {r: 1, g: 0.8117648, b: 0.3529412, a: 1}
@@ -304,6 +308,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82227e24009b9da4dbaa0fda219d2dbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  appId: SHIPWRECKS
+  appVersion: 1
 --- !u!1 &980250334165224564
 GameObject:
   m_ObjectHideFlags: 0

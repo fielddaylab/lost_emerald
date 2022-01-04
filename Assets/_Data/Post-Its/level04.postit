@@ -39,13 +39,25 @@
 @root Type
 @hint photo-above
 @precededBy card-freighter
-	Did any freighters sink near our wreck?
+	Should be listed on the ship chart.
 
 :: shiptype-hint-2b
 @root Type
 @hint card-freighter
 @precededBy photo-above
-	Did any freighters sink near our wreck?
+	Should be listed on the ship chart.
+	
+:: shiptype-hint-3a
+@root Type
+@hint card-freighter
+@precededBy ship-chart-type
+	Do I have a photo of this?
+	
+:: shiptype-hint-3b
+@root Type
+@hint photo-above
+@precededBy ship-chart-type
+	Does this match a ship diagram?
 	
 :: shiptype-hint-4a
 @root Type

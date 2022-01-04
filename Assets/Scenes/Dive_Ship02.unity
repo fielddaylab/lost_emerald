@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4500668, g: 0.49754357, b: 0.56167483, a: 1}
+  m_IndirectSpecularColor: {r: 0.45006657, g: 0.49754304, b: 0.5616746, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -557,7 +557,7 @@ PrefabInstance:
     - target: {fileID: 3782994056335260743, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
       propertyPath: m_Name
-      value: DiveVirtualCamera (16)
+      value: DiveVirtualCamera (remains)
       objectReference: {fileID: 0}
     - target: {fileID: 3782994056335260744, guid: 38a81007aa7e04447984bc1df4c89675,
         type: 3}
@@ -677,6 +677,27 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 478932260}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &478932262 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3782994056335260743, guid: 38a81007aa7e04447984bc1df4c89675,
+    type: 3}
+  m_PrefabInstance: {fileID: 478932260}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &478932263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478932262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acffa432162c5644daa45b87c3c51f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_observationKey:
+    m_Source: nash-remains
+    m_Hash: 2691233855
 --- !u!1001 &566368004
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -891,6 +912,27 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 585564577}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &585564579 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3782994056335260743, guid: 38a81007aa7e04447984bc1df4c89675,
+    type: 3}
+  m_PrefabInstance: {fileID: 585564577}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &585564580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 585564579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acffa432162c5644daa45b87c3c51f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_observationKey:
+    m_Source: cargo-hatch
+    m_Hash: 840664380
 --- !u!1001 &615783719
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4094,6 +4136,27 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2003890892}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2003890894 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3782994056335260743, guid: 38a81007aa7e04447984bc1df4c89675,
+    type: 3}
+  m_PrefabInstance: {fileID: 2003890892}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2003890895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2003890894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acffa432162c5644daa45b87c3c51f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_observationKey:
+    m_Source: nash-remains
+    m_Hash: 2691233855
 --- !u!1001 &2036054967
 PrefabInstance:
   m_ObjectHideFlags: 0

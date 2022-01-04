@@ -188,6 +188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_nodes:
   - {fileID: 2864176147797180191}
+  m_popupScale: 1
 --- !u!1 &5062932594500042219
 GameObject:
   m_ObjectHideFlags: 0
@@ -326,9 +327,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Mayday! This is Captain Thomas of the SS Madison. We were struck on the
-    port side by the SS Lookout. I signaled by horn, but she came out of nowhere
-    in all this fog. We\u2019re taking on water fast\u2014[static]"
+  m_text: "Mayday! This is Captain Thomas of the SS Madison. We were rammed by the
+    SS Lookout! I signaled by horn, but she came out of nowhere in all this fog.
+    We're taking on water fast\u2014[static]"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 91971dd9594b62643ad90120969cfb17, type: 2}
   m_sharedMaterial: {fileID: 3265771203794016092, guid: 91971dd9594b62643ad90120969cfb17,
@@ -392,7 +393,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 5.4762573, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -448,7 +449,7 @@ PrefabInstance:
     - target: {fileID: 5820740882212646554, guid: 8a3c1004efbc77e449d833085e2e9880,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 141.39987
+      value: 56.518906
       objectReference: {fileID: 0}
     - target: {fileID: 5820740882212646554, guid: 8a3c1004efbc77e449d833085e2e9880,
         type: 3}
@@ -493,7 +494,7 @@ PrefabInstance:
     - target: {fileID: 5820740882212646554, guid: 8a3c1004efbc77e449d833085e2e9880,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 8.5
+      value: -11.1
       objectReference: {fileID: 0}
     - target: {fileID: 5820740882212646554, guid: 8a3c1004efbc77e449d833085e2e9880,
         type: 3}

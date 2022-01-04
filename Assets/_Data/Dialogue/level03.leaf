@@ -13,7 +13,7 @@
 
 :: cami-meet
 @contact cami, phone-call
-// @background 
+@background cami-boat
 @trigger OnDialogClosed
 @when HasEvidence(LV3-Transcript-Dad)
 @once
@@ -142,7 +142,7 @@
 
 :: cami-regroup
 @contact cami, phone-call
-// @background 
+@background cami-boat
 @trigger OnEnterOffice
 @when HasEvidence(LV3-Photo-Gold)
 @once
