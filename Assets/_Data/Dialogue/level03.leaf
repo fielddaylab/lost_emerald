@@ -85,7 +85,7 @@
 @once
 
 	{@you}  Got the cargo! 
-
+	        Wow... these rocking horses are more than 100 years old!
 	
 
 // dive observations
@@ -109,7 +109,7 @@
 @trigger OnEnterDive
 @once
 	{@you} Whoa. What happened here? The ship is totally destroyed!
-	       Looks like the engine is missing. Must've been salvaged from the wreck. 
+	       Looks like the engine is missing. The ship owners must've had someone bring it up from the wreck. 
 	      
 
 :: dive-better-angle

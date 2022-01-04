@@ -33,7 +33,7 @@
 @once
 
 	{@you}	Got it!
-	{@you}   Can you hear me through the coms, Reya? I'm diving down deeper.
+		Can you hear me through the coms, Reya? I'm diving down deeper.
 	{@reya}  Copy that, sis. 
 	
 
@@ -41,7 +41,8 @@
 @contact you, radio
 @trigger OnEnterDive
 @once
-	{@you} That's the ship! I should grab a top-down photo. 
+	{@you} That's the ship! Looks like it's covered in mussels.
+	       I should grab a top-down photo. 
 	
 // If/when you photograph the gash in the side of the ship
 :: dive-gash
