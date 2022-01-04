@@ -281,7 +281,7 @@
 // Call shipwreck survivor
 :: ed-survivor
 @contact ed, phone-call
-//@background
+@background survivor-home
 @trigger OnDialogClosed
 @when Seen(level04.amy-strange)
 @once
@@ -353,7 +353,7 @@
 // Conversation with Reya--same as the beginning convo screen
 :: reya-end
 @contact reya, phone-call
-//@background
+@background family-home
 @trigger OnBoardComplete
 @once
 
