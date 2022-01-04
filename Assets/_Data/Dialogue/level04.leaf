@@ -211,8 +211,7 @@
 @once
 	{@you}	Wow, the pilot house. That would've been where Grandpa worked!
 	
-<<<<<<< Updated upstream
-=======
+	
 :: dive-observation-ore
 @contact you, radio
 @trigger OnObservationMade
@@ -220,7 +219,7 @@
 @once
 	{@you}	Looks like the ship was carrying iron ore.
 	
->>>>>>> Stashed changes
+	
 //custom dive prompts for attempting photo
 
 :: split-head-on
