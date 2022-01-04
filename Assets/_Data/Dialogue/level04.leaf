@@ -211,6 +211,16 @@
 @once
 	{@you}	Wow, the pilot house. That would've been where Grandpa worked!
 	
+<<<<<<< Updated upstream
+=======
+:: dive-observation-ore
+@contact you, radio
+@trigger OnObservationMade
+@when CurrentObservationIs(ore)
+@once
+	{@you}	Looks like the ship was carrying iron ore.
+	
+>>>>>>> Stashed changes
 //custom dive prompts for attempting photo
 
 :: split-head-on
@@ -282,7 +292,7 @@
 	$call TriggerConvoMusic(ed_convo)
 	{@you}	Hi. Are you Mr. Brooks?
 	{@ed}	Call me Ed. This is my grandson, Johnny.
-	{@you}   Hold on. I saw you last week. You're Cami's contact??
+	{@you}   Hold on. I saw you last week! You're Cami's diving student, right?
 	{@johnny} Yep. Gramps here was a sailor on the Emerald.
 		I've been hearing his amazing stories my whole life. 
 	{@you}   How do you know my sister?
