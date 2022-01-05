@@ -231,15 +231,15 @@
 
 :: cargo-hint-1
 @root Cargo
-@hint cargo-corn, cargo-limestone, cargo-cobblestone, cargo-wheat, cargo-salt
+@hint cargo-corn
 @only
 	Does the news story mention corn?
-
+	
 :: cargo-hint-2
 @root Cargo
-@hint cargo-cargo
+@hint cargo-limestone, cargo-cobblestone, cargo-wheat, cargo-salt
 @only
-	Is corn mentioned on my List of Shipwrecks?
+	Does the news story mention this?
 
 :: cargo-incorrect-generic
 @root Cargo
