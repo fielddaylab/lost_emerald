@@ -30,7 +30,7 @@ namespace Shipwreck
 		[SerializeField]
 		private float m_volume = 1;
 		[SerializeField]
-		private float m_pan = 0.5f;
+		private float m_pan = 0;
 
 	}
 
