@@ -76,7 +76,7 @@
 @when Seen(level03.dad-steamer)
 @once
 
-	$call TriggerConvoMusic(reya_convo)
+	$call TriggerConvoMusic(dad_convo)
 	{@reya} Hey sis!
 		I heard you met my friend Johnny. He asked for your number!
 	{@you}   Johnny... that's Cami's diving student, right? 
@@ -357,7 +357,7 @@
 @trigger OnBoardComplete
 @once
 
-	$call TriggerConvoMusic(reya_convo)
+	$call TriggerConvoMusic(dad_convo)
 	{@reya}  Hey sis. I heard you called Johnny! 
 	{@you}   It was about the shipwreck.
 	{@reya}  Ha. Sure it was. 
