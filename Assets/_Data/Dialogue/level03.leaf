@@ -49,7 +49,12 @@
 	
 	{@you}	The ship should be down there somewhere. Time to use my sonar!
 	
-	
+:: dive-photo-above
+@contact you, radio
+@trigger OnEvidenceUnlock
+@when HasEvidence(LV3-Photo-Above)
+@once
+	{@you} Got it!
 
 // When you photograph the anchor
 :: cami-anchor

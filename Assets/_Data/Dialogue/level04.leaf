@@ -170,6 +170,13 @@
 @trigger OnEnterDive
 @once
 	{@you}	Whoa. Is it me or is that ship... broken in half?
+	
+:: dive-photo-above
+@contact you, radio
+@trigger OnEvidenceUnlock
+@when HasEvidence(LV4-Photo-Above)
+@once
+	{@you} Got it!
 
 // When you photograph the name on the bell, or the side of the ship
 :: dive-name
