@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -156,7 +156,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 17.54, y: 4.46}
+    oldSize: {x: 17.565538, y: 4.4599996}
     newSize: {x: 5, y: 2.58}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -765,7 +765,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 559059019}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2, y: 2.36, z: 0}
+  m_LocalPosition: {x: 1.5, y: 2.8, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 1221874706}
@@ -5744,7 +5744,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 22.42, y: 6.382256}
+    oldSize: {x: 22.450584, y: 6.3799996}
     newSize: {x: 22.42, y: 6.382256}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -6132,7 +6132,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1373305830}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 2.36, z: 0}
+  m_LocalPosition: {x: 1.5, y: 2.8, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 2008592421}
@@ -6472,7 +6472,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1892774850
 Transform:
   m_ObjectHideFlags: 0
@@ -6480,7 +6480,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1892774849}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.791964, y: -3.2021506, z: 4.0665917}
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children: []
@@ -6504,7 +6504,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 40.559086, y: 12.139999}
+    oldSize: {x: 40.54, y: 12.154081}
     newSize: {x: 40.559086, y: 12.139999}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -6848,7 +6848,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 19.06, y: 2.78}
+    oldSize: {x: 19.105503, y: 2.78}
     newSize: {x: 19.06, y: 2.78}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
