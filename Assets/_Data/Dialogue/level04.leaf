@@ -398,4 +398,4 @@
 		Did I ever tell you about the time he had to climb up on the pilot house in the middle of an ice storm? 
 		It was November of 1959, and a cold wind was blowing...
 	$call TriggerCutscene()
-	$call EndConvoMusic()
+	//$call EndConvoMusic()

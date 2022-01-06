@@ -14109,6 +14109,12 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 547a671f192b91747a29d0b726edd164, type: 3}
     - target: {fileID: 531016319209300888, guid: 89de7169bb442fc48b40af2381f497c5,
         type: 3}
+      propertyPath: m_audioData.Array.data[45]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9855037052ec4864cb5b7f39b917aabd,
+        type: 2}
+    - target: {fileID: 531016319209300888, guid: 89de7169bb442fc48b40af2381f497c5,
+        type: 3}
       propertyPath: m_markerSprites.Array.data[6]
       value: 
       objectReference: {fileID: 21300000, guid: 34be7f50dca717b49919f3c830f832c1,
