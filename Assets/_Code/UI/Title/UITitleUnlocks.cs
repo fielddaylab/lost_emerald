@@ -165,6 +165,11 @@ namespace Shipwreck {
 			GameMgr.RecordNodeVisited("level01.dive-photo-name", "you");
 			GameMgr.RecordNodeVisited("level01.dive-photo-artifact", "you");
 
+			GameMgr.RecordNodeVisited("level01.sonar-tutorial", "you");
+			GameMgr.State.SetTutorialBuoyDropped(true);
+			GameMgr.State.SetTutorialSonarDisplayed(true);
+			GameMgr.State.UnlockDive(0);
+
 			GameMgr.SetLevelIndex(0);
 			GameMgr.SetChain(0, "Location", "location-coordinates");
 		}
@@ -179,11 +184,6 @@ namespace Shipwreck {
 			GameMgr.SetChain(0, "Cause", "cause-sandbar");
 			GameMgr.SetChain(0, "Cargo", "cargo-cargo", "cargo-corn");
 
-			GameMgr.State.SetTutorialBuoyDropped(true);
-			GameMgr.State.SetTutorialSonarDisplayed(true);
-			GameMgr.State.UnlockDive(0);
-
-			// GameMgr.UnlockLevel(2);
 			GameMgr.UnlockLevel(4);
 			GameMgr.UnlockEvidence(4, "LV4-Do-Later-Note");
 			GameMgr.UnlockEvidence(4, "LV4-Letter-Treasure");
@@ -223,7 +223,6 @@ namespace Shipwreck {
 
 			GameMgr.SetLevelIndex(1);
 			GameMgr.SetChain(1, "Location", "location-coordinates");
-			GameMgr.SetChain(1, "Type", "photo-above", "card-freighter");
 		}
 
 		private void UnlockLevel3Part1(bool furthestUnlock) {
@@ -240,6 +239,7 @@ namespace Shipwreck {
 			GameMgr.RecordNodeVisited("level02.amy-distress", "amy");
 			GameMgr.RecordNodeVisited("level02.reya-safe", "reya");
 
+			GameMgr.SetChain(1, "Type", "photo-above", "card-freighter");
 			GameMgr.SetChain(1, "Cargo", "photo-cargo", "cargo-nash", "image-nash");
 			GameMgr.SetChain(1, "Cause", "photo-gash", "cause-rammed");
 			GameMgr.SetChain(1, "Name", "name-madison");
