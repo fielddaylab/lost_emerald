@@ -101,7 +101,7 @@
 @trigger OnObservationMade
 @when CurrentObservationIs(paddle-wheel)
 @once
-	{@you}	That must be one of the paddle wheels!
+	{@you}	That paddle wheel matches the one in Dad's photo!
 	
 //custom dive prompts
 :: dive-start
