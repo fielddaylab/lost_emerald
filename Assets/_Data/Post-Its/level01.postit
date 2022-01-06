@@ -229,11 +229,17 @@
 @root Cargo
 @correct cargo-cargo, cargo-corn
 
-:: cargo-hint-1
+:: cargo-hint-1a
 @root Cargo
 @hint cargo-corn
 @only
 	Does the news story mention corn?
+
+:: cargo-hint-1b
+@root Cargo
+@hint cargo-cargo
+@only
+	Is corn mentioned in the table?
 	
 :: cargo-hint-2
 @root Cargo
