@@ -245,9 +245,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 42c08ed8dc6d07f4abbd0b389c1b9e34, type: 2}
   - {fileID: 11400000, guid: 4b9ad497881709741818630cadd1babf, type: 2}
   - {fileID: 11400000, guid: 712f16c7c533ee94397d7f26cb197512, type: 2}
-  - {fileID: 11400000, guid: 2bdf85e1308f4154581245d7d18b01f2, type: 2}
   - {fileID: 11400000, guid: d82a2b11a6af1244ebc3fa3e0206f6d5, type: 2}
-  - {fileID: 11400000, guid: 19959a680f1fd9c46be85845317c9c10, type: 2}
   - {fileID: 11400000, guid: 3110632aebbbf2146b0df04632db3602, type: 2}
   - {fileID: 11400000, guid: 9855037052ec4864cb5b7f39b917aabd, type: 2}
   m_displayObjects:
@@ -595,7 +593,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d773d626bedceba469727bfad11d2545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_phoneData: {fileID: 11400000, guid: 2bdf85e1308f4154581245d7d18b01f2, type: 2}
+  m_phoneData: {fileID: 0}
   m_textData: {fileID: 0}
   m_radioData: {fileID: 0}
 --- !u!1 &6755182081185797420
