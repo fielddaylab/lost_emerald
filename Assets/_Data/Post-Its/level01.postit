@@ -229,17 +229,23 @@
 @root Cargo
 @correct cargo-cargo, cargo-corn
 
-:: cargo-hint-1
+:: cargo-hint-1a
 @root Cargo
-@hint cargo-corn, cargo-limestone, cargo-cobblestone, cargo-wheat, cargo-salt
+@hint cargo-corn
 @only
 	Does the news story mention corn?
 
-:: cargo-hint-2
+:: cargo-hint-1b
 @root Cargo
 @hint cargo-cargo
 @only
-	Is corn mentioned on my List of Shipwrecks?
+	Is corn mentioned in the table?
+	
+:: cargo-hint-2
+@root Cargo
+@hint cargo-limestone, cargo-cobblestone, cargo-wheat, cargo-salt
+@only
+	Does the news story mention this?
 
 :: cargo-incorrect-generic
 @root Cargo

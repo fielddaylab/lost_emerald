@@ -27,7 +27,7 @@ namespace Shipwreck {
 #endif
 
 		public static void Play() {
-			AudioSrcMgr.instance.StashAudio();
+			// AudioSrcMgr.instance.StashAudio();
 			AudioSrcMgr.instance.StopAudio();
 			AudioSrcMgr.instance.StopAmbiance();
             GameMgr.Events.Dispatch(GameEvents.ViewCutscene);

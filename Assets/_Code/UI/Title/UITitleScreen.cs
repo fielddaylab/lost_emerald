@@ -39,6 +39,7 @@ namespace Shipwreck {
 
 		protected override void OnShowStart() {
 			base.OnShowStart();
+			AudioSrcMgr.instance.PlayAudio("title_music", true);
 			m_overlay.color = Color.black;
 			m_buttonGroup.interactable = false;
 			m_buttonGroup.alpha = 0f;

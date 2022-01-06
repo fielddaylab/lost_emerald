@@ -76,7 +76,7 @@
 @when Seen(level03.dad-steamer)
 @once
 
-	$call TriggerConvoMusic(reya_convo)
+	$call TriggerConvoMusic(dad_convo)
 	{@reya} Hey sis!
 		I heard you met my friend Johnny. He asked for your number!
 	{@you}   Johnny... that's Cami's diving student, right? 
@@ -170,6 +170,13 @@
 @trigger OnEnterDive
 @once
 	{@you}	Whoa. Is it me or is that ship... broken in half?
+	
+:: dive-photo-above
+@contact you, radio
+@trigger OnEvidenceUnlock
+@when HasEvidence(LV4-Photo-Above)
+@once
+	{@you} Got it!
 
 // When you photograph the name on the bell, or the side of the ship
 :: dive-name
@@ -357,7 +364,7 @@
 @trigger OnBoardComplete
 @once
 
-	$call TriggerConvoMusic(reya_convo)
+	$call TriggerConvoMusic(dad_convo)
 	{@reya}  Hey sis. I heard you called Johnny! 
 	{@you}   It was about the shipwreck.
 	{@reya}  Ha. Sure it was. 
@@ -391,4 +398,3 @@
 		Did I ever tell you about the time he had to climb up on the pilot house in the middle of an ice storm? 
 		It was November of 1959, and a cold wind was blowing...
 	$call TriggerCutscene()
-	$call EndConvoMusic()
