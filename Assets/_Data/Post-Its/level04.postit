@@ -14,7 +14,7 @@
 @root Name, Cause, Cargo, Artifact, Type
 @incorrect location-coordinates
 @anywhere
-	Should use Location instead
+	Should use location instead
 
 :: location-incorrect-2
 @root Location
@@ -39,13 +39,13 @@
 @root Type
 @hint photo-above
 @precededBy card-freighter
-	Should be listed on the ship chart.
+	Is this listed on the ship chart?
 
 :: shiptype-hint-2b
 @root Type
 @hint card-freighter
 @precededBy photo-above
-	Should be listed on the ship chart.
+	Is this listed on the ship chart?
 	
 :: shiptype-hint-3a
 @root Type
@@ -122,7 +122,7 @@
 @root Location, Name, Cause, Cargo, Artifact
 @incorrect card-canaller, card-freighter, card-tug, card-side-steamer
 @anywhere
-	This is a Type of ship
+	This is a type of ship
 
 
 // -----------------------------------------------------------
