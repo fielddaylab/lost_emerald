@@ -779,12 +779,6 @@ MonoBehaviour:
   m_sliderZoom: {fileID: 2931286009555880544}
   m_flashGroup: {fileID: 2188467661481080073}
   m_cameraGroup: {fileID: 6065930559569458792}
-  m_messageGroup: {fileID: 4483866550547377766}
-  m_messageText: {fileID: 6401237526300702834}
-  m_messageButton: {fileID: 7712137852818553253}
-  m_messageButtonText: {fileID: 688194360212498721}
-  m_messageHiddenY: -88
-  m_messageShownY: 112
   m_journalGroup: {fileID: 7343645933788082841}
   m_journalHiddenX: -400
   m_journalShownX: 0
@@ -2289,6 +2283,7 @@ GameObject:
   - component: {fileID: 5476638408364434085}
   - component: {fileID: 8361818532028234073}
   - component: {fileID: 2771206336905086106}
+  - component: {fileID: 3230584224169709233}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -2412,6 +2407,21 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &3230584224169709233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6292032440727843372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 492dbdd61cabc6941a1f511ad8559fa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_key:
+    m_key: UI/Dive/TakePhoto
+    m_hash: 1568804912
 --- !u!1 &6461976781008756206
 GameObject:
   m_ObjectHideFlags: 0
@@ -3245,6 +3255,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 790ab65032b9a8941b45e0578b459d51, type: 3}
+--- !u!224 &9181907146974092951 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7475936911732219009, guid: 790ab65032b9a8941b45e0578b459d51,
+    type: 3}
+  m_PrefabInstance: {fileID: 1788899800893440534}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &4993606807050174555 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6746295532445467213, guid: 790ab65032b9a8941b45e0578b459d51,
@@ -3257,12 +3273,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &9181907146974092951 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 7475936911732219009, guid: 790ab65032b9a8941b45e0578b459d51,
-    type: 3}
-  m_PrefabInstance: {fileID: 1788899800893440534}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1788899801936341208
 PrefabInstance:
   m_ObjectHideFlags: 0
