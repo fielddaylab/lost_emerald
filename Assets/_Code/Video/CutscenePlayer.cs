@@ -66,6 +66,10 @@ namespace Shipwreck {
 			}
 			OnVideoComplete?.Invoke();
 		}
+
+		public static void MuteAudio(bool isMute) {
+			I.m_videoPlayer.SetDirectAudioMute(0, isMute);
+		}
 	}
 }
 
