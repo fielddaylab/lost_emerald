@@ -19,8 +19,6 @@ MonoBehaviour:
     m_hash: 1733063922
   - m_key: Dialogue/Header/Conversation
     m_hash: 2003802197
-  - m_key: Dialogue/Label/You
-    m_hash: 1046626946
   - m_key: UI/Title/NewGame
     m_hash: -2047277351
   - m_key: UI/Title/LoadLevel
@@ -67,6 +65,8 @@ MonoBehaviour:
     m_hash: -365248406
   - m_key: UI/Dive/Ascend
     m_hash: 1167888525
+  - m_key: UI/Dive/TakePhoto
+    m_hash: 1568804912
   - m_key: UI/Dive/SavePhoto
     m_hash: 287490530
   - m_key: UI/Dive/JournalHeader
@@ -105,6 +105,8 @@ MonoBehaviour:
     m_hash: -827947527
   - m_key: Shipout/Dive
     m_hash: 897704940
+  - m_key: Shipout/Return
+    m_hash: -185659104
   - m_key: Level1/Unnamed
     m_hash: 1841398703
   - m_key: Level1/Named
@@ -218,7 +220,6 @@ MonoBehaviour:
   m_values:
   - <Test/Test>
   - <Dialogue/Header/Conversation>
-  - <Dialogue/Label/You>
   - <UI/Title/NewGame>
   - <UI/Title/LoadLevel>
   - <UI/Title/Credits>
@@ -242,6 +243,7 @@ MonoBehaviour:
   - <UI/Phone/Contacts>
   - <UI/Dive/Surface>
   - <UI/Dive/Ascend>
+  - <UI/Dive/TakePhoto>
   - <UI/Dive/SavePhoto>
   - <UI/Dive/JournalHeader>
   - <UI/Map/ShipOut>
@@ -261,6 +263,7 @@ MonoBehaviour:
   - <Character/Johnny/Name>
   - <Shipout/Progress>
   - <Shipout/Dive>
+  - <Shipout/Return>
   - <Level1/Unnamed>
   - <Level1/Named>
   - <Level1/Case/Name>
