@@ -218,6 +218,7 @@ namespace Shipwreck {
 			m_currentState.OnSurface();
 		}
 		private void HandleJournalOpenButton() {
+			GameMgr.Events.Dispatch(GameEvents.Dive.JournalOpened, Logging.EventData.Actor.Player);
 			m_currentState.OnOpenJournal();
 			AudioSrcMgr.instance.PlayOneShot("click_notebook");
 		}
@@ -311,6 +312,7 @@ namespace Shipwreck {
 			m_journalShowHideRoutine.Replace(this, ((RectTransform)m_journalGroup).AnchorPosTo(m_journalShownX, 0.25f, Axis.X).Ease(Curve.BackInOut));
 		}
 		private void HideJournal() {
+			GameMgr.Events.Dispatch(GameEvents.Dive.CloseJournal, Logging.EventData.Actor.Player);
 			m_buttonJournal.gameObject.SetActive(true);
 			m_journalShowHideRoutine.Replace(this, ((RectTransform)m_journalGroup).AnchorPosTo(m_journalHiddenX, 0.25f, Axis.X).Ease(Curve.QuadOut));
 		}

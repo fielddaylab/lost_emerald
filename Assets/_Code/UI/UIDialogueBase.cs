@@ -51,6 +51,7 @@ namespace Shipwreck {
 
 		public virtual void PrepareNode(ScriptNode node) {
 			AssignPartner(GameDb.GetCharacterData(node.ContactId));
+			GameMgr.Events.Dispatch(GameEvents.ConversationOpened, node);
 			AssignBackground(node.Background == StringHash32.Null ? null : GameDb.GetBackground(node.Background));
 		}
 

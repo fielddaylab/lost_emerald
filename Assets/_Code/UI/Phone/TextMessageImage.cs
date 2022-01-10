@@ -22,13 +22,12 @@ namespace Shipwreck {
 		public void Populate(CharacterData character, Sprite image) {
 			m_layout.Populate(character);
 			m_inspectable.SetSprite(image);
-			m_inspectable.Button.onClick.AddListener(delegate { HandleCloseInspect(m_inspectable.Sprite); });
+			m_inspectable.Button.onClick.AddListener(delegate { HandleCloseInspect(m_inspectable.Sprite, m_inspectable.ID); });
 			UIBase.AssignSpritePreserveAspect(m_bodyImage, m_imageSizer, image, Axis.X);
 		}
 
-		private void HandleCloseInspect(Sprite sprite) {
-			Debug.Log("opening");
-			UIMgr.Open<UICloseInspect>().OpenCloseInspect(sprite);
+		private void HandleCloseInspect(Sprite sprite, string imageId) {
+			UIMgr.Open<UICloseInspect>().OpenCloseInspect(sprite, imageId);
 		}
 	}
 

@@ -39,6 +39,7 @@ namespace Shipwreck {
 			UIMgr.Open<UIPhone>();
 			UIMgr.Open<UIModalOverlay>();
 			UIMgr.Close<UIContacts>();
+			m_continueButton.onClick.AddListener(LogConversationClick);
 			ClearContent();
 		}
 
@@ -47,6 +48,7 @@ namespace Shipwreck {
 			if (!UIMgr.IsOpen<UIPhoneNotif>()) {
 				UIMgr.Close<UIModalOverlay>();
 			}
+			m_continueButton.onClick.RemoveListener(LogConversationClick);
 		}
 
 		protected override void OnHideCompleted() {
@@ -54,6 +56,7 @@ namespace Shipwreck {
 			ClearContent();
 			GameMgr.Events.Dispatch(GameEvents.DialogClosed);
 			GameMgr.RunTrigger(GameTriggers.OnDialogClosed);
+			GameMgr.Events.Dispatch(GameEvents.ConversationClick, Logging.EventData.ClickAction.Close);
 		}
 
 		protected override IEnumerator HideRoutine() {
@@ -146,6 +149,10 @@ namespace Shipwreck {
 			for (int ix = m_content.childCount - 1; ix >= 0; ix--) {
 				Destroy(m_content.GetChild(ix).gameObject);
 			}
+		}
+
+		private void LogConversationClick() {
+			GameMgr.Events.Dispatch(GameEvents.ConversationClick, Logging.EventData.ClickAction.Continue);
 		}
 	}
 

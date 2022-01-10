@@ -57,6 +57,7 @@ namespace Shipwreck {
 
 			GameMgr.Events.Dispatch(GameEvents.DialogClosed);
 			GameMgr.RunTrigger(GameTriggers.OnDialogClosed);
+			GameMgr.Events.Dispatch(GameEvents.ConversationClick, Logging.EventData.ClickAction.Close);
 		}
 
 		protected override IEnumerator ShowRoutine() {
@@ -77,6 +78,7 @@ namespace Shipwreck {
 
 		public override void PrepareNode(ScriptNode node) {
 			AssignPartner(GameDb.GetCharacterData(node.ContactId));
+			GameMgr.Events.Dispatch(GameEvents.ConversationOpened, node);
 		}
 
 		protected override void AssignPartner(CharacterData character) {
@@ -101,6 +103,7 @@ namespace Shipwreck {
 			UnityAction action = () => {
 				skipped = true;
 			};
+			m_continueButton.onClick.RemoveListener(LogConversationClick);
 			m_continueButton.onClick.AddListener(action);
 
 			while (visibleCharacterCount > 0 && skipped == false) {
@@ -136,6 +139,7 @@ namespace Shipwreck {
 			}
 
 			m_continueButton.onClick.RemoveAllListeners();
+			m_continueButton.onClick.AddListener(LogConversationClick);
 		}
 
 		public override IEnumerator CompleteLine() {
@@ -192,6 +196,10 @@ namespace Shipwreck {
 
 
 		#endregion // Dialog
+
+		private void LogConversationClick() {
+			GameMgr.Events.Dispatch(GameEvents.ConversationClick, Logging.EventData.ClickAction.Continue);
+		}
 	}
 
 }

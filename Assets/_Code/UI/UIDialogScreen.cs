@@ -115,12 +115,13 @@ namespace Shipwreck {
 				skipped = true;
 			};
 			m_continueButton.onClick.RemoveListener(ClickSound);
+			m_continueButton.onClick.RemoveListener(LogConversationClick);
 			m_continueButton.onClick.AddListener(SkipSound);
 			m_continueButton.onClick.AddListener(action);
 
 			//AudioSrcMgr.instance.StartLineAudio(DialogAudioMgr.Type.phone);
 
-			while (visibleCharacterCount > 0 && skipped == false) {
+			while (visibleCharacterCount > 0 && !skipped) {
 				if (timeToWait >= 0) {
 					timeToWait -= Time.deltaTime * m_typeSpeed;
 				}
@@ -156,6 +157,7 @@ namespace Shipwreck {
 
 			m_continueButton.onClick.RemoveAllListeners();
 			m_continueButton.onClick.AddListener(ClickSound);
+			m_continueButton.onClick.AddListener(LogConversationClick);
 		}
 
 		public override IEnumerator CompleteLine() {
@@ -237,6 +239,10 @@ namespace Shipwreck {
 		private void SkipSound()
 		{
 			AudioSrcMgr.instance.PlayOneShot("click_dialog_skip");
+		}
+
+		private void LogConversationClick() {
+			GameMgr.Events.Dispatch(GameEvents.ConversationClick, Logging.EventData.ClickAction.Continue);
 		}
 
 
