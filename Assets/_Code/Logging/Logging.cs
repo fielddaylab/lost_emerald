@@ -95,7 +95,7 @@ public class Logging : MonoBehaviour
     public static extern void FBDiveAllPhotosTaken(string missionId);
 	[DllImport("__Internal")]
 	public static extern void FBDiveJournalClick(string missionId, Dictionary<string, bool> tasks, string clickAction, string actor);
-	/* folded in
+	/* 
 		[DllImport("__Internal")]
 		public static extern void FBDiveJournalOpen(string missionId, Dictionary<string, bool> tasks, string clickAction, string actor);
 	*/
