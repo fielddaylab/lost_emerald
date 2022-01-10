@@ -33,28 +33,12 @@ public class Logging : MonoBehaviour
 	public static extern void FBSceneLoad(string missionId, string scene, string timestamp);
 	[DllImport("__Internal")]
 	public static extern void FBCheckpoint(string missionId, string status);
-	/* folded in
-		[DllImport("__Internal")]
-		public static extern void FBMissionStart(string missionId);
-		[DllImport("__Internal")]
-		public static extern void FBMissionComplete(string missionId);
-		[DllImport("__Internal")]
-		public static extern void FBMissionUnlock(string missionId);
-	*/
 	[DllImport("__Internal")]
     public static extern void FBNewEvidence(string missionId, string actor, string evidenceId);
     [DllImport("__Internal")]
     public static extern void FBOpenEvidenceBoard(string missionId);
 	[DllImport("__Internal")]
 	public static extern void FBEvidenceBoardClick(string missionId, string evidenceType, string factOrigin, string factTarget, bool accurate);
-	/* folded in
-		[DllImport("__Internal")]
-		public static extern void FBEvidenceChainHint(string missionId, string chainName, string feedbackKey);
-		[DllImport("__Internal")]
-		public static extern void FBEvidenceChainIncorrect(string missionId, string chainName, string feedbackKey);
-		[DllImport("__Internal")]
-		public static extern void FBEvidenceChainCorrect(string missionId, string chainName, string feedbackKey);
-	*/
 	[DllImport("__Internal")]
     public static extern void FBUnlockLocation(string missionId);
     [DllImport("__Internal")]
@@ -81,24 +65,10 @@ public class Logging : MonoBehaviour
     public static extern void FBDiveCameraActivate(string missionId, string diveNodeId);
 	[DllImport("__Internal")]
 	public static extern void FBDivePhotoClick(string missionId, string diveNodeId, bool accurate);
-	/* folded in
-		[DllImport("__Internal")]
-		public static extern void FBDiveNewPhoto(string missionId, string diveNodeId);
-		[DllImport("__Internal")]
-		public static extern void FBDivePhotoFail(string missionId, string diveNodeId);
-		[DllImport("__Internal")]
-		public static extern void FBDivePhotoAlreadyTaken(string missionId, string diveNodeId);
-		[DllImport("__Internal")]
-		public static extern void FBDiveNoPhotoAvailable(string missionId, string diveNodeId);
-	*/
     [DllImport("__Internal")]
     public static extern void FBDiveAllPhotosTaken(string missionId);
 	[DllImport("__Internal")]
-	public static extern void FBDiveJournalClick(string missionId, Dictionary<string, bool> tasks, string clickAction, string actor);
-	/* 
-		[DllImport("__Internal")]
-		public static extern void FBDiveJournalOpen(string missionId, Dictionary<string, bool> tasks, string clickAction, string actor);
-	*/
+	public static extern void FBDiveJournalClick(string missionId, string tasks, string clickAction, string actor);
 	[DllImport("__Internal")]
 	public static extern void FBConversationClick(string missionId, string scene, string clickType, string character, string clickAction);
 	[DllImport("__Internal")]
@@ -182,15 +152,12 @@ public class Logging : MonoBehaviour
 
 		// Conversation Click -- Mission, Scene, Click-Type, Character, Click-Action
 		conversation_click, // new
-		dialog_click,
 
-        view_dialog,
-        view_cutscene,
+		view_cutscene,
+		view_dialog,
 
 		// Close Inspect -- Mission, Scene, ItemID
 		close_inspect // new
-
-		// ------------------------------------------------------------
 	}
 
 	#region EventData
@@ -273,7 +240,6 @@ public class Logging : MonoBehaviour
             .Register<StringHash32>(GameEvents.ChainSolved, LogEvidenceChainCorrect);
         RegisterGenericLogEvent(GameEvents.BoardOpened, eventCategories.open_evidence_board, FBOpenEvidenceBoard);
         RegisterGenericLogEvent(GameEvents.LocationDiscovered, eventCategories.unlock_location, FBUnlockLocation);
-		// REMOVE: RegisterGenericLogEvent(GameEvents.BoardComplete, eventCategories.evidence_board_complete, FBEvidenceBoardComplete);
 		GameMgr.Events.Register(GameEvents.BoardComplete, LogEvidenceBoardComplete);
 
 		// map
@@ -294,17 +260,11 @@ public class Logging : MonoBehaviour
         RegisterDiveArgLogEvent<string>(GameEvents.Dive.NavigateToNode, eventCategories.dive_moveto_location, "next_node_id", FBDiveMoveToNode, (id) => diveNodeId = id);
         RegisterGenericLogEvent(GameEvents.Dive.NavigateToAscendNode, eventCategories.dive_moveto_ascend, FBDiveMoveToAscend, () => diveNodeId = string.Empty);
         RegisterDiveSiteLogEvent(GameEvents.Dive.CameraActivated, eventCategories.dive_activate_camera, FBDiveCameraActivate);
-		// REMOVE: RegisterDiveSiteLogEvent(GameEvents.Dive.ConfirmPhoto, eventCategories.dive_new_photo, FBDiveNewPhoto);
 		GameMgr.Events.Register(GameEvents.Dive.ConfirmPhoto, LogDiveNewPhoto);
-		// REMOVE: RegisterDiveSiteLogEvent(GameEvents.Dive.PhotoFail, eventCategories.dive_photo_fail, FBDivePhotoFail);
 		GameMgr.Events.Register(GameEvents.Dive.PhotoFail, LogDivePhotoFail);
-		// REMOVE: RegisterDiveSiteLogEvent(GameEvents.Dive.PhotoAlreadyTaken, eventCategories.dive_photo_already_taken, FBDivePhotoAlreadyTaken);
 		GameMgr.Events.Register(GameEvents.Dive.PhotoAlreadyTaken, LogDivePhotoAlreadyTaken);
-		// REMOVE: RegisterDiveSiteLogEvent(GameEvents.Dive.NoPhotoAvailable, eventCategories.dive_no_photo_available, FBDiveNoPhotoAvailable);
 		GameMgr.Events.Register(GameEvents.Dive.NoPhotoAvailable, LogDiveNoPhotoAvailable);
-		// REMOVE: RegisterGenericLogEvent(GameEvents.Dive.AllPhotosTaken, eventCategories.dive_all_photos_taken, FBDiveAllPhotosTaken);
 		GameMgr.Events.Register(GameEvents.Dive.AllPhotosTaken, LogDiveComplete);
-		//RegisterGenericLogEvent(GameEvents.Dive.RequestPhotoList, eventCategories.dive_journal_open, FBDiveJournalOpen);
 		GameMgr.Events.Register<EventData.Actor>(GameEvents.Dive.JournalOpened, HandleJournalOpened);
 		GameMgr.Events.Register<List<DivePointOfInterest>>(GameEvents.Dive.SendPhotoList, HandlePhotoListSent);
 		GameMgr.Events.Register(GameEvents.Dive.PhotoListSent, LogDiveJournalOpen);
@@ -345,7 +305,7 @@ public class Logging : MonoBehaviour
 		};
 
 		#if FIREBASE
-		FBSceneLoad(string missionId, string scene, string timestamp);
+		FBSceneLoad(missionId, scene, timestamp);
 		#endif
 	}
 
@@ -356,17 +316,18 @@ public class Logging : MonoBehaviour
 	// Mission, Status
 	private void LogCheckpoint(int index, EventData.Status status) {
 		missionId = GameDb.GetLevelData(index).name;
+		string statusStr = EventData.StatusDict[status];
 
 		Dictionary<string, string> data = new Dictionary<string, string>()
 		{
 			{ "mission_id", missionId },
-			{ "status", EventData.StatusDict[status] }
+			{ "status",  statusStr }
 		};
 
 		logger.Log(new LogEvent(data, eventCategories.checkpoint));
 
 #if FIREBASE
-        FBCheckpoint(missionId, status);
+        FBCheckpoint(missionId, statusStr);
 #endif
 	}
 
@@ -421,7 +382,7 @@ public class Logging : MonoBehaviour
 		logger.Log(new LogEvent(data, eventCategories.evidence_board_click));
 
 #if FIREBASE
-        FBEvidenceBoardClick(missionId, factType, factOriginStr, factTargetStr, accurate);
+        FBEvidenceBoardClick(missionId, factType, factOriginStr, factTargetStr, isAccurate);
 #endif
 	}
 	
@@ -479,7 +440,7 @@ public class Logging : MonoBehaviour
 		logger.Log(new LogEvent(data, eventCategories.dive_photo_click));
 
 #if FIREBASE
-        FBDivePhotoClick(missionId, location, accurate);
+        FBDivePhotoClick(missionId, location, isAccurate);
 #endif
 	}
 
@@ -573,7 +534,7 @@ public class Logging : MonoBehaviour
 		logger.Log(new LogEvent(data, eventCategories.conversation_click));
 
 #if FIREBASE
-        FBConversationClick(string missionId, string scene, string clickTypeStr, string character, string clickActionStr);
+        FBConversationClick(missionId, scene, clickTypeStr, nodeContact, clickActionStr);
 #endif
 	}
 
@@ -758,7 +719,7 @@ public class Logging : MonoBehaviour
 	}
 
 	private EventData.ClickType DetermineClickType() {
-		if (UIMgr.IsOpen<UIPhone>()) {
+		if (UIMgr.IsOpen<UIDialogScreen>()) {
 			return EventData.ClickType.Phone;
 		}
 		if (UIMgr.IsOpen<UICloseInspect>()) {
