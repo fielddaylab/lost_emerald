@@ -50,6 +50,7 @@ namespace Shipwreck {
 		}
 		private void HandleSound(bool value) {
 			AudioSrcMgr.instance.MuteAudio(!value);
+			CutscenePlayer.MuteAudio(!value);
 			AudioSrcMgr.instance.PlayOneShot("click_contact");
 		}
 		private void HandleFullscreen(bool value) {

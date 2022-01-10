@@ -49,6 +49,14 @@ namespace Shipwreck {
         private class Importer : ImporterBase<StickyAsset> {
         }
 
+        static public IEnumerable<KeyValuePair<StringHash32, string>> GetLocalizableContent(StickyAsset asset) {
+            asset.Parse();
+
+            foreach(var info in asset) {
+                yield return new KeyValuePair<StringHash32, string>(info.TextId, info.Text);
+            }
+        }
+
         #endif // UNITY_EDITOR
 	}
 

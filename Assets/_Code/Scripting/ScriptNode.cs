@@ -60,7 +60,7 @@ namespace Shipwreck {
 		private bool m_once;
 		private bool m_automatic;
 
-		public ScriptNode(string fullName, ILeafModule inModule) : base(fullName, inModule) {
+		public ScriptNode(string fullName, LeafNodePackage inModule) : base(fullName, inModule) {
 			m_fullName = fullName;
 		}
 
