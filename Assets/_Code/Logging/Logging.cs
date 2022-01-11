@@ -190,9 +190,9 @@ public class Logging : MonoBehaviour
 
 	#endregion
 
-	void Awake()
+	void OnEnable()
     {
-        DontDestroyOnLoad(this);
+        DontDestroyOnLoad(this.gameObject);
         logger = new SimpleLog(appId, appVersion, null);
 
 		// scenes
