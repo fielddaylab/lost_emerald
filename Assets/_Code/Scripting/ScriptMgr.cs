@@ -10,6 +10,7 @@ using Leaf.Defaults;
 using Leaf.Runtime;
 using UnityEngine;
 using BeauRoutine;
+using PotatoLocalization;
 
 namespace Shipwreck {
 
@@ -111,6 +112,17 @@ namespace Shipwreck {
 			eventConfig.Register(ScriptEvents.Global.Wait, (e, o) => Routine.WaitSeconds(e.GetFloat()));
 
 			ConfigureTagStringHandling(parseConfig, eventConfig);
+		}
+
+		public override bool TryLookupLine(StringHash32 inLineCode, LeafNode inLocalNode, out string outLine) {
+			LocalizationKey key = new LocalizationKey(inLineCode.ToString());
+			if (LocalizationMgr.ContainsKey(key)) {
+				outLine = LocalizationMgr.GetText(key);
+				return true;
+			} else {
+				outLine = null;
+				return false;
+			}
 		}
 
 		public override LeafThreadHandle Run(ScriptNode inNode, ILeafActor inActor = null, VariantTable inLocals = null, string inName = null) {
