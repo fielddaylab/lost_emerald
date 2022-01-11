@@ -331,8 +331,6 @@ public class Logging : MonoBehaviour
 		string factOriginStr = "origins: ";
 		string factTargetStr = "targets: ";
 
-		StringHashing.EnableReverseLookup(true);
-
 		ListSlice<StringHash32> roots = chainState.StickyInfo.RootIds;
 		foreach(StringHash32 root in roots) {
 			factOriginStr += root.ToDebugString() + " | ";
@@ -342,8 +340,6 @@ public class Logging : MonoBehaviour
 		foreach (StringHash32 node in nodes) {
 			factTargetStr += node.ToDebugString() + " | ";
 		}
-
-		StringHashing.EnableReverseLookup(false);
 
 		string accurate = isAccurate.ToString();
 
@@ -516,9 +512,7 @@ public class Logging : MonoBehaviour
 	}
 
 	private void HandleConversationOpen(ScriptNode node) {
-		StringHashing.EnableReverseLookup(true);
 		nodeContact = node.ContactId.ToDebugString();
-		StringHashing.EnableReverseLookup(false);
 	}
 
 	private void LogDialog(ScriptNode node) {
