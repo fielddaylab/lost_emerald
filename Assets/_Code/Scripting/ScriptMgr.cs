@@ -210,7 +210,7 @@ namespace Shipwreck {
 
 		private void RegisterNodes(LeafNodePackage<ScriptNode> package) {
 			StringHash32 triggerId;
-			foreach(var node in package) {
+			foreach(ScriptNode node in package) {
 				
 				m_allNodes[node.Id()] = node;
 
@@ -232,7 +232,7 @@ namespace Shipwreck {
 
 		private void DeregisterNodes(LeafNodePackage<ScriptNode> package) {
 			StringHash32 triggerId;
-			foreach(var node in package) {
+			foreach(ScriptNode node in package) {
 				
 				m_allNodes.Remove(node.Id());
 
@@ -304,6 +304,14 @@ namespace Shipwreck {
 		private static void ParseTargetArgs(TagData inTag, object inContext, ref TagEventData ioEvent) {
 			ioEvent.SetStringHash(inTag.Id.Substring(1));
 		}
+
+        #if UNITY_EDITOR
+
+        static public LeafParser<ScriptNode, LeafNodePackage<ScriptNode>> GetParser() {
+            return new Parser();
+        }
+
+        #endif // UNITY_EDITOR
 
 		#endregion // Parsing
 	}
