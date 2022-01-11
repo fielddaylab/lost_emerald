@@ -66,6 +66,17 @@ namespace Shipwreck {
 			UIMgr.Close<UIModalOverlay>();
 		}
 
+		protected override void OnShowCompleted() {
+			base.OnShowCompleted();
+			GameMgr.Events.Dispatch(GameEvents.ConversationClick, Logging.EventData.ClickAction.Open);
+
+		}
+
+		protected override void OnHideStart() {
+			base.OnHideStart();
+			GameMgr.Events.Dispatch(GameEvents.ConversationClick, Logging.EventData.ClickAction.Close);
+		}
+
 		protected override void OnHideCompleted() {
 			base.OnHideCompleted();
 
@@ -182,7 +193,7 @@ namespace Shipwreck {
 			}
 		}
 
-		protected override IEnumerator OnShowImage(Sprite image) {
+		protected override IEnumerator OnShowImage(Sprite image, StringHash32 imageId) {
 			//m_image.sprite = image;
 			m_image.gameObject.SetActive(true);
 			//m_image.SetAlpha(0);

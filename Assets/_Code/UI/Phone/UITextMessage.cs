@@ -43,7 +43,13 @@ namespace Shipwreck {
 			ClearContent();
 		}
 
+		protected override void OnShowCompleted() {
+			base.OnShowCompleted();
+			GameMgr.Events.Dispatch(GameEvents.ConversationClick, Logging.EventData.ClickAction.Open);
+		}
+
 		protected override void OnHideStart() {
+			GameMgr.Events.Dispatch(GameEvents.ConversationClick, Logging.EventData.ClickAction.Close);
 			base.OnHideStart();
 			if (!UIMgr.IsOpen<UIPhoneNotif>()) {
 				UIMgr.Close<UIModalOverlay>();
@@ -56,7 +62,6 @@ namespace Shipwreck {
 			ClearContent();
 			GameMgr.Events.Dispatch(GameEvents.DialogClosed);
 			GameMgr.RunTrigger(GameTriggers.OnDialogClosed);
-			GameMgr.Events.Dispatch(GameEvents.ConversationClick, Logging.EventData.ClickAction.Close);
 		}
 
 		protected override IEnumerator HideRoutine() {
@@ -89,9 +94,9 @@ namespace Shipwreck {
 			// do nothing
 		}
 
-		protected override IEnumerator OnShowImage(Sprite image) {
+		protected override IEnumerator OnShowImage(Sprite image, StringHash32 imageId) {
 			TextMessageImage obj = Instantiate(m_imagePrefab, m_content);
-			obj.Populate(m_currentCharacter, image);
+			obj.Populate(m_currentCharacter, image, imageId);
 			m_layout.ForceRebuild();
 			yield return m_scrollRect.NormalizedPosTo(0f, 0.1f, Axis.Y);
 			yield return 0.15f;

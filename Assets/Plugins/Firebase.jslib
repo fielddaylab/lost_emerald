@@ -235,7 +235,7 @@ mergeInto(LibraryManager.library, {
         var scene = Pointer_stringify(scene);
 		var itemId = Pointer_stringify(itemId);
         
-        analytics.logEvent("view_dialog", {
+        analytics.logEvent("close_inspect", {
             mission_id: missionId,
             scene: scene,
 			itemId: itemId

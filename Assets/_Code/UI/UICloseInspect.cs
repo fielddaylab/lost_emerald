@@ -1,4 +1,5 @@
 ﻿using BeauRoutine;
+using BeauUtil;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -50,7 +51,7 @@ namespace Shipwreck {
 			GameMgr.Events.Dispatch(GameEvents.CloseInspect, imageId);
 		}
 
-		public void OpenCloseInspect(Sprite inspectSprite, string imageId) {
+		public void OpenCloseInspect(Sprite inspectSprite, StringHash32 imageId) {
 			m_inspectImage.sprite = inspectSprite;
 			m_inspectImage.rectTransform.sizeDelta = inspectSprite.rect.size.normalized * REFERENCE_DIM;
 			// more space for landscape photos
@@ -60,7 +61,7 @@ namespace Shipwreck {
 					/ m_inspectImage.rectTransform.sizeDelta.y;
 			}
 			UIMgr.Open<UICloseInspect>();
-			GameMgr.Events.Dispatch(GameEvents.CloseInspect, imageId);
+			GameMgr.Events.Dispatch(GameEvents.CloseInspect, imageId.ToDebugString());
 		}
 
 		private void HandleClose() {

@@ -4,7 +4,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text;
 using BeauUtil;
@@ -38,7 +37,7 @@ public class Logging : MonoBehaviour
     [DllImport("__Internal")]
     public static extern void FBOpenEvidenceBoard(string missionId);
 	[DllImport("__Internal")]
-	public static extern void FBEvidenceBoardClick(string missionId, string evidenceType, string factOrigin, string factTarget, bool accurate);
+	public static extern void FBEvidenceBoardClick(string missionId, string evidenceType, string factOrigin, string factTarget, string accurate);
 	[DllImport("__Internal")]
     public static extern void FBUnlockLocation(string missionId);
     [DllImport("__Internal")]
@@ -64,7 +63,7 @@ public class Logging : MonoBehaviour
     [DllImport("__Internal")]
     public static extern void FBDiveCameraActivate(string missionId, string diveNodeId);
 	[DllImport("__Internal")]
-	public static extern void FBDivePhotoClick(string missionId, string diveNodeId, bool accurate);
+	public static extern void FBDivePhotoClick(string missionId, string diveNodeId, string accurate);
     [DllImport("__Internal")]
     public static extern void FBDiveAllPhotosTaken(string missionId);
 	[DllImport("__Internal")]
@@ -187,6 +186,8 @@ public class Logging : MonoBehaviour
 
 		public enum ClickType {
 			Phone,
+			Radio,
+			Text,
 			Evidence,
 			Inspect,
 			Menu,
@@ -195,6 +196,8 @@ public class Logging : MonoBehaviour
 		}
 		public static Dictionary<ClickType, string> ClickTypeDict = new Dictionary<ClickType, string> {
 			{ ClickType.Phone, "Phone" },
+			{ ClickType.Radio, "Radio" },
+			{ ClickType.Text, "Text" },
 			{ ClickType.Evidence, "Evidence" },
 			{ ClickType.Inspect, "Inspect" },
 			{ ClickType.Menu, "Menu" },
@@ -260,7 +263,7 @@ public class Logging : MonoBehaviour
         RegisterDiveArgLogEvent<string>(GameEvents.Dive.NavigateToNode, eventCategories.dive_moveto_location, "next_node_id", FBDiveMoveToNode, (id) => diveNodeId = id);
         RegisterGenericLogEvent(GameEvents.Dive.NavigateToAscendNode, eventCategories.dive_moveto_ascend, FBDiveMoveToAscend, () => diveNodeId = string.Empty);
         RegisterDiveSiteLogEvent(GameEvents.Dive.CameraActivated, eventCategories.dive_activate_camera, FBDiveCameraActivate);
-		GameMgr.Events.Register(GameEvents.Dive.ConfirmPhoto, LogDiveNewPhoto);
+		GameMgr.Events.Register<StringHash32>(GameEvents.Dive.ConfirmPhoto, LogDiveNewPhoto);
 		GameMgr.Events.Register(GameEvents.Dive.PhotoFail, LogDivePhotoFail);
 		GameMgr.Events.Register(GameEvents.Dive.PhotoAlreadyTaken, LogDivePhotoAlreadyTaken);
 		GameMgr.Events.Register(GameEvents.Dive.NoPhotoAvailable, LogDiveNoPhotoAvailable);
@@ -280,7 +283,7 @@ public class Logging : MonoBehaviour
 	}
 
     private void Start() {
-        LogBeginMission(GameMgr.State.CurrentLevel.Index);
+		GameMgr.Events.Dispatch(GameEvents.SceneLoaded, GameMgr.State.CurrentLevel.Index);
 	}
 
 	#region Scenes
@@ -358,6 +361,8 @@ public class Logging : MonoBehaviour
 		string factOriginStr = "origins: ";
 		string factTargetStr = "targets: ";
 
+		StringHashing.EnableReverseLookup(true);
+
 		ListSlice<StringHash32> roots = chainState.StickyInfo.RootIds;
 		foreach(StringHash32 root in roots) {
 			factOriginStr += root.ToDebugString() + " | ";
@@ -367,6 +372,8 @@ public class Logging : MonoBehaviour
 		foreach (StringHash32 node in nodes) {
 			factTargetStr += node.ToDebugString() + " | ";
 		}
+
+		StringHashing.EnableReverseLookup(false);
 
 		string accurate = isAccurate.ToString();
 
@@ -382,7 +389,7 @@ public class Logging : MonoBehaviour
 		logger.Log(new LogEvent(data, eventCategories.evidence_board_click));
 
 #if FIREBASE
-        FBEvidenceBoardClick(missionId, factType, factOriginStr, factTargetStr, isAccurate);
+        FBEvidenceBoardClick(missionId, factType, factOriginStr, factTargetStr, accurate);
 #endif
 	}
 	
@@ -440,11 +447,11 @@ public class Logging : MonoBehaviour
 		logger.Log(new LogEvent(data, eventCategories.dive_photo_click));
 
 #if FIREBASE
-        FBDivePhotoClick(missionId, location, isAccurate);
+        FBDivePhotoClick(missionId, location, accurate);
 #endif
 	}
 
-	private void LogDiveNewPhoto() {
+	private void LogDiveNewPhoto(StringHash32 photoId) {
 		LogDivePhotoClick(true);
 	}
 
@@ -539,7 +546,9 @@ public class Logging : MonoBehaviour
 	}
 
 	private void HandleConversationOpen(ScriptNode node) {
-		nodeContact = node.ContactId.ToString();
+		StringHashing.EnableReverseLookup(true);
+		nodeContact = node.ContactId.ToDebugString();
+		StringHashing.EnableReverseLookup(false);
 	}
 
 	private void LogDialog(ScriptNode node) {
@@ -564,7 +573,6 @@ public class Logging : MonoBehaviour
 
 	// Mission, Scene, ItemID
 	private void LogCloseInspect(string itemId) {
-
 		string scene = SceneManager.GetActiveScene().name;
 
 		Dictionary<string, string> data = new Dictionary<string, string>()
@@ -715,12 +723,19 @@ public class Logging : MonoBehaviour
 	}
 
 	private void HandleJournalOpened(EventData.Actor actor) {
+		Debug.Log("handling journal open: " + actor);
 		diveJournalActor = EventData.ActorDict[actor];
 	}
 
 	private EventData.ClickType DetermineClickType() {
 		if (UIMgr.IsOpen<UIDialogScreen>()) {
 			return EventData.ClickType.Phone;
+		}
+		if (UIMgr.IsOpen<UIRadioDialog>()) {
+			return EventData.ClickType.Radio;
+		}
+		if (UIMgr.IsOpen<UITextMessage>()) {
+			return EventData.ClickType.Text;
 		}
 		if (UIMgr.IsOpen<UICloseInspect>()) {
 			return EventData.ClickType.Inspect;

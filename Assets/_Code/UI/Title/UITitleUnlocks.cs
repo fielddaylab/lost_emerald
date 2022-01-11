@@ -151,7 +151,6 @@ namespace Shipwreck {
 			GameMgr.UnlockEvidence(1, "LV1-Photo-Artifact");
 			GameMgr.UnlockEvidence(1, "LV1-Card-Types");
 			GameMgr.UnlockEvidence(1, "LV1-Table-Wrecks");
-			GameMgr.UnlockEvidence(1, "LV1-Article-Sinking");
 			GameMgr.UnlockContact("lou");
 			GameMgr.UnlockContact("amy");
 			GameMgr.RecordNodeVisited("level01.mom-meet", "mom");
@@ -159,7 +158,6 @@ namespace Shipwreck {
 			GameMgr.RecordNodeVisited("level01.lou-meet", "lou");
 			GameMgr.RecordNodeVisited("level01.amy-meet", "amy");
 			GameMgr.RecordNodeVisited("level01.dad-urgent-text", "dad");
-			GameMgr.RecordNodeVisited("level01.amy-article", "amy");
 			GameMgr.RecordNodeVisited("level01.dive-start", "you");
 			GameMgr.RecordNodeVisited("level01.dive-photo-above", "you");
 			GameMgr.RecordNodeVisited("level01.dive-photo-name", "you");
@@ -175,6 +173,8 @@ namespace Shipwreck {
 		}
 		private void UnlockLevel2Part1() {
 			UnlockLevel1Part2();
+			GameMgr.UnlockEvidence(1, "LV1-Article-Sinking");
+			GameMgr.RecordNodeVisited("level01.amy-article", "amy");
 
 			GameMgr.SetLevelIndex(0);
 

@@ -139,9 +139,10 @@ namespace Shipwreck {
 			private void HandleMessageClosed() {
 				if (m_showJournal) {
 					Screen.AssignPreviousState(new DiveNavigation(Screen));
-					Screen.SetState(new DiveJournal(Screen));
 					GameMgr.Events.Dispatch(GameEvents.Dive.JournalOpened, Logging.EventData.Actor.Game);
-				} else {
+					Screen.SetState(new DiveJournal(Screen));
+				}
+				else {
 					Screen.SetState(Screen.Previous);
 				}
 			}

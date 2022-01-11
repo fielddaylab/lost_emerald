@@ -48,8 +48,14 @@ namespace Shipwreck {
 			m_textBox.text = string.Empty;
 
 			GameMgr.Events.Dispatch(GameEvents.DialogOpened);
+			GameMgr.Events.Dispatch(GameEvents.ConversationClick, Logging.EventData.ClickAction.Open);
 			UIMgr.Close<UIPhone>();
 			UIMgr.Close<UIModalOverlay>();
+		}
+
+		protected override void OnHideStart() {
+			GameMgr.Events.Dispatch(GameEvents.ConversationClick, Logging.EventData.ClickAction.Close);
+			base.OnHideStart();
 		}
 
 		protected override void OnHideCompleted() {
@@ -57,7 +63,6 @@ namespace Shipwreck {
 
 			GameMgr.Events.Dispatch(GameEvents.DialogClosed);
 			GameMgr.RunTrigger(GameTriggers.OnDialogClosed);
-			GameMgr.Events.Dispatch(GameEvents.ConversationClick, Logging.EventData.ClickAction.Close);
 		}
 
 		protected override IEnumerator ShowRoutine() {
@@ -167,7 +172,7 @@ namespace Shipwreck {
 			m_layout.ForceRebuild(true);
 		}
 
-		protected override IEnumerator OnShowImage(Sprite image) {
+		protected override IEnumerator OnShowImage(Sprite image, StringHash32 imageId) {
 			throw new NotSupportedException();
 		}
 
