@@ -93,28 +93,14 @@ public class Logging : MonoBehaviour
 
 	private enum eventCategories
     {
-		// scene load -- Mission, Scene, Timestamp
-		scene_load, // new
+		scene_load,
 
-		// checkpoint -- Mission, Status
-		checkpoint, // new
-		/* fold in
-			mission_start,
-			mission_complete,
-			mission_unlock,
-		*/
+		checkpoint,
 
         new_evidence,
 
 		open_evidence_board,
-
-		// Evidence Board Click -- Mission, Fact Type, Fact Origin, Fact Target, Accurate
-		evidence_board_click, // new
-		/* fold in
-			evidence_chain_hint,
-			evidence_chain_incorrect,
-			evidence_chain_correct,
-		*/
+		evidence_board_click,
         unlock_location,
 		evidence_board_complete,
 
@@ -131,32 +117,16 @@ public class Logging : MonoBehaviour
         dive_moveto_ascend,
 
         dive_activate_camera,
-
-		// Photo Click -- Mission, Location, Accurate
-		dive_photo_click, // new
-		/* fold in
-			dive_new_photo,
-			dive_photo_fail,
-			dive_photo_already_taken,
-			dive_no_photo_available,
-		*/ 
-
+		dive_photo_click,
         dive_all_photos_taken,
+		dive_journal_click,
 
-		// Journal Click -- Mission, Tasks, Action, Actor
-		dive_journal_click, // new
-		/* fold in
-			dive_journal_open,
-        */
-
-		// Conversation Click -- Mission, Scene, Click-Type, Character, Click-Action
-		conversation_click, // new
+		conversation_click,
 
 		view_cutscene,
 		view_dialog,
 
-		// Close Inspect -- Mission, Scene, ItemID
-		close_inspect // new
+		close_inspect
 	}
 
 	#region EventData
