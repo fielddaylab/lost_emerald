@@ -373,6 +373,68 @@ MonoBehaviour:
     m_hash: 1946345771
   - m_key: '@9DD4F8DD'
     m_hash: 558226488
+  - m_key: '@0AAFA148'
+    m_hash: -1268126467
+  - m_key: '@0DAFA601'
+    m_hash: 970925688
+  - m_key: '@0FAFA927'
+    m_hash: -359536049
+  - m_key: '@0EAFA794'
+    m_hash: -298302186
+  - m_key: '@10AFAABA'
+    m_hash: 1042337602
+  - m_key: '@03AF9643'
+    m_hash: 485918011
+  - m_key: '@02AF94B0'
+    m_hash: -1636567627
+  - m_key: '@4A7B2FE8'
+    m_hash: 407665256
+  - m_key: '@4B7B317B'
+    m_hash: -1077692767
+  - m_key: '@4C7B330E'
+    m_hash: -192129594
+  - m_key: '@4D7B34A1'
+    m_hash: -1150734769
+  - m_key: '@4E7B3634'
+    m_hash: 293217451
+  - m_key: '@4F7B37C7'
+    m_hash: -1748950228
+  - m_key: '@B6D2C546'
+    m_hash: -960983541
+  - m_key: '@B5D2C3B3'
+    m_hash: -154320971
+  - m_key: '@B4D2C220'
+    m_hash: 1295839716
+  - m_key: '@BBD2CD25'
+    m_hash: -1090636145
+  - m_key: '@BAD2CB92'
+    m_hash: 1076391498
+  - m_key: '@B9D2C9FF'
+    m_hash: -484496832
+  - m_key: '@B8D2C86C'
+    m_hash: 731093383
+  - m_key: '@BFD2D371'
+    m_hash: -963482592
+  - m_key: '@BED2D1DE'
+    m_hash: -1954327148
+  - m_key: '@43CCD8C2'
+    m_hash: 1973766765
+  - m_key: '@44CCDA55'
+    m_hash: 521370560
+  - m_key: '@41CCD59C'
+    m_hash: 1179411005
+  - m_key: '@42CCD72F'
+    m_hash: -2106479938
+  - m_key: '@3FCCD276'
+    m_hash: 893204131
+  - m_key: '@40CCD409'
+    m_hash: -834889294
+  - m_key: '@3DCCCF50'
+    m_hash: 913510178
+  - m_key: '@3ECCD0E3'
+    m_hash: -1564304955
+  - m_key: '@4BCCE55A'
+    m_hash: -1536367917
   - m_key: '@A7A05B33'
     m_hash: -1767503181
   - m_key: '@A6A059A0'
@@ -685,68 +747,6 @@ MonoBehaviour:
     m_hash: -1347201057
   - m_key: '@C15F2CC5'
     m_hash: -1024020185
-  - m_key: '@0AAFA148'
-    m_hash: -1268126467
-  - m_key: '@0DAFA601'
-    m_hash: 970925688
-  - m_key: '@0FAFA927'
-    m_hash: -359536049
-  - m_key: '@0EAFA794'
-    m_hash: -298302186
-  - m_key: '@10AFAABA'
-    m_hash: 1042337602
-  - m_key: '@03AF9643'
-    m_hash: 485918011
-  - m_key: '@02AF94B0'
-    m_hash: -1636567627
-  - m_key: '@4A7B2FE8'
-    m_hash: 407665256
-  - m_key: '@4B7B317B'
-    m_hash: -1077692767
-  - m_key: '@4C7B330E'
-    m_hash: -192129594
-  - m_key: '@4D7B34A1'
-    m_hash: -1150734769
-  - m_key: '@4E7B3634'
-    m_hash: 293217451
-  - m_key: '@4F7B37C7'
-    m_hash: -1748950228
-  - m_key: '@B6D2C546'
-    m_hash: -960983541
-  - m_key: '@B5D2C3B3'
-    m_hash: -154320971
-  - m_key: '@B4D2C220'
-    m_hash: 1295839716
-  - m_key: '@BBD2CD25'
-    m_hash: -1090636145
-  - m_key: '@BAD2CB92'
-    m_hash: 1076391498
-  - m_key: '@B9D2C9FF'
-    m_hash: -484496832
-  - m_key: '@B8D2C86C'
-    m_hash: 731093383
-  - m_key: '@BFD2D371'
-    m_hash: -963482592
-  - m_key: '@BED2D1DE'
-    m_hash: -1954327148
-  - m_key: '@43CCD8C2'
-    m_hash: 1973766765
-  - m_key: '@44CCDA55'
-    m_hash: 521370560
-  - m_key: '@41CCD59C'
-    m_hash: 1179411005
-  - m_key: '@42CCD72F'
-    m_hash: -2106479938
-  - m_key: '@3FCCD276'
-    m_hash: 893204131
-  - m_key: '@40CCD409'
-    m_hash: -834889294
-  - m_key: '@3DCCCF50'
-    m_hash: 913510178
-  - m_key: '@3ECCD0E3'
-    m_hash: -1564304955
-  - m_key: '@4BCCE55A'
-    m_hash: -1536367917
   - m_key: '@9BE31BF3'
     m_hash: -1642922924
   - m_key: '@9CE31D86'
@@ -1398,41 +1398,41 @@ MonoBehaviour:
   - Daniel Griffin is working to keep people safe on the lakes.
   - Dive into the lakes with Reya and Jules Griffin!
   - "See the captain\u2019s locket and first mate\u2019s journal in memorial exhibit!"
-  - '{@dad}  Hey Jules! Big news!'
+  - '{@dad} Hey Jules! Big news!'
   - You know how your grandpa's ship sank on Lake Superior, when I was just a kid?
-  - '{@you}  Of course. You''ve been talking about that shipwreck since I was little.'
-  - '{@dad}  Well, I found one of your grandpa''s old letters.'
+  - '{@you} Of course. You''ve been talking about that shipwreck since I was little.'
+  - '{@dad} Well, I found one of your grandpa''s old letters.'
   - His ship, the SS Emerald, was carrying treasure!
-  - '{@you}  Since when do you care about treasure, Dad?'
-  - '{@dad}  I don''t, but your sister does!'
+  - '{@you} Since when do you care about treasure, Dad?'
+  - '{@dad} I don''t, but your sister does!'
   - She's gonna help me find the shipwreck!
   - She also found your grandma's locket. Looks nice on her.
-  - '{@you}  Wait. You let Reya take the locket??'
-  - '{@dad}  Well, you weren''t here.'
+  - '{@you} Wait. You let Reya take the locket??'
+  - '{@dad} Well, you weren''t here.'
   - So what do you say? Wanna help us?
-  - '{@you}  Well... I guess I can start a file for Grandpa''s ship.'
-  - '{@dad}  That''s great!'
+  - '{@you} Well... I guess I can start a file for Grandpa''s ship.'
+  - '{@dad} That''s great!'
   - The Emerald has been lost for so long.
   - If I could just find it, it would fix everything!
-  - '{@you}  Wait... fix what? What do you mean?'
-  - '{@dad}  Sorry, Jules, no time to talk. I''ve got work to do!'
-  - '{@lou}  Hiya, Jules!'
-  - "{@you} \\tHey Lou. What\u2019s all that noise?"
-  - "{@lou} \\tOh, I\u2019m just out flying over Lake Michigan on my ultralight plane."
-  - "{@you} \\tWhat??? You\u2019re flying right now? Isn't that dangerous?"
-  - '{@lou} \tNot as dangerous as sitting at home, bored out of my mind.'
+  - '{@you} Wait... fix what? What do you mean?'
+  - '{@dad} Sorry, Jules, no time to talk. I''ve got work to do!'
+  - '{@lou} Hiya, Jules!'
+  - "{@you} Hey Lou. What\u2019s all that noise?"
+  - "{@lou} Oh, I\u2019m just out flying over Lake Michigan on my ultralight plane."
+  - "{@you} What??? You\u2019re flying right now? Isn't that dangerous?"
+  - '{@lou} Not as dangerous as sitting at home, bored out of my mind.'
   - Check out what I found!
   - What do you think?
-  - '{@you} \tLooks like a shipwreck!'
-  - '{@lou} \tAwesome! I thought it might be.'
+  - '{@you} Looks like a shipwreck!'
+  - '{@lou} Awesome! I thought it might be.'
   - It's in Lake Michigan, near Rawley Point.
   - I'll send you the latitude and longitude.
   - "Location: N 44\xB0 11.524' W 087\xB0 30.591'"
-  - '{@you} \tThanks, Lou. Stay safe out there!'
-  - '{@you}\tThe ship should be around here somewhere. Time to drive my boat around
+  - '{@you} Thanks, Lou. Stay safe out there!'
+  - '{@you}The ship should be around here somewhere. Time to drive my boat around
     and find it with my sonar.'
-  - "{@you}\\tThere it is! I\u2019ll drop a buoy to mark the location."
-  - '{@you}\tLooks like some of the rigging that held up the mast is still here!'
+  - "{@you}There it is! I\u2019ll drop a buoy to mark the location."
+  - '{@you}Looks like some of the rigging that held up the mast is still here!'
   - '{@you} There''s the ship!'
   - I'll take a photo from up here.
   - '{@you} Got it!'
@@ -1441,386 +1441,385 @@ MonoBehaviour:
   - Looks like some letters are missing.
   - '{@you} Whoa! What a cool old artifact.'
   - Looks like a knife. I wonder whose it was.
-  - '{@you}\tI already got a photo of this.'
-  - '{@you}\tBetter zoom in so I can see this better.'
-  - '{@you}\tI should zoom out so I can fit more in the picture.'
-  - '{@you}\tI don''t need a photo of this.'
-  - '{@you}  Hey, Amy! How are things at the archives?'
-  - '{@amy}  Great! Just digging up some documents for a new exhibit.'
+  - '{@you} I already got a photo of this.'
+  - '{@you} Better zoom in so I can see this better.'
+  - '{@you} I should zoom out so I can fit more in the picture.'
+  - '{@you} I don''t need a photo of this.'
+  - '{@you} Hey, Amy! How are things at the archives?'
+  - '{@amy} Great! Just digging up some documents for a new exhibit.'
   - Lou clued me in on the dive. How was it?
-  - '{@you}  Beautiful! The ship was in great condition. No mussels or plant life.'
-  - '{@amy}  Hmmm. It must''ve been covered up in sand until now.'
-  - '{@you}  The shipwreck was near Rawley Point.'
+  - '{@you} Beautiful! The ship was in great condition. No mussels or plant life.'
+  - '{@amy} Hmmm. It must''ve been covered up in sand until now.'
+  - '{@you} The shipwreck was near Rawley Point.'
   - Can you send me a list of ships that sank in that area?
-  - '{@amy}   Sure. Here you go!'
-  - '{@you}   Thanks, Amy!'
-  - '{@amy}  So? What''d you find out?'
-  - '{@you} \tOur ship is the Loretta!'
-  - '{@amy} \tWow! What an amazing find.'
+  - '{@amy} Sure. Here you go!'
+  - '{@you} Thanks, Amy!'
+  - '{@amy} So? What''d you find out?'
+  - '{@you} Our ship is the Loretta!'
+  - '{@amy} Wow! What an amazing find.'
   - Looks like it sank on the same day that the town of Peshtigo burned down.
-  - '{@you}   Yikes. A whole town burned down?'
-  - '{@amy}   Well, not the WHOLE town, but a lot of it.'
+  - '{@you}  Yikes. A whole town burned down?'
+  - '{@amy}  Well, not the WHOLE town, but a lot of it.'
   - It was the worst fire in American history.
   - All the smoke blew over the lake and made it hard for the captain to see.
   - 'Here''s a portrait of him:'
-  - '{@you}  Hey, that''s the knife I saw!'
-  - '{@amy}  It must''ve gone down with the ship.'
-  - '{@you}  Wow, look at that sailor''s knife!'
-  - '{@amy}  It was the captain''s. Sounds like it went down with the ship.'
-  - '{@you}  Hmm. I should dive again. Maybe it''s still down there.'
-  - '{@amy}  I''ve got an article about how it sank. I''ll send it over!'
-  - '{@lou}  Hey, Jules!'
+  - '{@you} Hey, that''s the knife I saw!'
+  - '{@amy} It must''ve gone down with the ship.'
+  - '{@you} Wow, look at that sailor''s knife!'
+  - '{@amy} It was the captain''s. Sounds like it went down with the ship.'
+  - '{@you} Hmm. I should dive again. Maybe it''s still down there.'
+  - '{@amy} I''ve got an article about how it sank. I''ll send it over!'
+  - '{@lou} Hey, Jules!'
   - I'm out flying again. Weather's great today!
   - Any juicy details on that shipwreck?
-  - '{@you}  Yes! The ship is the Loretta!'
-  - '{@lou}  Awesome name. How''d it sink?'
-  - '{@you}  Wildfires were burning all across Wisconsin, including an awful fire
+  - '{@you} Yes! The ship is the Loretta!'
+  - '{@lou} Awesome name. How''d it sink?'
+  - '{@you} Wildfires were burning all across Wisconsin, including an awful fire
     in Peshtigo, Wisconsin.'
   - The wind blew a ton of smoke out over the lake.
-  - '{@lou}   How could the captain see where he was going?'
-  - '{@you}   He couldn''t. The Loretta sailed too close to shore and got stuck on
+  - '{@lou}  How could the captain see where he was going?'
+  - '{@you}  He couldn''t. The Loretta sailed too close to shore and got stuck on
     a sandbar!'
   - The sailors had to climb up into the rigging. Luckily, they were rescued by a
     fishing boat.
-  - '{@lou}\tWow! What a wild story.'
+  - '{@lou} Wow! What a wild story.'
   - Can you imagine what it was like that night?
-  - '{@you}   Yeah...'
-  - '{@reya}\tHey sis! Ready to go treasure hunting?'
-  - '{@you}\tI''m not a treasure hunter, Reya.'
+  - '{@you}  Yeah...'
+  - '{@dad} Hey, kiddo! I need a favor.'
+  - Can you put up these flyers at your work?
+  - '{@you} Wait a minute. You''re having a yard sale?'
+  - '{@dad} Yep! Didn''t I tell ya?'
+  - I need money to buy a sonar for my boat.
+  - '{@you} Dad, you don''t even know how sonar works!'
+  - And what about our family history??
+  - You never talk about Grandpa, and now you're getting rid of all his stuff!
+  - '{@dad}  Well, what is there to talk about?'
+  - The lost shipwreck of the Emerald has been haunting me my whole life.
+  - I need to find it.
+  - "{@you}  But Dad\u2014"
+  - '{@dad}  I better finish setting things up. Wish me luck!'
+  - '{@reya} Hey, sis!'
+  - Check out my new necklace. It was Grandma's!
+  - It has her old wedding photo inside.
+  - '{@you} Wow. It''s beautiful!'
+  - I can't believe Dad just gave it to you.
+  - '{@reya} I know! Awesome, right?'
+  - That reminds me. I need your dive gear.
+  - '{@you} What?? No! That''s against the rules!'
+  - '{@reya} Aw, come on. We''re sisters. The rules don''t count.'
+  - I got hired to check out a shipwreck, and it's way down at 300 feet.
+  - I need your fancy deep-diving thing.
+  - '{@you} It''s called a rebreather, and you''re not trained to use it, Reya.'
+  - You need an expert to help you.
+  - '{@reya} Awww, Jules! Thank you. I would love your help.'
+  - "{@you} Wait, that's not what I meant\u2014"
+  - '{@reya} It''s near Port Washington.'
+  - "Location: 43\xB020'08.2\"N 87\xB034'11.3\"W"
+  - Race ya there!
+  - '{@reya} Hey sis! Ready to go treasure hunting?'
+  - '{@you} I''m not a treasure hunter, Reya.'
   - My job is about history! Solving mysteries, uncovering lost stories...
-  - '{@reya}\tYaaaawn. Whatever floats your boat, I guess.'
-  - "{@reya}\\tAnyway, the ship\u2019s down there."
-  - '{@reya}\tBreak a leg! Or a flipper, or whatever.'
-  - '{@you}\tGot it!'
+  - '{@reya} Yaaaawn. Whatever floats your boat, I guess.'
+  - "{@reya} Anyway, the ship\u2019s down there."
+  - '{@reya} Break a leg! Or a flipper, or whatever.'
+  - '{@you} Got it!'
   - Can you hear me through the coms, Reya? I'm diving down deeper.
-  - '{@reya}  Copy that, sis.'
+  - '{@reya} Copy that, sis.'
   - '{@you} That''s the ship! Looks like it''s covered in mussels.'
   - I should grab a top-down photo.
-  - '{@you}\tLooks like something crashed into the ship here.'
-  - '{@you}\tWow! There''s an old car in the cargo area!'
-  - '{@reya}  Huh? What''s cargo?'
-  - '{@you}   Oh, "cargo" just means the items that the ship was carrying.'
-  - '{@reya}  Ha. The "cargo" is a car that won''t go! Get it??'
-  - '{@you}\tThere''s an old safe! I wonder what''s inside.'
-  - '{@reya}\tA safe?! You gotta grab it!'
-  - '{@you}   No way, Reya. It''s illegal to take anything without a permit.'
-  - '{@reya}\tUgh. You are SO BORING. I can''t believe we''re related.'
-  - '{@you}\tI''ll have a better view of that from the other side.'
-  - '{@you}\tThere''s the cargo hatch!'
+  - '{@you} Looks like something crashed into the ship here.'
+  - '{@you} Wow! There''s an old car in the cargo area!'
+  - '{@reya} Huh? What''s cargo?'
+  - '{@you}  Oh, "cargo" just means the items that the ship was carrying.'
+  - '{@reya} Ha. The "cargo" is a car that won''t go! Get it??'
+  - '{@you} There''s an old safe! I wonder what''s inside.'
+  - '{@reya} A safe?! You gotta grab it!'
+  - '{@you}  No way, Reya. It''s illegal to take anything without a permit.'
+  - '{@reya} Ugh. You are SO BORING. I can''t believe we''re related.'
+  - '{@you} I''ll have a better view of that from the other side.'
+  - '{@you} There''s the cargo hatch!'
   - Hmm. Looks like part of an old car, but there's not much left.
-  - '{@you}\tI already got a photo of this.'
-  - '{@you}\tI should zoom in for a better shot!'
-  - '{@you}\tBetter zoom out a little.'
-  - '{@you}\tI don''t need a photo of this.'
-  - '{@amy}\tHey! Heard you went on a dive with your sister.'
+  - '{@you} I already got a photo of this.'
+  - '{@you} I should zoom in for a better shot!'
+  - '{@you} Better zoom out a little.'
+  - '{@you} I don''t need a photo of this.'
+  - '{@amy} Hey! Heard you went on a dive with your sister.'
   - "How\u2019d it go?"
-  - '{@you}  Well... she called me boring and tried to get me in trouble.'
+  - '{@you} Well... she called me boring and tried to get me in trouble.'
   - But we found an amazing wreck!
   - It's a freighter near Port Washington. It was carrying old cars.
-  - '{@amy}  Hmm. Looks like two freighters sank in that area with cars onboard.'
+  - '{@amy} Hmm. Looks like two freighters sank in that area with cars onboard.'
   - One with Kissel cars, and one with Nash cars.
   - They used to be made here in Wisconsin!
-  - '{@you}   Hmm. So if I can identify the car I found, I should be able to figure
+  - '{@you}  Hmm. So if I can identify the car I found, I should be able to figure
     out the ship!'
-  - '{@amy}   I''ve got a friend at the auto museum. I''ll have him call you.'
-  - '{@you}\tThanks, Amy!'
-  - "{@cooper}\\tHi there! Are you Amy\u2019s friend?"
-  - '{@you}\tYep. I''m Jules Griffin.'
+  - '{@amy}  I''ve got a friend at the auto museum. I''ll have him call you.'
+  - '{@you} Thanks, Amy!'
+  - "{@cooper} Hi there! Are you Amy\u2019s friend?"
+  - '{@you} Yep. I''m Jules Griffin.'
   - Can you send me photos of Nash and Kissel brand cars?
-  - '{@cooper}\tOf course! Just a minute...'
-  - '{@you}\tAwesome, thanks!'
-  - '{@cooper}     It''s funny. You''ve got the same last name as the captain who
-    caused that awful shipwreck.'
-  - '{@you}\tUm, yeah. I know.'
+  - '{@cooper} Of course! Just a minute...'
+  - '{@you} Awesome, thanks!'
+  - '{@cooper}   It''s funny. You''ve got the same last name as the captain who caused
+    that awful shipwreck.'
+  - '{@you} Um, yeah. I know.'
   - Wait... did you say the captain CAUSED the shipwreck?
-  - '{@cooper}\tThat''s right. It was a local legend when I was a kid.'
+  - '{@cooper} That''s right. It was a local legend when I was a kid.'
   - The steel company that owned the ship said it was in great condition. The strongest
     freighter on the lake!
   - But the captain took it out in a terrible storm.
   - If only he'd been more careful.
   - '{@you} Wow. I had no idea.'
   - Thanks again, Cooper.
-  - '{@cooper}  Happy to help!'
-  - '{@amy}\tAny news on the shipwreck?'
-  - '{@you}\tYep, the ship is the Madison!'
-  - '{@amy}\tNice work, Jules!'
+  - '{@cooper} Happy to help!'
+  - '{@amy} Any news on the shipwreck?'
+  - '{@you} Yep, the ship is the Madison!'
+  - '{@amy} Nice work, Jules!'
   - "I\u2019ll send you the transcript of the radio distress call."
   - And the ship manifest, too!
-  - '{@you}\tThanks, Amy!'
-  - '{@reya}\tHey, sis! Figure out that ship?'
-  - '{@you}\tActually, yes. The ship is the Madison!'
-  - '{@reya}\tCool. I solved a mystery too.'
-  - '{@you}\tWhat?! Reya, how did you get that safe?'
-  - '{@reya}\tThe guy who hired me got a permit to bring it up!'
+  - '{@you} Thanks, Amy!'
+  - '{@reya} Hey, sis! Figure out that ship?'
+  - '{@you} Actually, yes. The ship is the Madison!'
+  - '{@reya} Cool. I solved a mystery too.'
+  - '{@you} What?! Reya, how did you get that safe?'
+  - '{@reya} The guy who hired me got a permit to bring it up!'
   - It's just a bunch of nickels and an old alarm clock. I was hoping for gold.
   - But they're gonna display it at a museum, with my name on it!
   - What about the Madison? I wanna know how it sank!
-  - '{@you}  Fine. Let''s see...'
+  - '{@you} Fine. Let''s see...'
   - "It was a super foggy day\u2014the same day the stock market crashed and started
     the Great Depression."
   - The Madison was carrying 268 Wisconsin-made Nash cars to Detroit.
   - All of a sudden, another freighter appeared in the fog.
   - The ships were too close to avoid crashing. The SS Lookout rammed the Madison!
-  - '{@reya}  Ha. Biggest car wreck ever!'
-  - '{@you}\tThe captain of the Lookout panicked and headed to port, leaving the
-    Madison behind.'
+  - '{@reya} Ha. Biggest car wreck ever!'
+  - '{@you} The captain of the Lookout panicked and headed to port, leaving the Madison
+    behind.'
   - Luckily, another ship came to help, but a bunch of people didn't survive.
-  - '{@reya}  Wow. That''s actually a great story.'
+  - '{@reya} Wow. That''s actually a great story.'
   - Super sad, though.
   - I wonder if anybody saw it coming...
-  - '{@dad}\tHey, Jules. I''ve got a shipwreck for you to check out!'
+  - '{@dad} Hey, Jules. I''ve got a shipwreck for you to check out!'
   - My fishing buddy pulled this up on Lake Michigan.
-  - '{@you}\tLooks like part of a sidewheel steamer!'
+  - '{@you} Looks like part of a sidewheel steamer!'
   - I'll talk to my mentor, Cami. She's an expert on those ships.
   - Did you get the latitude and longitude?
-  - '{@dad}\tYep. It''s near Sheboygan.'
+  - '{@dad} Yep. It''s near Sheboygan.'
   - "Location: 43\xB042'08.6\"N 87\xB038'26.0\"W"
-  - '{@you}\tThanks, Dad.'
+  - '{@you} Thanks, Dad.'
   - How's the new sonar?
-  - '{@dad}   Uh... not so great.'
+  - '{@dad}  Uh... not so great.'
   - But I'm sure I'll figure it out. Eventually.
   - I'm out on Lake Superior right now. Got my map with me.
   - "Your grandpa\u2019s last planned route is marked in red."
   - The Emerald must be around here somewhere.
-  - '{@you} \tDad... why didn''t you tell me the shipwreck was Grandpa''s fault?'
-  - '{@dad}  What?! Of course it wasn''t his fault.'
-  - '{@you}  The steel company said it was.'
-  - '{@dad}  They just needed somebody to blame. How can you think that about your
+  - '{@you} Dad... why didn''t you tell me the shipwreck was Grandpa''s fault?'
+  - '{@dad} What?! Of course it wasn''t his fault.'
+  - '{@you} The steel company said it was.'
+  - '{@dad} They just needed somebody to blame. How can you think that about your
     own grandpa?!'
-  - '{@you}  Well, you never talk about him! What was he like?'
-  - '{@dad}  Never mind that, Jules.'
+  - '{@you} Well, you never talk about him! What was he like?'
+  - '{@dad} Never mind that, Jules.'
   - We just need to find that ship. Then you'll see.
-  - '{@cami}  Hey Jules! You need some info on a sidewheel steamer?'
-  - '{@you}   Yep! Thanks for calling, Cami.'
+  - '{@cami} Hey Jules! You need some info on a sidewheel steamer?'
+  - '{@you}  Yep! Thanks for calling, Cami.'
   - Who's that guy with you?
-  - '{@cami}  Johnny''s my new diving student.'
+  - '{@cami} Johnny''s my new diving student.'
   - He's full of awesome stories. You should chat with him sometime!
-  - '{@you}   Maybe later.'
+  - '{@you}  Maybe later.'
   - Have you heard of any sidewheel steamers that wrecked near Sheboygan?
   - '{@cami} Ooh, could be the Paradise!'
   - Here, check it out!
   - Gorgeous, huh? It sank in 1856.
   - People called these type of ships Palace Steamers, because they were so fancy.
   - The manifest was lost, so the cargo is unknown.
-  - '{@you}  Wow, you know a ton about this ship!'
-  - '{@cami}  Yep! It''s a favorite project of mine.'
+  - '{@you} Wow, you know a ton about this ship!'
+  - '{@cami} Yep! It''s a favorite project of mine.'
   - Keep a lookout for the red anchor. It should have the name engraved on it.
-  - '{@you}  Thanks, Cami!'
-  - '{@you}\tThe ship should be down there somewhere. Time to use my sonar!'
+  - '{@you} Thanks, Cami!'
+  - '{@you} The ship should be down there somewhere. Time to use my sonar!'
   - '{@you} Got it!'
   - '{@you} Yes! It''s the Paradise!'
   - Can't wait to tell Cami.
-  - '{@you}\tWhoa. Are those... gold bars??'
+  - '{@you} Whoa. Are those... gold bars??'
   - Where on earth did those come from?
-  - '{@you}  Got the cargo!'
+  - '{@you} Got the cargo!'
   - Wow... these rocking horses are more than 100 years old!
-  - '{@you}\tWhat''s that written on the anchor?'
-  - '{@you}\tThat paddle wheel matches the one in Dad''s photo!'
+  - '{@you} What''s that written on the anchor?'
+  - '{@you} That paddle wheel matches the one in Dad''s photo!'
   - '{@you} Whoa. What happened here? The ship is totally destroyed!'
   - Looks like the engine is missing. The ship owners must've had someone bring it
     up from the wreck.
-  - '{@you}\tI should try a different angle for a better shot'
-  - '{@you}\tI already got a photo of this.'
-  - '{@you}\tI should zoom in for a better shot!'
-  - '{@you}\tBetter zoom out to get more in the picture.'
-  - '{@you}\tI don''t need a photo of this.'
-  - '{@you}\tHey Cami, great news. The ship is the Paradise!'
-  - '{@cami}  Wahoo! Nice work, Jules.'
+  - '{@you} I should try a different angle for a better shot'
+  - '{@you} I already got a photo of this.'
+  - '{@you} I should zoom in for a better shot!'
+  - '{@you} Better zoom out to get more in the picture.'
+  - '{@you} I don''t need a photo of this.'
+  - '{@you} Hey Cami, great news. The ship is the Paradise!'
+  - '{@cami} Wahoo! Nice work, Jules.'
   - I'll send you the survivor accounts of the sinking.
-  - '{@you}\tThanks!'
+  - '{@you} Thanks!'
   - So, why's this ship so important to you?
-  - '{@cami}  When I was little, my best friend had ancestors who were lost on the
+  - '{@cami} When I was little, my best friend had ancestors who were lost on the
     Paradise.'
   - It's the reason I became a maritime archaeologist.
   - It'll mean a lot to tell her we finally found it.
-  - '{@you}  Wow, that''s amazing!'
+  - '{@you} Wow, that''s amazing!'
   - Glad I could help.
-  - '{@you}   Hey, Dad! Any luck finding Grandpa''s ship?'
-  - "{@dad}\\tNah. Sonar\u2019s on the fritz again."
+  - '{@you} Hey, Dad! Any luck finding Grandpa''s ship?'
+  - "{@dad} Nah. Sonar\u2019s on the fritz again."
   - You were right, Jules. I'm not cut out for this.
-  - '{@you}  Aw, Dad. Don''t give up.'
+  - '{@you} Aw, Dad. Don''t give up.'
   - Thanks to you, we found a piece of history that was lost for more than 100 years!
-  - '{@dad}  Ooh. That sidewheel steamer? What''d you find out?'
-  - '{@you}\tThe ship is a Palace Steamer, the Paradise!'
-  - '{@you}\tIt was traveling past Sheboygan when a fire started in the boiler room.'
-  - "{@dad}\\tYikes. Fire on a wooden ship\u2014that's not good."
-  - '{@you}\tNope. The fire spread super fast, and people panicked.'
+  - '{@dad} Ooh. That sidewheel steamer? What''d you find out?'
+  - '{@you} The ship is a Palace Steamer, the Paradise!'
+  - '{@you} It was traveling past Sheboygan when a fire started in the boiler room.'
+  - "{@dad} Yikes. Fire on a wooden ship\u2014that's not good."
+  - '{@you} Nope. The fire spread super fast, and people panicked.'
   - One guy even jumped into a lifeboat with a bunch of heavy gold bars and broke
     the ropes!
   - Another ship saw the fire and came to help, but they couldn't save everyone.
-  - '{@dad}\tOh boy, what a tragedy.'
-  - '{@you}\tYeah. It must''ve been pretty scary...'
-  - '{@dad} \tHey, kiddo! I need a favor.'
-  - Can you put up these flyers at your work?
-  - '{@you} \tWait a minute. You''re having a yard sale?'
-  - '{@dad}  Yep! Didn''t I tell ya?'
-  - I need money to buy a sonar for my boat.
-  - '{@you}\tDad, you don''t even know how sonar works!'
-  - And what about our family history??
-  - You never talk about Grandpa, and now you're getting rid of all his stuff!
-  - '{@dad}   Well, what is there to talk about?'
-  - The lost shipwreck of the Emerald has been haunting me my whole life.
-  - I need to find it.
-  - "{@you}   But Dad\u2014"
-  - '{@dad}   I better finish setting things up. Wish me luck!'
-  - '{@reya} Hey, sis!'
-  - Check out my new necklace. It was Grandma's!
-  - It has her old wedding photo inside.
-  - '{@you}  Wow. It''s beautiful!'
-  - I can't believe Dad just gave it to you.
-  - '{@reya} I know! Awesome, right?'
-  - That reminds me. I need your dive gear.
-  - '{@you}\tWhat?? No! That''s against the rules!'
-  - '{@reya}\tAw, come on. We''re sisters. The rules don''t count.'
-  - I got hired to check out a shipwreck, and it's way down at 300 feet.
-  - I need your fancy deep-diving thing.
-  - '{@you}\tIt''s called a rebreather, and you''re not trained to use it, Reya.'
-  - You need an expert to help you.
-  - '{@reya} Awww, Jules! Thank you. I would love your help.'
-  - "{@you}  Wait, that's not what I meant\u2014"
-  - '{@reya}\tIt''s near Port Washington.'
-  - "Location: 43\xB020'08.2\"N 87\xB034'11.3\"W"
-  - Race ya there!
+  - '{@dad} Oh boy, what a tragedy.'
+  - '{@you} Yeah. It must''ve been pretty scary...'
   - '{@reya} Hey sis!'
   - I heard you met my friend Johnny. He asked for your number!
-  - '{@you}   Johnny... that''s Cami''s diving student, right?'
-  - '{@reya}  Yep. I think he likes you!'
+  - '{@you}  Johnny... that''s Cami''s diving student, right?'
+  - '{@reya} Yep. I think he likes you!'
   - Don't worry, I told him you were too busy with paperwork.
   - Ooh, that reminds me... check out this awesome postcard!
   - It was left over from Dad's yard sale. Think it's worth anything?
-  - '{@you}   Hold on. Did you read this, Reya??'
+  - '{@you}  Hold on. Did you read this, Reya??'
   - Grandpa wrote that O.K. Steel sent him on an extra trip.
-  - '{@reya}  Um... so?'
-  - '{@you}   There''s no official record of this. It doesn''t match Dad''s map.'
-  - '{@dad}   Wait a sec. You mean... I''ve been searching the wrong part of the
-    lake??'
-  - '{@reya}  Yes!!! I found a clue!!!'
-  - '{@you}   We have Grandpa''s final route. Now we need to narrow down the location.'
-  - '{@reya}  Well, what are you waiting for, sis? Go do some research!!'
-  - "{@you}\\tAmy, I need your help. I found a new lead on Grandpa\u2019s ship!"
-  - '{@amy}  You did??'
-  - '{@you}  Well... my sister helped. A little.'
+  - '{@reya} Um... so?'
+  - '{@you}  There''s no official record of this. It doesn''t match Dad''s map.'
+  - '{@dad}  Wait a sec. You mean... I''ve been searching the wrong part of the lake??'
+  - '{@reya} Yes!!! I found a clue!!!'
+  - '{@you}  We have Grandpa''s final route. Now we need to narrow down the location.'
+  - '{@reya} Well, what are you waiting for, sis? Go do some research!!'
+  - "{@you} Amy, I need your help. I found a new lead on Grandpa\u2019s ship!"
+  - '{@amy} You did??'
+  - '{@you} Well... my sister helped. A little.'
   - I marked my grandpa's route in blue.
   - He mentioned rough waves near the Apostle Islands.
   - Do you have any evidence of shipwrecks in that area?
-  - "{@amy}\\tHmm, let\u2019s see..."
+  - "{@amy} Hmm, let\u2019s see..."
   - A fisherman pulled up this broken piece of steel near Outer Island.
   - It could be from a freighter like your grandpa's.
   - "Location: 47\xB005'19.4\"N 90\xB017'17.5\"W"
-  - '{@you}\tThanks, Amy!'
+  - '{@you} Thanks, Amy!'
   - I'll send the steel sample to my mom.
   - She's a materials scientist. She can test it in her lab and find out more about
     it.
   - '{@reya} Well????'
-  - "{@you}\\tI\u2019ve got a location of a steel shipwreck. It could be Grandpa's."
-  - '{@reya}  Yes!!! Treasure, here we come!'
-  - '{@you}  Reya, slow down.'
+  - "{@you} I\u2019ve got a location of a steel shipwreck. It could be Grandpa's."
+  - '{@reya} Yes!!! Treasure, here we come!'
+  - '{@you} Reya, slow down.'
   - What if it's not the Emerald?
-  - '{@reya}  Aww, sis. You worry too much.'
+  - '{@reya} Aww, sis. You worry too much.'
   - Get out there and check it out!
   - Dad and I will be waiting by the phone!
-  - "{@you}\\tWell... that\u2019s definitely a ship."
+  - "{@you} Well... that\u2019s definitely a ship."
   - I wonder if it's Grandpa's.
-  - '{@you}\tWhoa. Is it me or is that ship... broken in half?'
+  - '{@you} Whoa. Is it me or is that ship... broken in half?'
   - '{@you} Got it!'
-  - '{@you}\tWow. I can''t believe it. We found the Emerald!'
+  - '{@you} Wow. I can''t believe it. We found the Emerald!'
   - "I can\u2019t wait to tell Dad!"
-  - '{@you}  That locket looks just like Reya''s!'
+  - '{@you} That locket looks just like Reya''s!'
   - I wonder if it was Grandpa's.
-  - '{@you}\tI should get a photo of the ship split in half.'
-  - '{@you}\tThere''s the crane they used for loading the cargo!'
-  - '{@you}\tWow, the pilot house. That would''ve been where Grandpa worked!'
-  - '{@you}\tLooks like the ship was carrying iron ore.'
-  - '{@you}\tMaybe I can get a better angle. I need to show both sides of the break
+  - '{@you} I should get a photo of the ship split in half.'
+  - '{@you} There''s the crane they used for loading the cargo!'
+  - '{@you} Wow, the pilot house. That would''ve been where Grandpa worked!'
+  - '{@you} Looks like the ship was carrying iron ore.'
+  - '{@you} Maybe I can get a better angle. I need to show both sides of the break
     in the ship.'
-  - '{@you}\tThe other side might have a better angle to show both parts of the ship.'
-  - '{@you}\tI already got a photo of this.'
-  - '{@you}\tI should zoom in for a better shot!'
-  - '{@you}\tBetter zoom out a little.'
-  - '{@you}\tI don''t need a photo of this.'
-  - "{@amy}\\tHey, Jules! How\u2019d it go?"
-  - '{@you}\tI found the Emerald!'
+  - '{@you} The other side might have a better angle to show both parts of the ship.'
+  - '{@you} I already got a photo of this.'
+  - '{@you} I should zoom in for a better shot!'
+  - '{@you} Better zoom out a little.'
+  - '{@you} I don''t need a photo of this.'
+  - "{@amy} Hey, Jules! How\u2019d it go?"
+  - '{@you} I found the Emerald!'
   - Now I need to figure out how it sank.
   - The legend says the ship was super strong.
   - I wonder how it broke in half.
-  - '{@amy}  I think I can help.'
+  - '{@amy} I think I can help.'
   - Cami managed to track down a survivor from the Emerald!
   - She sent me his contact info.
   - 'Edmund Brooks: 555-1242'
-  - '{@you}\tWow, that''s so lucky! Thanks, Amy!'
-  - '{@you}\tHi. Are you Mr. Brooks?'
-  - '{@ed}\tCall me Ed. This is my grandson, Johnny.'
-  - '{@you}   Hold on. I saw you last week! You''re Cami''s diving student, right?'
+  - '{@you} Wow, that''s so lucky! Thanks, Amy!'
+  - '{@you} Hi. Are you Mr. Brooks?'
+  - '{@ed} Call me Ed. This is my grandson, Johnny.'
+  - '{@you}  Hold on. I saw you last week! You''re Cami''s diving student, right?'
   - '{@johnny} Yep. Gramps here was a sailor on the Emerald.'
   - I've been hearing his amazing stories my whole life.
-  - '{@you}   How do you know my sister?'
+  - '{@you}  How do you know my sister?'
   - '{@johnny} We took a skydiving class together.'
   - I had no idea she was related to the captain of the Emerald!
-  - '{@you}  Yeah. My family never talks about it.'
+  - '{@you} Yeah. My family never talks about it.'
   - I'm trying to find out what really happened.
-  - '{@ed}   I wrote it all down in my journal.'
+  - '{@ed}  I wrote it all down in my journal.'
   - We were sailing smoothly when all of a sudden, there was a loud BANG.
   - The ship had started to break in half!
   - The captain helped launch a lifeboat. Then he tried to radio for help, but the
     power went out as the ship broke apart.
-  - '{@you}\tDid you tell anyone what happened?'
-  - '{@ed}   I tried, but O.K. Steel put the blame on your grandpa.'
+  - '{@you} Did you tell anyone what happened?'
+  - '{@ed}  I tried, but O.K. Steel put the blame on your grandpa.'
   - People said I must've remembered it wrong.
-  - '{@you}\tDid my grandpa ever talk about treasure?'
-  - '{@ed}\tHmm. Treasure?'
+  - '{@you} Did my grandpa ever talk about treasure?'
+  - '{@ed} Hmm. Treasure?'
   - Oh, you must mean his locket! It had photos of his wife and son.
-  - '{@you}\tThank you, Ed. I''m sorry it took so long for someone to listen to you.'
-  - '{@ed}   I always hoped the truth would come out. I''m glad you didn''t give
-    up the search.'
-  - '{@you}  Actually, it was my dad who wouldn''t give up.'
-  - '{@ed}   Well, tell him thank you from me.'
-  - '{@mom}\tHey Sweetie! How''d it go out there?'
-  - '{@you}   I found the Emerald!'
-  - '{@mom}   That''s wonderful, Jules!'
-  - '{@you}   I still need to solve the mystery of why the ship sank.'
-  - '{@mom}   Actually... it''s not such a mystery.'
+  - '{@you} Thank you, Ed. I''m sorry it took so long for someone to listen to you.'
+  - '{@ed}  I always hoped the truth would come out. I''m glad you didn''t give up
+    the search.'
+  - '{@you} Actually, it was my dad who wouldn''t give up.'
+  - '{@ed}  Well, tell him thank you from me.'
+  - '{@mom} Hey Sweetie! How''d it go out there?'
+  - '{@you}  I found the Emerald!'
+  - '{@mom}  That''s wonderful, Jules!'
+  - '{@you}  I still need to solve the mystery of why the ship sank.'
+  - '{@mom}  Actually... it''s not such a mystery.'
   - I tested the steel sample you sent me.
   - It was weak and brittle. There's no way that ship could've held up against the
     waves.
-  - '{@you}   Wow. So that''s why the Emerald broke apart!'
-  - '{@mom}   Yep. It was only a matter of time.'
-  - '{@you}   I need to tell Dad. He was right all along.'
+  - '{@you}  Wow. So that''s why the Emerald broke apart!'
+  - '{@mom}  Yep. It was only a matter of time.'
+  - '{@you}  I need to tell Dad. He was right all along.'
   - Thanks for your help, Mom!
-  - '{@mom}   No problem, Sweetie.'
+  - '{@mom}  No problem, Sweetie.'
   - I'm heading home soon, but I'll let you tell him.
   - Nice work out there.
-  - '{@reya}  Hey sis. I heard you called Johnny!'
-  - '{@you}   It was about the shipwreck.'
-  - '{@reya}  Ha. Sure it was.'
-  - '{@dad}   Well?? What did you find out?'
-  - '{@you}   We found it, Dad. The shipwreck is the Emerald.'
-  - '{@reya}  YESS!!!!'
-  - '{@dad}   I can''t believe it. After all this time.'
-  - '{@you}   You were right, Dad. The wreck wasn''t Grandpa''s fault.'
+  - '{@reya} Hey sis. I heard you called Johnny!'
+  - '{@you}  It was about the shipwreck.'
+  - '{@reya} Ha. Sure it was.'
+  - '{@dad}  Well?? What did you find out?'
+  - '{@you}  We found it, Dad. The shipwreck is the Emerald.'
+  - '{@reya} YESS!!!!'
+  - '{@dad}  I can''t believe it. After all this time.'
+  - '{@you}  You were right, Dad. The wreck wasn''t Grandpa''s fault.'
   - The waves were rough, but the ship was sailing smoothly.
   - Then there was a loud bang, and the Emerald broke in half!
   - Grandpa helped launch a life raft, but he wasn't able to make it to safety.
-  - '{@reya}   Whoa. Poor Grandpa.'
-  - '{@dad}   I don''t understand. How can a huge freighter just break apart?'
-  - '{@you}   Mom found out that the ship was made of weak steel.'
+  - '{@reya}  Whoa. Poor Grandpa.'
+  - '{@dad}  I don''t understand. How can a huge freighter just break apart?'
+  - '{@you}  Mom found out that the ship was made of weak steel.'
   - It wasn't strong enough to hold up against the waves.
-  - '{@dad}   That''s awful. I need to get the word out!'
+  - '{@dad}  That''s awful. I need to get the word out!'
   - What if there are other ships in danger?
-  - '{@reya}  Okay, okay, that''s great and all. But what about the treasure??'
-  - '{@you}   The treasure was Grandpa''s locket. It had a picture of you, Dad.'
-  - '{@reya}   What? That''s it??'
+  - '{@reya} Okay, okay, that''s great and all. But what about the treasure??'
+  - '{@you}  The treasure was Grandpa''s locket. It had a picture of you, Dad.'
+  - '{@reya}  What? That''s it??'
   - Well, at least you can get a permit and go grab it. I know you're jealous of
     mine.
-  - '{@you}   Actually, I think I''ll donate the locket to the museum, in Grandpa''s
+  - '{@you}  Actually, I think I''ll donate the locket to the museum, in Grandpa''s
     memory.'
   - Sounds like he was an amazing captain.
-  - '{@dad}   Um, about that...'
+  - '{@dad}  Um, about that...'
   - He was actually pretty reckless.
-  - '{@you}   What?!'
-  - '{@dad}    Oh, yeah. A real daredevil.'
-  - '{@you}  Reya, he sounds a little like you.'
-  - '{@reya}  I can''t wait to hear more stories!'
-  - '{@dad}   Ooh, here''s a good one!'
+  - '{@you}  What?!'
+  - '{@dad}  Oh, yeah. A real daredevil.'
+  - '{@you} Reya, he sounds a little like you.'
+  - '{@reya} I can''t wait to hear more stories!'
+  - '{@dad}  Ooh, here''s a good one!'
   - Did I ever tell you about the time he had to climb up on the pilot house in the
     middle of an ice storm?
   - It was November of 1959, and a cold wind was blowing...

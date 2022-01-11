@@ -1,5 +1,6 @@
 ﻿using BeauRoutine;
 using BeauUtil;
+using PotatoLocalization;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -414,7 +415,7 @@ namespace Shipwreck {
 				chainObj.HideStickyNote();
 			} else {
 				bool useDangler = !info.NoDangler;
-				chainObj.ShowStickyNote(info.Text, useDangler);
+				chainObj.ShowStickyNote(new LocalizationKey(info.Id.ToString()), useDangler);
 			}
 		}
 

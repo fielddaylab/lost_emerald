@@ -1,4 +1,5 @@
 ﻿using BeauRoutine;
+using PotatoLocalization;
 using System;
 using UnityEngine;
 using UnityEngine.UI.Extensions;
@@ -126,8 +127,8 @@ namespace Shipwreck {
 			m_lineColorRoutine.Replace(this, Tween.Color(m_lineRenderer.color, GameDb.GetLineColor(status), SetLineColor, 0.2f));
 		}
 
-		public void ShowStickyNote(string text, bool hasDangler) {
-			m_stickyNote.SetText(text);
+		public void ShowStickyNote(LocalizationKey text, bool hasDangler) {
+			m_stickyNote.SetText(LocalizationMgr.GetText(text));
 			m_stickyNote.gameObject.SetActive(true);
 
 			hasDangler = Status == ChainStatus.Normal && hasDangler;
