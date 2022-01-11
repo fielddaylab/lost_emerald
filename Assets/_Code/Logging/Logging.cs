@@ -512,7 +512,7 @@ public class Logging : MonoBehaviour
 	}
 
 	private void HandleConversationOpen(ScriptNode node) {
-		nodeContact = node.ContactId.ToDebugString();
+		nodeContact = GameDb.GetCharacterData(node.ContactId).name;
 	}
 
 	private void LogDialog(ScriptNode node) {
