@@ -11099,7 +11099,7 @@ PrefabInstance:
     - target: {fileID: 2343840576347372892, guid: e5cdebae1f163174bb4ad3ce54afa167,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 264.6
+      value: 264.59
       objectReference: {fileID: 0}
     - target: {fileID: 2343840576347372892, guid: e5cdebae1f163174bb4ad3ce54afa167,
         type: 3}
@@ -11109,7 +11109,7 @@ PrefabInstance:
     - target: {fileID: 2343840576347372892, guid: e5cdebae1f163174bb4ad3ce54afa167,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 148.3
+      value: 148.295
       objectReference: {fileID: 0}
     - target: {fileID: 2343840576347372892, guid: e5cdebae1f163174bb4ad3ce54afa167,
         type: 3}
@@ -11164,7 +11164,7 @@ PrefabInstance:
     - target: {fileID: 2343840576634054272, guid: e5cdebae1f163174bb4ad3ce54afa167,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 464
       objectReference: {fileID: 0}
     - target: {fileID: 2343840576634054272, guid: e5cdebae1f163174bb4ad3ce54afa167,
         type: 3}
@@ -11174,7 +11174,7 @@ PrefabInstance:
     - target: {fileID: 2343840576919874155, guid: e5cdebae1f163174bb4ad3ce54afa167,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 296.6
+      value: 296.59
       objectReference: {fileID: 0}
     - target: {fileID: 2343840576919874155, guid: e5cdebae1f163174bb4ad3ce54afa167,
         type: 3}
@@ -14084,9 +14084,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 531016319209300888, guid: 89de7169bb442fc48b40af2381f497c5,
         type: 3}
+      propertyPath: m_images.Array.size
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 531016319209300888, guid: 89de7169bb442fc48b40af2381f497c5,
+        type: 3}
       propertyPath: m_audioClips.Array.size
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 531016319209300888, guid: 89de7169bb442fc48b40af2381f497c5,
+        type: 3}
+      propertyPath: m_images.Array.data[14]
+      value: 
+      objectReference: {fileID: 21300000, guid: b34da93ef2b660d40aa2131890396ebe,
+        type: 3}
     - target: {fileID: 531016319209300888, guid: 89de7169bb442fc48b40af2381f497c5,
         type: 3}
       propertyPath: m_audioClips.Array.data[0]
