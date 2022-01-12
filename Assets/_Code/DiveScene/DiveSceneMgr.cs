@@ -155,6 +155,7 @@ namespace Shipwreck {
 				}
 			}
 			GameMgr.Events.Dispatch(GameEvents.Dive.SendPhotoList, list);
+			GameMgr.Events.Dispatch(GameEvents.Dive.PhotoListSent);
 		}
 
         private bool HasAllPhotos() {

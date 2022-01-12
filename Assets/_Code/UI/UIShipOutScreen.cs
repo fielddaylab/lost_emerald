@@ -68,6 +68,7 @@ namespace Shipwreck {
 			AudioSrcMgr.instance.PlayOneShot("click_return_office");
 			AudioSrcMgr.instance.StopAmbiance();
 			SceneManager.LoadScene("Main");
+			GameMgr.Events.Dispatch(GameEvents.SceneLoaded, "Main");
 			UIMgr.Close<UIShipOutScreen>();
 			UIMgr.Open<UIOfficeScreen>();
 			AudioSrcMgr.instance.PlayAudio("office_music", true);
@@ -85,6 +86,7 @@ namespace Shipwreck {
 			// ensure the dive is locked
 			if (GameMgr.State.IsDiveUnlocked(ShipOutMgr.instance.GetData().ShipOutIndex)) {
 				SceneManager.LoadScene(ShipOutMgr.instance.GetData().DiveDest);
+				GameMgr.Events.Dispatch(GameEvents.SceneLoaded, ShipOutMgr.instance.GetData().DiveDest);
 				AudioSrcMgr.instance.PlayOneShot("click_dive");
 				AudioSrcMgr.instance.PlayAudio("dive");
 				UIMgr.Close<UIShipOutScreen>();

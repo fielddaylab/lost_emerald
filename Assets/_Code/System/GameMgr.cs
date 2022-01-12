@@ -275,6 +275,7 @@ namespace Shipwreck
 		[LeafMember]
 		public static void UnlockEvidence(int levelIndex, StringHash32 groupId) {
 			if (I.m_state.UnlockEvidence(levelIndex - 1, groupId)) {
+				Events.Dispatch(GameEvents.GameUnlockingEvidence); // assists Logging.cs with determining actor
 				Events.Dispatch(GameEvents.EvidenceUnlocked, groupId);
 				using (var table = TempVarTable.Alloc()) {
 					table.Set("levelIndex", levelIndex);

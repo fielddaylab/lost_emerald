@@ -8,8 +8,10 @@ using System.Runtime.InteropServices;
 using System.Text;
 using BeauUtil;
 using FieldDay;
+using PotatoLocalization;
 using Shipwreck;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Logging : MonoBehaviour
 {
@@ -22,27 +24,21 @@ public class Logging : MonoBehaviour
     private static readonly StringHash32 RootChain_Cause = "Cause";
     private static readonly StringHash32 RootChain_Artifact = "Artifact";
 
-    #endregion // Consts
+	#endregion // Consts
 
-    #region Firebase JS Functions
+	#region Firebase JS Functions
 
-    [DllImport("__Internal")]
-    public static extern void FBMissionStart(string missionId);
-    [DllImport("__Internal")]
-    public static extern void FBMissionComplete(string missionId);
-    [DllImport("__Internal")]
-    public static extern void FBMissionUnlock(string missionId);
-    [DllImport("__Internal")]
-    public static extern void FBNewEvidence(string missionId, string evidenceKey);
+	[DllImport("__Internal")]
+	public static extern void FBSceneLoad(string missionId, string scene, string timestamp);
+	[DllImport("__Internal")]
+	public static extern void FBCheckpoint(string missionId, string status);
+	[DllImport("__Internal")]
+    public static extern void FBNewEvidence(string missionId, string actor, string evidenceId);
     [DllImport("__Internal")]
     public static extern void FBOpenEvidenceBoard(string missionId);
-    [DllImport("__Internal")]
-    public static extern void FBEvidenceChainHint(string missionId, string chainName, string feedbackKey);
-    [DllImport("__Internal")]
-    public static extern void FBEvidenceChainIncorrect(string missionId, string chainName, string feedbackKey);
-    [DllImport("__Internal")]
-    public static extern void FBEvidenceChainCorrect(string missionId, string chainName, string feedbackKey);
-    [DllImport("__Internal")]
+	[DllImport("__Internal")]
+	public static extern void FBEvidenceBoardClick(string missionId, string evidenceType, string factOrigin, string factTarget, string accurate);
+	[DllImport("__Internal")]
     public static extern void FBUnlockLocation(string missionId);
     [DllImport("__Internal")]
     public static extern void FBEvidenceBoardComplete(string missionId);
@@ -66,43 +62,47 @@ public class Logging : MonoBehaviour
     public static extern void FBDiveMoveToAscend(string missionId);
     [DllImport("__Internal")]
     public static extern void FBDiveCameraActivate(string missionId, string diveNodeId);
-    [DllImport("__Internal")]
-    public static extern void FBDiveNewPhoto(string missionId, string diveNodeId);
-    [DllImport("__Internal")]
-    public static extern void FBDivePhotoFail(string missionId, string diveNodeId);
-    [DllImport("__Internal")]
-    public static extern void FBDivePhotoAlreadyTaken(string missionId, string diveNodeId);
-    [DllImport("__Internal")]
-    public static extern void FBDiveNoPhotoAvailable(string missionId, string diveNodeId);
+	[DllImport("__Internal")]
+	public static extern void FBDivePhotoClick(string missionId, string diveNodeId, string accurate);
     [DllImport("__Internal")]
     public static extern void FBDiveAllPhotosTaken(string missionId);
-    [DllImport("__Internal")]
-    public static extern void FBDiveJournalOpen(string missionId);
-    [DllImport("__Internal")]
+	[DllImport("__Internal")]
+	public static extern void FBDiveJournalClick(string missionId, string tasks, string clickAction, string actor);
+	[DllImport("__Internal")]
+	public static extern void FBConversationClick(string missionId, string scene, string clickType, string character, string clickAction);
+	[DllImport("__Internal")]
     public static extern void FBViewCutscene(string missionId);
     [DllImport("__Internal")]
     public static extern void FBViewDialog(string missionId, string dialogId);
+	[DllImport("__Internal")]
+	public static extern void FBCloseInspect(string missionId, string scene, string itemId);
 
-    #endregion // Firebase JS Functions
+	#endregion // Firebase JS Functions
 
-    private SimpleLog logger;
+	private SimpleLog logger;
     [SerializeField] private string appId = "SHIPWRECKS";
     [SerializeField] private int appVersion = 1;
+	[SerializeField] private LocalizationMap localizationMap = null;
 
     [NonSerialized] private string missionId = "";
     [NonSerialized] private string diveNodeId = "";
+	[NonSerialized] private string diveTasksStr = "";
+	[NonSerialized] private string diveJournalActor = "";
+	[NonSerialized] private string nodeContact = "";
+	[NonSerialized] private string evidenceActor = "";
+	[NonSerialized] private DateTime startDT = DateTime.Now;
+	[NonSerialized] private EventData.ClickType currClickType = EventData.ClickType.Unknown;
 
-    private enum eventCategories
+	private enum eventCategories
     {
-        mission_start,
-        mission_complete,
-        mission_unlock,
+		scene_load,
+
+		checkpoint,
 
         new_evidence,
-        open_evidence_board,
-        evidence_chain_hint,
-        evidence_chain_incorrect,
-        evidence_chain_correct,
+
+		open_evidence_board,
+		evidence_board_click,
         unlock_location,
 		evidence_board_complete,
 
@@ -117,42 +117,109 @@ public class Logging : MonoBehaviour
         dive_exit,
         dive_moveto_location,
         dive_moveto_ascend,
-        dive_activate_camera,
-        dive_new_photo,
-        dive_photo_fail,
-        dive_photo_already_taken,
-        dive_no_photo_available,
-        dive_all_photos_taken,
-        dive_journal_open,
-        
-        view_dialog,
-        view_cutscene
-    }
 
-    void Awake()
+        dive_activate_camera,
+		dive_photo_click,
+        dive_all_photos_taken,
+		dive_journal_click,
+
+		conversation_click,
+
+		view_cutscene,
+		view_dialog,
+
+		close_inspect
+	}
+
+	#region EventData
+
+	public struct EventData {
+		public enum Status {
+			BeginMission,
+			DiveComplete,
+			EvidenceBoardComplete,
+			CaseClosed
+		}
+		public static Dictionary<Status, string> StatusDict = new Dictionary<Status, string> {
+			{ Status.BeginMission, "Begin Mission" },
+			{ Status.DiveComplete, "Dive Complete" },
+			{ Status.EvidenceBoardComplete, "Evidence Board Complete" },
+			{ Status.CaseClosed, "Case Closed" }
+		};
+
+		public enum Actor {
+			Game,
+			Player
+		}
+		public static Dictionary<Actor, string> ActorDict = new Dictionary<Actor, string> {
+			{ Actor.Game, "Game" },
+			{ Actor.Player, "Player" }
+		};
+
+		public enum ClickType {
+			Phone,
+			Radio,
+			Text,
+			Evidence,
+			Inspect,
+			Menu,
+			Cutscene,
+			Unknown
+		}
+		public static Dictionary<ClickType, string> ClickTypeDict = new Dictionary<ClickType, string> {
+			{ ClickType.Phone, "Phone" },
+			{ ClickType.Radio, "Radio" },
+			{ ClickType.Text, "Text" },
+			{ ClickType.Evidence, "Evidence" },
+			{ ClickType.Inspect, "Inspect" },
+			{ ClickType.Menu, "Menu" },
+			{ ClickType.Cutscene, "Cutscene" },
+			{ ClickType.Unknown, "Unknown" }
+		};
+
+		public enum ClickAction {
+			Continue,
+			Open,
+			Close
+		}
+		public static Dictionary<ClickAction, string> ClickActionDict = new Dictionary<ClickAction, string> {
+			{ ClickAction.Continue, "Continue" },
+			{ ClickAction.Open, "Open" },
+			{ ClickAction.Close, "Close" }
+		};
+	};
+
+
+	#endregion
+
+	void OnEnable()
     {
-        DontDestroyOnLoad(this);
+        DontDestroyOnLoad(this.gameObject);
         logger = new SimpleLog(appId, appVersion, null);
 
-        // mission
+		// scenes
 
-        GameMgr.Events.Register<int>(GameEvents.LevelStart, LogMissionStart)
-            .Register(GameEvents.CaseClosed, LogMissionComplete)
-            .Register<int>(GameEvents.LevelUnlocked, LogMissionUnlock);
+		GameMgr.Events.Register<string>(GameEvents.SceneLoaded, LogSceneLoad);
 
-        // evidence board
+		// checkpoint
 
-        GameMgr.Events.Register<StringHash32>(GameEvents.EvidenceUnlocked, LogEvidenceUnlock)
+		GameMgr.Events.Register<int>(GameEvents.LevelStart, LogBeginMission);
+		GameMgr.Events.Register(GameEvents.CaseClosed, LogCaseClosed);
+
+		// evidence board
+
+		GameMgr.Events.Register(GameEvents.GameUnlockingEvidence, HandleGameUnlockingEvidence);
+		GameMgr.Events.Register<StringHash32>(GameEvents.EvidenceUnlocked, LogEvidenceUnlock)
             .Register<IEvidenceChainState>(GameEvents.ChainHint, LogEvidenceChainHint)
             .Register<IEvidenceChainState>(GameEvents.ChainIncorrect, LogEvidenceChainIncorrect)
             .Register<StringHash32>(GameEvents.ChainSolved, LogEvidenceChainCorrect);
         RegisterGenericLogEvent(GameEvents.BoardOpened, eventCategories.open_evidence_board, FBOpenEvidenceBoard);
         RegisterGenericLogEvent(GameEvents.LocationDiscovered, eventCategories.unlock_location, FBUnlockLocation);
-        RegisterGenericLogEvent(GameEvents.BoardComplete, eventCategories.evidence_board_complete, FBEvidenceBoardComplete);
+		GameMgr.Events.Register(GameEvents.BoardComplete, LogEvidenceBoardComplete);
 
-        // map
+		// map
 
-        RegisterGenericLogEvent(GameEvents.MapOpened, eventCategories.open_map, FBOpenMap);
+		RegisterGenericLogEvent(GameEvents.MapOpened, eventCategories.open_map, FBOpenMap);
         RegisterGenericLogEvent(GameEvents.OfficeOpened, eventCategories.open_office, FBOpenOffice);
 
         // sonar
@@ -161,155 +228,255 @@ public class Logging : MonoBehaviour
         RegisterGenericLogEvent(GameEvents.SonarCompleted, eventCategories.sonar_complete, FBSonarComplete);
         GameMgr.Events.Register<float>(GameEvents.SonarProgressUpdated, LogSonarProgress);
 
-        // dive
+		// dive
 
-        RegisterGenericLogEvent(GameEvents.Dive.EnterDive, eventCategories.dive_start, FBDiveStart, () => diveNodeId = string.Empty);
+		RegisterGenericLogEvent(GameEvents.Dive.EnterDive, eventCategories.dive_start, FBDiveStart, () => diveNodeId = string.Empty);
         RegisterGenericLogEvent(GameEvents.Dive.ExitDive, eventCategories.dive_exit, FBDiveExit);
         RegisterDiveArgLogEvent<string>(GameEvents.Dive.NavigateToNode, eventCategories.dive_moveto_location, "next_node_id", FBDiveMoveToNode, (id) => diveNodeId = id);
         RegisterGenericLogEvent(GameEvents.Dive.NavigateToAscendNode, eventCategories.dive_moveto_ascend, FBDiveMoveToAscend, () => diveNodeId = string.Empty);
         RegisterDiveSiteLogEvent(GameEvents.Dive.CameraActivated, eventCategories.dive_activate_camera, FBDiveCameraActivate);
-        RegisterDiveSiteLogEvent(GameEvents.Dive.ConfirmPhoto, eventCategories.dive_new_photo, FBDiveNewPhoto);
-        RegisterDiveSiteLogEvent(GameEvents.Dive.PhotoFail, eventCategories.dive_photo_fail, FBDivePhotoFail);
-        RegisterDiveSiteLogEvent(GameEvents.Dive.PhotoAlreadyTaken, eventCategories.dive_photo_already_taken, FBDivePhotoAlreadyTaken);
-        RegisterDiveSiteLogEvent(GameEvents.Dive.NoPhotoAvailable, eventCategories.dive_no_photo_available, FBDiveNoPhotoAvailable);
-        RegisterGenericLogEvent(GameEvents.Dive.AllPhotosTaken, eventCategories.dive_all_photos_taken, FBDiveAllPhotosTaken);
-        RegisterGenericLogEvent(GameEvents.Dive.RequestPhotoList, eventCategories.dive_journal_open, FBDiveJournalOpen);
+		GameMgr.Events.Register<StringHash32>(GameEvents.Dive.ConfirmPhoto, LogDiveNewPhoto);
+		GameMgr.Events.Register(GameEvents.Dive.PhotoFail, LogDivePhotoFail);
+		GameMgr.Events.Register(GameEvents.Dive.PhotoAlreadyTaken, LogDivePhotoAlreadyTaken);
+		GameMgr.Events.Register(GameEvents.Dive.NoPhotoAvailable, LogDiveNoPhotoAvailable);
+		GameMgr.Events.Register(GameEvents.Dive.AllPhotosTaken, LogDiveComplete);
+		GameMgr.Events.Register<EventData.Actor>(GameEvents.Dive.JournalOpened, HandleJournalOpened);
+		GameMgr.Events.Register<List<DivePointOfInterest>>(GameEvents.Dive.SendPhotoList, HandlePhotoListSent);
+		GameMgr.Events.Register(GameEvents.Dive.PhotoListSent, LogDiveJournalOpen);
+		GameMgr.Events.Register(GameEvents.Dive.CloseJournal, LogDiveJournalClose);
 
-        // ui
+		// ui
 
-        GameMgr.Events.Register<ScriptNode>(GameEvents.DialogRun, LogDialog);
+		GameMgr.Events.Register<ScriptNode>(GameEvents.ConversationOpened, HandleConversationOpen);
+		GameMgr.Events.Register<EventData.ClickAction>(GameEvents.ConversationClick, LogConversationClick);
+		GameMgr.Events.Register<ScriptNode>(GameEvents.DialogRun, LogDialog);
         RegisterGenericLogEvent(GameEvents.ViewCutscene, eventCategories.view_cutscene, FBViewCutscene);
-    }
+		GameMgr.Events.Register<string>(GameEvents.CloseInspect, LogCloseInspect);
+	}
 
     private void Start() {
-        LogMissionStart(GameMgr.State.CurrentLevel.Index);
-    }
+		GameMgr.Events.Dispatch(GameEvents.SceneLoaded, "Main");
+	}
 
-    #region Missions
+	#region Scenes
 
-    private void LogMissionStart(int index) {
-        missionId = GameDb.GetLevelData(index).name;
+	// Mission, Scene, Timestamp
+	private void LogSceneLoad(string sceneId) {
+		int index = GameMgr.State.CurrentLevel.Index;
+		missionId = GameDb.GetLevelData(index).name;
 
-        Dictionary<string, string> data = new Dictionary<string, string>()
-        {
-            { "mission_id", missionId }
-        };
+		string scene = sceneId;
 
-        logger.Log(new LogEvent(data, eventCategories.mission_start));
+		long elapsedTicks = DateTime.Now.Ticks - startDT.Ticks;
+		TimeSpan elapsedTime = new TimeSpan(elapsedTicks);
 
-        #if FIREBASE
-        FBMissionStart(missionId);
-        #endif
-    }
+		string timestamp = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+			elapsedTime.Hours, elapsedTime.Minutes, elapsedTime.Seconds,
+			elapsedTime.Milliseconds / 10);
 
-    private void LogMissionComplete() {
-        Dictionary<string, string> data = new Dictionary<string, string>()
-        {
-            { "mission_id", missionId }
-        };
+		Dictionary<string, string> data = new Dictionary<string, string>() {
+			{ "mission_id", missionId },
+			{ "scene", scene },
+			{ "timestamp", timestamp }
+		};
 
-        logger.Log(new LogEvent(data, eventCategories.mission_complete));
+#if FIREBASE
+		FBSceneLoad(missionId, scene, timestamp);
+#endif
+	}
 
-        #if FIREBASE
-        FBMissionComplete(missionId);
-        #endif
+	#endregion
 
-        missionId = "";
-    }
+	#region Checkpoints
 
-    private void LogMissionUnlock(int index) {
-        string unlock = GameDb.GetLevelData(index).name;
-        
-        Dictionary<string, string> data = new Dictionary<string, string>()
-        {
-            { "mission_id", unlock }
-        };
+	// Mission, Status
+	private void LogCheckpoint(int index, EventData.Status status) {
+		missionId = GameDb.GetLevelData(index).name;
+		string statusStr = EventData.StatusDict[status];
 
-        logger.Log(new LogEvent(data, eventCategories.mission_unlock));
+		Dictionary<string, string> data = new Dictionary<string, string>()
+		{
+			{ "mission_id", missionId },
+			{ "status",  statusStr }
+		};
 
-        #if FIREBASE
-        FBMissionUnlock(unlock);
-        #endif
-    }
+		logger.Log(new LogEvent(data, eventCategories.checkpoint));
 
-    #endregion // Missions
+#if FIREBASE
+        FBCheckpoint(missionId, statusStr);
+#endif
+	}
 
-    #region Evidence
+	private void LogBeginMission(int missionId) {
+		LogCheckpoint(missionId, EventData.Status.BeginMission);
+	}
 
-    private void LogEvidenceUnlock(StringHash32 id) {
-        var evidenceData = GameDb.GetEvidenceData(id);
-        string unlock = evidenceData.name;
-        
-        Dictionary<string, string> data = new Dictionary<string, string>()
-        {
-            { "mission_id", missionId },
-            { "evidence_key", unlock }
-        };
+	private void LogDiveComplete() {
+		LogCheckpoint(GameMgr.State.CurrentLevel.Index, EventData.Status.DiveComplete);
+	}
 
-        logger.Log(new LogEvent(data, eventCategories.new_evidence));
+	private void LogEvidenceBoardComplete() {
+		LogCheckpoint(GameMgr.State.CurrentLevel.Index, EventData.Status.EvidenceBoardComplete);
+	}
 
-        #if FIREBASE
-        FBNewEvidence(missionId, unlock);
-        #endif
-    }
+	private void LogCaseClosed() {
+		LogCheckpoint(GameMgr.State.CurrentLevel.Index, EventData.Status.CaseClosed);
+	}
 
+	#endregion
+
+	#region Evidence
+
+	// Mission, Fact Type, Fact Origin, Fact Target, Accurate
+	private void LogEvidenceBoardClick(IEvidenceChainState chainState, bool isAccurate) {
+		string factType = GetChainRootName(chainState.Root());
+
+		string factOriginStr = "origin: ";
+		string factTargetStr = "targets: ";
+
+		ListSlice<StringHash32> roots = chainState.StickyInfo.RootIds;
+		int index = 0;
+		foreach(StringHash32 root in roots) {
+			if (index > 0) { factOriginStr += "; "; }
+			factOriginStr += localizationMap.GetText(GameDb.GetNodeLocalizationKey(root));
+			index++;
+		}
+
+		index = 0;
+		ListSlice<StringHash32> nodes = chainState.Chain();
+		foreach (StringHash32 node in nodes) {
+			if (index > 0) { factTargetStr += ", "; }
+			factTargetStr += node;
+			index++;
+		}
+
+		string accurate = isAccurate.ToString();
+
+		Dictionary<string, string> data = new Dictionary<string, string>()
+		{
+			{ "mission_id", missionId },
+			{ "fact_type", factType },
+			{ "fact_origin", factOriginStr },
+			{ "fact_target", factTargetStr },
+			{ "accurate", accurate }
+		};
+
+		logger.Log(new LogEvent(data, eventCategories.evidence_board_click));
+
+#if FIREBASE
+        FBEvidenceBoardClick(missionId, factType, factOriginStr, factTargetStr, accurate);
+#endif
+	}
+	
     private void LogEvidenceChainHint(IEvidenceChainState chainState) {
-        string rootName = GetChainRootName(chainState.Root());
-
-        Dictionary<string, string> data = new Dictionary<string, string>()
-        {
-            { "mission_id", missionId },
-            { "chain_id", rootName },
-            { "feedback_id", chainState.StickyInfo.Name }
-        };
-
-        logger.Log(new LogEvent(data, eventCategories.evidence_chain_hint));
-
-        #if FIREBASE
-        FBEvidenceChainHint(missionId, rootName, chainState.StickyInfo.Name);
-        #endif
+		LogEvidenceBoardClick(chainState, true);
     }
-
+	
     private void LogEvidenceChainIncorrect(IEvidenceChainState chainState) {
-        string rootName = GetChainRootName(chainState.Root());
-
-        Dictionary<string, string> data = new Dictionary<string, string>()
-        {
-            { "mission_id", missionId },
-            { "chain_id", rootName },
-            { "feedback_id", chainState.StickyInfo.Name }
-        };
-
-        logger.Log(new LogEvent(data, eventCategories.evidence_chain_incorrect));
-
-        #if FIREBASE
-        FBEvidenceChainIncorrect(missionId, rootName, chainState.StickyInfo.Name);
-        #endif
+		LogEvidenceBoardClick(chainState, false);
     }
 
     private void LogEvidenceChainCorrect(StringHash32 rootId) {
         var chainState = GameMgr.State.CurrentLevel.GetChain(rootId);
-        string rootName = GetChainRootName(chainState.Root());
+		LogEvidenceBoardClick(chainState, true);
+	}
 
-        Dictionary<string, string> data = new Dictionary<string, string>()
-        {
-            { "mission_id", missionId },
-            { "chain_id", rootName },
-            { "feedback_id", chainState.StickyInfo.Name }
-        };
+	// Mission, Actor, EvidenceID
+	private void LogEvidenceUnlock(StringHash32 id) {
+		var evidenceData = GameDb.GetEvidenceData(id);
+		string evidenceId = evidenceData.name;
 
-        logger.Log(new LogEvent(data, eventCategories.evidence_chain_correct));
+		Dictionary<string, string> data = new Dictionary<string, string>()
+		{
+			{ "mission_id", missionId },
+			{ "actor", evidenceActor },
+			{ "evidence_id", evidenceId }
+		};
 
-        #if FIREBASE
-        FBEvidenceChainCorrect(missionId, rootName, chainState.StickyInfo.Name);
-        #endif
-    }
+		logger.Log(new LogEvent(data, eventCategories.new_evidence));
 
-    #endregion // Evidence
+#if FIREBASE
+        FBNewEvidence(missionId, evidenceActor, evidenceId);
+#endif
+	}
 
-    #region Sonar
+	#endregion // Evidence
 
-    private void LogSonarProgress(float updateProgress) {
+	#region Dive
+
+	// Mission, Location, Accurate
+	private void LogDivePhotoClick(bool isAccurate) {
+		if (isAccurate) { evidenceActor = EventData.ActorDict[EventData.Actor.Player]; }
+
+		string accurate = isAccurate.ToString();
+
+		string location = diveNodeId;
+
+		Dictionary<string, string> data = new Dictionary<string, string>()
+		{
+			{ "mission_id", missionId },
+			{ "location", location },
+			{ "accurate", accurate }
+		};
+
+		logger.Log(new LogEvent(data, eventCategories.dive_photo_click));
+
+#if FIREBASE
+        FBDivePhotoClick(missionId, location, accurate);
+#endif
+	}
+
+	private void LogDiveNewPhoto(StringHash32 photoId) {
+		LogDivePhotoClick(true);
+	}
+
+	private void LogDivePhotoFail() {
+		LogDivePhotoClick(false);
+	}
+
+	private void LogDivePhotoAlreadyTaken() {
+		LogDivePhotoClick(false);
+	}
+
+	private void LogDiveNoPhotoAvailable() {
+		LogDivePhotoClick(false);
+	}
+
+	#endregion // Dive
+
+	#region Journal
+
+	// Mission, Tasks, Action, Actor
+	private void LogDiveJournalClick(string clickAction, string actor) {
+		Dictionary<string, string> data = new Dictionary<string, string>()
+		{
+			{ "mission_id", missionId },
+			{ "tasks", diveTasksStr },
+			{ "click_action", clickAction },
+			{ "actor", actor }
+		};
+
+		logger.Log(new LogEvent(data, eventCategories.dive_journal_click));
+
+#if FIREBASE
+        FBDiveJournalClick(missionId, diveTasksStr, clickAction, actor);
+#endif
+	}
+
+	private void LogDiveJournalOpen() {
+		LogDiveJournalClick(EventData.ClickActionDict[EventData.ClickAction.Open], diveJournalActor);
+	}
+
+	private void LogDiveJournalClose() {
+		diveJournalActor = EventData.ActorDict[EventData.Actor.Player]; // only player can close the journal
+		LogDiveJournalClick(EventData.ClickActionDict[EventData.ClickAction.Close], diveJournalActor);
+	}
+
+	#endregion // Journal
+
+	#region Sonar
+
+	private void LogSonarProgress(float updateProgress) {
         string percent = ((int) (updateProgress * 100)).ToStringLookup();
         Dictionary<string, string> data = new Dictionary<string, string>()
         {
@@ -324,15 +491,56 @@ public class Logging : MonoBehaviour
         #endif
     }
 
-    #endregion // Sonar
+	#endregion // Sonar
 
-    #region Dialog
+	#region Dialog
 
-    private void LogDialog(ScriptNode node) {
+	// Conversation Click -- Mission, Scene, Click-Type, Character, Click-Action
+	private void LogConversationClick(EventData.ClickAction clickAction) {
+		EventData.ClickType clickType;
+		if (currClickType == EventData.ClickType.Unknown) {
+			clickType = DetermineClickType();
+		}
+		else {
+			clickType = currClickType;
+		}
+
+		string clickTypeStr = EventData.ClickTypeDict[clickType];
+
+		string clickActionStr = EventData.ClickActionDict[clickAction];
+		if (clickAction == EventData.ClickAction.Close) {
+			currClickType = EventData.ClickType.Unknown;
+		}
+
+		string scene = SceneManager.GetActiveScene().name;
+
+		Dictionary<string, string> data = new Dictionary<string, string>()
+		{
+			{ "mission_id", missionId },
+			{ "scene", scene },
+			{ "click_type", clickTypeStr },
+			{ "character", nodeContact },
+			{ "click_action", clickActionStr }
+		};
+
+		logger.Log(new LogEvent(data, eventCategories.conversation_click));
+
+#if FIREBASE
+        FBConversationClick(missionId, scene, clickTypeStr, nodeContact, clickActionStr);
+#endif
+	}
+
+	private void HandleConversationOpen(ScriptNode node) {
+		nodeContact = GameDb.GetCharacterData(node.ContactId).name;
+	}
+
+	private void LogDialog(ScriptNode node) {
+		string scene = SceneManager.GetActiveScene().name;
+
         Dictionary<string, string> data = new Dictionary<string, string>()
         {
             { "mission_id", missionId },
-            { "dialog_id", node.FullName }
+			{ "dialog_id", node.FullName }
         };
 
         logger.Log(new LogEvent(data, eventCategories.view_dialog));
@@ -342,11 +550,33 @@ public class Logging : MonoBehaviour
         #endif
     }
 
-    #endregion // Dialog
+	#endregion // Dialog
 
-    #region Helpers
+	#region Close Inspect
 
-    private void RegisterGenericLogEvent(StringHash32 eventId, eventCategories category, Action<string> native, Action stateMod = null) {
+	// Mission, Scene, ItemID
+	private void LogCloseInspect(string itemId) {
+		string scene = SceneManager.GetActiveScene().name;
+
+		Dictionary<string, string> data = new Dictionary<string, string>()
+		{
+			{ "mission_id", missionId },
+			{ "scene", scene },
+			{ "item_id", itemId }
+		};
+
+		logger.Log(new LogEvent(data, eventCategories.close_inspect));
+
+#if FIREBASE
+        FBCloseInspect(missionId, scene, itemId);
+#endif
+	}
+
+	#endregion // Close Inspect
+
+	#region Helpers
+
+	private void RegisterGenericLogEvent(StringHash32 eventId, eventCategories category, Action<string> native, Action stateMod = null) {
         GameMgr.Events.Register(eventId, () => {
             Dictionary<string, string> data = new Dictionary<string, string>()
             {
@@ -447,6 +677,74 @@ public class Logging : MonoBehaviour
             return string.Empty;
         }
     }
+
+	private struct KeyValuePair {
+		public LocalizationKey Key;
+		public bool Value;
+
+		public KeyValuePair(LocalizationKey key, bool value) {
+			Key = key;
+			Value = value;
+		}
+	}
+
+	private void HandlePhotoListSent(List<DivePointOfInterest> divePoints) {
+
+		List<KeyValuePair> tasks = new List<KeyValuePair>();
+		List<LocalizationKey> taskLocalizations = new List<LocalizationKey>();
+
+		foreach (DivePointOfInterest poi in divePoints) {
+			if (taskLocalizations.Contains(poi.PhotoName)) { continue; }
+			bool isChecked = GameMgr.State.CurrentLevel.IsEvidenceUnlocked(poi.EvidenceUnlock);
+			tasks.Add(new KeyValuePair(poi.PhotoName, isChecked));
+			taskLocalizations.Add(poi.PhotoName);
+		}
+
+		diveTasksStr = "";
+		foreach (KeyValuePair pair in tasks) {
+			diveTasksStr += localizationMap.GetText(pair.Key) + ": " + pair.Value + "; ";
+		}
+	}
+
+	private void HandleJournalOpened(EventData.Actor actor) {
+		diveJournalActor = EventData.ActorDict[actor];
+	}
+
+	private EventData.ClickType DetermineClickType() {
+		EventData.ClickType type = EventData.ClickType.Unknown;
+
+		if (UIMgr.IsOpen<UIDialogScreen>()) {
+			type = EventData.ClickType.Phone;
+		}
+		else if (UIMgr.IsOpen<UIRadioDialog>()) {
+			type = EventData.ClickType.Radio;
+		}
+		else if (UIMgr.IsOpen<UIPhone>()) {
+			type = EventData.ClickType.Text;
+		}
+		else if (UIMgr.IsOpen<UICloseInspect>()) {
+			type = EventData.ClickType.Inspect;
+		}
+		else if (UIMgr.IsOpen<UIEvidenceScreen>()) {
+			type = EventData.ClickType.Evidence;
+		}
+		else if (UIMgr.IsOpen<UITitleScreen>()) {
+			type = EventData.ClickType.Menu;
+		}
+		else if (CutscenePlayer.IsPlaying) {
+			type = EventData.ClickType.Cutscene;
+		}
+
+		if (type != EventData.ClickType.Unknown) {
+			currClickType = type;
+		}
+
+		return type;
+	}
+
+	private void HandleGameUnlockingEvidence() {
+		evidenceActor = EventData.ActorDict[EventData.Actor.Game];
+	}
 
     #endregion // Helpers
 }

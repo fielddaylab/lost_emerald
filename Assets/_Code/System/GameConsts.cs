@@ -7,6 +7,8 @@ namespace Shipwreck {
         public static readonly StringHash32 ContactUnlocked = "ContactUnlocked";
 		public static readonly StringHash32 LevelUnlocked = "LevelUnlocked";
         public static readonly StringHash32 LevelStart = "LevelStart";
+		public static readonly StringHash32 SceneLoaded = "SceneLoaded";
+		public static readonly StringHash32 GameUnlockingEvidence = "GameUnlockingEvidence";
 		public static readonly StringHash32 EvidenceUnlocked = "EvidenceUnlocked";
 		public static readonly StringHash32 EvidenceRemoved = "EvidenceRemoved";
 		public static readonly StringHash32 ChainSolved = "ChainSolved";
@@ -15,22 +17,25 @@ namespace Shipwreck {
 
         public static readonly StringHash32 PhoneOpened = "PhoneOpened";
         public static readonly StringHash32 PhoneClosed = "PhoneClosed";
-        public static readonly StringHash32 DialogOpened = "DialogOpened";
+		public static readonly StringHash32 ConversationOpened = "ConversationOpened";
+		public static readonly StringHash32 DialogOpened = "DialogOpened";
         public static readonly StringHash32 DialogRun = "DialogRun";
         public static readonly StringHash32 DialogClosed = "DialogClosed";
+		public static readonly StringHash32 ConversationClick = "ConversationClick";
 
 		public static readonly StringHash32 BoardOpened = "BoardOpened";
 		public static readonly StringHash32 BoardComplete = "BoardComplete";
-        public static readonly StringHash32 ViewCutscene = "ViewCutscene";
+		public static readonly StringHash32 CloseInspect = "CloseInspect";
+		public static readonly StringHash32 ViewCutscene = "ViewCutscene";
 		public static readonly StringHash32 CutsceneComplete = "CutsceneComplete";
-		public static readonly StringHash32 CaseClosed = "CaseClosedOpened";
+		public static readonly StringHash32 CaseClosed = "CaseClosed";
 		public static readonly StringHash32 LocationDiscovered = "LocationDiscovered";
         public static readonly StringHash32 MapOpened = "MapOpened";
 		public static readonly StringHash32 MapTutorial = "MapTutorial";
         public static readonly StringHash32 OfficeOpened = "OfficeOpened";
 		public static readonly StringHash32 GameCompleted = "GameCompleted";
 
-        public static readonly StringHash32 SonarStarted = "SonarStarted";
+		public static readonly StringHash32 SonarStarted = "SonarStarted";
         public static readonly StringHash32 SonarProgressUpdated = "SonarProgressUpdated";
         public static readonly StringHash32 SonarCompleted = "SonarCompleted";
 
@@ -54,7 +59,10 @@ namespace Shipwreck {
             public static readonly StringHash32 NoPhotoAvailable = "NoPhotoAvailable";
 			public static readonly StringHash32 RequestPhotoList = "RequestPhotoList";
 			public static readonly StringHash32 SendPhotoList = "ConfirmPhotoList";
-            public static readonly StringHash32 AllPhotosTaken = "AllPhotosTaken";
+			public static readonly StringHash32 PhotoListSent = "PhotoListSent";
+			public static readonly StringHash32 JournalOpened = "JournalOpened";
+			public static readonly StringHash32 CloseJournal = "CloseJournal";
+			public static readonly StringHash32 AllPhotosTaken = "AllPhotosTaken";
 		}
 	}
 

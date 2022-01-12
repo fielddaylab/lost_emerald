@@ -39,14 +39,22 @@ namespace Shipwreck {
 			UIMgr.Open<UIPhone>();
 			UIMgr.Open<UIModalOverlay>();
 			UIMgr.Close<UIContacts>();
+			m_continueButton.onClick.AddListener(LogConversationClick);
 			ClearContent();
 		}
 
+		protected override void OnShowCompleted() {
+			base.OnShowCompleted();
+			GameMgr.Events.Dispatch(GameEvents.ConversationClick, Logging.EventData.ClickAction.Open);
+		}
+
 		protected override void OnHideStart() {
+			GameMgr.Events.Dispatch(GameEvents.ConversationClick, Logging.EventData.ClickAction.Close);
 			base.OnHideStart();
 			if (!UIMgr.IsOpen<UIPhoneNotif>()) {
 				UIMgr.Close<UIModalOverlay>();
 			}
+			m_continueButton.onClick.RemoveListener(LogConversationClick);
 		}
 
 		protected override void OnHideCompleted() {
@@ -86,9 +94,9 @@ namespace Shipwreck {
 			// do nothing
 		}
 
-		protected override IEnumerator OnShowImage(Sprite image) {
+		protected override IEnumerator OnShowImage(Sprite image, StringHash32 imageId) {
 			TextMessageImage obj = Instantiate(m_imagePrefab, m_content);
-			obj.Populate(m_currentCharacter, image);
+			obj.Populate(m_currentCharacter, image, imageId);
 			m_layout.ForceRebuild();
 			yield return m_scrollRect.NormalizedPosTo(0f, 0.1f, Axis.Y);
 			yield return 0.15f;
@@ -146,6 +154,10 @@ namespace Shipwreck {
 			for (int ix = m_content.childCount - 1; ix >= 0; ix--) {
 				Destroy(m_content.GetChild(ix).gameObject);
 			}
+		}
+
+		private void LogConversationClick() {
+			GameMgr.Events.Dispatch(GameEvents.ConversationClick, Logging.EventData.ClickAction.Continue);
 		}
 	}
 

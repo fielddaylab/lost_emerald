@@ -65,6 +65,7 @@ namespace Shipwreck {
 			AudioSrcMgr.instance.PlayAudio("ship_out");
 			AudioSrcMgr.instance.PlayAmbiance("ship_out_ambiance", true);
 			SceneManager.LoadScene("ShipOut");
+			GameMgr.Events.Dispatch(GameEvents.SceneLoaded, "ShipOut");
 		}
 	}
 }
