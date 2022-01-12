@@ -83,14 +83,14 @@
 	{@reya}  Yep. I think he likes you!
 		Don't worry, I told him you were too busy with paperwork.
 		Ooh, that reminds me... check out this awesome postcard!
-		{img postcard}
+		{obj Postcard}
 		It was left over from Dad's yard sale. Think it's worth anything? 
 	{@you}   Hold on. Did you read this, Reya??
 		Grandpa wrote that O.K. Steel sent him on an extra trip.
 	{@reya}  Um... so? 
 	{@you}   There's no official record of this. It doesn't match Dad's map. 
 	{@dad}   Wait a sec. You mean... I've been searching the wrong part of the lake?? 
-		{/img}
+		{/obj}
 	{@reya}  Yes!!! I found a clue!!!
 	{@you}   We have Grandpa's final route. Now we need to narrow down the location.
 	{@reya}  Well, what are you waiting for, sis? Go do some research!!

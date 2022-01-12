@@ -85,6 +85,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 18ce4d25aa2b140caad634c3dd4b69e2, type: 3}
   - {fileID: 21300000, guid: 8c46b655c10db8844bb8b85341a871dd, type: 3}
   - {fileID: 21300000, guid: a4c0f4952434618439cc0b8002bcdf40, type: 3}
+  - {fileID: 21300000, guid: 43b36016d82daf84d83c2f603c01b2aa, type: 3}
   - {fileID: 21300000, guid: 9181df563faf4c240b278fd35f45ddfd, type: 3}
   - {fileID: 21300000, guid: b92d2866ce79293478f277897bd0ad16, type: 3}
   - {fileID: 21300000, guid: 0b8b988619e68ed408ef667cc5d86d11, type: 3}
@@ -94,7 +95,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: f2f043070615e5d44bf1c5cf2ff5c0b5, type: 3}
   - {fileID: 21300000, guid: 460613178d0a2e340a8683c2317803c9, type: 3}
   - {fileID: 21300000, guid: 289fae17660e1b5468819bd39d453625, type: 3}
-  - {fileID: 21300000, guid: 5edb9b470523f1a44a9745876e2dd3ba, type: 3}
   - {fileID: 21300000, guid: 311983876fa02b3489f016d9e58c7d5d, type: 3}
   - {fileID: 21300000, guid: 2cd1aa97dedd64a7d98a8d2b4dcd26af, type: 3}
   - {fileID: 21300000, guid: 83c623e77b3e2644387a29f9935bb645, type: 3}
@@ -125,9 +125,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: c20a108ba4f416048a9867506a6020c7, type: 3}
   - {fileID: 21300000, guid: 3acf4abb67ae7744292d804a07f1c37a, type: 3}
   - {fileID: 21300000, guid: 6d101ecb1c9064a459c2986cab64d52f, type: 3}
-  - {fileID: 21300000, guid: d43964eb4ca004c469d894bdbfe850f3, type: 3}
   - {fileID: 21300000, guid: ea001b1c59f86ce4c805ebcf8ec11611, type: 3}
-  - {fileID: 21300000, guid: 87bdf03c26c799a49a736d0d4b6b7c15, type: 3}
   - {fileID: 450545777640350200, guid: 75dd454c7d88aa847b5983718c948b2c, type: 3}
   - {fileID: -7964487563894589878, guid: 75dd454c7d88aa847b5983718c948b2c, type: 3}
   - {fileID: -4508500316453927011, guid: 75dd454c7d88aa847b5983718c948b2c, type: 3}
@@ -209,6 +207,7 @@ SpriteAtlas:
   - camera-button-close
   - johnny_icon
   - family-home
+  - postcard-front
   - icon-check-empty
   - triangle
   - photo-lv2-gash
@@ -218,7 +217,6 @@ SpriteAtlas:
   - photo-lv1-knife
   - toggle_on
   - photo-lv4-name
-  - title-boat
   - enroute-lv3
   - arrow-up
   - mom-office
@@ -249,9 +247,7 @@ SpriteAtlas:
   - dad-yardsale
   - cork-board
   - steamer-ad
-  - title-waves
   - ultralight-photo
-  - title-gradient
   - waves_2
   - waves_3
   - waves_0
