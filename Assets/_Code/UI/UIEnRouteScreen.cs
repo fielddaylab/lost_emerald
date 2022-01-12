@@ -16,6 +16,8 @@ namespace Shipwreck {
 		private Button m_shipOutButton = null;
 		[SerializeField]
 		private Image m_mapImage = null;
+		[SerializeField]
+		private UITransitionDisplay m_transitionDisplay;
 
 		protected override IEnumerator HideImmediateRoutine() {
 			throw new System.NotImplementedException();
@@ -60,12 +62,8 @@ namespace Shipwreck {
 		}
 
 		private void HandleShipOutButton() {
-			UIMgr.Close<UIEvidenceScreen>();
-			UIMgr.Close<UIEnRouteScreen>();
-			AudioSrcMgr.instance.PlayAudio("ship_out");
-			AudioSrcMgr.instance.PlayAmbiance("ship_out_ambiance", true);
-			SceneManager.LoadScene("ShipOut");
-			GameMgr.Events.Dispatch(GameEvents.SceneLoaded, "ShipOut");
+			AudioSrcMgr.instance.PlayOneShot("click_evidence_ship_out");
+			UIMgr.Open<UITransitionDisplay>();
 		}
 	}
 }

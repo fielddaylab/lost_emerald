@@ -123,7 +123,7 @@ namespace Shipwreck {
 				UIShipOutScreen.instance.SwapButtonForSlider(m_shipOutData.DiveButtonLocation);
 
 				// drop buoy
-				GameObject buoy = DropBuoy();
+				GameObject buoy = DropBuoy(false);
 
 				m_playerShip.transform.position = buoy.transform.position + BUOY_SHIP_OFFSET;
 			}
@@ -152,7 +152,7 @@ namespace Shipwreck {
 				AddReya();
 
 				// drop buoy
-				GameObject buoy = DropBuoy();
+				GameObject buoy = DropBuoy(false);
 
 				m_playerShip.transform.position = buoy.transform.position + BUOY_SHIP_OFFSET;
 			}
@@ -173,10 +173,12 @@ namespace Shipwreck {
 			}
 		}
 
-		public GameObject DropBuoy() {
+		public GameObject DropBuoy(bool withSound = true) {
 			GameObject buoy = Instantiate(m_buoyPrefab);
 			buoy.transform.position = m_shipOutData.BuoyLocation;
-			AudioSrcMgr.instance.PlayOneShot("drop_buoy");
+			if (withSound) {
+				AudioSrcMgr.instance.PlayOneShot("drop_buoy");
+			}
 
 			return buoy;
 		}
