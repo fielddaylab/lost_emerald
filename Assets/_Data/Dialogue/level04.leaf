@@ -71,7 +71,7 @@
 
 :: reya-steel
 @contact reya, phone-call
-//@background
+@background family-cropped
 @trigger OnEnterEvidenceBoard
 @when Seen(level03.dad-steamer)
 @once
