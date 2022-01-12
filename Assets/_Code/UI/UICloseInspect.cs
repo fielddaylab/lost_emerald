@@ -61,7 +61,7 @@ namespace Shipwreck {
 					/ m_inspectImage.rectTransform.sizeDelta.y;
 			}
 			UIMgr.Open<UICloseInspect>();
-			GameMgr.Events.Dispatch(GameEvents.CloseInspect, imageId.ToDebugString());
+			GameMgr.Events.Dispatch(GameEvents.CloseInspect, GameDb.GetImageData(imageId).name);
 		}
 
 		private void HandleClose() {

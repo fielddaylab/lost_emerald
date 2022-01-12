@@ -96,9 +96,6 @@ namespace Shipwreck {
 				m_stickyData = I.m_stickyEvaluator.Evaluate(m_rootNode, m_chain, m_levelRootEvaluator);
 				if (!wasCorrect && IsCorrect) {
 					Events.Dispatch(GameEvents.ChainSolved, m_rootNode);
-					/*if (m_evidenceChain != null) {
-						m_evidenceChain.SetState(ChainStatus.Complete);
-					}*/
 					using (var table = TempVarTable.Alloc()) {
 						table.Set("root", m_rootNode);
 						RunTrigger(GameTriggers.OnChainSolved, table);

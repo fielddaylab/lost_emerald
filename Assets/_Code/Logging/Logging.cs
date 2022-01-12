@@ -82,6 +82,7 @@ public class Logging : MonoBehaviour
 	private SimpleLog logger;
     [SerializeField] private string appId = "SHIPWRECKS";
     [SerializeField] private int appVersion = 1;
+	[SerializeField] private LocalizationMap localizationMap = null;
 
     [NonSerialized] private string missionId = "";
     [NonSerialized] private string diveNodeId = "";
@@ -90,6 +91,7 @@ public class Logging : MonoBehaviour
 	[NonSerialized] private string nodeContact = "";
 	[NonSerialized] private string evidenceActor = "";
 	[NonSerialized] private DateTime startDT = DateTime.Now;
+	[NonSerialized] private EventData.ClickType currClickType = EventData.ClickType.Unknown;
 
 	private enum eventCategories
     {
@@ -197,7 +199,7 @@ public class Logging : MonoBehaviour
 
 		// scenes
 
-		GameMgr.Events.Register<int>(GameEvents.SceneLoaded, LogSceneLoad);
+		GameMgr.Events.Register<string>(GameEvents.SceneLoaded, LogSceneLoad);
 
 		// checkpoint
 
@@ -253,16 +255,17 @@ public class Logging : MonoBehaviour
 	}
 
     private void Start() {
-		GameMgr.Events.Dispatch(GameEvents.SceneLoaded, GameMgr.State.CurrentLevel.Index);
+		GameMgr.Events.Dispatch(GameEvents.SceneLoaded, "Main");
 	}
 
 	#region Scenes
 
 	// Mission, Scene, Timestamp
-	private void LogSceneLoad(int index) {
+	private void LogSceneLoad(string sceneId) {
+		int index = GameMgr.State.CurrentLevel.Index;
 		missionId = GameDb.GetLevelData(index).name;
 
-		string scene = SceneManager.GetActiveScene().name;
+		string scene = sceneId;
 
 		long elapsedTicks = DateTime.Now.Ticks - startDT.Ticks;
 		TimeSpan elapsedTime = new TimeSpan(elapsedTicks);
@@ -328,18 +331,21 @@ public class Logging : MonoBehaviour
 	private void LogEvidenceBoardClick(IEvidenceChainState chainState, bool isAccurate) {
 		string factType = GetChainRootName(chainState.Root());
 
-		string factOriginStr = "origins: ";
+		string factOriginStr = "origin: ";
 		string factTargetStr = "targets: ";
 
 		ListSlice<StringHash32> roots = chainState.StickyInfo.RootIds;
 		foreach(StringHash32 root in roots) {
-			factOriginStr += root.ToDebugString() + " | ";
+			factOriginStr += localizationMap.GetText(GameDb.GetNodeLocalizationKey(root)) + " | ";
 		}
 
-		ListSlice<StringHash32> nodes = chainState.StickyInfo.NodeIds;
+		ListSlice<StringHash32> nodes = chainState.Chain();
 		foreach (StringHash32 node in nodes) {
-			factTargetStr += node.ToDebugString() + " | ";
+			// to do: look up this node id
+			factTargetStr += node + " | ";
 		}
+
+		// Debug.Log(factTargetStr);
 
 		string accurate = isAccurate.ToString();
 
@@ -488,10 +494,20 @@ public class Logging : MonoBehaviour
 
 	// Conversation Click -- Mission, Scene, Click-Type, Character, Click-Action
 	private void LogConversationClick(EventData.ClickAction clickAction) {
-		EventData.ClickType clickType = DetermineClickType();
+		EventData.ClickType clickType;
+		if (currClickType == EventData.ClickType.Unknown) {
+			clickType = DetermineClickType();
+		}
+		else {
+			clickType = currClickType;
+		}
+
 		string clickTypeStr = EventData.ClickTypeDict[clickType];
 
 		string clickActionStr = EventData.ClickActionDict[clickAction];
+		if (clickAction == EventData.ClickAction.Close) {
+			currClickType = EventData.ClickType.Unknown;
+		}
 
 		string scene = SceneManager.GetActiveScene().name;
 
@@ -681,41 +697,46 @@ public class Logging : MonoBehaviour
 			taskLocalizations.Add(poi.PhotoName);
 		}
 
+		diveTasksStr = "";
 		foreach (KeyValuePair pair in tasks) {
-			diveTasksStr += pair.Key + ": " + pair.Value + "\n";
+			diveTasksStr += localizationMap.GetText(pair.Key) + ": " + pair.Value + "; ";
 		}
 	}
 
 	private void HandleJournalOpened(EventData.Actor actor) {
-		Debug.Log("handling journal open: " + actor);
 		diveJournalActor = EventData.ActorDict[actor];
 	}
 
 	private EventData.ClickType DetermineClickType() {
+		EventData.ClickType type = EventData.ClickType.Unknown;
+
 		if (UIMgr.IsOpen<UIDialogScreen>()) {
-			return EventData.ClickType.Phone;
+			type = EventData.ClickType.Phone;
 		}
-		if (UIMgr.IsOpen<UIRadioDialog>()) {
-			return EventData.ClickType.Radio;
+		else if (UIMgr.IsOpen<UIRadioDialog>()) {
+			type = EventData.ClickType.Radio;
 		}
-		if (UIMgr.IsOpen<UITextMessage>()) {
-			return EventData.ClickType.Text;
+		else if (UIMgr.IsOpen<UIPhone>()) {
+			type = EventData.ClickType.Text;
 		}
-		if (UIMgr.IsOpen<UICloseInspect>()) {
-			return EventData.ClickType.Inspect;
+		else if (UIMgr.IsOpen<UICloseInspect>()) {
+			type = EventData.ClickType.Inspect;
 		}
-		if (UIMgr.IsOpen<UIEvidenceScreen>()) {
-			return EventData.ClickType.Evidence;
+		else if (UIMgr.IsOpen<UIEvidenceScreen>()) {
+			type = EventData.ClickType.Evidence;
 		}
-		if (UIMgr.IsOpen<UITitleScreen>()) {
-			return EventData.ClickType.Menu;
+		else if (UIMgr.IsOpen<UITitleScreen>()) {
+			type = EventData.ClickType.Menu;
 		}
-		if (CutscenePlayer.IsPlaying) {
-			return EventData.ClickType.Cutscene;
+		else if (CutscenePlayer.IsPlaying) {
+			type = EventData.ClickType.Cutscene;
 		}
-		else {
-			return EventData.ClickType.Unknown;
+
+		if (type != EventData.ClickType.Unknown) {
+			currClickType = type;
 		}
+
+		return type;
 	}
 
 	private void HandleGameUnlockingEvidence() {

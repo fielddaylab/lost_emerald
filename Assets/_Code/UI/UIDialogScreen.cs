@@ -50,6 +50,8 @@ namespace Shipwreck {
 		[SerializeField]
 		private RectTransform m_displayContainer = null;
 
+		private bool isLastLine = false;
+
 		#endregion // Inspector
 
 		#region UIBase
@@ -73,8 +75,8 @@ namespace Shipwreck {
 		}
 
 		protected override void OnHideStart() {
-			base.OnHideStart();
 			GameMgr.Events.Dispatch(GameEvents.ConversationClick, Logging.EventData.ClickAction.Close);
+			base.OnHideStart();
 		}
 
 		protected override void OnHideCompleted() {

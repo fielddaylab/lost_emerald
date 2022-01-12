@@ -48,7 +48,6 @@ namespace Shipwreck {
 			m_textBox.text = string.Empty;
 
 			GameMgr.Events.Dispatch(GameEvents.DialogOpened);
-			GameMgr.Events.Dispatch(GameEvents.ConversationClick, Logging.EventData.ClickAction.Open);
 			UIMgr.Close<UIPhone>();
 			UIMgr.Close<UIModalOverlay>();
 		}
