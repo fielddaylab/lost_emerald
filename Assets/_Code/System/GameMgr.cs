@@ -71,7 +71,6 @@ namespace Shipwreck
 
 		public static void SetLevelIndex(int levelIndex) {
 			I.SetLevelIndexInternal(levelIndex);
-			Events.Dispatch(GameEvents.LevelStart, levelIndex);
 		}
 
 		private void SetLevelIndexInternal(int levelIndex) {

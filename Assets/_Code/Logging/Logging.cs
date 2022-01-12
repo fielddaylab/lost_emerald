@@ -280,9 +280,9 @@ public class Logging : MonoBehaviour
 			{ "timestamp", timestamp }
 		};
 
-		#if FIREBASE
+#if FIREBASE
 		FBSceneLoad(missionId, scene, timestamp);
-		#endif
+#endif
 	}
 
 	#endregion
@@ -335,17 +335,20 @@ public class Logging : MonoBehaviour
 		string factTargetStr = "targets: ";
 
 		ListSlice<StringHash32> roots = chainState.StickyInfo.RootIds;
+		int index = 0;
 		foreach(StringHash32 root in roots) {
-			factOriginStr += localizationMap.GetText(GameDb.GetNodeLocalizationKey(root)) + " | ";
+			if (index > 0) { factOriginStr += "; "; }
+			factOriginStr += localizationMap.GetText(GameDb.GetNodeLocalizationKey(root));
+			index++;
 		}
 
+		index = 0;
 		ListSlice<StringHash32> nodes = chainState.Chain();
 		foreach (StringHash32 node in nodes) {
-			// to do: look up this node id
-			factTargetStr += node + " | ";
+			if (index > 0) { factTargetStr += ", "; }
+			factTargetStr += node;
+			index++;
 		}
-
-		// Debug.Log(factTargetStr);
 
 		string accurate = isAccurate.ToString();
 
