@@ -647,7 +647,7 @@ PrefabInstance:
     - target: {fileID: 1884388410460401145, guid: a94f06c62dbef5c499e85ed75fa0e928,
         type: 3}
       propertyPath: m_imageID
-      value: poster-bottom
+      value: native-species_poster
       objectReference: {fileID: 0}
     - target: {fileID: 6560214841799627356, guid: a94f06c62dbef5c499e85ed75fa0e928,
         type: 3}
@@ -5167,7 +5167,7 @@ PrefabInstance:
     - target: {fileID: 1884388410460401145, guid: a94f06c62dbef5c499e85ed75fa0e928,
         type: 3}
       propertyPath: m_imageID
-      value: poster-top
+      value: invasive-species_poster
       objectReference: {fileID: 0}
     - target: {fileID: 6560214841799627356, guid: a94f06c62dbef5c499e85ed75fa0e928,
         type: 3}
