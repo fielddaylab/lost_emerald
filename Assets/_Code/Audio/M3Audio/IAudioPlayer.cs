@@ -49,4 +49,10 @@ public interface IAudioPlayer
 	/// </summary>
 	/// <returns></returns>
 	bool IsMute();
+
+	/// <summary>
+	/// crossfades the current audio into the given audio
+	/// </summary>
+	/// <param name="clipID"></param>
+	void CrossFadeAudio(string clipID, float time, bool loop = false);
 }

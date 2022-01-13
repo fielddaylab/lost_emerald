@@ -97,6 +97,10 @@ namespace Shipwreck
 			return m_ambianceSrc.mute;
 		}
 
+		public void CrossFadeAudio(string clipID, float time, bool loop = false) {
+			StartCoroutine(CrossFadeRoutine(clipID, time, loop));
+		}
+
 		#endregion
 
 		#region Helper Methods
@@ -106,6 +110,38 @@ namespace Shipwreck
 			var data = GameDb.GetAudioData(clipID);
 			m_currData = data;
 			AudioSrcMgr.LoadAudio(m_ambianceSrc, data);
+		}
+
+		private IEnumerator CrossFadeRoutine(string clipID, float time, bool loop) {
+			float maxVolume = m_ambianceSrc.volume;
+			float midTime = time / 2f;
+			bool transitioned = false;
+
+			float volumeStep = maxVolume / midTime;
+
+			for (float t = 0; t < time; t += Time.deltaTime) {
+				if (t >= midTime && !transitioned) {
+					// load new audio
+					m_ambianceSrc.Stop();
+					AudioData newData = GameDb.GetAudioData(clipID);
+					m_currData = newData;
+					AudioSrcMgr.LoadAudio(m_ambianceSrc, newData);
+					m_ambianceSrc.volume = volumeStep * Time.deltaTime;
+					m_ambianceSrc.loop = loop;
+					m_ambianceSrc.Play();
+					transitioned = true;
+				}
+				if (!transitioned) {
+					m_ambianceSrc.volume -= volumeStep * Time.deltaTime;
+				}
+				else {
+					m_ambianceSrc.volume += volumeStep * Time.deltaTime;
+				}
+
+				yield return null;
+			}
+
+			m_ambianceSrc.volume = maxVolume;
 		}
 
 		#endregion

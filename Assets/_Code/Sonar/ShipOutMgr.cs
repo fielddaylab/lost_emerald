@@ -73,7 +73,7 @@ namespace Shipwreck {
 		}
 
 		private void Start() {
-			AudioSrcMgr.instance.PlayAudio("ship_out_music", true);
+			//AudioSrcMgr.instance.PlayAudio("ship_out_music", true);
 
 			m_shipOutData = GameDb.GetShipOutData(GameMgr.State.GetCurrShipOutIndex());
 

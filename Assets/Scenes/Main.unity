@@ -6750,8 +6750,8 @@ RectTransform:
   - {fileID: 1245559753}
   - {fileID: 939232313}
   - {fileID: 7335882106571113115}
-  - {fileID: 1085489613}
   - {fileID: 1973513322}
+  - {fileID: 1085489613}
   - {fileID: 604942445}
   - {fileID: 1853592426}
   - {fileID: 261572183}
@@ -7320,7 +7320,7 @@ GameObject:
   - component: {fileID: 1085489613}
   - component: {fileID: 1085489614}
   m_Layer: 5
-  m_Name: TransitionDisplay
+  m_Name: TransitionScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7339,7 +7339,7 @@ RectTransform:
   m_Children:
   - {fileID: 453217059}
   m_Father: {fileID: 994095764}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -7363,7 +7363,9 @@ MonoBehaviour:
   - {fileID: 2142852465}
   - {fileID: 1771391238}
   - {fileID: 1986674280}
-  m_fadeTime: 1.5
+  m_iconFadeTime: 1.5
+  m_holdTime: 1
+  m_endFadeTime: 2
 --- !u!114 &1088552670 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1884388410460401145, guid: a94f06c62dbef5c499e85ed75fa0e928,
@@ -12718,7 +12720,7 @@ RectTransform:
   - {fileID: 913256404}
   - {fileID: 2029676609}
   m_Father: {fileID: 994095764}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -16093,7 +16095,6 @@ MonoBehaviour:
   m_closeButton: {fileID: 780178054563271128}
   m_shipOutButton: {fileID: 6746295532086510786}
   m_mapImage: {fileID: 7335882108045996118}
-  m_transitionDisplay: {fileID: 1085489614}
 --- !u!1 &7335882108045996116
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,12 +6,18 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Shipwreck {
-	public class UITransitionDisplay : UIBase {
+	public class UITransitionScreen : UIBase {
 
 		[SerializeField]
 		private Image[] m_icons;
 		[SerializeField]
-		private float m_fadeTime = 2f;
+		private float m_iconFadeTime = 1.5f;
+		[SerializeField]
+		private float m_holdTime = 0.5f;
+		[SerializeField]
+		private float m_endFadeTime = 2f;
+
+		private float m_startFadeTime = 0.25f;
 
 		private Routine m_showIconRoutine;
 
@@ -20,10 +26,10 @@ namespace Shipwreck {
 		}
 
 		protected override IEnumerator ShowRoutine() {
-			yield return CanvasGroup.FadeTo(1f, 0.25f);
+			yield return CanvasGroup.FadeTo(1f, m_startFadeTime);
 		}
 		protected override IEnumerator HideRoutine() {
-			yield return CanvasGroup.FadeTo(0f, 2f);
+			yield return CanvasGroup.FadeTo(0f, m_endFadeTime);
 		}
 
 		protected override void OnShowStart() {
@@ -33,6 +39,10 @@ namespace Shipwreck {
 			foreach (Image icon in m_icons) {
 				icon.SetAlpha(0);
 			}
+
+			float transitionTime = m_startFadeTime + m_iconFadeTime * m_icons.Length + m_holdTime + m_endFadeTime;
+			AudioSrcMgr.instance.CrossFadeAudio("ship_out_music", transitionTime, "ship_out", true);
+			AudioSrcMgr.instance.CrossFadeAmbiance("ship_out_ambiance", transitionTime, true);
 		}
 
 		protected override void OnShowCompleted() {
@@ -42,31 +52,40 @@ namespace Shipwreck {
 		}
 
 		protected override void OnHideStart() {
-			AudioSrcMgr.instance.PlayAudio("ship_out");
-			AudioSrcMgr.instance.PlayAmbiance("ship_out_ambiance", true);
+			//AudioSrcMgr.instance.PlayAmbiance("ship_out_ambiance", true);
 			SceneManager.LoadScene("ShipOut");
 			GameMgr.Events.Dispatch(GameEvents.SceneLoaded, "ShipOut");
+		}
+
+		protected override void OnHideCompleted() {
+			base.OnHideCompleted();
+
+			foreach (Image icon in m_icons) {
+				icon.SetAlpha(0);
+			}
 		}
 
 		private void DisplayIcons() {
 			m_showIconRoutine.Replace(this, FadeIcon(0))
 				.OnComplete(() => m_showIconRoutine.Replace(this, FadeIcon(1))
 					.OnComplete(() => m_showIconRoutine.Replace(this, FadeIcon(2))
-						.OnComplete(() => FinishDisplaying())
+						.OnComplete(() => m_showIconRoutine.Replace(this, Wait(m_holdTime))
+							.OnComplete(() => FinishDisplaying())
+						)
 					)
 				);
 		}
 
 		private IEnumerator FadeIcon(int index) {
-			yield return m_icons[index].FadeTo(1f, m_fadeTime);
+			yield return m_icons[index].FadeTo(1f, m_iconFadeTime);
+		}
+
+		private IEnumerator Wait(float seconds) {
+			yield return new WaitForSeconds(seconds);
 		}
 
 		private void FinishDisplaying() {
-			UIMgr.Close<UITransitionDisplay>();
-
-			foreach (Image icon in m_icons) {
-				icon.SetAlpha(0);
-			}
+			UIMgr.Close<UITransitionScreen>();
 		}
 	}
 }

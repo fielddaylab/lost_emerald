@@ -16,8 +16,6 @@ namespace Shipwreck {
 		private Button m_shipOutButton = null;
 		[SerializeField]
 		private Image m_mapImage = null;
-		[SerializeField]
-		private UITransitionDisplay m_transitionDisplay;
 
 		protected override IEnumerator HideImmediateRoutine() {
 			throw new System.NotImplementedException();
@@ -63,7 +61,7 @@ namespace Shipwreck {
 
 		private void HandleShipOutButton() {
 			AudioSrcMgr.instance.PlayOneShot("click_evidence_ship_out");
-			UIMgr.Open<UITransitionDisplay>();
+			UIMgr.Open<UITransitionScreen>();
 		}
 	}
 }
