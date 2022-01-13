@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4683c3906b1d3ac4097d7e4b33106805, type: 3}
+  m_Name: Postcard
+  m_EditorClassIdentifier: 
+  m_englishPrefab: {fileID: 2349730202964202500, guid: 76eebdb26f06d8444ae5464fac377578,
+    type: 3}
+  m_spanishPrefab: {fileID: 0}

@@ -1,4 +1,5 @@
 ﻿using BeauRoutine;
+using BeauUtil;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -36,8 +37,8 @@ namespace Shipwreck {
 			throw new System.NotImplementedException();
 		}
 
-		public void OpenCloseInspect(string imageID) {
-			Sprite inspectSprite = GameDb.GetImageData(imageID);
+		public void OpenCloseInspect(string imageId) {
+			Sprite inspectSprite = GameDb.GetImageData(imageId);
 			m_inspectImage.sprite = inspectSprite;
 			m_inspectImage.rectTransform.sizeDelta = inspectSprite.rect.size.normalized * REFERENCE_DIM;
 			// more space for landscape photos
@@ -47,9 +48,10 @@ namespace Shipwreck {
 					/ m_inspectImage.rectTransform.sizeDelta.y;
 			}
 			UIMgr.Open<UICloseInspect>();
+			GameMgr.Events.Dispatch(GameEvents.CloseInspect, imageId);
 		}
 
-		public void OpenCloseInspect(Sprite inspectSprite) {
+		public void OpenCloseInspect(Sprite inspectSprite, StringHash32 imageId) {
 			m_inspectImage.sprite = inspectSprite;
 			m_inspectImage.rectTransform.sizeDelta = inspectSprite.rect.size.normalized * REFERENCE_DIM;
 			// more space for landscape photos
@@ -59,6 +61,7 @@ namespace Shipwreck {
 					/ m_inspectImage.rectTransform.sizeDelta.y;
 			}
 			UIMgr.Open<UICloseInspect>();
+			GameMgr.Events.Dispatch(GameEvents.CloseInspect, GameDb.GetImageData(imageId).name);
 		}
 
 		private void HandleClose() {

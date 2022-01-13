@@ -71,7 +71,7 @@
 
 :: reya-steel
 @contact reya, phone-call
-//@background
+@background family-cropped
 @trigger OnEnterEvidenceBoard
 @when Seen(level03.dad-steamer)
 @once
@@ -83,14 +83,14 @@
 	{@reya}  Yep. I think he likes you!
 		Don't worry, I told him you were too busy with paperwork.
 		Ooh, that reminds me... check out this awesome postcard!
-		{img postcard}
+		{obj Postcard}
 		It was left over from Dad's yard sale. Think it's worth anything? 
 	{@you}   Hold on. Did you read this, Reya??
 		Grandpa wrote that O.K. Steel sent him on an extra trip.
 	{@reya}  Um... so? 
 	{@you}   There's no official record of this. It doesn't match Dad's map. 
 	{@dad}   Wait a sec. You mean... I've been searching the wrong part of the lake?? 
-		{/img}
+		{/obj}
 	{@reya}  Yes!!! I found a clue!!!
 	{@you}   We have Grandpa's final route. Now we need to narrow down the location.
 	{@reya}  Well, what are you waiting for, sis? Go do some research!!
@@ -305,11 +305,11 @@
 	{@you}  Yeah. My family never talks about it. 
 		I'm trying to find out what really happened.
 	{@ed}   I wrote it all down in my journal.
-		{img survivor-journal}
+		{obj SurvivorJournal}
 		We were sailing smoothly when all of a sudden, there was a loud BANG.
 		The ship had started to break in half!
 		The captain helped launch a lifeboat. Then he tried to radio for help, but the power went out as the ship broke apart.
-		{/img}
+		{/obj}
 	{@you}	Did you tell anyone what happened?
 	{@ed}   I tried, but O.K. Steel put the blame on your grandpa. 
 		People said I must've remembered it wrong. 

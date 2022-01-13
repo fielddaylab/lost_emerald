@@ -60,11 +60,8 @@ namespace Shipwreck {
 		}
 
 		private void HandleShipOutButton() {
-			UIMgr.Close<UIEvidenceScreen>();
-			UIMgr.Close<UIEnRouteScreen>();
-			AudioSrcMgr.instance.PlayAudio("ship_out");
-			AudioSrcMgr.instance.PlayAmbiance("ship_out_ambiance", true);
-			SceneManager.LoadScene("ShipOut");
+			AudioSrcMgr.instance.PlayOneShot("click_evidence_ship_out");
+			UIMgr.Open<UITransitionScreen>();
 		}
 	}
 }

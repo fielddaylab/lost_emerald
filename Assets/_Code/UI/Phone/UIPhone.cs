@@ -32,7 +32,6 @@ namespace Shipwreck {
 			UIMgr.Close(m_textMsgScreen);
 
 			GameMgr.Events.Dispatch(GameEvents.PhoneClosed);
-			//UIPhoneNotif.AttemptReopen();
 		}
 
 		protected override IEnumerator HideRoutine() {

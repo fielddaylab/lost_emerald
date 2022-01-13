@@ -57,6 +57,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 3d03c611440aba64fbb670920dcb11c0, type: 3}
   - {fileID: 21300000, guid: 63394811bbb796048a4b3be38f86ec9a, type: 3}
   - {fileID: 21300000, guid: 77f86a110f5607542a2bbb5da9044b6e, type: 3}
+  - {fileID: 21300000, guid: d00c9561d66e8b246bd35007dd4a0fb6, type: 3}
   - {fileID: 21300000, guid: d563b37132fe19c498f92f3b400aa37a, type: 3}
   - {fileID: 21300000, guid: b8f94b81841f3074bbf3e63cba43e0a0, type: 3}
   - {fileID: 21300000, guid: 6742bc91c8f5d4e3daea592a062c8b52, type: 3}
@@ -65,6 +66,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 25a167d13e4ec455fb823ae9c3388e39, type: 3}
   - {fileID: 21300000, guid: 2af279e18c8bfd5418df2a548269fa1e, type: 3}
   - {fileID: 21300000, guid: c142e3f14c96f384d9a3881ff1fe15ca, type: 3}
+  - {fileID: 21300000, guid: f1ad5cf18cde537438a58d1f2ff15817, type: 3}
   - {fileID: 21300000, guid: bbda042251f08164aa5b16e04960b800, type: 3}
   - {fileID: 21300000, guid: 5acb7c42884df40b59c8ff374fe31bcb, type: 3}
   - {fileID: 21300000, guid: 73e01e52390ee6d4ca224fc6a68ef033, type: 3}
@@ -84,7 +86,9 @@ SpriteAtlas:
   - {fileID: 21300000, guid: b496f825c60d97545b3bbc67f707fc2d, type: 3}
   - {fileID: 21300000, guid: 18ce4d25aa2b140caad634c3dd4b69e2, type: 3}
   - {fileID: 21300000, guid: 8c46b655c10db8844bb8b85341a871dd, type: 3}
+  - {fileID: 21300000, guid: 6a6f036530a4c6e46b055c76a0c63c52, type: 3}
   - {fileID: 21300000, guid: a4c0f4952434618439cc0b8002bcdf40, type: 3}
+  - {fileID: 21300000, guid: 43b36016d82daf84d83c2f603c01b2aa, type: 3}
   - {fileID: 21300000, guid: 9181df563faf4c240b278fd35f45ddfd, type: 3}
   - {fileID: 21300000, guid: b92d2866ce79293478f277897bd0ad16, type: 3}
   - {fileID: 21300000, guid: 0b8b988619e68ed408ef667cc5d86d11, type: 3}
@@ -94,9 +98,10 @@ SpriteAtlas:
   - {fileID: 21300000, guid: f2f043070615e5d44bf1c5cf2ff5c0b5, type: 3}
   - {fileID: 21300000, guid: 460613178d0a2e340a8683c2317803c9, type: 3}
   - {fileID: 21300000, guid: 289fae17660e1b5468819bd39d453625, type: 3}
-  - {fileID: 21300000, guid: 5edb9b470523f1a44a9745876e2dd3ba, type: 3}
   - {fileID: 21300000, guid: 311983876fa02b3489f016d9e58c7d5d, type: 3}
   - {fileID: 21300000, guid: 2cd1aa97dedd64a7d98a8d2b4dcd26af, type: 3}
+  - {fileID: 21300000, guid: f5a527b76cd488043a9db33d2400ad5b, type: 3}
+  - {fileID: 21300000, guid: 4f48acb7c373c1a4f983c51294c42ec9, type: 3}
   - {fileID: 21300000, guid: 83c623e77b3e2644387a29f9935bb645, type: 3}
   - {fileID: 21300000, guid: 41c798e7bf044e14db7e5f8678187066, type: 3}
   - {fileID: 21300000, guid: abbdb528fd8b57140a34defba4ece433, type: 3}
@@ -105,6 +110,8 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 0d5a7ad870314423a9bbb4f7503c3d25, type: 3}
   - {fileID: 21300000, guid: b3a55be8a5c41584781b4aacc67a005b, type: 3}
   - {fileID: 21300000, guid: 4a981159b8896524888fca5b6765cc69, type: 3}
+  - {fileID: 21300000, guid: e4487d7937abe43418bd00681f6be111, type: 3}
+  - {fileID: 21300000, guid: e2aeb399b586bec47b4a7a5223fbc919, type: 3}
   - {fileID: 21300000, guid: d3d348993d5341f40acdff68afd4acc4, type: 3}
   - {fileID: 21300000, guid: 132b0ca92ede2104d86bc6e8eb061529, type: 3}
   - {fileID: 21300000, guid: 4437300a3ad20184488215937c1d80b4, type: 3}
@@ -116,17 +123,18 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 9219a3ba3979b214babe6a768fcade78, type: 3}
   - {fileID: 21300000, guid: 33e293eaed4194544a11e9b93c530303, type: 3}
   - {fileID: 21300000, guid: 74fd1afaaff2da843b02b5e2ef88fc91, type: 3}
+  - {fileID: 21300000, guid: 4aaf4efa780406645aa967c310a512cc, type: 3}
   - {fileID: 21300000, guid: bd33810b214a0104fbc3b7c7b52910b8, type: 3}
   - {fileID: 21300000, guid: 731c122b3a19c420abd944082c76bccc, type: 3}
   - {fileID: 21300000, guid: c7876a4b94f279f4eb754ca7b2512aae, type: 3}
   - {fileID: 21300000, guid: 87e3ff4b2911d7944bdb35bc2107e31a, type: 3}
+  - {fileID: 21300000, guid: bf4cb15b52451cf4bbb587ce6299c374, type: 3}
   - {fileID: 21300000, guid: d290646b05eca384f9f74df67057a562, type: 3}
   - {fileID: 21300000, guid: c20a108ba4f416048a9867506a6020c7, type: 3}
   - {fileID: 21300000, guid: 3acf4abb67ae7744292d804a07f1c37a, type: 3}
   - {fileID: 21300000, guid: 6d101ecb1c9064a459c2986cab64d52f, type: 3}
-  - {fileID: 21300000, guid: d43964eb4ca004c469d894bdbfe850f3, type: 3}
   - {fileID: 21300000, guid: ea001b1c59f86ce4c805ebcf8ec11611, type: 3}
-  - {fileID: 21300000, guid: 87bdf03c26c799a49a736d0d4b6b7c15, type: 3}
+  - {fileID: 21300000, guid: 844af92c83bc5fc46a2d8751cf38f48e, type: 3}
   - {fileID: 450545777640350200, guid: 75dd454c7d88aa847b5983718c948b2c, type: 3}
   - {fileID: -7964487563894589878, guid: 75dd454c7d88aa847b5983718c948b2c, type: 3}
   - {fileID: -4508500316453927011, guid: 75dd454c7d88aa847b5983718c948b2c, type: 3}
@@ -149,6 +157,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 1a3aefcd453f25c47a263ce5c16f5b7a, type: 3}
   - {fileID: 21300000, guid: c4dd4fdd9b744414dbd607f60e3fd758, type: 3}
   - {fileID: 21300000, guid: cb86ceede706ea24bad46cf5d26b1bae, type: 3}
+  - {fileID: 21300000, guid: 3df0eeed5b2ccb54da0f4349a22cd609, type: 3}
   - {fileID: 21300000, guid: ca052dfdd98a1c742b96af83bb3b4cc4, type: 3}
   - {fileID: 21300000, guid: c4f3860e134ac3b43830b59b72474fc3, type: 3}
   - {fileID: 21300000, guid: b34da93ef2b660d40aa2131890396ebe, type: 3}
@@ -180,6 +189,7 @@ SpriteAtlas:
   - PhoneDialogTalking
   - reya_icon
   - amy-office
+  - invasive-species_poster
   - photo-lv3-anchor
   - level4_emerald
   - ship
@@ -188,6 +198,7 @@ SpriteAtlas:
   - shipwreck
   - lv2-gps
   - title-paper
+  - credits-shipwreck-hunter
   - old-ripped-paper
   - ripped-page
   - reya-safe
@@ -207,7 +218,9 @@ SpriteAtlas:
   - poster-bottom
   - camera-button-close
   - johnny_icon
+  - credits-newspaper
   - family-home
+  - postcard-front
   - icon-check-empty
   - triangle
   - photo-lv2-gash
@@ -217,9 +230,10 @@ SpriteAtlas:
   - photo-lv1-knife
   - toggle_on
   - photo-lv4-name
-  - title-boat
   - enroute-lv3
   - arrow-up
+  - credits-photo-wreck
+  - native-species_poster
   - mom-office
   - rounded-rect
   - office-live
@@ -228,6 +242,8 @@ SpriteAtlas:
   - icon-check
   - title-background
   - photo-lv3-above
+  - transition-air
+  - credits-museum
   - enroute-lv2
   - push-pin
   - poster-top
@@ -239,17 +255,18 @@ SpriteAtlas:
   - HiResCircle
   - cami_icon
   - ship-card-updated
+  - credits-dad-warning
   - lv2-car-images
   - lake-overview
   - closed-tag
   - captain-photo
+  - family-cropped
   - close-button
   - dad-yardsale
   - cork-board
   - steamer-ad
-  - title-waves
   - ultralight-photo
-  - title-gradient
+  - transition-camera
   - waves_2
   - waves_3
   - waves_0
@@ -272,6 +289,7 @@ SpriteAtlas:
   - peshtigo
   - phone-full
   - lou_icon
+  - transition-notebook
   - PhoneDialog
   - captain-with-knife
   - brittle-steel

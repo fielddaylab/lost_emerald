@@ -19,16 +19,15 @@ namespace Shipwreck {
 		[SerializeField]
 		private Inspectable m_inspectable;
 
-		public void Populate(CharacterData character, Sprite image) {
+		public void Populate(CharacterData character, Sprite image, StringHash32 imageId) {
 			m_layout.Populate(character);
 			m_inspectable.SetSprite(image);
-			m_inspectable.Button.onClick.AddListener(delegate { HandleCloseInspect(m_inspectable.Sprite); });
+			m_inspectable.Button.onClick.AddListener(delegate { HandleCloseInspect(m_inspectable.Sprite, imageId); });
 			UIBase.AssignSpritePreserveAspect(m_bodyImage, m_imageSizer, image, Axis.X);
 		}
 
-		private void HandleCloseInspect(Sprite sprite) {
-			Debug.Log("opening");
-			UIMgr.Open<UICloseInspect>().OpenCloseInspect(sprite);
+		private void HandleCloseInspect(Sprite sprite, StringHash32 imageId) {
+			UIMgr.Open<UICloseInspect>().OpenCloseInspect(sprite, imageId);
 		}
 	}
 

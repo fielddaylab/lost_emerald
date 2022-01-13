@@ -281,6 +281,7 @@ namespace Shipwreck {
 			UIMgr.CloseThenOpen<UIEvidenceScreen, UIOfficeScreen>();
 		}
 		private void HandleShipOutButton() {
+			AudioSrcMgr.instance.PlayOneShot("click_evidence_ship_out");
 			UIMgr.Open<UIEnRouteScreen>();
 			/*
 			UIMgr.Close<UIEvidenceScreen>();

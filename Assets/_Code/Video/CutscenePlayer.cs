@@ -20,6 +20,8 @@ namespace Shipwreck {
 		[SerializeField]
 		private Camera m_videoCamera = null;
 
+		public static bool IsPlaying { get; set; }
+
 #if UNITY_EDITOR
 		private const string VIDEO_PATH = "file://{0}/cutscene{1:00}.mp4";
 #else
@@ -27,6 +29,7 @@ namespace Shipwreck {
 #endif
 
 		public static void Play() {
+			IsPlaying = true;
 			// AudioSrcMgr.instance.StashAudio();
 			AudioSrcMgr.instance.StopAudio();
 			AudioSrcMgr.instance.StopAmbiance();
@@ -64,6 +67,7 @@ namespace Shipwreck {
 			if (gameCamera != null) {
 				gameCamera.EnableAudio();
 			}
+			IsPlaying = false;
 			OnVideoComplete?.Invoke();
 		}
 

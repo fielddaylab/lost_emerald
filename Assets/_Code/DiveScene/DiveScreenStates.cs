@@ -1,5 +1,6 @@
 ﻿using BeauUtil;
 using PotatoLocalization;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Shipwreck {
@@ -62,6 +63,7 @@ namespace Shipwreck {
 				if (Screen.IsAtAscendNode) {
 					UIMgr.Close<UIDiveScreen>();
 					SceneManager.LoadScene("Main");
+					GameMgr.Events.Dispatch(GameEvents.SceneLoaded, "Main");
 					UIMgr.Open<UIOfficeScreen>();
 					AudioSrcMgr.instance.PlayAudio("office_music", true);
 					AudioSrcMgr.instance.StopAmbiance();
@@ -139,8 +141,10 @@ namespace Shipwreck {
 			private void HandleMessageClosed() {
 				if (m_showJournal) {
 					Screen.AssignPreviousState(new DiveNavigation(Screen));
+					GameMgr.Events.Dispatch(GameEvents.Dive.JournalOpened, Logging.EventData.Actor.Game);
 					Screen.SetState(new DiveJournal(Screen));
-				} else {
+				}
+				else {
 					Screen.SetState(Screen.Previous);
 				}
 			}
@@ -212,6 +216,7 @@ namespace Shipwreck {
 				if (Screen.IsAtAscendNode) {
 					UIMgr.Close<UIDiveScreen>();
 					SceneManager.LoadScene("Main");
+					GameMgr.Events.Dispatch(GameEvents.SceneLoaded, "Main");
 					UIMgr.Open<UIOfficeScreen>();
 					AudioSrcMgr.instance.PlayAudio("office_music", true);
 					AudioSrcMgr.instance.StopAmbiance();

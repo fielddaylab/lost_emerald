@@ -130,7 +130,7 @@ namespace Shipwreck {
 				return base.Run(inNode, inActor, inLocals, inName);
 			}
 
-            GameMgr.Events.Dispatch(GameEvents.DialogRun, inNode);
+			GameMgr.Events.Dispatch(GameEvents.DialogRun, inNode);
 			
 			m_currentHandle.Kill();
 			return m_currentHandle = base.Run(inNode, inActor, inLocals, inName);
@@ -138,6 +138,7 @@ namespace Shipwreck {
 
 		public override void OnNodeEnter(ScriptNode inNode, LeafThreadState<ScriptNode> inThreadState) {
 			GameMgr.RecordNodeVisited(inNode);
+			GameMgr.Events.Dispatch(GameEvents.ConversationOpened, inNode);
 
 			if (inNode.Type != ScriptNode.NodeType.Function) {
 				if (m_uiCurrent != null) {
@@ -147,12 +148,15 @@ namespace Shipwreck {
 				if (inNode.Type == ScriptNode.NodeType.TextMessage) {
 					m_uiCurrent = UIMgr.Open<UITextMessage>();
 					UIMgr.Close<UIDialogScreen>();
+					GameMgr.Events.Dispatch(GameEvents.DialogOpened, inNode);
 				} else if (inNode.Type == ScriptNode.NodeType.PhoneCall) {
 					m_uiCurrent = UIMgr.Open<UIDialogScreen>();
 					UIMgr.Close<UIPhone>();
+					GameMgr.Events.Dispatch(GameEvents.PhoneOpened, inNode);
 				} else if (inNode.Type == ScriptNode.NodeType.Radio) {
 					m_uiCurrent = UIMgr.Open<UIRadioDialog>();
 					UIMgr.Close<UIPhone>();
+					GameMgr.Events.Dispatch(GameEvents.DialogOpened, inNode);
 				}
 				
 				ConfigureDisplay(m_uiCurrent, null);

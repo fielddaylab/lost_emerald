@@ -50,6 +50,8 @@ namespace Shipwreck {
 		[SerializeField]
 		private RectTransform m_displayContainer = null;
 
+		private bool isLastLine = false;
+
 		#endregion // Inspector
 
 		#region UIBase
@@ -64,6 +66,17 @@ namespace Shipwreck {
 			UIMgr.Close<UIPhone>();
 			UIMgr.Close<UIPhoneNotif>();
 			UIMgr.Close<UIModalOverlay>();
+		}
+
+		protected override void OnShowCompleted() {
+			base.OnShowCompleted();
+			GameMgr.Events.Dispatch(GameEvents.ConversationClick, Logging.EventData.ClickAction.Open);
+
+		}
+
+		protected override void OnHideStart() {
+			GameMgr.Events.Dispatch(GameEvents.ConversationClick, Logging.EventData.ClickAction.Close);
+			base.OnHideStart();
 		}
 
 		protected override void OnHideCompleted() {
@@ -115,12 +128,13 @@ namespace Shipwreck {
 				skipped = true;
 			};
 			m_continueButton.onClick.RemoveListener(ClickSound);
+			m_continueButton.onClick.RemoveListener(LogConversationClick);
 			m_continueButton.onClick.AddListener(SkipSound);
 			m_continueButton.onClick.AddListener(action);
 
 			//AudioSrcMgr.instance.StartLineAudio(DialogAudioMgr.Type.phone);
 
-			while (visibleCharacterCount > 0 && skipped == false) {
+			while (visibleCharacterCount > 0 && !skipped) {
 				if (timeToWait >= 0) {
 					timeToWait -= Time.deltaTime * m_typeSpeed;
 				}
@@ -156,6 +170,7 @@ namespace Shipwreck {
 
 			m_continueButton.onClick.RemoveAllListeners();
 			m_continueButton.onClick.AddListener(ClickSound);
+			m_continueButton.onClick.AddListener(LogConversationClick);
 		}
 
 		public override IEnumerator CompleteLine() {
@@ -180,7 +195,7 @@ namespace Shipwreck {
 			}
 		}
 
-		protected override IEnumerator OnShowImage(Sprite image) {
+		protected override IEnumerator OnShowImage(Sprite image, StringHash32 imageId) {
 			//m_image.sprite = image;
 			m_image.gameObject.SetActive(true);
 			//m_image.SetAlpha(0);
@@ -237,6 +252,10 @@ namespace Shipwreck {
 		private void SkipSound()
 		{
 			AudioSrcMgr.instance.PlayOneShot("click_dialog_skip");
+		}
+
+		private void LogConversationClick() {
+			GameMgr.Events.Dispatch(GameEvents.ConversationClick, Logging.EventData.ClickAction.Continue);
 		}
 
 

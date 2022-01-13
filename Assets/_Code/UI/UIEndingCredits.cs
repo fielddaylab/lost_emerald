@@ -2,6 +2,7 @@
 using PotatoLocalization;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Shipwreck {
 
@@ -13,11 +14,15 @@ namespace Shipwreck {
 		private LocalizedTextUGUI m_headlineText = null;
 		[SerializeField]
 		private LocalizedTextUGUI m_sublineText = null;
+		[SerializeField]
+		private Image m_newspaperImage = null;
 
 		[SerializeField]
 		private LocalizationKey[] m_headlines = null;
 		[SerializeField]
 		private LocalizationKey[] m_sublines = null;
+		[SerializeField]
+		private Sprite[] m_images = null;
 
 
 		private Routine m_routine;
@@ -44,6 +49,7 @@ namespace Shipwreck {
 				m_headlineText.Key = m_headlines[index];
 				m_sublineText.Key = m_sublines[index];
 				m_newspaperGroup.localRotation = Quaternion.Euler(0f, 0f, 0f);
+				m_newspaperImage.sprite = m_images[index];
 				yield return Routine.Combine(
 					m_newspaperGroup.RotateTo(360f * 3f, 1f, Axis.Z, Space.Self, AngleMode.Absolute).Ease(Curve.QuintOut),
 					m_newspaperGroup.ScaleTo(1f, 1f, Axis.XY).Ease(Curve.BackOut)

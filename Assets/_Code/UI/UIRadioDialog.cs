@@ -52,6 +52,11 @@ namespace Shipwreck {
 			UIMgr.Close<UIModalOverlay>();
 		}
 
+		protected override void OnHideStart() {
+			GameMgr.Events.Dispatch(GameEvents.ConversationClick, Logging.EventData.ClickAction.Close);
+			base.OnHideStart();
+		}
+
 		protected override void OnHideCompleted() {
 			base.OnHideCompleted();
 
@@ -77,6 +82,7 @@ namespace Shipwreck {
 
 		public override void PrepareNode(ScriptNode node) {
 			AssignPartner(GameDb.GetCharacterData(node.ContactId));
+			GameMgr.Events.Dispatch(GameEvents.ConversationOpened, node);
 		}
 
 		protected override void AssignPartner(CharacterData character) {
@@ -101,6 +107,7 @@ namespace Shipwreck {
 			UnityAction action = () => {
 				skipped = true;
 			};
+			m_continueButton.onClick.RemoveListener(LogConversationClick);
 			m_continueButton.onClick.AddListener(action);
 
 			while (visibleCharacterCount > 0 && skipped == false) {
@@ -136,6 +143,7 @@ namespace Shipwreck {
 			}
 
 			m_continueButton.onClick.RemoveAllListeners();
+			m_continueButton.onClick.AddListener(LogConversationClick);
 		}
 
 		public override IEnumerator CompleteLine() {
@@ -163,7 +171,7 @@ namespace Shipwreck {
 			m_layout.ForceRebuild(true);
 		}
 
-		protected override IEnumerator OnShowImage(Sprite image) {
+		protected override IEnumerator OnShowImage(Sprite image, StringHash32 imageId) {
 			throw new NotSupportedException();
 		}
 
@@ -192,6 +200,10 @@ namespace Shipwreck {
 
 
 		#endregion // Dialog
+
+		private void LogConversationClick() {
+			GameMgr.Events.Dispatch(GameEvents.ConversationClick, Logging.EventData.ClickAction.Continue);
+		}
 	}
 
 }

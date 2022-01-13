@@ -1,36 +1,36 @@
 mergeInto(LibraryManager.library, {
 
-    FBMissionStart: function(missionId) {
-        var missionId = Pointer_stringify(missionId);
+	FBSceneLoad: function(missionId, scene, timestamp) {
+		var missionId = Pointer_stringify(missionId);
+		var scene = Pointer_stringify(scene);
+        var timestamp = Pointer_stringify(timestamp);
 
-        analytics.logEvent("mission_start", {
-            mission_id: missionId
+        analytics.logEvent("scene_load", {
+            mission_id: missionId,
+			scene: scene,
+            timestamp: timestamp
         });
-    },
+	},
+	
+	FBCheckpoint: function(missionId, status) {
+		var missionId = Pointer_stringify(missionId);
+		var status = Pointer_stringify(status);
 
-    FBMissionComplete: function(missionId) {
-        var missionId = Pointer_stringify(missionId);
-
-        analytics.logEvent("mission_complete", {
-            mission_id: missionId
+        analytics.logEvent("checkpoint", {
+            mission_id: missionId,
+			status: status
         });
-    },
+	},
 
-    FBMissionUnlock: function(missionId) {
+    FBNewEvidence: function(missionId, actor, evidenceId) {
         var missionId = Pointer_stringify(missionId);
-
-        analytics.logEvent("mission_unlock", {
-            mission_id: missionId
-        });
-    },
-
-    FBNewEvidence: function(missionId, evidenceKey) {
-        var missionId = Pointer_stringify(missionId);
-        var evidenceKey = Pointer_stringify(evidenceKey);
+		var actor = Pointer_stringify(actor);
+        var evidenceId = Pointer_stringify(evidenceId);
 
         analytics.logEvent("new_evidence", {
             mission_id: missionId,
-            evidence_key: evidenceKey
+			actor: actor,
+            evidence_id: evidenceId
         });
     },
 
@@ -41,48 +41,28 @@ mergeInto(LibraryManager.library, {
             mission_id: missionId
         });
     },
+	
+	FBEvidenceBoardClick: function(missionId, evidenceType, factOrigin, factTarget, accurate) {
+		var missionId = Pointer_stringify(missionId);
+		var evidenceType = Pointer_stringify(evidenceType);
+        var factOrigin = Pointer_stringify(factOrigin);
+		var factTarget = Pointer_stringify(factTarget);
+		var accurate = Pointer_stringify(accurate);
 
-    FBEvidenceChainHint: function(missionId, chainName, feedbackKey) {
-        var missionId = Pointer_stringify(missionId);
-        var chainName = Pointer_stringify(chainName);
-        var feedbackKey = Pointer_stringify(feedbackKey);
-
-        analytics.logEvent("evidence_chain_hint", {
+        analytics.logEvent("evidence_board_click", {
             mission_id: missionId,
-            chain_name: chainName,
-            feedback_key: feedbackKey
+			evidenceType: evidenceType,
+            factOrigin: factOrigin,
+			factTarget: factTarget,
+			accurate: accurate
         });
-    },
-
-    FBEvidenceChainIncorrect: function(missionId, chainName, feedbackKey) {
-        var missionId = Pointer_stringify(missionId);
-        var chainName = Pointer_stringify(chainName);
-        var feedbackKey = Pointer_stringify(feedbackKey);
-
-        analytics.logEvent("evidence_chain_incorrect", {
-            mission_id: missionId,
-            chain_name: chainName,
-            feedback_key: feedbackKey
-        });
-    },
-
-    FBEvidenceChainCorrect: function(missionId, chainName, feedbackKey) {
-        var missionId = Pointer_stringify(missionId);
-        var chainName = Pointer_stringify(chainName);
-        var feedbackKey = Pointer_stringify(feedbackKey);
-
-        analytics.logEvent("evidence_chain_correct", {
-            mission_id: missionId,
-            chain_name: chainName,
-            feedback_key: feedbackKey
-        });
-    },
+	},
 
     FBUnlockLocation: function(missionId) {
         var missionId = Pointer_stringify(missionId);
         
         analytics.logEvent("unlock_location", {
-            mission_id: missionId,
+            mission_id: missionId
         });
     },
 
@@ -90,15 +70,7 @@ mergeInto(LibraryManager.library, {
         var missionId = Pointer_stringify(missionId);
         
         analytics.logEvent("evidence_board_complete", {
-            mission_id: missionId,
-        });
-    },
-
-    FBOpenOffice: function(missionId) {
-        var missionId = Pointer_stringify(missionId);
-        
-        analytics.logEvent("open_office", {
-            mission_id: missionId,
+            mission_id: missionId
         });
     },
 
@@ -106,7 +78,15 @@ mergeInto(LibraryManager.library, {
         var missionId = Pointer_stringify(missionId);
         
         analytics.logEvent("open_map", {
-            mission_id: missionId,
+            mission_id: missionId
+        });
+    },
+	
+	FBOpenOffice: function(missionId) {
+        var missionId = Pointer_stringify(missionId);
+        
+        analytics.logEvent("open_office", {
+            mission_id: missionId
         });
     },
 
@@ -114,7 +94,7 @@ mergeInto(LibraryManager.library, {
         var missionId = Pointer_stringify(missionId);
         
         analytics.logEvent("sonar_start", {
-            mission_id: missionId,
+            mission_id: missionId
         });
     },
 
@@ -132,7 +112,7 @@ mergeInto(LibraryManager.library, {
         var missionId = Pointer_stringify(missionId);
         
         analytics.logEvent("sonar_complete", {
-            mission_id: missionId,
+            mission_id: missionId
         });
     },
 
@@ -140,7 +120,7 @@ mergeInto(LibraryManager.library, {
         var missionId = Pointer_stringify(missionId);
         
         analytics.logEvent("dive_start", {
-            mission_id: missionId,
+            mission_id: missionId
         });
     },
 
@@ -148,7 +128,7 @@ mergeInto(LibraryManager.library, {
         var missionId = Pointer_stringify(missionId);
         
         analytics.logEvent("dive_exit", {
-            mission_id: missionId,
+            mission_id: missionId
         });
     },
 
@@ -168,7 +148,7 @@ mergeInto(LibraryManager.library, {
         var missionId = Pointer_stringify(missionId);
 
         analytics.logEvent("dive_moveto_ascend", {
-            mission_id: missionId,
+            mission_id: missionId
         });
     },
 
@@ -178,72 +158,65 @@ mergeInto(LibraryManager.library, {
         
         analytics.logEvent("dive_activate_camera", {
             mission_id: missionId,
-            dive_node_id: diveNodeId,
+            dive_node_id: diveNodeId
         });
     },
-
-    FBDiveNewPhoto: function(missionId, diveNodeId) {
-        var missionId = Pointer_stringify(missionId);
+	
+	FBDivePhotoClick: function(missionId, diveNodeId, accurate) {
+		var missionId = Pointer_stringify(missionId);
         var diveNodeId = Pointer_stringify(diveNodeId);
+		var accurate = Pointer_stringify(accurate);
         
-        analytics.logEvent("dive_new_photo", {
+        analytics.logEvent("dive_photo_click", {
             mission_id: missionId,
             dive_node_id: diveNodeId,
+			accurate: accurate
         });
-    },
-
-    FBDivePhotoFail: function(missionId, diveNodeId) {
-        var missionId = Pointer_stringify(missionId);
-        var diveNodeId = Pointer_stringify(diveNodeId);
-        
-        analytics.logEvent("dive_photo_fail", {
-            mission_id: missionId,
-            dive_node_id: diveNodeId,
-        });
-    },
-
-    FBDivePhotoAlreadyTaken: function(missionId, diveNodeId) {
-        var missionId = Pointer_stringify(missionId);
-        var diveNodeId = Pointer_stringify(diveNodeId);
-        
-        analytics.logEvent("dive_photo_already_taken", {
-            mission_id: missionId,
-            dive_node_id: diveNodeId,
-        });
-    },
-
-    FBDiveNoPhotoAvailable: function(missionId, diveNodeId) {
-        var missionId = Pointer_stringify(missionId);
-        var diveNodeId = Pointer_stringify(diveNodeId);
-        
-        analytics.logEvent("dive_no_photo_available", {
-            mission_id: missionId,
-            dive_node_id: diveNodeId,
-        });
-    },
+	},
 
     FBDiveAllPhotosTaken: function(missionId) {
         var missionId = Pointer_stringify(missionId);
         
         analytics.logEvent("dive_all_photos_taken", {
-            mission_id: missionId,
+            mission_id: missionId
         });
     },
 
-    FBDiveJournalOpen: function(missionId) {
-        var missionId = Pointer_stringify(missionId);
-        var diveNodeId = Pointer_stringify(diveNodeId);
+	FBDiveJournalClick: function(missionId, tasks, clickAction, actor) {
+		var missionId = Pointer_stringify(missionId);
+        var tasks = Pointer_stringify(tasks);
+		var clickAction = Pointer_stringify(clickAction);
+		var actor = Pointer_stringify(actor);
         
-        analytics.logEvent("dive_journal_open", {
+        analytics.logEvent("dive_journal_click", {
             mission_id: missionId,
+			tasks: tasks,
+            clickAction: clickAction,
+			actor: actor
         });
-    },
+	},
+
+	FBConversationClick: function(missionId, scene, clickType, character, clickAction) {
+		var missionId = Pointer_stringify(missionId);
+        var scene = Pointer_stringify(scene);
+		var clickType = Pointer_stringify(clickType);
+		var character = Pointer_stringify(character);
+		var clickAction = Pointer_stringify(clickAction);
+        
+        analytics.logEvent("conversation_click", {
+            mission_id: missionId,
+			scene: scene,
+            clickType: clickType,
+			character: character,
+			clickAction: clickAction
+        });
+	},
 
     FBViewCutscene: function(missionId) {
         var missionId = Pointer_stringify(missionId);
         
         analytics.logEvent("view_cutscene", {
-            mission_id: missionId,
+            mission_id: missionId
         });
     },
 
@@ -256,5 +229,16 @@ mergeInto(LibraryManager.library, {
             dialog_id: dialogId
         });
     },
-
+	
+	FBCloseInspect: function(missionId, scene, itemId) {
+		var missionId = Pointer_stringify(missionId);
+        var scene = Pointer_stringify(scene);
+		var itemId = Pointer_stringify(itemId);
+        
+        analytics.logEvent("close_inspect", {
+            mission_id: missionId,
+            scene: scene,
+			itemId: itemId
+        });
+	}
 });

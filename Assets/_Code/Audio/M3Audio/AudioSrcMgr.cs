@@ -146,6 +146,10 @@ namespace Shipwreck
 			return m_audioSrc.mute;
 		}
 
+		public void CrossFadeAudio(string clipID, float time, bool loop = false) {
+			StartCoroutine(CrossFadeRoutine(clipID, time, loop));
+		}
+
 		#endregion
 
 		#region AmbianceAudioMgr
@@ -186,6 +190,10 @@ namespace Shipwreck
 		public void ResumeStashedAmbiance()
 		{
 			m_ambianceMgr.ResumeStashedAudio();
+		}
+
+		public void CrossFadeAmbiance(string clipID, float time, bool loop = false) {
+			m_ambianceMgr.CrossFadeAudio(clipID, time, loop);
 		}
 
 		#endregion
@@ -233,10 +241,89 @@ namespace Shipwreck
 		/// For short sounds
 		/// </summary>
 		/// <param name="clipID"></param>
-		public void PlayOneShot(string clipID)
-		{
+		public void PlayOneShot(string clipID) {
 			AudioClip clip = GameDb.GetAudioData(clipID).Clip;
 			m_audioSrc.PlayOneShot(clip);
+		}
+
+		/// <summary>
+		/// CrossFadeAudio + OneShot clip
+		/// </summary>
+		/// <param name="clipID"></param>
+		/// <param name="time"></param>
+		/// <param name="oneShotClipID"></param>
+		/// <param name="loop"></param>
+		public void CrossFadeAudio(string clipID, float time, string oneShotClipID, bool loop = false) {
+			StartCoroutine(CrossFadeRoutineWithOneShot(clipID, time, oneShotClipID, loop));
+		}
+
+		#endregion
+
+		#region Helper Methods
+
+		private IEnumerator CrossFadeRoutine(string clipID, float time, bool loop) {
+			float maxVolume = m_audioSrc.volume;
+			float midTime = time / 2f;
+			bool transitioned = false;
+
+			float volumeStep = maxVolume / midTime;
+
+			for (float t = 0; t < time; t += Time.deltaTime) {
+				if (t >= midTime && !transitioned) {
+					// load new audio
+					m_audioSrc.Stop();
+					AudioData newData = GameDb.GetAudioData(clipID);
+					m_currData = newData;
+					LoadAudio(m_audioSrc, newData);
+					m_audioSrc.volume = volumeStep * Time.deltaTime;
+					m_audioSrc.loop = loop;
+					m_audioSrc.Play();
+					transitioned = true;
+				}
+				if (!transitioned) {
+					m_audioSrc.volume -= volumeStep * Time.deltaTime;
+				}
+				else {
+					m_audioSrc.volume += volumeStep * Time.deltaTime;
+				}
+
+				yield return null;
+			}
+
+			m_audioSrc.volume = maxVolume;
+		}
+
+		private IEnumerator CrossFadeRoutineWithOneShot(string clipID, float time, string oneShotClipID, bool loop) {
+			float maxVolume = m_audioSrc.volume;
+			float midTime = time / 2f;
+			bool transitioned = false;
+
+			float volumeStep = maxVolume / midTime;
+
+			for (float t = 0; t < time; t += Time.deltaTime) {
+				if (t >= midTime && !transitioned) {
+					// load new audio
+					m_audioSrc.Stop();
+					AudioData newData = GameDb.GetAudioData(clipID);
+					m_currData = newData;
+					LoadAudio(m_audioSrc, newData);
+					m_audioSrc.volume = volumeStep * Time.deltaTime;
+					m_audioSrc.loop = loop;
+					m_audioSrc.Play();
+					m_audioSrc.PlayOneShot(GameDb.GetAudioData(oneShotClipID).Clip);
+					transitioned = true;
+				}
+				if (!transitioned) {
+					m_audioSrc.volume -= volumeStep * Time.deltaTime;
+				}
+				else {
+					m_audioSrc.volume += volumeStep * Time.deltaTime;
+				}
+
+				yield return null;
+			}
+
+			m_audioSrc.volume = maxVolume;
 		}
 
 		#endregion

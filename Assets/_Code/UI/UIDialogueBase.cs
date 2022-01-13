@@ -31,7 +31,7 @@ namespace Shipwreck {
 			OnSetSpeaker(GameDb.GetCharacterData(inEvent.GetStringHash()));
 		}
 		private IEnumerator HandleShowImage(TagEventData inEvent, object inContext) {
-			return OnShowImage(GameDb.GetImageData(inEvent.GetStringHash()));
+			return OnShowImage(GameDb.GetImageData(inEvent.GetStringHash()), inEvent.GetStringHash());
 		}
 		private IEnumerator HandleHideImage() {
 			return OnHideImage();
@@ -68,7 +68,7 @@ namespace Shipwreck {
 		protected abstract void AssignBackground(Sprite background);
 		protected abstract void OnPrepareLine(TagString inString);
 		protected abstract void OnSetSpeaker(CharacterData speaker);
-		protected abstract IEnumerator OnShowImage(Sprite image);
+		protected abstract IEnumerator OnShowImage(Sprite image, StringHash32 imageId);
 		protected abstract IEnumerator OnHideImage();
 		protected abstract IEnumerator OnShowObject(GameObject prefab);
 		protected abstract IEnumerator OnHideObject();
