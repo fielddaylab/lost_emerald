@@ -66,6 +66,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 25a167d13e4ec455fb823ae9c3388e39, type: 3}
   - {fileID: 21300000, guid: 2af279e18c8bfd5418df2a548269fa1e, type: 3}
   - {fileID: 21300000, guid: c142e3f14c96f384d9a3881ff1fe15ca, type: 3}
+  - {fileID: 21300000, guid: f1ad5cf18cde537438a58d1f2ff15817, type: 3}
   - {fileID: 21300000, guid: bbda042251f08164aa5b16e04960b800, type: 3}
   - {fileID: 21300000, guid: 5acb7c42884df40b59c8ff374fe31bcb, type: 3}
   - {fileID: 21300000, guid: 73e01e52390ee6d4ca224fc6a68ef033, type: 3}
@@ -85,6 +86,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: b496f825c60d97545b3bbc67f707fc2d, type: 3}
   - {fileID: 21300000, guid: 18ce4d25aa2b140caad634c3dd4b69e2, type: 3}
   - {fileID: 21300000, guid: 8c46b655c10db8844bb8b85341a871dd, type: 3}
+  - {fileID: 21300000, guid: 6a6f036530a4c6e46b055c76a0c63c52, type: 3}
   - {fileID: 21300000, guid: a4c0f4952434618439cc0b8002bcdf40, type: 3}
   - {fileID: 21300000, guid: 43b36016d82daf84d83c2f603c01b2aa, type: 3}
   - {fileID: 21300000, guid: 9181df563faf4c240b278fd35f45ddfd, type: 3}
@@ -98,6 +100,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 289fae17660e1b5468819bd39d453625, type: 3}
   - {fileID: 21300000, guid: 311983876fa02b3489f016d9e58c7d5d, type: 3}
   - {fileID: 21300000, guid: 2cd1aa97dedd64a7d98a8d2b4dcd26af, type: 3}
+  - {fileID: 21300000, guid: f5a527b76cd488043a9db33d2400ad5b, type: 3}
   - {fileID: 21300000, guid: 4f48acb7c373c1a4f983c51294c42ec9, type: 3}
   - {fileID: 21300000, guid: 83c623e77b3e2644387a29f9935bb645, type: 3}
   - {fileID: 21300000, guid: 41c798e7bf044e14db7e5f8678187066, type: 3}
@@ -108,6 +111,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: b3a55be8a5c41584781b4aacc67a005b, type: 3}
   - {fileID: 21300000, guid: 4a981159b8896524888fca5b6765cc69, type: 3}
   - {fileID: 21300000, guid: e4487d7937abe43418bd00681f6be111, type: 3}
+  - {fileID: 21300000, guid: e2aeb399b586bec47b4a7a5223fbc919, type: 3}
   - {fileID: 21300000, guid: d3d348993d5341f40acdff68afd4acc4, type: 3}
   - {fileID: 21300000, guid: 132b0ca92ede2104d86bc6e8eb061529, type: 3}
   - {fileID: 21300000, guid: 4437300a3ad20184488215937c1d80b4, type: 3}
@@ -119,6 +123,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 9219a3ba3979b214babe6a768fcade78, type: 3}
   - {fileID: 21300000, guid: 33e293eaed4194544a11e9b93c530303, type: 3}
   - {fileID: 21300000, guid: 74fd1afaaff2da843b02b5e2ef88fc91, type: 3}
+  - {fileID: 21300000, guid: 4aaf4efa780406645aa967c310a512cc, type: 3}
   - {fileID: 21300000, guid: bd33810b214a0104fbc3b7c7b52910b8, type: 3}
   - {fileID: 21300000, guid: 731c122b3a19c420abd944082c76bccc, type: 3}
   - {fileID: 21300000, guid: c7876a4b94f279f4eb754ca7b2512aae, type: 3}
@@ -193,6 +198,7 @@ SpriteAtlas:
   - shipwreck
   - lv2-gps
   - title-paper
+  - credits-shipwreck-hunter
   - old-ripped-paper
   - ripped-page
   - reya-safe
@@ -212,6 +218,7 @@ SpriteAtlas:
   - poster-bottom
   - camera-button-close
   - johnny_icon
+  - credits-newspaper
   - family-home
   - postcard-front
   - icon-check-empty
@@ -225,6 +232,7 @@ SpriteAtlas:
   - photo-lv4-name
   - enroute-lv3
   - arrow-up
+  - credits-photo-wreck
   - native-species_poster
   - mom-office
   - rounded-rect
@@ -235,6 +243,7 @@ SpriteAtlas:
   - title-background
   - photo-lv3-above
   - transition-air
+  - credits-museum
   - enroute-lv2
   - push-pin
   - poster-top
@@ -246,6 +255,7 @@ SpriteAtlas:
   - HiResCircle
   - cami_icon
   - ship-card-updated
+  - credits-dad-warning
   - lv2-car-images
   - lake-overview
   - closed-tag
