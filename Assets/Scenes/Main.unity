@@ -647,7 +647,7 @@ PrefabInstance:
     - target: {fileID: 1884388410460401145, guid: a94f06c62dbef5c499e85ed75fa0e928,
         type: 3}
       propertyPath: m_imageID
-      value: native-species_poster
+      value: poster-bottom
       objectReference: {fileID: 0}
     - target: {fileID: 6560214841799627356, guid: a94f06c62dbef5c499e85ed75fa0e928,
         type: 3}
@@ -885,10 +885,10 @@ RectTransform:
   m_Father: {fileID: 1049340851}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -10}
-  m_SizeDelta: {x: 20, y: 20}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -2.9}
+  m_SizeDelta: {x: 325.05255, y: 244.93393}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &168634728
 GameObject:
@@ -2814,13 +2814,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 9f3fe44783ad48042aba07bf97107eba, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4843,7 +4843,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 176.7, y: -104}
-  m_SizeDelta: {x: 620, y: 516}
+  m_SizeDelta: {x: 500, y: 516}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &708958951
 MonoBehaviour:
@@ -5331,7 +5331,7 @@ PrefabInstance:
     - target: {fileID: 1884388410460401145, guid: a94f06c62dbef5c499e85ed75fa0e928,
         type: 3}
       propertyPath: m_imageID
-      value: invasive-species_poster
+      value: non-native-poster
       objectReference: {fileID: 0}
     - target: {fileID: 6560214841799627356, guid: a94f06c62dbef5c499e85ed75fa0e928,
         type: 3}
@@ -5855,7 +5855,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -133.7}
+  m_AnchoredPosition: {x: 0, y: -151.58499}
   m_SizeDelta: {x: 238.6325, y: 101.00549}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &874331379
@@ -6341,8 +6341,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -310, y: 20}
-  m_SizeDelta: {x: 318, y: 425}
+  m_AnchoredPosition: {x: -281.1, y: 0}
+  m_SizeDelta: {x: 372.80402, y: 498.24432}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &911754357
 MonoBehaviour:
@@ -7283,8 +7283,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0000048876, y: 92.4}
-  m_SizeDelta: {x: 264.84528, y: 194.81815}
+  m_AnchoredPosition: {x: 0, y: 105}
+  m_SizeDelta: {x: 344.35217, y: 253.30276}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1049340852
 MonoBehaviour:
@@ -9337,7 +9337,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000005722, y: -49.115}
+  m_AnchoredPosition: {x: 0.000005722, y: -67}
   m_SizeDelta: {x: 248.59409, y: 68.16405}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1497955449
@@ -10689,7 +10689,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -4.1}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1000, y: 660}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1668260685
@@ -14659,19 +14659,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 531016319209300888, guid: 89de7169bb442fc48b40af2381f497c5,
         type: 3}
-      propertyPath: m_images.Array.size
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 531016319209300888, guid: 89de7169bb442fc48b40af2381f497c5,
-        type: 3}
       propertyPath: m_audioClips.Array.size
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 531016319209300888, guid: 89de7169bb442fc48b40af2381f497c5,
         type: 3}
-      propertyPath: m_images.Array.data[14]
+      propertyPath: m_images.Array.data[12]
       value: 
-      objectReference: {fileID: 21300000, guid: b34da93ef2b660d40aa2131890396ebe,
+      objectReference: {fileID: 21300000, guid: c4476f001584a2b4a8329ef39ede3bd8,
         type: 3}
     - target: {fileID: 531016319209300888, guid: 89de7169bb442fc48b40af2381f497c5,
         type: 3}

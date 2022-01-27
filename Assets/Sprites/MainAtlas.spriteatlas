@@ -46,6 +46,7 @@ SpriteAtlas:
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: c4476f001584a2b4a8329ef39ede3bd8, type: 3}
   - {fileID: 21300000, guid: 958b3040e2d36b04a8efbe827a12a646, type: 3}
   - {fileID: 21300000, guid: c48d79400212a984ba0e90b29d9e618c, type: 3}
   - {fileID: 21300000, guid: 4668ef405d8fd794e84a6c16503f01c2, type: 3}
@@ -57,7 +58,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 3d03c611440aba64fbb670920dcb11c0, type: 3}
   - {fileID: 21300000, guid: 63394811bbb796048a4b3be38f86ec9a, type: 3}
   - {fileID: 21300000, guid: 77f86a110f5607542a2bbb5da9044b6e, type: 3}
-  - {fileID: 21300000, guid: d00c9561d66e8b246bd35007dd4a0fb6, type: 3}
   - {fileID: 21300000, guid: d563b37132fe19c498f92f3b400aa37a, type: 3}
   - {fileID: 21300000, guid: b8f94b81841f3074bbf3e63cba43e0a0, type: 3}
   - {fileID: 21300000, guid: 6742bc91c8f5d4e3daea592a062c8b52, type: 3}
@@ -83,7 +83,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: cf026ed4fd262cc4086c2f0e8483c733, type: 3}
   - {fileID: 21300000, guid: 65c26de4f69714d11b1cd5e2bb9de646, type: 3}
   - {fileID: 21300000, guid: 8bf1e015bbdf4e848b56964826269e5e, type: 3}
-  - {fileID: 21300000, guid: b496f825c60d97545b3bbc67f707fc2d, type: 3}
   - {fileID: 21300000, guid: 18ce4d25aa2b140caad634c3dd4b69e2, type: 3}
   - {fileID: 21300000, guid: 8c46b655c10db8844bb8b85341a871dd, type: 3}
   - {fileID: 21300000, guid: 6a6f036530a4c6e46b055c76a0c63c52, type: 3}
@@ -98,10 +97,10 @@ SpriteAtlas:
   - {fileID: 21300000, guid: f2f043070615e5d44bf1c5cf2ff5c0b5, type: 3}
   - {fileID: 21300000, guid: 460613178d0a2e340a8683c2317803c9, type: 3}
   - {fileID: 21300000, guid: 289fae17660e1b5468819bd39d453625, type: 3}
+  - {fileID: 21300000, guid: 9f3fe44783ad48042aba07bf97107eba, type: 3}
   - {fileID: 21300000, guid: 311983876fa02b3489f016d9e58c7d5d, type: 3}
   - {fileID: 21300000, guid: 2cd1aa97dedd64a7d98a8d2b4dcd26af, type: 3}
   - {fileID: 21300000, guid: f5a527b76cd488043a9db33d2400ad5b, type: 3}
-  - {fileID: 21300000, guid: 4f48acb7c373c1a4f983c51294c42ec9, type: 3}
   - {fileID: 21300000, guid: 83c623e77b3e2644387a29f9935bb645, type: 3}
   - {fileID: 21300000, guid: 41c798e7bf044e14db7e5f8678187066, type: 3}
   - {fileID: 21300000, guid: abbdb528fd8b57140a34defba4ece433, type: 3}
@@ -114,7 +113,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: e2aeb399b586bec47b4a7a5223fbc919, type: 3}
   - {fileID: 21300000, guid: d3d348993d5341f40acdff68afd4acc4, type: 3}
   - {fileID: 21300000, guid: 132b0ca92ede2104d86bc6e8eb061529, type: 3}
-  - {fileID: 21300000, guid: 4437300a3ad20184488215937c1d80b4, type: 3}
   - {fileID: 21300000, guid: 6146582a659c49547b0767f3e41d7aa6, type: 3}
   - {fileID: 21300000, guid: d95b3d2a5159a264e97141fc59fc8d4d, type: 3}
   - {fileID: 21300000, guid: 9184fe5a971e5fd47b3870091e9f56b0, type: 3}
@@ -139,6 +137,7 @@ SpriteAtlas:
   - {fileID: -7964487563894589878, guid: 75dd454c7d88aa847b5983718c948b2c, type: 3}
   - {fileID: -4508500316453927011, guid: 75dd454c7d88aa847b5983718c948b2c, type: 3}
   - {fileID: 5616191202082497207, guid: 75dd454c7d88aa847b5983718c948b2c, type: 3}
+  - {fileID: 21300000, guid: e29dbf4c0b53a9d459cfddd5e5253b3d, type: 3}
   - {fileID: 21300000, guid: 8798f59ca89b785418cf6c224e330698, type: 3}
   - {fileID: 21300000, guid: f06973bc2e98e2c4baceae48912060d7, type: 3}
   - {fileID: 21300000, guid: 993c01cc18d924a278476410f23bec53, type: 3}
@@ -178,6 +177,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: cba8b1ef0ca37cf4088e953ccfee4e55, type: 3}
   - {fileID: 21300000, guid: c2323dff0f3176f45aa5b57947862a2c, type: 3}
   m_PackedSpriteNamesToIndex:
+  - non-native-poster
   - marker-unknown-lv4-v2
   - family-photo
   - photo-lv3-cargo
@@ -189,7 +189,6 @@ SpriteAtlas:
   - PhoneDialogTalking
   - reya_icon
   - amy-office
-  - invasive-species_poster
   - photo-lv3-anchor
   - level4_emerald
   - ship
@@ -215,7 +214,6 @@ SpriteAtlas:
   - ship-shadow
   - journal
   - sonar_dot
-  - poster-bottom
   - camera-button-close
   - johnny_icon
   - credits-newspaper
@@ -230,10 +228,10 @@ SpriteAtlas:
   - photo-lv1-knife
   - toggle_on
   - photo-lv4-name
+  - shipout_loadbg
   - enroute-lv3
   - arrow-up
   - credits-photo-wreck
-  - native-species_poster
   - mom-office
   - rounded-rect
   - office-live
@@ -246,7 +244,6 @@ SpriteAtlas:
   - credits-museum
   - enroute-lv2
   - push-pin
-  - poster-top
   - dad-map-blue-line
   - reya-boat
   - cami-boat
@@ -271,6 +268,7 @@ SpriteAtlas:
   - waves_3
   - waves_0
   - waves_1
+  - poster-bottom
   - ed_icon
   - dad-attic
   - icon-from-camera
