@@ -2814,13 +2814,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 9f3fe44783ad48042aba07bf97107eba, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5331,7 +5331,7 @@ PrefabInstance:
     - target: {fileID: 1884388410460401145, guid: a94f06c62dbef5c499e85ed75fa0e928,
         type: 3}
       propertyPath: m_imageID
-      value: poster-top
+      value: non-native-poster
       objectReference: {fileID: 0}
     - target: {fileID: 6560214841799627356, guid: a94f06c62dbef5c499e85ed75fa0e928,
         type: 3}
@@ -14590,6 +14590,12 @@ PrefabInstance:
       propertyPath: m_audioClips.Array.size
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 531016319209300888, guid: 89de7169bb442fc48b40af2381f497c5,
+        type: 3}
+      propertyPath: m_images.Array.data[12]
+      value: 
+      objectReference: {fileID: 21300000, guid: c4476f001584a2b4a8329ef39ede3bd8,
+        type: 3}
     - target: {fileID: 531016319209300888, guid: 89de7169bb442fc48b40af2381f497c5,
         type: 3}
       propertyPath: m_audioClips.Array.data[0]

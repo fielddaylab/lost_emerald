@@ -46,6 +46,7 @@ SpriteAtlas:
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: c4476f001584a2b4a8329ef39ede3bd8, type: 3}
   - {fileID: 21300000, guid: 958b3040e2d36b04a8efbe827a12a646, type: 3}
   - {fileID: 21300000, guid: c48d79400212a984ba0e90b29d9e618c, type: 3}
   - {fileID: 21300000, guid: 4668ef405d8fd794e84a6c16503f01c2, type: 3}
@@ -57,7 +58,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 3d03c611440aba64fbb670920dcb11c0, type: 3}
   - {fileID: 21300000, guid: 63394811bbb796048a4b3be38f86ec9a, type: 3}
   - {fileID: 21300000, guid: 77f86a110f5607542a2bbb5da9044b6e, type: 3}
-  - {fileID: 21300000, guid: 7599216105ae8814d87031004a09ac57, type: 3}
   - {fileID: 21300000, guid: d563b37132fe19c498f92f3b400aa37a, type: 3}
   - {fileID: 21300000, guid: b8f94b81841f3074bbf3e63cba43e0a0, type: 3}
   - {fileID: 21300000, guid: 6742bc91c8f5d4e3daea592a062c8b52, type: 3}
@@ -97,6 +97,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: f2f043070615e5d44bf1c5cf2ff5c0b5, type: 3}
   - {fileID: 21300000, guid: 460613178d0a2e340a8683c2317803c9, type: 3}
   - {fileID: 21300000, guid: 289fae17660e1b5468819bd39d453625, type: 3}
+  - {fileID: 21300000, guid: 9f3fe44783ad48042aba07bf97107eba, type: 3}
   - {fileID: 21300000, guid: 311983876fa02b3489f016d9e58c7d5d, type: 3}
   - {fileID: 21300000, guid: 2cd1aa97dedd64a7d98a8d2b4dcd26af, type: 3}
   - {fileID: 21300000, guid: f5a527b76cd488043a9db33d2400ad5b, type: 3}
@@ -176,6 +177,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: cba8b1ef0ca37cf4088e953ccfee4e55, type: 3}
   - {fileID: 21300000, guid: c2323dff0f3176f45aa5b57947862a2c, type: 3}
   m_PackedSpriteNamesToIndex:
+  - non-native-poster
   - marker-unknown-lv4-v2
   - family-photo
   - photo-lv3-cargo
@@ -187,7 +189,6 @@ SpriteAtlas:
   - PhoneDialogTalking
   - reya_icon
   - amy-office
-  - poster-top
   - photo-lv3-anchor
   - level4_emerald
   - ship
@@ -227,6 +228,7 @@ SpriteAtlas:
   - photo-lv1-knife
   - toggle_on
   - photo-lv4-name
+  - shipout_loadbg
   - enroute-lv3
   - arrow-up
   - credits-photo-wreck
