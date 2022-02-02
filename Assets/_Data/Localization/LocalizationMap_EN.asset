@@ -101,6 +101,8 @@ MonoBehaviour:
     m_hash: -1591429201
   - m_key: Character/Ed/Name
     m_hash: -1880479098
+  - m_key: Character/Cooper/Name
+    m_hash: -233789617
   - m_key: Character/Johnny/Name
     m_hash: -9541103
   - m_key: Shipout/Progress
@@ -1347,6 +1349,7 @@ MonoBehaviour:
   - You
   - Cami
   - Ed
+  - Cooper
   - Johnny
   - Sonar Image
   - Dive
@@ -1662,7 +1665,7 @@ MonoBehaviour:
   - '{@cami} Wahoo! Nice work, Jules.'
   - I'll send you the survivor accounts of the sinking.
   - '{@you} Thanks!'
-  - So, why's this ship so important to you?
+  - '{@you} So, why''s this ship so important to you?'
   - '{@cami} When I was little, my best friend had ancestors who were lost on the
     Paradise.'
   - It's the reason I became a maritime archaeologist.

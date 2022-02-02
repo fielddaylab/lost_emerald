@@ -101,6 +101,8 @@ MonoBehaviour:
     m_hash: -1591429201
   - m_key: Character/Ed/Name
     m_hash: -1880479098
+  - m_key: Character/Cooper/Name
+    m_hash: -233789617
   - m_key: Character/Johnny/Name
     m_hash: -9541103
   - m_key: Shipout/Progress
@@ -1347,6 +1349,7 @@ MonoBehaviour:
   - Usted
   - Cami
   - Ed
+  - Cooper
   - Johnny
   - Imagen del sonar
   - Zambullirse
@@ -1364,7 +1367,7 @@ MonoBehaviour:
   - Naufragio de Sheboygan
   - "El Para\xEDso "
   - "PS Para\xEDso "
-  - Vaporera de rueda lateral
+  - Vaporizador
   - Incendio en el cuarto de calderas
   - La Esmeralda (nave de abuelo)
   - La Esmeralda (nave de abuelo)
@@ -1402,14 +1405,14 @@ MonoBehaviour:
   - "\xA1Sum\xE9rgete hac\xEDa los lagos con Reya y Jules Griffin!"
   - "\xA1Vea el relicario del capit\xE1n y el diario del primer oficial en la exposici\xF3n
     conmemorativa!"
-  - "\xA1Oye Jules! \xA1Grandes noticias!"
+  - "{@dad}\xA1Oye Jules! \xA1Grandes noticias!"
   - "\xBFRecuerdas como la nave de tu abuelito se hundi\xF3 en Lake Superior cuando
     era solo un chico? "
-  - "\xA1Si, claro! Has estado hablando de ese naufragio desde que era peque\xF1a."
-  - "Pues, encontr\xE9 una de las cartas antiguas de tu abuelito."
+  - "{@you} \xA1Si, claro! Has estado hablando de ese naufragio desde que era peque\xF1a."
+  - "{@dad} Pues, encontr\xE9 una de las cartas antiguas de tu abuelito."
   - Su nave, la SS Esmeralda, llevaba tesoro!
-  - "\xBFDesde cu\xE1ndo te importa el tesoro, P\xE1? "
-  - "A m\xED no \xA1pero a tu hermana si! "
+  - "{@you} \xBFDesde cu\xE1ndo te importa el tesoro, P\xE1? "
+  - "{@dad} A m\xED no \xA1pero a tu hermana si! "
   - "\xA1Ella me va ayudar a buscar los restos de la nave!"
   - "Ella tambi\xE9n encontr\xF3 el relicario de tu abuelita. Se ve bonita en \xE9l."
   - "{@you} Espera. \xBFDejaste que Reya tomara el relicario?"
@@ -1450,7 +1453,7 @@ MonoBehaviour:
   - "Parece un cuchillo. Me pregunto de qui\xE9n era."
   - '{@you} Ya tengo una foto de esto.'
   - "{@you}  Deber\xEDa hacer un acercamiento para mirar esto mejor."
-  - "Deber\xEDa alejar el zoom para capturar m\xE1s en la foto."
+  - "{@you} Deber\xEDa alejar el zoom para capturar m\xE1s en la foto."
   - '{@you} No necesito una foto de esto.'
   - '{@you} Oye, Amy! Como van las cosas con los archivos?'
   - "{@amy} Bien! Solamente busco unos documentos para una nueva exhibici\xF3n. "
@@ -1462,7 +1465,7 @@ MonoBehaviour:
   - "\xBFMe puedes mandar una lista de las naves que se hundieron en esa area?"
   - "{@amy} Claro. \xA1Aqu\xED est\xE1!"
   - "{@you} Gracias, Amy!\xA1"
-  - "Entonces, \xBFqu\xE9 encontraste?"
+  - "{@amy} Entonces, \xBFqu\xE9 encontraste?"
   - '{@you} Nuestra nave es la Loretta!'
   - "{@amy} \xA1Caray! \xA1Que incre\xEDble encuentro!"
   - "Parece que se hundi\xF3 en el mismo d\xEDa que el Pueblo de Peshtigo se incendi\xF3
@@ -1677,7 +1680,7 @@ MonoBehaviour:
   - "\xA1Guaju! Buen trabajo, Jules."
   - "Te enviar\xE9 los relatos de los sobrevivientes del hundimiento."
   - "{@you} \xA1Gracias!"
-  - <@70967DC9>
+  - "{@you} Entonces, \xBFpor qu\xE9 es tan importante este barco para usted?"
   - "{@cami} Cuando era peque\xF1a, mi mejor amiga ten\xEDa antepasados que se perdieron
     en el Para\xEDso."
   - "Es la raz\xF3n por la que me convert\xED en arque\xF3loga mar\xEDtima."
