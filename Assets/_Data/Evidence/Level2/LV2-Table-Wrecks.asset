@@ -15,8 +15,9 @@ MonoBehaviour:
   m_groupID:
     m_Source: LV2-Table-Wrecks
     m_Hash: 571920574
-  m_position: {x: -254, y: -123}
-  m_isLocalized: 0
+  m_position: {x: -254, y: -115}
+  m_isLocalized: 1
   m_englishPrefab: {fileID: 6225318066743550848, guid: beb823988644fef43a6fd5d3ba6440d7,
     type: 3}
-  m_spanishPrefab: {fileID: 0}
+  m_spanishPrefab: {fileID: 2321353265505582726, guid: ccad3490d606d284983c43a7656f7bc3,
+    type: 3}
