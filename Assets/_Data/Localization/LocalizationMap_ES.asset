@@ -1306,10 +1306,10 @@ MonoBehaviour:
   m_values:
   - La Leyenda De La Esmeralda Perdida
   - '"Una prueba que utiliza", comillas y una coma'
-  - "conversaci\uFFFDn con"
+  - "conversaci\xF3n con"
   - Juego Nuevo
   - Iniciar Nivel
-  - "Cr\uFFFDditos "
+  - "Cr\xE9ditos "
   - Opciones
   - Niveles
   - Nivel 1
@@ -1323,7 +1323,7 @@ MonoBehaviour:
   - Pantalla grande
   - Idioma
   - Continuar
-  - "Atr\uFFFDs "
+  - "Atr\xE1s "
   - Cerrar
   - 'Volver a la oficina '
   - Embarcarse
@@ -1333,16 +1333,16 @@ MonoBehaviour:
   - Tomar foto
   - Guardar foto
   - Fotos de buceo
-  - "\uFFFDEmbarcarse!"
-  - "\uFFFDTablero de evidencias completo!"
-  - "\uFFFDCaso cerrado!"
+  - "\xA1Embarcarse!"
+  - "\xA1Tablero de evidencias completo!"
+  - "\xA1Caso cerrado!"
   - 'Nave :'
   - 'Tipo :'
   - 'Causa de la ruina:'
-  - "Pap\uFFFD"
+  - "Pap\xE1"
   - Lou
   - Amy
-  - "Mam\uFFFD "
+  - "Mam\xE1 "
   - Reya
   - Usted
   - Cami
@@ -1360,18 +1360,18 @@ MonoBehaviour:
   - SS Madison
   - SS Madison
   - Carguero
-  - "Estrell\uFFFD con otra nave"
+  - "Estrell\xF3 con otra nave"
   - Naufragio de Sheboygan
-  - "El Para\uFFFDso "
-  - "PS Para\uFFFDso "
+  - "El Para\xEDso "
+  - "PS Para\xEDso "
   - Vaporera de rueda lateral
   - Incendio en el cuarto de calderas
   - La Esmeralda (nave de abuelo)
   - La Esmeralda (nave de abuelo)
   - 'La Esmeralda '
   - Carguero
-  - "Acero d\uFFFDbil se destruy\uFFFD en las olas "
-  - "Ubicaci\uFFFDn "
+  - "Acero d\xE9bil se destruy\xF3 en las olas "
+  - "Ubicaci\xF3n "
   - Tipo de nave
   - Nombre
   - Causa del naufragio
@@ -1382,7 +1382,7 @@ MonoBehaviour:
   - Artefacto perdido
   - Foto de arriba abajo
   - Carga de la nave
-  - "Da\uFFFDo al nave"
+  - "Da\xF1o al nave"
   - Artefacto perdido
   - Foto de arriba abajo
   - Carga de la nave
@@ -1394,613 +1394,603 @@ MonoBehaviour:
   - Nombre de nave
   - Partido en mitad
   - O.K. Steel supo de la debilidad de la nave
-  - "Descendiente de la Esmeralda avisa los due\uFFFDos de la nave "
-  - "Cazadora de naufragios les ense\uFFFDa buceo a ni\uFFFDas "
+  - "Descendiente de la Esmeralda avisa los due\xF1os de la nave "
+  - "Cazadora de naufragios les ense\xF1a buceo a ni\xF1as "
   - El Museo rinde homenaje a los sobrevivientes de un naufragio
-  - "\uFFFDLa verdad detr\uFFFDs de la leyenda de la Esmeralda perdida!"
+  - "\xA1La verdad detr\xE1s de la leyenda de la Esmeralda perdida!"
   - Daniel Griffin trabaja para mantener la seguridad de las personas en los lagos.
-  - "\uFFFDSum\uFFFDrgete hac\uFFFDa los lagos con Reya y Jules Griffin!"
-  - "\uFFFDVea el relicario del capit\uFFFDn y el diario del primer oficial en la
-    exposici\uFFFDn conmemorativa!"
-  - "\uFFFDOye Jules! \uFFFDGrandes noticias!"
-  - "\uFFFDRecuerdas como la nave de tu abuelito se hundi\uFFFD en Lake Superior
-    cuando era solo un chico? "
-  - "\uFFFDSi, claro! Has estado hablando de ese naufragio desde que era peque\uFFFDa."
-  - "Pues, encontr\uFFFD una de las cartas antiguas de tu abuelito."
+  - "\xA1Sum\xE9rgete hac\xEDa los lagos con Reya y Jules Griffin!"
+  - "\xA1Vea el relicario del capit\xE1n y el diario del primer oficial en la exposici\xF3n
+    conmemorativa!"
+  - "\xA1Oye Jules! \xA1Grandes noticias!"
+  - "\xBFRecuerdas como la nave de tu abuelito se hundi\xF3 en Lake Superior cuando
+    era solo un chico? "
+  - "\xA1Si, claro! Has estado hablando de ese naufragio desde que era peque\xF1a."
+  - "Pues, encontr\xE9 una de las cartas antiguas de tu abuelito."
   - Su nave, la SS Esmeralda, llevaba tesoro!
-  - "\uFFFDDesde cu\uFFFDndo te importa el tesoro, P\uFFFD? "
-  - "A m\uFFFD no \uFFFDpero a tu hermana si! "
-  - "\uFFFDElla me va ayudar a buscar los restos de la nave!"
-  - "Ella tambi\uFFFDn encontr\uFFFD el relicario de tu abuelita. Se ve bonita en
-    \uFFFDl."
-  - "{@you} Espera. \uFFFDDejaste que Reya tomara el relicario?"
-  - "{@dad} Pues, no estuviste ah\uFFFD. "
-  - "Entonces, \uFFFDque dices? \uFFFDQuieres ayudarnos?"
+  - "\xBFDesde cu\xE1ndo te importa el tesoro, P\xE1? "
+  - "A m\xED no \xA1pero a tu hermana si! "
+  - "\xA1Ella me va ayudar a buscar los restos de la nave!"
+  - "Ella tambi\xE9n encontr\xF3 el relicario de tu abuelita. Se ve bonita en \xE9l."
+  - "{@you} Espera. \xBFDejaste que Reya tomara el relicario?"
+  - "{@dad} Pues, no estuviste ah\xED. "
+  - "Entonces, \xBFque dices? \xBFQuieres ayudarnos?"
   - '{@you} Bueno, pues supongo que puedo empezar un archivo para la nave de abuelito.'
-  - "{@dad} \uFFFDEstupendo!"
+  - "{@dad} \xA1Estupendo!"
   - La Esmeralda ha estada perdida por tanto tiempo.
-  - "Si solo pudiera encontrarla, \uFFFDarreglar\uFFFDa todo!"
-  - "{@you} Espera\uFFFD \uFFFDarreglar que? \uFFFDQue quieres decir?"
-  - "{@dad} Perdona, Jules. \uFFFDNo tengo tiempo para hablar! \uFFFDTengo trabajo
-    que hacer!"
-  - "{@lou} \uFFFDBuenas, Jules!"
-  - "Oye Lou, \uFFFDque es todo ese ruido?"
-  - "O pues, solo estoy volando sobre el lago Michigan en mi avi\uFFFDn ultraligero. "
-  - "{@you} \uFFFD\uFFFDC\uFFFDmo?? \uFFFDEst\uFFFDs volando ahorita? \uFFFDNo es
-    peligroso?"
-  - "{@lou} No tan peligroso como estar sentada en casa. Me volv\uFFFDa loca. "
-  - "\uFFFDMira lo que encontr\uFFFD!"
-  - "\uFFFDQue piensas?"
-  - "{@you} \uFFFDParece un naufragio!"
-  - "{@lou} \uFFFDEstupendo! En eso pens\uFFFD."
-  - "Est\uFFFD en el Lago Michigan. Cerca de Rawley Point. "
-  - "Te mandar\uFFFD la latitud y longitud. "
-  - "Ubicaci\uFFFDn:  N 44\uFFFD 11.524' W 087\uFFFD 30.591"
-  - "{@you} Gracias, Lou. \uFFFDVuela con cuidado!"
-  - "{@you} La nave deber\uFFFDa de estar en alg\uFFFDn lugar por aqu\uFFFD. Para
-    encontrarla, voy a manejar mi bote con el sonar encendido. "
-  - "{@you} \uFFFDAh\uFFFD est\uFFFD! Rojear\uFFFD una boya para marcar la ubicaci\uFFFDn."
-  - "{@you} \uFFFDParece que un poco del cordaje que sosten\uFFFDa el m\uFFFDstil
-    est\uFFFD aqu\uFFFD!"
-  - "{@you} \uFFFDAh\uFFFD est\uFFFD la nave!"
-  - "Tomar\uFFFD una foto desde aqu\uFFFD."
-  - "{@you} \uFFFDLa tengo!"
-  - "Ahora es hora de zambullirme y tomar m\uFFFDs fotos."
-  - "{@you}\uFFFDSi! \uFFFDEl nombre de la nave!"
+  - "Si solo pudiera encontrarla, \xA1arreglar\xEDa todo!"
+  - "{@you} Espera\u2026 \xBFarreglar que? \xBFQue quieres decir?"
+  - "{@dad} Perdona, Jules. \xA1No tengo tiempo para hablar! \xA1Tengo trabajo que
+    hacer!"
+  - "{@lou} \xA1Buenas, Jules!"
+  - "Oye Lou, \xBFque es todo ese ruido?"
+  - "O pues, solo estoy volando sobre el lago Michigan en mi avi\xF3n ultraligero. "
+  - "{@you} \xBF\xBFC\xF3mo?? \xBFEst\xE1s volando ahorita? \xBFNo es peligroso?"
+  - "{@lou} No tan peligroso como estar sentada en casa. Me volv\xEDa loca. "
+  - "\xA1Mira lo que encontr\xE9!"
+  - "\xBFQue piensas?"
+  - "{@you} \xA1Parece un naufragio!"
+  - "{@lou} \xA1Estupendo! En eso pens\xE9."
+  - "Est\xE1 en el Lago Michigan. Cerca de Rawley Point. "
+  - "Te mandar\xE9 la latitud y longitud. "
+  - "Ubicaci\xF3n:  N 44\xB0 11.524' W 087\xB0 30.591"
+  - "{@you} Gracias, Lou. \xA1Vuela con cuidado!"
+  - "{@you} La nave deber\xEDa de estar en alg\xFAn lugar por aqu\xED. Para encontrarla,
+    voy a manejar mi bote con el sonar encendido. "
+  - "{@you} \xA1Ah\xED est\xE1! Rojear\xE9 una boya para marcar la ubicaci\xF3n."
+  - "{@you} \xA1Parece que un poco del cordaje que sosten\xEDa el m\xE1stil est\xE1
+    aqu\xED!"
+  - "{@you} \xA1Ah\xED est\xE1 la nave!"
+  - "Tomar\xE9 una foto desde aqu\xED."
+  - "{@you} \xA1La tengo!"
+  - "Ahora es hora de zambullirme y tomar m\xE1s fotos."
+  - "{@you}\xA1Si! \xA1El nombre de la nave!"
   - Parece que faltan unas letras.
-  - "{@you} \uFFFDOye! \uFFFDQue artefacto tan viejo y padre!"
-  - "Parece un cuchillo. Me pregunto de qui\uFFFDn era."
+  - "{@you} \xA1Oye! \xA1Que artefacto tan viejo y padre!"
+  - "Parece un cuchillo. Me pregunto de qui\xE9n era."
   - '{@you} Ya tengo una foto de esto.'
-  - "{@you}  Deber\uFFFDa hacer un acercamiento para mirar esto mejor."
-  - "Deber\uFFFDa alejar el zoom para capturar m\uFFFDs en la foto."
+  - "{@you}  Deber\xEDa hacer un acercamiento para mirar esto mejor."
+  - "Deber\xEDa alejar el zoom para capturar m\xE1s en la foto."
   - '{@you} No necesito una foto de esto.'
   - '{@you} Oye, Amy! Como van las cosas con los archivos?'
-  - "{@amy} Bien! Solamente busco unos documentos para una nueva exhibici\uFFFDn. "
-  - "Lou me cont\uFFFD sobre la zambullida. C\uFFFDmo estuvo?"
-  - "{@you} Hermosa! La nave estaba en exelentes condiciones. Z\uFFFDro mejillones
-    o vegetaci\uFFFDn. "
-  - "{@amy} Mmm. Debi\uFFFD haber sido cubierta en arena hasta ahora."
+  - "{@amy} Bien! Solamente busco unos documentos para una nueva exhibici\xF3n. "
+  - "Lou me cont\xF3 sobre la zambullida. C\xF3mo estuvo?"
+  - "{@you} Hermosa! La nave estaba en exelentes condiciones. Z\xE9ro mejillones
+    o vegetaci\xF3n. "
+  - "{@amy} Mmm. Debi\xF3 haber sido cubierta en arena hasta ahora."
   - '{@you} El naufragio estaba cerca de Rawley Point. '
-  - "\uFFFDMe puedes mandar una lista de las naves que se hundieron en esa area?"
-  - "{@amy} Claro. \uFFFDAqu\uFFFD est\uFFFD!"
-  - "{@you} Gracias, Amy!\uFFFD"
-  - "Entonces, \uFFFDqu\uFFFD encontraste?"
+  - "\xBFMe puedes mandar una lista de las naves que se hundieron en esa area?"
+  - "{@amy} Claro. \xA1Aqu\xED est\xE1!"
+  - "{@you} Gracias, Amy!\xA1"
+  - "Entonces, \xBFqu\xE9 encontraste?"
   - '{@you} Nuestra nave es la Loretta!'
-  - "{@amy} \uFFFDCaray! \uFFFDQue incre\uFFFDble encuentro!"
-  - "Parece que se hundi\uFFFD en el mismo d\uFFFDa que el Pueblo de Peshtigo se
-    incendi\uFFFD en llamas. "
-  - "{@you} \uFFFDHijoles! \uFFFDTodo el pueblo se quem\uFFFD?"
+  - "{@amy} \xA1Caray! \xA1Que incre\xEDble encuentro!"
+  - "Parece que se hundi\xF3 en el mismo d\xEDa que el Pueblo de Peshtigo se incendi\xF3
+    en llamas. "
+  - "{@you} \xA1Hijoles! \xBFTodo el pueblo se quem\xF3?"
   - '{@amy} Pues, no TODO, pero mucho de ello. '
   - 'Fue el peor incendio en toda la historia. '
-  - "Todo el humo vol\uFFFD sobre el lago y se le hizo dif\uFFFDcil a ver para el
-    capit\uFFFDn.  "
-  - "Este es un retrato de \uFFFDl:"
+  - "Todo el humo vol\xF3 sobre el lago y se le hizo dif\xEDcil a ver para el capit\xE1n.  "
+  - "Este es un retrato de \xE9l:"
   - '{@you} Oye! Ese es el cuchillo que vi! '
-  - "{@amy} Debi\uFFFD haberse sumergido con la nave."
-  - "{@you} \uFFFDGuau! \uFFFDMira el cuchillo del marinero!  "
-  - "{@amy} Era del capit\uFFFDn. Parece que se hundi\uFFFD con la nave."
-  - "{@you} Mmm. Deber\uFFFDa darme otra zambullida. Quiz\uFFFDs todav\uFFFDa est\uFFFD
-    all\uFFFD."
-  - "{@amy} Tengo un art\uFFFDculo sobre c\uFFFDmo se hundi\uFFFD. \uFFFDTe lo mandar\uFFFD!"
-  - "{@lou} \uFFFDEy! \uFFFDJules!"
-  - "Vuelo de nuevo. \uFFFDEl tiempo est\uFFFD buen\uFFFDsimo hoy!"
-  - "\uFFFDAlg\uFFFDn detalle jugoso sobre ese naufragio?"
-  - "{@you} \uFFFDS\uFFFD! \uFFFDLa nave es la Loretta!"
-  - "{@lou} Es un nombre g\uFFFDnial. \uFFFDC\uFFFDmo se hundi\uFFFD?"
+  - "{@amy} Debi\xF3 haberse sumergido con la nave."
+  - "{@you} \xA1Guau! \xA1Mira el cuchillo del marinero!  "
+  - "{@amy} Era del capit\xE1n. Parece que se hundi\xF3 con la nave."
+  - "{@you} Mmm. Deber\xEDa darme otra zambullida. Quiz\xE1s todav\xEDa est\xE9 all\xED."
+  - "{@amy} Tengo un art\xEDculo sobre c\xF3mo se hundi\xF3. \xA1Te lo mandar\xE9!"
+  - "{@lou} \xA1Ey! \xA1Jules!"
+  - "Vuelo de nuevo. \xA1El tiempo est\xE1 buen\xEDsimo hoy!"
+  - "\xBFAlg\xFAn detalle jugoso sobre ese naufragio?"
+  - "{@you} \xA1S\xED! \xA1La nave es la Loretta!"
+  - "{@lou} Es un nombre g\xE9nial. \xBFC\xF3mo se hundi\xF3?"
   - '{@you} Los incendios forestales estaban ardiendo en todo Wisconsin, incluso
     un terrible incendio en Peshtigo, Wisconsin.'
-  - "El viento sopl\uFFFD una tonelada de humo sobre el lago."
-  - "{@lou} \uFFFDC\uFFFDmo pudo ver por d\uFFFDnde iba el capit\uFFFDn?"
-  - "{@you} No pudo. \uFFFDLa Loretta naveg\uFFFD muy cerca de la costa y se qued\uFFFD
+  - "El viento sopl\xF3 una tonelada de humo sobre el lago."
+  - "{@lou} \xBFC\xF3mo pudo ver por d\xF3nde iba el capit\xE1n?"
+  - "{@you} No pudo. \xA1La Loretta naveg\xF3 muy cerca de la costa y se qued\xF3
     atascada en un banco de arena!"
   - Los marineros tuvieron que subir a las jarcias. Por suerte, fueron rescatados
     por un barco de pesca.
-  - "{@lou} \uFFFDVaya! Qu\uFFFD historia m\uFFFDs salvaje."
-  - "\uFFFDPuedes imaginarte c\uFFFDmo fue esa noche?"
-  - "{@you} S\uFFFD..."
-  - "{@dad} \uFFFDOye, chica! Necesito un favor."
-  - "\uFFFDPuedes poner estos folletos en tu trabajo?"
-  - "{@you} Espera un momento. \uFFFDVas a hacer una venta de garaje?"
-  - "{@dad} \uFFFDS\uFFFDp! \uFFFDQue no te lo dije?"
+  - "{@lou} \xA1Vaya! Qu\xE9 historia m\xE1s salvaje."
+  - "\xBFPuedes imaginarte c\xF3mo fue esa noche?"
+  - "{@you} S\xED..."
+  - "{@dad} \xA1Oye, chica! Necesito un favor."
+  - "\xBFPuedes poner estos folletos en tu trabajo?"
+  - "{@you} Espera un momento. \xBFVas a hacer una venta de garaje?"
+  - "{@dad} \xA1S\xEDp! \xBFQue no te lo dije?"
   - Necesito dinero para comprar un sonar para mi barco.
-  - "{@you} \uFFFDPap\uFFFD, ni siquiera sabes c\uFFFDmo funciona un sonar!"
-  - "\uFFFDY qu\uFFFD pasa con nuestra historia familiar?"
-  - "\uFFFDNunca hablas de mi abuelito, y ahora te deshaces de todas sus cosas!"
-  - "{@dad} Bueno, \uFFFDde qu\uFFFD hay que hablar?"
+  - "{@you} \xA1Pap\xE1, ni siquiera sabes c\xF3mo funciona un sonar!"
+  - "\xBFY qu\xE9 pasa con nuestra historia familiar?"
+  - "\xA1Nunca hablas de mi abuelito, y ahora te deshaces de todas sus cosas!"
+  - "{@dad} Bueno, \xBFde qu\xE9 hay que hablar?"
   - El naufragio perdido de la Esmeralda me ha perseguido toda la vida.
   - Necesito encontrarlo.
-  - "{@you} Pero Pap\uFFFD..."
-  - "{@dad} Ser\uFFFD mejor que termine de prepararme. \uFFFDDes\uFFFDame suerte!"
-  - "{@reya} \uFFFDOye, hermana!"
-  - "Mira mi nuevo collar. \uFFFDEra de abuelita!"
-  - "Adentro tiene su vieja fotograf\uFFFDa de boda."
-  - "{@you} Vaya. \uFFFDEs hermosa!"
-  - "No puedo creer que Pap\uFFFD te lo haya dado."
-  - "{@reya} \uFFFDLo s\uFFFD! Es ch\uFFFDvere, \uFFFDsierto?"
+  - "{@you} Pero Pap\xE1..."
+  - "{@dad} Ser\xE1 mejor que termine de prepararme. \xA1Des\xE9ame suerte!"
+  - "{@reya} \xA1Oye, hermana!"
+  - "Mira mi nuevo collar. \xA1Era de abuelita!"
+  - "Adentro tiene su vieja fotograf\xEDa de boda."
+  - "{@you} Vaya. \xA1Es hermosa!"
+  - "No puedo creer que Pap\xE1 te lo haya dado."
+  - "{@reya} \xA1Lo s\xE9! Es ch\xE9vere, \xBFsierto?"
   - Eso me recuerda. Necesito tu equipo de buceo.
-  - "{@you} \uFFFDC\uFFFDmo? \uFFFDNo! \uFFFDEso va contra las reglas!"
+  - "{@you} \xBFC\xF3mo? \xA1No! \xA1Eso va contra las reglas!"
   - '{@reya} O, vamos. Somos hermanas. Las reglas no cuentan.'
-  - "Me contrataron para revisar un naufragio, y est\uFFFD muy profundo, a 300 pies."
+  - "Me contrataron para revisar un naufragio, y est\xE1 muy profundo, a 300 pies."
   - Necesito tu cosa fancy de buceo.
-  - "{@you} Se llama un respirador, y no est\uFFFDs entrenada para usarlo, Reya."
+  - "{@you} Se llama un respirador, y no est\xE1s entrenada para usarlo, Reya."
   - Necesitas que un experto te ayude.
-  - "{@reya} \uFFFDAh, Jules! Gracias. Me encantar\uFFFDa tu ayuda."
+  - "{@reya} \xA1Ah, Jules! Gracias. Me encantar\xEDa tu ayuda."
   - '{@you} Espera, eso no es lo que quise decir...'
-  - "{@reya} Est\uFFFD cerca de Port Washington."
-  - "Ubicaci\uFFFDn: 43\uFFFD20'08.2 \"N 87\uFFFD34'11.3 \"W"
-  - "\uFFFDTe echo carreras all\uFFFD!"
-  - "{@reya} \uFFFDOye, hermana! \uFFFDLista para cazar tesoro?"
+  - "{@reya} Est\xE1 cerca de Port Washington."
+  - "Ubicaci\xF3n: 43\xB020'08.2 \"N 87\xB034'11.3 \"W"
+  - "\xA1Te echo carreras all\xED!"
+  - "{@reya} \xA1Oye, hermana! \xBFLista para cazar tesoro?"
   - '{@you} No soy cazadora de tesoros, Reya.'
-  - "\uFFFDMi trabajo tiene que ver con la historia! Resolver misterios, descubrir
+  - "\xA1Mi trabajo tiene que ver con la historia! Resolver misterios, descubrir
     historias perdidas..."
-  - "{@reya}  \uFFFDAburrido! Lo que haga flotar tu barco, supongo."
-  - "{@reya} De todas formas, el barco est\uFFFD debajo."
-  - "{@reya}  \uFFFDRompe una pierna! O una aleta, o lo que sea. Buena suerte. "
-  - "{@you} \uFFFDLa tengo!"
-  - "\uFFFDPuedes o\uFFFDrme a trav\uFFFDs de los comunicadores, Reya? Me voy a sumergir
-    m\uFFFDs."
+  - "{@reya}  \xA1Aburrido! Lo que haga flotar tu barco, supongo."
+  - "{@reya} De todas formas, el barco est\xE1 debajo."
+  - "{@reya}  \xA1Rompe una pierna! O una aleta, o lo que sea. Buena suerte. "
+  - "{@you} \xA1La tengo!"
+  - "\xBFPuedes o\xEDrme a trav\xE9s de los comunicadores, Reya? Me voy a sumergir
+    m\xE1s."
   - '{@reya} Entendido, hermana.'
-  - "{@you}  \uFFFDEsa es la nave! Parece que est\uFFFD cubierta de mejillones."
-  - "Deber\uFFFDa tomar una foto de arriba a abajo."
-  - "{@you} Parece que algo se estrell\uFFFD contra la nave aqu\uFFFD."
-  - "{@you} \uFFFDVaya! \uFFFDHay un coche viejo en la zona de carga!"
-  - "{@reya} \uFFFDEh? \uFFFDQu\uFFFD es la carga?"
-  - "{@you}  O, \"carga\" s\uFFFDlo significa los art\uFFFDculos que la nave llevaba."
-  - "{@reya}  Ja. \uFFFDLa \"carga\" es un carro que ya no carga! \uFFFDEntiendes?"
-  - "{@you} \uFFFDHay una caja fuerte vieja! Me pregunto qu\uFFFD habr\uFFFD dentro."
-  - "{@reya} \uFFFD\uFFFDUna caja fuerte?! \uFFFDTienes que agarrarla!"
+  - "{@you}  \xA1Esa es la nave! Parece que est\xE1 cubierta de mejillones."
+  - "Deber\xEDa tomar una foto de arriba a abajo."
+  - "{@you} Parece que algo se estrell\xF3 contra la nave aqu\xED."
+  - "{@you} \xA1Vaya! \xA1Hay un coche viejo en la zona de carga!"
+  - "{@reya} \xBFEh? \xBFQu\xE9 es la carga?"
+  - "{@you}  O, \"carga\" s\xF3lo significa los art\xEDculos que la nave llevaba."
+  - "{@reya}  Ja. \xA1La \"carga\" es un carro que ya no carga! \xBFEntiendes?"
+  - "{@you} \xA1Hay una caja fuerte vieja! Me pregunto qu\xE9 habr\xE1 dentro."
+  - "{@reya} \xA1\xBFUna caja fuerte?! \xA1Tienes que agarrarla!"
   - '{@you} De ninguna manera, Reya. Es ilegal tomar cualquier cosa sin permiso.'
   - '{@reya} Uff. Eres tan aburrida. No puedo creer que seamos hermanas.'
-  - "{@you} Lo ver\uFFFD mejor desde el otro lado."
-  - "{@you} \uFFFDAh\uFFFD est\uFFFD la escotilla de carga!"
+  - "{@you} Lo ver\xE9 mejor desde el otro lado."
+  - "{@you} \xA1Ah\xED est\xE1 la escotilla de carga!"
   - Hmm. Parece parte de un coche viejo, pero no queda mucho.
   - '{@you} Ya tengo una foto de esto.'
-  - "{@you}  \uFFFDDeber\uFFFDa hacer un acercamiento para una mejor toma!"
+  - "{@you}  \xA1Deber\xEDa hacer un acercamiento para una mejor toma!"
   - '{@you} Mejor alejarse un poco.'
   - '{@you} No necesito una foto de esto.'
-  - "{@amy} \uFFFDOye! Escuch\uFFFD que te fuiste a bucear con tu hermana."
-  - "\uFFFDC\uFFFDmo fue?"
-  - "{@you} Bueno... me llam\uFFFD aburrida y trat\uFFFD de meterme en problemas."
-  - "\uFFFDPero encontramos un naufragio incre\uFFFDble!"
+  - "{@amy} \xA1Oye! Escuch\xE9 que te fuiste a bucear con tu hermana."
+  - "\xBFC\xF3mo fue?"
+  - "{@you} Bueno... me llam\xF3 aburrida y trat\xF3 de meterme en problemas."
+  - "\xA1Pero encontramos un naufragio incre\xEDble!"
   - Es un carguero cerca de Port Washington. Llevaba coches viejos.
   - '{@amy} Hmm. Parece que dos cargueros se hundieron en esa zona con coches a bordo.'
   - Uno con coches Kissel y otro con coches Nash.
-  - "\uFFFDSol\uFFFDan fabricarse aqu\uFFFD, en Wisconsin!"
-  - "{@you} Hmm. As\uFFFD que si puedo identificar el coche que encontr\uFFFD, \uFFFDpodr\uFFFDa
+  - "\xA1Sol\xEDan fabricarse aqu\xED, en Wisconsin!"
+  - "{@you} Hmm. As\xED que si puedo identificar el coche que encontr\xE9, \xA1podr\xEDa
     identificar el barco!"
-  - "Tengo un amigo en el museo del autom\uFFFDvil. Le dir\uFFFD que te llame."
-  - "{@you} \uFFFDGracias, Amy!"
-  - "{@cooper} Hola. \uFFFDEres la amiga de Amy?"
-  - "{@you} S\uFFFDp. Soy Jules Griffin."
-  - "\uFFFDPuede enviarme fotos de coches de la marca Nash y Kissel?"
-  - "{@cooper} \uFFFDClaro que s\uFFFD! Dame un momento..."
-  - "{@you} \uFFFDSuper, gracias!"
-  - "{@cooper} Es curioso. Tienes el mismo apellido del capit\uFFFDn que caus\uFFFD
-    ese horrible naufragio."
-  - "{@you} Um, s\uFFFD. Lo s\uFFFD."
-  - "Espera... \uFFFDdijo que el capit\uFFFDn CAUS\uFFFD el naufragio?"
-  - "{@cooper} As\uFFFD es. Era una leyenda local cuando yo era un ni\uFFFDo."
+  - "Tengo un amigo en el museo del autom\xF3vil. Le dir\xE9 que te llame."
+  - "{@you} \xA1Gracias, Amy!"
+  - "{@cooper} Hola. \xBFEres la amiga de Amy?"
+  - "{@you} S\xEDp. Soy Jules Griffin."
+  - "\xBFPuede enviarme fotos de coches de la marca Nash y Kissel?"
+  - "{@cooper} \xA1Claro que s\xED! Dame un momento..."
+  - "{@you} \xA1Super, gracias!"
+  - "{@cooper} Es curioso. Tienes el mismo apellido del capit\xE1n que caus\xF3 ese
+    horrible naufragio."
+  - "{@you} Um, s\xED. Lo s\xE9."
+  - "Espera... \xBFdijo que el capit\xE1n CAUS\xD3 el naufragio?"
+  - "{@cooper} As\xED es. Era una leyenda local cuando yo era un ni\xF1o."
   - "La empresa de acero propietaria del barco dijo que estaba en muy buenas condiciones.
-    \uFFFDEl carguero m\uFFFDs fuerte del lago!"
-  - "Pero el capit\uFFFDn lo sac\uFFFD en una terrible tormenta."
-  - "Si solo hubiera sido m\uFFFDs cuidadoso."
-  - "{@you} Vaya. No ten\uFFFDa ni idea."
+    \xA1El carguero m\xE1s fuerte del lago!"
+  - "Pero el capit\xE1n lo sac\xF3 en una terrible tormenta."
+  - "Si solo hubiera sido m\xE1s cuidadoso."
+  - "{@you} Vaya. No ten\xEDa ni idea."
   - Gracias de nuevo, Cooper.
-  - "{@cooper} \uFFFDEncantado de ayudar!"
-  - "{@amy} \uFFFDAlguna noticia sobre el naufragio?"
-  - "{@you} \uFFFDS\uFFFD, el barco es el Madison!"
-  - "{@amy}\uFFFDBuen trabajo, Jules!"
-  - "Te enviar\uFFFD la transcripci\uFFFDn de la llamada de auxilio por radio."
-  - "\uFFFDY el manifiesto del barco tambi\uFFFDn!"
-  - "{@you} \uFFFDGracias, Amy!"
-  - "{@reya} \uFFFDOye, hermana! \uFFFDDescubriste esa nave?"
-  - "{@you} De hecho, s\uFFFD. \uFFFDEl barco es el Madison!"
-  - "{@reya} Genial. Yo tambi\uFFFDn resolv\uFFFD un misterio."
-  - "{@you} \uFFFD\uFFFDQu\uFFFD?! Reya, \uFFFDc\uFFFDmo conseguiste esa caja fuerte?"
-  - "{@reya} \uFFFDEl tipo que me contrat\uFFFD consigui\uFFFD un permiso para subirlo!"
-  - "Es s\uFFFDlo un mont\uFFFDn de monedas de cinco centavos y un viejo reloj de
-    alarma. Esperaba que fuera de oro."
-  - "\uFFFDPero lo van a exponer en un museo, con mi nombre!"
-  - "\uFFFDQu\uFFFD pas\uFFFD con el Madison? \uFFFDQuiero saber c\uFFFDmo se hundi\uFFFD!"
-  - "{@you} Bueno p\uFFFDes. Veamos..."
-  - "Fue un d\uFFFDa de mucha neblina, el mismo d\uFFFDa en que la bolsa de valores
-    se desplom\uFFFD y comenz\uFFFD la Gran Depresi\uFFFDn."
+  - "{@cooper} \xA1Encantado de ayudar!"
+  - "{@amy} \xBFAlguna noticia sobre el naufragio?"
+  - "{@you} \xA1S\xED, el barco es el Madison!"
+  - "{@amy}\xA1Buen trabajo, Jules!"
+  - "Te enviar\xE9 la transcripci\xF3n de la llamada de auxilio por radio."
+  - "\xA1Y el manifiesto del barco tambi\xE9n!"
+  - "{@you} \xA1Gracias, Amy!"
+  - "{@reya} \xA1Oye, hermana! \xBFDescubriste esa nave?"
+  - "{@you} De hecho, s\xED. \xA1El barco es el Madison!"
+  - "{@reya} Genial. Yo tambi\xE9n resolv\xED un misterio."
+  - "{@you} \xA1\xBFQu\xE9?! Reya, \xBFc\xF3mo conseguiste esa caja fuerte?"
+  - "{@reya} \xA1El tipo que me contrat\xF3 consigui\xF3 un permiso para subirlo!"
+  - "Es s\xF3lo un mont\xF3n de monedas de cinco centavos y un viejo reloj de alarma.
+    Esperaba que fuera de oro."
+  - "\xA1Pero lo van a exponer en un museo, con mi nombre!"
+  - "\xBFQu\xE9 pas\xF3 con el Madison? \xA1Quiero saber c\xF3mo se hundi\xF3!"
+  - "{@you} Bueno p\xFAes. Veamos..."
+  - "Fue un d\xEDa de mucha neblina, el mismo d\xEDa en que la bolsa de valores se
+    desplom\xF3 y comenz\xF3 la Gran Depresi\xF3n."
   - El Madison transportaba 268 coches Nash a Detroit fabricados en Wisconsin.
-  - "De repente, apareci\uFFFD otro carguero en la neblina."
-  - "Los barcos estaban demasiado cerca para evitar el choque. \uFFFDEl SS Lookout
-    choc\uFFFD con el Madison!"
-  - "{@reya} Ja. \uFFFDEl mas grande accidente de carro en la historia!"
-  - "{@you} El capit\uFFFDn del Lookout entr\uFFFD en p\uFFFDnico y se dirigi\uFFFD
-    al puerto, dejando atr\uFFFDs al Madison."
-  - "Por suerte, otro barco vino a ayudar, pero un gran grupo de personas no sobrevivi\uFFFD."
+  - "De repente, apareci\xF3 otro carguero en la neblina."
+  - "Los barcos estaban demasiado cerca para evitar el choque. \xA1El SS Lookout
+    choc\xF3 con el Madison!"
+  - "{@reya} Ja. \xA1El mas grande accidente de carro en la historia!"
+  - "{@you} El capit\xE1n del Lookout entr\xF3 en p\xE1nico y se dirigi\xF3 al puerto,
+    dejando atr\xE1s al Madison."
+  - "Por suerte, otro barco vino a ayudar, pero un gran grupo de personas no sobrevivi\xF3."
   - '{@reya} Vaya. Esa es realmente una gran historia.'
-  - "Sin embargo, es s\uFFFDper triste."
-  - "Me pregunto si alguien lo ve\uFFFDa venir..."
-  - "{@dad} Oye, Jules. \uFFFDTengo un naufragio para que lo veas!"
-  - "Mi compa\uFFFDero de pesca sac\uFFFD esto en el lago Michigan."
-  - "{@you} \uFFFDParece parte de un vaporizador de rueda lateral!"
-  - "Hablar\uFFFD con mi mentora, Cami. Ella es una experta en esas naves."
-  - "\uFFFDConseguiste la latitud y longitud?"
-  - "{@dad} S\uFFFD. Est\uFFFD cerca de Sheboygan."
-  - "Ubicaci\uFFFDn: 43\uFFFD42'08.6 \"N 87\uFFFD38'26.0 \"W"
-  - "{@you} Gracias, Pap\uFFFD."
-  - "\uFFFDC\uFFFDmo esta el nuevo sonar?"
+  - "Sin embargo, es s\xFAper triste."
+  - "Me pregunto si alguien lo ve\xEDa venir..."
+  - "{@dad} Oye, Jules. \xA1Tengo un naufragio para que lo veas!"
+  - "Mi compa\xF1ero de pesca sac\xF3 esto en el lago Michigan."
+  - "{@you} \xA1Parece parte de un vaporizador de rueda lateral!"
+  - "Hablar\xE9 con mi mentora, Cami. Ella es una experta en esas naves."
+  - "\xBFConseguiste la latitud y longitud?"
+  - "{@dad} S\xED. Est\xE1 cerca de Sheboygan."
+  - "Ubicaci\xF3n: 43\xB042'08.6 \"N 87\xB038'26.0 \"W"
+  - "{@you} Gracias, Pap\xE1."
+  - "\xBFC\xF3mo esta el nuevo sonar?"
   - '{@dad}  Uh... no es tan bueno.'
-  - "Pero estoy seguro de que lo resolver\uFFFD. Eventualmente."
+  - "Pero estoy seguro de que lo resolver\xE9. Eventualmente."
   - Estoy en el Lago Superior ahora mismo. Tengo mi mapa conmigo.
-  - "La \uFFFDltima ruta planeada por tu abuelito est\uFFFD marcada en rojo."
-  - "La Esmeralda debe estar por aqu\uFFFD."
-  - "{@you} Pap\uFFFD... \uFFFDpor qu\uFFFD no me dijiste que el naufragio fue culpa
-    de abuelito?"
-  - "{@dad} \uFFFDQu\uFFFD? Por supuesto que no fue su culpa."
-  - "{@you} La empresa de acero dijo que s\uFFFD."
-  - "{@dad} S\uFFFDlo necesitaban a alguien a quien culpar para lavarse las manos.
-    \uFFFD\uFFFDC\uFFFDmo puedes pensar eso de tu propio abuelito?!"
-  - "{@you} \uFFFDBueno, nunca hablas de \uFFFDl! \uFFFDC\uFFFDmo era \uFFFDl?"
+  - "La \xFAltima ruta planeada por tu abuelito est\xE1 marcada en rojo."
+  - "La Esmeralda debe estar por aqu\xED."
+  - "{@you} Pap\xE1... \xBFpor qu\xE9 no me dijiste que el naufragio fue culpa de
+    abuelito?"
+  - "{@dad} \xBFQu\xE9? Por supuesto que no fue su culpa."
+  - "{@you} La empresa de acero dijo que s\xED."
+  - "{@dad} S\xF3lo necesitaban a alguien a quien culpar para lavarse las manos.
+    \xA1\xBFC\xF3mo puedes pensar eso de tu propio abuelito?!"
+  - "{@you} \xA1Bueno, nunca hablas de \xE9l! \xBFC\xF3mo era \xE9l?"
   - '{@dad} No te preocupes, Jules.'
-  - "S\uFFFDlo tenemos que encontrar esa nave. Entonces ver\uFFFDs."
-  - "{@cami}  \uFFFDHola Jules! \uFFFDNecesitas informaci\uFFFDn sobre un vaporizador
-    de rueda lateral?"
-  - "{@you} \uFFFDS\uFFFD! Gracias por llamar, Cami."
-  - "\uFFFDQui\uFFFDn es ese tipo que est\uFFFD con usted?"
+  - "S\xF3lo tenemos que encontrar esa nave. Entonces ver\xE1s."
+  - "{@cami}  \xA1Hola Jules! \xBFNecesitas informaci\xF3n sobre un vaporizador de
+    rueda lateral?"
+  - "{@you} \xA1S\xED! Gracias por llamar, Cami."
+  - "\xBFQui\xE9n es ese tipo que est\xE1 con usted?"
   - '{@cami} Johnny es mi nuevo alumno de buceo.'
-  - "\uFFFDl est\uFFFD lleno de historias incre\uFFFDbles. Deber\uFFFDas charlar
-    con \uFFFDl alguna vez."
-  - "{@you} } Quiz\uFFFDs m\uFFFDs tarde."
-  - "\uFFFDHaz o\uFFFDdo hablar de alg\uFFFDn vaporizador de rueda lateral que haya
-    naufragado cerca de Sheboygan?"
-  - "{@cami} \uFFFDOoh, podr\uFFFDa ser el Para\uFFFDso!"
-  - "Aqu\uFFFD, \uFFFDmira!"
-  - "Precioso, \uFFFDeh? Se hundi\uFFFD en 1856."
+  - "\xC9l est\xE1 lleno de historias incre\xEDbles. Deber\xEDas charlar con \xE9l
+    alguna vez."
+  - "{@you} Quiz\xE1s m\xE1s tarde."
+  - "\xBFHaz o\xEDdo hablar de alg\xFAn vaporizador de rueda lateral que haya naufragado
+    cerca de Sheboygan?"
+  - "{@cami} \xA1Ooh, podr\xEDa ser el Para\xEDso!"
+  - "Aqu\xED, \xA1mira!"
+  - "Precioso, \xBFeh? Se hundi\xF3 en 1856."
   - La gente llamaba a este tipo de barcos Vaporizadores de palacio, porque eran
     muy elegantes.
-  - "El manifiesto se perdi\uFFFD, as\uFFFD que la carga es desconocida."
-  - "{@you} \uFFFDVaya, sabes mucho sobre esa nave!"
-  - "{@cami} \uFFFDS\uFFFDp! Es uno de mis proyectos favoritos."
-  - "Busca el ancla roja. Deber\uFFFDa tener el nombre grabado en ella."
-  - "{@you} \uFFFDGracias, Cami!"
-  - "{@you} El barco debe estar por aqu\uFFFD abajo. \uFFFDEs hora de usar mi sonar!"
-  - "{@you} \uFFFDLo tengo!"
-  - "{@you} \uFFFDS\uFFFD! \uFFFDEs el Para\uFFFDso!"
-  - "No puedo esperar a dec\uFFFDrselo a Cami."
-  - "{@you}  Vaya. \uFFFDSon esos... lingotes de oro?"
-  - "\uFFFDDe d\uFFFDnde salieron esos?"
-  - "{@you} \uFFFDTengo la carga!"
-  - "Vaya... \uFFFDestos caballitos de balanc\uFFFDn tienen m\uFFFDs de 100 a\uFFFDos!"
-  - "{@you}  \uFFFDQu\uFFFD es lo que est\uFFFD escrito en el ancla?"
-  - "{@you} Esa rueda de paletas coincide con la de la foto de Pap\uFFFD."
-  - "{@you}  Vaya. \uFFFDQu\uFFFD pas\uFFFD aqu\uFFFD? \uFFFDLa nave est\uFFFD totalmente
-    destruida!"
-  - "Parece que el motor ha desaparecido. Los due\uFFFDos del barco debieron haber
+  - "El manifiesto se perdi\xF3, as\xED que la carga es desconocida."
+  - "{@you} \xA1Vaya, sabes mucho sobre esa nave!"
+  - "{@cami} \xA1S\xEDp! Es uno de mis proyectos favoritos."
+  - "Busca el ancla roja. Deber\xEDa tener el nombre grabado en ella."
+  - "{@you} \xA1Gracias, Cami!"
+  - "{@you} El barco debe estar por aqu\xED abajo. \xA1Es hora de usar mi sonar!"
+  - "{@you} \xA1Lo tengo!"
+  - "{@you} \xA1S\xED! \xA1Es el Para\xEDso!"
+  - "No puedo esperar a dec\xEDrselo a Cami."
+  - "{@you}  Vaya. \xBFSon esos... lingotes de oro?"
+  - "\xBFDe d\xF3nde salieron esos?"
+  - "{@you} \xA1Tengo la carga!"
+  - "Vaya... \xA1estos caballitos de balanc\xEDn tienen m\xE1s de 100 a\xF1os!"
+  - "{@you}  \xBFQu\xE9 es lo que est\xE1 escrito en el ancla?"
+  - "{@you} Esa rueda de paletas coincide con la de la foto de Pap\xE1."
+  - "{@you}  Vaya. \xBFQu\xE9 pas\xF3 aqu\xED? \xA1La nave est\xE1 totalmente destruida!"
+  - "Parece que el motor ha desaparecido. Los due\xF1os del barco debieron haber
     hecho que alguien lo sacara de las ruinas."
-  - "{@you}  Deber\uFFFDa intentar un \uFFFDngulo diferente para una mejor toma."
+  - "{@you}  Deber\xEDa intentar un \xE1ngulo diferente para una mejor toma."
   - '{@you}  Ya tengo una foto de esto.'
-  - "{@you} \uFFFDDeber\uFFFDa hacer un acercamiento para una mejor toma!"
-  - "{@you} Mejor alejar el zoom para capturar m\uFFFDs en la foto."
+  - "{@you} \xA1Deber\xEDa hacer un acercamiento para una mejor toma!"
+  - "{@you} Mejor alejar el zoom para capturar m\xE1s en la foto."
   - '{@you} No necesito una foto de esto.'
-  - "{@you} Hola Cami, grandes noticias. \uFFFDEl barco es el Para\uFFFDso!"
-  - "\uFFFDGuaju! Buen trabajo, Jules."
-  - "Te enviar\uFFFD los relatos de los sobrevivientes del hundimiento."
-  - "{@you} \uFFFDGracias!"
+  - "{@you} Hola Cami, grandes noticias. \xA1El barco es el Para\xEDso!"
+  - "\xA1Guaju! Buen trabajo, Jules."
+  - "Te enviar\xE9 los relatos de los sobrevivientes del hundimiento."
+  - "{@you} \xA1Gracias!"
   - <@70967DC9>
-  - "{@cami} Cuando era peque\uFFFDa, mi mejor amiga ten\uFFFDa antepasados que se
-    perdieron en el Para\uFFFDso."
-  - "Es la raz\uFFFDn por la que me convert\uFFFD en arque\uFFFDloga mar\uFFFDtima."
-  - "Significar\uFFFD mucho para ella al decirle que por fin lo hemos encontrado."
-  - "{@you} \uFFFDVaya, eso es incre\uFFFDble!"
+  - "{@cami} Cuando era peque\xF1a, mi mejor amiga ten\xEDa antepasados que se perdieron
+    en el Para\xEDso."
+  - "Es la raz\xF3n por la que me convert\xED en arque\xF3loga mar\xEDtima."
+  - "Significar\xE1 mucho para ella al decirle que por fin lo hemos encontrado."
+  - "{@you} \xA1Vaya, eso es incre\xEDble!"
   - Me alegra de haber podido ayudar.
-  - "{@you} \uFFFDOye, pap\uFFFD! \uFFFDHa habido suerte en la b\uFFFDsqueda del
-    barco del abuelito?"
-  - "No. El s\uFFFDnar se est\uFFFD escacharrando otra vez."
-  - "Ten\uFFFDas raz\uFFFDn, Jules. No estoy hecho para esto."
-  - "{@you} Ah, Pap\uFFFD. No te rindas."
-  - "Gracias a ti, encontramos una parte de historia que estuvo perdida por m\uFFFDs
-    de 100 a\uFFFDos."
-  - "{@dad} Ooh. \uFFFDEse vaporizador de rueda lateral? \uFFFDQu\uFFFD descubriste?"
-  - "{@you} La nave es un Vaporizador de palacio, \uFFFDel Para\uFFFDso!"
+  - "{@you} \xA1Oye, pap\xE1! \xBFHa habido suerte en la b\xFAsqueda del barco del
+    abuelito?"
+  - "No. El s\xF3nar se est\xE1 escacharrando otra vez."
+  - "Ten\xEDas raz\xF3n, Jules. No estoy hecho para esto."
+  - "{@you} Ah, Pap\xE1. No te rindas."
+  - "Gracias a ti, encontramos una parte de historia que estuvo perdida por m\xE1s
+    de 100 a\xF1os."
+  - "{@dad} Ooh. \xBFEse vaporizador de rueda lateral? \xBFQu\xE9 descubriste?"
+  - "{@you} La nave es un Vaporizador de palacio, \xA1el Para\xEDso!"
   - '{@you} Pasaba por Sheboygan cuando se produjo un incendio en la sala de calderas.'
-  - "{@dad} \uFFFDH\uFFFDjole! Un fuego en un barco de madera, eso no estuvo bueno."
-  - "{@you}  No. El fuego se extendi\uFFFD muy r\uFFFDpido y la gente entr\uFFFD
-    en p\uFFFDnico."
-  - "Un tipo incluso salt\uFFFD a un bote salvavidas con un mont\uFFFDn de lingotes
-    de oro y rompi\uFFFD las cuerdas."
+  - "{@dad} \xA1H\xEDjole! Un fuego en un barco de madera, eso no estuvo bueno."
+  - "{@you}  No. El fuego se extendi\xF3 muy r\xE1pido y la gente entr\xF3 en p\xE1nico."
+  - "Un tipo incluso salt\xF3 a un bote salvavidas con un mont\xF3n de lingotes de
+    oro y rompi\xF3 las cuerdas."
   - Otro barco vio el fuego y vino a ayudar, pero no pudieron salvar a todos.
-  - "{@dad} Vaya, qu\uFFFD tragedia."
-  - "{@you} S\uFFFD. Debio haber sido bastante aterrador..."
-  - "{@reya}\uFFFDEy, hermana!"
-  - "Escuch\uFFFD que conociste a mi amigo Johnny. \uFFFD\uFFFDl pidi\uFFFD por tu
-    n\uFFFDmero!"
-  - "{@you} Johnny... es el estudiante de buceo de Cami, \uFFFDcierto?"
-  - "{@reya} S\uFFFD. \uFFFDCreo que le gustas!"
+  - "{@dad} Vaya, qu\xE9 tragedia."
+  - "{@you} S\xED. Debio haber sido bastante aterrador..."
+  - "{@reya}\xA1Ey, hermana!"
+  - "Escuch\xE9 que conociste a mi amigo Johnny. \xA1\xC9l pidi\xF3 por tu n\xFAmero!"
+  - "{@you} Johnny... es el estudiante de buceo de Cami, \xBFcierto?"
+  - "{@reya} S\xED. \xA1Creo que le gustas!"
   - No te preocupes, le dije que estabas muy ocupada con el papeleo.
-  - "Ooh, eso me recuerda... \uFFFDmira este postal incre\uFFFDble!"
-  - "Fue un sobrante de la venta de patio de Pap\uFFFD. \uFFFDCrees que vale algo?"
-  - "{@you}  Espera. \uFFFDHas le\uFFFDdo esto, Reya?"
-  - "El abuelito escribi\uFFFD que O.K. Steel lo mand\uFFFD a un viaje extra."
-  - "{@reya} Um... \uFFFDy qu\uFFFD?"
-  - "{@you} No hay registro oficial de esto. No coincide con el mapa de Pap\uFFFD."
-  - "{@dad} Espera un segundo. \uFFFDQuieres decir que... \uFFFDQue he estado buscando
+  - "Ooh, eso me recuerda... \xA1mira este postal incre\xEDble!"
+  - "Fue un sobrante de la venta de patio de Pap\xE1. \xBFCrees que vale algo?"
+  - "{@you}  Espera. \xBFHas le\xEDdo esto, Reya?"
+  - "El abuelito escribi\xF3 que O.K. Steel lo mand\xF3 a un viaje extra."
+  - "{@reya} Um... \xBFy qu\xE9?"
+  - "{@you} No hay registro oficial de esto. No coincide con el mapa de Pap\xE1."
+  - "{@dad} Espera un segundo. \xBFQuieres decir que... \xBFQue he estado buscando
     en la parte equivocada del lago?"
-  - "{@reya} \uFFFD\uFFFDS\uFFFD!! \uFFFD\uFFFDEncontr\uFFFD una pista!!"
-  - "{@you} Tenemos la ruta final del abuelito. Ahora tenemos que restringir la ubicaci\uFFFDn."
-  - "{@reya} Bueno, \uFFFDQu\uFFFD esperas, hermana? \uFFFD\uFFFDVe hacer investigaciones!!"
-  - "{@you} Amy, necesito tu ayuda. \uFFFDEncontr\uFFFD una nueva pista sobre la
-    nave de abuelito!"
-  - "{@amy} \uFFFDDe veras?"
-  - "{@you} Bueno... mi hermana ayud\uFFFD. Un poco."
-  - "Marqu\uFFFD la ruta de mi abuelito en azul."
-  - "Mencion\uFFFD las olas agitadas cerca de las Islas Ap\uFFFDstoles."
-  - "\uFFFDTienes alguna evidencia de naufragios en esa zona?"
+  - "{@reya} \xA1\xA1S\xED!! \xA1\xA1Encontr\xE9 una pista!!"
+  - "{@you} Tenemos la ruta final del abuelito. Ahora tenemos que restringir la ubicaci\xF3n."
+  - "{@reya} Bueno, \xBFQu\xE9 esperas, hermana? \xA1\xA1Ve hacer investigaciones!!"
+  - "{@you} Amy, necesito tu ayuda. \xA1Encontr\xE9 una nueva pista sobre la nave
+    de abuelito!"
+  - "{@amy} \xBFDe veras?"
+  - "{@you} Bueno... mi hermana ayud\xF3. Un poco."
+  - "Marqu\xE9 la ruta de mi abuelito en azul."
+  - "Mencion\xF3 las olas agitadas cerca de las Islas Ap\xF3stoles."
+  - "\xBFTienes alguna evidencia de naufragios en esa zona?"
   - '{@amy} Hmm, veamos...'
-  - "Un pescador sac\uFFFD este trozo de acero cerca de Outer Island."
-  - "Podr\uFFFDa ser de un carguero como el de tu abuelo."
-  - "Ubicaci\uFFFDn: 47\uFFFD05'19.4 \"N 90\uFFFD17'17.5 \"W"
-  - "{@you} \uFFFDGracias, Amy!"
-  - "Le enviar\uFFFD la muestra de acero a mi mam\uFFFD."
-  - "Es una cient\uFFFDfica de materiales. Puede probarlo en su laboratorio y averiguar
-    m\uFFFDs sobre \uFFFDl."
+  - "Un pescador sac\xF3 este trozo de acero cerca de Outer Island."
+  - "Podr\xEDa ser de un carguero como el de tu abuelo."
+  - "Ubicaci\xF3n: 47\xB005'19.4 \"N 90\xB017'17.5 \"W"
+  - "{@you} \xA1Gracias, Amy!"
+  - "Le enviar\xE9 la muestra de acero a mi mam\xE1."
+  - "Es una cient\xEDfica de materiales. Puede probarlo en su laboratorio y averiguar
+    m\xE1s sobre \xE9l."
   - '{@reya} Entonces????'
-  - "{@you} Tengo la ubicaci\uFFFDn de un naufragio de acero. Podr\uFFFDa ser del
-    abuelo."
-  - "{@reya} \uFFFD\uFFFDS\uFFFD!! \uFFFDTesoro, all\uFFFD vamos!"
-  - "{@you} Reya, m\uFFFDs despacio."
-  - "\uFFFDY si no es la Esmeralda?"
+  - "{@you} Tengo la ubicaci\xF3n de un naufragio de acero. Podr\xEDa ser del abuelo."
+  - "{@reya} \xA1\xA1S\xED!! \xA1Tesoro, all\xE1 vamos!"
+  - "{@you} Reya, m\xE1s despacio."
+  - "\xBFY si no es la Esmeralda?"
   - '{@reya} Aww, hermanita. Te preocupas mucho.'
-  - "\uFFFDSalta y compru\uFFFDbalo!"
-  - "\uFFFDPap\uFFFD y yo estaremos esperando juntos al tel\uFFFDfono!"
+  - "\xA1Salta y compru\xE9balo!"
+  - "\xA1Pap\xE1 y yo estaremos esperando juntos al tel\xE9fono!"
   - '{@you} Bueno... eso definitivamente es un barco.'
   - Me pregunto si es de abuelito.
-  - "{@you} Vaya. \uFFFDSoy yo o esa nave est\uFFFD... partida por la mitad?"
-  - "{@you} \uFFFDLo tengo!"
-  - "{@you} Vaya. No lo puedo creer. \uFFFDEncontramos la Esmeralda!"
-  - "\uFFFDEstoy entusiasmada por decirle a Pap\uFFFD!"
-  - "{@you} \uFFFDEse relicario es igual al de Reya!"
+  - "{@you} Vaya. \xBFSoy yo o esa nave est\xE1... partida por la mitad?"
+  - "{@you} \xA1Lo tengo!"
+  - "{@you} Vaya. No lo puedo creer. \xA1Encontramos la Esmeralda!"
+  - "\xA1Estoy entusiasmada por decirle a Pap\xE1!"
+  - "{@you} \xA1Ese relicario es igual al de Reya!"
   - Me pregunto si era de abuelito.
-  - "{@you}   Deber\uFFFDa tomar una foto de la nave partida por mitad."
-  - "{@you} \uFFFDAh\uFFFD est\uFFFD la gr\uFFFDa que usaron para cargar el cargamento!"
-  - "{@you} Vaya, la casa piloto. \uFFFDAll\uFFFD habr\uFFFDa trabajado el abuelito!"
+  - "{@you}   Deber\xEDa tomar una foto de la nave partida por mitad."
+  - "{@you} \xA1Ah\xED est\xE1 la gr\xFAa que usaron para cargar el cargamento!"
+  - "{@you} Vaya, la casa piloto. \xA1All\xED habr\xEDa trabajado el abuelito!"
   - '{@you}  Parece que el barco transportaba mineral de hierro.'
-  - "{@you}  Tal vez pueda conseguir un mejor \uFFFDngulo. Necesito mostrar ambos
-    lados de la ruptura de la nave."
-  - "{@you} El otro lado podr\uFFFDa tener un mejor \uFFFDngulo para mostrar ambas
-    partes de la nave."
+  - "{@you}  Tal vez pueda conseguir un mejor \xE1ngulo. Necesito mostrar ambos lados
+    de la ruptura de la nave."
+  - "{@you} El otro lado podr\xEDa tener un mejor \xE1ngulo para mostrar ambas partes
+    de la nave."
   - '{@you} Ya tengo una foto de esto.'
-  - "{@you}  \uFFFDDeber\uFFFDa hacer un acercamiento para una mejor toma!"
+  - "{@you}  \xA1Deber\xEDa hacer un acercamiento para una mejor toma!"
   - '{@you}  Mejor alejarse un poco.'
   - '{@you} No necesito una foto de esto.'
-  - "{@amy}  \uFFFDHola, Jules! \uFFFDC\uFFFDmo te fue?"
-  - "{@you} \uFFFDEncontr\uFFFD la Esmeralda!"
-  - "Ahora tengo que averiguar c\uFFFDmo se hundi\uFFFD."
-  - "La leyenda dice que el barco era s\uFFFDper fuerte."
-  - "Me pregunto c\uFFFDmo se parti\uFFFD por la mitad."
+  - "{@amy}  \xA1Hola, Jules! \xBFC\xF3mo te fue?"
+  - "{@you} \xA1Encontr\xE9 la Esmeralda!"
+  - "Ahora tengo que averiguar c\xF3mo se hundi\xF3."
+  - "La leyenda dice que el barco era s\xFAper fuerte."
+  - "Me pregunto c\xF3mo se parti\xF3 por la mitad."
   - '{@amy} Creo que puedo ayudar.'
-  - "\uFFFDCami consigui\uFFFD localizar a un sobreviviente de la Esmeralda!"
-  - "Me envi\uFFFD su contacto."
+  - "\xA1Cami consigui\xF3 localizar a un sobreviviente de la Esmeralda!"
+  - "Me envi\xF3 su contacto."
   - 'Edmund Brooks: 555-1242'
-  - "{@you} \uFFFDVaya, qu\uFFFD suerte! \uFFFDGracias, Amy!"
-  - "{@you} Hola. \uFFFDEs usted el Sr. Brooks?"
-  - "Ll\uFFFDmame Ed. Este es mi nieto, Johnny."
-  - "{@you}  Espera. \uFFFDTe vi la semana pasada! Eres el estudiante de buceo de
-    Cami, \uFFFDverdad?"
-  - "{@johnny} S\uFFFD. El abuelo fue marinero en la Esmeralda."
-  - "Llevo toda la vida escuchando sus incre\uFFFDbles historias."
-  - "{@you} \uFFFDC\uFFFDmo conoces a mi hermana?"
+  - "{@you} \xA1Vaya, qu\xE9 suerte! \xA1Gracias, Amy!"
+  - "{@you} Hola. \xBFEs usted el Sr. Brooks?"
+  - "Ll\xE1mame Ed. Este es mi nieto, Johnny."
+  - "{@you}  Espera. \xA1Te vi la semana pasada! Eres el estudiante de buceo de Cami,
+    \xBFverdad?"
+  - "{@johnny} S\xED. El abuelo fue marinero en la Esmeralda."
+  - "Llevo toda la vida escuchando sus incre\xEDbles historias."
+  - "{@you} \xBFC\xF3mo conoces a mi hermana?"
   - '{@johnny} Tomamos una clase de paracaidismo juntos.'
-  - "\uFFFDNo ten\uFFFDa idea de que fuera pariente del capit\uFFFDn de la Esmeralda!"
-  - "{@you} S\uFFFD. Mi familia nunca habla de ello."
-  - "Estoy tratando de averiguar lo que realmente sucedi\uFFFD."
-  - "{@ed} Lo escrib\uFFFD todo en mi diario."
-  - "Est\uFFFDbamos navegando sin problemas cuando, de repente, se oy\uFFFD un fuerte
+  - "\xA1No ten\xEDa idea de que fuera pariente del capit\xE1n de la Esmeralda!"
+  - "{@you} S\xED. Mi familia nunca habla de ello."
+  - "Estoy tratando de averiguar lo que realmente sucedi\xF3."
+  - "{@ed} Lo escrib\xED todo en mi diario."
+  - "Est\xE1bamos navegando sin problemas cuando, de repente, se oy\xF3 un fuerte
     TRAZ."
-  - "\uFFFDEl barco empez\uFFFD a partirse por la mitad!"
-  - "El capit\uFFFDn ayud\uFFFD a lanzar un bote salvavidas. Luego trat\uFFFD de
-    pedir ayuda por radio, pero se cort\uFFFD la corriente al romperse el barco."
-  - "\uFFFDLe cont\uFFFD a alguien lo que pas\uFFFD?"
-  - "{@ed}Lo intent\uFFFD, pero O.K. Steel le ech\uFFFD la culpa a tu abuelo."
-  - "La gente dec\uFFFDa que deb\uFFFDa haber recordarlo mal."
-  - "{@you}  \uFFFDAlguna vez habl\uFFFD de tesoros mi abuelito?"
-  - "{@ed} Hmm. \uFFFDTesoro?"
-  - "\uFFFDOh, debes referirte a su relicario! Ten\uFFFDa fotos de su esposa e hijo."
+  - "\xA1El barco empez\xF3 a partirse por la mitad!"
+  - "El capit\xE1n ayud\xF3 a lanzar un bote salvavidas. Luego trat\xF3 de pedir
+    ayuda por radio, pero se cort\xF3 la corriente al romperse el barco."
+  - "\xBFLe cont\xF3 a alguien lo que pas\xF3?"
+  - "{@ed}Lo intent\xE9, pero O.K. Steel le ech\xF3 la culpa a tu abuelo."
+  - "La gente dec\xEDa que deb\xEDa haber recordarlo mal."
+  - "{@you}  \xBFAlguna vez habl\xF3 de tesoros mi abuelito?"
+  - "{@ed} Hmm. \xBFTesoro?"
+  - "\xA1Oh, debes referirte a su relicario! Ten\xEDa fotos de su esposa e hijo."
   - '{@you} Gracias, Ed. Lo siento que haya tardado tanto tiempo para que alguien
     te escuche.'
-  - "{@ed} Siempre esper\uFFFD que la verdad saliera a la luz. Me alegro de que no
-    hayas abandonado la b\uFFFDsqueda."
-  - "{@you} De hecho, fue mi padre quien no se rindi\uFFFD."
+  - "{@ed} Siempre esper\xE9 que la verdad saliera a la luz. Me alegro de que no
+    hayas abandonado la b\xFAsqueda."
+  - "{@you} De hecho, fue mi padre quien no se rindi\xF3."
   - '{@ed} Bueno, dale las gracias de mi parte.'
-  - "{@mom} \uFFFDHola, cari\uFFFDo! \uFFFDC\uFFFDmo te fue all\uFFFD afuera?"
-  - "{@you} \uFFFDEncontr\uFFFD la Esmeralda!"
-  - "{@mom} \uFFFDEso es maravilloso, Jules!"
-  - "{@you} Todav\uFFFDa tengo que resolver el misterio de por qu\uFFFD se hundi\uFFFD
+  - "{@mom} \xA1Hola, cari\xF1o! \xBFC\xF3mo te fue all\xE1 afuera?"
+  - "{@you} \xA1Encontr\xE9 la Esmeralda!"
+  - "{@mom} \xA1Eso es maravilloso, Jules!"
+  - "{@you} Todav\xEDa tengo que resolver el misterio de por qu\xE9 se hundi\xF3
     el barco."
   - '{@mom} En realidad... ya no es un misterio.'
-  - "Prob\uFFFD la muestra de acero que me enviaste."
-  - "Era d\uFFFDbil y fr\uFFFDgil. No hay manera de que ese barco pudiera resistir
-    las olas."
-  - "{@you}  Vaya. \uFFFDAs\uFFFD que por eso se destruy\uFFFD la Esmeralda!"
-  - "{@mom}  S\uFFFDp. Era s\uFFFDlo un asunto de tiempo."
-  - "{@you} Tengo que dec\uFFFDrselo a Pap\uFFFD. \uFFFDl ten\uFFFDa raz\uFFFDn todo
-    el tiempo."
-  - "\uFFFDGracias por tu ayuda, mam\uFFFD!"
-  - "{@mom} Claro que s\uFFFD, cari\uFFFDo."
-  - "Me voy a casa pronto, pero dejar\uFFFD que se lo digas t\uFFFD."
-  - "Buen trabajo ah\uFFFD fuera."
-  - "{@reya}  Hola, hermana. \uFFFDO\uFFFD que llamaste a Johnny!"
+  - "Prob\xE9 la muestra de acero que me enviaste."
+  - "Era d\xE9bil y fr\xE1gil. No hay manera de que ese barco pudiera resistir las
+    olas."
+  - "{@you}  Vaya. \xA1As\xED que por eso se destruy\xF3 la Esmeralda!"
+  - "{@mom}  S\xEDp. Era s\xF3lo un asunto de tiempo."
+  - "{@you} Tengo que dec\xEDrselo a Pap\xE1. \xC9l ten\xEDa raz\xF3n todo el tiempo."
+  - "\xA1Gracias por tu ayuda, mam\xE1!"
+  - "{@mom} Claro que s\xED, cari\xF1o."
+  - "Me voy a casa pronto, pero dejar\xE9 que se lo digas t\xFA."
+  - "Buen trabajo ah\xED fuera."
+  - "{@reya}  Hola, hermana. \xA1O\xED que llamaste a Johnny!"
   - '{@you} Era sobre el naufragio.'
-  - "{@reya}  Ja. Claro que s\uFFFD."
-  - "{@dad} \uFFFDY bien? \uFFFDQu\uFFFD has averiguado?"
-  - "{@you} Lo encontramos, Pap\uFFFD. El naufragio es la Esmeralda."
-  - "{@reya}  \uFFFD\uFFFD\uFFFD\uFFFDS\uFFFD!!!!"
-  - "{@dad} No puedo creerlo. Despu\uFFFDs de todo este tiempo."
-  - "{@you} Ten\uFFFDas raz\uFFFDn, Pap\uFFFD. El accidente no fue culpa del abuelito."
+  - "{@reya}  Ja. Claro que s\xED."
+  - "{@dad} \xBFY bien? \xBFQu\xE9 has averiguado?"
+  - "{@you} Lo encontramos, Pap\xE1. El naufragio es la Esmeralda."
+  - "{@reya}  \xA1\xA1\xA1\xA1S\xED!!!!"
+  - "{@dad} No puedo creerlo. Despu\xE9s de todo este tiempo."
+  - "{@you} Ten\xEDas raz\xF3n, Pap\xE1. El accidente no fue culpa del abuelito."
   - Las olas estaban agitadas, pero el barco navegaba sin problemas.
-  - "Entonces se oy\uFFFD un fuerte golpe y la Esmeralda se parti\uFFFD por la mitad."
-  - "El abuelito ayud\uFFFD a lanzar un bote salvavidas, pero \uFFFDl no pudo ponerse
+  - "Entonces se oy\xF3 un fuerte golpe y la Esmeralda se parti\xF3 por la mitad."
+  - "El abuelito ayud\xF3 a lanzar un bote salvavidas, pero \xE9l no pudo ponerse
     a salvo."
   - '{@reya}  Vaya. Pobre abuelito.'
-  - "{@dad}  No lo entiendo. \uFFFDC\uFFFDmo puede un enorme carguero romperse sin
-    raz\uFFFDn?"
-  - "{@you} Mam\uFFFD descubri\uFFFD que el barco estaba hecho de acero d\uFFFDbil."
+  - "{@dad}  No lo entiendo. \xBFC\xF3mo puede un enorme carguero romperse sin raz\xF3n?"
+  - "{@you} Mam\xE1 descubri\xF3 que el barco estaba hecho de acero d\xE9bil."
   - No era lo suficientemente fuerte para resistir las olas.
-  - "{@dad}  Eso es horrible. \uFFFDNecesito correr la voz!"
-  - "\uFFFDY si hay otros barcos en peligro?"
-  - "{@reya} Si, si, eso es genial y todo. \uFFFDPero qu\uFFFD pasa con el tesoro?"
-  - "{@you} El tesoro era el relicario del abuelito. Ten\uFFFDa una foto tuya, Pap\uFFFD."
-  - "{@reya}  \uFFFDQu\uFFFD? \uFFFDEso es todo?"
-  - "Bueno, al menos puedes conseguir un permiso e ir a recogerlo. S\uFFFD que est\uFFFDs
-    celosa del m\uFFFDo."
-  - "{@you} En realidad, creo que donar\uFFFD el relicario al museo, en memoria de
+  - "{@dad}  Eso es horrible. \xA1Necesito correr la voz!"
+  - "\xBFY si hay otros barcos en peligro?"
+  - "{@reya} Si, si, eso es genial y todo. \xBFPero qu\xE9 pasa con el tesoro?"
+  - "{@you} El tesoro era el relicario del abuelito. Ten\xEDa una foto tuya, Pap\xE1."
+  - "{@reya}  \xBFQu\xE9? \xBFEso es todo?"
+  - "Bueno, al menos puedes conseguir un permiso e ir a recogerlo. S\xE9 que est\xE1s
+    celosa del m\xEDo."
+  - "{@you} En realidad, creo que donar\xE9 el relicario al museo, en memoria de
     mi abuelito."
-  - "Parece que era un capit\uFFFDn incre\uFFFDble."
+  - "Parece que era un capit\xE1n incre\xEDble."
   - '{@dad} Sobre eso...'
-  - "En realidad \uFFFDl era bastante atrevido."
-  - "{@you} \uFFFD\uFFFDc\uFFFDmo?!"
-  - "{@dad} Oh, s\uFFFD. Un verdadero temerario."
-  - "{@you}  Reya, suena un poco como t\uFFFD."
-  - "{@reya} \uFFFDQuiero que me cuenten m\uFFFDs historias!"
-  - "{@dad} Ooh, \uFFFDaqu\uFFFD hay una buena!"
-  - "\uFFFDTe conte alguna vez la vez que tuvo que subir a la casa piloto en medio
+  - "En realidad \xE9l era bastante atrevido."
+  - "{@you} \xA1\xBFc\xF3mo?!"
+  - "{@dad} Oh, s\xED. Un verdadero temerario."
+  - "{@you}  Reya, suena un poco como t\xFA."
+  - "{@reya} \xA1Quiero que me cuenten m\xE1s historias!"
+  - "{@dad} Ooh, \xA1aqu\xED hay una buena!"
+  - "\xBFTe conte alguna vez la vez que tuvo que subir a la casa piloto en medio
     de una tormenta de hielo?"
-  - "Era noviembre de 1959 y soplaba un viento fr\uFFFDo..."
-  - "Mejor debo usar la Ubicaci\uFFFDn "
-  - "\uFFFDTengo una foto que coincida?"
-  - "\uFFFDTengo una foto que coincida?"
-  - "\uFFFDAlg\uFFFDn canallero en la lista de naufragios?"
-  - "\uFFFDAlg\uFFFDn canallero en la lista de naufragios?"
-  - "\uFFFDCoincide esto con un diagrama de la nave?"
-  - "\uFFFDCoincide esto con un diagrama de la nave?"
-  - "\uFFFDTengo una foto que coincida?"
-  - "\uFFFDCoincide esto con un diagrama de la nave?"
-  - "\uFFFDCoincide esto con un diagrama de la nave?"
-  - "\uFFFDTengo una foto que coincida?"
-  - "\uFFFDTengo una foto que coincida?"
-  - "\uFFFDUn carguero es muy grande!"
-  - "\uFFFDUn carguero es muy grande!"
-  - "\uFFFDTengo una foto que coincida?"
-  - "\uFFFDTengo una foto que coincida?"
+  - "Era noviembre de 1959 y soplaba un viento fr\xEDo..."
+  - "Mejor debo usar la Ubicaci\xF3n "
+  - "\xBFTengo una foto que coincida?"
+  - "\xBFTengo una foto que coincida?"
+  - "\xBFAlg\xFAn canallero en la lista de naufragios?"
+  - "\xBFAlg\xFAn canallero en la lista de naufragios?"
+  - "\xBFCoincide esto con un diagrama de la nave?"
+  - "\xBFCoincide esto con un diagrama de la nave?"
+  - "\xBFTengo una foto que coincida?"
+  - "\xBFCoincide esto con un diagrama de la nave?"
+  - "\xBFCoincide esto con un diagrama de la nave?"
+  - "\xBFTengo una foto que coincida?"
+  - "\xBFTengo una foto que coincida?"
+  - "\xA1Un carguero es muy grande!"
+  - "\xA1Un carguero es muy grande!"
+  - "\xBFTengo una foto que coincida?"
+  - "\xBFTengo una foto que coincida?"
   - El naufragio no parece un barco de vapor.
   - El naufragio no parece un barco de vapor.
   - El remolcador no parece el mismo
-  - "\uFFFDUn carguero es demasiado grande!"
+  - "\xA1Un carguero es demasiado grande!"
   - El naufragio no parece un barco de vapor.
   - El remolcador no parece el mismo
   - Un carguero es demasiado grande
   - El naufragio no parece un barco de vapor.
   - No creo que esto tenga sentido.
-  - "\uFFFDTengo una foto para comprobar esto?"
-  - "\uFFFDCoincide con un nombre de barco de mi lista?"
+  - "\xBFTengo una foto para comprobar esto?"
+  - "\xBFCoincide con un nombre de barco de mi lista?"
   - Oleander no coincide con las letras
   - Hudson no coincide con las letras
   - Lakeland no coincide con las letras
   - Timberland no coincide con las letras
   - Esto no tiene sentido
-  - "\uFFFDMenciona la noticia el ma\uFFFDz?"
-  - "\uFFFDMenciona ma\uFFFDz la historial de naves?"
-  - "\uFFFDSe menciona en la noticia?"
+  - "\xBFMenciona la noticia el ma\xEDz?"
+  - "\xBFMenciona ma\xEDz la historial de naves?"
+  - "\xBFSe menciona en la noticia?"
   - Esto no tiene sentido
   - Esto no es una causa del naufragio
-  - "\uFFFDMencionan las noticias este maletero?"
-  - "\uFFFDTengo una foto de esto?"
-  - "No est\uFFFD relacionado con los artefactos"
-  - "Deber\uFFFDa usar ubicaci\uFFFDn en su lugar"
-  - "Esto no es una ubicaci\uFFFDn."
-  - "\uFFFDTengo una foto que corresponda?"
-  - "\uFFFDCoincide esto con un diagrama de nave?"
-  - "Un canalero parece muy peque\uFFFDo"
-  - "Un canalero parece muy peque\uFFFDo"
-  - "Un remolcador es muy peque\uFFFDo"
-  - "Un remolcador es muy peque\uFFFDo"
+  - "\xBFMencionan las noticias este maletero?"
+  - "\xBFTengo una foto de esto?"
+  - "No est\xE1 relacionado con los artefactos"
+  - "Deber\xEDa usar ubicaci\xF3n en su lugar"
+  - "Esto no es una ubicaci\xF3n."
+  - "\xBFTengo una foto que corresponda?"
+  - "\xBFCoincide esto con un diagrama de nave?"
+  - "Un canalero parece muy peque\xF1o"
+  - "Un canalero parece muy peque\xF1o"
+  - "Un remolcador es muy peque\xF1o"
+  - "Un remolcador es muy peque\xF1o"
   - No creo que es una vaporera
   - No creo que es una vaporera
   - Esto no tiene sentido.
-  - "\uFFFDCu\uFFFDl coche se parece a este?"
-  - "\uFFFDHay alg\uFFFDn coche Nash en mi lista de naves?"
-  - "\uFFFDTengo una foto de un coche Nash?"
-  - "\uFFFDTengo una foto que corresponda?"
-  - "\uFFFDHay alg\uFFFDn coche Nash en mi lista de naves?"
-  - "\uFFFDTengo una foto de la carga?"
-  - "\uFFFDTengo una foto de la carga?"
-  - "\uFFFDTengo una foto que corresponda?"
-  - "\uFFFDTengo una foto que corresponda?"
-  - "\uFFFDTengo una imagen de un carro Nash?"
-  - "\uFFFDTengo una imagen de un carro Kissel?"
-  - "\uFFFDTengo una foto de la carga?"
+  - "\xBFCu\xE1l coche se parece a este?"
+  - "\xBFHay alg\xFAn coche Nash en mi lista de naves?"
+  - "\xBFTengo una foto de un coche Nash?"
+  - "\xBFTengo una foto que corresponda?"
+  - "\xBFHay alg\xFAn coche Nash en mi lista de naves?"
+  - "\xBFTengo una foto de la carga?"
+  - "\xBFTengo una foto de la carga?"
+  - "\xBFTengo una foto que corresponda?"
+  - "\xBFTengo una foto que corresponda?"
+  - "\xBFTengo una imagen de un carro Nash?"
+  - "\xBFTengo una imagen de un carro Kissel?"
+  - "\xBFTengo una foto de la carga?"
   - La foto no se ve como un carro Kissel.
   - La foto no se ve como un carro Kissel.
   - La foto no se ve como un carro Kissel.
   - La foto no se ve como un carro Kissel.
-  - "No s\uFFFD si esto tiene sentido."
-  - "\uFFFDHay un registro de los da\uFFFDos?"
-  - "\uFFFDTengo una foto del da\uFFFDo?"
-  - "No est\uFFFD relacionado a la causa del naufragio "
+  - "No s\xE9 si esto tiene sentido."
+  - "\xBFHay un registro de los da\xF1os?"
+  - "\xBFTengo una foto del da\xF1o?"
+  - "No est\xE1 relacionado a la causa del naufragio "
   - El cargamento no coincide.
-  - "Deber\uFFFDa resolver la carga primero."
+  - "Deber\xEDa resolver la carga primero."
   - Esto no tiene sentido.
-  - "\uFFFDAparece en alg\uFFFDn sitio la caja fuerte?"
-  - "\uFFFDTengo una foto de la caja fuerte?"
+  - "\xBFAparece en alg\xFAn sitio la caja fuerte?"
+  - "\xBFTengo una foto de la caja fuerte?"
   - Esto no tiene sentido.
-  - "Mejor debo usar la Ubicaci\uFFFDn "
-  - "Esto no es una ubicaci\uFFFDn"
-  - "\uFFFDTengo una foto que corresponda?"
-  - "\uFFFDCoincide esto con un diagrama de nave?"
-  - "\uFFFDHay alguna vaporera de rueda lateral en mi carta de barcos?"
-  - "\uFFFDCoincide esto con un diagrama de nave?"
-  - "\uFFFDHay alguna vaporera de rueda lateral en mi carta de barcos?"
-  - "\uFFFDTengo una foto de esto?"
-  - "\uFFFDTengo una foto de esto?"
-  - "\uFFFDCoincide esto con un diagrama de nave?"
-  - "\uFFFDTengo una foto de esto?"
+  - "Mejor debo usar la Ubicaci\xF3n "
+  - "Esto no es una ubicaci\xF3n"
+  - "\xBFTengo una foto que corresponda?"
+  - "\xBFCoincide esto con un diagrama de nave?"
+  - "\xBFHay alguna vaporera de rueda lateral en mi carta de barcos?"
+  - "\xBFCoincide esto con un diagrama de nave?"
+  - "\xBFHay alguna vaporera de rueda lateral en mi carta de barcos?"
+  - "\xBFTengo una foto de esto?"
+  - "\xBFTengo una foto de esto?"
+  - "\xBFCoincide esto con un diagrama de nave?"
+  - "\xBFTengo una foto de esto?"
   - 'El remolcador no se ve lo mismo '
-  - "Un canalero parece demasiado peque\uFFFDo"
+  - "Un canalero parece demasiado peque\xF1o"
   - El naufragio no parece un carguero
-  - "Un canalero parece demasiado peque\uFFFDo"
+  - "Un canalero parece demasiado peque\xF1o"
   - El naufragio no parece un carguero
   - 'No creo que esto tenga sentido '
   - Esto es un tipo de nave.
-  - "\uFFFDAlguna de mis fotos identifica qu\uFFFD fue esto?"
-  - "\uFFFDAyuda esto a rellenar mi historial de naves?"
+  - "\xBFAlguna de mis fotos identifica qu\xE9 fue esto?"
+  - "\xBFAyuda esto a rellenar mi historial de naves?"
   - 'Esto no tiene sentido '
-  - "Esto parece m\uFFFDs como la causa del naufragio "
+  - "Esto parece m\xE1s como la causa del naufragio "
   - 'Esto no hubiera causado el naufragio '
-  - "\uFFFDCoincide un nombre de nave con la foto?"
-  - "\uFFFDTengo una foto que pruebe esto?"
-  - "No veo un nombre aqu\uFFFD "
-  - "\uFFFDTengo una foto de esto?"
-  - "\uFFFDSe menciona el oro por alg\uFFFDna parte?"
+  - "\xBFCoincide un nombre de nave con la foto?"
+  - "\xBFTengo una foto que pruebe esto?"
+  - "No veo un nombre aqu\xED "
+  - "\xBFTengo una foto de esto?"
+  - "\xBFSe menciona el oro por alg\xFAna parte?"
   - No creo que esto tenga sentido.
-  - "Mejor debo usar la ubicaci\uFFFDn "
-  - "Esto no es una ubicaci\uFFFDn."
-  - "\uFFFDTengo una foto de esto?"
-  - "\uFFFDAparece esto en mi historial de naves?"
-  - "\uFFFDAparece esto en mi historial de naves?"
-  - "\uFFFDTengo una foto de esto?"
-  - "\uFFFDCoincide esto con un diagrama de nave?"
-  - "\uFFFDCoincide esto con un diagrama de nave?"
-  - "\uFFFDTengo una foto de esto?"
-  - "\uFFFDCoincide esto con un diagrama de nave?"
-  - "\uFFFDTengo una foto de esto?"
+  - "Mejor debo usar la ubicaci\xF3n "
+  - "Esto no es una ubicaci\xF3n."
+  - "\xBFTengo una foto de esto?"
+  - "\xBFAparece esto en mi historial de naves?"
+  - "\xBFAparece esto en mi historial de naves?"
+  - "\xBFTengo una foto de esto?"
+  - "\xBFCoincide esto con un diagrama de nave?"
+  - "\xBFCoincide esto con un diagrama de nave?"
+  - "\xBFTengo una foto de esto?"
+  - "\xBFCoincide esto con un diagrama de nave?"
+  - "\xBFTengo una foto de esto?"
   - El remolcador no se ve lo mismo.
-  - "Un canalero parece demasiado peque\uFFFDo"
+  - "Un canalero parece demasiado peque\xF1o"
   - El naufragio no se ve como un barco de vapor
-  - "Un canalero parece demasiado peque\uFFFDo"
+  - "Un canalero parece demasiado peque\xF1o"
   - El naufragio no se ve como un barco de vapor
   - 'No creo que esto tenga sentido '
   - Esto es un tipo de nave
-  - "Esto parece m\uFFFDs como carga"
+  - "Esto parece m\xE1s como carga"
   - Esto es equipaje; no es carga
   - Esto no parece ser carga
-  - "\uFFFDHay una historia que pruebe esto?"
-  - "\uFFFDHay otros reportes sobre esto?"
-  - "\uFFFDHay otra historia que confirme esto?"
-  - "\uFFFDHay otros reportes sobre esto?"
-  - "\uFFFDHay otros reportes sobre esto?"
-  - "\uFFFDTengo una foto del da\uFFFDo?"
-  - "\uFFFDHay otra historia que confirme esto?"
-  - "\uFFFDHay otra historia que confirme esto?"
-  - "\uFFFDTengo una foto del da\uFFFDo?"
+  - "\xBFHay una historia que pruebe esto?"
+  - "\xBFHay otros reportes sobre esto?"
+  - "\xBFHay otra historia que confirme esto?"
+  - "\xBFHay otros reportes sobre esto?"
+  - "\xBFHay otros reportes sobre esto?"
+  - "\xBFTengo una foto del da\xF1o?"
+  - "\xBFHay otra historia que confirme esto?"
+  - "\xBFHay otra historia que confirme esto?"
+  - "\xBFTengo una foto del da\xF1o?"
   - No creo que esto tenga sentido
-  - "\uFFFDHay un nombre de nave que corresponda con la foto?"
-  - "\uFFFDTengo una foto que pruebe esto?"
-  - "No veo un nombre aqu\uFFFD "
-  - "\uFFFDTengo una foto de esto?"
-  - "\uFFFDSe menciona este relicario en alguna parte?"
+  - "\xBFHay un nombre de nave que corresponda con la foto?"
+  - "\xBFTengo una foto que pruebe esto?"
+  - "No veo un nombre aqu\xED "
+  - "\xBFTengo una foto de esto?"
+  - "\xBFSe menciona este relicario en alguna parte?"
   - No creo que esto tenga sentido.
