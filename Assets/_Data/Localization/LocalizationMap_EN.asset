@@ -15,6 +15,8 @@ MonoBehaviour:
   m_languageCode:
     m_code: en
   m_keys:
+  - m_key: Game title
+    m_hash: -860148563
   - m_key: Test/Test
     m_hash: 1733063922
   - m_key: Dialogue/Header/Conversation
@@ -1302,6 +1304,7 @@ MonoBehaviour:
   - m_key: '@529A559F'
     m_hash: -604289941
   m_values:
+  - 'Legend Of The Lost Emerald '
   - '"A test that uses," quotes and a comma'
   - conversation with
   - New Game
@@ -1397,7 +1400,7 @@ MonoBehaviour:
   - The truth behind the legend of the lost Emerald!
   - Daniel Griffin is working to keep people safe on the lakes.
   - Dive into the lakes with Reya and Jules Griffin!
-  - "See the captain\u2019s locket and first mate\u2019s journal in memorial exhibit!"
+  - "See the captain\uFFFDs locket and first mate\uFFFDs journal in memorial exhibit!"
   - '{@dad} Hey Jules! Big news!'
   - You know how your grandpa's ship sank on Lake Superior, when I was just a kid?
   - '{@you} Of course. You''ve been talking about that shipwreck since I was little.'
@@ -1417,9 +1420,9 @@ MonoBehaviour:
   - '{@you} Wait... fix what? What do you mean?'
   - '{@dad} Sorry, Jules, no time to talk. I''ve got work to do!'
   - '{@lou} Hiya, Jules!'
-  - "{@you} Hey Lou. What\u2019s all that noise?"
-  - "{@lou} Oh, I\u2019m just out flying over Lake Michigan on my ultralight plane."
-  - "{@you} What??? You\u2019re flying right now? Isn't that dangerous?"
+  - "{@you} Hey Lou. What\uFFFDs all that noise?"
+  - "{@lou} Oh, I\uFFFDm just out flying over Lake Michigan on my ultralight plane."
+  - "{@you} What??? You\uFFFDre flying right now? Isn't that dangerous?"
   - '{@lou} Not as dangerous as sitting at home, bored out of my mind.'
   - Check out what I found!
   - What do you think?
@@ -1427,11 +1430,11 @@ MonoBehaviour:
   - '{@lou} Awesome! I thought it might be.'
   - It's in Lake Michigan, near Rawley Point.
   - I'll send you the latitude and longitude.
-  - "Location: N 44\xB0 11.524' W 087\xB0 30.591'"
+  - "Location: N 44\uFFFD 11.524' W 087\uFFFD 30.591'"
   - '{@you} Thanks, Lou. Stay safe out there!'
   - '{@you}The ship should be around here somewhere. Time to drive my boat around
     and find it with my sonar.'
-  - "{@you}There it is! I\u2019ll drop a buoy to mark the location."
+  - "{@you}There it is! I\uFFFDll drop a buoy to mark the location."
   - '{@you}Looks like some of the rigging that held up the mast is still here!'
   - '{@you} There''s the ship!'
   - I'll take a photo from up here.
@@ -1496,7 +1499,7 @@ MonoBehaviour:
   - '{@dad}  Well, what is there to talk about?'
   - The lost shipwreck of the Emerald has been haunting me my whole life.
   - I need to find it.
-  - "{@you}  But Dad\u2014"
+  - "{@you}  But Dad\uFFFD"
   - '{@dad}  I better finish setting things up. Wish me luck!'
   - '{@reya} Hey, sis!'
   - Check out my new necklace. It was Grandma's!
@@ -1512,15 +1515,15 @@ MonoBehaviour:
   - '{@you} It''s called a rebreather, and you''re not trained to use it, Reya.'
   - You need an expert to help you.
   - '{@reya} Awww, Jules! Thank you. I would love your help.'
-  - "{@you} Wait, that's not what I meant\u2014"
+  - "{@you} Wait, that's not what I meant\uFFFD"
   - '{@reya} It''s near Port Washington.'
-  - "Location: 43\xB020'08.2\"N 87\xB034'11.3\"W"
+  - "Location: 43\uFFFD20'08.2\"N 87\uFFFD34'11.3\"W"
   - Race ya there!
   - '{@reya} Hey sis! Ready to go treasure hunting?'
   - '{@you} I''m not a treasure hunter, Reya.'
   - My job is about history! Solving mysteries, uncovering lost stories...
   - '{@reya} Yaaaawn. Whatever floats your boat, I guess.'
-  - "{@reya} Anyway, the ship\u2019s down there."
+  - "{@reya} Anyway, the ship\uFFFDs down there."
   - '{@reya} Break a leg! Or a flipper, or whatever.'
   - '{@you} Got it!'
   - Can you hear me through the coms, Reya? I'm diving down deeper.
@@ -1544,7 +1547,7 @@ MonoBehaviour:
   - '{@you} Better zoom out a little.'
   - '{@you} I don''t need a photo of this.'
   - '{@amy} Hey! Heard you went on a dive with your sister.'
-  - "How\u2019d it go?"
+  - "How\uFFFDd it go?"
   - '{@you} Well... she called me boring and tried to get me in trouble.'
   - But we found an amazing wreck!
   - It's a freighter near Port Washington. It was carrying old cars.
@@ -1555,7 +1558,7 @@ MonoBehaviour:
     out the ship!'
   - '{@amy}  I''ve got a friend at the auto museum. I''ll have him call you.'
   - '{@you} Thanks, Amy!'
-  - "{@cooper} Hi there! Are you Amy\u2019s friend?"
+  - "{@cooper} Hi there! Are you Amy\uFFFDs friend?"
   - '{@you} Yep. I''m Jules Griffin.'
   - Can you send me photos of Nash and Kissel brand cars?
   - '{@cooper} Of course! Just a minute...'
@@ -1575,7 +1578,7 @@ MonoBehaviour:
   - '{@amy} Any news on the shipwreck?'
   - '{@you} Yep, the ship is the Madison!'
   - '{@amy} Nice work, Jules!'
-  - "I\u2019ll send you the transcript of the radio distress call."
+  - "I\uFFFDll send you the transcript of the radio distress call."
   - And the ship manifest, too!
   - '{@you} Thanks, Amy!'
   - '{@reya} Hey, sis! Figure out that ship?'
@@ -1587,7 +1590,7 @@ MonoBehaviour:
   - But they're gonna display it at a museum, with my name on it!
   - What about the Madison? I wanna know how it sank!
   - '{@you} Fine. Let''s see...'
-  - "It was a super foggy day\u2014the same day the stock market crashed and started
+  - "It was a super foggy day\uFFFDthe same day the stock market crashed and started
     the Great Depression."
   - The Madison was carrying 268 Wisconsin-made Nash cars to Detroit.
   - All of a sudden, another freighter appeared in the fog.
@@ -1605,13 +1608,13 @@ MonoBehaviour:
   - I'll talk to my mentor, Cami. She's an expert on those ships.
   - Did you get the latitude and longitude?
   - '{@dad} Yep. It''s near Sheboygan.'
-  - "Location: 43\xB042'08.6\"N 87\xB038'26.0\"W"
+  - "Location: 43\uFFFD42'08.6\"N 87\uFFFD38'26.0\"W"
   - '{@you} Thanks, Dad.'
   - How's the new sonar?
   - '{@dad}  Uh... not so great.'
   - But I'm sure I'll figure it out. Eventually.
   - I'm out on Lake Superior right now. Got my map with me.
-  - "Your grandpa\u2019s last planned route is marked in red."
+  - "Your grandpa\uFFFDs last planned route is marked in red."
   - The Emerald must be around here somewhere.
   - '{@you} Dad... why didn''t you tell me the shipwreck was Grandpa''s fault?'
   - '{@dad} What?! Of course it wasn''t his fault.'
@@ -1667,14 +1670,14 @@ MonoBehaviour:
   - '{@you} Wow, that''s amazing!'
   - Glad I could help.
   - '{@you} Hey, Dad! Any luck finding Grandpa''s ship?'
-  - "{@dad} Nah. Sonar\u2019s on the fritz again."
+  - "{@dad} Nah. Sonar\uFFFDs on the fritz again."
   - You were right, Jules. I'm not cut out for this.
   - '{@you} Aw, Dad. Don''t give up.'
   - Thanks to you, we found a piece of history that was lost for more than 100 years!
   - '{@dad} Ooh. That sidewheel steamer? What''d you find out?'
   - '{@you} The ship is a Palace Steamer, the Paradise!'
   - '{@you} It was traveling past Sheboygan when a fire started in the boiler room.'
-  - "{@dad} Yikes. Fire on a wooden ship\u2014that's not good."
+  - "{@dad} Yikes. Fire on a wooden ship\uFFFDthat's not good."
   - '{@you} Nope. The fire spread super fast, and people panicked.'
   - One guy even jumped into a lifeboat with a bunch of heavy gold bars and broke
     the ropes!
@@ -1696,34 +1699,34 @@ MonoBehaviour:
   - '{@reya} Yes!!! I found a clue!!!'
   - '{@you}  We have Grandpa''s final route. Now we need to narrow down the location.'
   - '{@reya} Well, what are you waiting for, sis? Go do some research!!'
-  - "{@you} Amy, I need your help. I found a new lead on Grandpa\u2019s ship!"
+  - "{@you} Amy, I need your help. I found a new lead on Grandpa\uFFFDs ship!"
   - '{@amy} You did??'
   - '{@you} Well... my sister helped. A little.'
   - I marked my grandpa's route in blue.
   - He mentioned rough waves near the Apostle Islands.
   - Do you have any evidence of shipwrecks in that area?
-  - "{@amy} Hmm, let\u2019s see..."
+  - "{@amy} Hmm, let\uFFFDs see..."
   - A fisherman pulled up this broken piece of steel near Outer Island.
   - It could be from a freighter like your grandpa's.
-  - "Location: 47\xB005'19.4\"N 90\xB017'17.5\"W"
+  - "Location: 47\uFFFD05'19.4\"N 90\uFFFD17'17.5\"W"
   - '{@you} Thanks, Amy!'
   - I'll send the steel sample to my mom.
   - She's a materials scientist. She can test it in her lab and find out more about
     it.
   - '{@reya} Well????'
-  - "{@you} I\u2019ve got a location of a steel shipwreck. It could be Grandpa's."
+  - "{@you} I\uFFFDve got a location of a steel shipwreck. It could be Grandpa's."
   - '{@reya} Yes!!! Treasure, here we come!'
   - '{@you} Reya, slow down.'
   - What if it's not the Emerald?
   - '{@reya} Aww, sis. You worry too much.'
   - Get out there and check it out!
   - Dad and I will be waiting by the phone!
-  - "{@you} Well... that\u2019s definitely a ship."
+  - "{@you} Well... that\uFFFDs definitely a ship."
   - I wonder if it's Grandpa's.
   - '{@you} Whoa. Is it me or is that ship... broken in half?'
   - '{@you} Got it!'
   - '{@you} Wow. I can''t believe it. We found the Emerald!'
-  - "I can\u2019t wait to tell Dad!"
+  - "I can\uFFFDt wait to tell Dad!"
   - '{@you} That locket looks just like Reya''s!'
   - I wonder if it was Grandpa's.
   - '{@you} I should get a photo of the ship split in half.'
@@ -1737,7 +1740,7 @@ MonoBehaviour:
   - '{@you} I should zoom in for a better shot!'
   - '{@you} Better zoom out a little.'
   - '{@you} I don''t need a photo of this.'
-  - "{@amy} Hey, Jules! How\u2019d it go?"
+  - "{@amy} Hey, Jules! How\uFFFDd it go?"
   - '{@you} I found the Emerald!'
   - Now I need to figure out how it sank.
   - The legend says the ship was super strong.

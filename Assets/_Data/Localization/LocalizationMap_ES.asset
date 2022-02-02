@@ -15,6 +15,8 @@ MonoBehaviour:
   m_languageCode:
     m_code: es
   m_keys:
+  - m_key: Game title
+    m_hash: -860148563
   - m_key: Test/Test
     m_hash: 1733063922
   - m_key: Dialogue/Header/Conversation
@@ -1302,646 +1304,703 @@ MonoBehaviour:
   - m_key: '@529A559F'
     m_hash: -604289941
   m_values:
-  - <Test/Test>
-  - <Dialogue/Header/Conversation>
-  - <UI/Title/NewGame>
-  - <UI/Title/LoadLevel>
-  - <UI/Title/Credits>
-  - <UI/Title/Options>
-  - <UI/Title/Levels>
-  - <UI/Title/Level1>
-  - <UI/Title/Level2>
-  - <UI/Title/Level3>
-  - <UI/Title/Level4>
-  - <UI/Title/Review>
-  - <UI/Title/Part1>
-  - <UI/Title/Part2>
-  - <UI/Title/Sound>
-  - <UI/Title/Fullscreen>
-  - <UI/Title/Language>
-  - <UI/General/Continue>
-  - <UI/General/Back>
-  - <UI/General/Close>
-  - <UI/Evidence/Back>
-  - <UI/Evidence/ShipOut>
-  - <UI/Phone/Contacts>
-  - <UI/Dive/Surface>
-  - <UI/Dive/Ascend>
-  - <UI/Dive/TakePhoto>
-  - <UI/Dive/SavePhoto>
-  - <UI/Dive/JournalHeader>
-  - <UI/Map/ShipOut>
-  - <UI/Modal/BoardComplete>
-  - <UI/Modal/CaseClosed>
-  - <UI/Modal/CaseClosed/Name>
-  - <UI/Modal/CaseClosed/Type>
-  - <UI/Modal/CaseClosed/Cause>
-  - "Pap\xE1"
-  - <Character/Lou/Name>
-  - <Character/Amy/Name>
-  - <Character/Mom/Name>
-  - <Character/Reya/Name>
-  - "T\xFA"
-  - <Character/Cami/Name>
-  - <Character/Ed/Name>
-  - <Character/Johnny/Name>
-  - <Shipout/Progress>
-  - <Shipout/Dive>
-  - <Shipout/Return>
-  - <Level1/Unnamed>
-  - <Level1/Named>
-  - <Level1/Case/Name>
-  - <Level1/Case/Type>
-  - <Level1/Case/Cause>
-  - <Level2/Unnamed>
-  - <Level2/Named>
-  - <Level2/Case/Name>
-  - <Level2/Case/Type>
-  - <Level2/Case/Cause>
-  - <Level3/Unnamed>
-  - <Level3/Named>
-  - <Level3/Case/Name>
-  - <Level3/Case/Type>
-  - <Level3/Case/Cause>
-  - <Level4/Unnamed>
-  - <Level4/Named>
-  - <Level4/Case/Name>
-  - <Level4/Case/Type>
-  - <Level4/Case/Cause>
-  - <Evidence/Label/Location>
-  - <Evidence/Label/ShipType>
-  - <Evidence/Label/Name>
-  - <Evidence/Label/Cause>
-  - <Evidence/Label/Cargo>
-  - <Evidence/Label/Artifact>
-  - <Dive/Level1/Above-Name>
-  - <Dive/Level1/Name-Name>
-  - <Dive/Level1/Artifact-Name>
-  - <Dive/Level2/Above-Name>
-  - <Dive/Level2/Cargo-Name>
-  - <Dive/Level2/Gash-Name>
-  - <Dive/Level2/Safe-Name>
-  - <Dive/Level3/Above-Name>
-  - <Dive/Level3/Cargo-Name>
-  - <Dive/Level3/Gold-Name>
-  - <Dive/Level3/Anchor-Name>
-  - <Dive/Level4/Above-Name>
-  - <Dive/Level4/Cargo-Name>
-  - <Dive/Level4/Artifact-Name>
-  - <Dive/Level4/Name-Name>
-  - <Dive/Level4/Cause-Name>
-  - <Credits/Headline1>
-  - <Credits/Headline2>
-  - <Credits/Headline3>
-  - <Credits/Headline4>
-  - <Credits/Subline1>
-  - <Credits/Subline2>
-  - <Credits/Subline3>
-  - <Credits/Subline4>
-  - <@8044AFC1>
-  - <@7D44AB08>
-  - <@7E44AC9B>
-  - <@8344B47A>
-  - <@8144B154>
-  - <@8244B2E7>
-  - <@7844A329>
-  - <@DD20F863>
-  - <@DC20F6D0>
-  - <@DF20FB89>
-  - <@DE20F9F6>
-  - <@E120FEAF>
-  - <@E020FD1C>
-  - <@E32101D5>
-  - <@E2210042>
-  - <@E52104FB>
-  - <@E4210368>
-  - <@6B198928>
-  - <@5418E3F7>
-  - <@5318E264>
-  - <@5218E0D1>
-  - <@5118DF3E>
-  - <@5018DDAB>
-  - <@4F18DC18>
-  - <@4D18D8F2>
-  - <@B031A3CE>
-  - <@B131A561>
-  - <@AE31A0A8>
-  - <@AF31A23B>
-  - <@B431AA1A>
-  - <@B231A6F4>
-  - <@A4009702>
-  - <@ADE2F165>
-  - <@4962B5FE>
-  - <@CA5F1B66>
-  - <@CB5F1CF9>
-  - <@BBBDDF4A>
-  - <@BCBDE0DD>
-  - <@49402F6A>
-  - <@4A4030FD>
-  - <@C83A0457>
-  - <@C73A02C4>
-  - <@E70EF610>
-  - <@0A4C275F>
-  - <@ED3C241C>
-  - <@F9FF290C>
-  - <@A2011ED9>
-  - <@9F011A20>
-  - <@A0011BB3>
-  - <@A5012392>
-  - <@A6012525>
-  - <@A301206C>
-  - <@A40121FF>
-  - <@AA012B71>
-  - <@EFC3A738>
-  - <@476EF3F9>
-  - <@466EF266>
-  - <@456EF0D3>
-  - <@446EEF40>
-  - <@4B6EFA45>
-  - <@4A6EF8B2>
-  - <@496EF71F>
-  - <@4F6F0091>
-  - <@4E6EFEFE>
-  - <@34A77A3C>
-  - <@35A77BCF>
-  - <@30A773F0>
-  - <@31A77583>
-  - <@3EA789FA>
-  - <@30A53559>
-  - <@89B961FA>
-  - <@88B96067>
-  - <@87B95ED4>
-  - <@86B95D41>
-  - <@85B95BAE>
-  - <@83B95888>
-  - <@82B956F5>
-  - <@98D4F0FE>
-  - <@99D4F291>
-  - <@96D4EDD8>
-  - <@97D4EF6B>
-  - <@9CD4F74A>
-  - <@9DD4F8DD>
-  - <@0AAFA148>
-  - <@0DAFA601>
-  - <@0FAFA927>
-  - <@0EAFA794>
-  - <@10AFAABA>
-  - <@03AF9643>
-  - <@02AF94B0>
-  - <@4A7B2FE8>
-  - <@4B7B317B>
-  - <@4C7B330E>
-  - <@4D7B34A1>
-  - <@4E7B3634>
-  - <@4F7B37C7>
-  - <@B6D2C546>
-  - <@B5D2C3B3>
-  - <@B4D2C220>
-  - <@BBD2CD25>
-  - <@BAD2CB92>
-  - <@B9D2C9FF>
-  - <@B8D2C86C>
-  - <@BFD2D371>
-  - <@BED2D1DE>
-  - <@43CCD8C2>
-  - <@44CCDA55>
-  - <@41CCD59C>
-  - <@42CCD72F>
-  - <@3FCCD276>
-  - <@40CCD409>
-  - <@3DCCCF50>
-  - <@3ECCD0E3>
-  - <@4BCCE55A>
-  - <@A7A05B33>
-  - <@A6A059A0>
-  - <@A9A05E59>
-  - <@A8A05CC6>
-  - <@ABA0617F>
-  - <@AAA05FEC>
-  - <@01B58D6B>
-  - <@00B58BD8>
-  - <@03B59091>
-  - <@9E3A26AE>
-  - <@9F3A2841>
-  - <@7F3AC4A5>
-  - <@B04D8AEE>
-  - <@B14D8C81>
-  - <@AE4D87C8>
-  - <@AF4D895B>
-  - <@743BCFD7>
-  - <@733BCE44>
-  - <@763BD2FD>
-  - <@753BD16A>
-  - <@12B31512>
-  - <@AF02F0B7>
-  - <@D80F11DE>
-  - <@68F8E508>
-  - <@BDC17C57>
-  - <@CD153B94>
-  - <@18F75054>
-  - <@A9177421>
-  - <@A6176F68>
-  - <@A71770FB>
-  - <@AC1778DA>
-  - <@AD177A6D>
-  - <@AB177747>
-  - <@A01765F6>
-  - <@A1176789>
-  - <@3FEBB530>
-  - <@42EBB9E9>
-  - <@41EBB856>
-  - <@B6BE3D76>
-  - <@B5BE3BE3>
-  - <@B4BE3A50>
-  - <@BBBE4555>
-  - <@B9BE422F>
-  - <@BFBE4BA1>
-  - <@BEBE4A0E>
-  - <@F37A7532>
-  - <@F47A76C5>
-  - <@F17A720C>
-  - <@F27A739F>
-  - <@EF7A6EE6>
-  - <@F07A7079>
-  - <@ED7A6BC0>
-  - <@EE7A6D53>
-  - <@61F4BF2A>
-  - <@62F4C0BD>
-  - <@5FF4BC04>
-  - <@60F4BD97>
-  - <@5EF4BA71>
-  - <@5CF4B74B>
-  - <@7E36DCC7>
-  - <@7F36DE5A>
-  - <@8036DFED>
-  - <@7A36D67B>
-  - <@7B36D80E>
-  - <@7C36D9A1>
-  - <@7536CE9C>
-  - <@A75DD8D5>
-  - <@A65DD742>
-  - <@A55DD5AF>
-  - <@A45DD41C>
-  - <@A35DD289>
-  - <@A25DD0F6>
-  - <@A15DCF63>
-  - <@A05DCDD0>
-  - <@AF5DE56D>
-  - <@AE5DE3DA>
-  - <@AD6020DE>
-  - <@AE602271>
-  - <@783AA569>
-  - <@763AA243>
-  - <@7B3AAA22>
-  - <@7C3AABB5>
-  - <@793AA6FC>
-  - <@7A3AA88F>
-  - <@7F3AB06E>
-  - <@9D524B1B>
-  - <@9C524988>
-  - <@9F524E41>
-  - <@9E524CAE>
-  - <@A1525167>
-  - <@A352548D>
-  - <@A25252FA>
-  - <@94523CF0>
-  - <@0B4AA980>
-  - <@0C4AAB13>
-  - <@0D4AACA6>
-  - <@0E4AAE39>
-  - <@0F4AAFCC>
-  - <@104AB15F>
-  - <@BF4CF3BA>
-  - <@BE4CF227>
-  - <@BD4CF094>
-  - <@BC4CEF01>
-  - <@BB4CED6E>
-  - <@BA4CEBDB>
-  - <@B94CEA48>
-  - <@B84CE8B5>
-  - <@B74CE722>
-  - <@B12363D1>
-  - <@AE235F18>
-  - <@AF2360AB>
-  - <@B5236A1D>
-  - <@B2236564>
-  - <@B32366F7>
-  - <@A82355A6>
-  - <@BA952298>
-  - <@CFE315A2>
-  - <@DC30534B>
-  - <@DB3051B8>
-  - <@56833F04>
-  - <@57834097>
-  - <@292BF03E>
-  - <@2A2BF1D1>
-  - <@778D4046>
-  - <@48281DFD>
-  - <@7F97922E>
-  - <@809793C1>
-  - <@4D6D7B92>
-  - <@5C684088>
-  - <@894D93D7>
-  - <@BA9E3A14>
-  - <@B30FCFD4>
-  - <@74968415>
-  - <@71967F5C>
-  - <@729680EF>
-  - <@6F967C36>
+  - La Leyenda De La Esmeralda Perdida
+  - '"Una prueba que utiliza", comillas y una coma'
+  - "conversaci\uFFFDn con"
+  - Juego Nuevo
+  - Iniciar Nivel
+  - "Cr\uFFFDditos "
+  - Opciones
+  - Niveles
+  - Nivel 1
+  - Nivel 2
+  - Nivel 3
+  - Nivel 4
+  - Resumen
+  - Parte 1
+  - Parte 2
+  - Sonido
+  - Pantalla grande
+  - Idioma
+  - Continuar
+  - "Atr\uFFFDs "
+  - Cerrar
+  - 'Volver a la oficina '
+  - Embarcarse
+  - Contactos
+  - Surgir a la superficie
+  - Ascender
+  - Tomar foto
+  - Guardar foto
+  - Fotos de buceo
+  - "\uFFFDEmbarcarse!"
+  - "\uFFFDTablero de evidencias completo!"
+  - "\uFFFDCaso cerrado!"
+  - 'Nave :'
+  - 'Tipo :'
+  - 'Causa de la ruina:'
+  - "Pap\uFFFD"
+  - Lou
+  - Amy
+  - "Mam\uFFFD "
+  - Reya
+  - Usted
+  - Cami
+  - Ed
+  - Johnny
+  - Imagen del sonar
+  - Zambullirse
+  - Volver a la oficina
+  - La ruina de Rawley Point
+  - La Loretta
+  - La Loretta
+  - 'Canalero '
+  - Atrapado en un banco de arena
+  - Naufragio de Port Washington
+  - SS Madison
+  - SS Madison
+  - Carguero
+  - "Estrell\uFFFD con otra nave"
+  - Naufragio de Sheboygan
+  - "El Para\uFFFDso "
+  - "PS Para\uFFFDso "
+  - Vaporera de rueda lateral
+  - Incendio en el cuarto de calderas
+  - La Esmeralda (nave de abuelo)
+  - La Esmeralda (nave de abuelo)
+  - 'La Esmeralda '
+  - Carguero
+  - "Acero d\uFFFDbil se destruy\uFFFD en las olas "
+  - "Ubicaci\uFFFDn "
+  - Tipo de nave
+  - Nombre
+  - Causa del naufragio
+  - Carga
+  - 'Artefacto '
+  - Foto de arriba abajo
+  - Nombre de nave
+  - Artefacto perdido
+  - Foto de arriba abajo
+  - Carga de la nave
+  - "Da\uFFFDo al nave"
+  - Artefacto perdido
+  - Foto de arriba abajo
+  - Carga de la nave
+  - Artefacto perdido
+  - Ancla
+  - Foto de arriba abajo
+  - Mineral
+  - Artefacto perdido
+  - Nombre de nave
+  - Partido en mitad
+  - O.K. Steel supo de la debilidad de la nave
+  - "Descendiente de la Esmeralda avisa los due\uFFFDos de la nave "
+  - "Cazadora de naufragios les ense\uFFFDa buceo a ni\uFFFDas "
+  - El Museo rinde homenaje a los sobrevivientes de un naufragio
+  - "\uFFFDLa verdad detr\uFFFDs de la leyenda de la Esmeralda perdida!"
+  - Daniel Griffin trabaja para mantener la seguridad de las personas en los lagos.
+  - "\uFFFDSum\uFFFDrgete hac\uFFFDa los lagos con Reya y Jules Griffin!"
+  - "\uFFFDVea el relicario del capit\uFFFDn y el diario del primer oficial en la
+    exposici\uFFFDn conmemorativa!"
+  - "\uFFFDOye Jules! \uFFFDGrandes noticias!"
+  - "\uFFFDRecuerdas como la nave de tu abuelito se hundi\uFFFD en Lake Superior
+    cuando era solo un chico? "
+  - "\uFFFDSi, claro! Has estado hablando de ese naufragio desde que era peque\uFFFDa."
+  - "Pues, encontr\uFFFD una de las cartas antiguas de tu abuelito."
+  - Su nave, la SS Esmeralda, llevaba tesoro!
+  - "\uFFFDDesde cu\uFFFDndo te importa el tesoro, P\uFFFD? "
+  - "A m\uFFFD no \uFFFDpero a tu hermana si! "
+  - "\uFFFDElla me va ayudar a buscar los restos de la nave!"
+  - "Ella tambi\uFFFDn encontr\uFFFD el relicario de tu abuelita. Se ve bonita en
+    \uFFFDl."
+  - "{@you} Espera. \uFFFDDejaste que Reya tomara el relicario?"
+  - "{@dad} Pues, no estuviste ah\uFFFD. "
+  - "Entonces, \uFFFDque dices? \uFFFDQuieres ayudarnos?"
+  - '{@you} Bueno, pues supongo que puedo empezar un archivo para la nave de abuelito.'
+  - "{@dad} \uFFFDEstupendo!"
+  - La Esmeralda ha estada perdida por tanto tiempo.
+  - "Si solo pudiera encontrarla, \uFFFDarreglar\uFFFDa todo!"
+  - "{@you} Espera\uFFFD \uFFFDarreglar que? \uFFFDQue quieres decir?"
+  - "{@dad} Perdona, Jules. \uFFFDNo tengo tiempo para hablar! \uFFFDTengo trabajo
+    que hacer!"
+  - "{@lou} \uFFFDBuenas, Jules!"
+  - "Oye Lou, \uFFFDque es todo ese ruido?"
+  - "O pues, solo estoy volando sobre el lago Michigan en mi avi\uFFFDn ultraligero. "
+  - "{@you} \uFFFD\uFFFDC\uFFFDmo?? \uFFFDEst\uFFFDs volando ahorita? \uFFFDNo es
+    peligroso?"
+  - "{@lou} No tan peligroso como estar sentada en casa. Me volv\uFFFDa loca. "
+  - "\uFFFDMira lo que encontr\uFFFD!"
+  - "\uFFFDQue piensas?"
+  - "{@you} \uFFFDParece un naufragio!"
+  - "{@lou} \uFFFDEstupendo! En eso pens\uFFFD."
+  - "Est\uFFFD en el Lago Michigan. Cerca de Rawley Point. "
+  - "Te mandar\uFFFD la latitud y longitud. "
+  - "Ubicaci\uFFFDn:  N 44\uFFFD 11.524' W 087\uFFFD 30.591"
+  - "{@you} Gracias, Lou. \uFFFDVuela con cuidado!"
+  - "{@you} La nave deber\uFFFDa de estar en alg\uFFFDn lugar por aqu\uFFFD. Para
+    encontrarla, voy a manejar mi bote con el sonar encendido. "
+  - "{@you} \uFFFDAh\uFFFD est\uFFFD! Rojear\uFFFD una boya para marcar la ubicaci\uFFFDn."
+  - "{@you} \uFFFDParece que un poco del cordaje que sosten\uFFFDa el m\uFFFDstil
+    est\uFFFD aqu\uFFFD!"
+  - "{@you} \uFFFDAh\uFFFD est\uFFFD la nave!"
+  - "Tomar\uFFFD una foto desde aqu\uFFFD."
+  - "{@you} \uFFFDLa tengo!"
+  - "Ahora es hora de zambullirme y tomar m\uFFFDs fotos."
+  - "{@you}\uFFFDSi! \uFFFDEl nombre de la nave!"
+  - Parece que faltan unas letras.
+  - "{@you} \uFFFDOye! \uFFFDQue artefacto tan viejo y padre!"
+  - "Parece un cuchillo. Me pregunto de qui\uFFFDn era."
+  - '{@you} Ya tengo una foto de esto.'
+  - "{@you}  Deber\uFFFDa hacer un acercamiento para mirar esto mejor."
+  - "Deber\uFFFDa alejar el zoom para capturar m\uFFFDs en la foto."
+  - '{@you} No necesito una foto de esto.'
+  - '{@you} Oye, Amy! Como van las cosas con los archivos?'
+  - "{@amy} Bien! Solamente busco unos documentos para una nueva exhibici\uFFFDn. "
+  - "Lou me cont\uFFFD sobre la zambullida. C\uFFFDmo estuvo?"
+  - "{@you} Hermosa! La nave estaba en exelentes condiciones. Z\uFFFDro mejillones
+    o vegetaci\uFFFDn. "
+  - "{@amy} Mmm. Debi\uFFFD haber sido cubierta en arena hasta ahora."
+  - '{@you} El naufragio estaba cerca de Rawley Point. '
+  - "\uFFFDMe puedes mandar una lista de las naves que se hundieron en esa area?"
+  - "{@amy} Claro. \uFFFDAqu\uFFFD est\uFFFD!"
+  - "{@you} Gracias, Amy!\uFFFD"
+  - "Entonces, \uFFFDqu\uFFFD encontraste?"
+  - '{@you} Nuestra nave es la Loretta!'
+  - "{@amy} \uFFFDCaray! \uFFFDQue incre\uFFFDble encuentro!"
+  - "Parece que se hundi\uFFFD en el mismo d\uFFFDa que el Pueblo de Peshtigo se
+    incendi\uFFFD en llamas. "
+  - "{@you} \uFFFDHijoles! \uFFFDTodo el pueblo se quem\uFFFD?"
+  - '{@amy} Pues, no TODO, pero mucho de ello. '
+  - 'Fue el peor incendio en toda la historia. '
+  - "Todo el humo vol\uFFFD sobre el lago y se le hizo dif\uFFFDcil a ver para el
+    capit\uFFFDn.  "
+  - "Este es un retrato de \uFFFDl:"
+  - '{@you} Oye! Ese es el cuchillo que vi! '
+  - "{@amy} Debi\uFFFD haberse sumergido con la nave."
+  - "{@you} \uFFFDGuau! \uFFFDMira el cuchillo del marinero!  "
+  - "{@amy} Era del capit\uFFFDn. Parece que se hundi\uFFFD con la nave."
+  - "{@you} Mmm. Deber\uFFFDa darme otra zambullida. Quiz\uFFFDs todav\uFFFDa est\uFFFD
+    all\uFFFD."
+  - "{@amy} Tengo un art\uFFFDculo sobre c\uFFFDmo se hundi\uFFFD. \uFFFDTe lo mandar\uFFFD!"
+  - "{@lou} \uFFFDEy! \uFFFDJules!"
+  - "Vuelo de nuevo. \uFFFDEl tiempo est\uFFFD buen\uFFFDsimo hoy!"
+  - "\uFFFDAlg\uFFFDn detalle jugoso sobre ese naufragio?"
+  - "{@you} \uFFFDS\uFFFD! \uFFFDLa nave es la Loretta!"
+  - "{@lou} Es un nombre g\uFFFDnial. \uFFFDC\uFFFDmo se hundi\uFFFD?"
+  - '{@you} Los incendios forestales estaban ardiendo en todo Wisconsin, incluso
+    un terrible incendio en Peshtigo, Wisconsin.'
+  - "El viento sopl\uFFFD una tonelada de humo sobre el lago."
+  - "{@lou} \uFFFDC\uFFFDmo pudo ver por d\uFFFDnde iba el capit\uFFFDn?"
+  - "{@you} No pudo. \uFFFDLa Loretta naveg\uFFFD muy cerca de la costa y se qued\uFFFD
+    atascada en un banco de arena!"
+  - Los marineros tuvieron que subir a las jarcias. Por suerte, fueron rescatados
+    por un barco de pesca.
+  - "{@lou} \uFFFDVaya! Qu\uFFFD historia m\uFFFDs salvaje."
+  - "\uFFFDPuedes imaginarte c\uFFFDmo fue esa noche?"
+  - "{@you} S\uFFFD..."
+  - "{@dad} \uFFFDOye, chica! Necesito un favor."
+  - "\uFFFDPuedes poner estos folletos en tu trabajo?"
+  - "{@you} Espera un momento. \uFFFDVas a hacer una venta de garaje?"
+  - "{@dad} \uFFFDS\uFFFDp! \uFFFDQue no te lo dije?"
+  - Necesito dinero para comprar un sonar para mi barco.
+  - "{@you} \uFFFDPap\uFFFD, ni siquiera sabes c\uFFFDmo funciona un sonar!"
+  - "\uFFFDY qu\uFFFD pasa con nuestra historia familiar?"
+  - "\uFFFDNunca hablas de mi abuelito, y ahora te deshaces de todas sus cosas!"
+  - "{@dad} Bueno, \uFFFDde qu\uFFFD hay que hablar?"
+  - El naufragio perdido de la Esmeralda me ha perseguido toda la vida.
+  - Necesito encontrarlo.
+  - "{@you} Pero Pap\uFFFD..."
+  - "{@dad} Ser\uFFFD mejor que termine de prepararme. \uFFFDDes\uFFFDame suerte!"
+  - "{@reya} \uFFFDOye, hermana!"
+  - "Mira mi nuevo collar. \uFFFDEra de abuelita!"
+  - "Adentro tiene su vieja fotograf\uFFFDa de boda."
+  - "{@you} Vaya. \uFFFDEs hermosa!"
+  - "No puedo creer que Pap\uFFFD te lo haya dado."
+  - "{@reya} \uFFFDLo s\uFFFD! Es ch\uFFFDvere, \uFFFDsierto?"
+  - Eso me recuerda. Necesito tu equipo de buceo.
+  - "{@you} \uFFFDC\uFFFDmo? \uFFFDNo! \uFFFDEso va contra las reglas!"
+  - '{@reya} O, vamos. Somos hermanas. Las reglas no cuentan.'
+  - "Me contrataron para revisar un naufragio, y est\uFFFD muy profundo, a 300 pies."
+  - Necesito tu cosa fancy de buceo.
+  - "{@you} Se llama un respirador, y no est\uFFFDs entrenada para usarlo, Reya."
+  - Necesitas que un experto te ayude.
+  - "{@reya} \uFFFDAh, Jules! Gracias. Me encantar\uFFFDa tu ayuda."
+  - '{@you} Espera, eso no es lo que quise decir...'
+  - "{@reya} Est\uFFFD cerca de Port Washington."
+  - "Ubicaci\uFFFDn: 43\uFFFD20'08.2 \"N 87\uFFFD34'11.3 \"W"
+  - "\uFFFDTe echo carreras all\uFFFD!"
+  - "{@reya} \uFFFDOye, hermana! \uFFFDLista para cazar tesoro?"
+  - '{@you} No soy cazadora de tesoros, Reya.'
+  - "\uFFFDMi trabajo tiene que ver con la historia! Resolver misterios, descubrir
+    historias perdidas..."
+  - "{@reya}  \uFFFDAburrido! Lo que haga flotar tu barco, supongo."
+  - "{@reya} De todas formas, el barco est\uFFFD debajo."
+  - "{@reya}  \uFFFDRompe una pierna! O una aleta, o lo que sea. Buena suerte. "
+  - "{@you} \uFFFDLa tengo!"
+  - "\uFFFDPuedes o\uFFFDrme a trav\uFFFDs de los comunicadores, Reya? Me voy a sumergir
+    m\uFFFDs."
+  - '{@reya} Entendido, hermana.'
+  - "{@you}  \uFFFDEsa es la nave! Parece que est\uFFFD cubierta de mejillones."
+  - "Deber\uFFFDa tomar una foto de arriba a abajo."
+  - "{@you} Parece que algo se estrell\uFFFD contra la nave aqu\uFFFD."
+  - "{@you} \uFFFDVaya! \uFFFDHay un coche viejo en la zona de carga!"
+  - "{@reya} \uFFFDEh? \uFFFDQu\uFFFD es la carga?"
+  - "{@you}  O, \"carga\" s\uFFFDlo significa los art\uFFFDculos que la nave llevaba."
+  - "{@reya}  Ja. \uFFFDLa \"carga\" es un carro que ya no carga! \uFFFDEntiendes?"
+  - "{@you} \uFFFDHay una caja fuerte vieja! Me pregunto qu\uFFFD habr\uFFFD dentro."
+  - "{@reya} \uFFFD\uFFFDUna caja fuerte?! \uFFFDTienes que agarrarla!"
+  - '{@you} De ninguna manera, Reya. Es ilegal tomar cualquier cosa sin permiso.'
+  - '{@reya} Uff. Eres tan aburrida. No puedo creer que seamos hermanas.'
+  - "{@you} Lo ver\uFFFD mejor desde el otro lado."
+  - "{@you} \uFFFDAh\uFFFD est\uFFFD la escotilla de carga!"
+  - Hmm. Parece parte de un coche viejo, pero no queda mucho.
+  - '{@you} Ya tengo una foto de esto.'
+  - "{@you}  \uFFFDDeber\uFFFDa hacer un acercamiento para una mejor toma!"
+  - '{@you} Mejor alejarse un poco.'
+  - '{@you} No necesito una foto de esto.'
+  - "{@amy} \uFFFDOye! Escuch\uFFFD que te fuiste a bucear con tu hermana."
+  - "\uFFFDC\uFFFDmo fue?"
+  - "{@you} Bueno... me llam\uFFFD aburrida y trat\uFFFD de meterme en problemas."
+  - "\uFFFDPero encontramos un naufragio incre\uFFFDble!"
+  - Es un carguero cerca de Port Washington. Llevaba coches viejos.
+  - '{@amy} Hmm. Parece que dos cargueros se hundieron en esa zona con coches a bordo.'
+  - Uno con coches Kissel y otro con coches Nash.
+  - "\uFFFDSol\uFFFDan fabricarse aqu\uFFFD, en Wisconsin!"
+  - "{@you} Hmm. As\uFFFD que si puedo identificar el coche que encontr\uFFFD, \uFFFDpodr\uFFFDa
+    identificar el barco!"
+  - "Tengo un amigo en el museo del autom\uFFFDvil. Le dir\uFFFD que te llame."
+  - "{@you} \uFFFDGracias, Amy!"
+  - "{@cooper} Hola. \uFFFDEres la amiga de Amy?"
+  - "{@you} S\uFFFDp. Soy Jules Griffin."
+  - "\uFFFDPuede enviarme fotos de coches de la marca Nash y Kissel?"
+  - "{@cooper} \uFFFDClaro que s\uFFFD! Dame un momento..."
+  - "{@you} \uFFFDSuper, gracias!"
+  - "{@cooper} Es curioso. Tienes el mismo apellido del capit\uFFFDn que caus\uFFFD
+    ese horrible naufragio."
+  - "{@you} Um, s\uFFFD. Lo s\uFFFD."
+  - "Espera... \uFFFDdijo que el capit\uFFFDn CAUS\uFFFD el naufragio?"
+  - "{@cooper} As\uFFFD es. Era una leyenda local cuando yo era un ni\uFFFDo."
+  - "La empresa de acero propietaria del barco dijo que estaba en muy buenas condiciones.
+    \uFFFDEl carguero m\uFFFDs fuerte del lago!"
+  - "Pero el capit\uFFFDn lo sac\uFFFD en una terrible tormenta."
+  - "Si solo hubiera sido m\uFFFDs cuidadoso."
+  - "{@you} Vaya. No ten\uFFFDa ni idea."
+  - Gracias de nuevo, Cooper.
+  - "{@cooper} \uFFFDEncantado de ayudar!"
+  - "{@amy} \uFFFDAlguna noticia sobre el naufragio?"
+  - "{@you} \uFFFDS\uFFFD, el barco es el Madison!"
+  - "{@amy}\uFFFDBuen trabajo, Jules!"
+  - "Te enviar\uFFFD la transcripci\uFFFDn de la llamada de auxilio por radio."
+  - "\uFFFDY el manifiesto del barco tambi\uFFFDn!"
+  - "{@you} \uFFFDGracias, Amy!"
+  - "{@reya} \uFFFDOye, hermana! \uFFFDDescubriste esa nave?"
+  - "{@you} De hecho, s\uFFFD. \uFFFDEl barco es el Madison!"
+  - "{@reya} Genial. Yo tambi\uFFFDn resolv\uFFFD un misterio."
+  - "{@you} \uFFFD\uFFFDQu\uFFFD?! Reya, \uFFFDc\uFFFDmo conseguiste esa caja fuerte?"
+  - "{@reya} \uFFFDEl tipo que me contrat\uFFFD consigui\uFFFD un permiso para subirlo!"
+  - "Es s\uFFFDlo un mont\uFFFDn de monedas de cinco centavos y un viejo reloj de
+    alarma. Esperaba que fuera de oro."
+  - "\uFFFDPero lo van a exponer en un museo, con mi nombre!"
+  - "\uFFFDQu\uFFFD pas\uFFFD con el Madison? \uFFFDQuiero saber c\uFFFDmo se hundi\uFFFD!"
+  - "{@you} Bueno p\uFFFDes. Veamos..."
+  - "Fue un d\uFFFDa de mucha neblina, el mismo d\uFFFDa en que la bolsa de valores
+    se desplom\uFFFD y comenz\uFFFD la Gran Depresi\uFFFDn."
+  - El Madison transportaba 268 coches Nash a Detroit fabricados en Wisconsin.
+  - "De repente, apareci\uFFFD otro carguero en la neblina."
+  - "Los barcos estaban demasiado cerca para evitar el choque. \uFFFDEl SS Lookout
+    choc\uFFFD con el Madison!"
+  - "{@reya} Ja. \uFFFDEl mas grande accidente de carro en la historia!"
+  - "{@you} El capit\uFFFDn del Lookout entr\uFFFD en p\uFFFDnico y se dirigi\uFFFD
+    al puerto, dejando atr\uFFFDs al Madison."
+  - "Por suerte, otro barco vino a ayudar, pero un gran grupo de personas no sobrevivi\uFFFD."
+  - '{@reya} Vaya. Esa es realmente una gran historia.'
+  - "Sin embargo, es s\uFFFDper triste."
+  - "Me pregunto si alguien lo ve\uFFFDa venir..."
+  - "{@dad} Oye, Jules. \uFFFDTengo un naufragio para que lo veas!"
+  - "Mi compa\uFFFDero de pesca sac\uFFFD esto en el lago Michigan."
+  - "{@you} \uFFFDParece parte de un vaporizador de rueda lateral!"
+  - "Hablar\uFFFD con mi mentora, Cami. Ella es una experta en esas naves."
+  - "\uFFFDConseguiste la latitud y longitud?"
+  - "{@dad} S\uFFFD. Est\uFFFD cerca de Sheboygan."
+  - "Ubicaci\uFFFDn: 43\uFFFD42'08.6 \"N 87\uFFFD38'26.0 \"W"
+  - "{@you} Gracias, Pap\uFFFD."
+  - "\uFFFDC\uFFFDmo esta el nuevo sonar?"
+  - '{@dad}  Uh... no es tan bueno.'
+  - "Pero estoy seguro de que lo resolver\uFFFD. Eventualmente."
+  - Estoy en el Lago Superior ahora mismo. Tengo mi mapa conmigo.
+  - "La \uFFFDltima ruta planeada por tu abuelito est\uFFFD marcada en rojo."
+  - "La Esmeralda debe estar por aqu\uFFFD."
+  - "{@you} Pap\uFFFD... \uFFFDpor qu\uFFFD no me dijiste que el naufragio fue culpa
+    de abuelito?"
+  - "{@dad} \uFFFDQu\uFFFD? Por supuesto que no fue su culpa."
+  - "{@you} La empresa de acero dijo que s\uFFFD."
+  - "{@dad} S\uFFFDlo necesitaban a alguien a quien culpar para lavarse las manos.
+    \uFFFD\uFFFDC\uFFFDmo puedes pensar eso de tu propio abuelito?!"
+  - "{@you} \uFFFDBueno, nunca hablas de \uFFFDl! \uFFFDC\uFFFDmo era \uFFFDl?"
+  - '{@dad} No te preocupes, Jules.'
+  - "S\uFFFDlo tenemos que encontrar esa nave. Entonces ver\uFFFDs."
+  - "{@cami}  \uFFFDHola Jules! \uFFFDNecesitas informaci\uFFFDn sobre un vaporizador
+    de rueda lateral?"
+  - "{@you} \uFFFDS\uFFFD! Gracias por llamar, Cami."
+  - "\uFFFDQui\uFFFDn es ese tipo que est\uFFFD con usted?"
+  - '{@cami} Johnny es mi nuevo alumno de buceo.'
+  - "\uFFFDl est\uFFFD lleno de historias incre\uFFFDbles. Deber\uFFFDas charlar
+    con \uFFFDl alguna vez."
+  - "{@you} } Quiz\uFFFDs m\uFFFDs tarde."
+  - "\uFFFDHaz o\uFFFDdo hablar de alg\uFFFDn vaporizador de rueda lateral que haya
+    naufragado cerca de Sheboygan?"
+  - "{@cami} \uFFFDOoh, podr\uFFFDa ser el Para\uFFFDso!"
+  - "Aqu\uFFFD, \uFFFDmira!"
+  - "Precioso, \uFFFDeh? Se hundi\uFFFD en 1856."
+  - La gente llamaba a este tipo de barcos Vaporizadores de palacio, porque eran
+    muy elegantes.
+  - "El manifiesto se perdi\uFFFD, as\uFFFD que la carga es desconocida."
+  - "{@you} \uFFFDVaya, sabes mucho sobre esa nave!"
+  - "{@cami} \uFFFDS\uFFFDp! Es uno de mis proyectos favoritos."
+  - "Busca el ancla roja. Deber\uFFFDa tener el nombre grabado en ella."
+  - "{@you} \uFFFDGracias, Cami!"
+  - "{@you} El barco debe estar por aqu\uFFFD abajo. \uFFFDEs hora de usar mi sonar!"
+  - "{@you} \uFFFDLo tengo!"
+  - "{@you} \uFFFDS\uFFFD! \uFFFDEs el Para\uFFFDso!"
+  - "No puedo esperar a dec\uFFFDrselo a Cami."
+  - "{@you}  Vaya. \uFFFDSon esos... lingotes de oro?"
+  - "\uFFFDDe d\uFFFDnde salieron esos?"
+  - "{@you} \uFFFDTengo la carga!"
+  - "Vaya... \uFFFDestos caballitos de balanc\uFFFDn tienen m\uFFFDs de 100 a\uFFFDos!"
+  - "{@you}  \uFFFDQu\uFFFD es lo que est\uFFFD escrito en el ancla?"
+  - "{@you} Esa rueda de paletas coincide con la de la foto de Pap\uFFFD."
+  - "{@you}  Vaya. \uFFFDQu\uFFFD pas\uFFFD aqu\uFFFD? \uFFFDLa nave est\uFFFD totalmente
+    destruida!"
+  - "Parece que el motor ha desaparecido. Los due\uFFFDos del barco debieron haber
+    hecho que alguien lo sacara de las ruinas."
+  - "{@you}  Deber\uFFFDa intentar un \uFFFDngulo diferente para una mejor toma."
+  - '{@you}  Ya tengo una foto de esto.'
+  - "{@you} \uFFFDDeber\uFFFDa hacer un acercamiento para una mejor toma!"
+  - "{@you} Mejor alejar el zoom para capturar m\uFFFDs en la foto."
+  - '{@you} No necesito una foto de esto.'
+  - "{@you} Hola Cami, grandes noticias. \uFFFDEl barco es el Para\uFFFDso!"
+  - "\uFFFDGuaju! Buen trabajo, Jules."
+  - "Te enviar\uFFFD los relatos de los sobrevivientes del hundimiento."
+  - "{@you} \uFFFDGracias!"
   - <@70967DC9>
-  - <@6D967910>
-  - <@6E967AA3>
-  - <@7B968F1A>
-  - <@7C9690AD>
-  - <@ADF2063F>
-  - <@6D906F73>
-  - <@6E907106>
-  - <@6F907299>
-  - <@7090742C>
-  - <@719075BF>
-  - <@72907752>
-  - <@739078E5>
-  - <@74907A78>
-  - <@75907C0B>
-  - <@BD5F2679>
-  - <@BC5F24E6>
-  - <@BB5F2353>
-  - <@BA5F21C0>
-  - <@C15F2CC5>
-  - <@9BE31BF3>
-  - <@9CE31D86>
-  - <@9DE31F19>
-  - <@9EE320AC>
-  - <@9FE3223F>
-  - <@A0E323D2>
-  - <@A2E326F8>
-  - <@A3E3288B>
-  - <@2984B3F9>
-  - <@2884B266>
-  - <@2784B0D3>
-  - <@2684AF40>
-  - <@2C84B8B2>
-  - <@2B84B71F>
-  - <@2A84B58C>
-  - <@B120E6E4>
-  - <@B420EB9D>
-  - <@B320EA0A>
-  - <@AD20E098>
-  - <@B020E551>
-  - <@AA20DBDF>
-  - <@A920DA4C>
-  - <@ABCB614F>
-  - <@ADCB6475>
-  - <@A6CB5970>
-  - <@A7CB5B03>
-  - <@A8CB5C96>
-  - <@A9CB5E29>
-  - <@BB2672B5>
-  - <@BA267122>
-  - <@B9266F8F>
-  - <@B8266DFC>
-  - <@B7266C69>
-  - <@B6266AD6>
-  - <@B5266943>
-  - <@B42667B0>
-  - <@53B9C0AD>
-  - <@50B9BBF4>
-  - <@0A4BBE76>
-  - <@4882D7FA>
-  - <@0E2BD581>
-  - <@0D2BD3EE>
-  - <@218CE1CC>
-  - <@228CE35F>
-  - <@DE80AD91>
-  - <@56F7CFBC>
-  - <@698CE9A8>
-  - <@D3129E31>
-  - <@4C55BF82>
-  - <@53B63421>
-  - <@8C659F80>
-  - <@6C72E3CF>
-  - <@445876AC>
-  - <@3A34FDFC>
-  - <@85127438>
-  - <@881278F1>
-  - <@8712775E>
-  - <@8A127C17>
-  - <@89127A84>
-  - <@8C127F3D>
-  - <@8B127DAA>
-  - <@7E126933>
-  - <@7D1267A0>
-  - <@840CA898>
-  - <@F18DDA8E>
-  - <@F08DD8FB>
-  - <@EF8DD768>
-  - <@F68DE26D>
-  - <@F58DE0DA>
-  - <@F48DDF47>
-  - <@F38DDDB4>
-  - <@EA8DCF89>
-  - <@E98DCDF6>
-  - <@004F591A>
-  - <@014F5AAD>
-  - <@FF4F5787>
-  - <@FC4F52CE>
-  - <@FD4F5461>
-  - <@FB4F513B>
-  - <@F84F4C82>
-  - <@F94F4E15>
-  - <@7A4C4791>
-  - <@794C45FE>
-  - <@784C446B>
-  - <@774C42D8>
-  - <@7E4C4DDD>
-  - <@7D4C4C4A>
-  - <@7C4C4AB7>
-  - <@61A541E0>
-  - <@64A54699>
-  - <@63A54506>
-  - <@66A549BF>
-  - <@65A5482C>
-  - <@68A54CE5>
-  - <@67A54B52>
-  - <@6AA5500B>
-  - <@69A54E78>
-  - <@87269A70>
-  - <@88269C03>
-  - <@89269D96>
-  - <@8A269F29>
-  - <@8B26A0BC>
-  - <@20FADF85>
-  - <@1DFADACC>
-  - <@1EFADC5F>
-  - <@1BFAD7A6>
-  - <@1CFAD939>
-  - <@19FAD480>
-  - <@1AFAD613>
-  - <@27FAEA8A>
-  - <@28FAEC1D>
-  - <@9FEE29EF>
-  - <@9EEE285C>
-  - <@A1EE2D15>
-  - <@A0EE2B82>
-  - <@9BEE23A3>
-  - <@9AEE2210>
-  - <@9DEE26C9>
-  - <@9CEE2536>
-  - <@A7EE3687>
-  - <@A6EE34F4>
-  - <@2DE6BAB4>
-  - <@2EE6BC47>
-  - <@2FE6BDDA>
-  - <@30E6BF6D>
-  - <@29E6B468>
-  - <@2AE6B5FB>
-  - <@2BE6B78E>
-  - <@2CE6B921>
-  - <@25E6AE1C>
-  - <@26E6AFAF>
-  - <@33E902BD>
-  - <@32E9012A>
-  - <@31E8FF97>
-  - <@F3CFFA28>
-  - <@86E86EA0>
-  - <@89E87359>
-  - <@96E0390B>
-  - <@97E03A9E>
-  - <@BAE2B04E>
-  - <@B9E2AEBB>
-  - <@B8E2AD28>
-  - <@BAEF7C41>
-  - <@B7EF7788>
-  - <@8DB4C64C>
-  - <@4093F8D7>
-  - <@B42AA8D3>
-  - <@B32AA740>
-  - <@9DAE23B7>
-  - <@0F2269E2>
-  - <@DA2D233C>
-  - <@DB2D24CF>
-  - <@D634B26B>
-  - <@D734B3FE>
-  - <@D834B591>
-  - <@3DF4442B>
-  - <@63F6BE94>
-  - <@4DFA6D89>
-  - <@3C3CFCF5>
-  - <@113DB906>
-  - <@103DB773>
-  - <@5DC456DA>
-  - <@5CC45547>
-  - <@5BC453B4>
-  - <@5AC45221>
-  - <@26316950>
-  - <@6148AFB0>
-  - <@6448B469>
-  - <@B1ED1B38>
-  - <@2950E645>
-  - <@11793862>
-  - <@B66D7695>
-  - <@B36D71DC>
-  - <@6AFCFEB9>
-  - <@FC3BA4A9>
-  - <@F93B9FF0>
-  - <@EC661394>
-  - <@EF66184D>
-  - <@5F25A0F9>
-  - <@5C259C40>
-  - <@7723882A>
-  - <@76238697>
-  - <@931FE2A7>
-  - <@941FE43A>
-  - <@4A27DE98>
-  - <@F1B717DD>
-  - <@EEB71324>
-  - <@EFB714B7>
-  - <@09B4FF0E>
-  - <@08B4FD7B>
-  - <@07B4FBE8>
-  - <@0EB506ED>
-  - <@E5B287CB>
-  - <@E6B2895E>
-  - <@E7B28AF1>
-  - <@E8B28C84>
-  - <@E9B28E17>
-  - <@2F18FD5A>
-  - <@2E18FBC7>
-  - <@171B1629>
-  - <@141B1170>
-  - <@1C571BA8>
-  - <@4254F8B7>
-  - <@4354FA4A>
-  - <@7FC452CB>
-  - <@B9B053E2>
-  - <@EF993B9B>
-  - <@179A27C3>
-  - <@CDAEDF1C>
-  - <@D0AEE3D5>
-  - <@C0E3C04E>
-  - <@0757C860>
-  - <@0A57CD19>
-  - <@92495796>
-  - <@7A4B7065>
-  - <@774B6BAC>
-  - <@784B6D3F>
-  - <@9E4DE7A8>
-  - <@A14DEC61>
-  - <@86500077>
-  - <@8750020A>
-  - <@8850039D>
-  - <@F9D0E34D>
-  - <@F6D0DE94>
-  - <@F7D0E027>
-  - <@80CEFD42>
-  - <@62D10C9F>
-  - <@63D19C0F>
-  - <@73C8D89D>
-  - <@7BEDCDAB>
-  - <@7CEDCF3E>
-  - <@AAC48B97>
-  - <@0043D4FE>
-  - <@FE43D1D8>
-  - <@2157F328>
-  - <@2457F7E1>
-  - <@7163E8BD>
-  - <@38D4D357>
-  - <@39D4D4EA>
-  - <@0FEB8160>
-  - <@9E4DD2D7>
-  - <@9F4DD46A>
-  - <@012A291D>
-  - <@1928104E>
-  - <@18280EBB>
-  - <@F525990B>
-  - <@F6259A9E>
-  - <@FD36EEC4>
-  - <@1934DC41>
-  - <@1634D788>
-  - <@1734D91B>
-  - <@B39626F2>
-  - <@B296255F>
-  - <@B19623CC>
-  - <@5F5C9F07>
-  - <@3D5A2AEA>
-  - <@06397568>
-  - <@54581088>
-  - <@CE854A0C>
-  - <@D1854EC5>
-  - <@D0854D32>
-  - <@B87F1A10>
-  - <@BB7F1EC9>
-  - <@BA7F1D36>
-  - <@C878777B>
-  - <@C978790E>
-  - <@CA787AA1>
-  - <@AC7A89FE>
-  - <@AB7A886B>
-  - <@AA7A86D8>
-  - <@A8A0A9A5>
-  - <@F562F859>
-  - <@F262F3A0>
-  - <@DCCAD9A6>
-  - <@071CF42E>
-  - <@061CF29B>
-  - <@529A559F>
+  - "{@cami} Cuando era peque\uFFFDa, mi mejor amiga ten\uFFFDa antepasados que se
+    perdieron en el Para\uFFFDso."
+  - "Es la raz\uFFFDn por la que me convert\uFFFD en arque\uFFFDloga mar\uFFFDtima."
+  - "Significar\uFFFD mucho para ella al decirle que por fin lo hemos encontrado."
+  - "{@you} \uFFFDVaya, eso es incre\uFFFDble!"
+  - Me alegra de haber podido ayudar.
+  - "{@you} \uFFFDOye, pap\uFFFD! \uFFFDHa habido suerte en la b\uFFFDsqueda del
+    barco del abuelito?"
+  - "No. El s\uFFFDnar se est\uFFFD escacharrando otra vez."
+  - "Ten\uFFFDas raz\uFFFDn, Jules. No estoy hecho para esto."
+  - "{@you} Ah, Pap\uFFFD. No te rindas."
+  - "Gracias a ti, encontramos una parte de historia que estuvo perdida por m\uFFFDs
+    de 100 a\uFFFDos."
+  - "{@dad} Ooh. \uFFFDEse vaporizador de rueda lateral? \uFFFDQu\uFFFD descubriste?"
+  - "{@you} La nave es un Vaporizador de palacio, \uFFFDel Para\uFFFDso!"
+  - '{@you} Pasaba por Sheboygan cuando se produjo un incendio en la sala de calderas.'
+  - "{@dad} \uFFFDH\uFFFDjole! Un fuego en un barco de madera, eso no estuvo bueno."
+  - "{@you}  No. El fuego se extendi\uFFFD muy r\uFFFDpido y la gente entr\uFFFD
+    en p\uFFFDnico."
+  - "Un tipo incluso salt\uFFFD a un bote salvavidas con un mont\uFFFDn de lingotes
+    de oro y rompi\uFFFD las cuerdas."
+  - Otro barco vio el fuego y vino a ayudar, pero no pudieron salvar a todos.
+  - "{@dad} Vaya, qu\uFFFD tragedia."
+  - "{@you} S\uFFFD. Debio haber sido bastante aterrador..."
+  - "{@reya}\uFFFDEy, hermana!"
+  - "Escuch\uFFFD que conociste a mi amigo Johnny. \uFFFD\uFFFDl pidi\uFFFD por tu
+    n\uFFFDmero!"
+  - "{@you} Johnny... es el estudiante de buceo de Cami, \uFFFDcierto?"
+  - "{@reya} S\uFFFD. \uFFFDCreo que le gustas!"
+  - No te preocupes, le dije que estabas muy ocupada con el papeleo.
+  - "Ooh, eso me recuerda... \uFFFDmira este postal incre\uFFFDble!"
+  - "Fue un sobrante de la venta de patio de Pap\uFFFD. \uFFFDCrees que vale algo?"
+  - "{@you}  Espera. \uFFFDHas le\uFFFDdo esto, Reya?"
+  - "El abuelito escribi\uFFFD que O.K. Steel lo mand\uFFFD a un viaje extra."
+  - "{@reya} Um... \uFFFDy qu\uFFFD?"
+  - "{@you} No hay registro oficial de esto. No coincide con el mapa de Pap\uFFFD."
+  - "{@dad} Espera un segundo. \uFFFDQuieres decir que... \uFFFDQue he estado buscando
+    en la parte equivocada del lago?"
+  - "{@reya} \uFFFD\uFFFDS\uFFFD!! \uFFFD\uFFFDEncontr\uFFFD una pista!!"
+  - "{@you} Tenemos la ruta final del abuelito. Ahora tenemos que restringir la ubicaci\uFFFDn."
+  - "{@reya} Bueno, \uFFFDQu\uFFFD esperas, hermana? \uFFFD\uFFFDVe hacer investigaciones!!"
+  - "{@you} Amy, necesito tu ayuda. \uFFFDEncontr\uFFFD una nueva pista sobre la
+    nave de abuelito!"
+  - "{@amy} \uFFFDDe veras?"
+  - "{@you} Bueno... mi hermana ayud\uFFFD. Un poco."
+  - "Marqu\uFFFD la ruta de mi abuelito en azul."
+  - "Mencion\uFFFD las olas agitadas cerca de las Islas Ap\uFFFDstoles."
+  - "\uFFFDTienes alguna evidencia de naufragios en esa zona?"
+  - '{@amy} Hmm, veamos...'
+  - "Un pescador sac\uFFFD este trozo de acero cerca de Outer Island."
+  - "Podr\uFFFDa ser de un carguero como el de tu abuelo."
+  - "Ubicaci\uFFFDn: 47\uFFFD05'19.4 \"N 90\uFFFD17'17.5 \"W"
+  - "{@you} \uFFFDGracias, Amy!"
+  - "Le enviar\uFFFD la muestra de acero a mi mam\uFFFD."
+  - "Es una cient\uFFFDfica de materiales. Puede probarlo en su laboratorio y averiguar
+    m\uFFFDs sobre \uFFFDl."
+  - '{@reya} Entonces????'
+  - "{@you} Tengo la ubicaci\uFFFDn de un naufragio de acero. Podr\uFFFDa ser del
+    abuelo."
+  - "{@reya} \uFFFD\uFFFDS\uFFFD!! \uFFFDTesoro, all\uFFFD vamos!"
+  - "{@you} Reya, m\uFFFDs despacio."
+  - "\uFFFDY si no es la Esmeralda?"
+  - '{@reya} Aww, hermanita. Te preocupas mucho.'
+  - "\uFFFDSalta y compru\uFFFDbalo!"
+  - "\uFFFDPap\uFFFD y yo estaremos esperando juntos al tel\uFFFDfono!"
+  - '{@you} Bueno... eso definitivamente es un barco.'
+  - Me pregunto si es de abuelito.
+  - "{@you} Vaya. \uFFFDSoy yo o esa nave est\uFFFD... partida por la mitad?"
+  - "{@you} \uFFFDLo tengo!"
+  - "{@you} Vaya. No lo puedo creer. \uFFFDEncontramos la Esmeralda!"
+  - "\uFFFDEstoy entusiasmada por decirle a Pap\uFFFD!"
+  - "{@you} \uFFFDEse relicario es igual al de Reya!"
+  - Me pregunto si era de abuelito.
+  - "{@you}   Deber\uFFFDa tomar una foto de la nave partida por mitad."
+  - "{@you} \uFFFDAh\uFFFD est\uFFFD la gr\uFFFDa que usaron para cargar el cargamento!"
+  - "{@you} Vaya, la casa piloto. \uFFFDAll\uFFFD habr\uFFFDa trabajado el abuelito!"
+  - '{@you}  Parece que el barco transportaba mineral de hierro.'
+  - "{@you}  Tal vez pueda conseguir un mejor \uFFFDngulo. Necesito mostrar ambos
+    lados de la ruptura de la nave."
+  - "{@you} El otro lado podr\uFFFDa tener un mejor \uFFFDngulo para mostrar ambas
+    partes de la nave."
+  - '{@you} Ya tengo una foto de esto.'
+  - "{@you}  \uFFFDDeber\uFFFDa hacer un acercamiento para una mejor toma!"
+  - '{@you}  Mejor alejarse un poco.'
+  - '{@you} No necesito una foto de esto.'
+  - "{@amy}  \uFFFDHola, Jules! \uFFFDC\uFFFDmo te fue?"
+  - "{@you} \uFFFDEncontr\uFFFD la Esmeralda!"
+  - "Ahora tengo que averiguar c\uFFFDmo se hundi\uFFFD."
+  - "La leyenda dice que el barco era s\uFFFDper fuerte."
+  - "Me pregunto c\uFFFDmo se parti\uFFFD por la mitad."
+  - '{@amy} Creo que puedo ayudar.'
+  - "\uFFFDCami consigui\uFFFD localizar a un sobreviviente de la Esmeralda!"
+  - "Me envi\uFFFD su contacto."
+  - 'Edmund Brooks: 555-1242'
+  - "{@you} \uFFFDVaya, qu\uFFFD suerte! \uFFFDGracias, Amy!"
+  - "{@you} Hola. \uFFFDEs usted el Sr. Brooks?"
+  - "Ll\uFFFDmame Ed. Este es mi nieto, Johnny."
+  - "{@you}  Espera. \uFFFDTe vi la semana pasada! Eres el estudiante de buceo de
+    Cami, \uFFFDverdad?"
+  - "{@johnny} S\uFFFD. El abuelo fue marinero en la Esmeralda."
+  - "Llevo toda la vida escuchando sus incre\uFFFDbles historias."
+  - "{@you} \uFFFDC\uFFFDmo conoces a mi hermana?"
+  - '{@johnny} Tomamos una clase de paracaidismo juntos.'
+  - "\uFFFDNo ten\uFFFDa idea de que fuera pariente del capit\uFFFDn de la Esmeralda!"
+  - "{@you} S\uFFFD. Mi familia nunca habla de ello."
+  - "Estoy tratando de averiguar lo que realmente sucedi\uFFFD."
+  - "{@ed} Lo escrib\uFFFD todo en mi diario."
+  - "Est\uFFFDbamos navegando sin problemas cuando, de repente, se oy\uFFFD un fuerte
+    TRAZ."
+  - "\uFFFDEl barco empez\uFFFD a partirse por la mitad!"
+  - "El capit\uFFFDn ayud\uFFFD a lanzar un bote salvavidas. Luego trat\uFFFD de
+    pedir ayuda por radio, pero se cort\uFFFD la corriente al romperse el barco."
+  - "\uFFFDLe cont\uFFFD a alguien lo que pas\uFFFD?"
+  - "{@ed}Lo intent\uFFFD, pero O.K. Steel le ech\uFFFD la culpa a tu abuelo."
+  - "La gente dec\uFFFDa que deb\uFFFDa haber recordarlo mal."
+  - "{@you}  \uFFFDAlguna vez habl\uFFFD de tesoros mi abuelito?"
+  - "{@ed} Hmm. \uFFFDTesoro?"
+  - "\uFFFDOh, debes referirte a su relicario! Ten\uFFFDa fotos de su esposa e hijo."
+  - '{@you} Gracias, Ed. Lo siento que haya tardado tanto tiempo para que alguien
+    te escuche.'
+  - "{@ed} Siempre esper\uFFFD que la verdad saliera a la luz. Me alegro de que no
+    hayas abandonado la b\uFFFDsqueda."
+  - "{@you} De hecho, fue mi padre quien no se rindi\uFFFD."
+  - '{@ed} Bueno, dale las gracias de mi parte.'
+  - "{@mom} \uFFFDHola, cari\uFFFDo! \uFFFDC\uFFFDmo te fue all\uFFFD afuera?"
+  - "{@you} \uFFFDEncontr\uFFFD la Esmeralda!"
+  - "{@mom} \uFFFDEso es maravilloso, Jules!"
+  - "{@you} Todav\uFFFDa tengo que resolver el misterio de por qu\uFFFD se hundi\uFFFD
+    el barco."
+  - '{@mom} En realidad... ya no es un misterio.'
+  - "Prob\uFFFD la muestra de acero que me enviaste."
+  - "Era d\uFFFDbil y fr\uFFFDgil. No hay manera de que ese barco pudiera resistir
+    las olas."
+  - "{@you}  Vaya. \uFFFDAs\uFFFD que por eso se destruy\uFFFD la Esmeralda!"
+  - "{@mom}  S\uFFFDp. Era s\uFFFDlo un asunto de tiempo."
+  - "{@you} Tengo que dec\uFFFDrselo a Pap\uFFFD. \uFFFDl ten\uFFFDa raz\uFFFDn todo
+    el tiempo."
+  - "\uFFFDGracias por tu ayuda, mam\uFFFD!"
+  - "{@mom} Claro que s\uFFFD, cari\uFFFDo."
+  - "Me voy a casa pronto, pero dejar\uFFFD que se lo digas t\uFFFD."
+  - "Buen trabajo ah\uFFFD fuera."
+  - "{@reya}  Hola, hermana. \uFFFDO\uFFFD que llamaste a Johnny!"
+  - '{@you} Era sobre el naufragio.'
+  - "{@reya}  Ja. Claro que s\uFFFD."
+  - "{@dad} \uFFFDY bien? \uFFFDQu\uFFFD has averiguado?"
+  - "{@you} Lo encontramos, Pap\uFFFD. El naufragio es la Esmeralda."
+  - "{@reya}  \uFFFD\uFFFD\uFFFD\uFFFDS\uFFFD!!!!"
+  - "{@dad} No puedo creerlo. Despu\uFFFDs de todo este tiempo."
+  - "{@you} Ten\uFFFDas raz\uFFFDn, Pap\uFFFD. El accidente no fue culpa del abuelito."
+  - Las olas estaban agitadas, pero el barco navegaba sin problemas.
+  - "Entonces se oy\uFFFD un fuerte golpe y la Esmeralda se parti\uFFFD por la mitad."
+  - "El abuelito ayud\uFFFD a lanzar un bote salvavidas, pero \uFFFDl no pudo ponerse
+    a salvo."
+  - '{@reya}  Vaya. Pobre abuelito.'
+  - "{@dad}  No lo entiendo. \uFFFDC\uFFFDmo puede un enorme carguero romperse sin
+    raz\uFFFDn?"
+  - "{@you} Mam\uFFFD descubri\uFFFD que el barco estaba hecho de acero d\uFFFDbil."
+  - No era lo suficientemente fuerte para resistir las olas.
+  - "{@dad}  Eso es horrible. \uFFFDNecesito correr la voz!"
+  - "\uFFFDY si hay otros barcos en peligro?"
+  - "{@reya} Si, si, eso es genial y todo. \uFFFDPero qu\uFFFD pasa con el tesoro?"
+  - "{@you} El tesoro era el relicario del abuelito. Ten\uFFFDa una foto tuya, Pap\uFFFD."
+  - "{@reya}  \uFFFDQu\uFFFD? \uFFFDEso es todo?"
+  - "Bueno, al menos puedes conseguir un permiso e ir a recogerlo. S\uFFFD que est\uFFFDs
+    celosa del m\uFFFDo."
+  - "{@you} En realidad, creo que donar\uFFFD el relicario al museo, en memoria de
+    mi abuelito."
+  - "Parece que era un capit\uFFFDn incre\uFFFDble."
+  - '{@dad} Sobre eso...'
+  - "En realidad \uFFFDl era bastante atrevido."
+  - "{@you} \uFFFD\uFFFDc\uFFFDmo?!"
+  - "{@dad} Oh, s\uFFFD. Un verdadero temerario."
+  - "{@you}  Reya, suena un poco como t\uFFFD."
+  - "{@reya} \uFFFDQuiero que me cuenten m\uFFFDs historias!"
+  - "{@dad} Ooh, \uFFFDaqu\uFFFD hay una buena!"
+  - "\uFFFDTe conte alguna vez la vez que tuvo que subir a la casa piloto en medio
+    de una tormenta de hielo?"
+  - "Era noviembre de 1959 y soplaba un viento fr\uFFFDo..."
+  - "Mejor debo usar la Ubicaci\uFFFDn "
+  - "\uFFFDTengo una foto que coincida?"
+  - "\uFFFDTengo una foto que coincida?"
+  - "\uFFFDAlg\uFFFDn canallero en la lista de naufragios?"
+  - "\uFFFDAlg\uFFFDn canallero en la lista de naufragios?"
+  - "\uFFFDCoincide esto con un diagrama de la nave?"
+  - "\uFFFDCoincide esto con un diagrama de la nave?"
+  - "\uFFFDTengo una foto que coincida?"
+  - "\uFFFDCoincide esto con un diagrama de la nave?"
+  - "\uFFFDCoincide esto con un diagrama de la nave?"
+  - "\uFFFDTengo una foto que coincida?"
+  - "\uFFFDTengo una foto que coincida?"
+  - "\uFFFDUn carguero es muy grande!"
+  - "\uFFFDUn carguero es muy grande!"
+  - "\uFFFDTengo una foto que coincida?"
+  - "\uFFFDTengo una foto que coincida?"
+  - El naufragio no parece un barco de vapor.
+  - El naufragio no parece un barco de vapor.
+  - El remolcador no parece el mismo
+  - "\uFFFDUn carguero es demasiado grande!"
+  - El naufragio no parece un barco de vapor.
+  - El remolcador no parece el mismo
+  - Un carguero es demasiado grande
+  - El naufragio no parece un barco de vapor.
+  - No creo que esto tenga sentido.
+  - "\uFFFDTengo una foto para comprobar esto?"
+  - "\uFFFDCoincide con un nombre de barco de mi lista?"
+  - Oleander no coincide con las letras
+  - Hudson no coincide con las letras
+  - Lakeland no coincide con las letras
+  - Timberland no coincide con las letras
+  - Esto no tiene sentido
+  - "\uFFFDMenciona la noticia el ma\uFFFDz?"
+  - "\uFFFDMenciona ma\uFFFDz la historial de naves?"
+  - "\uFFFDSe menciona en la noticia?"
+  - Esto no tiene sentido
+  - Esto no es una causa del naufragio
+  - "\uFFFDMencionan las noticias este maletero?"
+  - "\uFFFDTengo una foto de esto?"
+  - "No est\uFFFD relacionado con los artefactos"
+  - "Deber\uFFFDa usar ubicaci\uFFFDn en su lugar"
+  - "Esto no es una ubicaci\uFFFDn."
+  - "\uFFFDTengo una foto que corresponda?"
+  - "\uFFFDCoincide esto con un diagrama de nave?"
+  - "Un canalero parece muy peque\uFFFDo"
+  - "Un canalero parece muy peque\uFFFDo"
+  - "Un remolcador es muy peque\uFFFDo"
+  - "Un remolcador es muy peque\uFFFDo"
+  - No creo que es una vaporera
+  - No creo que es una vaporera
+  - Esto no tiene sentido.
+  - "\uFFFDCu\uFFFDl coche se parece a este?"
+  - "\uFFFDHay alg\uFFFDn coche Nash en mi lista de naves?"
+  - "\uFFFDTengo una foto de un coche Nash?"
+  - "\uFFFDTengo una foto que corresponda?"
+  - "\uFFFDHay alg\uFFFDn coche Nash en mi lista de naves?"
+  - "\uFFFDTengo una foto de la carga?"
+  - "\uFFFDTengo una foto de la carga?"
+  - "\uFFFDTengo una foto que corresponda?"
+  - "\uFFFDTengo una foto que corresponda?"
+  - "\uFFFDTengo una imagen de un carro Nash?"
+  - "\uFFFDTengo una imagen de un carro Kissel?"
+  - "\uFFFDTengo una foto de la carga?"
+  - La foto no se ve como un carro Kissel.
+  - La foto no se ve como un carro Kissel.
+  - La foto no se ve como un carro Kissel.
+  - La foto no se ve como un carro Kissel.
+  - "No s\uFFFD si esto tiene sentido."
+  - "\uFFFDHay un registro de los da\uFFFDos?"
+  - "\uFFFDTengo una foto del da\uFFFDo?"
+  - "No est\uFFFD relacionado a la causa del naufragio "
+  - El cargamento no coincide.
+  - "Deber\uFFFDa resolver la carga primero."
+  - Esto no tiene sentido.
+  - "\uFFFDAparece en alg\uFFFDn sitio la caja fuerte?"
+  - "\uFFFDTengo una foto de la caja fuerte?"
+  - Esto no tiene sentido.
+  - "Mejor debo usar la Ubicaci\uFFFDn "
+  - "Esto no es una ubicaci\uFFFDn"
+  - "\uFFFDTengo una foto que corresponda?"
+  - "\uFFFDCoincide esto con un diagrama de nave?"
+  - "\uFFFDHay alguna vaporera de rueda lateral en mi carta de barcos?"
+  - "\uFFFDCoincide esto con un diagrama de nave?"
+  - "\uFFFDHay alguna vaporera de rueda lateral en mi carta de barcos?"
+  - "\uFFFDTengo una foto de esto?"
+  - "\uFFFDTengo una foto de esto?"
+  - "\uFFFDCoincide esto con un diagrama de nave?"
+  - "\uFFFDTengo una foto de esto?"
+  - 'El remolcador no se ve lo mismo '
+  - "Un canalero parece demasiado peque\uFFFDo"
+  - El naufragio no parece un carguero
+  - "Un canalero parece demasiado peque\uFFFDo"
+  - El naufragio no parece un carguero
+  - 'No creo que esto tenga sentido '
+  - Esto es un tipo de nave.
+  - "\uFFFDAlguna de mis fotos identifica qu\uFFFD fue esto?"
+  - "\uFFFDAyuda esto a rellenar mi historial de naves?"
+  - 'Esto no tiene sentido '
+  - "Esto parece m\uFFFDs como la causa del naufragio "
+  - 'Esto no hubiera causado el naufragio '
+  - "\uFFFDCoincide un nombre de nave con la foto?"
+  - "\uFFFDTengo una foto que pruebe esto?"
+  - "No veo un nombre aqu\uFFFD "
+  - "\uFFFDTengo una foto de esto?"
+  - "\uFFFDSe menciona el oro por alg\uFFFDna parte?"
+  - No creo que esto tenga sentido.
+  - "Mejor debo usar la ubicaci\uFFFDn "
+  - "Esto no es una ubicaci\uFFFDn."
+  - "\uFFFDTengo una foto de esto?"
+  - "\uFFFDAparece esto en mi historial de naves?"
+  - "\uFFFDAparece esto en mi historial de naves?"
+  - "\uFFFDTengo una foto de esto?"
+  - "\uFFFDCoincide esto con un diagrama de nave?"
+  - "\uFFFDCoincide esto con un diagrama de nave?"
+  - "\uFFFDTengo una foto de esto?"
+  - "\uFFFDCoincide esto con un diagrama de nave?"
+  - "\uFFFDTengo una foto de esto?"
+  - El remolcador no se ve lo mismo.
+  - "Un canalero parece demasiado peque\uFFFDo"
+  - El naufragio no se ve como un barco de vapor
+  - "Un canalero parece demasiado peque\uFFFDo"
+  - El naufragio no se ve como un barco de vapor
+  - 'No creo que esto tenga sentido '
+  - Esto es un tipo de nave
+  - "Esto parece m\uFFFDs como carga"
+  - Esto es equipaje; no es carga
+  - Esto no parece ser carga
+  - "\uFFFDHay una historia que pruebe esto?"
+  - "\uFFFDHay otros reportes sobre esto?"
+  - "\uFFFDHay otra historia que confirme esto?"
+  - "\uFFFDHay otros reportes sobre esto?"
+  - "\uFFFDHay otros reportes sobre esto?"
+  - "\uFFFDTengo una foto del da\uFFFDo?"
+  - "\uFFFDHay otra historia que confirme esto?"
+  - "\uFFFDHay otra historia que confirme esto?"
+  - "\uFFFDTengo una foto del da\uFFFDo?"
+  - No creo que esto tenga sentido
+  - "\uFFFDHay un nombre de nave que corresponda con la foto?"
+  - "\uFFFDTengo una foto que pruebe esto?"
+  - "No veo un nombre aqu\uFFFD "
+  - "\uFFFDTengo una foto de esto?"
+  - "\uFFFDSe menciona este relicario en alguna parte?"
+  - No creo que esto tenga sentido.
