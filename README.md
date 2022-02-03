@@ -1,4 +1,5 @@
-# Shipwreck Game
+# The Legend of the Lost Emerald
+A grade 3-6 underwater archilogy practices games for shipwrecks in the great lakes
 
 ![WebGL Build](https://github.com/fielddaylab/shipwreck/workflows/WebGL%20Build/badge.svg)
 
