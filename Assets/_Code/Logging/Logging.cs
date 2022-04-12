@@ -29,59 +29,58 @@ public class Logging : MonoBehaviour
 	#region Firebase JS Functions
 
 	[DllImport("__Internal")]
-	public static extern void FBSceneLoad(int appVersion, int logVersion, string missionId, string scene, string timestamp);
+	public static extern void FBSceneLoad(string appVersion, int logVersion, string missionId, string scene, string timestamp);
 	[DllImport("__Internal")]
-	public static extern void FBCheckpoint(int appVersion, int logVersion, string missionId, string status);
+	public static extern void FBCheckpoint(string appVersion, int logVersion, string missionId, string status);
 	[DllImport("__Internal")]
-    public static extern void FBNewEvidence(int appVersion, int logVersion, string missionId, string actor, string evidenceId);
+    public static extern void FBNewEvidence(string appVersion, int logVersion, string missionId, string actor, string evidenceId);
     [DllImport("__Internal")]
-    public static extern void FBOpenEvidenceBoard(int appVersion, int logVersion, string missionId);
+    public static extern void FBOpenEvidenceBoard(string appVersion, int logVersion, string missionId);
 	[DllImport("__Internal")]
-	public static extern void FBEvidenceBoardClick(int appVersion, int logVersion, string missionId, string evidenceType, string factOrigin, string factTarget, string accurate);
+	public static extern void FBEvidenceBoardClick(string appVersion, int logVersion, string missionId, string evidenceType, string factOrigin, string factTarget, string accurate);
 	[DllImport("__Internal")]
-    public static extern void FBUnlockLocation(int appVersion, int logVersion, string missionId);
+    public static extern void FBUnlockLocation(string appVersion, int logVersion, string missionId);
     [DllImport("__Internal")]
-    public static extern void FBEvidenceBoardComplete(int appVersion, int logVersion, string missionId);
+    public static extern void FBEvidenceBoardComplete(string appVersion, int logVersion, string missionId);
     [DllImport("__Internal")]
-    public static extern void FBOpenMap(int appVersion, int logVersion, string missionId);
+    public static extern void FBOpenMap(string appVersion, int logVersion, string missionId);
     [DllImport("__Internal")]
-    public static extern void FBOpenOffice(int appVersion, int logVersion, string missionId);
+    public static extern void FBOpenOffice(string appVersion, int logVersion, string missionId);
     [DllImport("__Internal")]
-    public static extern void FBSonarStart(int appVersion, int logVersion, string missionId);
+    public static extern void FBSonarStart(string appVersion, int logVersion, string missionId);
     [DllImport("__Internal")]
-    public static extern void FBSonarUpdateProgress(int appVersion, int logVersion, string missionId, string percent);
+    public static extern void FBSonarUpdateProgress(string appVersion, int logVersion, string missionId, string percent);
     [DllImport("__Internal")]
-    public static extern void FBSonarComplete(int appVersion, int logVersion, string missionId);
+    public static extern void FBSonarComplete(string appVersion, int logVersion, string missionId);
     [DllImport("__Internal")]
-    public static extern void FBDiveStart(int appVersion, int logVersion, string missionId);
+    public static extern void FBDiveStart(string appVersion, int logVersion, string missionId);
     [DllImport("__Internal")]
-    public static extern void FBDiveExit(int appVersion, int logVersion, string missionId);
+    public static extern void FBDiveExit(string appVersion, int logVersion, string missionId);
     [DllImport("__Internal")]
-    public static extern void FBDiveMoveToNode(int appVersion, int logVersion, string missionId, string diveNodeId, string targetNodeId);
+    public static extern void FBDiveMoveToNode(string appVersion, int logVersion, string missionId, string diveNodeId, string targetNodeId);
     [DllImport("__Internal")]
-    public static extern void FBDiveMoveToAscend(int appVersion, int logVersion, string missionId);
+    public static extern void FBDiveMoveToAscend(string appVersion, int logVersion, string missionId);
     [DllImport("__Internal")]
-    public static extern void FBDiveCameraActivate(int appVersion, int logVersion, string missionId, string diveNodeId);
+    public static extern void FBDiveCameraActivate(string appVersion, int logVersion, string missionId, string diveNodeId);
 	[DllImport("__Internal")]
-	public static extern void FBDivePhotoClick(int appVersion, int logVersion, string missionId, string diveNodeId, string accurate);
+	public static extern void FBDivePhotoClick(string appVersion, int logVersion, string missionId, string diveNodeId, string accurate);
     [DllImport("__Internal")]
-    public static extern void FBDiveAllPhotosTaken(int appVersion, int logVersion, string missionId);
+    public static extern void FBDiveAllPhotosTaken(string appVersion, int logVersion, string missionId);
 	[DllImport("__Internal")]
-	public static extern void FBDiveJournalClick(int appVersion, int logVersion, string missionId, string tasks, string clickAction, string actor);
+	public static extern void FBDiveJournalClick(string appVersion, int logVersion, string missionId, string tasks, string clickAction, string actor);
 	[DllImport("__Internal")]
-	public static extern void FBConversationClick(int appVersion, int logVersion, string missionId, string scene, string clickType, string character, string clickAction);
+	public static extern void FBConversationClick(string appVersion, int logVersion, string missionId, string scene, string clickType, string character, string clickAction);
 	[DllImport("__Internal")]
-    public static extern void FBViewCutscene(int appVersion, int logVersion, string missionId);
+    public static extern void FBViewCutscene(string appVersion, int logVersion, string missionId);
     [DllImport("__Internal")]
-    public static extern void FBViewDialog(int appVersion, int logVersion, string missionId, string dialogId);
+    public static extern void FBViewDialog(string appVersion, int logVersion, string missionId, string dialogId);
 	[DllImport("__Internal")]
-	public static extern void FBCloseInspect(int appVersion, int logVersion, string missionId, string scene, string itemId);
+	public static extern void FBCloseInspect(string appVersion, int logVersion, string missionId, string scene, string itemId);
 
 	#endregion // Firebase JS Functions
 
-	private SimpleLog logger;
     [SerializeField] private string appId = "SHIPWRECKS";
-    [SerializeField] private int appVersion = 1;
+    [SerializeField] private string appVersion = "1.0";
 	[SerializeField] private int logVersion = 1;
 	[SerializeField] private LocalizationMap localizationMap = null;
 
@@ -196,7 +195,6 @@ public class Logging : MonoBehaviour
 	void OnEnable()
     {
         DontDestroyOnLoad(this.gameObject);
-        logger = new SimpleLog(appId, appVersion, null);
 
 		// scenes
 
@@ -488,7 +486,7 @@ public class Logging : MonoBehaviour
 
 	#region Helpers
 
-	private void RegisterGenericLogEvent(StringHash32 eventId, eventCategories category, Action<int, int, string> native, Action stateMod = null) {
+	private void RegisterGenericLogEvent(StringHash32 eventId, eventCategories category, Action<string, int, string> native, Action stateMod = null) {
         GameMgr.Events.Register(eventId, () => {
 
             #if FIREBASE
@@ -501,7 +499,7 @@ public class Logging : MonoBehaviour
         });
     }
 
-    private void RegisterArgLogEvent<T>(StringHash32 eventId, eventCategories category, string fieldName, Action<int, int, string, string> native, Action<T> stateMod = null) {
+    private void RegisterArgLogEvent<T>(StringHash32 eventId, eventCategories category, string fieldName, Action<string, int, string, string> native, Action<T> stateMod = null) {
         GameMgr.Events.Register<T>(eventId, (arg) => {
             string argAsString = arg == null ? "" : arg.ToString();
 
@@ -515,7 +513,7 @@ public class Logging : MonoBehaviour
         });
     }
 
-    private void RegisterDiveSiteLogEvent(StringHash32 eventId, eventCategories category, Action<int, int, string, string> native, Action stateMod = null) {
+    private void RegisterDiveSiteLogEvent(StringHash32 eventId, eventCategories category, Action<string, int, string, string> native, Action stateMod = null) {
         GameMgr.Events.Register(eventId, () => {
             #if FIREBASE
             native(appVersion, logVersion, missionId, diveNodeId);
@@ -527,7 +525,7 @@ public class Logging : MonoBehaviour
         });
     }
 
-    private void RegisterDiveArgLogEvent<T>(StringHash32 eventId, eventCategories category, string fieldName, Action<int, int, string, string, string> native, Action<T> stateMod = null) {
+    private void RegisterDiveArgLogEvent<T>(StringHash32 eventId, eventCategories category, string fieldName, Action<string, int, string, string, string> native, Action<T> stateMod = null) {
         GameMgr.Events.Register<T>(eventId, (arg) => {
             string argAsString = arg == null ? "" : arg.ToString();
 
