@@ -42,6 +42,7 @@ jobs:
           git config --global --add safe.directory /github/workspace/Submodules/BeauUtil
           git config --global --add safe.directory /github/workspace/Submodules/Leaf
           git config --global --add safe.directory /github/workspace/Submodules/Leaf/Submodules/BeauUtil
+          git config --global --add safe.directory /github/workspace/Submodules/opengamedata-unity
           git submodule update --init --recursive
 
     # Extracts branch name into BRANCH environment variable
