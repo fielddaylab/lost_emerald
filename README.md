@@ -4,7 +4,7 @@ A grade 3-6 underwater archilogy practices games for shipwrecks in the great lak
 ![WebGL Build](https://github.com/fielddaylab/shipwreck/workflows/WebGL%20Build/badge.svg)
 
 ## Change Log
-1. Initial version (4/12/22)
+1. Initial version (4/24/22)
 
 ## Telementry Events
 * scene_load (appVersion, logVersion, missionId, scene, timestamp)
