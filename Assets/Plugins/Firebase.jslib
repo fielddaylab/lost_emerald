@@ -1,6 +1,6 @@
 mergeInto(LibraryManager.library, {
 
-	FBSceneLoad: function(appVersion, logVersion, userCode, missionId, scene, timestamp) {
+	FBSceneLoad: function(index, appVersion, logVersion, userCode, missionId, scene, timestamp) {
         var appVersion = Pointer_stringify(appVersion);
         var userCode = Pointer_stringify(userCode);
 		var missionId = Pointer_stringify(missionId);
@@ -8,6 +8,7 @@ mergeInto(LibraryManager.library, {
         var timestamp = Pointer_stringify(timestamp);
 
         analytics.logEvent("scene_load", {
+            event_sequence_index: index,
             app_version: appVersion,
             log_version: logVersion,
             user_code: userCode,
@@ -17,13 +18,14 @@ mergeInto(LibraryManager.library, {
         });
 	},
 	
-	FBCheckpoint: function(appVersion, logVersion, userCode, missionId, status) {
+	FBCheckpoint: function(index, appVersion, logVersion, userCode, missionId, status) {
         var appVersion = Pointer_stringify(appVersion);
         var userCode = Pointer_stringify(userCode);
 		var missionId = Pointer_stringify(missionId);
 		var status = Pointer_stringify(status);
 
         analytics.logEvent("checkpoint", {
+            event_sequence_index: index,
             app_version: appVersion,
             log_version: logVersion,
             user_code: userCode,
@@ -32,7 +34,7 @@ mergeInto(LibraryManager.library, {
         });
 	},
 
-    FBNewEvidence: function(appVersion, logVersion, userCode, missionId, actor, evidenceId) {
+    FBNewEvidence: function(index, appVersion, logVersion, userCode, missionId, actor, evidenceId) {
         var appVersion = Pointer_stringify(appVersion);
         var userCode = Pointer_stringify(userCode);
         var missionId = Pointer_stringify(missionId);
@@ -40,6 +42,7 @@ mergeInto(LibraryManager.library, {
         var evidenceId = Pointer_stringify(evidenceId);
 
         analytics.logEvent("new_evidence", {
+            event_sequence_index: index,
             app_version: appVersion,
             log_version: logVersion,
             user_code: userCode,
@@ -49,12 +52,13 @@ mergeInto(LibraryManager.library, {
         });
     },
 
-    FBOpenEvidenceBoard: function(appVersion, logVersion, userCode, missionId) {
+    FBOpenEvidenceBoard: function(index, appVersion, logVersion, userCode, missionId) {
         var appVersion = Pointer_stringify(appVersion);
         var userCode = Pointer_stringify(userCode);
         var missionId = Pointer_stringify(missionId);
 
         analytics.logEvent("open_evidence_board", {
+            event_sequence_index: index,
             app_version: appVersion,
             log_version: logVersion,
             user_code: userCode,
@@ -62,7 +66,7 @@ mergeInto(LibraryManager.library, {
         });
     },
 	
-	FBEvidenceBoardClick: function(appVersion, logVersion, userCode, missionId, evidenceType, factOrigin, factTarget, accurate) {
+	FBEvidenceBoardClick: function(index, appVersion, logVersion, userCode, missionId, evidenceType, factOrigin, factTarget, accurate) {
         var appVersion = Pointer_stringify(appVersion);
         var userCode = Pointer_stringify(userCode);
 		var missionId = Pointer_stringify(missionId);
@@ -72,6 +76,7 @@ mergeInto(LibraryManager.library, {
 		var accurate = Pointer_stringify(accurate);
 
         analytics.logEvent("evidence_board_click", {
+            event_sequence_index: index,
             app_version: appVersion,
             log_version: logVersion,
             user_code: userCode,
@@ -83,12 +88,13 @@ mergeInto(LibraryManager.library, {
         });
 	},
 
-    FBUnlockLocation: function(appVersion, logVersion, userCode, missionId) {
+    FBUnlockLocation: function(index, appVersion, logVersion, userCode, missionId) {
         var appVersion = Pointer_stringify(appVersion);
         var userCode = Pointer_stringify(userCode);
         var missionId = Pointer_stringify(missionId);
         
         analytics.logEvent("unlock_location", {
+            event_sequence_index: index,
             app_version: appVersion,
             log_version: logVersion,
             user_code: userCode,
@@ -96,12 +102,13 @@ mergeInto(LibraryManager.library, {
         });
     },
 
-    FBEvidenceBoardComplete: function(appVersion, logVersion, userCode, missionId) {
+    FBEvidenceBoardComplete: function(index, appVersion, logVersion, userCode, missionId) {
         var appVersion = Pointer_stringify(appVersion);
         var userCode = Pointer_stringify(userCode);
         var missionId = Pointer_stringify(missionId);
         
         analytics.logEvent("evidence_board_complete", {
+            event_sequence_index: index,
             app_version: appVersion,
             log_version: logVersion,
             user_code: userCode,
@@ -109,12 +116,13 @@ mergeInto(LibraryManager.library, {
         });
     },
 
-    FBOpenMap: function(appVersion, logVersion, userCode, missionId) {
+    FBOpenMap: function(index, appVersion, logVersion, userCode, missionId) {
         var appVersion = Pointer_stringify(appVersion);
         var userCode = Pointer_stringify(userCode);
         var missionId = Pointer_stringify(missionId);
         
         analytics.logEvent("open_map", {
+            event_sequence_index: index,
             app_version: appVersion,
             log_version: logVersion,
             user_code: userCode,
@@ -122,12 +130,13 @@ mergeInto(LibraryManager.library, {
         });
     },
 	
-	FBOpenOffice: function(appVersion, logVersion, userCode, missionId) {
+	FBOpenOffice: function(index, appVersion, logVersion, userCode, missionId) {
         var appVersion = Pointer_stringify(appVersion);
         var userCode = Pointer_stringify(userCode);
         var missionId = Pointer_stringify(missionId);
         
         analytics.logEvent("open_office", {
+            event_sequence_index: index,
             app_version: appVersion,
             log_version: logVersion,
             user_code: userCode,
@@ -135,12 +144,13 @@ mergeInto(LibraryManager.library, {
         });
     },
 
-    FBSonarStart: function(appVersion, logVersion, userCode, missionId) {
+    FBSonarStart: function(index, appVersion, logVersion, userCode, missionId) {
         var appVersion = Pointer_stringify(appVersion);
         var userCode = Pointer_stringify(userCode);
         var missionId = Pointer_stringify(missionId);
         
         analytics.logEvent("sonar_start", {
+            event_sequence_index: index,
             app_version: appVersion,
             log_version: logVersion,
             user_code: userCode,
@@ -148,13 +158,14 @@ mergeInto(LibraryManager.library, {
         });
     },
 
-    FBSonarUpdateProgress: function(appVersion, logVersion, userCode, missionId, percentage) {
+    FBSonarUpdateProgress: function(index, appVersion, logVersion, userCode, missionId, percentage) {
         var appVersion = Pointer_stringify(appVersion);
         var userCode = Pointer_stringify(userCode);
         var missionId = Pointer_stringify(missionId);
         var percentage = Pointer_stringify(percentage);
         
         analytics.logEvent("sonar_percentage_update", {
+            event_sequence_index: index,
             app_version: appVersion,
             log_version: logVersion,
             user_code: userCode,
@@ -163,12 +174,13 @@ mergeInto(LibraryManager.library, {
         });
     },
 
-    FBSonarComplete: function(appVersion, logVersion, userCode, missionId) {
+    FBSonarComplete: function(index, appVersion, logVersion, userCode, missionId) {
         var appVersion = Pointer_stringify(appVersion);
         var userCode = Pointer_stringify(userCode);
         var missionId = Pointer_stringify(missionId);
         
         analytics.logEvent("sonar_complete", {
+            event_sequence_index: index,
             app_version: appVersion,
             log_version: logVersion,
             user_code: userCode,
@@ -176,12 +188,13 @@ mergeInto(LibraryManager.library, {
         });
     },
 
-    FBDiveStart: function(appVersion, logVersion, userCode, missionId) {
+    FBDiveStart: function(index, appVersion, logVersion, userCode, missionId) {
         var appVersion = Pointer_stringify(appVersion);
         var userCode = Pointer_stringify(userCode);
         var missionId = Pointer_stringify(missionId);
         
         analytics.logEvent("dive_start", {
+            event_sequence_index: index,
             app_version: appVersion,
             log_version: logVersion,
             user_code: userCode,
@@ -189,12 +202,13 @@ mergeInto(LibraryManager.library, {
         });
     },
 
-    FBDiveExit: function(appVersion, logVersion, userCode, missionId) {
+    FBDiveExit: function(index, appVersion, logVersion, userCode, missionId) {
         var appVersion = Pointer_stringify(appVersion);
         var userCode = Pointer_stringify(userCode);
         var missionId = Pointer_stringify(missionId);
         
         analytics.logEvent("dive_exit", {
+            event_sequence_index: index,
             app_version: appVersion,
             log_version: logVersion,
             user_code: userCode,
@@ -202,7 +216,7 @@ mergeInto(LibraryManager.library, {
         });
     },
 
-    FBDiveMoveToNode: function(appVersion, logVersion, userCode, missionId, diveNodeId, targetNodeId) {
+    FBDiveMoveToNode: function(index, appVersion, logVersion, userCode, missionId, diveNodeId, targetNodeId) {
         var appVersion = Pointer_stringify(appVersion);
         var userCode = Pointer_stringify(userCode);
         var missionId = Pointer_stringify(missionId);
@@ -210,6 +224,7 @@ mergeInto(LibraryManager.library, {
         var targetNodeId = Pointer_stringify(targetNodeId);
         
         analytics.logEvent("dive_moveto_location", {
+            event_sequence_index: index,
             app_version: appVersion,
             log_version: logVersion,
             user_code: userCode,
@@ -219,12 +234,13 @@ mergeInto(LibraryManager.library, {
         });
     },
 
-    FBDiveMoveToAscend: function(appVersion, logVersion, userCode, missionId) {
+    FBDiveMoveToAscend: function(index, appVersion, logVersion, userCode, missionId) {
         var appVersion = Pointer_stringify(appVersion);
         var userCode = Pointer_stringify(userCode);
         var missionId = Pointer_stringify(missionId);
 
         analytics.logEvent("dive_moveto_ascend", {
+            event_sequence_index: index,
             app_version: appVersion,
             log_version: logVersion,
             user_code: userCode,
@@ -232,13 +248,14 @@ mergeInto(LibraryManager.library, {
         });
     },
 
-    FBDiveCameraActivate: function(appVersion, logVersion, userCode, missionId, diveNodeId) {
+    FBDiveCameraActivate: function(index, appVersion, logVersion, userCode, missionId, diveNodeId) {
         var appVersion = Pointer_stringify(appVersion);
         var userCode = Pointer_stringify(userCode);
         var missionId = Pointer_stringify(missionId);
         var diveNodeId = Pointer_stringify(diveNodeId);
         
         analytics.logEvent("dive_activate_camera", {
+            event_sequence_index: index,
             app_version: appVersion,
             log_version: logVersion,
             user_code: userCode,
@@ -247,7 +264,7 @@ mergeInto(LibraryManager.library, {
         });
     },
 	
-	FBDivePhotoClick: function(appVersion, logVersion, userCode, missionId, diveNodeId, accurate) {
+	FBDivePhotoClick: function(index, appVersion, logVersion, userCode, missionId, diveNodeId, accurate) {
         var appVersion = Pointer_stringify(appVersion);
         var userCode = Pointer_stringify(userCode);
 		var missionId = Pointer_stringify(missionId);
@@ -255,6 +272,7 @@ mergeInto(LibraryManager.library, {
 		var accurate = Pointer_stringify(accurate);
         
         analytics.logEvent("dive_photo_click", {
+            event_sequence_index: index,
             app_version: appVersion,
             log_version: logVersion,
             user_code: userCode,
@@ -264,12 +282,13 @@ mergeInto(LibraryManager.library, {
         });
 	},
 
-    FBDiveAllPhotosTaken: function(appVersion, logVersion, userCode, missionId) {
+    FBDiveAllPhotosTaken: function(index, appVersion, logVersion, userCode, missionId) {
         var appVersion = Pointer_stringify(appVersion);
         var userCode = Pointer_stringify(userCode);
         var missionId = Pointer_stringify(missionId);
         
         analytics.logEvent("dive_all_photos_taken", {
+            event_sequence_index: index,
             app_version: appVersion,
             log_version: logVersion,
             user_code: userCode,
@@ -277,7 +296,7 @@ mergeInto(LibraryManager.library, {
         });
     },
 
-	FBDiveJournalClick: function(appVersion, logVersion, userCode, missionId, tasks, clickAction, actor) {
+	FBDiveJournalClick: function(index, appVersion, logVersion, userCode, missionId, tasks, clickAction, actor) {
         var appVersion = Pointer_stringify(appVersion);
         var userCode = Pointer_stringify(userCode);
 		var missionId = Pointer_stringify(missionId);
@@ -286,6 +305,7 @@ mergeInto(LibraryManager.library, {
 		var actor = Pointer_stringify(actor);
         
         analytics.logEvent("dive_journal_click", {
+            event_sequence_index: index,
             app_version: appVersion,
             log_version: logVersion,
             user_code: userCode,
@@ -296,7 +316,7 @@ mergeInto(LibraryManager.library, {
         });
 	},
 
-	FBConversationClick: function(appVersion, logVersion, userCode, missionId, scene, clickType, character, clickAction) {
+	FBConversationClick: function(index, appVersion, logVersion, userCode, missionId, scene, clickType, character, clickAction) {
         var appVersion = Pointer_stringify(appVersion);
         var userCode = Pointer_stringify(userCode);
 		var missionId = Pointer_stringify(missionId);
@@ -306,6 +326,7 @@ mergeInto(LibraryManager.library, {
 		var clickAction = Pointer_stringify(clickAction);
         
         analytics.logEvent("conversation_click", {
+            event_sequence_index: index,
             app_version: appVersion,
             log_version: logVersion,
             user_code: userCode,
@@ -317,12 +338,13 @@ mergeInto(LibraryManager.library, {
         });
 	},
 
-    FBViewCutscene: function(appVersion, logVersion, userCode, missionId) {
+    FBViewCutscene: function(index, appVersion, logVersion, userCode, missionId) {
         var appVersion = Pointer_stringify(appVersion);
         var userCode = Pointer_stringify(userCode);
         var missionId = Pointer_stringify(missionId);
         
         analytics.logEvent("view_cutscene", {
+            event_sequence_index: index,
             app_version: appVersion,
             log_version: logVersion,
             user_code: userCode,
@@ -330,13 +352,14 @@ mergeInto(LibraryManager.library, {
         });
     },
 
-    FBViewDialog: function(appVersion, logVersion, userCode, missionId, dialogId) {
+    FBViewDialog: function(index, appVersion, logVersion, userCode, missionId, dialogId) {
         var appVersion = Pointer_stringify(appVersion);
         var userCode = Pointer_stringify(userCode);
         var missionId = Pointer_stringify(missionId);
         var dialogId = Pointer_stringify(dialogId);
         
         analytics.logEvent("view_dialog", {
+            event_sequence_index: index,
             app_version: appVersion,
             log_version: logVersion,
             user_code: userCode,
@@ -345,7 +368,7 @@ mergeInto(LibraryManager.library, {
         });
     },
 	
-	FBCloseInspect: function(appVersion, logVersion, userCode, missionId, scene, itemId) {
+	FBCloseInspect: function(index, appVersion, logVersion, userCode, missionId, scene, itemId) {
         var appVersion = Pointer_stringify(appVersion);
         var userCode = Pointer_stringify(userCode);
 		var missionId = Pointer_stringify(missionId);
@@ -353,6 +376,7 @@ mergeInto(LibraryManager.library, {
 		var itemId = Pointer_stringify(itemId);
         
         analytics.logEvent("close_inspect", {
+            event_sequence_index: index,
             app_version: appVersion,
             log_version: logVersion,
             user_code: userCode,
