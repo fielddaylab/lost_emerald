@@ -11,20 +11,20 @@ on:
   #   branches: [ develop ] 
 
 env:
-  UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+  UNITY_LICENSE: ${{ secrets.FIELDDAY_UNITY_LICENSE_2019 }}
   UNITY_VERSION: 2019.4.26f1
   
 jobs:
   build:
     name: Build Unity Project
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
 
     # Setup Steps
 
     steps:
       
     - name: Install OpenConnect
-      run: sudo add-apt-repository ppa:phusen/openconnect && sudo apt-get update && sudo apt-get install openconnect
+      run: sudo apt-get update && sudo apt-get install openconnect
       
     - name: Connect to VPN
       run: echo ${{ secrets.VPN_PASSWORD }} | sudo openconnect --protocol=gp -u ${{ secrets.VPN_USERNAME }} --passwd-on-stdin soe.vpn.wisc.edu &
