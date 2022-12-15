@@ -11,7 +11,7 @@ on:
   #   branches: [ develop ] 
 
 env:
-  UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+  UNITY_LICENSE: ${{ secrets.FIELDDAY_UNITY_LICENSE_2019 }}
   UNITY_VERSION: 2019.4.26f1
   
 jobs:
