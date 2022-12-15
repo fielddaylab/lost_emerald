@@ -26,6 +26,19 @@
         </div>
     </div>
 </body>
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TLHHB39RZL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TLHHB39RZL', {cookie_flags: "max-age=7200;secure;samesite=none" });
+</script>
+
+<!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-analytics.js"></script>
 <script>
@@ -38,10 +51,10 @@
         appId: "1:114932333922:web:18951d9acae6e355ecc03b",
         measurementId: "G-70RRTWTVBE"
     };
-    firebase.initializeApp(firebaseConfig);
+    firebase.initializeApp(firebaseConfig, {config: { cookie_flags: "max-age=7200;secure;samesite=none"}});
     const analytics = firebase.analytics();
 </script>
-<script src="h​ttps://cdn.brainpop.com/games/assets/js/cameraProxyDOMCrossDomain.js​"> </script>
-<script src="​ https://cdn.brainpop.com/games/assets/js/html2canvas.js​"> </script>
+<script src="https://cdn.brainpop.com/games/assets/js/cameraProxyDOMCrossDomain.js"> </script>
+<script src="https://cdn.brainpop.com/games/assets/js/html2canvas.js"> </script>
 
 </html>
