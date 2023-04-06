@@ -37,10 +37,11 @@
       }
     },
     "com.fieldday.opengamedata-unity": {
-      "version": "file:../Submodules/opengamedata-unity/Assets/FieldDay",
+      "version": "1.0.1",
       "depth": 0,
-      "source": "local",
-      "dependencies": {}
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://package.openupm.com"
     },
     "com.potatointeractive.localization": {
       "version": "0.3.2",

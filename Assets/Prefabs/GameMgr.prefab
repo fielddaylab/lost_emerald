@@ -314,6 +314,13 @@ MonoBehaviour:
   logVersion: 1
   userCode: default
   localizationMap: {fileID: 0}
+  firebaseConfig:
+    ApiKey: AIzaSyDaUi0BI5fjOi84jtTcn5PbWIicbiryKgU
+    ProjectId: shipwrecks-8d142
+    StorageBucket: shipwrecks-8d142.appspot.com
+    MessagingSenderId: 114932333922
+    AppId: 1:114932333922:web:18951d9acae6e355ecc03b
+    MeasurementId: G-70RRTWTVBE
 --- !u!1 &980250334165224564
 GameObject:
   m_ObjectHideFlags: 0
