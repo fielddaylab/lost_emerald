@@ -1,8 +1,8 @@
 ﻿using BeauUtil;
 
 namespace Shipwreck {
-    public static class GameEvents {
-        
+    public static class GameEvents { 
+        public static readonly StringHash32 ExitTitleScreen= "ExitTitleScreen";
         public static readonly StringHash32 PhoneNotification = "PhoneNotification";
         public static readonly StringHash32 ContactUnlocked = "ContactUnlocked";
 		public static readonly StringHash32 LevelUnlocked = "LevelUnlocked";

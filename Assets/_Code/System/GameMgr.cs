@@ -51,6 +51,9 @@ namespace Shipwreck
 			I.m_eventService.Register(GameEvents.ChainSolved, I.HandleChainCompleted);
 			I.m_eventService.Register(GameEvents.CaseClosed, I.HandleGameEnding);
 			CutscenePlayer.OnVideoComplete += I.HandleCutsceneComplete;
+
+            // added for the Vault Button
+            Events.Dispatch(GameEvents.ExitTitleScreen);
 		}
 
 		public static void ClearState() {

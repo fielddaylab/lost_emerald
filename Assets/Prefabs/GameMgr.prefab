@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7854677246857917389}
   - component: {fileID: 7452325017828506659}
   - component: {fileID: 8516519479622943246}
+  - component: {fileID: 7371402995040017720}
   m_Layer: 0
   m_Name: GameMgr
   m_TagString: Untagged
@@ -314,6 +315,18 @@ MonoBehaviour:
   logVersion: 1
   userCode: default
   localizationMap: {fileID: 0}
+--- !u!114 &7371402995040017720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531016319209300889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ba335c26804fa9499c9add0c3c6c721, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &980250334165224564
 GameObject:
   m_ObjectHideFlags: 0
