@@ -1,8 +1,4 @@
-﻿#if !UNITY_EDITOR
-#define FIREBASE
-#endif // !UNITY_EDITOR
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -26,66 +22,14 @@ public class Logging : MonoBehaviour
 
 	#endregion // Consts
 
-	#region Firebase JS Functions
-
-	[DllImport("__Internal")]
-	public static extern void FBSceneLoad(int index, string appVersion, int logVersion, string userCode, string missionId, string scene, string timestamp);
-	[DllImport("__Internal")]
-	public static extern void FBCheckpoint(int index, string appVersion, int logVersion, string userCode, string missionId, string status);
-	[DllImport("__Internal")]
-    public static extern void FBNewEvidence(int index, string appVersion, int logVersion, string userCode, string missionId, string actor, string evidenceId);
-    [DllImport("__Internal")]
-    public static extern void FBOpenEvidenceBoard(int index, string appVersion, int logVersion, string userCode, string missionId);
-	[DllImport("__Internal")]
-	public static extern void FBEvidenceBoardClick(int index, string appVersion, int logVersion, string userCode, string missionId, string evidenceType, string factOrigin, string factTarget, string accurate);
-	[DllImport("__Internal")]
-    public static extern void FBUnlockLocation(int index, string appVersion, int logVersion, string userCode, string missionId);
-    [DllImport("__Internal")]
-    public static extern void FBEvidenceBoardComplete(int index, string appVersion, int logVersion, string userCode, string missionId);
-    [DllImport("__Internal")]
-    public static extern void FBOpenMap(int index, string appVersion, int logVersion, string userCode, string missionId);
-    [DllImport("__Internal")]
-    public static extern void FBOpenOffice(int index, string appVersion, int logVersion, string userCode, string missionId);
-    [DllImport("__Internal")]
-    public static extern void FBSonarStart(int index, string appVersion, int logVersion, string userCode, string missionId);
-    [DllImport("__Internal")]
-    public static extern void FBSonarUpdateProgress(int index, string appVersion, int logVersion, string userCode, string missionId, string percent);
-    [DllImport("__Internal")]
-    public static extern void FBSonarComplete(int index, string appVersion, int logVersion, string userCode, string missionId);
-    [DllImport("__Internal")]
-    public static extern void FBDiveStart(int index, string appVersion, int logVersion, string userCode, string missionId);
-    [DllImport("__Internal")]
-    public static extern void FBDiveExit(int index, string appVersion, int logVersion, string userCode, string missionId);
-    [DllImport("__Internal")]
-    public static extern void FBDiveMoveToNode(int index, string appVersion, int logVersion, string userCode, string missionId, string diveNodeId, string targetNodeId);
-    [DllImport("__Internal")]
-    public static extern void FBDiveMoveToAscend(int index, string appVersion, int logVersion, string userCode, string missionId);
-    [DllImport("__Internal")]
-    public static extern void FBDiveCameraActivate(int index, string appVersion, int logVersion, string userCode, string missionId, string diveNodeId);
-	[DllImport("__Internal")]
-	public static extern void FBDivePhotoClick(int index, string appVersion, int logVersion, string userCode, string missionId, string diveNodeId, string accurate);
-    [DllImport("__Internal")]
-    public static extern void FBDiveAllPhotosTaken(int index, string appVersion, int logVersion, string userCode, string missionId);
-	[DllImport("__Internal")]
-	public static extern void FBDiveJournalClick(int index, string appVersion, int logVersion, string userCode, string missionId, string tasks, string clickAction, string actor);
-	[DllImport("__Internal")]
-	public static extern void FBConversationClick(int index, string appVersion, int logVersion, string userCode, string missionId, string scene, string clickType, string character, string clickAction);
-	[DllImport("__Internal")]
-    public static extern void FBViewCutscene(int index, string appVersion, int logVersion, string userCode, string missionId);
-    [DllImport("__Internal")]
-    public static extern void FBViewDialog(int index, string appVersion, int logVersion, string userCode, string missionId, string dialogId);
-	[DllImport("__Internal")]
-	public static extern void FBCloseInspect(int index, string appVersion, int logVersion, string userCode, string missionId, string scene, string itemId);
-
-	#endregion // Firebase JS Functions
-
     [SerializeField] private string appId = "SHIPWRECKS";
     [SerializeField] private string appVersion = "1.0";
 	[SerializeField] private int logVersion = 2;
 	[SerializeField] private string userCode = "default";
 	[SerializeField] private LocalizationMap localizationMap = null;
+    [SerializeField] private FirebaseConsts firebaseConfig = default(FirebaseConsts);
 
-	[NonSerialized] private int sequenceIndex = 1;
+	[NonSerialized] private OGDLog logger;
     [NonSerialized] private string missionId = "";
     [NonSerialized] private string diveNodeId = "";
 	[NonSerialized] private string diveTasksStr = "";
@@ -198,6 +142,19 @@ public class Logging : MonoBehaviour
     {
         DontDestroyOnLoad(this.gameObject);
 
+        OGDLogConsts logConsts;
+        logConsts.AppId = appId;
+        logConsts.AppVersion = appVersion;
+        logConsts.ClientLogVersion = logVersion;
+        logConsts.AppBranch = null;
+
+        logger = new OGDLog(logConsts);
+        logger.UseFirebase(firebaseConfig);
+
+        if (Application.isEditor || Debug.isDebugBuild) {
+            logger.SetDebug(true);
+        }
+
 		// scenes
 
 		GameMgr.Events.Register<string>(GameEvents.SceneLoaded, LogSceneLoad);
@@ -214,28 +171,28 @@ public class Logging : MonoBehaviour
             .Register<IEvidenceChainState>(GameEvents.ChainHint, LogEvidenceChainHint)
             .Register<IEvidenceChainState>(GameEvents.ChainIncorrect, LogEvidenceChainIncorrect)
             .Register<StringHash32>(GameEvents.ChainSolved, LogEvidenceChainCorrect);
-        RegisterGenericLogEvent(GameEvents.BoardOpened, eventCategories.open_evidence_board, FBOpenEvidenceBoard);
-        RegisterGenericLogEvent(GameEvents.LocationDiscovered, eventCategories.unlock_location, FBUnlockLocation);
+        RegisterGenericLogEvent(GameEvents.BoardOpened, eventCategories.open_evidence_board, "open_evidence_board");
+        RegisterGenericLogEvent(GameEvents.LocationDiscovered, eventCategories.unlock_location, "unlock_location");
 		GameMgr.Events.Register(GameEvents.BoardComplete, LogEvidenceBoardComplete);
 
 		// map
 
-		RegisterGenericLogEvent(GameEvents.MapOpened, eventCategories.open_map, FBOpenMap);
-        RegisterGenericLogEvent(GameEvents.OfficeOpened, eventCategories.open_office, FBOpenOffice);
+		RegisterGenericLogEvent(GameEvents.MapOpened, eventCategories.open_map, "open_map");
+        RegisterGenericLogEvent(GameEvents.OfficeOpened, eventCategories.open_office, "open_office");
 
         // sonar
 
-        RegisterGenericLogEvent(GameEvents.SonarStarted, eventCategories.sonar_start, FBSonarStart);
-        RegisterGenericLogEvent(GameEvents.SonarCompleted, eventCategories.sonar_complete, FBSonarComplete);
+        RegisterGenericLogEvent(GameEvents.SonarStarted, eventCategories.sonar_start, "sonar_start");
+        RegisterGenericLogEvent(GameEvents.SonarCompleted, eventCategories.sonar_complete, "sonar_complete");
         GameMgr.Events.Register<float>(GameEvents.SonarProgressUpdated, LogSonarProgress);
 
 		// dive
 
-		RegisterGenericLogEvent(GameEvents.Dive.EnterDive, eventCategories.dive_start, FBDiveStart, () => diveNodeId = string.Empty);
-        RegisterGenericLogEvent(GameEvents.Dive.ExitDive, eventCategories.dive_exit, FBDiveExit);
-        RegisterDiveArgLogEvent<string>(GameEvents.Dive.NavigateToNode, eventCategories.dive_moveto_location, "next_node_id", FBDiveMoveToNode, (id) => diveNodeId = id);
-        RegisterGenericLogEvent(GameEvents.Dive.NavigateToAscendNode, eventCategories.dive_moveto_ascend, FBDiveMoveToAscend, () => diveNodeId = string.Empty);
-        RegisterDiveSiteLogEvent(GameEvents.Dive.CameraActivated, eventCategories.dive_activate_camera, FBDiveCameraActivate);
+		RegisterGenericLogEvent(GameEvents.Dive.EnterDive, eventCategories.dive_start, "dive_start", () => diveNodeId = string.Empty);
+        RegisterGenericLogEvent(GameEvents.Dive.ExitDive, eventCategories.dive_exit, "dive_exit");
+        RegisterDiveArgLogEvent<string>(GameEvents.Dive.NavigateToNode, eventCategories.dive_moveto_location, "dive_moveto_location", "next_node_id", (id) => diveNodeId = id);
+        RegisterGenericLogEvent(GameEvents.Dive.NavigateToAscendNode, eventCategories.dive_moveto_ascend, "dive_moveto_ascend", () => diveNodeId = string.Empty);
+        RegisterDiveSiteLogEvent(GameEvents.Dive.CameraActivated, eventCategories.dive_activate_camera, "dive_activate_camera");
 		GameMgr.Events.Register<StringHash32>(GameEvents.Dive.ConfirmPhoto, LogDiveNewPhoto);
 		GameMgr.Events.Register(GameEvents.Dive.PhotoFail, LogDivePhotoFail);
 		GameMgr.Events.Register(GameEvents.Dive.PhotoAlreadyTaken, LogDivePhotoAlreadyTaken);
@@ -251,7 +208,7 @@ public class Logging : MonoBehaviour
 		GameMgr.Events.Register<ScriptNode>(GameEvents.ConversationOpened, HandleConversationOpen);
 		GameMgr.Events.Register<EventData.ClickAction>(GameEvents.ConversationClick, LogConversationClick);
 		GameMgr.Events.Register<ScriptNode>(GameEvents.DialogRun, LogDialog);
-        RegisterGenericLogEvent(GameEvents.ViewCutscene, eventCategories.view_cutscene, FBViewCutscene);
+        RegisterGenericLogEvent(GameEvents.ViewCutscene, eventCategories.view_cutscene, "view_cutscene");
 		GameMgr.Events.Register<string>(GameEvents.CloseInspect, LogCloseInspect);
 	}
 
@@ -259,12 +216,21 @@ public class Logging : MonoBehaviour
 		GameMgr.Events.Dispatch(GameEvents.SceneLoaded, "Main");
 	}
 
+    private void OnDestroy() {
+        logger.Dispose();
+    }
+
 	#region Scenes
 
 	// Mission, Scene, Timestamp
 	private void LogSceneLoad(string sceneId) {
 		int index = GameMgr.State.CurrentLevel.Index;
 		missionId = GameDb.GetLevelData(index).name;
+
+        using(var gs = logger.OpenGameState()) {
+            gs.Param("missionId", missionId);
+            gs.Param("scene", SceneManager.GetActiveScene().name);
+        }
 
 		string scene = sceneId;
 
@@ -275,11 +241,10 @@ public class Logging : MonoBehaviour
 			elapsedTime.Hours, elapsedTime.Minutes, elapsedTime.Seconds,
 			elapsedTime.Milliseconds / 10);
 
-		#if FIREBASE
-		FBSceneLoad(sequenceIndex, appVersion, logVersion, userCode, missionId, scene, timestamp);
-		#endif
-
-		sequenceIndex++;
+        using(var es = logger.NewEvent("scene_load")) {
+            es.Param("scene", scene);
+            es.Param("timestamp", timestamp);
+        }
 	}
 
 	#endregion
@@ -291,11 +256,14 @@ public class Logging : MonoBehaviour
 		missionId = GameDb.GetLevelData(index).name;
 		string statusStr = EventData.StatusDict[status];
 
-		#if FIREBASE
-        FBCheckpoint(sequenceIndex, appVersion, logVersion, userCode, missionId, statusStr);
-		#endif
+        using(var gs = logger.OpenGameState()) {
+            gs.Param("missionId", missionId);
+            gs.Param("scene", SceneManager.GetActiveScene().name);
+        }
 
-		sequenceIndex++;
+        using(var es = logger.NewEvent("checkpoint")) {
+            es.Param("status", statusStr);
+        }
 	}
 
 	private void LogBeginMission(int missionId) {
@@ -341,13 +309,12 @@ public class Logging : MonoBehaviour
 			index++;
 		}
 
-		string accurate = isAccurate.ToString();
-
-		#if FIREBASE
-        FBEvidenceBoardClick(sequenceIndex, appVersion, logVersion, userCode, missionId, factType, factOriginStr, factTargetStr, accurate);
-		#endif
-
-		sequenceIndex++;
+		using(var es = logger.NewEvent("evidence_board_click")) {
+            es.Param("evidenceType", factType);
+            es.Param("factOrigin", factOriginStr);
+            es.Param("factTarget", factTargetStr);
+            es.Param("accurate", isAccurate);
+        }
 	}
 	
     private void LogEvidenceChainHint(IEvidenceChainState chainState) {
@@ -368,11 +335,10 @@ public class Logging : MonoBehaviour
 		var evidenceData = GameDb.GetEvidenceData(id);
 		string evidenceId = evidenceData.name;
 
-		#if FIREBASE
-        FBNewEvidence(sequenceIndex, appVersion, logVersion, userCode, missionId, evidenceActor, evidenceId);
-		#endif
-
-		sequenceIndex++;
+		using(var es = logger.NewEvent("new_evidence")) {
+            es.Param("actor", evidenceActor);
+            es.Param("evidence_id", evidenceId);
+        }
 	}
 
 	#endregion // Evidence
@@ -386,11 +352,10 @@ public class Logging : MonoBehaviour
 		string accurate = isAccurate.ToString();
 		string location = diveNodeId;
 
-		#if FIREBASE
-        FBDivePhotoClick(sequenceIndex, appVersion, logVersion, userCode, missionId, location, accurate);
-		#endif
-
-		sequenceIndex++;
+        using(var es = logger.NewEvent("dive_photo_click")) {
+            es.Param("dive_node_id", location);
+            es.Param("accurate", isAccurate);
+        }
 	}
 
 	private void LogDiveNewPhoto(StringHash32 photoId) {
@@ -415,11 +380,11 @@ public class Logging : MonoBehaviour
 
 	// Mission, Tasks, Action, Actor
 	private void LogDiveJournalClick(string clickAction, string actor) {
-		#if FIREBASE
-        FBDiveJournalClick(sequenceIndex, appVersion, logVersion, userCode, missionId, diveTasksStr, clickAction, actor);
-		#endif
-
-		sequenceIndex++;
+		using(var es = logger.NewEvent("dive_journal_click")) {
+            es.Param("tasks", diveTasksStr);
+            es.Param("clickAction", clickAction);
+            es.Param("actor", actor);
+        }
 	}
 
 	private void LogDiveJournalOpen() {
@@ -438,11 +403,9 @@ public class Logging : MonoBehaviour
 	private void LogSonarProgress(float updateProgress) {
         string percent = ((int) (updateProgress * 100)).ToStringLookup();
 
-        #if FIREBASE
-        FBSonarUpdateProgress(sequenceIndex, appVersion, logVersion, userCode, missionId, percent);
-        #endif
-
-		sequenceIndex++;
+        using(var es = logger.NewEvent("sonar_percentage_update")) {
+            es.Param("percentage", percent);
+        }
     }
 
 	#endregion // Sonar
@@ -466,13 +429,11 @@ public class Logging : MonoBehaviour
 			currClickType = EventData.ClickType.Unknown;
 		}
 
-		string scene = SceneManager.GetActiveScene().name;
-
-		#if FIREBASE
-        FBConversationClick(sequenceIndex, appVersion, logVersion, userCode, missionId, scene, clickTypeStr, nodeContact, clickActionStr);
-		#endif
-
-		sequenceIndex++;
+        using(var es = logger.NewEvent("conversation_click")) {
+            es.Param("clickType", clickTypeStr);
+            es.Param("character", nodeContact);
+            es.Param("clickAction", clickActionStr);
+        }
 	}
 
 	private void HandleConversationOpen(ScriptNode node) {
@@ -480,13 +441,9 @@ public class Logging : MonoBehaviour
 	}
 
 	private void LogDialog(ScriptNode node) {
-		string scene = SceneManager.GetActiveScene().name;
-
-        #if FIREBASE
-        FBViewDialog(sequenceIndex, appVersion, logVersion, userCode, missionId, node.FullName);
-        #endif
-
-		sequenceIndex++;
+		using(var es = logger.NewEvent("view_dialog")) {
+            es.Param("dialog_id", node.FullName);
+        }
     }
 
 	#endregion // Dialog
@@ -495,43 +452,33 @@ public class Logging : MonoBehaviour
 
 	// Mission, Scene, ItemID
 	private void LogCloseInspect(string itemId) {
-		string scene = SceneManager.GetActiveScene().name;
-
-		#if FIREBASE
-        FBCloseInspect(sequenceIndex, appVersion, logVersion, userCode, missionId, scene, itemId);
-		#endif
-
-		sequenceIndex++;
+		using(var es = logger.NewEvent("close_inspect")) {
+            es.Param("itemId", itemId);
+        }
 	}
 
 	#endregion // Close Inspect
 
 	#region Helpers
 
-	private void RegisterGenericLogEvent(StringHash32 eventId, eventCategories category, Action<int, string, int, string, string> native, Action stateMod = null) {
+	private void RegisterGenericLogEvent(StringHash32 eventId, eventCategories category, string logEvent, Action stateMod = null) {
         GameMgr.Events.Register(eventId, () => {
 
-            #if FIREBASE
-            native(sequenceIndex, appVersion, logVersion, userCode, missionId);
-            #endif
-
-			sequenceIndex++;
-
+            logger.Log(logEvent, "{}");
+            
             if (stateMod != null) {
                 stateMod();
             }
         });
     }
 
-    private void RegisterArgLogEvent<T>(StringHash32 eventId, eventCategories category, string fieldName, Action<int, string, int, string, string, string> native, Action<T> stateMod = null) {
+    private void RegisterArgLogEvent<T>(StringHash32 eventId, eventCategories category, string logEvent, string fieldName, Action<T> stateMod = null) {
         GameMgr.Events.Register<T>(eventId, (arg) => {
             string argAsString = arg == null ? "" : arg.ToString();
 
-            #if FIREBASE
-            native(sequenceIndex, appVersion, logVersion, userCode, missionId, argAsString);
-            #endif
-
-			sequenceIndex++;
+            using(var es = logger.NewEvent(logEvent)) {
+                es.Param(fieldName, argAsString);
+            }
 
             if (stateMod != null) {
                 stateMod(arg);
@@ -539,13 +486,12 @@ public class Logging : MonoBehaviour
         });
     }
 
-    private void RegisterDiveSiteLogEvent(StringHash32 eventId, eventCategories category, Action<int, string, int, string, string, string> native, Action stateMod = null) {
+    private void RegisterDiveSiteLogEvent(StringHash32 eventId, eventCategories category, string logEvent, Action stateMod = null) {
         GameMgr.Events.Register(eventId, () => {
-            #if FIREBASE
-            native(sequenceIndex, appVersion, logVersion, userCode, missionId, diveNodeId);
-            #endif
-
-			sequenceIndex++;
+            
+            using(var es = logger.NewEvent(logEvent)) {
+                es.Param("dive_node_id", diveNodeId);
+            }
 
             if (stateMod != null) {
                 stateMod();
@@ -553,16 +499,15 @@ public class Logging : MonoBehaviour
         });
     }
 
-    private void RegisterDiveArgLogEvent<T>(StringHash32 eventId, eventCategories category, string fieldName, Action<int, string, int, string, string, string, string> native, Action<T> stateMod = null) {
+    private void RegisterDiveArgLogEvent<T>(StringHash32 eventId, eventCategories category, string logEvent, string fieldName, Action<T> stateMod = null) {
         GameMgr.Events.Register<T>(eventId, (arg) => {
             string argAsString = arg == null ? "" : arg.ToString();
 
-            #if FIREBASE
-            native(sequenceIndex, appVersion, logVersion, userCode, missionId, diveNodeId, argAsString);
-            #endif
-
-			sequenceIndex++;
-
+            using(var es = logger.NewEvent(logEvent)) {
+                es.Param("dive_node_id", diveNodeId);
+                es.Param(fieldName, argAsString);
+            }
+            
             if (stateMod != null) {
                 stateMod(arg);
             }

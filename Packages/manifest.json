@@ -5,7 +5,7 @@
     "com.beauprime.beauroutine": "0.11.1",
     "com.beauprime.beauutil": "file:../Submodules/BeauUtil/Assets/BeauUtil",
     "com.beauprime.leaf": "file:../Submodules/Leaf/Assets/Leaf",
-    "com.fieldday.opengamedata-unity": "file:../Submodules/opengamedata-unity/Assets/FieldDay",
+    "com.fieldday.opengamedata-unity": "1.0.1",
     "com.potatointeractive.localization": "0.3.2",
     "com.potatointeractive.pcg": "1.2.0",
     "com.potatointeractive.util": "1.13.0",
@@ -62,6 +62,7 @@
       "scopes": [
         "com.beauprime",
         "com.beauprime.beaudata",
+        "com.fieldday.opengamedata-unity",
         "com.openupm",
         "com.potatointeractive.localization",
         "com.potatointeractive.pcg",

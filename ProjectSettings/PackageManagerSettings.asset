@@ -26,6 +26,7 @@ MonoBehaviour:
     m_Scopes:
     - com.beauprime
     - com.beauprime.beaudata
+    - com.fieldday.opengamedata-unity
     - com.openupm
     - com.potatointeractive.localization
     - com.potatointeractive.pcg
@@ -42,6 +43,7 @@ MonoBehaviour:
       m_Scopes:
       - com.beauprime
       - com.beauprime.beaudata
+      - com.fieldday.opengamedata-unity
       - com.openupm
       - com.potatointeractive.localization
       - com.potatointeractive.pcg
@@ -53,6 +55,7 @@ MonoBehaviour:
     m_Scopes:
     - com.beauprime
     - com.beauprime.beaudata
+    - com.fieldday.opengamedata-unity
     - com.openupm
     - com.potatointeractive.localization
     - com.potatointeractive.pcg
