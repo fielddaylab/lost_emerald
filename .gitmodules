@@ -1,7 +1,13 @@
 [submodule "Submodules/BeauUtil"]
 	path = Submodules/BeauUtil
 	url = https://github.com/BeauPrime/BeauUtil.git
+[submodule "Submodules/opengamedata-unity"]
+	path = Submodules/opengamedata-unity
+	url = https://github.com/opengamedata/opengamedata-unity.git
 	branch = main
 [submodule "Submodules/Leaf"]
 	path = Submodules/Leaf
 	url = https://github.com/BeauPrime/Leaf.git
+[submodule "Assets/WebGLTemplates/FB/FloatingDropdown"]
+	path = Assets/WebGLTemplates/FB/FloatingDropdown
+	url = https://github.com/fielddaylab/FloatingDropdown.git
